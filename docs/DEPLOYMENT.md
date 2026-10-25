@@ -88,3 +88,5 @@ work 71a98e9의 CI와 Cloudflare 배포는 성공했지만 실제 상세 주소�
 ## 검증 기준 커밋과 미리보기
 
 누적 보존 수정 기준은 4e0f1e327e9002fe43589c2ea77b17bc971242ab입니다. GitHub push/PR CI(40166946906, 40166951151)에서 126개 테스트·fresh CI 재현·빌드·Pages bytes 검사가 성공했습니다. 같은 SHA의 Cloudflare 미리보기 https://3077c923.efsimulator.pages.dev 에서 브라우저 7개·raw HTTP13개·공개5파일 바이트 일치를 확인했습니다. 운영 main은 병합하지 않았고 PR #1은 draft입니다. 이 증거는 미리보기 및 부분 자료 검증이며, 전체 카드 API·현재 판매 조건·R6 운영 갱신·운영 사이트 배포 완료를 의미하지 않습니다.
+
+후속 오프라인 감사 복구 보호 기준은 14896eda13d9995b61a7c186dfcdfd5f3c1abb33입니다. push/PR CI(40168471856, 40168474526)에서 테스트156개·실제 build·Pages7파일 검사가 통과했고, 같은 SHA 미리보기 https://91d78e88.efsimulator.pages.dev 에서 공개5파일 bytes·raw HTTP13개를 확인했습니다. UI·공개 데이터는 이전 브라우저 검증과 동일한 bytes이며 이번에 새 브라우저 실행이나 EFHub API 재감사를 수행한 것은 아닙니다. PR draft·main 미병합·승인 대기 상태를 유지합니다.

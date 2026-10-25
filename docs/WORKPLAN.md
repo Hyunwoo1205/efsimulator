@@ -369,11 +369,14 @@ C008/C009의 데이터 공백을 추적합니다. C010의 새 자료는 지역·
 - C022의 오프라인 재현에서 counter=-5는 예산1에도 추가 mock2회·count=-3/log3으로 완료됐고 null state도 신규 실행으로 오인됐습니다. 파일 부재와 손상 state를 구분하고 counter/log/page/status 사전 검증으로 두 경로를 요청·쓰기 전에 거부합니다. 잘못된 state·raw·정상/진단 요약은 바이트 그대로 보존합니다.
 - 감사 fixture **49/49**, 전체 Node 테스트 **156/156** 통과. 정상 raw 등록 전 중단·200 로그 직후 총계 미확정 상태·예산 축소 후 확대·빈 200 JSON/이미지 blocked·403 무재요청을 확인했습니다. 실제 data:prepare·build·Pages7파일 bytes 검사와 변경 기준 관리 검사(57파일/8작업)도 통과했습니다. 결과는 artifacts/checkpoint-offline/node-test.log에 보존했습니다.
 - 독립 검토에서도 감사49개 통과와 별도 negative_count/literal_null mock의 invalid_checkpoint·추가요청0·원본 바이트 보존을 확인했습니다. 정상 재개·raw 해시 오류의 기존 반환 계약을 유지하며 추가 수정 요청은 없습니다.
-- 이번 검증 전후 실제 artifacts/card-audit/state.json·latest-summary.json과 추적 감사 JSON·canonical/public 데이터의 SHA256이 모두 같습니다. UI·생성물 변경이 없어 이전 동일 bytes의 브라우저7흐름 검증 범위를 유지하며 이번에는 브라우저를 새로 실행하지 않았습니다. 실제 API·이미지·인증 요청은 추가하지 않았습니다.
+- 이번 검증 전후 실제 artifacts/card-audit/state.json·latest-summary.json과 추적 감사 JSON·canonical/public 데이터의 SHA256이 모두 같습니다. UI·생성물 변경이 없어 이전 동일 bytes의 브라우저7흐름 검증 범위를 유지하며 이번에는 브라우저를 새로 실행하지 않았습니다. 실제 EFHub API·이미지·인증 요청은 추가하지 않았습니다.
 
-### 외부 접근 없이 가능한 작업과 접근 회복이 필요한 작업
+- 오프라인 재개 보호 구현 SHA 14896eda13d9995b61a7c186dfcdfd5f3c1abb33의 push CI 40168471856·PR CI 40168474526 및 Cloudflare check가 모두 성공했습니다. CI 로그에서 tests156/pass156/fail0·실제9상품83카드 build·Pages7파일 검사 통과를 확인했습니다.
+- 같은 SHA의 미리보기 https://91d78e88.efsimulator.pages.dev 에서 공개5파일의 로컬 bytes 일치와 raw HTTP13개(실제 상세/끝슬래시200·Location없음·없는자산/감독404)를 확인했습니다. 검증 도구의 최초 /index.html 요청은 정상 canonical308이므로 기존 검증과 같은 / 및 /404 주소에서 파일을 대조했고 이 경위를 artifacts/checkpoint-offline/preview-http.json에 남겼습니다. 브라우저 실행은 앞서 검증한 동일 UI/data bytes의4e0f1e3 결과를 기준으로 하며 새 브라우저 실행으로 표시하지 않습니다. main 미병합·R4 진행 중·R6 미완료를 유지합니다.
 
-| 기존 작업 | 외부 요청 없이 가능한 범위 | 외부 조건이 필요한 완료 항목 |
+### 출처 API 접근 없이 가능한 작업과 접근 회복이 필요한 작업
+
+| 기존 작업 | 추가 출처 요청 없이 가능한 범위 | 외부 조건이 필요한 완료 항목 |
 | --- | --- | --- |
 | T005 / R4 | 저장 표본의 ID·필드·관계 대조, 체크포인트/예산/백오프 mock, 누적 seed·fresh CI·실패 복구, 상태 기록 정합성, PR 검토 | main 운영 반영은 승인 대기. 전체 API의 실제 전 페이지·고유 ID·마지막 페이지·이미지 표본은 허용된 정상 원본 접근 필요 |
 | T006 / R5 | 저장된 원본의 범위/필드 검토, 검색·JSON 분할·라우팅의 규모/예산 설계 | 과거·전체 카드의 실제 확보와 추가 이미지 응답·출처 갱신 확인은 외부 자료 필요. 작은 페이지 표본은 전체 API 성공의 대체물이 아님 |
