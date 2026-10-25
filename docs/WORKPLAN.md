@@ -351,6 +351,7 @@ C008/C009의 데이터 공백을 추적합니다. C010의 새 자료는 지역·
 - 실제 Chromium 브라우저 **7개 묶음 통과**, pageerror 0. 모든 9상품에서 감독 미지원·부분 구성 표시, 상품↔카드·버전·검색·직접 주소·뒤로 이동·빈 결과·실패/재시도·이미지 대체와 768/390/320px 넘침 없음을 확인했습니다.
 - pages:export 후 pages:check 통과: 고정 7개 파일의 dist/root bytes 일치. project:check --base d8891f2 통과: 파일 55개·작업 8개·변경 경로 55개. JS 문법·git diff --check 통과.
 - 전체 API 감사의 실제 결과는 data/research/card-api-audit.json과 CARD_API_AUDIT 문서를 기준으로 합니다. 실제 1요청403·0페이지·0카드·이미지0이며 진단2GET와 fixture 성공을 전수 수집 성공으로 표현하지 않습니다.
+- 신규 파일까지 포함한 git diff --cached --check에서 문서 끝의 추가 빈 줄 4건을 발견해 정리했습니다. 제품 코드·원문 관측은 변경하지 않았습니다.
 - GitHub 원격 반영·CI·Pages 미리보기·운영 공개 검증은 아직 실행하지 않았습니다. 다음 실행의 커밋·check·URL·응답 근거를 별도로 기록합니다.
 
 ### 완료조건과 남은 작업
