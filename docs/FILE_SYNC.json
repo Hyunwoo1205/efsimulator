@@ -173,12 +173,13 @@
         "docs/API_SELECTION.md",
         "docs/DATA_LIFECYCLE.md",
         "docs/SIMULATOR_PLAN.md",
-        "docs/sources/API_SELECTION_VALIDATION.md"
+        "docs/sources/API_SELECTION_VALIDATION.md",
+        "docs/RAW_PAGE_MERGE.md"
       ],
       "update_when": [
         "사용자 요구·작업 절차·검증 명령·제품 및 운영 원칙 변경"
       ],
-      "reviewed_in": "T009"
+      "reviewed_in": "T019"
     },
     {
       "path": "_headers",
@@ -368,12 +369,13 @@
         "docs/API_SELECTION.md",
         "docs/DATA_LIFECYCLE.md",
         "docs/reference/COLLECTION_BEFORE_PROBABILITY_SCOPE.md",
-        "docs/sources/API_SELECTION_VALIDATION.md"
+        "docs/sources/API_SELECTION_VALIDATION.md",
+        "docs/RAW_PAGE_MERGE.md"
       ],
       "update_when": [
         "해당 계약·지원 범위·실행/관측 결과 변경 시 관련 파일 검토; 비활성 참고는 현재 모델로 재채택하지 않음"
       ],
-      "reviewed_in": "T009"
+      "reviewed_in": "T019"
     },
     {
       "path": "docs/DEPLOYMENT.md",
@@ -406,12 +408,13 @@
         "docs/WORKPLAN.md",
         "scripts/project-check.mjs",
         "docs/ROADMAP.md",
-        "tests/project-check.test.mjs"
+        "tests/project-check.test.mjs",
+        "docs/RAW_PAGE_MERGE.md"
       ],
       "update_when": [
         "파일 추가·삭제·이름 변경·역할/의존관계 변경·영향 검토"
       ],
-      "reviewed_in": "T009"
+      "reviewed_in": "T019"
     },
     {
       "path": "docs/ROADMAP.md",
@@ -428,12 +431,13 @@
         "docs/API_SELECTION.md",
         "docs/DATA_LIFECYCLE.md",
         "docs/SIMULATOR_PLAN.md",
-        "docs/sources/API_SELECTION_VALIDATION.md"
+        "docs/sources/API_SELECTION_VALIDATION.md",
+        "docs/RAW_PAGE_MERGE.md"
       ],
       "update_when": [
         "단계 상태·현재/이전/다음 작업·완료 조건·추가 요구 변경"
       ],
-      "reviewed_in": "T009"
+      "reviewed_in": "T019"
     },
     {
       "path": "docs/WORKPLAN.md",
@@ -449,12 +453,13 @@
         "docs/API_SELECTION.md",
         "docs/DATA_LIFECYCLE.md",
         "docs/SIMULATOR_PLAN.md",
-        "docs/sources/API_SELECTION_VALIDATION.md"
+        "docs/sources/API_SELECTION_VALIDATION.md",
+        "docs/RAW_PAGE_MERGE.md"
       ],
       "update_when": [
         "매 작업 착수·추가 요구·파일 변경·검증 결과·작업 종료"
       ],
-      "reviewed_in": "T009"
+      "reviewed_in": "T019"
     },
     {
       "path": "index.html",
@@ -502,12 +507,13 @@
         "scripts/prepare-seed.mjs",
         "scripts/browser-check.py",
         "docs/ARCHITECTURE.md",
-        "docs/DEPLOYMENT.md"
+        "docs/DEPLOYMENT.md",
+        "docs/RAW_PAGE_MERGE.md"
       ],
       "update_when": [
         "의존성·npm 명령·Node/npm 버전·앱 구성 추가"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T019"
     },
     {
       "path": "scripts/audit-cards.mjs",
@@ -704,12 +710,13 @@
         "docs/API_SELECTION.md",
         "docs/DATA_LIFECYCLE.md",
         "docs/SIMULATOR_PLAN.md",
-        "docs/sources/API_SELECTION_VALIDATION.md"
+        "docs/sources/API_SELECTION_VALIDATION.md",
+        "docs/RAW_PAGE_MERGE.md"
       ],
       "update_when": [
         "설치·실행·검증·표본 범위·진입 문서·공개 상태 변경"
       ],
-      "reviewed_in": "T009"
+      "reviewed_in": "T019"
     },
     {
       "path": "docs/sources/CARD_API_AUDIT.md",
@@ -1141,12 +1148,13 @@
         "docs/COLLECTION.md",
         "data/research/probability-scope-baseline.json",
         "docs/sources/DATA_SUPPLY_CHAIN.md",
-        "docs/sources/API_SELECTION_VALIDATION.md"
+        "docs/sources/API_SELECTION_VALIDATION.md",
+        "docs/RAW_PAGE_MERGE.md"
       ],
       "update_when": [
         "해당 범위/입력/완료조건·관계·권한/운영 근거 변경. reference의 과거 관측값은 덮어쓰지 않음"
       ],
-      "reviewed_in": "T009"
+      "reviewed_in": "T019"
     },
     {
       "path": "docs/DATA_LIFECYCLE.md",
@@ -1277,6 +1285,51 @@
         "T009 관측/게이트·대상/권리/공급계약·재개조건·검증/작업상태 변경"
       ],
       "reviewed_in": "T009"
+    },
+    {
+      "path": "scripts/merge-api-pages.mjs",
+      "role": "네트워크 없는 raw players/packs 페이지→원문항목 배열 병합·메타/ID/누락검증·실패보존/원자적발행",
+      "priority": "P0",
+      "related_paths": [
+        "tests/merge-api-pages.test.mjs",
+        "docs/RAW_PAGE_MERGE.md",
+        "package.json",
+        "docs/WORKPLAN.md"
+      ],
+      "update_when": [
+        "원본입력/병합보존·페이지/ID검증·report/CLI·발행/복구계약·중간요청범위 변경"
+      ],
+      "reviewed_in": "T019"
+    },
+    {
+      "path": "tests/merge-api-pages.test.mjs",
+      "role": "합성fixture CLI검증:lossless원문·페이지/ID/합계·partial거부·입력/last-good·발행실패복구",
+      "priority": "P1",
+      "related_paths": [
+        "scripts/merge-api-pages.mjs",
+        "docs/RAW_PAGE_MERGE.md",
+        "docs/WORKPLAN.md"
+      ],
+      "update_when": [
+        "원본입력/병합보존·페이지/ID검증·report/CLI·발행/복구계약·중간요청범위 변경"
+      ],
+      "reviewed_in": "T019"
+    },
+    {
+      "path": "docs/RAW_PAGE_MERGE.md",
+      "role": "전체players/packs중간자료 오프라인 병합 입력/CLI/보존/완전성·실제원본미확보 경계",
+      "priority": "P1",
+      "related_paths": [
+        "scripts/merge-api-pages.mjs",
+        "tests/merge-api-pages.test.mjs",
+        "package.json",
+        "docs/WORKPLAN.md",
+        "docs/COLLECTION.md"
+      ],
+      "update_when": [
+        "원본입력/병합보존·페이지/ID검증·report/CLI·발행/복구계약·중간요청범위 변경"
+      ],
+      "reviewed_in": "T019"
     }
   ]
 }

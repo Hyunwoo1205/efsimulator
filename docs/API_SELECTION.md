@@ -129,3 +129,7 @@ G5의 공급자 변경 증거와 새 R5/T015~T016의 자체 자동 갱신·API �
 - 같은 JSON: `/operator_documents/0/findings/section_3_usage`=PESDB 제외, `/followup_current_scope_and_comparison/card_databases/5`=TheWinningXI, `/6`=PESDATABASE.com, `/7`=eFootball.cz, `/followup_citation_corrections/1`=info 라이선스 설명.
 - [구성 조사 JSON](../data/research/roster-source-observations.json): `/alternate_source_assessments/2`에 info의 **정확한 필터 URL·11명·원본 ID 예·상세404·상품 관계 한계**가 있다. `/additional_reported_candidates/3`은 CptnPES 앱 주장이다.
 - [기존 현행 대조 JSON](../data/research/current-shop-observations.json): `/efhub_coverage`, `/targeted_followup`의 National 파서 실패·Quaresma 검색 단서·Midfielders403을 보존한다. 파서 실패의 null은 원본 필드 부재가 아니다.
+
+## T019 오프라인 중간 도구와 선정의 구분
+
+사용자의18:09 UTC 중간 자료 요청에 따라 전체 players/packs 원본을 나중에 병합할 도구만 준비한다. 이는 API 접근 성공·전수 확보·공급자 선정 통과가 아니다. 전체 원본이 없으므로 실제 전체 배열은 만들지 않는다. [입력/검증/사용법](RAW_PAGE_MERGE.md)에 따라 정상 제공된 원문이 확보된 뒤 해당 중간 작업을 수행한다. 현재 T009의 미통과 조건과 실제 DB/상세 관계 연결의 후속 순서는 별도로 유지한다.
