@@ -37,6 +37,9 @@
 | C022 | 오프라인 mock 재현: 손상된 counter로 예산 초과, null checkpoint를 신규 실행으로 오인 | R4·R6 | 기존 T005에서 파일 부재와 손상 구분·counter/log/page/status 재개 전 검증; 손상 원본 보존·정상 빈 응답 blocked 무재시도. 실제 API/403 원본은 변경하지 않음 | 오프라인 수정·49개 감사/전체156개 테스트 통과 |
 | C023 | 목록 API403 원인과 limit100 지원 여부 진단 요청 | R1·R4·R5 | 기존 성공/실패·저장 본문/헤더·공개 클라이언트 근거부터 대조. 원인/가설 구분·동일 거부 요청 반복/우회 금지 | 조사 완료·원인 미확정 |
 | C024 | 상품별 Standard 포함 초기 전체 추첨풀 확보 방안 요청 | R1·R4·R5 | 글로벌 카드 카탈로그·소개 카드·실제 상품 구성 분리; 공식명/기간/총계와 상품별 카드ID 대조·임의Standard 보충 금지 | 조사 완료·전체 구성 API 미확보 |
+| C025 | DB 사이트의 원본→정규화/저장→공개 API→업데이트 공급망 조사 | R1·R2·R4·R5 | 운영자 주장·공개 코드·실제 응답·미확인 구분. 사이트 API를 Konami 원본 API로 부르지 않음 | 조사 기록 완료·공급망 미확인 구간 유지 |
+| C026 | Standard 미확보 시 공식 전체 수와 완전한 특수 구성 차이를 익명 슬롯으로 표현하는 조건부 제안 | 기반 완성 뒤 시뮬레이터 | 현재 도입 보류. 특수 구성 완전성·상품/회차/유형·공식 초기 수 검증 필요. 실제 카드 ID/확보 수에 혼합 금지. 향후 채택 시 가상 Standard에도 모션을 원한다는 의도만 기록 | 보류·미구현 |
+| C027 | PesLig 공개 brief 카탈로그 API 성공 관측과 PESDB 자동 수집 금지 확인 | R1·R2·R4·R5 | 실제 행/ID·필드·종류·버전·이미지·이용조건을 검증한 뒤 채택 판단. meta 총계는 독립 행 수와 구분. PESDB는 자동 수집 후보에서 제외 | snapshot 검사 완료·채택 미정·PESDB 제외 |
 
 ## T000 — 목표 확인과 저장소 실측
 
@@ -354,7 +357,7 @@ C008/C009의 데이터 공백을 추적합니다. C010의 새 자료는 지역·
 - 고정 Node 24.19.0·npm 11.9.0에서 npm ci, data:prepare, build 통과. 활성 상품 9개·카드 83개이며 모든 감독 데이터·관계는 지원 범위에서 제외했습니다.
 - P1·체크포인트 보강 후 최신 전체 Node 테스트 **156개 모두 통과**. 전체성 오판·감독 입력 거부·코인 팩의 bundle/draw 구분·체크포인트·403 무재시도·정규화·실패 보존·배포 생성물을 검증합니다.
 - 실제 Chromium 브라우저 **7개 묶음 통과**, pageerror 0. 모든 9상품에서 감독 미지원·부분 구성 표시, 상품↔카드·버전·검색·직접 주소·뒤로 이동·빈 결과·실패/재시도·이미지 대체와 768/390/320px 넘침 없음을 확인했습니다.
-- pages:export 후 pages:check 통과: 고정 7개 파일의 dist/root bytes 일치. 최신 project:check 통과: 파일 59개·작업 8개. JS 문법·git diff --check 통과.
+- pages:export 후 pages:check 통과: 고정 7개 파일의 dist/root bytes 일치. 최신 project:check 통과: 파일 61개·작업 8개. JS 문법·git diff --check 통과.
 - 전체 API 감사의 실제 결과는 data/research/card-api-audit.json과 CARD_API_AUDIT 문서를 기준으로 합니다. 실제 1요청403·0페이지·0카드·이미지0이며 진단2GET와 fixture 성공을 전수 수집 성공으로 표현하지 않습니다.
 - 신규 파일까지 포함한 git diff --cached --check에서 문서 끝의 추가 빈 줄 4건을 발견해 정리했습니다. 제품 코드·원문 관측은 변경하지 않았습니다.
 - work 71a98e982d51539b8540cf0153e0e787d69ef796을 원격 반영하고 PR #1을 생성했습니다. 같은 SHA의 push CI 40165286498·PR CI 40165315462와 Cloudflare check는 성공했습니다. main은 아직 초기 d8891f2입니다.
@@ -396,6 +399,24 @@ C008/C009의 데이터 공백을 추적합니다. C010의 새 자료는 지역·
 - 이번 조사 반영 후 전체 Node156개·실제 data:prepare/build·Pages7파일 일치·관리 검사59파일/8작업이 통과했습니다. 활성 seed·공개 JSON·실제 감사 기록·수집기 코드에 차이가 없어 브라우저는 재실행하지 않았습니다. 새 테스트/서비스/수집기를 추가하지 않았고 원격 반영은 이 조사 커밋의 CI와 구분해 확인합니다.
 - 조사 커밋 ba3854403a73c908d8a1812b871764d3cb2a3fd1을 같은 work에 반영했습니다. 해당 SHA의 push CI40172576359·PR CI40172578669 및 Cloudflare check가 성공했습니다. 문서/연구 기록 반영이며 main 병합·운영 배포·새 전체 명단 확보는 수행하지 않았습니다.
 
+### 추가 조사 — 데이터 공급망과 공개 카탈로그 경로
+
+C025/C027은 기존 R1/T002·R4/T005의 출처/필드/API 검증과 R2 구조·R5 확장 선택에 반영합니다. 원본 배포 파일·사이트 자체 API·타사이트 재가공·계산/보강 필드를 구분하고, 업데이트 선언/시각/버전과 실제 자동·증분 운영 증거를 분리합니다. 공개 코드/포맷은 읽기 조사만 하며 보호된 게임 데이터 다운로드·도구 설치/실행·복호화/권한 우회를 하지 않습니다.
+
+PesLig의 실제 공개 클라이언트 brief 경로는 독립 관측에서200을 반환했습니다. 같은 경로를 필요한 범위에서1회만 읽어 로컬 비공개 연구 자료로 보존하고 실제 배열/고유ID/필수 필드를 검증합니다. 실패·거부 시 재시도하지 않으며 api=index의 추가 대량 요청은 하지 않습니다. 출처 meta·운영자 주장·실측 결과를 별도로 기록하고 활성 seed/공개 데이터에 import하지 않습니다.
+
+C026은 조사 후 판단할 보류 요구입니다. Standard 카드 자체 확보와 상품별 Standard 포함 관계 확보를 구분하며, 새로운 카탈로그 경로가 확인됐다고 상품 풀까지 완료한 것으로 보지 않습니다. 공식 초기 수에서 소개 카드 수만 뺀 차이를 바로 Standard로 만들지 않습니다. 공급망 조사 결과와 최소 확보 계획은 새 조사 문서에 연결하고 기존 작업 ID를 유지합니다.
+
+실제 결과는 [공급망 조사](sources/DATA_SUPPLY_CHAIN.md)와 [구조화 근거](../data/research/data-supply-chain-observations.json)를 기준으로 합니다.
+
+- PesLig 정상 brief1회 GET200,13,639,365bytes를 artifacts에 보존했다. 실제46,742행/고유키/행ID·48열, 중복키/ID·키/ID불일치0을 검사했다. Standard19,018·variant13,947·기타13,777이며 non-Standard 전체를 특수로 취급하지 않는다. source=dt870/schema/generated_at은 공급자 선언으로 구분했다.
+- 현재83EFHub 원본ID가 모두 겹치나 OVR14건과 분류가 다르다. 스킬/AI는 전행 빈값, max_level0+server_level_cap_required는43,116행이다. 이미지URL·명시 버전/인물·상품 관계·OVR조건은 별도 검증 대상이다. source 원문은 Git/빌드/공개 데이터에 넣지 않고 activeimport0을 유지한다.
+- EFHub 정상 HTML/실제 연결JS4회200, API/이미지/auth0이다. .info/PlayersDB문서3GET과 PesMaster/LAB2GET은403에서 중단했다. 이번 직접 sourceGET은 총10회이며 웹/연결 GitHub 도구와 부모의 앞선brief/이미지1건 보고는 별도다. 같은 거부 URL 반복·헤더 변경·도구/게임파일 다운로드·설치/실행·연락/가입은 없다.
+- PESDB 게임데이터 추출/파생·PESMaster 목요일 갱신·.com 주간 공식data는 운영자 설명으로 기록했다. LAB은 커뮤니티DB 재가공을 명시한다. 특정 공개extractor→특정사이트 연결·내부DB·실제자동/증분/복구 운영은 미확인이다. PESDB는 약관에 따라 자동수집 후보에서 제외한다.
+- C026은 조건부 보류다. 동일 공식 상품/회차·코인특수명단·초기N·모든 비Standard 구성S와 나머지의Standard근거를 검증하기 전 N−S를 채우지 않는다. 가상슬롯/실제ID·확보수 혼합과 시뮬레이터 구현은 없다. 로드맵 R4/T005 진행 중·main 승인 대기·R6 미완료를 유지한다.
+- 독립 검토에서도 원문 object_pairs_hook 재검사·행/ID/48필드·분류/개발모드·83ID/OVR차이가 조사 기록과 일치했다. 이미지 필드 curl 오검출은 audit artifact에서 정정했고 최종 근거에는 []로 반영했다. 공급자 선언·정상 응답·로컬 정합성·미확인 운영을 구분했으며 실질 수정 요청은 없다.
+- 최종 Node156개·실제 data:prepare/build·Pages7파일 일치·관리 검사61파일/8작업·diff 검사 통과. 원문 brief SHA256·기존403 state·활성 seed/public 데이터 불변, raw ignore/nontracked를 확인했다. UI/공개 데이터는 동일해 브라우저는 재실행하지 않았다. 신규 자동 수집기/정규화/슬롯/테스트는 추가하지 않았고 연구/문서만 반영한다.
+
 ### 출처 API 접근 없이 가능한 작업과 접근 회복이 필요한 작업
 
 | 기존 작업 | 추가 출처 요청 없이 가능한 범위 | 외부 조건이 필요한 완료 항목 |
@@ -420,7 +441,7 @@ C015~C019를 적용합니다. 팩은 코인 결제여도 일괄 지급형이며 
 | --- | --- | --- |
 | `.github/workflows/project-check.yml` | 수정 | PR와 main/work 푸시의 관리 기록·회귀 테스트·실제 표본 재현과 정적 빌드 검사 |
 | `404.html` | 수정 | Pages root 배포용 추적 생성물; scripts/build.mjs를 기준으로 build/export하며 직접 수정 금지 |
-| `AGENTS.md` | 수정 | 매 작업의 확인·변경 영향 검토·검증·상태 갱신 규칙 |
+| `AGENTS.md` | 수정 | 기존 절차에 공급망/사이트API 구분·raw비공개·PESDB제외·익명Standard 조건부보류 경계 연결 |
 | `_headers` | 수정 | Pages root 배포용 추적 생성물; scripts/build.mjs를 기준으로 build/export하며 직접 수정 금지 |
 | `_redirects` | 수정 | Pages root 배포용 추적 생성물; scripts/build.mjs를 기준으로 build/export하며 직접 수정 금지 |
 | `app.js` | 수정 | Pages root 배포용 추적 생성물; web/app.js를 기준으로 build/export하며 직접 수정 금지 |
@@ -430,6 +451,8 @@ C015~C019를 적용합니다. 팩은 코인 결제여도 일괄 지급형이며 
 | `data/research/current-catalog-observations.json` | 수정 | 정상 재수집한 9개 상품과 카드 payload·목록/상세 원문 근거 |
 | `data/research/roster-source-observations.json` | 수정 | 신규 연구 근거; 403 진단·9상품별 표시/확보/타입·공식 총계·후보의 실제 경로/응답/제약. 활성 import 없음 |
 | `docs/sources/FULL_ROSTER_RESEARCH.md` | 수정 | 신규 조사·한계·전체 초기 선수 풀 완료 조건·기존 단계의 실증 계획과 필요한 결정 |
+| `data/research/data-supply-chain-observations.json` | 수정 | 신규 요약 근거; 실제 brief/행 감사·사이트 공급망/API/업데이트 근거·보류안. raw13MB 전체 행은 포함하지 않음 |
+| `docs/sources/DATA_SUPPLY_CHAIN.md` | 수정 | 신규 공급망·정확 API/실측 범위·허용 조건·필드 공백과 현실적인 후속 확보·익명슬롯 보류 조건 |
 | `docs/ARCHITECTURE.md` | 수정 | 기존 구조·복구 한계에 글로벌 카드/소개 관계/초기 pool_snapshot 구분의 미구현 계획 추가 |
 | `docs/COLLECTION.md` | 수정 | 기존 수집 범위와 Standard 전체명단의 공식 회차·초기 수·포함 ID·실패 증거 보존 선행 조건 구분 |
 | `docs/DEPLOYMENT.md` | 수정 | 실제 빌드·CI·branch 미리보기 검증과 미검증 대시보드/main 운영 상태 구분 |
