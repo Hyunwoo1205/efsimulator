@@ -31,10 +31,12 @@ export function buildSite({ root = resolve(dirname(fileURLToPath(import.meta.url
     const result = publishCatalog(seed, { outDir: stagedOut, dbPath: stagedDb });
     // A wildcard would turn missing /cards/example.json into successful HTML.
     // Keep the initial sample's rewrites limited to actual entity paths.
-    const routes = ['products', 'cards'].map(kind => `/${kind} /index.html 200`);
+    // Pages canonicalizes /index.html to /. Rewrite to / directly so a deep
+    // request keeps its original URL instead of exposing a canonical redirect.
+    const routes = ['products', 'cards'].flatMap(kind => [`/${kind} / 200`, `/${kind}/ / 200`]);
     routes.push(...['products', 'cards'].flatMap(kind => seed[kind].flatMap(entity => {
       const path = `/${kind}/${encodeURIComponent(entity.id)}`;
-      return [`${path} /index.html 200`, `${path}/ /index.html 200`];
+      return [`${path} / 200`, `${path}/ / 200`];
     })));
     writeFileSync(join(stagedOut, '_redirects'), `${routes.join('\n')}\n`, 'utf8');
     // A top-level 404 disables Pages' automatic catch-all SPA behavior for missing data/assets.

@@ -249,7 +249,12 @@ test('빌드 실패는 기존 사이트와 DB를 보존하고 성공 시 직접�
   writeFileSync(join(f.root, 'web/index.html'), '<!doctype html><title>fixture</title>');
   buildSite({ root: f.root });
   const rewrites = readFileSync(join(f.outDir, '_redirects'), 'utf8');
-  assert.match(rewrites, /\/products\/product-01 \/index.html 200/);
+  assert.deepEqual(new Set(rewrites.trim().split('\n')), new Set([
+    '/products / 200', '/products/ / 200', '/cards / 200', '/cards/ / 200',
+    '/products/product-01 / 200', '/products/product-01/ / 200',
+    '/cards/card-01 / 200', '/cards/card-01/ / 200',
+  ]), '목록·실제 상세·trailing slash는 /index.html canonical redirect 없이 루트로 rewrite한다');
+  assert.equal(rewrites.includes('/index.html'), false);
   assert.equal(rewrites.includes('*'), false, '누락 JSON을 성공 응답으로 바꾸는 wildcard를 만들지 않는다');
   assert.equal(existsSync(join(f.outDir, '404.html')), true);
   const before = readFileSync(join(f.outDir, 'data/catalog.json'));

@@ -51,7 +51,7 @@
     {
       "path": "Python + Playwright + Chromium (선택적 로컬 검증)",
       "role": "실제 브라우저 검증 도구이며 사이트 실행·빌드에는 불필요",
-      "check": "Python playwright와 Chromium이 설치된 환경에서 preview 실행 후 npm run test:browser. 현재 CI는 Node 검사와 빌드만 수행."
+      "check": "로컬 또는 확인된 efsimulator HTTPS Pages URL에서 npm run test:browser -- --url <URL>. 임의 원격 호스트는 거부하며 실제 결과/실패를 구분한다."
     },
     {
       "path": "https://efhub.com/ko + https://efhub.com/api/public/",

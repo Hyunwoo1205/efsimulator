@@ -2,6 +2,7 @@
 
 npm run build && npm run preview -- --port 4173
 python scripts/browser-check.py --url http://127.0.0.1:4173
+python scripts/browser-check.py --url https://work.efsimulator.pages.dev --artifacts artifacts/preview-remote
 """
 
 import argparse
@@ -18,6 +19,28 @@ from playwright.async_api import async_playwright, expect
 
 
 SCOPE_NOTE = "감독 정보는 서비스 지원 범위에서 제외합니다. 실제 상품에 감독이 없다는 뜻은 아닙니다."
+
+
+def validated_base_url(value):
+    parsed = urlparse(value)
+    if (parsed.username is not None or parsed.password is not None or
+            parsed.path not in {"", "/"} or parsed.query or parsed.fragment):
+        raise ValueError("사용자 정보·경로·쿼리가 없는 로컬 또는 기존 efsimulator Pages URL이 필요합니다.")
+    try:
+        port = parsed.port
+    except ValueError as error:
+        raise ValueError("검증 URL의 포트가 올바르지 않습니다.") from error
+    if port is not None and not 1 <= port <= 65535:
+        raise ValueError("검증 URL의 포트가 올바르지 않습니다.")
+    hostname = parsed.hostname or ""
+    local = hostname in {"127.0.0.1", "localhost", "::1"} and parsed.scheme in {"http", "https"}
+    pages_host = hostname == "efsimulator.pages.dev" or hostname.endswith(".efsimulator.pages.dev")
+    valid_labels = all(re.fullmatch(r"[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?", label)
+                       for label in hostname.split("."))
+    remote = pages_host and valid_labels and parsed.scheme == "https" and port in {None, 443}
+    if not (local or remote):
+        raise ValueError("로컬 URL 또는 HTTPS efsimulator.pages.dev·하위 Pages 미리보기 URL만 검증할 수 있습니다.")
+    return parsed.geturl().rstrip("/")
 
 
 def entity_path(kind, entity):
@@ -57,6 +80,7 @@ async def assert_supported_scope(page):
 
 
 async def check(args):
+    base = validated_base_url(args.url)
     output = Path(args.artifacts).resolve()
     output.mkdir(parents=True, exist_ok=True)
     executable = shutil.which("chromium") or shutil.which("google-chrome")
@@ -67,9 +91,6 @@ async def check(args):
     proxy = os.environ.get("HTTPS_PROXY") or os.environ.get("https_proxy")
     if proxy:
         options["proxy"] = {"server": proxy, "bypass": "127.0.0.1,localhost"}
-    base = args.url.rstrip("/")
-    if urlparse(base).hostname not in {"127.0.0.1", "localhost", "::1"}:
-        raise ValueError("이 검사는 로컬 미리보기 URL에서만 실행합니다.")
     results = []
     errors = []
     async with async_playwright() as playwright:
@@ -191,6 +212,6 @@ async def check(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="efsimulator 실제 표본 브라우저 검증")
-    parser.add_argument("--url", default="http://127.0.0.1:4173")
+    parser.add_argument("--url", default="http://127.0.0.1:4173", help="로컬 URL 또는 기존 efsimulator Pages HTTPS 주소")
     parser.add_argument("--artifacts", default="artifacts")
     asyncio.run(check(parser.parse_args()))

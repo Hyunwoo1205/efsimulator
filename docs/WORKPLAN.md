@@ -352,7 +352,11 @@ C008/C009의 데이터 공백을 추적합니다. C010의 새 자료는 지역·
 - pages:export 후 pages:check 통과: 고정 7개 파일의 dist/root bytes 일치. project:check --base d8891f2 통과: 파일 55개·작업 8개·변경 경로 55개. JS 문법·git diff --check 통과.
 - 전체 API 감사의 실제 결과는 data/research/card-api-audit.json과 CARD_API_AUDIT 문서를 기준으로 합니다. 실제 1요청403·0페이지·0카드·이미지0이며 진단2GET와 fixture 성공을 전수 수집 성공으로 표현하지 않습니다.
 - 신규 파일까지 포함한 git diff --cached --check에서 문서 끝의 추가 빈 줄 4건을 발견해 정리했습니다. 제품 코드·원문 관측은 변경하지 않았습니다.
-- GitHub 원격 반영·CI·Pages 미리보기·운영 공개 검증은 아직 실행하지 않았습니다. 다음 실행의 커밋·check·URL·응답 근거를 별도로 기록합니다.
+- work 71a98e982d51539b8540cf0153e0e787d69ef796을 원격 반영하고 PR #1을 생성했습니다. 같은 SHA의 push CI 40165286498·PR CI 40165315462와 Cloudflare check는 성공했습니다. main은 아직 초기 d8891f2입니다.
+- 최초 미리보기 https://dbbacfe3.efsimulator.pages.dev 의 HTML/JS/CSS/404/JSON은 로컬 생성물과 바이트 일치했습니다. 예약 _headers/_redirects는 같은 SHA의 GitHub blob으로 대조했고 누락 JSON·감독 주소404와 cache-control도 확인했습니다.
+- 원격에서 실제 상품/카드 직접 주소가 308 Location:/로 이동하는 오류를 발견했습니다. /index.html 재작성 대상이 Pages 정규화와 충돌하는 것으로 판단해 / 200 대상으로 수정했습니다. 아직 새 SHA 미리보기의 직접 주소 검증은 대기 중입니다. 초기 원격 브라우저 실패 증거는 artifacts/preview-remote/browser-check-initial-redirect.json에 보존했습니다.
+- 브라우저 검사 도구는 로컬과 확인된 efsimulator HTTPS Pages 호스트만 허용하도록 확장했습니다. 임의 호스트/원격HTTP/userinfo/다른포트는 거부합니다. 전체 카드 API 재조회는 하지 않았습니다.
+- 생산 main 반영과 운영 공개 검증은 미실행입니다. R4 진행 중·전체 API 미검증·R6 미완료 상태를 유지합니다.
 
 ### 완료조건과 남은 작업
 
