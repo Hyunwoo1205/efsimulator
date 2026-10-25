@@ -67,6 +67,20 @@ async function previousSummary(f) {
   return body;
 }
 
+async function artifactSnapshot(f, pages = [1]) {
+  const paths = [
+    join(f.artifactDir, 'state.json'),
+    ...pages.map(number => join(f.artifactDir, 'pages', `${number}.json`)),
+    f.summaryPath,
+    join(f.artifactDir, 'latest-summary.json'),
+  ];
+  return new Map(await Promise.all(paths.map(async path => [path, await readFile(path, 'utf8')])));
+}
+
+async function assertSnapshotPreserved(snapshot) {
+  for (const [path, body] of snapshot) assert.equal(await readFile(path, 'utf8'), body, path);
+}
+
 test('모든 페이지와 마지막 개수·고유 카드 수를 대조하고 원본 문자열 ID를 보존한다', async (t) => {
   const f = await fixture(t);
   const players = [card('00012345678901234567890'), card('900719925474099312345'), card('00003')];
@@ -390,3 +404,212 @@ test('HTTP200·image MIME이라도 본문이 이미지가 아니면 기존 정�
   assert.equal(summary.image_validation.results[0].valid, false);
   assert.equal(await readFile(f.summaryPath, 'utf8'), previous);
 });
+
+test('음수 요청 카운터가 든 체크포인트는 재개 전 거부하고 원본 파일을 보존한다', async (t) => {
+  const f = await fixture(t);
+  const previous = await previousSummary(f);
+  const first = network(() => jsonResponse(page(1, [card('1'), card('2')], 5)));
+  await runAudit({ ...baseOptions, ...f, requestBudget: 1, fetchImpl: first.fetchImpl });
+  const statePath = join(f.artifactDir, 'state.json');
+  const rawPath = join(f.artifactDir, 'pages', '1.json');
+  const latestPath = join(f.artifactDir, 'latest-summary.json');
+  const state = JSON.parse(await readFile(statePath, 'utf8'));
+  state.request_count = -5;
+  const corruptedBytes = `${JSON.stringify(state, null, 2)}\n`;
+  await writeFile(statePath, corruptedBytes);
+  const rawBefore = await readFile(rawPath, 'utf8');
+  const latestBefore = await readFile(latestPath, 'utf8');
+  const resumed = network(({ url }) => {
+    const number = Number(url.searchParams.get('page'));
+    return jsonResponse(number === 2
+      ? page(2, [card('3'), card('4')], 5)
+      : page(3, [card('5')], 5));
+  });
+  const operation = runAudit({ ...baseOptions, ...f, requestBudget: 1, resume: true, fetchImpl: resumed.fetchImpl }).then(result => {
+    t.diagnostic(JSON.stringify({ unexpected_complete: result.summary.complete, resumed_mock_calls: resumed.calls.length, request_count: result.summary.requests.count, request_log_length: result.summary.requests.log.length }));
+    return result;
+  });
+
+  await assert.rejects(operation, error => error.code === 'invalid_checkpoint');
+  assert.equal(resumed.calls.length, 0);
+  assert.equal(await readFile(statePath, 'utf8'), corruptedBytes);
+  assert.equal(await readFile(rawPath, 'utf8'), rawBefore);
+  assert.equal(await readFile(f.summaryPath, 'utf8'), previous);
+  assert.equal(await readFile(latestPath, 'utf8'), latestBefore);
+});
+
+test('손상된 체크포인트 메타데이터는 네트워크·파일 변경 전에 거부한다', async (t) => {
+  const cases = [
+    ['정수가 아닌 요청 수', state => { state.request_count = 1.5; }],
+    ['요청 수와 로그 길이 불일치', state => { state.request_count = 3; }],
+    ['허용 출처와 다른 요청 URL', state => { state.request_log[0].url = 'https://example.invalid/players?page=1'; }],
+    ['잘못된 HTTP 상태 자료형', state => { state.request_log[0].status = '200'; }],
+    ['알 수 없는 요청 종류', state => { state.request_log[0].kind = 'unknown'; }],
+    ['요청 로그의 잘못된 페이지', state => { state.request_log[0].page = 0; }],
+    ['음수 재시도 번호', state => { state.request_log[0].attempt = -1; }],
+    ['요청 로그의 잘못된 관찰 시각', state => { state.request_log[0].observed_at = 'not-a-date'; }],
+    ['저장 페이지 번호의 빈 구간', state => { delete state.pages['1']; }],
+    ['저장 페이지의 잘못된 카드 수', state => { state.pages['1'].count = 999; }],
+    ['저장 페이지와 다른 URL 페이지', state => { state.pages['1'].url = 'https://efhub.com/api/public/players?page=99&limit=2'; }],
+    ['저장 페이지의 잘못된 관찰 시각', state => { state.pages['1'].observed_at = 'not-a-date'; }],
+    ['저장 페이지 해시의 잘못된 형식', state => { state.pages['1'].sha256 = 'not-a-sha256'; }],
+    ['다음 페이지 건너뛰기', state => { state.next_page = 4; }],
+    ['다음 페이지 되감기', state => { state.next_page = 2; }],
+    ['알 수 없는 실행 상태', state => { state.status = 'invalid-status'; }],
+    ['일부 페이지만 저장된 complete 상태', state => { state.status = 'complete'; }],
+    ['음수 출처 총계', state => { state.expected_total = -1; }],
+    ['0인 협상 페이지 크기', state => { state.negotiated_limit = 0; }],
+    ['출처 총계와 다른 페이지 총수', state => { state.expected_total_pages = 99; }],
+  ];
+
+  for (const [name, mutate] of cases) {
+    await t.test(name, async (subtest) => {
+      const f = await fixture(subtest);
+      await previousSummary(f);
+      const initial = network(({ url }) => Number(url.searchParams.get('page')) === 1
+        ? jsonResponse(page(1, [card('1'), card('2')], 5))
+        : jsonResponse(page(2, [card('3'), card('4')], 5)));
+      const baseline = await runAudit({ ...baseOptions, ...f, requestBudget: 2, fetchImpl: initial.fetchImpl });
+      assert.equal(baseline.summary.status, 'paused');
+      assert.equal(baseline.summary.pages.visited_count, 2);
+      const statePath = join(f.artifactDir, 'state.json');
+      const state = JSON.parse(await readFile(statePath, 'utf8'));
+      mutate(state);
+      await writeFile(statePath, `${JSON.stringify(state, null, 2)}\n`);
+      const paths = [
+        statePath,
+        join(f.artifactDir, 'pages', '1.json'),
+        join(f.artifactDir, 'pages', '2.json'),
+        f.summaryPath,
+        join(f.artifactDir, 'latest-summary.json'),
+      ];
+      const before = new Map(await Promise.all(paths.map(async path => [path, await readFile(path, 'utf8')])));
+      const resumed = network(() => { throw new Error('Invalid metadata must fail before network'); });
+
+      await assert.rejects(
+        runAudit({ ...baseOptions, ...f, requestBudget: 2, resume: true, fetchImpl: resumed.fetchImpl }),
+        error => error.code === 'invalid_checkpoint',
+      );
+      assert.equal(resumed.calls.length, 0);
+      for (const [path, body] of before) assert.equal(await readFile(path, 'utf8'), body, `${name}: ${path}`);
+    });
+  }
+});
+
+test('첫200응답을 기록한 직후 baseline 등록 전에 중단됐어도 원본을 보존하며 재개한다', async (t) => {
+  const f = await fixture(t);
+  const firstPayload = page(1, [card('1'), card('2')], 3);
+  const initial = network(() => jsonResponse(firstPayload));
+  await runAudit({ ...baseOptions, ...f, requestBudget: 1, fetchImpl: initial.fetchImpl });
+  const statePath = join(f.artifactDir, 'state.json');
+  const rawPath = join(f.artifactDir, 'pages', '1.json');
+  const rawBefore = await readFile(rawPath, 'utf8');
+  const state = JSON.parse(await readFile(statePath, 'utf8'));
+  state.status = 'running';
+  state.expected_total = null;
+  state.expected_total_pages = null;
+  state.negotiated_limit = null;
+  state.total_stable = true;
+  state.pages = {};
+  state.next_page = 1;
+  state.errors = [];
+  assert.equal(state.request_count, 1);
+  assert.equal(state.request_log.length, 1);
+  assert.equal(state.request_log[0].status, 200);
+  await writeFile(statePath, `${JSON.stringify(state, null, 2)}\n`);
+  const resumed = network(({ url }) => Number(url.searchParams.get('page') ?? 1) === 1
+    ? jsonResponse(firstPayload)
+    : jsonResponse(page(2, [card('3')], 3)));
+
+  const { summary } = await runAudit({ ...baseOptions, ...f, requestBudget: 5, resume: true, fetchImpl: resumed.fetchImpl });
+  assert.equal(summary.complete, true);
+  assert.equal(summary.pages.visited_count, 2);
+  assert.equal(summary.cards.unique_ids_count, 3);
+  assert.equal(await readFile(rawPath, 'utf8'), rawBefore);
+});
+
+test('기록한 요청 수보다 작은 새 예산은 정상 paused이며 예산을 늘린 후 이어서 재개한다', async (t) => {
+  const f = await fixture(t);
+  const initial = network(({ url }) => Number(url.searchParams.get('page')) === 1
+    ? jsonResponse(page(1, [card('1'), card('2')], 5))
+    : jsonResponse(page(2, [card('3'), card('4')], 5)));
+  const first = await runAudit({ ...baseOptions, ...f, requestBudget: 2, fetchImpl: initial.fetchImpl });
+  assert.equal(first.summary.status, 'paused');
+  assert.equal(first.summary.requests.count, 2);
+  const noNetwork = network(() => { throw new Error('A lowered exhausted budget must pause before network'); });
+  const lower = await runAudit({ ...baseOptions, ...f, requestBudget: 1, resume: true, fetchImpl: noNetwork.fetchImpl });
+  assert.equal(lower.summary.status, 'paused');
+  assert.equal(lower.summary.requests.count, 2);
+  assert.equal(lower.summary.requests.budget, 1);
+  assert.equal(noNetwork.calls.length, 0);
+  const resumed = network(({ url }) => {
+    assert.equal(url.searchParams.get('page'), '3');
+    return jsonResponse(page(3, [card('5')], 5));
+  });
+
+  const { summary } = await runAudit({ ...baseOptions, ...f, requestBudget: 4, resume: true, fetchImpl: resumed.fetchImpl });
+  assert.equal(summary.complete, true);
+  assert.equal(summary.cards.unique_ids_count, 5);
+  assert.equal(summary.requests.count, 3);
+  assert.equal(resumed.calls.length, 1);
+});
+
+test('빈200 JSON 응답으로 중단한 정상 체크포인트는 재요청 없이 원본을 보존한다', async (t) => {
+  const f = await fixture(t);
+  await previousSummary(f);
+  const n = network(({ url }) => Number(url.searchParams.get('page')) === 1
+    ? jsonResponse(page(1, [card('1'), card('2')], 3))
+    : new Response('', { headers: { 'content-type': 'application/json' } }));
+  const first = await runAudit({ ...baseOptions, ...f, fetchImpl: n.fetchImpl });
+  assert.equal(first.summary.status, 'blocked');
+  assert.equal(first.summary.complete, false);
+  assert.equal(first.summary.requests.log.at(-1).response_bytes, 0);
+  const before = await artifactSnapshot(f);
+  const resumed = network(() => { throw new Error('A blocked empty JSON response must not be retried'); });
+
+  const result = await runAudit({ ...baseOptions, ...f, resume: true, fetchImpl: resumed.fetchImpl });
+  assert.equal(result.summary.status, 'blocked');
+  assert.equal(result.summary.complete, false);
+  assert.equal(resumed.calls.length, 0);
+  await assertSnapshotPreserved(before);
+});
+
+test('빈200 이미지 응답의 bytes0·validfalse 기록은 재개 시 손상으로 오인하지 않는다', async (t) => {
+  const f = await fixture(t);
+  await previousSummary(f);
+  const n = network(({ url }) => url.hostname === 'efhub.com'
+    ? jsonResponse(page(1, [card('1')], 1))
+    : new Response(new Uint8Array(0), { headers: { 'content-type': 'image/png' } }));
+  const first = await runAudit({ ...baseOptions, ...f, imageSampleSize: 1, fetchImpl: n.fetchImpl });
+  assert.equal(first.summary.status, 'blocked');
+  assert.equal(first.summary.image_validation.results[0].bytes, 0);
+  assert.equal(first.summary.image_validation.results[0].valid, false);
+  const before = await artifactSnapshot(f);
+  const resumed = network(() => { throw new Error('A blocked empty image response must not be retried'); });
+
+  const result = await runAudit({ ...baseOptions, ...f, imageSampleSize: 1, resume: true, fetchImpl: resumed.fetchImpl });
+  assert.equal(result.summary.status, 'blocked');
+  assert.equal(result.summary.complete, false);
+  assert.equal(resumed.calls.length, 0);
+  await assertSnapshotPreserved(before);
+});
+
+for (const [label, primitive] of [['null', null], ['false', false], ['0', 0], ['text 문자열', 'text']]) {
+  test(`체크포인트가 ${label} 리터럴이면 누락 파일로 취급하지 않고 원본을 보존하며 거부한다`, async (t) => {
+    const f = await fixture(t);
+    await previousSummary(f);
+    const initial = network(() => jsonResponse(page(1, [card('1'), card('2')], 3)));
+    const first = await runAudit({ ...baseOptions, ...f, requestBudget: 1, fetchImpl: initial.fetchImpl });
+    assert.equal(first.summary.status, 'paused');
+    await writeFile(join(f.artifactDir, 'state.json'), `${JSON.stringify(primitive)}\n`);
+    const before = await artifactSnapshot(f);
+    const resumed = network(() => { throw new Error('Primitive checkpoint must fail before network'); });
+
+    await assert.rejects(
+      runAudit({ ...baseOptions, ...f, resume: true, fetchImpl: resumed.fetchImpl }),
+      error => error.code === 'invalid_checkpoint',
+    );
+    assert.equal(resumed.calls.length, 0);
+    await assertSnapshotPreserved(before);
+  });
+}

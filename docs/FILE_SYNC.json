@@ -464,7 +464,7 @@
     },
     {
       "path": "scripts/audit-cards.mjs",
-      "role": "전체 카드 페이지·고유 ID·중복·누락·필드·이미지 표본·체크포인트와 접근 중단 감사",
+      "role": "전체 카드 열거·필드/이미지 표본 감사와 재개 전 체크포인트 횟수·로그·페이지 정합성/403 무재시도 검증",
       "priority": "P0",
       "related_paths": [
         "tests/audit-cards.test.mjs",
@@ -472,7 +472,7 @@
         "data/research/card-api-audit.json"
       ],
       "update_when": [
-        "해당 계약·지원 범위·실행/관측 결과 변경 시 관련 파일 검토; 비활성 참고는 현재 모델로 재채택하지 않음"
+        "체크포인트 스키마·요청 예산·재개/실패 계약·접근 중단·실제 관측 변경"
       ],
       "reviewed_in": "T005"
     },
@@ -661,7 +661,7 @@
     },
     {
       "path": "docs/sources/CARD_API_AUDIT.md",
-      "role": "R1/T002·R5의 기존 전수 검증 범위와 R4/T005 실행·접근 제약·표본/전수 구분",
+      "role": "기존 R1/T002·R5 검증의 R4/T005 실행 근거, 요청 차이·필드별 표본/전수 범위·재개 검증 설명",
       "priority": "P1",
       "related_paths": [
         "scripts/audit-cards.mjs",
@@ -717,7 +717,7 @@
     },
     {
       "path": "tests/audit-cards.test.mjs",
-      "role": "수집·범위·접근 제한·실패 보호·배포 생성물 계약의 회귀 검사",
+      "role": "외부 요청 없는 전수 열거·체크포인트 손상/복구·예산·403 무재시도·이미지 표본 회귀 검사",
       "priority": "P1",
       "related_paths": [
         "scripts/audit-cards.mjs",
@@ -838,7 +838,7 @@
     },
     {
       "path": "web/app.js",
-      "role": "상품 중심 검색·카드/감독 상세·관계 이동·출처·미확인·오류 상태",
+      "role": "상품 중심 검색·카드 상세·관계 이동·감독 지원 제외·출처·미확인·오류 표시",
       "priority": "P1",
       "related_paths": [
         "data/catalog.seed.json",

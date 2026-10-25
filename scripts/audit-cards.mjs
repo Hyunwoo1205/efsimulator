@@ -23,7 +23,7 @@ const ensure = (condition, message, code = 'schema_error') => {
 
 async function loadJson(path) {
   try { return JSON.parse(await readFile(path, 'utf8')); }
-  catch (error) { if (error.code === 'ENOENT') return null; throw error; }
+  catch (error) { if (error.code === 'ENOENT') return undefined; throw error; }
 }
 
 async function atomicJson(path, value) {
@@ -99,6 +99,78 @@ function retryDelay(response, attempt, timestamp) {
   return Math.min(30_000, (response.status === 429 ? 2000 : 1000) * 2 ** attempt);
 }
 
+function pageUrl(page, limit) {
+  return limit === 24 ? `${endpoint}${page === 1 ? '' : `?page=${page}`}` : `${endpoint}?page=${page}&limit=${limit}`;
+}
+
+/** Validate persisted control data before changing it, writing, or making a request. */
+function validateCheckpointMetadata(state) {
+  const valid = (condition, message) => ensure(condition, `체크포인트 메타데이터 손상: ${message}`, 'invalid_checkpoint');
+  const timestamp = value => typeof value === 'string' && Number.isFinite(Date.parse(value));
+  const positive = value => integer(value) && value > 0;
+  valid(object(state) && state.schema_version === 1 && state.source === endpoint, '형식·출처가 다릅니다.');
+  valid(filled(state.run_id) && ['running', 'paused', 'blocked', 'complete'].includes(state.status), '실행 ID·상태가 올바르지 않습니다.');
+  valid(object(state.pages) && Array.isArray(state.request_log) && Array.isArray(state.errors) && Array.isArray(state.image_results), '페이지·요청 로그·오류·이미지 목록이 필요합니다.');
+  valid(integer(state.request_count) && state.request_count === state.request_log.length, '요청 수는 비음수 정수이며 실제 로그 길이와 같아야 합니다.');
+  valid(positive(state.request_budget) && integer(state.interval_ms) && positive(state.preferred_limit) && positive(state.next_page), '예산·간격·limit·다음 페이지가 올바르지 않습니다.');
+  valid(typeof state.total_stable === 'boolean' && timestamp(state.started_at) && timestamp(state.observed_at), '총계 상태·실행 시각이 올바르지 않습니다.');
+  valid(Date.parse(state.observed_at) >= Date.parse(state.started_at), '실행 시각의 순서가 다릅니다.');
+  if (state.resume_after !== undefined) valid(timestamp(state.resume_after), '재개 시각이 올바르지 않습니다.');
+
+  const baseline = [state.expected_total, state.expected_total_pages, state.negotiated_limit];
+  const unknownBaseline = baseline.every(value => value === null);
+  valid(unknownBaseline || baseline.every(positive), '총계·페이지 수·협상 limit가 함께 필요합니다.');
+  if (!unknownBaseline) valid(state.expected_total_pages === Math.ceil(state.expected_total / state.negotiated_limit), '총계·페이지 수·limit가 맞지 않습니다.');
+  const keys = Object.keys(state.pages);
+  valid(keys.every(key => /^\d+$/.test(key) && positive(Number(key)) && String(Number(key)) === key), '페이지 키가 원본 양의 정수 형식이 아닙니다.');
+  const pages = keys.map(Number).sort((a, b) => a - b);
+  valid(pages.every((page, index) => page === index + 1), '등록 페이지가 1쪽부터 연속되어야 합니다.');
+  valid(state.next_page === pages.length + 1, '다음 페이지는 마지막 등록 페이지 바로 다음이어야 합니다.');
+  valid(!unknownBaseline || (pages.length === 0 && state.image_results.length === 0), '총계 확인 전 등록 페이지·이미지가 있을 수 없습니다.');
+  if (!unknownBaseline) valid(pages.length <= state.expected_total_pages, '등록 페이지가 총 페이지 수를 초과했습니다.');
+
+  let lastPageRequest = 0;
+  let imagePhase = false;
+  for (const [index, record] of state.request_log.entries()) {
+    valid(object(record) && ['page', 'image'].includes(record.kind), '요청 로그의 종류가 올바르지 않습니다.');
+    valid(integer(record.attempt) && record.attempt <= 3, '요청 재시도 번호가 올바르지 않습니다.');
+    valid(timestamp(record.requested_at) && timestamp(record.observed_at) && Date.parse(record.observed_at) >= Date.parse(record.requested_at), '요청 로그 시각이 올바르지 않습니다.');
+    valid(record.status === null || (integer(record.status) && record.status >= 100 && record.status <= 599), 'HTTP 상태가 올바르지 않습니다.');
+    if (record.response_bytes !== undefined) valid(integer(record.response_bytes), '응답 바이트 수가 올바르지 않습니다.');
+    if (record.kind === 'page') {
+      valid(!imagePhase && positive(record.page) && record.page <= state.next_page, '요청 페이지가 진행 상태와 맞지 않습니다.');
+      valid(record.page === lastPageRequest || record.page === lastPageRequest + 1, '요청 로그의 페이지가 건너뛰거나 되돌아갔습니다.');
+      const allowedUrls = [pageUrl(record.page, state.preferred_limit)];
+      if (!unknownBaseline) allowedUrls.push(pageUrl(record.page, state.negotiated_limit));
+      valid(allowedUrls.includes(record.url), '요청 URL과 페이지·limit가 맞지 않습니다.');
+      if (!unknownBaseline) valid(record.page <= state.expected_total_pages, '총 페이지 수를 넘는 요청입니다.');
+      lastPageRequest = record.page;
+    } else {
+      imagePhase = true;
+      valid(!unknownBaseline && pages.length === state.expected_total_pages, '모든 페이지 등록 전에 이미지 요청이 있습니다.');
+      valid(typeof record.card_id === 'string' && /^\d+$/.test(record.card_id) && https(record.url), '이미지 요청 ID·URL이 올바르지 않습니다.');
+    }
+    const fatalResponse = record.status === null || (record.status !== 200 && record.status !== 429 && !(record.status >= 500 && record.status <= 599));
+    if (fatalResponse) valid(index === state.request_log.length - 1 && state.status === 'blocked', '재시도할 수 없는 응답 뒤에 요청이 있거나 중단 상태가 아닙니다.');
+  }
+  for (const page of pages) {
+    const meta = state.pages[String(page)];
+    const expectedCount = Math.min(state.negotiated_limit, state.expected_total - (page - 1) * state.negotiated_limit);
+    valid(object(meta) && positive(meta.count) && meta.count === expectedCount, '페이지 행 수와 출처 총계가 맞지 않습니다.');
+    valid(typeof meta.sha256 === 'string' && /^[a-f\d]{64}$/i.test(meta.sha256) && timestamp(meta.observed_at), '페이지 해시·관찰 시각이 올바르지 않습니다.');
+    valid(state.request_log.some(record => record.kind === 'page' && record.page === page && record.status === 200 && record.url === meta.url && record.observed_at === meta.observed_at), '페이지 메타데이터와 성공 요청 로그가 다릅니다.');
+  }
+  for (const image of state.image_results) {
+    valid(object(image) && typeof image.card_id === 'string' && /^\d+$/.test(image.card_id) && https(image.url), '이미지 결과 ID·URL이 올바르지 않습니다.');
+    valid(typeof image.valid === 'boolean' && image.status === 200 && integer(image.bytes) && (!image.valid || image.bytes > 0) && timestamp(image.observed_at) && typeof image.sha256 === 'string' && /^[a-f\d]{64}$/i.test(image.sha256), '이미지 결과의 상태·크기·시각·해시가 올바르지 않습니다.');
+    valid(state.request_log.some(record => record.kind === 'image' && record.status === 200 && record.card_id === image.card_id && record.url === image.url && record.observed_at === image.observed_at), '이미지 결과와 성공 요청 로그가 다릅니다.');
+  }
+  if (state.status === 'complete') valid(!unknownBaseline && pages.length === state.expected_total_pages && state.total_stable && state.image_results.every(image => image.valid), '완료 상태인데 페이지·총계·이미지가 완료되지 않았습니다.');
+  // A recorded 200 for next_page with no registered raw page is intentional:
+  // request() checkpoints before body parsing/raw persistence. Preserve this
+  // recoverable interruption, and do not require count <= a newly chosen budget.
+}
+
 /** Read-only, serial source enumeration. Published application data is never changed. */
 export async function runAudit({
   artifactDir = resolve('artifacts/card-audit'),
@@ -124,15 +196,17 @@ export async function runAudit({
   };
   const statePath = resolve(artifactDir, 'state.json');
   const existing = await loadJson(statePath);
-  ensure(!existing || resume, '체크포인트가 이미 있습니다. --resume을 사용하거나 별도 artifact 경로를 지정하세요.', 'checkpoint_exists');
-  let state = existing ?? {
+  const hasExisting = existing !== undefined;
+  ensure(!hasExisting || resume, '체크포인트가 이미 있습니다. --resume을 사용하거나 별도 artifact 경로를 지정하세요.', 'checkpoint_exists');
+  if (hasExisting) validateCheckpointMetadata(existing);
+  let state = hasExisting ? existing : {
     schema_version: 1, run_id: randomUUID(), started_at: stamp(), observed_at: stamp(), status: 'running',
     source: endpoint, preferred_limit: preferredLimit, negotiated_limit: null, expected_total: null,
     expected_total_pages: null, next_page: 1, pages: {}, request_count: 0,
     request_log: [], errors: [], image_results: [], total_stable: true,
   };
   ensure(state.schema_version === 1 && state.source === endpoint && object(state.pages) && Array.isArray(state.request_log) && Array.isArray(state.errors) && Array.isArray(state.image_results), '체크포인트 형식이 달라졌습니다.', 'invalid_checkpoint');
-  ensure(!existing || existing.preferred_limit === preferredLimit, '재개 중 요청 모드를 바꾸지 않습니다. 기존 중단 기록을 보존하고 별도 감사 경로에서 검토하세요.', 'checkpoint_mode_mismatch');
+  ensure(!hasExisting || existing.preferred_limit === preferredLimit, '재개 중 요청 모드를 바꾸지 않습니다. 기존 중단 기록을 보존하고 별도 감사 경로에서 검토하세요.', 'checkpoint_mode_mismatch');
   state.request_budget = requestBudget;
   state.interval_ms = intervalMs;
   const ids = new Map();
@@ -190,8 +264,11 @@ export async function runAudit({
     const report = summary();
     await atomicJson(resolve(artifactDir, 'latest-summary.json'), report);
     const previous = await loadJson(summaryPath);
-    if (report.complete || previous === null || previous.complete === false) await atomicJson(summaryPath, report);
-    else report.previous_complete_summary_preserved = true;
+    if (report.complete || previous === undefined || (object(previous) && previous.complete === false)) await atomicJson(summaryPath, report);
+    else {
+      report.previous_summary_preserved = true;
+      if (previous?.complete === true) report.previous_complete_summary_preserved = true;
+    }
     return { summary: report, state };
   };
   const request = async (url, details) => {
@@ -236,7 +313,7 @@ export async function runAudit({
       ensure(digest(raw) === state.pages[String(page)].sha256, '체크포인트 원본 페이지 해시가 다릅니다.', 'checkpoint_hash_mismatch');
       absorb(parseAuditPage(raw, { page, expectedTotal: state.expected_total, expectedLimit: state.negotiated_limit }), page);
     }
-    if (existing && ['blocked', 'complete'].includes(existing.status)) return await finish();
+    if (hasExisting && ['blocked', 'complete'].includes(existing.status)) return await finish();
     if (state.resume_after && Date.parse(state.resume_after) > Date.parse(stamp())) { state.status = 'paused'; return await finish(); }
     delete state.resume_after;
     state.status = 'running';
@@ -249,8 +326,7 @@ export async function runAudit({
       // The observed normal UI has no initial query and page=N thereafter.
       // limit100 is a separately authorized one-time size probe. HTTP403 never
       // switches mode; only a successful response can establish actual limit24.
-      const normalUiQuery = limit === 24;
-      const url = normalUiQuery ? `${endpoint}${page === 1 ? '' : `?page=${page}`}` : `${endpoint}?page=${page}&limit=${limit}`;
+      const url = pageUrl(page, limit);
       const { response, record } = await request(url, { kind: 'page', page });
       const raw = await response.text();
       record.response_bytes = Buffer.byteLength(raw);
