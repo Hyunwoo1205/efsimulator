@@ -1,3 +1,5 @@
+> 2026-10-25 13:41 UTC 이전 조사/구현 이력이다. 당시 범위·현재 작업 표기는 과거 기록이며 최신 실행 지침이 아니다. 새 대상은 공식 KR 확률표만이며 실명 Standard·웹상점/감독·전역/다른버전은 제외하고 익명 Standard 모델 방향은 승인됐다. 현재 판단은 [ROADMAP](../ROADMAP.md)·[API 선정](../API_SELECTION.md)·[공식 기준표](CURRENT_SHOP_COVERAGE.md)가 우선한다. 기존 관측/403·권리 근거는 보존한다.
+
 # 선수 DB 공급망·공개 경로·갱신 운영 조사
 
 관측일은 2026-10-25다. 기존 R1/T002·R4/T005의 출처/API 검증과 R2/R5의 구조·확장 선택을 C025/C027로 보강한다. 최신 우선 범위는 [현행 상품과 그 카드](CURRENT_SHOP_COVERAGE.md)이며 전역/역사 카드·다른 버전 신규 수집은 핵심 완료 조건에서 보류한다. [구조화한 근거](../../data/research/data-supply-chain-observations.json)는 운영자 설명·공개 코드·실제 HTTP·로컬 응답 전수 검사·독립 조사 공유를 구분한다. 사이트 자체 API를 KONAMI 원본 API로 부르지 않는다. `dt870_console_win.cpk`는 게임 DB 컨테이너 파일명이며 API 주소가 아니다. PesLig의 출처 선언과 실제 내부 추출/변환 과정을 구분한다.

@@ -1,0 +1,448 @@
+{
+  "schema_version": 1,
+  "task_id": "T008",
+  "purpose": "범위 재정의에 따른 공식 한국어 확률표 대상 모수의 별도 새 관측; 계획/조사 초안만",
+  "runtime": {
+    "spec_revision": "58",
+    "observations_current": true,
+    "network_policy": {
+      "mode": "unrestricted",
+      "state": "enforced"
+    },
+    "proxy_preserved": true,
+    "tls_verification": true
+  },
+  "request_budget": 1,
+  "request_count": 1,
+  "source_url": "https://efootball-web.konami.net/probability_kr.php",
+  "method": "GET",
+  "requested_at": "2026-10-25T13:45:10.677Z",
+  "observed_at": "2026-10-25T13:45:12.034Z",
+  "http_status": 200,
+  "response_headers_allowlist": {
+    "date": "Sun, 25 Oct 2026 13:45:11 GMT",
+    "content-type": "text/html; charset=UTF-8",
+    "server": "envoy"
+  },
+  "raw_artifact": "artifacts/replan/official-probability-kr-20261025T134510677Z.raw.html",
+  "response_bytes": 2834,
+  "sha256": "8d641fd6b0e1deb21b8f5cc225fa6283ad3ac9da264fcc23693bf46cd80672ec",
+  "parse_status": "parsed_all_observed_containers",
+  "entries": [
+    {
+      "source_name": "National Team Selection: Worldwide Sep '26",
+      "source_locator": {
+        "container": "div.probability_data",
+        "ordinal_in_this_response": 1
+      },
+      "official_stable_product_id": null,
+      "source_url": "https://efootball-web.konami.net/probability_kr.php",
+      "observed_at": "2026-10-25T13:45:12.034Z",
+      "initial_player_count": 11,
+      "ends_at_utc": "2026-11-05T01:59:59Z",
+      "initial_per_player_probability_percent_display": "9.0909%",
+      "initial_per_player_probability_source_text": "처음 영입할 때의 영입 확률：9.0909%",
+      "source_type_label": "특수 선수 명단",
+      "available_state": {
+        "status": "listed_unexpired_at_observation",
+        "judged_at": "2026-10-25T13:45:12.034Z",
+        "all_accounts_can_use": null
+      },
+      "starts_at_utc": null,
+      "currency": null,
+      "price": null,
+      "coin_cost": null,
+      "free": null,
+      "ticket_type": null,
+      "multi_draw_options": null,
+      "draw_limits": null,
+      "reset_rules": null,
+      "remaining_player_count_for_user": null,
+      "individual_card_ids": null,
+      "featured_card_count": null,
+      "image_urls": null,
+      "displayed_overall_values": null,
+      "region_eligibility": null,
+      "platform_eligibility": null,
+      "source_fields_present": [
+        "name",
+        "ends_at_utc",
+        "initial_player_count",
+        "initial_per_player_probability_percent_display"
+      ],
+      "source_text_lines": [
+        "National Team Selection: Worldwide Sep '26",
+        "종료 일시(UTC)：2026-11-05 01:59:59",
+        "처음 영입할 때의 선수 수：11",
+        "처음 영입할 때의 영입 확률：9.0909%"
+      ]
+    },
+    {
+      "source_name": "League Selection: Italian Oct '26",
+      "source_locator": {
+        "container": "div.probability_data",
+        "ordinal_in_this_response": 2
+      },
+      "official_stable_product_id": null,
+      "source_url": "https://efootball-web.konami.net/probability_kr.php",
+      "observed_at": "2026-10-25T13:45:12.034Z",
+      "initial_player_count": 11,
+      "ends_at_utc": "2026-12-03T01:59:59Z",
+      "initial_per_player_probability_percent_display": "9.0909%",
+      "initial_per_player_probability_source_text": "처음 영입할 때의 영입 확률：9.0909%",
+      "source_type_label": "특수 선수 명단",
+      "available_state": {
+        "status": "listed_unexpired_at_observation",
+        "judged_at": "2026-10-25T13:45:12.034Z",
+        "all_accounts_can_use": null
+      },
+      "starts_at_utc": null,
+      "currency": null,
+      "price": null,
+      "coin_cost": null,
+      "free": null,
+      "ticket_type": null,
+      "multi_draw_options": null,
+      "draw_limits": null,
+      "reset_rules": null,
+      "remaining_player_count_for_user": null,
+      "individual_card_ids": null,
+      "featured_card_count": null,
+      "image_urls": null,
+      "displayed_overall_values": null,
+      "region_eligibility": null,
+      "platform_eligibility": null,
+      "source_fields_present": [
+        "name",
+        "ends_at_utc",
+        "initial_player_count",
+        "initial_per_player_probability_percent_display"
+      ],
+      "source_text_lines": [
+        "League Selection: Italian Oct '26",
+        "종료 일시(UTC)：2026-12-03 01:59:59",
+        "처음 영입할 때의 선수 수：11",
+        "처음 영입할 때의 영입 확률：9.0909%"
+      ]
+    },
+    {
+      "source_name": "Epic: Ricardo Quaresma",
+      "source_locator": {
+        "container": "div.probability_data",
+        "ordinal_in_this_response": 3
+      },
+      "official_stable_product_id": null,
+      "source_url": "https://efootball-web.konami.net/probability_kr.php",
+      "observed_at": "2026-10-25T13:45:12.034Z",
+      "initial_player_count": 50,
+      "ends_at_utc": "2026-10-29T01:59:59Z",
+      "initial_per_player_probability_percent_display": "2%",
+      "initial_per_player_probability_source_text": "처음 영입할 때의 영입 확률：2%",
+      "source_type_label": "특수 선수 명단",
+      "available_state": {
+        "status": "listed_unexpired_at_observation",
+        "judged_at": "2026-10-25T13:45:12.034Z",
+        "all_accounts_can_use": null
+      },
+      "starts_at_utc": null,
+      "currency": null,
+      "price": null,
+      "coin_cost": null,
+      "free": null,
+      "ticket_type": null,
+      "multi_draw_options": null,
+      "draw_limits": null,
+      "reset_rules": null,
+      "remaining_player_count_for_user": null,
+      "individual_card_ids": null,
+      "featured_card_count": null,
+      "image_urls": null,
+      "displayed_overall_values": null,
+      "region_eligibility": null,
+      "platform_eligibility": null,
+      "source_fields_present": [
+        "name",
+        "ends_at_utc",
+        "initial_player_count",
+        "initial_per_player_probability_percent_display"
+      ],
+      "source_text_lines": [
+        "Epic: Ricardo Quaresma",
+        "종료 일시(UTC)：2026-10-29 01:59:59",
+        "처음 영입할 때의 선수 수：50",
+        "처음 영입할 때의 영입 확률：2%"
+      ]
+    },
+    {
+      "source_name": "Epic: European Clubs Midfielders",
+      "source_locator": {
+        "container": "div.probability_data",
+        "ordinal_in_this_response": 4
+      },
+      "official_stable_product_id": null,
+      "source_url": "https://efootball-web.konami.net/probability_kr.php",
+      "observed_at": "2026-10-25T13:45:12.034Z",
+      "initial_player_count": 150,
+      "ends_at_utc": "2026-10-26T01:59:59Z",
+      "initial_per_player_probability_percent_display": "0.6667%",
+      "initial_per_player_probability_source_text": "처음 영입할 때의 영입 확률：0.6667%",
+      "source_type_label": "특수 선수 명단",
+      "available_state": {
+        "status": "listed_unexpired_at_observation",
+        "judged_at": "2026-10-25T13:45:12.034Z",
+        "all_accounts_can_use": null
+      },
+      "starts_at_utc": null,
+      "currency": null,
+      "price": null,
+      "coin_cost": null,
+      "free": null,
+      "ticket_type": null,
+      "multi_draw_options": null,
+      "draw_limits": null,
+      "reset_rules": null,
+      "remaining_player_count_for_user": null,
+      "individual_card_ids": null,
+      "featured_card_count": null,
+      "image_urls": null,
+      "displayed_overall_values": null,
+      "region_eligibility": null,
+      "platform_eligibility": null,
+      "source_fields_present": [
+        "name",
+        "ends_at_utc",
+        "initial_player_count",
+        "initial_per_player_probability_percent_display"
+      ],
+      "source_text_lines": [
+        "Epic: European Clubs Midfielders",
+        "종료 일시(UTC)：2026-10-26 01:59:59",
+        "처음 영입할 때의 선수 수：150",
+        "처음 영입할 때의 영입 확률：0.6667%"
+      ]
+    },
+    {
+      "source_name": "Show Time: Magical Dribblers",
+      "source_locator": {
+        "container": "div.probability_data",
+        "ordinal_in_this_response": 5
+      },
+      "official_stable_product_id": null,
+      "source_url": "https://efootball-web.konami.net/probability_kr.php",
+      "observed_at": "2026-10-25T13:45:12.034Z",
+      "initial_player_count": 150,
+      "ends_at_utc": "2026-10-29T01:59:59Z",
+      "initial_per_player_probability_percent_display": "0.6667%",
+      "initial_per_player_probability_source_text": "처음 영입할 때의 영입 확률：0.6667%",
+      "source_type_label": "특수 선수 명단",
+      "available_state": {
+        "status": "listed_unexpired_at_observation",
+        "judged_at": "2026-10-25T13:45:12.034Z",
+        "all_accounts_can_use": null
+      },
+      "starts_at_utc": null,
+      "currency": null,
+      "price": null,
+      "coin_cost": null,
+      "free": null,
+      "ticket_type": null,
+      "multi_draw_options": null,
+      "draw_limits": null,
+      "reset_rules": null,
+      "remaining_player_count_for_user": null,
+      "individual_card_ids": null,
+      "featured_card_count": null,
+      "image_urls": null,
+      "displayed_overall_values": null,
+      "region_eligibility": null,
+      "platform_eligibility": null,
+      "source_fields_present": [
+        "name",
+        "ends_at_utc",
+        "initial_player_count",
+        "initial_per_player_probability_percent_display"
+      ],
+      "source_text_lines": [
+        "Show Time: Magical Dribblers",
+        "종료 일시(UTC)：2026-10-29 01:59:59",
+        "처음 영입할 때의 선수 수：150",
+        "처음 영입할 때의 영입 확률：0.6667%"
+      ]
+    },
+    {
+      "source_name": "POTW: Worldwide 22 Oct '26",
+      "source_locator": {
+        "container": "div.probability_data",
+        "ordinal_in_this_response": 6
+      },
+      "official_stable_product_id": null,
+      "source_url": "https://efootball-web.konami.net/probability_kr.php",
+      "observed_at": "2026-10-25T13:45:12.034Z",
+      "initial_player_count": 11,
+      "ends_at_utc": "2026-10-29T01:59:59Z",
+      "initial_per_player_probability_percent_display": "9.0909%",
+      "initial_per_player_probability_source_text": "처음 영입할 때의 영입 확률：9.0909%",
+      "source_type_label": "특수 선수 명단",
+      "available_state": {
+        "status": "listed_unexpired_at_observation",
+        "judged_at": "2026-10-25T13:45:12.034Z",
+        "all_accounts_can_use": null
+      },
+      "starts_at_utc": null,
+      "currency": null,
+      "price": null,
+      "coin_cost": null,
+      "free": null,
+      "ticket_type": null,
+      "multi_draw_options": null,
+      "draw_limits": null,
+      "reset_rules": null,
+      "remaining_player_count_for_user": null,
+      "individual_card_ids": null,
+      "featured_card_count": null,
+      "image_urls": null,
+      "displayed_overall_values": null,
+      "region_eligibility": null,
+      "platform_eligibility": null,
+      "source_fields_present": [
+        "name",
+        "ends_at_utc",
+        "initial_player_count",
+        "initial_per_player_probability_percent_display"
+      ],
+      "source_text_lines": [
+        "POTW: Worldwide 22 Oct '26",
+        "종료 일시(UTC)：2026-10-29 01:59:59",
+        "처음 영입할 때의 선수 수：11",
+        "처음 영입할 때의 영입 확률：9.0909%"
+      ]
+    },
+    {
+      "source_name": "POTW: European Club Championship",
+      "source_locator": {
+        "container": "div.probability_data",
+        "ordinal_in_this_response": 7
+      },
+      "official_stable_product_id": null,
+      "source_url": "https://efootball-web.konami.net/probability_kr.php",
+      "observed_at": "2026-10-25T13:45:12.034Z",
+      "initial_player_count": 11,
+      "ends_at_utc": "2026-10-29T01:59:59Z",
+      "initial_per_player_probability_percent_display": "9.0909%",
+      "initial_per_player_probability_source_text": "처음 영입할 때의 영입 확률：9.0909%",
+      "source_type_label": "특수 선수 명단",
+      "available_state": {
+        "status": "listed_unexpired_at_observation",
+        "judged_at": "2026-10-25T13:45:12.034Z",
+        "all_accounts_can_use": null
+      },
+      "starts_at_utc": null,
+      "currency": null,
+      "price": null,
+      "coin_cost": null,
+      "free": null,
+      "ticket_type": null,
+      "multi_draw_options": null,
+      "draw_limits": null,
+      "reset_rules": null,
+      "remaining_player_count_for_user": null,
+      "individual_card_ids": null,
+      "featured_card_count": null,
+      "image_urls": null,
+      "displayed_overall_values": null,
+      "region_eligibility": null,
+      "platform_eligibility": null,
+      "source_fields_present": [
+        "name",
+        "ends_at_utc",
+        "initial_player_count",
+        "initial_per_player_probability_percent_display"
+      ],
+      "source_text_lines": [
+        "POTW: European Club Championship",
+        "종료 일시(UTC)：2026-10-29 01:59:59",
+        "처음 영입할 때의 선수 수：11",
+        "처음 영입할 때의 영입 확률：9.0909%"
+      ]
+    }
+  ],
+  "api_requests": 0,
+  "other_source_requests": 0,
+  "image_requests": 0,
+  "auth_requests": 0,
+  "entry_count": 7,
+  "source_container_count": 7,
+  "scope_definition": {
+    "target": "이번 새 한국어 공식 확률표에 실제 게재된 특수 선수 명단 항목만",
+    "observed_entry_count": 7,
+    "complete_for_this_response": true,
+    "is_all_current_shop": false,
+    "is_all_current_special_lists": false,
+    "all_region_platform_account_denominator": null,
+    "note": "관측한 확률표의 목록 자체만 비교모수로 정의한다. 페이지가 전 세계/전 플랫폼/모든 계정의 전체 상점을 보장하지 않는다."
+  },
+  "probability_semantics": {
+    "uniform_per_player_as_stated": true,
+    "rounding_warning": true,
+    "initial_pool_not_current_remaining": true,
+    "subsequent_probability_depends_on_remaining_pool": true,
+    "remaining_pool_location_original": "[계약] > [특수 선수 명단] > [모두 보기]",
+    "not_a_complete_product_or_card_payload": true
+  },
+  "source_caveats": [
+    "일부 국가/지역에서는 실시되지 않을 수 있습니다.",
+    "개최 기간과 내용은 예고 없이 변경될 수 있습니다."
+  ],
+  "identity_and_null_policy": [
+    "페이지에 안정된 상품 ID가 없다. name+기간+관측을 근거 레코드로 보존하며 이름만으로 다른 출처/회차를 동일시하지 않는다.",
+    "재화·가격·시작·리셋·다회 옵션·개별 카드·이미지·OVR·지역/플랫폼/계정 자격은 이 페이지에 없으므로 null이다.",
+    "null은 무료·0·무제한·미지원 또는 해당 없음의 뜻이 아니다.",
+    "이전 관측이나 프로모션의 값을 이번 응답에 섞지 않았으며 활성 데이터에 병합하지 않는다."
+  ],
+  "prior_observation_comparison": {
+    "file": "artifacts/current-shop/official-lists.json",
+    "note": "이전 관측의 보존 여부와 별개인 새 관측이다. 동일 응답 해시는 신규 원본 변화·자동갱신을 입증하지 않는다.",
+    "same_response_sha256_as_prior_kr": true
+  },
+  "parent_reported_separate_observation": {
+    "provenance": "parent_message_transcription_not_local_raw",
+    "reported_observed_at": "2026-10-25T13:44:19Z",
+    "reported_http_status": 200,
+    "reported_response_bytes": 2834,
+    "reported_sha256": "8d641fd6b0e1deb21b8f5cc225fa6283ad3ac9da264fcc23693bf46cd80672ec",
+    "raw_provided_to_this_agent": false,
+    "note": "이 에이전트의13:45관측과 분리한다. 이 기록을 이 에이전트의 추가 GET으로 세지 않는다."
+  },
+  "this_agent_request_accounting": {
+    "official_html_gets": 1,
+    "api_gets": 0,
+    "other_source_gets": 0,
+    "image_gets": 0,
+    "auth_gets": 0,
+    "retries": 0
+  },
+  "actions_not_taken": [
+    "활성 DB/seed/코드/배포/스케줄 변경",
+    "추적 문서 편집",
+    "공식 페이지 외 다른 출처 GET",
+    "쿠키/토큰 취득·재생",
+    "헤더/UA/프록시/TLS 변경",
+    "실패 요청 재시도 또는 우회"
+  ],
+  "completed_at": "2026-10-25T13:46:40.183747Z",
+  "scope_revision": "2026-10-25T13:41:13Z user decision;officialKRprobability-page-only",
+  "approved_placeholder_policy": {
+    "model_direction": "approved_for_future_implementation",
+    "implemented": false,
+    "real_standard_collection": false,
+    "formula": "official_initial_slots - verified_complete_special_slot_count",
+    "missing_specials_must_not_be_placeholders": true,
+    "fake_source_player_ids_allowed": false
+  },
+  "current_active_data_unchanged": {
+    "legacy_products": 9,
+    "legacy_cards": 83,
+    "new_scope_complete_products": 0,
+    "legacy_seed_sha256": "571381d807ced176eb7e4f7b2bf76e8ff3d00adfedbd85b45b28f94b63045b04"
+  }
+}

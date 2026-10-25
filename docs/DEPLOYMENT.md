@@ -1,94 +1,84 @@
-# Cloudflare Pages 배포와 전환
+# 빌드·배포·무료 운영 계획
 
-운영 주소는 [efsimulator.pages.dev](https://efsimulator.pages.dev)입니다. 초기 연결 기록, 로컬 앱 검증, 원격 CI, 배포 커밋과 공개 동작 검증을 구분합니다. 원격 CI와 branch 미리보기의 파일·직접 주소·브라우저 동작은 검증했습니다. 현재 대시보드의 실제 설정을 인증해 읽거나 변경한 증거와 main 운영 배포 검증은 아직 없습니다. PR #1은 draft이고 병합 승인을 기다립니다. 검증 기준 SHA와 실행 결과는 아래와 작업 계획에 기록합니다.
+이 문서는 [새 로드맵](ROADMAP.md)의 **R3/T012 검토용 미리보기 → 사용자 검토 → T013 운영 승인**, **R5/T016 자체 API 운영**, **R6/T018 3D**의 배포 기준이다. 대상은 공식 한국어 확률표에 게재된 특수 선수 명단이며, 기존 표본·이전 미리보기 성공을 새 대상 DB나 운영 배포 완료로 계승하지 않는다. 최신 상태·이전/현재/다음 작업은 [WORKPLAN](WORKPLAN.md)을 따른다.
 
-## 로컬 빌드와 공개 확대의 선행 조건
+**이번 작업은 계획서 갱신만 한다.** 앱·활성 DB·설정·공개 생성물을 변경하거나 배포·서비스 활성화·Git push를 하지 않는다. 기존 코드의 로컬 비회귀 빌드와 읽기 전용 생성물 비교는 수행한다. Git push만으로 기존 Pages 미리보기가 자동 생성될 수 있으므로 계획 작성 중에는 원격 반영도 하지 않는다. 이전 배포 근거와 실패/수정 기록은 [원본 보존 문서](reference/DEPLOYMENT_BEFORE_PROBABILITY_SCOPE.md)에 남긴다.
 
-Node.js 24.19.0·npm 11.9.0에서 다음을 실행합니다.
+## 확인한 구성과 변경 제안
 
-```bash
-npm ci --ignore-scripts --no-audit --no-fund
-npm run project:check -- --base <변경 전 커밋>
-npm test
-npm run build
-npm run preview -- --port 4173
+| 항목 | 현재 확인 수준 | 구현 후 목표 |
+| --- | --- | --- |
+| Node/npm | package·lock·.nvmrc·CI와 로컬 버전은 Node `24.19.0`·npm `11.9.0` | 버전 고정 유지. 실제 Pages 빌드 로그에서도 확인 |
+| 앱·빌드 | Node 내장 기능·정적 HTML/CSS/JS. `npm run build`는 seed 검증→SQLite staging→`dist`를 생성 | 새 대상 표본을 검증하는 같은 명령과 산출물 경계 유지. 3D 도구 추가 시 manifest·lock·빌드·테스트를 함께 갱신 |
+| Pages 설정 | 인수인계의 `exit 0`·출력 `/`는 과거 안내값. 현재 대시보드 build/output/root를 인증해 읽은 근거 없음 | 실제 설정을 먼저 기록하고 `dist` 직접 배포로 전환 |
+| 임시 호환 | `pages:export`가 `dist`의 고정 7파일을 루트의 추적 생성물로 내보냄. CI는 `pages:check`로 bytes만 검사 | 직접 `dist` 배포 검증 후 루트 사본·export 도구/테스트·CI·FILE_SYNC를 함께 정리 |
+| 브랜치 | 로컬 `work`, 운영 의도는 `main`. 로컬 origin/main 기록은 앱 없는 초기 README 커밋. PR draft·운영 미병합 기록 | T012에서 검토용 SHA/URL 확인. 사용자 검토·운영 승인 후 T013에서 main 반영 |
+| 환경·비밀값 | 정적 앱용 secret·D1/R2 binding·Functions/Workers 선언 없음. Pages의 실제 환경변수 값은 미확인 | 전환 후보 `NODE_VERSION=24.19.0`, `SKIP_DEPENDENCY_INSTALL=1`을 실제 환경별 설정과 대조. 동적 서비스의 비밀값은 T016에서 서버에만 설정 |
+| DB·API | SQLite는 로컬 빌드 검증/이력용. `serve.mjs`는 정적 미리보기. 상시 자체 API 없음 | R5/T016에서 공개 DB API·갱신 작업·지속 저장/복구를 별도 운영 |
+| 3D 자산 | 현재 3D 모델·압축·청크 빌드·성능 검증 없음 | R6/T018에서 자산 권리·최적화·모바일 실측을 통과한 정적 자산만 배포 |
+
+Pages 전환 후보는 **빌드 루트: 저장소 루트, 출력: `dist`**이며 실제 구현된 명령을 사용한다.
+
+```sh
+npx --yes npm@11.9.0 ci --ignore-scripts --no-audit --no-fund && npx --yes npm@11.9.0 run build
 ```
 
-저장한 조사 자료에서 seed를 재현해야 하는 작업은 먼저 `npm run data:prepare`를 실행하고 차이를 검토합니다. 이 명령은 인터넷의 전체 API를 수집하거나 지속 갱신을 시작하는 명령이 아닙니다. 선택적 실제 브라우저 검사는 미리보기를 실행한 뒤 `npm run test:browser`로 수행합니다.
+`data:prepare`는 저장한 근거와 누적 입력의 재현·병합이며 인터넷 수집이나 자동 갱신 시작이 아니다. 기존 명령은 T010/T011에서 선정 API·새 공식 대상의 입력 계약에 맞게 검증한 뒤 재사용한다. 이전 표본의 재생성을 새 대상 DB 완료로 간주하지 않는다. `artifacts/catalog.sqlite`·연구 raw는 공개 산출물에 포함하지 않는다. 새 의존성이 install script를 요구한다면 해당 구현 작업에서 현재 `--ignore-scripts` 정책을 검토한다.
 
-최신 공개 기준은 [현행 상품/구성 카드](sources/CURRENT_SHOP_COVERAGE.md)의 대상 지역/플랫폼·공식 모수·기간/현재상태·필수 카드 필드입니다. 기존 전역 카드 감사는 이력/도구로 보존하고 무조건 공개 선행 조건으로 두지 않습니다. 현행 구성의 전체성을 주장할 때는 해당 범위의 최종 페이지·ID/수량·누락/중복·출처/관찰 시각을 대조합니다. 역사카탈로그 총계와 일부 최신 목록을 현행 전체 상점으로 표시하지 않습니다.
+## R3/T012 — 검토용 미리보기
 
-[현재 API 감사](../data/research/card-api-audit.json)는 실제 `https://efhub.com/api/public/players?page=1&limit=100` 요청에서 HTTP 403을 받아 즉시 중단했습니다. 확보0페이지·`complete: false`인 이전 전수 감사의 미완료 이력입니다. 이 기록을 현행 범위의 필수 공개 게이트로 두지 않습니다. 이는 해당 요청의 관측 결과이며 도구 자체의 한계나 모든 API 경로 차단으로 단정하지 않습니다. 미완료 상태를 유지하고 차단을 우회하거나 추가 수동 감독 조사로 대체하지 않습니다.
+1. **사전 확인:** T011의 검증된 DB 표본과 명시적 부분 범위를 입력으로 삼는다. Pages의 실제 build command/output/root, production branch, preview 동작, 환경별 변수 이름을 비밀값 없이 기록한다. 과거 안내값을 현재 확인값으로 복사하지 않는다.
+2. **로컬 검증:** 아래 명령과 관련 기능 검증을 실행하고 SHA·데이터 범위·결과를 기록한다. 새 범위에 맞춘 검사와 기존 보존/실패 보호 회귀를 포함한다.
 
-최신 사용자 범위에서는 상품별 감독을 일괄 반환하는 정상 API가 미확보이면 **모든 상품에서 감독을 서비스 지원 범위에서 제외**합니다. 일반 `coaches` 목록은 관계 API가 아닙니다. 개별 기사·스크린샷·상품 일대일 조사와 추가 감독 수집은 중단하고, 수동 Mourinho 사례·독립 Niko 목록도 활성 데이터와 UI에서 제외합니다. 조사 원본은 비활성 이력으로 보존합니다. 배포 전 seed의 `managers`가 빈 배열이고 감독 구성 항목·목록·상세 화면이 제공되지 않는지 확인합니다. 이 정책은 사용자 범위 변경이며 실제 감독 없음이나 상품 전체 구성 완료를 의미하지 않습니다. 카드 구성 대조가 완료돼도 상품 전체 완료로 표시하지 않습니다.
+   ```sh
+   npm ci --ignore-scripts --no-audit --no-fund
+   npm run project:check -- --base <변경 전 커밋>
+   npm test
+   npm run data:prepare
+   npm run build
+   npm run preview -- --port 4173
+   ```
 
-## 기존 루트 정적 배포와의 호환
+   `data:prepare` 전후 차이는 검토한다. 미리보기 실행 후 선택적 `npm run test:browser`를 사용한다. 기존 루트 호환 배포를 사용하는 동안에는 `npm run pages:export` 후 `npm run pages:check`까지 통과해야 한다. CI가 export로 차이를 자동 수정하게 만들지 않는다.
+3. **검토용 배포:** 구현 단계에서 허용된 브랜치의 기존 Git 연동 preview를 사용한다. 같은 SHA의 CI·실제 배포 커밋·runtime/output·공개 파일·필수 데이터·이미지·직접 주소/새로고침·모바일을 검증한다. 없는 JSON/자산은404여야 하며 상세 주소를 홈으로 redirect하지 않아야 한다.
+4. **사용자 검토:** URL, SHA, 화면/필요한 모션 캡처, 확보한 명단·카드와 미확인 필드, 설정 변경 전/후, 성능·비용 예상과 남은 제한을 제시한다. 사용자의 수정 의견을 반영하고 같은 절차로 검토판을 갱신한다.
 
-인수인계는 초기 Pages 값으로 빌드 명령 `exit 0`, 출력 디렉터리 `/`를 안내했다고 기록합니다. 이는 현재 대시보드를 읽어 확인한 설정이 아닙니다. 이 루트 정적 배포가 유지된 경우에도 검토한 앱 결과가 제공되도록 **새 빌드 결과의 고정 공개 파일 7개를 저장소 루트의 추적 생성물로 내보내는 호환 경로**를 둡니다.
+이전 Pages 미리보기에서는 `/index.html` 재작성으로 상세 주소가308/홈 이동하는 문제가 있었다. 실제 앱 경로를 `/ 200`으로 재작성하고 원격 상세200·Location없음·원래 URL 유지·새로고침·없는 자산404를 다시 검사한다. 로컬 서버 성공을 원격 라우팅 검증으로 대체하지 않는다.
 
-```bash
-npm run build
-npm run pages:export
-npm run pages:check
-```
+### `dist` 전환과 7파일 호환의 정리 순서
 
-`pages:export`는 `scripts/export-pages.mjs`로 다음 파일만 `dist`에서 같은 상대 경로의 루트 사본으로 내보냅니다.
+현재 main의 앱 준비와 Pages의 브랜치별 빌드 설정 격리는 확인이 필요하다. 프로젝트 전역을 먼저 npm build/dist로 바꾸면 manifest가 없는 이전 main 재빌드가 실패할 수 있다.
 
-| 고정 공개 파일 | 생성 원본 |
-| --- | --- |
-| `index.html` | `web/index.html`을 반영한 `dist/index.html` |
-| `app.js` | `web/app.js`를 반영한 `dist/app.js` |
-| `styles.css` | `web/styles.css`를 반영한 `dist/styles.css` |
-| `404.html` | 사이트 빌드가 준비한 `dist/404.html` |
-| `_headers` | 빌드 정의로 생성한 `dist/_headers` |
-| `_redirects` | 실제 입력의 명시적 주소 규칙을 생성한 `dist/_redirects` |
-| `data/catalog.json` | 검증한 `data/catalog.seed.json`에서 생성한 `dist/data/catalog.json` |
+기본 순서는 **기존 호환 경로의 검토판 → 사용자 검토 → T013의 운영 승인 → 앱 커밋을 main에 준비/반영 → 실제 dist 배포 전환·원격 검증 → 임시 사본 정리**다. 실제 Pages에서 운영과 격리된 preview build/output 설정이 확인되면 그 preview에서 dist 전환을 먼저 검증할 수 있다. 확인 전에 root 사본을 삭제하지 않는다.
 
-`web/*`와 seed가 편집 원본입니다. 루트 사본을 직접 수정하지 않고 원본 수정→빌드→내보내기로 반영합니다. `dist`·`artifacts` 디렉터리 자체는 추적하지 않으며, 위 루트 사본만 임시 배포용 추적 생성물로 FILE_SYNC에 생성 원본·재생성 명령과 함께 등록합니다. `artifacts/catalog.sqlite`는 빌드 검증용 DB로 공개 파일에 포함하지 않습니다.
+현재 export 대상은 `index.html`, `app.js`, `styles.css`, `404.html`, `_headers`, `_redirects`, `data/catalog.json`뿐이다. **모델·텍스처·추가 JS 청크는 자동 포함되지 않는다.** 호환 경로로 새 자산을 제공해야 한다면 export 명세·회귀 검사·FILE_SYNC에 자산과 생성 원본을 함께 추가한다. dist 직접 배포에서는 실제 산출물 목록을 검사해 필요한 자산만 공개하고 문서·원본 DB·연구 자료를 제외한다.
 
-`pages:check`는 **읽기 전용 바이트 비교**입니다. 새 `dist`의 어느 고정 파일이 없거나 루트 사본과 다르면 실패합니다. CI는 새 빌드 후 검사만 실행하며 `pages:export`로 사본을 자동 수정해 차이를 가리지 않습니다. 로컬에서는 필요한 사본을 내보낸 뒤 변경과 파일 목록을 함께 검토합니다. CI 구성 파일을 준비한 것과 원격 CI 실행 성공은 구분합니다.
+## R3/T013 — 운영 승인과 반영
 
-이 호환 준비는 Cloudflare 설정 변경·프로덕션 브랜치 반영·공개 배포 완료를 뜻하지 않습니다. 기존 브랜치·사용자 변경을 보존하고 실제 저장소의 검토·배포 절차와 대시보드 관측값에 맞춰 반영합니다.
+사용자가 구체적인 미리보기와 범위를 검토한 뒤 **운영 반영을 명시적으로 승인한 경우에만** main 병합과 운영 설정 전환을 실행한다. 미리보기 생성·CI 성공·설정 제안은 운영 승인이 아니다.
 
-## 향후 dist 직접 배포 전환
+- 승인한 코드·데이터·자산의 SHA와 적용 설정을 고정하고 이전 정상 배포/스냅샷을 보존한다.
+- 운영 배포의 commit·Node/npm·build output과 실제 페이지/JSON·이미지·직접 주소·부분 범위/가상 자료 표시를 검증한다. 파일 내용 일치와 배포 SHA 확인을 구분한다.
+- 실패하면 이전 정상 배포와 데이터로 복구하고 결과·원인·다음 작업을 WORKPLAN에 기록한다. 신규/수정/종료의 실제 운영 갱신은 R5의 별도 완료 조건이다.
 
-아래는 앱 빌드에 맞춘 전환 후보 값이며, 현재 대시보드에서 읽거나 변경한 결과가 아닙니다.
+## R5/T016 — 정적 사이트와 자체 API 운영
 
-| 항목 | 전환 후보 값 |
-| --- | --- |
-| 연결 저장소 | Hyunwoo1205/efsimulator |
-| 프로덕션 브랜치 | main |
-| 루트 디렉터리 | 저장소 루트 |
-| 빌드 명령 | `npx --yes npm@11.9.0 ci && npx --yes npm@11.9.0 run build` |
-| 빌드 출력 디렉터리 | `dist` |
-| NODE_VERSION | `24.19.0` |
-| SKIP_DEPENDENCY_INSTALL | `1` |
+Pages는 화면·정적 자산을 전달한다. 자체 API는 검증된 DB의 조회·발행 상태를 제공하고, 수집/갱신 writer는 허용된 출처의 관측→검증→정규화→발행·복구를 맡는다. 사용자 요청마다 외부 사이트를 수집하거나 빌드용 SQLite를 그대로 공개하지 않는다. 종료 명단의 얇은 아카이브와 활성 API/검색/캐시는 [데이터 수명주기](DATA_LIFECYCLE.md)에 따라 분리한다.
 
-실제 Pages 설정을 확인하고 위 값으로 전환한 뒤 원격 빌드·배포 커밋·공개 동작을 검증합니다. `dist` 직접 배포가 검증되면 임시 루트 7개 사본·내보내기 도구·전용 테스트·관련 npm/CI 설정과 FILE_SYNC 항목을 같은 작업에서 정리합니다. 원본 `web/*`와 seed는 유지합니다. 확인 전에 사본만 삭제해 기존 루트 배포를 비우지 않습니다.
+동적 호스팅은 Cloudflare Workers/Pages Functions·D1 등 무료 웹/API 구성을 우선 실측하고, 적합하지 않으면 보유 OCI A1을 차선으로 평가한다. Workers의 CPU/메모리·D1의 **실제 읽은/쓴 행 수**·API 요청/캐시·백업/복구를 측정한다. 정적 Pages의 무료 트래픽을 동적 요청 무제한으로 해석하지 않는다. 서비스 활성화·계정/권한/비용 변경은 이번 계획에 포함하지 않는다.
 
-## 실제 배포 후 확인
+## 공식 무료 한도와 R6/T018 자산 기준
 
-- 배포 로그의 커밋·Node/npm·빌드 성공·출력 디렉터리를 확인합니다. 파일 내용 일치만으로 배포 SHA를 검증했다고 기록하지 않습니다.
-- `/`와 `/data/catalog.json`의 응답, 실제 확보 수와 관측 시각·미확인·부분 구성 표시를 확인합니다. 수량은 seed·작업 계획·공개 응답을 대조하고 문서에 고정 숫자를 복제하지 않습니다.
-- 실제 활성 상품·카드 상세 주소를 직접 열고 새로고침합니다. 검색·다른 버전·포함 상품·모바일 탐색·이미지 실패 대체 표시를 확인합니다. 감독 목록·상세·상품 구성은 지원 범위에서 제외된 상태여야 하며, 빈 감독 데이터를 실제 감독 없음으로 설명하지 않아야 합니다.
-- `/data/missing.json`, `/cards/missing.json` 등 없는 파일은 404여야 합니다. 최상위 `404.html`과 실제 앱 경로의 명시적 rewrite를 사용합니다.
-- 공개 범위 확대에 맞춰 Pages의 rewrite 수·파일 수·크기·빌드 한도와 JSON 검색 성능을 실측합니다.
-- 새 CI 환경의 SQLite 이력 자동 복원·실시간 수집·주기적 갱신은 별도 구현·운영 검증 대상입니다. 보존한 DB가 없는 새 빌드에서 과거 개정 이력이 자동 복원된다고 가정하지 않습니다.
+아래는 이번 계획에서 부모가 공식 문서로 확인한 기준이다. 기존 계정 사용량과 초과 과금 조건은 서비스 선택 시 다시 확인한다.
 
-검증 결과·장애·추가 조건은 WORKPLAN에 기록합니다. 공개 배포와 갱신 시험운영을 확인하기 전 R4를 완료 처리하지 않습니다. 추가 API 서버가 필요하면 무료 웹/API 호스팅을 먼저 검토하고 차선으로 보유 OCI A1 Flex 2 OCPU·12GB ARM64 구성을 평가합니다.
+| 서비스 | 공식 무료 기준 | 계획에 반영할 조건 |
+| --- | --- | --- |
+| [Pages](https://developers.cloudflare.com/pages/platform/limits/) | 월500빌드·동시1·빌드20분·20,000파일·파일당25MiB, 정적 요청/대역폭 무료 | 빌드·preview/재시도 예산과 파일수/최대파일을 측정. 변경 없는 수집을 매번 배포하지 않음 |
+| [Functions](https://developers.cloudflare.com/pages/functions/pricing/) / [Workers](https://developers.cloudflare.com/workers/platform/limits/) | Workers Free 하루100,000요청·요청당CPU10ms·메모리128MB | 정적과 별도. 계정 내 공유량과 실제 CPU/메모리를 확인하며 무거운 시뮬레이션/3D 렌더를 API 처리로 전제하지 않음 |
+| [D1 한도](https://developers.cloudflare.com/d1/platform/limits/)·[요금](https://developers.cloudflare.com/d1/platform/pricing/) | Free DB당500MB·계정5GB, 일 읽기500만행·쓰기10만행 | 쿼리/인덱스·갱신·보존 정책의 실제 행 사용량과 DB 용량 검증 |
+| [R2 Standard](https://developers.cloudflare.com/r2/pricing/) | 월10GB-month·Class A100만·Class B1,000만, egress 무료 | 초과 시 비용 가능. r2.dev는 개발용이라는 부모 확인을 따르며, 운영 자산 제공 문서·경로·캐시/CORS를 활성화 전에 별도로 확인 |
+| [OCI Always Free A1](https://docs.oracle.com/en-us/iaas/Content/FreeTier/freetier_topic-Always_Free_Resources.htm) | 월1,500OCPU시간·9,000GB시간, 2OCPU·12GB RAM 규모 | ARM64·실제 저장/전송·운영/백업·idle 회수·가용 용량 부족 가능성 확인. 보유 사실과 현재 접속/운영 가능을 구분 |
 
-## 최초 원격 미리보기에서 확인한 경로 수정
+3D는 브라우저에서 렌더하고 Pages에는 압축한 모델·텍스처·코드를 제공하는 구성을 우선한다. 사용 권리·mesh/texture 압축·scene/LOD 분할·필요 시점 지연 로딩·2D 대체 표시를 검증한다. 현재 빌드는 자산을 복사할 뿐 자동 모델 압축·번들 최적화는 구현하지 않았다.
 
-work 71a98e9의 CI와 Cloudflare 배포는 성공했지만 실제 상세 주소가 HTTP308로 홈으로 이동했습니다. /index.html을 재작성 대상으로 썼을 때 Pages의 확장자 정규화가 노출되는 것으로 판단했습니다. 생성 규칙은 실제 상품·카드 목록/상세 경로만 / 200으로 재작성하며 끝 슬래시도 명시합니다. 새 배포에서 응답200·Location없음·원래 상세URL유지·새로고침과없는자산404를 다시 확인합니다. 로컬 서버 성공만으로 원격 라우팅 성공을 대신하지 않습니다.
-
-## 공개 전 누적 자료 회귀 검증
-
-최신 창이 이동할 때 과거 확보 상품·카드가 소실되는 P1 문제를 검증합니다. 추적 누적 seed를 유지한 채 기존 SQLite 없는 fresh CI 재빌드와 동일 크기 창 교체에서 이전 ID·관측이 모두 보존되어야 합니다. 현재 창에 없는 상품을 지운 새 snapshot을 정상 공개로 간주하지 않습니다. 원격 CI 성공만으로 이 회귀 검증을 대신하지 않으며 해당 테스트가 포함된 새 SHA의 CI를 확인합니다. PR은 draft이며 명시적 병합 권한 없이 main에 반영하지 않습니다.
-
-## 검증 기준 커밋과 미리보기
-
-누적 보존 수정 기준은 4e0f1e327e9002fe43589c2ea77b17bc971242ab입니다. GitHub push/PR CI(40166946906, 40166951151)에서 126개 테스트·fresh CI 재현·빌드·Pages bytes 검사가 성공했습니다. 같은 SHA의 Cloudflare 미리보기 https://3077c923.efsimulator.pages.dev 에서 브라우저 7개·raw HTTP13개·공개5파일 바이트 일치를 확인했습니다. 운영 main은 병합하지 않았고 PR #1은 draft입니다. 이 증거는 미리보기 및 부분 자료 검증이며, 전체 카드 API·현재 판매 조건·R6 운영 갱신·운영 사이트 배포 완료를 의미하지 않습니다.
-
-후속 오프라인 감사 복구 보호 기준은 14896eda13d9995b61a7c186dfcdfd5f3c1abb33입니다. push/PR CI(40168471856, 40168474526)에서 테스트156개·실제 build·Pages7파일 검사가 통과했고, 같은 SHA 미리보기 https://91d78e88.efsimulator.pages.dev 에서 공개5파일 bytes·raw HTTP13개를 확인했습니다. UI·공개 데이터는 이전 브라우저 검증과 동일한 bytes이며 이번에 새 브라우저 실행이나 EFHub API 재감사를 수행한 것은 아닙니다. PR draft·main 미병합·승인 대기 상태를 유지합니다.
-
-현행 판매 뷰의 구현은 후속 계획입니다. 누적 원본/카탈로그를 삭제해 현행 목록만 만드는 방식은 쓰지 않습니다. 판매 기간·현재 상태가 미확인인 표본을 배포 시 판매 중으로 승격하지 않으며, R6 현행 변화 검증은 전역/과거 카드 수집에 종속시키지 않습니다.
+대표 데스크톱·모바일에서 최초 다운로드·상호작용 지연·프레임/메모리·파일수·최대파일·빌드 시간과 월 요청/저장 비용을 측정한다. 압축/분할 후에도 Pages 한도나 운영 특성에 맞지 않을 때 R2와 OCI를 비교한다. **3D 추가만으로 OCI 이전이나 R2 활성화를 확정하지 않는다.** 별도 서비스·추가 비용의 필요성이 생기면 검토할 구체적인 구성과 예상액을 제시한다.
