@@ -1,6 +1,6 @@
 # 선수 DB 공급망·공개 경로·갱신 운영 조사
 
-관측일은 2026-10-25다. 기존 R1/T002·R4/T005의 출처/API 검증과 R2/R5의 구조·확장 선택을 C025/C027로 보강한다. [구조화한 근거](../../data/research/data-supply-chain-observations.json)는 운영자 설명·공개 코드·실제 HTTP·로컬 응답 전수 검사·독립 조사 공유를 구분한다. 사이트 자체 API를 KONAMI 원본 API로 부르지 않는다.
+관측일은 2026-10-25다. 기존 R1/T002·R4/T005의 출처/API 검증과 R2/R5의 구조·확장 선택을 C025/C027로 보강한다. 최신 우선 범위는 [현행 상품과 그 카드](CURRENT_SHOP_COVERAGE.md)이며 전역/역사 카드·다른 버전 신규 수집은 핵심 완료 조건에서 보류한다. [구조화한 근거](../../data/research/data-supply-chain-observations.json)는 운영자 설명·공개 코드·실제 HTTP·로컬 응답 전수 검사·독립 조사 공유를 구분한다. 사이트 자체 API를 KONAMI 원본 API로 부르지 않는다. `dt870_console_win.cpk`는 게임 DB 컨테이너 파일명이며 API 주소가 아니다. PesLig의 출처 선언과 실제 내부 추출/변환 과정을 구분한다.
 
 ## 확인된 확보 경로
 
@@ -25,8 +25,8 @@
 | PESDB | [약관 §4](https://pesdb.net/terms/)가 게임 데이터에서 추출/파생한다고 명시 | 게임 파일명·추출기·저장 엔진·공개 수집 API는 미확인. 사용자 빌드의 브라우저 저장은 서버 카드 DB와 별개 | 버전·업데이트 페이지의 신규/수정/이적 집계는 공개 기록. 실제 추출 자동화·완전한 증분 feed는 미확인. **§3의 자동 수집/DB 재구축 금지 및 bulk export/feed 미제공으로 자동 수집 후보에서 제외** |
 | PES Master | [DB 소개](https://www.pesmaster.com/efootball-2022/)가 게임 Live Update 반영을 명시. 특정 원본 파일/추출기·공식 원본 API 미공개 | 날짜별 Featured·문자열 카드 ID·이미지는 관측. 이번 직접 HTML GET은403이라 연결 검색 JS/새 API는 확인하지 못함 | 목요일마다 주간 Live Update를 반영한다는 운영자 설명. 정확한 실행 트리거·수집 프로그램·delta API·DB 스택은 미확인 |
 | eFootballDB.com | [About Us](https://efootballdb.com/)가 official data와 주간 갱신을 설명하나 취득 경로는 명시하지 않음 | 공개 사이트·카드 검색 제공. 특정 KONAMI API/파일·정규화/저장 구현은 미확인 | 주간 갱신은 사이트 주장. 오래된2022/2023 소개·규모를 현행2027 완전성 근거로 쓰지 않음. `.info`와 운영/공급망 동일성 미확인 |
-| eFootballDB.info | 원본·선행 공급자 미확인. 공식 뉴스 링크는 카드 데이터의 공식 원본 증거가 아님 | 보존된 공개 JS가 카드 상세 schema_version2·identity.id와 optional include를 검사. 내부 저장 엔진·원본 변환은 미확인 | 주간 갱신 소개와 표시 날짜만 확인. 라이선스 본문은 이번403. 자동/증분 운영·삭제/복구·허용 재사용 범위 미확인 |
-| eFootballLAB | [Privacy의 Data Sources](https://efootballlab.com/privacy)가 일부 선수/통계를 efootballhub.net·efootballdb.com에서 가져온다고 명시. 푸터는 EFHub 카드 자료도 크레딧 | 커뮤니티 DB 재가공의 공개 근거. 별도 slug ID·카드 화면은 관측했지만 수집/저장·공개 bulk API 미확인 | Privacy 개정일은 DB 갱신일이 아님. 이번 직접 문서 GET은403·`error code:1010`; 그 전에 읽은 웹 도구의 공개 문서와 구분 |
+| eFootballDB.info | 원본·선행 공급자 미확인. 공식 뉴스 링크는 카드 데이터의 공식 원본 증거가 아님 | 보존된 공개 JS가 카드 상세 schema_version2·identity.id와 optional include를 검사. 내부 저장 엔진·원본 변환은 미확인 | 주간 갱신 소개와 표시 날짜. 직접 라이선스403은 이력이며 후속 공개문서는community compilation·개인/비상업·무단bulk제한 설명. 원본API·자동/증분 운영/삭제복구는 미확인 |
+| eFootballLAB | 현재 [Disclaimer의 Data Sources](https://efootballlab.com/disclaimer)가 EFHub/eFootballDB 출처를 명시 | 커뮤니티 DB 재가공의 공개 근거. 별도 slug ID·카드 화면은 관측했지만 수집/저장·공개 bulk API 미확인 | 앞선 Privacy 도구 발췌는 이력으로 보존하며 현재 Data Sources 인용은Disclaimer로 정정. 직접Privacy403·1010도 별도 접근 관측이며 DB 갱신 근거가 아님 |
 | PlayersDB | 공개 검색 색인의 자체 소개는 시리즈 전반 커뮤니티·제3자 자료/기여·외부 ID 교차 참조를 설명 | CSV/JSONL 제공 설명은 있으나 실제 파일·스키마·다운로드 URL/라이선스·REST 계약 미검증. 이번 홈/about403, 파일 다운로드 없음 | 2026.10.22 및10/8·15·22 릴리스는 색인에서 읽은 공개 주장. 자동/수동 실행·증분 제공·현재 행 수 검증은 미실행. 104,505 고유 선수 주장을 현행 카드 수로 쓰지 않음 |
 
 PESDB 약관은 공개 인터페이스의 제한된 개인 참고와 링크 공유를 별도로 허용한다. 이를 자동 카탈로그 복제 허가로 확대하지 않는다. 다른 사이트도 공개 조회 성공과 데이터/이미지의 재사용·재배포 허용을 구분한다. 이번에는 가입·연락·유료 계약·운영 배포를 수행하지 않았다.
@@ -69,3 +69,30 @@ C026은 **Standard를 필요한 범위에서 확보하지 못할 경우에 한�
 - 가상 슬롯은 실제 카드/선수·원본 ID·확보 수·실측 Standard 명단과 분리한다. 일반 Standard 실제 카드를 임의로 넣지 않고 가정/합성 수량임을 명시하는 별도 표현을 계획한다. 미확인을 실제0명이나 확인된 Standard 수로 바꾸지 않는다.
 
 사용자는 이 대안을 나중에 채택한다면 이름 없는 “스탠다드 선수”에도 개봉 모션을 원한다고 밝혔다. 이는 미래 의도 기록이며 지금 시뮬레이터 설계·모션 구현을 시작하는 승인이 아니다. 우선 공개 카탈로그 경로와 상품 구성의 검증 범위를 확정한다.
+
+## 후속 비교: 최근 카드 DB10곳과 별도 후보
+
+이 절은 부모 작업이 별도로 읽은 공개 자료를 전달받아 기록한 것이다. 이 작업자는 중복 요청하지 않았으며 세부 출처/근거수준은 JSON의 `followup_current_scope_and_comparison`을 따른다. **최근 카드 갱신 단서를 확인한10곳(선별/부분범위 포함)**이며10곳 모두10월22일 전체동기화·종합완전성을 뜻하지 않는다. EFHub는 이10곳 집계 밖이다.
+
+| 사이트 | 최근 관측·범위 | 원본/사이트 제공 경로와 한계 |
+| --- | --- | --- |
+| [PESDB](https://pesdb.net/efootball/) | 10-22 카드 | 게임자료 추출/파생명시·원본API미공개·자동수집금지 |
+| [PESMaster](https://www.pesmaster.com/efootball-2022/) | 10-22 카드 | 목요일LiveUpdate주장·정확파일/추출기/API미확인 |
+| [PesLig](https://peslig.com.tr/pesdb.php) | 저장JSON10-22 | 자체brief/출처파일선언과실측근거유지. DataHub10-17캐시로새JSON을덮어쓰지않음 |
+| [eFootballLAB](https://efootballlab.com/) | 10-22 카드 | 현재 [Disclaimer](https://efootballlab.com/disclaimer)의 EFHub/eFootballDB 크레딧. stats독자원본API근거아님 |
+| [eFootballDB.info](https://efootballdb.info/en) | 10-19 상품·10-23뉴스 | 뉴스날짜≠전체카드갱신. asset/APIhost존재≠정상선수API성공. [dataset-license](https://efootballdb.info/en/dataset-license)는제한조건설명 |
+| [TheWinningXI](https://thewinningxi.com/en/cards/) | 10-22 LiveUpdate신규69 | 게임packtable·주간재구축주장,정확원본파일/API·자동구현미확인 |
+| [PESDATABASE.com](https://pesdatabase.com/pack/list) | 10-22·카탈로그2124팩 | 공개게임자료정리주장. [Magical](https://pesdatabase.com/pack/detail/fcf452ce-65af-4521-bae0-f3763775c74c)은11명. bulk/commercial은운영자협의요구,연락안함 |
+| [eFootball.cz](https://efootball.cz/en/karty) | 10-22·131팩/30020카드표시 | 공개JS의자체 `https://supabase.efootball.cz`·`db_cards` 조회. 실제HTTP계약/원본공급망미확인·키/인증요청안함. Magical11 |
+| [eFootMeta](https://www.efootmeta.com/) | 10-19Midfielders·10-22미확인 | 공개JS이미지템플릿은EFHub호스트 `https://efimg.com/efootballhub22/images/player_cards/{id}_l.png`. stats원본은미확인 |
+| [イーフト攻略GOGO](https://kryk55.com/efootball/) | 10-22·선별/표시50건제한 | [목록](https://kryk55.com/efootball/pl/sp_l_all.html)·[Raphinha](https://kryk55.com/efootball/sp6/261022075.html)200. 최근30일/OVR100+등선별·HTML데이터, 별도JSON/CSV/API·원본/자동갱신미확인 |
+
+별도 [PlayersDB](https://playersdb.app/)의10-22·104505는시리즈인물식별카탈로그다. `/download/csv`·`/download/jsonl` 링크/형식은발견했지만파일을검증/다운로드하지않았고출시카드/상품풀원본이아니다. eFootballDB.com은주간갱신일반주장만으로현재카드배치를검증하지못했으며옛2022API주소를현재성공으로제시하지않는다. efootball.run은CardCreator, efootball-world는색인W42만/직접403이라최근검증카드DB10곳에서제외한다.
+
+## 커뮤니티의 구축 방식 보고
+
+- [개발자Niro의2025앱글](https://www.reddit.com/r/eFootball/comments/1ixsq3u/building_a_new_efootball_app/)은 EvoWeb 편집기를 통한DB확보를 설명한다. [같은개발자의2026보고](https://www.reddit.com/r/pesmobile/comments/1qg97u7/you_can_now_create_nicer_player_buid_guides_for/)는 데이터/이미지를API대신게임파일해석으로얻는다고 설명한다. 개발자 자기보고이며 EFHub 등 특정사이트와 연결하지 않는다.
+- [efootball-world개발자보고](https://www.reddit.com/r/eFootball/comments/1rh31wh/i_built_an_efootball_player_database_build/)는게임화면수동입력·신규카드수시간~반나절·Player.bin시도미해결을설명한다. 자동API공급망의증거가아니다.
+- [Mimo의2023보고](https://www.reddit.com/r/pesmobile/comments/16b6mni/introducing_similar_player_search_mimos_analysis/)는PESDB HTML→CSV의역사사례다. 현재약관에따라자동수집방법으로추천하지않는다. EvoWeb은도구목록제목/개설일/10월활동만확인됐으며본문403을읽은것으로표시하지않는다.
+
+공통적으로 파일추출·사이트자체API·수동편집·역사적HTML수집이각기다른방식이다. 원본출처주장/코드·사이트API주소·자동화구현은별도검증한다. 최신목표는현재상품과필요한카드이므로이비교를근거로다시모든과거/전역카드를수집하는작업을만들지않는다.

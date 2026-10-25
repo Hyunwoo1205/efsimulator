@@ -163,7 +163,8 @@
         "docs/ROADMAP.md",
         "docs/WORKPLAN.md",
         "docs/FILE_SYNC.json",
-        "docs/sources/DATA_SUPPLY_CHAIN.md"
+        "docs/sources/DATA_SUPPLY_CHAIN.md",
+        "docs/sources/CURRENT_SHOP_COVERAGE.md"
       ],
       "update_when": [
         "사용자 요구·작업 절차·검증 명령·제품 및 운영 원칙 변경"
@@ -330,7 +331,8 @@
         "scripts/catalog-history.mjs",
         "tests/catalog-history.test.mjs",
         "docs/sources/FULL_ROSTER_RESEARCH.md",
-        "docs/sources/DATA_SUPPLY_CHAIN.md"
+        "docs/sources/DATA_SUPPLY_CHAIN.md",
+        "docs/sources/CURRENT_SHOP_COVERAGE.md"
       ],
       "update_when": [
         "데이터 계약·파이프라인·라우팅·이력 영속화·운영 방식 변경"
@@ -349,7 +351,8 @@
         "scripts/catalog-history.mjs",
         "tests/catalog-history.test.mjs",
         "docs/sources/FULL_ROSTER_RESEARCH.md",
-        "docs/sources/DATA_SUPPLY_CHAIN.md"
+        "docs/sources/DATA_SUPPLY_CHAIN.md",
+        "docs/sources/CURRENT_SHOP_COVERAGE.md"
       ],
       "update_when": [
         "해당 계약·지원 범위·실행/관측 결과 변경 시 관련 파일 검토; 비활성 참고는 현재 모델로 재채택하지 않음"
@@ -367,7 +370,8 @@
         "scripts/build.mjs",
         "docs/WORKPLAN.md",
         "scripts/catalog-history.mjs",
-        "tests/catalog-history.test.mjs"
+        "tests/catalog-history.test.mjs",
+        "docs/sources/CURRENT_SHOP_COVERAGE.md"
       ],
       "update_when": [
         "빌드 명령·출력·라우팅·배포 설정·공개 검증 결과 변경"
@@ -392,7 +396,7 @@
     },
     {
       "path": "docs/ROADMAP.md",
-      "role": "R0~R6 목표·완료조건·진행 위치의 기준",
+      "role": "현행상품/구성카드·판매상태·갱신의 R0~R6 목표/완료조건; 과거전역/다른버전 신규확보 보류와 현재위치",
       "priority": "P0",
       "related_paths": [
         "docs/WORKPLAN.md",
@@ -400,7 +404,8 @@
         "AGENTS.md",
         "README.md",
         "docs/sources/FULL_ROSTER_RESEARCH.md",
-        "docs/sources/DATA_SUPPLY_CHAIN.md"
+        "docs/sources/DATA_SUPPLY_CHAIN.md",
+        "docs/sources/CURRENT_SHOP_COVERAGE.md"
       ],
       "update_when": [
         "단계 상태·현재/이전/다음 작업·완료 조건·추가 요구 변경"
@@ -409,14 +414,15 @@
     },
     {
       "path": "docs/WORKPLAN.md",
-      "role": "단계별 상세 계획·작업 결과·추가 조건·파일 검토 기록",
+      "role": "기존작업ID의 현행범위 계획·이전/현재/다음·검증·추가조건·파일영향/보류이력",
       "priority": "P0",
       "related_paths": [
         "docs/ROADMAP.md",
         "docs/FILE_SYNC.json",
         "scripts/project-check.mjs",
         "docs/sources/FULL_ROSTER_RESEARCH.md",
-        "docs/sources/DATA_SUPPLY_CHAIN.md"
+        "docs/sources/DATA_SUPPLY_CHAIN.md",
+        "docs/sources/CURRENT_SHOP_COVERAGE.md"
       ],
       "update_when": [
         "매 작업 착수·추가 요구·파일 변경·검증 결과·작업 종료"
@@ -666,7 +672,8 @@
         "docs/WORKPLAN.md",
         "docs/FILE_SYNC.json",
         "scripts/catalog-history.mjs",
-        "tests/catalog-history.test.mjs"
+        "tests/catalog-history.test.mjs",
+        "docs/sources/CURRENT_SHOP_COVERAGE.md"
       ],
       "update_when": [
         "설치·실행·검증·표본 범위·진입 문서·공개 상태 변경"
@@ -683,7 +690,8 @@
         "docs/WORKPLAN.md",
         "docs/sources/FULL_ROSTER_RESEARCH.md",
         "data/research/roster-source-observations.json",
-        "docs/sources/DATA_SUPPLY_CHAIN.md"
+        "docs/sources/DATA_SUPPLY_CHAIN.md",
+        "docs/sources/CURRENT_SHOP_COVERAGE.md"
       ],
       "update_when": [
         "해당 계약·지원 범위·실행/관측 결과 변경 시 관련 파일 검토; 비활성 참고는 현재 모델로 재채택하지 않음"
@@ -1006,7 +1014,8 @@
         "docs/COLLECTION.md",
         "docs/ROADMAP.md",
         "docs/WORKPLAN.md",
-        "docs/sources/DATA_SUPPLY_CHAIN.md"
+        "docs/sources/DATA_SUPPLY_CHAIN.md",
+        "docs/sources/CURRENT_SHOP_COVERAGE.md"
       ],
       "update_when": [
         "공식 상품/출시 카드 ID 대응·초기/잔여 pool·후보API 성공/제약·필요 결정과 범위 변경"
@@ -1015,17 +1024,18 @@
     },
     {
       "path": "data/research/data-supply-chain-observations.json",
-      "role": "T005 공급망/정확한 사이트API/원본선언·실측구분·로컬PesLig행감사·조건부슬롯보류 근거; raw13MB는포함하지않음",
+      "role": "공급망/사이트API·실측PesLig행감사 이력과 후속10DB/커뮤니티·인용정정·현행우선 근거; raw전체응답미포함",
       "priority": "P0",
       "related_paths": [
         "docs/sources/DATA_SUPPLY_CHAIN.md",
         "data/research/roster-source-observations.json",
         "docs/WORKPLAN.md",
         "docs/ARCHITECTURE.md",
-        "docs/COLLECTION.md"
+        "docs/COLLECTION.md",
+        "docs/sources/CURRENT_SHOP_COVERAGE.md"
       ],
       "update_when": [
-        "공급망·API응답/분류/필드·허용재사용조건·버전/갱신근거·조건부대안 상태 변경"
+        "공급망/API·필드/버전·이용조건·후속사이트/커뮤니티·현재인용·우선범위/보류상태 변경"
       ],
       "reviewed_in": "T005"
     },
@@ -1041,10 +1051,48 @@
         "docs/WORKPLAN.md",
         "docs/ARCHITECTURE.md",
         "docs/COLLECTION.md",
-        "AGENTS.md"
+        "AGENTS.md",
+        "docs/sources/CURRENT_SHOP_COVERAGE.md"
       ],
       "update_when": [
         "사이트 공급망/정확한 API계약·실제취득결과·사용조건·갱신/익명슬롯 판단 근거 변경"
+      ],
+      "reviewed_in": "T005"
+    },
+    {
+      "path": "data/research/current-shop-observations.json",
+      "role": "현행공개상품 제한모수·EFHub60행/5후보·PS부록·가격/기간/구성충돌·scope변경 근거; 활성import아님",
+      "priority": "P0",
+      "related_paths": [
+        "docs/sources/CURRENT_SHOP_COVERAGE.md",
+        "docs/ROADMAP.md",
+        "docs/WORKPLAN.md",
+        "docs/ARCHITECTURE.md",
+        "data/catalog.seed.json",
+        "data/research/current-catalog-observations.json"
+      ],
+      "update_when": [
+        "현행모수·대상지역/플랫폼·공식/출처대응·판매기간/상태·최소카드필드·관측/범위변경"
+      ],
+      "reviewed_in": "T005"
+    },
+    {
+      "path": "docs/sources/CURRENT_SHOP_COVERAGE.md",
+      "role": "현재판매/이용상품 우선범위·공식7/캠페인/PS별도모수·EFHub후보/구성/모수한계와최소데이터/갱신계획",
+      "priority": "P1",
+      "related_paths": [
+        "data/research/current-shop-observations.json",
+        "docs/ROADMAP.md",
+        "docs/WORKPLAN.md",
+        "docs/COLLECTION.md",
+        "docs/ARCHITECTURE.md",
+        "docs/DEPLOYMENT.md",
+        "docs/sources/DATA_SUPPLY_CHAIN.md",
+        "AGENTS.md",
+        "README.md"
+      ],
+      "update_when": [
+        "현행범위/모수·상품별판매/구성근거·공개상태/필드·보류조건변경"
       ],
       "reviewed_in": "T005"
     }

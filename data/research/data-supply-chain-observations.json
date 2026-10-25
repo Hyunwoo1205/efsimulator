@@ -2928,5 +2928,221 @@
     "게임파일다운로드·도구설치/실행·복호화",
     "provider연락·가입·결제",
     "운영main병합·시뮬레이터구현"
+  ],
+  "followup_current_scope_and_comparison": {
+    "recorded_at": "2026-10-25T12:19:11.169496+00:00",
+    "source": "parent task public investigation supplied in trusted conversation; no duplicate live requests by this worker",
+    "scope": "10 recent card DBs excluding EFHub, including selected/partial scope; no claim all10 fully sync10-22",
+    "recent_card_database_count_excluding_efhub": 10,
+    "card_databases": [
+      {
+        "site": "PESDB",
+        "url": "https://pesdb.net/efootball/",
+        "recent_card_marker": "2026-10-22",
+        "scope": "card_database",
+        "upstream_evidence": "terms: extracted/derived game data",
+        "site_api": "not_published_in_reviewed_sources",
+        "automation": "update claims; internal job unknown",
+        "reuse": "automated collection prohibited",
+        "evidence_level": "trusted_parent_public_read_report_no_duplicate_fetch_by_worker"
+      },
+      {
+        "site": "PES Master",
+        "url": "https://www.pesmaster.com/efootball-2022/",
+        "recent_card_marker": "2026-10-22",
+        "scope": "card_database",
+        "upstream_evidence": "weekly game Live Update claim; exact file/tool unknown",
+        "site_api": "not_verified",
+        "automation": "Thursday reflection claim; internal trigger/delta unknown",
+        "evidence_level": "trusted_parent_public_read_report_no_duplicate_fetch_by_worker"
+      },
+      {
+        "site": "PesLig",
+        "url": "https://peslig.com.tr/pesdb.php",
+        "recent_card_marker": "2026-10-22 JSON generated_at",
+        "scope": "current-cpk_snapshot_with_archived_base",
+        "upstream_evidence": "response declares dt870_console_win.cpk; internal extraction unverified",
+        "site_api": "brief GET200 and local row audit recorded in original investigation",
+        "automation": "generated_at/diff UI; actual job unknown",
+        "cache_caution": "DataHub10-17 cached display does not supersede10-22 saved JSON",
+        "evidence_level": "trusted_parent_public_read_report_no_duplicate_fetch_by_worker"
+      },
+      {
+        "site": "eFootballLAB",
+        "url": "https://efootballlab.com/",
+        "recent_card_marker": "2026-10-22",
+        "scope": "card_database",
+        "upstream_evidence": "https://efootballlab.com/disclaimer credits EFHub/eFootballDB",
+        "site_api": "not_verified",
+        "automation": "not_verified",
+        "citation_correction": "current Data Sources is disclaimer, not current privacy body",
+        "evidence_level": "trusted_parent_public_read_report_no_duplicate_fetch_by_worker"
+      },
+      {
+        "site": "eFootballDB.info",
+        "url": "https://efootballdb.info/en",
+        "recent_card_marker": "10-19 product;10-23 official news separate",
+        "scope": "card_database_recent_marker_not_all_rounds",
+        "upstream_evidence": "not_disclosed; news sources not card origin",
+        "site_api": "api.efootballdb.info asset/API host; prior card detail exact request404",
+        "automation": "not_verified",
+        "reuse": "dataset-license: community compilation/personal_noncommercial/bulk_restrictions",
+        "evidence_level": "trusted_parent_public_read_report_no_duplicate_fetch_by_worker"
+      },
+      {
+        "site": "TheWinningXI",
+        "url": "https://thewinningxi.com/en/cards/",
+        "recent_card_marker": "2026-10-22 Live Update69new cards",
+        "scope": "card_database",
+        "upstream_evidence": "game pack-table and weekly rebuild claim; exact file/API undisclosed",
+        "site_api": "not_verified",
+        "automation": "weekly rebuild claim, execution unverified",
+        "evidence_level": "trusted_parent_public_read_report_no_duplicate_fetch_by_worker"
+      },
+      {
+        "site": "PESDATABASE.com",
+        "url": "https://pesdatabase.com/pack/list",
+        "recent_card_marker": "2026-10-22;2124 catalogue packs",
+        "scope": "card_and_pack_database_not_active_shop_population",
+        "upstream_evidence": "public game data organized/adjusted per updates; exact upstreamAPI undisclosed",
+        "site_api": "not_verified",
+        "example": "https://pesdatabase.com/pack/detail/fcf452ce-65af-4521-bae0-f3763775c74c Magical11",
+        "reuse": "bulk/commercial requires provider consultation; none performed",
+        "evidence_level": "trusted_parent_public_read_report_no_duplicate_fetch_by_worker"
+      },
+      {
+        "site": "eFootball.cz",
+        "url": "https://efootball.cz/en/karty",
+        "recent_card_marker": "2026-10-22;131packs/30020cards as reported",
+        "scope": "card_database_not_verified_global_or_current_shop_total",
+        "upstream_evidence": "unknown",
+        "site_api": {
+          "observed_backend_host": "https://supabase.efootball.cz",
+          "client_table": "db_cards",
+          "exact_http_request_url": null,
+          "query_method": "public JS client table query",
+          "request_verified": false,
+          "keys_extracted_or_auth_requested": false
+        },
+        "example": "Magical11",
+        "automation": "not_verified",
+        "evidence_level": "trusted_parent_public_read_report_no_duplicate_fetch_by_worker"
+      },
+      {
+        "site": "eFootMeta",
+        "url": "https://www.efootmeta.com/",
+        "recent_card_marker": "2026-10-19 Midfielders;10-22 sync unverified",
+        "scope": "card_database_recent_marker_only",
+        "upstream_evidence": "EFHub image host template; stats origin unknown",
+        "site_api": {
+          "script": "https://www.efootmeta.com/_next/static/chunks/9439-d7c0389bfd22f545.js",
+          "image_template": "https://efimg.com/efootballhub22/images/player_cards/{id}_l.png",
+          "stats_api_or_original_game_api": null
+        },
+        "automation": "not_verified",
+        "evidence_level": "trusted_parent_public_read_report_no_duplicate_fetch_by_worker"
+      },
+      {
+        "site": "イーフト攻略GOGO",
+        "url": "https://kryk55.com/efootball/",
+        "recent_card_marker": "2026-10-22",
+        "scope": "selected_cards_recent30days_or_OVR100plus_display_limit50",
+        "upstream_evidence": "not_disclosed",
+        "site_api": "inspected public HTML embeds data; separate fetch/ajax/json/csv API not found in reviewed pages",
+        "list_url": "https://kryk55.com/efootball/pl/sp_l_all.html",
+        "example_url": "https://kryk55.com/efootball/sp6/261022075.html",
+        "example": "Raphinha10-22;maxOVR101 and level1 stats/skills/growth UI; own images",
+        "reported_direct_http_statuses": [
+          200,
+          200
+        ],
+        "automation": "not_verified",
+        "evidence_level": "trusted_parent_public_read_report_no_duplicate_fetch_by_worker"
+      }
+    ],
+    "separate_identity_or_current_unverified": [
+      {
+        "site": "PlayersDB",
+        "url": "https://playersdb.app/",
+        "scope": "series_identity_catalogue_not_release_cards_or_product_pool",
+        "version": "2026-10-22",
+        "reported_people": 104505,
+        "discovered_export_links": [
+          "https://playersdb.app/download/csv",
+          "https://playersdb.app/download/jsonl"
+        ],
+        "download_or_schema_verified": false
+      },
+      {
+        "site": "eFootballDB.com",
+        "url": "https://efootballdb.com/",
+        "scope": "current_card_batch_unverified",
+        "source_claim": "official game data weekly",
+        "historical_api_hint": "api.efootballdb.com/api/2022/...; not a verified current success",
+        "same_operator_as_info_verified": false
+      }
+    ],
+    "excluded_from_recent_count": [
+      {
+        "site": "efootball.run",
+        "reason": "card creator, not verified current card DB"
+      },
+      {
+        "site": "efootball-world",
+        "reason": "search indexedW42 only; direct403, current DB not verified"
+      }
+    ],
+    "community_reports": [
+      {
+        "url": "https://www.reddit.com/r/eFootball/comments/1ixsq3u/building_a_new_efootball_app/",
+        "date": "2025-02-25",
+        "author": "u/Niroooooo",
+        "claim": "developer used an EvoWeb editor to obtain DB",
+        "level": "community_developer_self_report_not_independently_reproduced"
+      },
+      {
+        "url": "https://www.reddit.com/r/pesmobile/comments/1qg97u7/you_can_now_create_nicer_player_buid_guides_for/",
+        "date": "early2026; precise date not supplied",
+        "author": "u/Niroooooo",
+        "claim": "data/images from interpreting game files rather than an API",
+        "level": "community_developer_self_report_not_independently_reproduced"
+      },
+      {
+        "url": "https://www.reddit.com/r/eFootball/comments/1rh31wh/i_built_an_efootball_player_database_build/",
+        "date": "2026",
+        "author": "u/Sea-Equivalent2044",
+        "claim": "manual game-screen entry; new cards hours to half-day; Player.bin attempt unresolved",
+        "level": "community_developer_self_report_not_current_site_sync_proof"
+      },
+      {
+        "url": "https://www.reddit.com/r/pesmobile/comments/16b6mni/introducing_similar_player_search_mimos_analysis/",
+        "date": "2023",
+        "author": "Mimo report",
+        "claim": "historical PESDB HTML→CSV workflow",
+        "level": "historical_community_report",
+        "current_use_recommendation": "not_recommended_due_current_PESDB_terms"
+      }
+    ],
+    "evoweb_scope": "tool listing title/start date/October activity only; detail403 not read",
+    "container_clarification": "dt870_console_win.cpk is a database file container, not an original API URL. Source declaration does not reveal internal extraction.",
+    "priority_superseded_by_current_products": true,
+    "reference": "docs/sources/CURRENT_SHOP_COVERAGE.md"
+  },
+  "followup_citation_corrections": [
+    {
+      "recorded_at": "2026-10-25T12:19:11.169496+00:00",
+      "site": "eFootballLAB",
+      "current_sources_url": "https://efootballlab.com/disclaimer",
+      "prior_citation": "https://efootballlab.com/privacy",
+      "effect": "current source statement should cite disclaimer. Preserve earlier tool observation as dated evidence, not current privacy text."
+    },
+    {
+      "recorded_at": "2026-10-25T12:19:11.169496+00:00",
+      "site": "eFootballDB.info",
+      "url": "https://efootballdb.info/en/dataset-license",
+      "evidence": "trusted parent current public read",
+      "findings": "community compilation, personal/noncommercial, unauthorizedbulk reuse restrictions; no precise originalAPI",
+      "effect": "earlier direct403 is historical access result, not proof no current licence page exists"
+    }
   ]
 }
