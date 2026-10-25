@@ -172,12 +172,13 @@
         "docs/sources/CURRENT_SHOP_COVERAGE.md",
         "docs/API_SELECTION.md",
         "docs/DATA_LIFECYCLE.md",
-        "docs/SIMULATOR_PLAN.md"
+        "docs/SIMULATOR_PLAN.md",
+        "docs/sources/API_SELECTION_VALIDATION.md"
       ],
       "update_when": [
         "사용자 요구·작업 절차·검증 명령·제품 및 운영 원칙 변경"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T009"
     },
     {
       "path": "_headers",
@@ -366,12 +367,13 @@
         "docs/sources/CURRENT_SHOP_COVERAGE.md",
         "docs/API_SELECTION.md",
         "docs/DATA_LIFECYCLE.md",
-        "docs/reference/COLLECTION_BEFORE_PROBABILITY_SCOPE.md"
+        "docs/reference/COLLECTION_BEFORE_PROBABILITY_SCOPE.md",
+        "docs/sources/API_SELECTION_VALIDATION.md"
       ],
       "update_when": [
         "해당 계약·지원 범위·실행/관측 결과 변경 시 관련 파일 검토; 비활성 참고는 현재 모델로 재채택하지 않음"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T009"
     },
     {
       "path": "docs/DEPLOYMENT.md",
@@ -387,12 +389,13 @@
         "tests/catalog-history.test.mjs",
         "docs/sources/CURRENT_SHOP_COVERAGE.md",
         "docs/DATA_LIFECYCLE.md",
-        "docs/reference/DEPLOYMENT_BEFORE_PROBABILITY_SCOPE.md"
+        "docs/reference/DEPLOYMENT_BEFORE_PROBABILITY_SCOPE.md",
+        "docs/sources/API_SELECTION_VALIDATION.md"
       ],
       "update_when": [
         "빌드 명령·출력·라우팅·배포 설정·공개 검증 결과 변경"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T009"
     },
     {
       "path": "docs/FILE_SYNC.json",
@@ -408,7 +411,7 @@
       "update_when": [
         "파일 추가·삭제·이름 변경·역할/의존관계 변경·영향 검토"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T009"
     },
     {
       "path": "docs/ROADMAP.md",
@@ -424,12 +427,13 @@
         "docs/sources/CURRENT_SHOP_COVERAGE.md",
         "docs/API_SELECTION.md",
         "docs/DATA_LIFECYCLE.md",
-        "docs/SIMULATOR_PLAN.md"
+        "docs/SIMULATOR_PLAN.md",
+        "docs/sources/API_SELECTION_VALIDATION.md"
       ],
       "update_when": [
         "단계 상태·현재/이전/다음 작업·완료 조건·추가 요구 변경"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T009"
     },
     {
       "path": "docs/WORKPLAN.md",
@@ -444,12 +448,13 @@
         "docs/sources/CURRENT_SHOP_COVERAGE.md",
         "docs/API_SELECTION.md",
         "docs/DATA_LIFECYCLE.md",
-        "docs/SIMULATOR_PLAN.md"
+        "docs/SIMULATOR_PLAN.md",
+        "docs/sources/API_SELECTION_VALIDATION.md"
       ],
       "update_when": [
         "매 작업 착수·추가 요구·파일 변경·검증 결과·작업 종료"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T009"
     },
     {
       "path": "index.html",
@@ -698,12 +703,13 @@
         "docs/sources/CURRENT_SHOP_COVERAGE.md",
         "docs/API_SELECTION.md",
         "docs/DATA_LIFECYCLE.md",
-        "docs/SIMULATOR_PLAN.md"
+        "docs/SIMULATOR_PLAN.md",
+        "docs/sources/API_SELECTION_VALIDATION.md"
       ],
       "update_when": [
         "설치·실행·검증·표본 범위·진입 문서·공개 상태 변경"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T009"
     },
     {
       "path": "docs/sources/CARD_API_AUDIT.md",
@@ -1116,12 +1122,13 @@
         "docs/sources/DATA_SUPPLY_CHAIN.md",
         "AGENTS.md",
         "README.md",
-        "data/research/probability-scope-baseline.json"
+        "data/research/probability-scope-baseline.json",
+        "docs/sources/API_SELECTION_VALIDATION.md"
       ],
       "update_when": [
         "현행범위/모수·상품별판매/구성근거·공개상태/필드·보류조건변경"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T009"
     },
     {
       "path": "docs/API_SELECTION.md",
@@ -1133,12 +1140,13 @@
         "docs/ARCHITECTURE.md",
         "docs/COLLECTION.md",
         "data/research/probability-scope-baseline.json",
-        "docs/sources/DATA_SUPPLY_CHAIN.md"
+        "docs/sources/DATA_SUPPLY_CHAIN.md",
+        "docs/sources/API_SELECTION_VALIDATION.md"
       ],
       "update_when": [
         "해당 범위/입력/완료조건·관계·권한/운영 근거 변경. reference의 과거 관측값은 덮어쓰지 않음"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T009"
     },
     {
       "path": "docs/DATA_LIFECYCLE.md",
@@ -1238,6 +1246,37 @@
         "해당 범위/입력/완료조건·관계·권한/운영 근거 변경. reference의 과거 관측값은 덮어쓰지 않음"
       ],
       "reviewed_in": "T008"
+    },
+    {
+      "path": "data/research/api-selection-validation.json",
+      "role": "T009 최신공식/현재접근/보존원문 전수대조·팩별 게이트·권리/조건·미선정·S/A null의 실행 근거",
+      "priority": "P0",
+      "related_paths": [
+        "docs/sources/API_SELECTION_VALIDATION.md",
+        "docs/API_SELECTION.md",
+        "docs/WORKPLAN.md",
+        "data/research/probability-scope-baseline.json"
+      ],
+      "update_when": [
+        "T009 관측/게이트·대상/권리/공급계약·재개조건·검증/작업상태 변경"
+      ],
+      "reviewed_in": "T009"
+    },
+    {
+      "path": "docs/sources/API_SELECTION_VALIDATION.md",
+      "role": "T009 팩별/공급자별 실제통과·차단·이미지/OVR/권리/1010 범위·최소재개자료 보고",
+      "priority": "P1",
+      "related_paths": [
+        "data/research/api-selection-validation.json",
+        "docs/API_SELECTION.md",
+        "docs/COLLECTION.md",
+        "docs/ROADMAP.md",
+        "docs/WORKPLAN.md"
+      ],
+      "update_when": [
+        "T009 관측/게이트·대상/권리/공급계약·재개조건·검증/작업상태 변경"
+      ],
+      "reviewed_in": "T009"
     }
   ]
 }

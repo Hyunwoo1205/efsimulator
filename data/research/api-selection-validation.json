@@ -1,0 +1,3743 @@
+{
+  "schema_version": 1,
+  "task_id": "T009",
+  "condition_ids": [
+    "C031",
+    "C032",
+    "C033",
+    "C039"
+  ],
+  "baseline_commit": "77c5db3791401ae7a440715b91536098e7fa6427",
+  "generated_at": "2026-10-25T15:35:00.575857+00:00",
+  "status": "blocked_no_provider_selected",
+  "selected_card_provider": null,
+  "T010_started": false,
+  "official_snapshot": {
+    "schema_version": 1,
+    "task_id": "T009",
+    "repository_baseline_commit": "77c5db3",
+    "purpose": "T009 시작 시 공식 KR 확률표의 실제 대상·N·종료·표시확률 새 관측",
+    "runtime": {
+      "spec_revision": "66",
+      "observations_current": true,
+      "network_policy": {
+        "mode": "unrestricted",
+        "state": "enforced"
+      },
+      "proxy_preserved": true,
+      "tls_verification": true
+    },
+    "request_budget": 1,
+    "request_count": 1,
+    "source_url": "https://efootball-web.konami.net/probability_kr.php",
+    "method": "GET",
+    "requested_at": "2026-10-25T15:21:54.208Z",
+    "observed_at": "2026-10-25T15:21:55.435Z",
+    "http_status": 200,
+    "response_headers_allowlist": {
+      "date": "Sun, 25 Oct 2026 15:21:55 GMT",
+      "content-type": "text/html; charset=UTF-8",
+      "server": "envoy"
+    },
+    "raw_artifact": "artifacts/t009/official-current-20261025T152154208Z.raw.html",
+    "response_bytes": 2834,
+    "sha256": "8d641fd6b0e1deb21b8f5cc225fa6283ad3ac9da264fcc23693bf46cd80672ec",
+    "parse_status": "parsed_all_observed_containers",
+    "entries": [
+      {
+        "official_stable_product_id": null,
+        "starts_at_utc": null,
+        "currency": null,
+        "price": null,
+        "coin_cost": null,
+        "free": null,
+        "ticket_type": null,
+        "multi_draw_options": null,
+        "draw_limits": null,
+        "reset_rules": null,
+        "remaining_player_count_for_user": null,
+        "individual_card_ids": null,
+        "featured_card_count": null,
+        "image_urls": null,
+        "displayed_overall_values": null,
+        "region_eligibility": null,
+        "platform_eligibility": null,
+        "source_name": "National Team Selection: Worldwide Sep '26",
+        "source_locator": {
+          "container": "div.probability_data",
+          "ordinal_in_this_response": 1
+        },
+        "source_url": "https://efootball-web.konami.net/probability_kr.php",
+        "observed_at": "2026-10-25T15:21:55.435Z",
+        "initial_player_count": 11,
+        "ends_at_utc": "2026-11-05T01:59:59Z",
+        "initial_per_player_probability_percent_display": "9.0909%",
+        "initial_per_player_probability_source_text": "처음 영입할 때의 영입 확률：9.0909%",
+        "source_type_label": "특수 선수 명단",
+        "available_state": {
+          "status": "listed_unexpired_at_observation",
+          "judged_at": "2026-10-25T15:21:55.435Z",
+          "all_accounts_can_use": null
+        },
+        "source_fields_present": [
+          "name",
+          "ends_at_utc",
+          "initial_player_count",
+          "initial_per_player_probability_percent_display"
+        ],
+        "source_text_lines": [
+          "National Team Selection: Worldwide Sep '26",
+          "종료 일시(UTC)：2026-11-05 01:59:59",
+          "처음 영입할 때의 선수 수：11",
+          "처음 영입할 때의 영입 확률：9.0909%"
+        ]
+      },
+      {
+        "official_stable_product_id": null,
+        "starts_at_utc": null,
+        "currency": null,
+        "price": null,
+        "coin_cost": null,
+        "free": null,
+        "ticket_type": null,
+        "multi_draw_options": null,
+        "draw_limits": null,
+        "reset_rules": null,
+        "remaining_player_count_for_user": null,
+        "individual_card_ids": null,
+        "featured_card_count": null,
+        "image_urls": null,
+        "displayed_overall_values": null,
+        "region_eligibility": null,
+        "platform_eligibility": null,
+        "source_name": "League Selection: Italian Oct '26",
+        "source_locator": {
+          "container": "div.probability_data",
+          "ordinal_in_this_response": 2
+        },
+        "source_url": "https://efootball-web.konami.net/probability_kr.php",
+        "observed_at": "2026-10-25T15:21:55.435Z",
+        "initial_player_count": 11,
+        "ends_at_utc": "2026-12-03T01:59:59Z",
+        "initial_per_player_probability_percent_display": "9.0909%",
+        "initial_per_player_probability_source_text": "처음 영입할 때의 영입 확률：9.0909%",
+        "source_type_label": "특수 선수 명단",
+        "available_state": {
+          "status": "listed_unexpired_at_observation",
+          "judged_at": "2026-10-25T15:21:55.435Z",
+          "all_accounts_can_use": null
+        },
+        "source_fields_present": [
+          "name",
+          "ends_at_utc",
+          "initial_player_count",
+          "initial_per_player_probability_percent_display"
+        ],
+        "source_text_lines": [
+          "League Selection: Italian Oct '26",
+          "종료 일시(UTC)：2026-12-03 01:59:59",
+          "처음 영입할 때의 선수 수：11",
+          "처음 영입할 때의 영입 확률：9.0909%"
+        ]
+      },
+      {
+        "official_stable_product_id": null,
+        "starts_at_utc": null,
+        "currency": null,
+        "price": null,
+        "coin_cost": null,
+        "free": null,
+        "ticket_type": null,
+        "multi_draw_options": null,
+        "draw_limits": null,
+        "reset_rules": null,
+        "remaining_player_count_for_user": null,
+        "individual_card_ids": null,
+        "featured_card_count": null,
+        "image_urls": null,
+        "displayed_overall_values": null,
+        "region_eligibility": null,
+        "platform_eligibility": null,
+        "source_name": "Epic: Ricardo Quaresma",
+        "source_locator": {
+          "container": "div.probability_data",
+          "ordinal_in_this_response": 3
+        },
+        "source_url": "https://efootball-web.konami.net/probability_kr.php",
+        "observed_at": "2026-10-25T15:21:55.435Z",
+        "initial_player_count": 50,
+        "ends_at_utc": "2026-10-29T01:59:59Z",
+        "initial_per_player_probability_percent_display": "2%",
+        "initial_per_player_probability_source_text": "처음 영입할 때의 영입 확률：2%",
+        "source_type_label": "특수 선수 명단",
+        "available_state": {
+          "status": "listed_unexpired_at_observation",
+          "judged_at": "2026-10-25T15:21:55.435Z",
+          "all_accounts_can_use": null
+        },
+        "source_fields_present": [
+          "name",
+          "ends_at_utc",
+          "initial_player_count",
+          "initial_per_player_probability_percent_display"
+        ],
+        "source_text_lines": [
+          "Epic: Ricardo Quaresma",
+          "종료 일시(UTC)：2026-10-29 01:59:59",
+          "처음 영입할 때의 선수 수：50",
+          "처음 영입할 때의 영입 확률：2%"
+        ]
+      },
+      {
+        "official_stable_product_id": null,
+        "starts_at_utc": null,
+        "currency": null,
+        "price": null,
+        "coin_cost": null,
+        "free": null,
+        "ticket_type": null,
+        "multi_draw_options": null,
+        "draw_limits": null,
+        "reset_rules": null,
+        "remaining_player_count_for_user": null,
+        "individual_card_ids": null,
+        "featured_card_count": null,
+        "image_urls": null,
+        "displayed_overall_values": null,
+        "region_eligibility": null,
+        "platform_eligibility": null,
+        "source_name": "Epic: European Clubs Midfielders",
+        "source_locator": {
+          "container": "div.probability_data",
+          "ordinal_in_this_response": 4
+        },
+        "source_url": "https://efootball-web.konami.net/probability_kr.php",
+        "observed_at": "2026-10-25T15:21:55.435Z",
+        "initial_player_count": 150,
+        "ends_at_utc": "2026-10-26T01:59:59Z",
+        "initial_per_player_probability_percent_display": "0.6667%",
+        "initial_per_player_probability_source_text": "처음 영입할 때의 영입 확률：0.6667%",
+        "source_type_label": "특수 선수 명단",
+        "available_state": {
+          "status": "listed_unexpired_at_observation",
+          "judged_at": "2026-10-25T15:21:55.435Z",
+          "all_accounts_can_use": null
+        },
+        "source_fields_present": [
+          "name",
+          "ends_at_utc",
+          "initial_player_count",
+          "initial_per_player_probability_percent_display"
+        ],
+        "source_text_lines": [
+          "Epic: European Clubs Midfielders",
+          "종료 일시(UTC)：2026-10-26 01:59:59",
+          "처음 영입할 때의 선수 수：150",
+          "처음 영입할 때의 영입 확률：0.6667%"
+        ]
+      },
+      {
+        "official_stable_product_id": null,
+        "starts_at_utc": null,
+        "currency": null,
+        "price": null,
+        "coin_cost": null,
+        "free": null,
+        "ticket_type": null,
+        "multi_draw_options": null,
+        "draw_limits": null,
+        "reset_rules": null,
+        "remaining_player_count_for_user": null,
+        "individual_card_ids": null,
+        "featured_card_count": null,
+        "image_urls": null,
+        "displayed_overall_values": null,
+        "region_eligibility": null,
+        "platform_eligibility": null,
+        "source_name": "Show Time: Magical Dribblers",
+        "source_locator": {
+          "container": "div.probability_data",
+          "ordinal_in_this_response": 5
+        },
+        "source_url": "https://efootball-web.konami.net/probability_kr.php",
+        "observed_at": "2026-10-25T15:21:55.435Z",
+        "initial_player_count": 150,
+        "ends_at_utc": "2026-10-29T01:59:59Z",
+        "initial_per_player_probability_percent_display": "0.6667%",
+        "initial_per_player_probability_source_text": "처음 영입할 때의 영입 확률：0.6667%",
+        "source_type_label": "특수 선수 명단",
+        "available_state": {
+          "status": "listed_unexpired_at_observation",
+          "judged_at": "2026-10-25T15:21:55.435Z",
+          "all_accounts_can_use": null
+        },
+        "source_fields_present": [
+          "name",
+          "ends_at_utc",
+          "initial_player_count",
+          "initial_per_player_probability_percent_display"
+        ],
+        "source_text_lines": [
+          "Show Time: Magical Dribblers",
+          "종료 일시(UTC)：2026-10-29 01:59:59",
+          "처음 영입할 때의 선수 수：150",
+          "처음 영입할 때의 영입 확률：0.6667%"
+        ]
+      },
+      {
+        "official_stable_product_id": null,
+        "starts_at_utc": null,
+        "currency": null,
+        "price": null,
+        "coin_cost": null,
+        "free": null,
+        "ticket_type": null,
+        "multi_draw_options": null,
+        "draw_limits": null,
+        "reset_rules": null,
+        "remaining_player_count_for_user": null,
+        "individual_card_ids": null,
+        "featured_card_count": null,
+        "image_urls": null,
+        "displayed_overall_values": null,
+        "region_eligibility": null,
+        "platform_eligibility": null,
+        "source_name": "POTW: Worldwide 22 Oct '26",
+        "source_locator": {
+          "container": "div.probability_data",
+          "ordinal_in_this_response": 6
+        },
+        "source_url": "https://efootball-web.konami.net/probability_kr.php",
+        "observed_at": "2026-10-25T15:21:55.435Z",
+        "initial_player_count": 11,
+        "ends_at_utc": "2026-10-29T01:59:59Z",
+        "initial_per_player_probability_percent_display": "9.0909%",
+        "initial_per_player_probability_source_text": "처음 영입할 때의 영입 확률：9.0909%",
+        "source_type_label": "특수 선수 명단",
+        "available_state": {
+          "status": "listed_unexpired_at_observation",
+          "judged_at": "2026-10-25T15:21:55.435Z",
+          "all_accounts_can_use": null
+        },
+        "source_fields_present": [
+          "name",
+          "ends_at_utc",
+          "initial_player_count",
+          "initial_per_player_probability_percent_display"
+        ],
+        "source_text_lines": [
+          "POTW: Worldwide 22 Oct '26",
+          "종료 일시(UTC)：2026-10-29 01:59:59",
+          "처음 영입할 때의 선수 수：11",
+          "처음 영입할 때의 영입 확률：9.0909%"
+        ]
+      },
+      {
+        "official_stable_product_id": null,
+        "starts_at_utc": null,
+        "currency": null,
+        "price": null,
+        "coin_cost": null,
+        "free": null,
+        "ticket_type": null,
+        "multi_draw_options": null,
+        "draw_limits": null,
+        "reset_rules": null,
+        "remaining_player_count_for_user": null,
+        "individual_card_ids": null,
+        "featured_card_count": null,
+        "image_urls": null,
+        "displayed_overall_values": null,
+        "region_eligibility": null,
+        "platform_eligibility": null,
+        "source_name": "POTW: European Club Championship",
+        "source_locator": {
+          "container": "div.probability_data",
+          "ordinal_in_this_response": 7
+        },
+        "source_url": "https://efootball-web.konami.net/probability_kr.php",
+        "observed_at": "2026-10-25T15:21:55.435Z",
+        "initial_player_count": 11,
+        "ends_at_utc": "2026-10-29T01:59:59Z",
+        "initial_per_player_probability_percent_display": "9.0909%",
+        "initial_per_player_probability_source_text": "처음 영입할 때의 영입 확률：9.0909%",
+        "source_type_label": "특수 선수 명단",
+        "available_state": {
+          "status": "listed_unexpired_at_observation",
+          "judged_at": "2026-10-25T15:21:55.435Z",
+          "all_accounts_can_use": null
+        },
+        "source_fields_present": [
+          "name",
+          "ends_at_utc",
+          "initial_player_count",
+          "initial_per_player_probability_percent_display"
+        ],
+        "source_text_lines": [
+          "POTW: European Club Championship",
+          "종료 일시(UTC)：2026-10-29 01:59:59",
+          "처음 영입할 때의 선수 수：11",
+          "처음 영입할 때의 영입 확률：9.0909%"
+        ]
+      }
+    ],
+    "api_requests": 0,
+    "other_source_requests": 0,
+    "image_requests": 0,
+    "auth_requests": 0,
+    "retries": 0,
+    "entry_count": 7,
+    "source_container_count": 7,
+    "parser_count_rule": "현재 응답의 실제 div.probability_data 수와 파싱한 수를 대조한다. 이전 관측7개를 검증 상수로 사용하지 않는다.",
+    "baseline_comparison": {
+      "file": "data/research/probability-scope-baseline.json",
+      "baseline_observed_at": "2026-10-25T13:45:12.034Z",
+      "baseline_sha256": "8d641fd6b0e1deb21b8f5cc225fa6283ad3ac9da264fcc23693bf46cd80672ec",
+      "current_sha256": "8d641fd6b0e1deb21b8f5cc225fa6283ad3ac9da264fcc23693bf46cd80672ec",
+      "body_sha256_equal": true,
+      "baseline_entry_count": 7,
+      "current_entry_count": 7,
+      "observed_fields_compared": [
+        "source_name",
+        "initial_player_count",
+        "ends_at_utc",
+        "initial_per_player_probability_percent_display"
+      ],
+      "ordered_observed_rows_equal": true,
+      "unordered_observed_rows_equal": true,
+      "new_or_changed_observed_rows": [],
+      "removed_or_changed_observed_rows": [],
+      "identity_note": "행 비교는 관측된 제목/N/종료/표시확률 값의 비교이며 안정된 상품ID 매칭이 아니다.",
+      "continuous_update_proven": false
+    },
+    "scope_definition": {
+      "target": "이번 공식 한국어 확률표에 실제 게재된 명단만",
+      "observed_entry_count": 7,
+      "complete_for_this_response": true,
+      "fixed_target_count": null,
+      "is_all_current_shop": false,
+      "region_platform_selection_required_for_this_scope": false,
+      "note": "사용자 범위는 이 공식 페이지 자체다. 지역/플랫폼 자격은 미기재 사실로만 남기고 별도 상점으로 모수를 넓히지 않는다."
+    },
+    "probability_semantics": {
+      "uniform_per_player_as_stated": true,
+      "rounding_warning": true,
+      "initial_pool_not_current_remaining": true,
+      "subsequent_probability_depends_on_remaining_pool": true,
+      "remaining_pool_location_original": "[계약] > [특수 선수 명단] > [모두 보기]",
+      "not_a_complete_product_or_card_payload": true
+    },
+    "source_caveats": [
+      "일부 국가/지역에서는 실시되지 않을 수 있습니다.",
+      "개최 기간과 내용은 예고 없이 변경될 수 있습니다."
+    ],
+    "identity_and_null_policy": [
+      "제목과 행순번은 안정된 상품ID가 아니다. 원본 출처/관측/제목/기간으로 증거를 보존한다.",
+      "페이지에 없는 시작/재화/가격/리셋/다회/제한/카드/이미지/OVR는 null이며 다른 출처나 과거 관측에서 채우지 않는다.",
+      "같은 해시와 같은 행의 새 관측은 이번 응답 재현성을 뜻하며 실제 신규자료 반영이나 자동갱신 성공을 뜻하지 않는다."
+    ],
+    "this_agent_request_accounting": {
+      "official_html_gets": 1,
+      "api_gets": 0,
+      "other_source_gets": 0,
+      "image_gets": 0,
+      "auth_gets": 0,
+      "retries": 0
+    },
+    "observed_range": {
+      "started_at": "2026-10-25T15:21:54.208Z",
+      "ended_at": "2026-10-25T15:21:55.435Z"
+    },
+    "actions_not_taken": [
+      "이전 관측 덮어쓰기",
+      "추적 문서/seed/코드/DB 변경",
+      "다른 출처 또는 API/이미지 GET",
+      "쿠키/토큰 획득·재생",
+      "헤더/UA/프록시/TLS 변경",
+      "실패 요청 재시도·우회"
+    ],
+    "completed_at": "2026-10-25T15:22:43.304429Z"
+  },
+  "current_availability_probe": {
+    "id": "t009_efhub_known_public_pack_page1",
+    "method": "GET",
+    "url": "https://efhub.com/api/public/packs?search=&page=1&limit=30",
+    "request_count": 1,
+    "request_budget": 1,
+    "retry_count": 0,
+    "headers_overridden": false,
+    "proxy_preserved": true,
+    "tls_verification": true,
+    "purpose": "current availability of an already successful published frontend request;not a retry or variation of a denied URL",
+    "requested_at": "2026-10-25T15:23:58.161584+00:00",
+    "status": 403,
+    "headers_allowlist": {
+      "date": "Sun, 25 Oct 2026 15:23:58 GMT",
+      "content-type": "text/plain; charset=UTF-8",
+      "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+      "server": "envoy"
+    },
+    "bytes": 17,
+    "sha256": "2938e9f1284180959e33ab1718d0793a72ff6e4cdb8108c34dcd14e69446de5c",
+    "failure_excerpt": "error code: 1010\n",
+    "stop_reason": "request failed;no retry or header/query/path changes",
+    "observed_at": "2026-10-25T15:23:58.360711+00:00",
+    "diagnostic_headers": {
+      "cf-error-type": {
+        "value": null,
+        "evidence": "not retained in the original allowlist;absence cannot be inferred;no newrequest"
+      },
+      "cf-error-origin": {
+        "value": null,
+        "evidence": "not retained in the original allowlist;absence cannot be inferred;no newrequest"
+      },
+      "cf-ray": {
+        "value": null,
+        "evidence": "not retained in the original allowlist;absence cannot be inferred;no newrequest"
+      }
+    },
+    "cloudflare_documentation_context": {
+      "source_url": "https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1010/",
+      "header_reference_url": "https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-error-headers/",
+      "evidence_method": "trusted parent independent official-document verification on2026-10-25;not an additional source request bythis worker",
+      "documented_meaning": "403/1010 can be caused by site security policy blocking browser signature",
+      "interpretation_limit": "The saved body matches this documented error code. Specific rule/headers/actor and coverage across APIs are unverified;no retroactive cause claim about oldplayers403 withoutbody."
+    }
+  },
+  "request_accounting": {
+    "direct_gets": 9,
+    "responses_200": 7,
+    "responses_403": 2,
+    "official_gets": 1,
+    "efhub_pack_api_gets": 1,
+    "primary_public_document_gets": 4,
+    "alternative_public_document_gets": 3,
+    "efhub_players_requests": 0,
+    "prior_denied_request_retries": 0,
+    "header_cookie_token_or_proxy_changes": false,
+    "peslig_snapshot_redownloads": 0,
+    "image_requests": 0,
+    "new_image_caches": 0,
+    "search_tool_origin_requests": "not exposed;not included in directGET accounting",
+    "external_contacts_accounts_payments_deployments_or_schedules": 0
+  },
+  "gate_results": [
+    {
+      "id": "G0",
+      "status": "pass_for_observed_snapshot",
+      "evidence": "Actual KR containers/rows parsed;title/N/end/probability agree with preserved baseline;unknown fields remain null."
+    },
+    {
+      "id": "G1",
+      "status": "blocked",
+      "evidence": "Required automated access/data storage/public API/image storage and redistribution terms remain unverified for primary candidates. PESDATABASE requires prior bulk-use contact;no permission/feed agreement obtained."
+    },
+    {
+      "id": "G2",
+      "status": "blocked",
+      "evidence": "Name/date candidates5,structured grids3/33IDs;no verified official-round mapping or complete-special manifest for any currenttarget."
+    },
+    {
+      "id": "G3",
+      "status": "partial_fields_only_not_passed",
+      "evidence": "Preserved83corefields/83HTTPSimageURLs structurally valid;currentcandidate33IDs overlap. Full load/decode/authorizedstore/reread probe0;targetspecial denominator unknown. OVR/conditions and type-label differences remain unmerged."
+    },
+    {
+      "id": "G4",
+      "status": "not_eligible",
+      "evidence": "Allcurrenttarget verified_complete_special_S and anonymous_standard_A remain null. Missing special cards may not be hidden as syntheticStandard."
+    },
+    {
+      "id": "G5",
+      "status": "blocked",
+      "evidence": "KnownpublicEFHubpage1 now403/1010,stopped. OtherHTML200/providerupdate statements do not establish stable allowed API/discovery or an actual source delta. Oldraw was reused without13MBredownload."
+    },
+    {
+      "id": "G6",
+      "status": "partial_legacy_contract_only",
+      "evidence": "Existing ID/relationship/dedup/failure-preservation regression tests remain usable. No chosen-provider adapter/verified cross-provider round/OVR equivalence contract or actual replacement proof;not passed by equal numericIDs."
+    }
+  ],
+  "pack_results": [
+    {
+      "official_source_name": "National Team Selection: Worldwide Sep '26",
+      "official_evidence": {
+        "file": "data/research/api-selection-validation.json",
+        "pointer": "/official_snapshot/entries/0",
+        "url": "https://efootball-web.konami.net/probability_kr.php",
+        "observed_at": "2026-10-25T15:21:55.435Z",
+        "body_sha256": "8d641fd6b0e1deb21b8f5cc225fa6283ad3ac9da264fcc23693bf46cd80672ec"
+      },
+      "official_stable_product_id": null,
+      "official_initial_N": 11,
+      "official_ends_at_utc": "2026-11-05T01:59:59Z",
+      "source_title_candidates": [],
+      "other_unverified_leads": [
+        {
+          "evidence": {
+            "file": "data/research/current-shop-observations.json",
+            "pointer": "/targeted_followup/national/observations/0"
+          },
+          "kind": "weak_title_family_visible_text_lead",
+          "source_slug": "national-teams-selection-10-sep-26",
+          "source_url": "https://efhub.com/packs/national-teams-selection-10-sep-26",
+          "http_status": 200,
+          "visible_declared_player_count": 11,
+          "structured_original_ids": null,
+          "structured_types": null,
+          "structured_ovr_conditions": null,
+          "parser_error": "구성 grid에 다른 출처나 다른 종류의 링크가 있습니다.",
+          "raw_html_retained": false,
+          "source_payload_missing_is_parse_failure_not_source_absence": true,
+          "ids_or_types_inferred_from_names": false,
+          "peslig_name_lookup_performed": false,
+          "official_round_mapping": null
+        }
+      ],
+      "candidate_list_counts": [],
+      "candidate_extracted_source_card_count": null,
+      "verified_complete_special_S": null,
+      "anonymous_standard_A": null,
+      "special_missing_count": null,
+      "special_missing_ids": null,
+      "full_special_manifest_verified": false,
+      "official_round_mapping_verified": false,
+      "blockers": [
+        "same_official_round_not_verified",
+        "all_special_members_and_quantities_not_verified",
+        "data_and_image_reuse_storage_rights_not_verified",
+        "all_target_images_load_decode_store_reread_not_verified"
+      ]
+    },
+    {
+      "official_source_name": "League Selection: Italian Oct '26",
+      "official_evidence": {
+        "file": "data/research/api-selection-validation.json",
+        "pointer": "/official_snapshot/entries/1",
+        "url": "https://efootball-web.konami.net/probability_kr.php",
+        "observed_at": "2026-10-25T15:21:55.435Z",
+        "body_sha256": "8d641fd6b0e1deb21b8f5cc225fa6283ad3ac9da264fcc23693bf46cd80672ec"
+      },
+      "official_stable_product_id": null,
+      "official_initial_N": 11,
+      "official_ends_at_utc": "2026-12-03T01:59:59Z",
+      "source_title_candidates": [
+        {
+          "source_slug": "italian-league-selection-8-oct-26",
+          "source_name": "Italian League Selection 8 Oct '26",
+          "source_url": "https://efhub.com/ko/packs/italian-league-selection-8-oct-26",
+          "source_date": "2026-10-08",
+          "candidate_listed_count": 11,
+          "extracted_unique_card_count": null,
+          "candidate_special_count_from_source_labels": null,
+          "extracted_original_card_ids": null,
+          "raw_types": null,
+          "condition_unknown_count": null,
+          "peslig_ovr_raw_difference_count": null,
+          "peslig_type_cosmetic_difference_count": null,
+          "identity_status": "candidate_name_date_only",
+          "matching_basis": [
+            "Italian league selection phrasing",
+            "October26 matches the month; source8Oct date is more specific than official title"
+          ],
+          "identity_gaps": [
+            "Official entry has no8Oct round/source ID.",
+            "Same listed count11 does not establish identity."
+          ],
+          "explicit_official_round_mapping": false,
+          "missing_special_count": null,
+          "verified_complete_special_S": null,
+          "anonymous_standard_A": null
+        }
+      ],
+      "other_unverified_leads": [],
+      "candidate_list_counts": [
+        11
+      ],
+      "candidate_extracted_source_card_count": null,
+      "verified_complete_special_S": null,
+      "anonymous_standard_A": null,
+      "special_missing_count": null,
+      "special_missing_ids": null,
+      "full_special_manifest_verified": false,
+      "official_round_mapping_verified": false,
+      "blockers": [
+        "same_official_round_not_verified",
+        "all_special_members_and_quantities_not_verified",
+        "data_and_image_reuse_storage_rights_not_verified",
+        "all_target_images_load_decode_store_reread_not_verified"
+      ]
+    },
+    {
+      "official_source_name": "Epic: Ricardo Quaresma",
+      "official_evidence": {
+        "file": "data/research/api-selection-validation.json",
+        "pointer": "/official_snapshot/entries/2",
+        "url": "https://efootball-web.konami.net/probability_kr.php",
+        "observed_at": "2026-10-25T15:21:55.435Z",
+        "body_sha256": "8d641fd6b0e1deb21b8f5cc225fa6283ad3ac9da264fcc23693bf46cd80672ec"
+      },
+      "official_stable_product_id": null,
+      "official_initial_N": 50,
+      "official_ends_at_utc": "2026-10-29T01:59:59Z",
+      "source_title_candidates": [],
+      "other_unverified_leads": [
+        {
+          "evidence": {
+            "file": "data/research/current-shop-observations.json",
+            "pointer": "/targeted_followup/quaresma/new_public_search_findings/0"
+          },
+          "kind": "search_only_card_lead_not_product_member",
+          "url": "https://efhub.com/ar/players/88045487395246",
+          "source_card_id": "88045487395246",
+          "source_search_name": "Ricardo Quaresma",
+          "source_search_overall": 85,
+          "efhub_raw_type": null,
+          "release_round": null,
+          "product_membership": null,
+          "peslig_same_string_key_found": true,
+          "peslig_raw_overall": 85,
+          "peslig_raw_card_type": "Epic",
+          "peslig_raw_is_variant": 1,
+          "peslig_declares_product_membership": false,
+          "types_from_other_source_do_not_fill_efhub_unknown": true
+        }
+      ],
+      "candidate_list_counts": [],
+      "candidate_extracted_source_card_count": null,
+      "verified_complete_special_S": null,
+      "anonymous_standard_A": null,
+      "special_missing_count": null,
+      "special_missing_ids": null,
+      "full_special_manifest_verified": false,
+      "official_round_mapping_verified": false,
+      "blockers": [
+        "same_official_round_not_verified",
+        "all_special_members_and_quantities_not_verified",
+        "data_and_image_reuse_storage_rights_not_verified",
+        "all_target_images_load_decode_store_reread_not_verified"
+      ]
+    },
+    {
+      "official_source_name": "Epic: European Clubs Midfielders",
+      "official_evidence": {
+        "file": "data/research/api-selection-validation.json",
+        "pointer": "/official_snapshot/entries/3",
+        "url": "https://efootball-web.konami.net/probability_kr.php",
+        "observed_at": "2026-10-25T15:21:55.435Z",
+        "body_sha256": "8d641fd6b0e1deb21b8f5cc225fa6283ad3ac9da264fcc23693bf46cd80672ec"
+      },
+      "official_stable_product_id": null,
+      "official_initial_N": 150,
+      "official_ends_at_utc": "2026-10-26T01:59:59Z",
+      "source_title_candidates": [
+        {
+          "source_slug": "european-clubs-selection-midfielders-19-oct-26",
+          "source_name": "European Clubs Selection Midfielders 19 Oct '26",
+          "source_url": "https://efhub.com/ko/packs/european-clubs-selection-midfielders-19-oct-26",
+          "source_date": "2026-10-15",
+          "candidate_listed_count": 8,
+          "extracted_unique_card_count": null,
+          "candidate_special_count_from_source_labels": null,
+          "extracted_original_card_ids": null,
+          "raw_types": null,
+          "condition_unknown_count": null,
+          "peslig_ovr_raw_difference_count": null,
+          "peslig_type_cosmetic_difference_count": null,
+          "identity_status": "candidate_name_date_only",
+          "matching_basis": [
+            "European Clubs Midfielders phrase",
+            "Source title19Oct matches official announcement19Oct"
+          ],
+          "identity_gaps": [
+            "Source API date15Oct differs from title/announcement19Oct.",
+            "Source list count8 may describe only a highlighted grouping; official promotion separately says3Epic+8Highlight+139other active players.",
+            "No source/detail proof or shared card IDs establish which group this8-card row is.",
+            "One official list could have multiple source introduction groups; do not merge another group or invent the missing3/139."
+          ],
+          "explicit_official_round_mapping": false,
+          "missing_special_count": null,
+          "verified_complete_special_S": null,
+          "anonymous_standard_A": null
+        }
+      ],
+      "other_unverified_leads": [
+        {
+          "evidence": {
+            "file": "data/research/current-shop-observations.json",
+            "pointer": "/targeted_followup/midfielders"
+          },
+          "kind": "known_source_detail_denied",
+          "http_status": 403,
+          "body_sha256": "2938e9f1284180959e33ab1718d0793a72ff6e4cdb8108c34dcd14e69446de5c",
+          "listed_count": 8,
+          "extracted_original_ids": null,
+          "types": null,
+          "separate_epic3_group_verified": false,
+          "official_epic3_highlight8_special_ids_complete": false
+        }
+      ],
+      "candidate_list_counts": [
+        8
+      ],
+      "candidate_extracted_source_card_count": null,
+      "verified_complete_special_S": null,
+      "anonymous_standard_A": null,
+      "special_missing_count": null,
+      "special_missing_ids": null,
+      "full_special_manifest_verified": false,
+      "official_round_mapping_verified": false,
+      "blockers": [
+        "same_official_round_not_verified",
+        "all_special_members_and_quantities_not_verified",
+        "data_and_image_reuse_storage_rights_not_verified",
+        "all_target_images_load_decode_store_reread_not_verified"
+      ]
+    },
+    {
+      "official_source_name": "Show Time: Magical Dribblers",
+      "official_evidence": {
+        "file": "data/research/api-selection-validation.json",
+        "pointer": "/official_snapshot/entries/4",
+        "url": "https://efootball-web.konami.net/probability_kr.php",
+        "observed_at": "2026-10-25T15:21:55.435Z",
+        "body_sha256": "8d641fd6b0e1deb21b8f5cc225fa6283ad3ac9da264fcc23693bf46cd80672ec"
+      },
+      "official_stable_product_id": null,
+      "official_initial_N": 150,
+      "official_ends_at_utc": "2026-10-29T01:59:59Z",
+      "source_title_candidates": [
+        {
+          "source_slug": "magical-dribblers-22-oct-26",
+          "source_name": "Magical Dribblers 22 Oct '26",
+          "source_url": "https://efhub.com/ko/packs/magical-dribblers-22-oct-26",
+          "source_date": "2026-10-22",
+          "candidate_listed_count": 11,
+          "extracted_unique_card_count": 11,
+          "candidate_special_count_from_source_labels": 11,
+          "extracted_original_card_ids": [
+            "106800804418912",
+            "106800804393500",
+            "106800804376628",
+            "105896176917926",
+            "105896176904634",
+            "105896176839655",
+            "105896176957170",
+            "105896176893674",
+            "105896176886332",
+            "105896176881795",
+            "105896176926765"
+          ],
+          "raw_types": {
+            "8": 3,
+            "6": 8
+          },
+          "condition_unknown_count": 11,
+          "peslig_ovr_raw_difference_count": 1,
+          "peslig_type_cosmetic_difference_count": 0,
+          "identity_status": "candidate_name_date_only",
+          "matching_basis": [
+            "Magical Dribblers phrase",
+            "Source22Oct date is in the contemporary observation window"
+          ],
+          "identity_gaps": [
+            "Official probability title has no22Oct round or EFHub slug.",
+            "Source11 displayed cards and official150 initial pool are separate denominators."
+          ],
+          "explicit_official_round_mapping": false,
+          "missing_special_count": null,
+          "verified_complete_special_S": null,
+          "anonymous_standard_A": null
+        }
+      ],
+      "other_unverified_leads": [],
+      "candidate_list_counts": [
+        11
+      ],
+      "candidate_extracted_source_card_count": 11,
+      "verified_complete_special_S": null,
+      "anonymous_standard_A": null,
+      "special_missing_count": null,
+      "special_missing_ids": null,
+      "full_special_manifest_verified": false,
+      "official_round_mapping_verified": false,
+      "blockers": [
+        "same_official_round_not_verified",
+        "all_special_members_and_quantities_not_verified",
+        "data_and_image_reuse_storage_rights_not_verified",
+        "all_target_images_load_decode_store_reread_not_verified"
+      ]
+    },
+    {
+      "official_source_name": "POTW: Worldwide 22 Oct '26",
+      "official_evidence": {
+        "file": "data/research/api-selection-validation.json",
+        "pointer": "/official_snapshot/entries/5",
+        "url": "https://efootball-web.konami.net/probability_kr.php",
+        "observed_at": "2026-10-25T15:21:55.435Z",
+        "body_sha256": "8d641fd6b0e1deb21b8f5cc225fa6283ad3ac9da264fcc23693bf46cd80672ec"
+      },
+      "official_stable_product_id": null,
+      "official_initial_N": 11,
+      "official_ends_at_utc": "2026-10-29T01:59:59Z",
+      "source_title_candidates": [
+        {
+          "source_slug": "potw-22-oct-26",
+          "source_name": "POTW 22 Oct '26",
+          "source_url": "https://efhub.com/ko/packs/potw-22-oct-26",
+          "source_date": "2026-10-22",
+          "candidate_listed_count": 11,
+          "extracted_unique_card_count": 11,
+          "candidate_special_count_from_source_labels": 11,
+          "extracted_original_card_ids": [
+            "52904333543847",
+            "52904333576000",
+            "52904333551882",
+            "52904333527391",
+            "52904333571536",
+            "52904333457355",
+            "52904333584293",
+            "52904333532168",
+            "52904333532623",
+            "52904333545669",
+            "52904333546402"
+          ],
+          "raw_types": {
+            "3": 11
+          },
+          "condition_unknown_count": 11,
+          "peslig_ovr_raw_difference_count": 5,
+          "peslig_type_cosmetic_difference_count": 0,
+          "identity_status": "candidate_name_date_only",
+          "matching_basis": [
+            "POTW and explicit22Oct26 date"
+          ],
+          "identity_gaps": [
+            "EFHub title omitsWorldwide.",
+            "No explicit source ID, shared original card-ID relation, or official backlink."
+          ],
+          "explicit_official_round_mapping": false,
+          "missing_special_count": null,
+          "verified_complete_special_S": null,
+          "anonymous_standard_A": null
+        }
+      ],
+      "other_unverified_leads": [],
+      "candidate_list_counts": [
+        11
+      ],
+      "candidate_extracted_source_card_count": 11,
+      "verified_complete_special_S": null,
+      "anonymous_standard_A": null,
+      "special_missing_count": null,
+      "special_missing_ids": null,
+      "full_special_manifest_verified": false,
+      "official_round_mapping_verified": false,
+      "blockers": [
+        "same_official_round_not_verified",
+        "all_special_members_and_quantities_not_verified",
+        "data_and_image_reuse_storage_rights_not_verified",
+        "all_target_images_load_decode_store_reread_not_verified"
+      ]
+    },
+    {
+      "official_source_name": "POTW: European Club Championship",
+      "official_evidence": {
+        "file": "data/research/api-selection-validation.json",
+        "pointer": "/official_snapshot/entries/6",
+        "url": "https://efootball-web.konami.net/probability_kr.php",
+        "observed_at": "2026-10-25T15:21:55.435Z",
+        "body_sha256": "8d641fd6b0e1deb21b8f5cc225fa6283ad3ac9da264fcc23693bf46cd80672ec"
+      },
+      "official_stable_product_id": null,
+      "official_initial_N": 11,
+      "official_ends_at_utc": "2026-10-29T01:59:59Z",
+      "source_title_candidates": [
+        {
+          "source_slug": "potw-european-club-championship-22-oct-26",
+          "source_name": "POTW European Club Championship 22 Oct '26",
+          "source_url": "https://efhub.com/ko/packs/potw-european-club-championship-22-oct-26",
+          "source_date": "2026-10-22",
+          "candidate_listed_count": 11,
+          "extracted_unique_card_count": 11,
+          "candidate_special_count_from_source_labels": 11,
+          "extracted_original_card_ids": [
+            "52912655044507",
+            "52912655024346",
+            "52912655014117",
+            "52912655053878",
+            "52912655057395",
+            "52912655062348",
+            "52912655050310",
+            "52912655086762",
+            "52912655061235",
+            "52912655073911",
+            "52912655074031"
+          ],
+          "raw_types": {
+            "3": 11
+          },
+          "condition_unknown_count": 11,
+          "peslig_ovr_raw_difference_count": 4,
+          "peslig_type_cosmetic_difference_count": 11,
+          "identity_status": "candidate_name_date_only",
+          "matching_basis": [
+            "POTW European Club Championship phrase",
+            "Source22Oct date is in the contemporary observation window"
+          ],
+          "identity_gaps": [
+            "Official title does not specify22Oct round.",
+            "Equal11 counts and date proximity do not establish exact list identity."
+          ],
+          "explicit_official_round_mapping": false,
+          "missing_special_count": null,
+          "verified_complete_special_S": null,
+          "anonymous_standard_A": null
+        }
+      ],
+      "other_unverified_leads": [],
+      "candidate_list_counts": [
+        11
+      ],
+      "candidate_extracted_source_card_count": 11,
+      "verified_complete_special_S": null,
+      "anonymous_standard_A": null,
+      "special_missing_count": null,
+      "special_missing_ids": null,
+      "full_special_manifest_verified": false,
+      "official_round_mapping_verified": false,
+      "blockers": [
+        "same_official_round_not_verified",
+        "all_special_members_and_quantities_not_verified",
+        "data_and_image_reuse_storage_rights_not_verified",
+        "all_target_images_load_decode_store_reread_not_verified"
+      ]
+    }
+  ],
+  "preserved_catalogue_probe_summary": {
+    "preserved_efhub_products": 9,
+    "preserved_product_rows": 79,
+    "preserved_total_seed_cards": 83,
+    "independent_detail_version_cards_outside_product_grids": 4,
+    "current_official_entries": 7,
+    "official_entries_with_source_name_date_candidates": 5,
+    "current_name_candidate_structured_grid_products": 3,
+    "current_name_candidate_grid_unique_card_ids": 33,
+    "verified_official_round_mappings": 0,
+    "verified_complete_special_manifests": 0,
+    "verified_complete_special_S_known_products": 0,
+    "anonymous_standard_A_known_products": 0,
+    "all_current_special_card_or_image_denominator": null,
+    "efhub_raw_core_missing_counts_for_preserved83": {
+      "id": 0,
+      "name": 0,
+      "overallRating": 0,
+      "playerType": 0,
+      "imageUrl": 0
+    },
+    "efhub_ovr_conditions_unknown_preserved83": 83,
+    "preserved83_peslig_exact_id_overlap": 83,
+    "preserved83_peslig_absent_ids": 0,
+    "preserved83_raw_ovr_differences": 14,
+    "preserved83_type_cosmetic_label_differences": 21,
+    "current33_candidate_peslig_id_overlap": 33,
+    "current_candidate_raw_ovr_differences": 10,
+    "current_candidate_type_cosmetic_label_differences": 11,
+    "efhub_source_product_image_full_probe_evidenced": 0,
+    "known_unique_efhub_http_denial_records": 5,
+    "national_structured_extraction_failures": 1,
+    "unchanged_response_groups": 7,
+    "real_source_update_demonstrated": false
+  },
+  "current_candidate_card_comparisons": [
+    {
+      "source_card_id": "52904333543847",
+      "efhub_internal_card_id": "card_db7297dd56e9ba29387f6d51",
+      "scope": "previous_source_product_grid",
+      "within_current_official_name_candidate_grid": true,
+      "source_product_slug": "potw-22-oct-26",
+      "source_evidence": {
+        "file": "data/research/current-catalog-observations.json",
+        "pointer": "/products/4/players_payload/0",
+        "observation_id": "efhub_obs_d4cf3d8e862b6829ccc3be1a"
+      },
+      "efhub_name": "Erling Haaland",
+      "efhub_image_url": "https://efimg.com/efootballhub22/images/player_cards/52904333543847_l.png",
+      "efhub_raw_overall": 97,
+      "efhub_overall_conditions": null,
+      "efhub_raw_type": 3,
+      "efhub_source_type_label": "Trending",
+      "peslig_original_key_found": true,
+      "peslig_source_row_id_original_decimal": "52904333543847",
+      "peslig_name": "Erling Haaland",
+      "peslig_overall": 96,
+      "peslig_raw_type": "Trending",
+      "peslig_is_variant": 1,
+      "peslig_overall_conditions": null,
+      "peslig_development_mode": "fixed_max",
+      "peslig_max_level_raw": 1,
+      "raw_ovr_equal": false,
+      "literal_type_label_equal": true,
+      "type_label_equal_ignoring_case_and_whitespace": true,
+      "semantic_type_equivalence_verified": false,
+      "same_card_revision_or_ovr_conditions_verified": false,
+      "values_merged_or_overwritten": false
+    },
+    {
+      "source_card_id": "52904333576000",
+      "efhub_internal_card_id": "card_53869b9d73222661a344d61a",
+      "scope": "previous_source_product_grid",
+      "within_current_official_name_candidate_grid": true,
+      "source_product_slug": "potw-22-oct-26",
+      "source_evidence": {
+        "file": "data/research/current-catalog-observations.json",
+        "pointer": "/products/4/players_payload/1",
+        "observation_id": "efhub_obs_d4cf3d8e862b6829ccc3be1a"
+      },
+      "efhub_name": "Pau Cubarsi",
+      "efhub_image_url": "https://efimg.com/efootballhub22/images/player_cards/52904333576000_l.png",
+      "efhub_raw_overall": 96,
+      "efhub_overall_conditions": null,
+      "efhub_raw_type": 3,
+      "efhub_source_type_label": "Trending",
+      "peslig_original_key_found": true,
+      "peslig_source_row_id_original_decimal": "52904333576000",
+      "peslig_name": "Pau Cubarsí",
+      "peslig_overall": 95,
+      "peslig_raw_type": "Trending",
+      "peslig_is_variant": 1,
+      "peslig_overall_conditions": null,
+      "peslig_development_mode": "fixed_max",
+      "peslig_max_level_raw": 1,
+      "raw_ovr_equal": false,
+      "literal_type_label_equal": true,
+      "type_label_equal_ignoring_case_and_whitespace": true,
+      "semantic_type_equivalence_verified": false,
+      "same_card_revision_or_ovr_conditions_verified": false,
+      "values_merged_or_overwritten": false
+    },
+    {
+      "source_card_id": "52904333551882",
+      "efhub_internal_card_id": "card_2a0283a173e872942a23008a",
+      "scope": "previous_source_product_grid",
+      "within_current_official_name_candidate_grid": true,
+      "source_product_slug": "potw-22-oct-26",
+      "source_evidence": {
+        "file": "data/research/current-catalog-observations.json",
+        "pointer": "/products/4/players_payload/2",
+        "observation_id": "efhub_obs_d4cf3d8e862b6829ccc3be1a"
+      },
+      "efhub_name": "Arda Guler",
+      "efhub_image_url": "https://efimg.com/efootballhub22/images/player_cards/52904333551882_l.png",
+      "efhub_raw_overall": 95,
+      "efhub_overall_conditions": null,
+      "efhub_raw_type": 3,
+      "efhub_source_type_label": "Trending",
+      "peslig_original_key_found": true,
+      "peslig_source_row_id_original_decimal": "52904333551882",
+      "peslig_name": "Arda Güler",
+      "peslig_overall": 94,
+      "peslig_raw_type": "Trending",
+      "peslig_is_variant": 1,
+      "peslig_overall_conditions": null,
+      "peslig_development_mode": "fixed_max",
+      "peslig_max_level_raw": 1,
+      "raw_ovr_equal": false,
+      "literal_type_label_equal": true,
+      "type_label_equal_ignoring_case_and_whitespace": true,
+      "semantic_type_equivalence_verified": false,
+      "same_card_revision_or_ovr_conditions_verified": false,
+      "values_merged_or_overwritten": false
+    },
+    {
+      "source_card_id": "52904333527391",
+      "efhub_internal_card_id": "card_4b39d6cf8f68e418575d298c",
+      "scope": "previous_source_product_grid",
+      "within_current_official_name_candidate_grid": true,
+      "source_product_slug": "potw-22-oct-26",
+      "source_evidence": {
+        "file": "data/research/current-catalog-observations.json",
+        "pointer": "/products/4/players_payload/3",
+        "observation_id": "efhub_obs_d4cf3d8e862b6829ccc3be1a"
+      },
+      "efhub_name": "Pedro Neto",
+      "efhub_image_url": "https://efimg.com/efootballhub22/images/player_cards/52904333527391_l.png",
+      "efhub_raw_overall": 95,
+      "efhub_overall_conditions": null,
+      "efhub_raw_type": 3,
+      "efhub_source_type_label": "Trending",
+      "peslig_original_key_found": true,
+      "peslig_source_row_id_original_decimal": "52904333527391",
+      "peslig_name": "Pedro Neto",
+      "peslig_overall": 95,
+      "peslig_raw_type": "Trending",
+      "peslig_is_variant": 1,
+      "peslig_overall_conditions": null,
+      "peslig_development_mode": "fixed_max",
+      "peslig_max_level_raw": 1,
+      "raw_ovr_equal": true,
+      "literal_type_label_equal": true,
+      "type_label_equal_ignoring_case_and_whitespace": true,
+      "semantic_type_equivalence_verified": false,
+      "same_card_revision_or_ovr_conditions_verified": false,
+      "values_merged_or_overwritten": false
+    },
+    {
+      "source_card_id": "52904333571536",
+      "efhub_internal_card_id": "card_cb14e910c584d2ed5cdf09d4",
+      "scope": "previous_source_product_grid",
+      "within_current_official_name_candidate_grid": true,
+      "source_product_slug": "potw-22-oct-26",
+      "source_evidence": {
+        "file": "data/research/current-catalog-observations.json",
+        "pointer": "/products/4/players_payload/4",
+        "observation_id": "efhub_obs_d4cf3d8e862b6829ccc3be1a"
+      },
+      "efhub_name": "Diego Gomez",
+      "efhub_image_url": "https://efimg.com/efootballhub22/images/player_cards/52904333571536_l.png",
+      "efhub_raw_overall": 94,
+      "efhub_overall_conditions": null,
+      "efhub_raw_type": 3,
+      "efhub_source_type_label": "Trending",
+      "peslig_original_key_found": true,
+      "peslig_source_row_id_original_decimal": "52904333571536",
+      "peslig_name": "Diego Gómez",
+      "peslig_overall": 94,
+      "peslig_raw_type": "Trending",
+      "peslig_is_variant": 1,
+      "peslig_overall_conditions": null,
+      "peslig_development_mode": "fixed_max",
+      "peslig_max_level_raw": 1,
+      "raw_ovr_equal": true,
+      "literal_type_label_equal": true,
+      "type_label_equal_ignoring_case_and_whitespace": true,
+      "semantic_type_equivalence_verified": false,
+      "same_card_revision_or_ovr_conditions_verified": false,
+      "values_merged_or_overwritten": false
+    },
+    {
+      "source_card_id": "52904333457355",
+      "efhub_internal_card_id": "card_faf3b60f4c628aed87ab1f3a",
+      "scope": "previous_source_product_grid",
+      "within_current_official_name_candidate_grid": true,
+      "source_product_slug": "potw-22-oct-26",
+      "source_evidence": {
+        "file": "data/research/current-catalog-observations.json",
+        "pointer": "/products/4/players_payload/5",
+        "observation_id": "efhub_obs_d4cf3d8e862b6829ccc3be1a"
+      },
+      "efhub_name": "Adrien Rabiot",
+      "efhub_image_url": "https://efimg.com/efootballhub22/images/player_cards/52904333457355_l.png",
+      "efhub_raw_overall": 94,
+      "efhub_overall_conditions": null,
+      "efhub_raw_type": 3,
+      "efhub_source_type_label": "Trending",
+      "peslig_original_key_found": true,
+      "peslig_source_row_id_original_decimal": "52904333457355",
+      "peslig_name": "Adrien Rabiot",
+      "peslig_overall": 94,
+      "peslig_raw_type": "Trending",
+      "peslig_is_variant": 1,
+      "peslig_overall_conditions": null,
+      "peslig_development_mode": "fixed_max",
+      "peslig_max_level_raw": 1,
+      "raw_ovr_equal": true,
+      "literal_type_label_equal": true,
+      "type_label_equal_ignoring_case_and_whitespace": true,
+      "semantic_type_equivalence_verified": false,
+      "same_card_revision_or_ovr_conditions_verified": false,
+      "values_merged_or_overwritten": false
+    },
+    {
+      "source_card_id": "52904333584293",
+      "efhub_internal_card_id": "card_c9da5401a5f5071bdf69824c",
+      "scope": "previous_source_product_grid",
+      "within_current_official_name_candidate_grid": true,
+      "source_product_slug": "potw-22-oct-26",
+      "source_evidence": {
+        "file": "data/research/current-catalog-observations.json",
+        "pointer": "/products/4/players_payload/6",
+        "observation_id": "efhub_obs_d4cf3d8e862b6829ccc3be1a"
+      },
+      "efhub_name": "Victor Munoz",
+      "efhub_image_url": "https://efimg.com/efootballhub22/images/player_cards/52904333584293_l.png",
+      "efhub_raw_overall": 93,
+      "efhub_overall_conditions": null,
+      "efhub_raw_type": 3,
+      "efhub_source_type_label": "Trending",
+      "peslig_original_key_found": true,
+      "peslig_source_row_id_original_decimal": "52904333584293",
+      "peslig_name": "Víctor Muñoz",
+      "peslig_overall": 93,
+      "peslig_raw_type": "Trending",
+      "peslig_is_variant": 1,
+      "peslig_overall_conditions": null,
+      "peslig_development_mode": "fixed_max",
+      "peslig_max_level_raw": 1,
+      "raw_ovr_equal": true,
+      "literal_type_label_equal": true,
+      "type_label_equal_ignoring_case_and_whitespace": true,
+      "semantic_type_equivalence_verified": false,
+      "same_card_revision_or_ovr_conditions_verified": false,
+      "values_merged_or_overwritten": false
+    },
+    {
+      "source_card_id": "52904333532168",
+      "efhub_internal_card_id": "card_dbbb3e8773c88d1ac9a458f9",
+      "scope": "previous_source_product_grid",
+      "within_current_official_name_candidate_grid": true,
+      "source_product_slug": "potw-22-oct-26",
+      "source_evidence": {
+        "file": "data/research/current-catalog-observations.json",
+        "pointer": "/products/4/players_payload/7",
+        "observation_id": "efhub_obs_d4cf3d8e862b6829ccc3be1a"
+      },
+      "efhub_name": "Kubo Takefusa",
+      "efhub_image_url": "https://efimg.com/efootballhub22/images/player_cards/52904333532168_l.png",
+      "efhub_raw_overall": 93,
+      "efhub_overall_conditions": null,
+      "efhub_raw_type": 3,
+      "efhub_source_type_label": "Trending",
+      "peslig_original_key_found": true,
+      "peslig_source_row_id_original_decimal": "52904333532168",
+      "peslig_name": "Kubo Takefusa",
+      "peslig_overall": 93,
+      "peslig_raw_type": "Trending",
+      "peslig_is_variant": 1,
+      "peslig_overall_conditions": null,
+      "peslig_development_mode": "fixed_max",
+      "peslig_max_level_raw": 1,
+      "raw_ovr_equal": true,
+      "literal_type_label_equal": true,
+      "type_label_equal_ignoring_case_and_whitespace": true,
+      "semantic_type_equivalence_verified": false,
+      "same_card_revision_or_ovr_conditions_verified": false,
+      "values_merged_or_overwritten": false
+    },
+    {
+      "source_card_id": "52904333532623",
+      "efhub_internal_card_id": "card_fe018d44542d62b775c705c3",
+      "scope": "previous_source_product_grid",
+      "within_current_official_name_candidate_grid": true,
+      "source_product_slug": "potw-22-oct-26",
+      "source_evidence": {
+        "file": "data/research/current-catalog-observations.json",
+        "pointer": "/products/4/players_payload/8",
+        "observation_id": "efhub_obs_d4cf3d8e862b6829ccc3be1a"
+      },
+      "efhub_name": "Lassine Sinayoko",
+      "efhub_image_url": "https://efimg.com/efootballhub22/images/player_cards/52904333532623_l.png",
+      "efhub_raw_overall": 93,
+      "efhub_overall_conditions": null,
+      "efhub_raw_type": 3,
+      "efhub_source_type_label": "Trending",
+      "peslig_original_key_found": true,
+      "peslig_source_row_id_original_decimal": "52904333532623",
+      "peslig_name": "Lassine Sinayoko",
+      "peslig_overall": 93,
+      "peslig_raw_type": "Trending",
+      "peslig_is_variant": 1,
+      "peslig_overall_conditions": null,
+      "peslig_development_mode": "fixed_max",
+      "peslig_max_level_raw": 1,
+      "raw_ovr_equal": true,
+      "literal_type_label_equal": true,
+      "type_label_equal_ignoring_case_and_whitespace": true,
+      "semantic_type_equivalence_verified": false,
+      "same_card_revision_or_ovr_conditions_verified": false,
+      "values_merged_or_overwritten": false
+    },
+    {
+      "source_card_id": "52904333545669",
+      "efhub_internal_card_id": "card_3e7eb40b511d76ddfe74d5b2",
+      "scope": "previous_source_product_grid",
+      "within_current_official_name_candidate_grid": true,
+      "source_product_slug": "potw-22-oct-26",
+      "source_evidence": {
+        "file": "data/research/current-catalog-observations.json",
+        "pointer": "/products/4/players_payload/9",
+        "observation_id": "efhub_obs_d4cf3d8e862b6829ccc3be1a"
+      },
+      "efhub_name": "Filip Stankovic",
+      "efhub_image_url": "https://efimg.com/efootballhub22/images/player_cards/52904333545669_l.png",
+      "efhub_raw_overall": 93,
+      "efhub_overall_conditions": null,
+      "efhub_raw_type": 3,
+      "efhub_source_type_label": "Trending",
+      "peslig_original_key_found": true,
+      "peslig_source_row_id_original_decimal": "52904333545669",
+      "peslig_name": "Filip Stanković",
+      "peslig_overall": 92,
+      "peslig_raw_type": "Trending",
+      "peslig_is_variant": 1,
+      "peslig_overall_conditions": null,
+      "peslig_development_mode": "fixed_max",
+      "peslig_max_level_raw": 1,
+      "raw_ovr_equal": false,
+      "literal_type_label_equal": true,
+      "type_label_equal_ignoring_case_and_whitespace": true,
+      "semantic_type_equivalence_verified": false,
+      "same_card_revision_or_ovr_conditions_verified": false,
+      "values_merged_or_overwritten": false
+    },
+    {
+      "source_card_id": "52904333546402",
+      "efhub_internal_card_id": "card_d477b52a1f47cb981bee1116",
+      "scope": "previous_source_product_grid",
+      "within_current_official_name_candidate_grid": true,
+      "source_product_slug": "potw-22-oct-26",
+      "source_evidence": {
+        "file": "data/research/current-catalog-observations.json",
+        "pointer": "/products/4/players_payload/10",
+        "observation_id": "efhub_obs_d4cf3d8e862b6829ccc3be1a"
+      },
+      "efhub_name": "Illia Zabarnyi",
+      "efhub_image_url": "https://efimg.com/efootballhub22/images/player_cards/52904333546402_l.png",
+      "efhub_raw_overall": 93,
+      "efhub_overall_conditions": null,
+      "efhub_raw_type": 3,
+      "efhub_source_type_label": "Trending",
+      "peslig_original_key_found": true,
+      "peslig_source_row_id_original_decimal": "52904333546402",
+      "peslig_name": "Illia Zabarnyi",
+      "peslig_overall": 92,
+      "peslig_raw_type": "Trending",
+      "peslig_is_variant": 1,
+      "peslig_overall_conditions": null,
+      "peslig_development_mode": "fixed_max",
+      "peslig_max_level_raw": 1,
+      "raw_ovr_equal": false,
+      "literal_type_label_equal": true,
+      "type_label_equal_ignoring_case_and_whitespace": true,
+      "semantic_type_equivalence_verified": false,
+      "same_card_revision_or_ovr_conditions_verified": false,
+      "values_merged_or_overwritten": false
+    },
+    {
+      "source_card_id": "52912655044507",
+      "efhub_internal_card_id": "card_54c42d69a6fe600ee32c2269",
+      "scope": "previous_source_product_grid",
+      "within_current_official_name_candidate_grid": true,
+      "source_product_slug": "potw-european-club-championship-22-oct-26",
+      "source_evidence": {
+        "file": "data/research/current-catalog-observations.json",
+        "pointer": "/products/7/players_payload/0",
+        "observation_id": "efhub_obs_ad28201cee515d523ef7f5c3"
+      },
+      "efhub_name": "Vitinha",
+      "efhub_image_url": "https://efimg.com/efootballhub22/images/player_cards/52912655044507_l.png",
+      "efhub_raw_overall": 97,
+      "efhub_overall_conditions": null,
+      "efhub_raw_type": 3,
+      "efhub_source_type_label": "Trending",
+      "peslig_original_key_found": true,
+      "peslig_source_row_id_original_decimal": "52912655044507",
+      "peslig_name": "Vitinha",
+      "peslig_overall": 95,
+      "peslig_raw_type": "Other Special",
+      "peslig_is_variant": 1,
+      "peslig_overall_conditions": null,
+      "peslig_development_mode": "server_level_cap_required",
+      "peslig_max_level_raw": 0,
+      "raw_ovr_equal": false,
+      "literal_type_label_equal": false,
+      "type_label_equal_ignoring_case_and_whitespace": false,
+      "semantic_type_equivalence_verified": false,
+      "same_card_revision_or_ovr_conditions_verified": false,
+      "values_merged_or_overwritten": false
+    },
+    {
+      "source_card_id": "52912655024346",
+      "efhub_internal_card_id": "card_711d9c70128ddd70c86c9458",
+      "scope": "previous_source_product_grid",
+      "within_current_official_name_candidate_grid": true,
+      "source_product_slug": "potw-european-club-championship-22-oct-26",
+      "source_evidence": {
+        "file": "data/research/current-catalog-observations.json",
+        "pointer": "/products/7/players_payload/1",
+        "observation_id": "efhub_obs_ad28201cee515d523ef7f5c3"
+      },
+      "efhub_name": "Eberechi Eze",
+      "efhub_image_url": "https://efimg.com/efootballhub22/images/player_cards/52912655024346_l.png",
+      "efhub_raw_overall": 95,
+      "efhub_overall_conditions": null,
+      "efhub_raw_type": 3,
+      "efhub_source_type_label": "Trending",
+      "peslig_original_key_found": true,
+      "peslig_source_row_id_original_decimal": "52912655024346",
+      "peslig_name": "Eberechi Eze",
+      "peslig_overall": 95,
+      "peslig_raw_type": "Other Special",
+      "peslig_is_variant": 1,
+      "peslig_overall_conditions": null,
+      "peslig_development_mode": "server_level_cap_required",
+      "peslig_max_level_raw": 0,
+      "raw_ovr_equal": true,
+      "literal_type_label_equal": false,
+      "type_label_equal_ignoring_case_and_whitespace": false,
+      "semantic_type_equivalence_verified": false,
+      "same_card_revision_or_ovr_conditions_verified": false,
+      "values_merged_or_overwritten": false
+    },
+    {
+      "source_card_id": "52912655014117",
+      "efhub_internal_card_id": "card_d0cbdd45cb7db526d582dce9",
+      "scope": "previous_source_product_grid",
+      "within_current_official_name_candidate_grid": true,
+      "source_product_slug": "potw-european-club-championship-22-oct-26",
+      "source_evidence": {
+        "file": "data/research/current-catalog-observations.json",
+        "pointer": "/products/7/players_payload/2",
+        "observation_id": "efhub_obs_ad28201cee515d523ef7f5c3"
+      },
+      "efhub_name": "Antonio Rudiger",
+      "efhub_image_url": "https://efimg.com/efootballhub22/images/player_cards/52912655014117_l.png",
+      "efhub_raw_overall": 95,
+      "efhub_overall_conditions": null,
+      "efhub_raw_type": 3,
+      "efhub_source_type_label": "Trending",
+      "peslig_original_key_found": true,
+      "peslig_source_row_id_original_decimal": "52912655014117",
+      "peslig_name": "Antonio Rüdiger",
+      "peslig_overall": 94,
+      "peslig_raw_type": "Other Special",
+      "peslig_is_variant": 1,
+      "peslig_overall_conditions": null,
+      "peslig_development_mode": "server_level_cap_required",
+      "peslig_max_level_raw": 0,
+      "raw_ovr_equal": false,
+      "literal_type_label_equal": false,
+      "type_label_equal_ignoring_case_and_whitespace": false,
+      "semantic_type_equivalence_verified": false,
+      "same_card_revision_or_ovr_conditions_verified": false,
+      "values_merged_or_overwritten": false
+    },
+    {
+      "source_card_id": "52912655053878",
+      "efhub_internal_card_id": "card_132b92de4677a352b0d104b8",
+      "scope": "previous_source_product_grid",
+      "within_current_official_name_candidate_grid": true,
+      "source_product_slug": "potw-european-club-championship-22-oct-26",
+      "source_evidence": {
+        "file": "data/research/current-catalog-observations.json",
+        "pointer": "/products/7/players_payload/3",
+        "observation_id": "efhub_obs_ad28201cee515d523ef7f5c3"
+      },
+      "efhub_name": "Karim Adeyemi",
+      "efhub_image_url": "https://efimg.com/efootballhub22/images/player_cards/52912655053878_l.png",
+      "efhub_raw_overall": 95,
+      "efhub_overall_conditions": null,
+      "efhub_raw_type": 3,
+      "efhub_source_type_label": "Trending",
+      "peslig_original_key_found": true,
+      "peslig_source_row_id_original_decimal": "52912655053878",
+      "peslig_name": "Karim Adeyemi",
+      "peslig_overall": 95,
+      "peslig_raw_type": "Other Special",
+      "peslig_is_variant": 1,
+      "peslig_overall_conditions": null,
+      "peslig_development_mode": "server_level_cap_required",
+      "peslig_max_level_raw": 0,
+      "raw_ovr_equal": true,
+      "literal_type_label_equal": false,
+      "type_label_equal_ignoring_case_and_whitespace": false,
+      "semantic_type_equivalence_verified": false,
+      "same_card_revision_or_ovr_conditions_verified": false,
+      "values_merged_or_overwritten": false
+    },
+    {
+      "source_card_id": "52912655057395",
+      "efhub_internal_card_id": "card_c74b6919910fdf3c7cf1876a",
+      "scope": "previous_source_product_grid",
+      "within_current_official_name_candidate_grid": true,
+      "source_product_slug": "potw-european-club-championship-22-oct-26",
+      "source_evidence": {
+        "file": "data/research/current-catalog-observations.json",
+        "pointer": "/products/7/players_payload/4",
+        "observation_id": "efhub_obs_ad28201cee515d523ef7f5c3"
+      },
+      "efhub_name": "Bradley Barcola",
+      "efhub_image_url": "https://efimg.com/efootballhub22/images/player_cards/52912655057395_l.png",
+      "efhub_raw_overall": 95,
+      "efhub_overall_conditions": null,
+      "efhub_raw_type": 3,
+      "efhub_source_type_label": "Trending",
+      "peslig_original_key_found": true,
+      "peslig_source_row_id_original_decimal": "52912655057395",
+      "peslig_name": "Bradley Barcola",
+      "peslig_overall": 95,
+      "peslig_raw_type": "Other Special",
+      "peslig_is_variant": 1,
+      "peslig_overall_conditions": null,
+      "peslig_development_mode": "server_level_cap_required",
+      "peslig_max_level_raw": 0,
+      "raw_ovr_equal": true,
+      "literal_type_label_equal": false,
+      "type_label_equal_ignoring_case_and_whitespace": false,
+      "semantic_type_equivalence_verified": false,
+      "same_card_revision_or_ovr_conditions_verified": false,
+      "values_merged_or_overwritten": false
+    },
+    {
+      "source_card_id": "52912655062348",
+      "efhub_internal_card_id": "card_5023b75f1bf6d2f3b0617d2c",
+      "scope": "previous_source_product_grid",
+      "within_current_official_name_candidate_grid": true,
+      "source_product_slug": "potw-european-club-championship-22-oct-26",
+      "source_evidence": {
+        "file": "data/research/current-catalog-observations.json",
+        "pointer": "/products/7/players_payload/5",
+        "observation_id": "efhub_obs_ad28201cee515d523ef7f5c3"
+      },
+      "efhub_name": "Pablo Barrios",
+      "efhub_image_url": "https://efimg.com/efootballhub22/images/player_cards/52912655062348_l.png",
+      "efhub_raw_overall": 94,
+      "efhub_overall_conditions": null,
+      "efhub_raw_type": 3,
+      "efhub_source_type_label": "Trending",
+      "peslig_original_key_found": true,
+      "peslig_source_row_id_original_decimal": "52912655062348",
+      "peslig_name": "Pablo Barrios",
+      "peslig_overall": 94,
+      "peslig_raw_type": "Other Special",
+      "peslig_is_variant": 1,
+      "peslig_overall_conditions": null,
+      "peslig_development_mode": "server_level_cap_required",
+      "peslig_max_level_raw": 0,
+      "raw_ovr_equal": true,
+      "literal_type_label_equal": false,
+      "type_label_equal_ignoring_case_and_whitespace": false,
+      "semantic_type_equivalence_verified": false,
+      "same_card_revision_or_ovr_conditions_verified": false,
+      "values_merged_or_overwritten": false
+    },
+    {
+      "source_card_id": "52912655050310",
+      "efhub_internal_card_id": "card_52cf30da92caa06ccf702af7",
+      "scope": "previous_source_product_grid",
+      "within_current_official_name_candidate_grid": true,
+      "source_product_slug": "potw-european-club-championship-22-oct-26",
+      "source_evidence": {
+        "file": "data/research/current-catalog-observations.json",
+        "pointer": "/products/7/players_payload/6",
+        "observation_id": "efhub_obs_ad28201cee515d523ef7f5c3"
+      },
+      "efhub_name": "Nicolas Jackson",
+      "efhub_image_url": "https://efimg.com/efootballhub22/images/player_cards/52912655050310_l.png",
+      "efhub_raw_overall": 94,
+      "efhub_overall_conditions": null,
+      "efhub_raw_type": 3,
+      "efhub_source_type_label": "Trending",
+      "peslig_original_key_found": true,
+      "peslig_source_row_id_original_decimal": "52912655050310",
+      "peslig_name": "Nicolas Jackson",
+      "peslig_overall": 94,
+      "peslig_raw_type": "Other Special",
+      "peslig_is_variant": 1,
+      "peslig_overall_conditions": null,
+      "peslig_development_mode": "server_level_cap_required",
+      "peslig_max_level_raw": 0,
+      "raw_ovr_equal": true,
+      "literal_type_label_equal": false,
+      "type_label_equal_ignoring_case_and_whitespace": false,
+      "semantic_type_equivalence_verified": false,
+      "same_card_revision_or_ovr_conditions_verified": false,
+      "values_merged_or_overwritten": false
+    },
+    {
+      "source_card_id": "52912655086762",
+      "efhub_internal_card_id": "card_e1f343ea9fa7000eaeddf168",
+      "scope": "previous_source_product_grid",
+      "within_current_official_name_candidate_grid": true,
+      "source_product_slug": "potw-european-club-championship-22-oct-26",
+      "source_evidence": {
+        "file": "data/research/current-catalog-observations.json",
+        "pointer": "/products/7/players_payload/7",
+        "observation_id": "efhub_obs_ad28201cee515d523ef7f5c3"
+      },
+      "efhub_name": "Nicolo Tresoldi",
+      "efhub_image_url": "https://efimg.com/efootballhub22/images/player_cards/52912655086762_l.png",
+      "efhub_raw_overall": 93,
+      "efhub_overall_conditions": null,
+      "efhub_raw_type": 3,
+      "efhub_source_type_label": "Trending",
+      "peslig_original_key_found": true,
+      "peslig_source_row_id_original_decimal": "52912655086762",
+      "peslig_name": "Nicolò Tresoldi",
+      "peslig_overall": 93,
+      "peslig_raw_type": "Other Special",
+      "peslig_is_variant": 1,
+      "peslig_overall_conditions": null,
+      "peslig_development_mode": "server_level_cap_required",
+      "peslig_max_level_raw": 0,
+      "raw_ovr_equal": true,
+      "literal_type_label_equal": false,
+      "type_label_equal_ignoring_case_and_whitespace": false,
+      "semantic_type_equivalence_verified": false,
+      "same_card_revision_or_ovr_conditions_verified": false,
+      "values_merged_or_overwritten": false
+    },
+    {
+      "source_card_id": "52912655061235",
+      "efhub_internal_card_id": "card_fe03d2eb0c08378badf14e6a",
+      "scope": "previous_source_product_grid",
+      "within_current_official_name_candidate_grid": true,
+      "source_product_slug": "potw-european-club-championship-22-oct-26",
+      "source_evidence": {
+        "file": "data/research/current-catalog-observations.json",
+        "pointer": "/products/7/players_payload/8",
+        "observation_id": "efhub_obs_ad28201cee515d523ef7f5c3"
+      },
+      "efhub_name": "Kaique",
+      "efhub_image_url": "https://efimg.com/efootballhub22/images/player_cards/52912655061235_l.png",
+      "efhub_raw_overall": 93,
+      "efhub_overall_conditions": null,
+      "efhub_raw_type": 3,
+      "efhub_source_type_label": "Trending",
+      "peslig_original_key_found": true,
+      "peslig_source_row_id_original_decimal": "52912655061235",
+      "peslig_name": "Kaique",
+      "peslig_overall": 92,
+      "peslig_raw_type": "Other Special",
+      "peslig_is_variant": 1,
+      "peslig_overall_conditions": null,
+      "peslig_development_mode": "server_level_cap_required",
+      "peslig_max_level_raw": 0,
+      "raw_ovr_equal": false,
+      "literal_type_label_equal": false,
+      "type_label_equal_ignoring_case_and_whitespace": false,
+      "semantic_type_equivalence_verified": false,
+      "same_card_revision_or_ovr_conditions_verified": false,
+      "values_merged_or_overwritten": false
+    },
+    {
+      "source_card_id": "52912655073911",
+      "efhub_internal_card_id": "card_2782abced4866fd20051cebf",
+      "scope": "previous_source_product_grid",
+      "within_current_official_name_candidate_grid": true,
+      "source_product_slug": "potw-european-club-championship-22-oct-26",
+      "source_evidence": {
+        "file": "data/research/current-catalog-observations.json",
+        "pointer": "/products/7/players_payload/9",
+        "observation_id": "efhub_obs_ad28201cee515d523ef7f5c3"
+      },
+      "efhub_name": "Gjivai Zechiel",
+      "efhub_image_url": "https://efimg.com/efootballhub22/images/player_cards/52912655073911_l.png",
+      "efhub_raw_overall": 93,
+      "efhub_overall_conditions": null,
+      "efhub_raw_type": 3,
+      "efhub_source_type_label": "Trending",
+      "peslig_original_key_found": true,
+      "peslig_source_row_id_original_decimal": "52912655073911",
+      "peslig_name": "Gjivai Zechiël",
+      "peslig_overall": 93,
+      "peslig_raw_type": "Other Special",
+      "peslig_is_variant": 1,
+      "peslig_overall_conditions": null,
+      "peslig_development_mode": "server_level_cap_required",
+      "peslig_max_level_raw": 0,
+      "raw_ovr_equal": true,
+      "literal_type_label_equal": false,
+      "type_label_equal_ignoring_case_and_whitespace": false,
+      "semantic_type_equivalence_verified": false,
+      "same_card_revision_or_ovr_conditions_verified": false,
+      "values_merged_or_overwritten": false
+    },
+    {
+      "source_card_id": "52912655074031",
+      "efhub_internal_card_id": "card_0b604d14ed0c89a4e8586198",
+      "scope": "previous_source_product_grid",
+      "within_current_official_name_candidate_grid": true,
+      "source_product_slug": "potw-european-club-championship-22-oct-26",
+      "source_evidence": {
+        "file": "data/research/current-catalog-observations.json",
+        "pointer": "/products/7/players_payload/10",
+        "observation_id": "efhub_obs_ad28201cee515d523ef7f5c3"
+      },
+      "efhub_name": "Santiago Mourino",
+      "efhub_image_url": "https://efimg.com/efootballhub22/images/player_cards/52912655074031_l.png",
+      "efhub_raw_overall": 93,
+      "efhub_overall_conditions": null,
+      "efhub_raw_type": 3,
+      "efhub_source_type_label": "Trending",
+      "peslig_original_key_found": true,
+      "peslig_source_row_id_original_decimal": "52912655074031",
+      "peslig_name": "Santiago Mouriño",
+      "peslig_overall": 92,
+      "peslig_raw_type": "Other Special",
+      "peslig_is_variant": 1,
+      "peslig_overall_conditions": null,
+      "peslig_development_mode": "server_level_cap_required",
+      "peslig_max_level_raw": 0,
+      "raw_ovr_equal": false,
+      "literal_type_label_equal": false,
+      "type_label_equal_ignoring_case_and_whitespace": false,
+      "semantic_type_equivalence_verified": false,
+      "same_card_revision_or_ovr_conditions_verified": false,
+      "values_merged_or_overwritten": false
+    },
+    {
+      "source_card_id": "106800804418912",
+      "efhub_internal_card_id": "card_20f0679e22ec3e40f1338405",
+      "scope": "previous_source_product_grid",
+      "within_current_official_name_candidate_grid": true,
+      "source_product_slug": "magical-dribblers-22-oct-26",
+      "source_evidence": {
+        "file": "data/research/current-catalog-observations.json",
+        "pointer": "/products/8/players_payload/0",
+        "observation_id": "efhub_obs_e83416aead9946a907dc083d"
+      },
+      "efhub_name": "Desire Doue",
+      "efhub_image_url": "https://efimg.com/efootballhub22/images/player_cards/106800804418912_l.png",
+      "efhub_raw_overall": 86,
+      "efhub_overall_conditions": null,
+      "efhub_raw_type": 8,
+      "efhub_source_type_label": "Showtime",
+      "peslig_original_key_found": true,
+      "peslig_source_row_id_original_decimal": "106800804418912",
+      "peslig_name": "Désiré Doué",
+      "peslig_overall": 87,
+      "peslig_raw_type": "Show Time",
+      "peslig_is_variant": 1,
+      "peslig_overall_conditions": null,
+      "peslig_development_mode": "server_level_cap_required",
+      "peslig_max_level_raw": 0,
+      "raw_ovr_equal": false,
+      "literal_type_label_equal": false,
+      "type_label_equal_ignoring_case_and_whitespace": true,
+      "semantic_type_equivalence_verified": false,
+      "same_card_revision_or_ovr_conditions_verified": false,
+      "values_merged_or_overwritten": false
+    },
+    {
+      "source_card_id": "106800804393500",
+      "efhub_internal_card_id": "card_ae312e3f811ece0fc4177e74",
+      "scope": "previous_source_product_grid",
+      "within_current_official_name_candidate_grid": true,
+      "source_product_slug": "magical-dribblers-22-oct-26",
+      "source_evidence": {
+        "file": "data/research/current-catalog-observations.json",
+        "pointer": "/products/8/players_payload/1",
+        "observation_id": "efhub_obs_e83416aead9946a907dc083d"
+      },
+      "efhub_name": "Jeremy Doku",
+      "efhub_image_url": "https://efimg.com/efootballhub22/images/player_cards/106800804393500_l.png",
+      "efhub_raw_overall": 86,
+      "efhub_overall_conditions": null,
+      "efhub_raw_type": 8,
+      "efhub_source_type_label": "Showtime",
+      "peslig_original_key_found": true,
+      "peslig_source_row_id_original_decimal": "106800804393500",
+      "peslig_name": "Jérémy Doku",
+      "peslig_overall": 86,
+      "peslig_raw_type": "Show Time",
+      "peslig_is_variant": 1,
+      "peslig_overall_conditions": null,
+      "peslig_development_mode": "server_level_cap_required",
+      "peslig_max_level_raw": 0,
+      "raw_ovr_equal": true,
+      "literal_type_label_equal": false,
+      "type_label_equal_ignoring_case_and_whitespace": true,
+      "semantic_type_equivalence_verified": false,
+      "same_card_revision_or_ovr_conditions_verified": false,
+      "values_merged_or_overwritten": false
+    },
+    {
+      "source_card_id": "106800804376628",
+      "efhub_internal_card_id": "card_d55255d81ff925181332aaf3",
+      "scope": "previous_source_product_grid",
+      "within_current_official_name_candidate_grid": true,
+      "source_product_slug": "magical-dribblers-22-oct-26",
+      "source_evidence": {
+        "file": "data/research/current-catalog-observations.json",
+        "pointer": "/products/8/players_payload/2",
+        "observation_id": "efhub_obs_e83416aead9946a907dc083d"
+      },
+      "efhub_name": "Raphinha",
+      "efhub_image_url": "https://efimg.com/efootballhub22/images/player_cards/106800804376628_l.png",
+      "efhub_raw_overall": 85,
+      "efhub_overall_conditions": null,
+      "efhub_raw_type": 8,
+      "efhub_source_type_label": "Showtime",
+      "peslig_original_key_found": true,
+      "peslig_source_row_id_original_decimal": "106800804376628",
+      "peslig_name": "Raphinha",
+      "peslig_overall": 85,
+      "peslig_raw_type": "Show Time",
+      "peslig_is_variant": 1,
+      "peslig_overall_conditions": null,
+      "peslig_development_mode": "server_level_cap_required",
+      "peslig_max_level_raw": 0,
+      "raw_ovr_equal": true,
+      "literal_type_label_equal": false,
+      "type_label_equal_ignoring_case_and_whitespace": true,
+      "semantic_type_equivalence_verified": false,
+      "same_card_revision_or_ovr_conditions_verified": false,
+      "values_merged_or_overwritten": false
+    },
+    {
+      "source_card_id": "105896176917926",
+      "efhub_internal_card_id": "card_87f51a4715272175f0451d9e",
+      "scope": "previous_source_product_grid",
+      "within_current_official_name_candidate_grid": true,
+      "source_product_slug": "magical-dribblers-22-oct-26",
+      "source_evidence": {
+        "file": "data/research/current-catalog-observations.json",
+        "pointer": "/products/8/players_payload/3",
+        "observation_id": "efhub_obs_e83416aead9946a907dc083d"
+      },
+      "efhub_name": "Savio",
+      "efhub_image_url": "https://efimg.com/efootballhub22/images/player_cards/105896176917926_l.png",
+      "efhub_raw_overall": 82,
+      "efhub_overall_conditions": null,
+      "efhub_raw_type": 6,
+      "efhub_source_type_label": "Highlight",
+      "peslig_original_key_found": true,
+      "peslig_source_row_id_original_decimal": "105896176917926",
+      "peslig_name": "Sávio",
+      "peslig_overall": 82,
+      "peslig_raw_type": "Highlight",
+      "peslig_is_variant": 1,
+      "peslig_overall_conditions": null,
+      "peslig_development_mode": "server_level_cap_required",
+      "peslig_max_level_raw": 0,
+      "raw_ovr_equal": true,
+      "literal_type_label_equal": true,
+      "type_label_equal_ignoring_case_and_whitespace": true,
+      "semantic_type_equivalence_verified": false,
+      "same_card_revision_or_ovr_conditions_verified": false,
+      "values_merged_or_overwritten": false
+    },
+    {
+      "source_card_id": "105896176904634",
+      "efhub_internal_card_id": "card_d003a1ce0c141811cb54ee82",
+      "scope": "previous_source_product_grid",
+      "within_current_official_name_candidate_grid": true,
+      "source_product_slug": "magical-dribblers-22-oct-26",
+      "source_evidence": {
+        "file": "data/research/current-catalog-observations.json",
+        "pointer": "/products/8/players_payload/4",
+        "observation_id": "efhub_obs_e83416aead9946a907dc083d"
+      },
+      "efhub_name": "Lois Openda",
+      "efhub_image_url": "https://efimg.com/efootballhub22/images/player_cards/105896176904634_l.png",
+      "efhub_raw_overall": 82,
+      "efhub_overall_conditions": null,
+      "efhub_raw_type": 6,
+      "efhub_source_type_label": "Highlight",
+      "peslig_original_key_found": true,
+      "peslig_source_row_id_original_decimal": "105896176904634",
+      "peslig_name": "Loïs Openda",
+      "peslig_overall": 82,
+      "peslig_raw_type": "Highlight",
+      "peslig_is_variant": 1,
+      "peslig_overall_conditions": null,
+      "peslig_development_mode": "server_level_cap_required",
+      "peslig_max_level_raw": 0,
+      "raw_ovr_equal": true,
+      "literal_type_label_equal": true,
+      "type_label_equal_ignoring_case_and_whitespace": true,
+      "semantic_type_equivalence_verified": false,
+      "same_card_revision_or_ovr_conditions_verified": false,
+      "values_merged_or_overwritten": false
+    },
+    {
+      "source_card_id": "105896176839655",
+      "efhub_internal_card_id": "card_ef6d0c75523c868c690f9e12",
+      "scope": "previous_source_product_grid",
+      "within_current_official_name_candidate_grid": true,
+      "source_product_slug": "magical-dribblers-22-oct-26",
+      "source_evidence": {
+        "file": "data/research/current-catalog-observations.json",
+        "pointer": "/products/8/players_payload/5",
+        "observation_id": "efhub_obs_e83416aead9946a907dc083d"
+      },
+      "efhub_name": "Rafa Silva",
+      "efhub_image_url": "https://efimg.com/efootballhub22/images/player_cards/105896176839655_l.png",
+      "efhub_raw_overall": 81,
+      "efhub_overall_conditions": null,
+      "efhub_raw_type": 6,
+      "efhub_source_type_label": "Highlight",
+      "peslig_original_key_found": true,
+      "peslig_source_row_id_original_decimal": "105896176839655",
+      "peslig_name": "Rafa Silva",
+      "peslig_overall": 81,
+      "peslig_raw_type": "Highlight",
+      "peslig_is_variant": 1,
+      "peslig_overall_conditions": null,
+      "peslig_development_mode": "server_level_cap_required",
+      "peslig_max_level_raw": 0,
+      "raw_ovr_equal": true,
+      "literal_type_label_equal": true,
+      "type_label_equal_ignoring_case_and_whitespace": true,
+      "semantic_type_equivalence_verified": false,
+      "same_card_revision_or_ovr_conditions_verified": false,
+      "values_merged_or_overwritten": false
+    },
+    {
+      "source_card_id": "105896176957170",
+      "efhub_internal_card_id": "card_c1d7d17c4667a0fb5ee18f8c",
+      "scope": "previous_source_product_grid",
+      "within_current_official_name_candidate_grid": true,
+      "source_product_slug": "magical-dribblers-22-oct-26",
+      "source_evidence": {
+        "file": "data/research/current-catalog-observations.json",
+        "pointer": "/products/8/players_payload/6",
+        "observation_id": "efhub_obs_e83416aead9946a907dc083d"
+      },
+      "efhub_name": "Samuele Inacio",
+      "efhub_image_url": "https://efimg.com/efootballhub22/images/player_cards/105896176957170_l.png",
+      "efhub_raw_overall": 80,
+      "efhub_overall_conditions": null,
+      "efhub_raw_type": 6,
+      "efhub_source_type_label": "Highlight",
+      "peslig_original_key_found": true,
+      "peslig_source_row_id_original_decimal": "105896176957170",
+      "peslig_name": "Samuele Inácio",
+      "peslig_overall": 80,
+      "peslig_raw_type": "Highlight",
+      "peslig_is_variant": 1,
+      "peslig_overall_conditions": null,
+      "peslig_development_mode": "server_level_cap_required",
+      "peslig_max_level_raw": 0,
+      "raw_ovr_equal": true,
+      "literal_type_label_equal": true,
+      "type_label_equal_ignoring_case_and_whitespace": true,
+      "semantic_type_equivalence_verified": false,
+      "same_card_revision_or_ovr_conditions_verified": false,
+      "values_merged_or_overwritten": false
+    },
+    {
+      "source_card_id": "105896176893674",
+      "efhub_internal_card_id": "card_9b166580d5cf44ab969d24f3",
+      "scope": "previous_source_product_grid",
+      "within_current_official_name_candidate_grid": true,
+      "source_product_slug": "magical-dribblers-22-oct-26",
+      "source_evidence": {
+        "file": "data/research/current-catalog-observations.json",
+        "pointer": "/products/8/players_payload/7",
+        "observation_id": "efhub_obs_e83416aead9946a907dc083d"
+      },
+      "efhub_name": "Arnaut Danjuma",
+      "efhub_image_url": "https://efimg.com/efootballhub22/images/player_cards/105896176893674_l.png",
+      "efhub_raw_overall": 80,
+      "efhub_overall_conditions": null,
+      "efhub_raw_type": 6,
+      "efhub_source_type_label": "Highlight",
+      "peslig_original_key_found": true,
+      "peslig_source_row_id_original_decimal": "105896176893674",
+      "peslig_name": "Arnaut Danjuma",
+      "peslig_overall": 80,
+      "peslig_raw_type": "Highlight",
+      "peslig_is_variant": 1,
+      "peslig_overall_conditions": null,
+      "peslig_development_mode": "server_level_cap_required",
+      "peslig_max_level_raw": 0,
+      "raw_ovr_equal": true,
+      "literal_type_label_equal": true,
+      "type_label_equal_ignoring_case_and_whitespace": true,
+      "semantic_type_equivalence_verified": false,
+      "same_card_revision_or_ovr_conditions_verified": false,
+      "values_merged_or_overwritten": false
+    },
+    {
+      "source_card_id": "105896176886332",
+      "efhub_internal_card_id": "card_a81bdaf7bd5850c0ac02e70c",
+      "scope": "previous_source_product_grid",
+      "within_current_official_name_candidate_grid": true,
+      "source_product_slug": "magical-dribblers-22-oct-26",
+      "source_evidence": {
+        "file": "data/research/current-catalog-observations.json",
+        "pointer": "/products/8/players_payload/8",
+        "observation_id": "efhub_obs_e83416aead9946a907dc083d"
+      },
+      "efhub_name": "Kingsley Ehizibue",
+      "efhub_image_url": "https://efimg.com/efootballhub22/images/player_cards/105896176886332_l.png",
+      "efhub_raw_overall": 80,
+      "efhub_overall_conditions": null,
+      "efhub_raw_type": 6,
+      "efhub_source_type_label": "Highlight",
+      "peslig_original_key_found": true,
+      "peslig_source_row_id_original_decimal": "105896176886332",
+      "peslig_name": "Kingsley Ehizibue",
+      "peslig_overall": 80,
+      "peslig_raw_type": "Highlight",
+      "peslig_is_variant": 1,
+      "peslig_overall_conditions": null,
+      "peslig_development_mode": "server_level_cap_required",
+      "peslig_max_level_raw": 0,
+      "raw_ovr_equal": true,
+      "literal_type_label_equal": true,
+      "type_label_equal_ignoring_case_and_whitespace": true,
+      "semantic_type_equivalence_verified": false,
+      "same_card_revision_or_ovr_conditions_verified": false,
+      "values_merged_or_overwritten": false
+    },
+    {
+      "source_card_id": "105896176881795",
+      "efhub_internal_card_id": "card_774b8ae4ddc68b561e01a393",
+      "scope": "previous_source_product_grid",
+      "within_current_official_name_candidate_grid": true,
+      "source_product_slug": "magical-dribblers-22-oct-26",
+      "source_evidence": {
+        "file": "data/research/current-catalog-observations.json",
+        "pointer": "/products/8/players_payload/9",
+        "observation_id": "efhub_obs_e83416aead9946a907dc083d"
+      },
+      "efhub_name": "Ulisses Garcia",
+      "efhub_image_url": "https://efimg.com/efootballhub22/images/player_cards/105896176881795_l.png",
+      "efhub_raw_overall": 80,
+      "efhub_overall_conditions": null,
+      "efhub_raw_type": 6,
+      "efhub_source_type_label": "Highlight",
+      "peslig_original_key_found": true,
+      "peslig_source_row_id_original_decimal": "105896176881795",
+      "peslig_name": "Ulisses Garcia",
+      "peslig_overall": 80,
+      "peslig_raw_type": "Highlight",
+      "peslig_is_variant": 1,
+      "peslig_overall_conditions": null,
+      "peslig_development_mode": "server_level_cap_required",
+      "peslig_max_level_raw": 0,
+      "raw_ovr_equal": true,
+      "literal_type_label_equal": true,
+      "type_label_equal_ignoring_case_and_whitespace": true,
+      "semantic_type_equivalence_verified": false,
+      "same_card_revision_or_ovr_conditions_verified": false,
+      "values_merged_or_overwritten": false
+    },
+    {
+      "source_card_id": "105896176926765",
+      "efhub_internal_card_id": "card_d5dbf729548317f3b06b3c9d",
+      "scope": "previous_source_product_grid",
+      "within_current_official_name_candidate_grid": true,
+      "source_product_slug": "magical-dribblers-22-oct-26",
+      "source_evidence": {
+        "file": "data/research/current-catalog-observations.json",
+        "pointer": "/products/8/players_payload/10",
+        "observation_id": "efhub_obs_e83416aead9946a907dc083d"
+      },
+      "efhub_name": "Tijjani Noslin",
+      "efhub_image_url": "https://efimg.com/efootballhub22/images/player_cards/105896176926765_l.png",
+      "efhub_raw_overall": 79,
+      "efhub_overall_conditions": null,
+      "efhub_raw_type": 6,
+      "efhub_source_type_label": "Highlight",
+      "peslig_original_key_found": true,
+      "peslig_source_row_id_original_decimal": "105896176926765",
+      "peslig_name": "Tijjani Noslin",
+      "peslig_overall": 79,
+      "peslig_raw_type": "Highlight",
+      "peslig_is_variant": 1,
+      "peslig_overall_conditions": null,
+      "peslig_development_mode": "server_level_cap_required",
+      "peslig_max_level_raw": 0,
+      "raw_ovr_equal": true,
+      "literal_type_label_equal": true,
+      "type_label_equal_ignoring_case_and_whitespace": true,
+      "semantic_type_equivalence_verified": false,
+      "same_card_revision_or_ovr_conditions_verified": false,
+      "values_merged_or_overwritten": false
+    }
+  ],
+  "cross_provider_type_label_semantics": {
+    "count_with_Trending_vs_OtherSpecial": 11,
+    "name_difference_does_not_prove_semantic_error": true,
+    "overall_conditions_or_revision_equivalence_verified": false,
+    "values_merged_or_overwritten": false
+  },
+  "peslig_offline_full_audit": {
+    "path": "artifacts/supply-chain/peslig-brief-response.bin",
+    "bytes": 13639365,
+    "sha256": "add1257a3a8a1dc12ed27f176bc838c666d9a117a76da0e2a28ed645a518efb7",
+    "reparsed_offline": true,
+    "json_duplicate_key_detection": "UTF8 strict;tagged object member pairs before dict materialization;arbitrary-precision integer IDs;nonJSON NaN/Infinity rejected",
+    "objects_checked": 6,
+    "duplicate_object_key_occurrences": 0,
+    "duplicate_object_key_examples": [],
+    "raw_player_members": 46742,
+    "actual_rows": 46742,
+    "unique_dictionary_keys": 46742,
+    "unique_row_ids": 46742,
+    "row_id_null_count": 0,
+    "row_id_missing_column_count": 0,
+    "row_id_noninteger_count": 0,
+    "row_id_key_mismatch_count": 0,
+    "row_id_key_mismatch_examples": [],
+    "max_id_original_decimal": "387113187158919",
+    "ids_outside_javascript_safe_integer": 0,
+    "field_count": 48,
+    "row_length_violation_count": 0,
+    "field_null_and_type_counts": {
+      "id": {
+        "index": 0,
+        "present": 46742,
+        "null": 0,
+        "blank_string": 0,
+        "type_counts": {
+          "integer": 46742
+        },
+        "range": {
+          "min": 84,
+          "max": 387113187158919
+        }
+      },
+      "short_name": {
+        "index": 1,
+        "present": 46742,
+        "null": 0,
+        "blank_string": 83,
+        "type_counts": {
+          "string": 46742
+        }
+      },
+      "name": {
+        "index": 2,
+        "present": 46742,
+        "null": 0,
+        "blank_string": 0,
+        "type_counts": {
+          "string": 46742
+        }
+      },
+      "shirt_name": {
+        "index": 3,
+        "present": 46742,
+        "null": 0,
+        "blank_string": 0,
+        "type_counts": {
+          "string": 46742
+        }
+      },
+      "position": {
+        "index": 4,
+        "present": 46742,
+        "null": 0,
+        "blank_string": 0,
+        "type_counts": {
+          "string": 46742
+        }
+      },
+      "overall": {
+        "index": 5,
+        "present": 46742,
+        "null": 0,
+        "blank_string": 0,
+        "type_counts": {
+          "integer": 46742
+        },
+        "range": {
+          "min": 26,
+          "max": 101
+        }
+      },
+      "age": {
+        "index": 6,
+        "present": 46742,
+        "null": 0,
+        "blank_string": 0,
+        "type_counts": {
+          "integer": 46742
+        },
+        "range": {
+          "min": 15,
+          "max": 50
+        }
+      },
+      "height_cm": {
+        "index": 7,
+        "present": 46742,
+        "null": 0,
+        "blank_string": 0,
+        "type_counts": {
+          "integer": 46742
+        },
+        "range": {
+          "min": 155,
+          "max": 206
+        }
+      },
+      "weight_kg": {
+        "index": 8,
+        "present": 46742,
+        "null": 0,
+        "blank_string": 0,
+        "type_counts": {
+          "integer": 46742
+        },
+        "range": {
+          "min": 41,
+          "max": 113
+        }
+      },
+      "foot": {
+        "index": 9,
+        "present": 46742,
+        "null": 0,
+        "blank_string": 0,
+        "type_counts": {
+          "string": 46742
+        }
+      },
+      "nationality_name": {
+        "index": 10,
+        "present": 46742,
+        "null": 0,
+        "blank_string": 129,
+        "type_counts": {
+          "string": 46742
+        }
+      },
+      "playing_style": {
+        "index": 11,
+        "present": 46742,
+        "null": 0,
+        "blank_string": 0,
+        "type_counts": {
+          "string": 46742
+        }
+      },
+      "weekly_rating": {
+        "index": 12,
+        "present": 46742,
+        "null": 0,
+        "blank_string": 31329,
+        "type_counts": {
+          "string": 46742
+        }
+      },
+      "max_level": {
+        "index": 13,
+        "present": 46742,
+        "null": 0,
+        "blank_string": 0,
+        "type_counts": {
+          "integer": 46742
+        },
+        "range": {
+          "min": 0,
+          "max": 1
+        }
+      },
+      "card_type": {
+        "index": 14,
+        "present": 46742,
+        "null": 0,
+        "blank_string": 0,
+        "type_counts": {
+          "string": 46742
+        }
+      },
+      "is_variant": {
+        "index": 15,
+        "present": 46742,
+        "null": 0,
+        "blank_string": 0,
+        "type_counts": {
+          "integer": 46742
+        },
+        "range": {
+          "min": 0,
+          "max": 1
+        }
+      },
+      "form": {
+        "index": 16,
+        "present": 46742,
+        "null": 0,
+        "blank_string": 0,
+        "type_counts": {
+          "string": 46742
+        }
+      },
+      "weak_foot_accuracy": {
+        "index": 17,
+        "present": 46742,
+        "null": 0,
+        "blank_string": 0,
+        "type_counts": {
+          "string": 46742
+        }
+      },
+      "injury_resistance": {
+        "index": 18,
+        "present": 46742,
+        "null": 0,
+        "blank_string": 0,
+        "type_counts": {
+          "string": 46742
+        }
+      },
+      "development_mode": {
+        "index": 19,
+        "present": 46742,
+        "null": 0,
+        "blank_string": 0,
+        "type_counts": {
+          "string": 46742
+        }
+      },
+      "offensive_awareness": {
+        "index": 20,
+        "present": 46742,
+        "null": 0,
+        "blank_string": 0,
+        "type_counts": {
+          "integer": 46742
+        },
+        "range": {
+          "min": 40,
+          "max": 97
+        }
+      },
+      "ball_control": {
+        "index": 21,
+        "present": 46742,
+        "null": 0,
+        "blank_string": 0,
+        "type_counts": {
+          "integer": 46742
+        },
+        "range": {
+          "min": 40,
+          "max": 98
+        }
+      },
+      "dribbling": {
+        "index": 22,
+        "present": 46742,
+        "null": 0,
+        "blank_string": 0,
+        "type_counts": {
+          "integer": 46742
+        },
+        "range": {
+          "min": 40,
+          "max": 98
+        }
+      },
+      "tight_possession": {
+        "index": 23,
+        "present": 46742,
+        "null": 0,
+        "blank_string": 0,
+        "type_counts": {
+          "integer": 46742
+        },
+        "range": {
+          "min": 40,
+          "max": 96
+        }
+      },
+      "low_pass": {
+        "index": 24,
+        "present": 46742,
+        "null": 0,
+        "blank_string": 0,
+        "type_counts": {
+          "integer": 46742
+        },
+        "range": {
+          "min": 40,
+          "max": 98
+        }
+      },
+      "lofted_pass": {
+        "index": 25,
+        "present": 46742,
+        "null": 0,
+        "blank_string": 0,
+        "type_counts": {
+          "integer": 46742
+        },
+        "range": {
+          "min": 40,
+          "max": 93
+        }
+      },
+      "finishing": {
+        "index": 26,
+        "present": 46742,
+        "null": 0,
+        "blank_string": 0,
+        "type_counts": {
+          "integer": 46742
+        },
+        "range": {
+          "min": 40,
+          "max": 98
+        }
+      },
+      "heading": {
+        "index": 27,
+        "present": 46742,
+        "null": 0,
+        "blank_string": 0,
+        "type_counts": {
+          "integer": 46742
+        },
+        "range": {
+          "min": 40,
+          "max": 95
+        }
+      },
+      "set_piece_taking": {
+        "index": 28,
+        "present": 46742,
+        "null": 0,
+        "blank_string": 0,
+        "type_counts": {
+          "integer": 46742
+        },
+        "range": {
+          "min": 40,
+          "max": 95
+        }
+      },
+      "curl": {
+        "index": 29,
+        "present": 46742,
+        "null": 0,
+        "blank_string": 0,
+        "type_counts": {
+          "integer": 46742
+        },
+        "range": {
+          "min": 40,
+          "max": 97
+        }
+      },
+      "speed": {
+        "index": 30,
+        "present": 46742,
+        "null": 0,
+        "blank_string": 0,
+        "type_counts": {
+          "integer": 46742
+        },
+        "range": {
+          "min": 40,
+          "max": 98
+        }
+      },
+      "acceleration": {
+        "index": 31,
+        "present": 46742,
+        "null": 0,
+        "blank_string": 0,
+        "type_counts": {
+          "integer": 46742
+        },
+        "range": {
+          "min": 40,
+          "max": 98
+        }
+      },
+      "kicking_power": {
+        "index": 32,
+        "present": 46742,
+        "null": 0,
+        "blank_string": 0,
+        "type_counts": {
+          "integer": 46742
+        },
+        "range": {
+          "min": 40,
+          "max": 96
+        }
+      },
+      "jumping": {
+        "index": 33,
+        "present": 46742,
+        "null": 0,
+        "blank_string": 0,
+        "type_counts": {
+          "integer": 46742
+        },
+        "range": {
+          "min": 40,
+          "max": 93
+        }
+      },
+      "physical_contact": {
+        "index": 34,
+        "present": 46742,
+        "null": 0,
+        "blank_string": 0,
+        "type_counts": {
+          "integer": 46742
+        },
+        "range": {
+          "min": 40,
+          "max": 96
+        }
+      },
+      "balance": {
+        "index": 35,
+        "present": 46742,
+        "null": 0,
+        "blank_string": 0,
+        "type_counts": {
+          "integer": 46742
+        },
+        "range": {
+          "min": 40,
+          "max": 93
+        }
+      },
+      "stamina": {
+        "index": 36,
+        "present": 46742,
+        "null": 0,
+        "blank_string": 0,
+        "type_counts": {
+          "integer": 46742
+        },
+        "range": {
+          "min": 40,
+          "max": 96
+        }
+      },
+      "defensive_awareness": {
+        "index": 37,
+        "present": 46742,
+        "null": 0,
+        "blank_string": 0,
+        "type_counts": {
+          "integer": 46742
+        },
+        "range": {
+          "min": 40,
+          "max": 98
+        }
+      },
+      "tackling": {
+        "index": 38,
+        "present": 46742,
+        "null": 0,
+        "blank_string": 0,
+        "type_counts": {
+          "integer": 46742
+        },
+        "range": {
+          "min": 40,
+          "max": 98
+        }
+      },
+      "aggression": {
+        "index": 39,
+        "present": 46742,
+        "null": 0,
+        "blank_string": 0,
+        "type_counts": {
+          "integer": 46742
+        },
+        "range": {
+          "min": 40,
+          "max": 96
+        }
+      },
+      "defensive_engagement": {
+        "index": 40,
+        "present": 46742,
+        "null": 0,
+        "blank_string": 0,
+        "type_counts": {
+          "integer": 46742
+        },
+        "range": {
+          "min": 40,
+          "max": 92
+        }
+      },
+      "gk_awareness": {
+        "index": 41,
+        "present": 46742,
+        "null": 0,
+        "blank_string": 0,
+        "type_counts": {
+          "integer": 46742
+        },
+        "range": {
+          "min": 40,
+          "max": 91
+        }
+      },
+      "gk_catching": {
+        "index": 42,
+        "present": 46742,
+        "null": 0,
+        "blank_string": 0,
+        "type_counts": {
+          "integer": 46742
+        },
+        "range": {
+          "min": 40,
+          "max": 91
+        }
+      },
+      "gk_parrying": {
+        "index": 43,
+        "present": 46742,
+        "null": 0,
+        "blank_string": 0,
+        "type_counts": {
+          "integer": 46742
+        },
+        "range": {
+          "min": 40,
+          "max": 91
+        }
+      },
+      "gk_reflexes": {
+        "index": 44,
+        "present": 46742,
+        "null": 0,
+        "blank_string": 0,
+        "type_counts": {
+          "integer": 46742
+        },
+        "range": {
+          "min": 40,
+          "max": 93
+        }
+      },
+      "gk_reach": {
+        "index": 45,
+        "present": 46742,
+        "null": 0,
+        "blank_string": 0,
+        "type_counts": {
+          "integer": 46742
+        },
+        "range": {
+          "min": 40,
+          "max": 94
+        }
+      },
+      "player_skills": {
+        "index": 46,
+        "present": 46742,
+        "null": 0,
+        "blank_string": 46742,
+        "type_counts": {
+          "string": 46742
+        }
+      },
+      "ai_playing_styles": {
+        "index": 47,
+        "present": 46742,
+        "null": 0,
+        "blank_string": 46742,
+        "type_counts": {
+          "string": 46742
+        }
+      }
+    },
+    "card_type_counts": {
+      "Standard": 19018,
+      "Archived Base": 9816,
+      "Unavailable Base": 3851,
+      "Event/Special Character": 99,
+      "Internal/Fake Player": 11,
+      "Legendary": 255,
+      "Trending": 3626,
+      "Other Special": 478,
+      "Epic": 909,
+      "Big Time": 183,
+      "Highlight": 7758,
+      "Show Time": 738
+    },
+    "is_variant_counts": {
+      "0": 32795,
+      "1": 13947
+    },
+    "source_meta_card_type_counts_match_actual": true,
+    "type_family_and_availability_only_meta_not_row_fields": true,
+    "development_mode_counts": {
+      "server_level_cap_required": 43116,
+      "fixed_max": 3626
+    },
+    "max_level_raw_counts": {
+      "0": 43116,
+      "1": 3626
+    },
+    "max_level0_server_cap_required_count": 43116,
+    "max_level0_is_not_confirmed_cap0": true,
+    "exact_image_field_names": [],
+    "actual_url_string_values": 0,
+    "curl_is_stat_not_url_field": true,
+    "product_relation_fields": [],
+    "explicit_version_relation_fields": [],
+    "overall_condition_fields": [],
+    "provider_meta_declarations": {
+      "source": "dt870_console_win.cpk",
+      "schema": "pml-efootball-all-cards-v15.1-current-cpk",
+      "generated_at": "2026-10-22T14:30:18.575785+00:00"
+    },
+    "provider_meta_is_not_game_source_or_actual_update_verification": true,
+    "same_string_id_not_verified_revision_or_conditions": true
+  },
+  "image_evidence": {
+    "source_product_cards": {
+      "rows": 79,
+      "unique_https_urls": 79,
+      "url_id_filename_matches": 79,
+      "past_efhub_http200_matching_url_evidence": 0,
+      "past_efhub_http_mime_or_hash_not_evidenced_count": 79,
+      "full_G3_probe_evidenced_count": 0
+    },
+    "current_official_name_candidate_grids": {
+      "card_count": 33,
+      "url_count": 33,
+      "past_efhub_image_http200_evidenced": 0,
+      "full_G3_probe_evidenced_count": 0,
+      "all_target_special_image_denominator": null
+    },
+    "entire_preserved_seed": {
+      "cards": 83,
+      "unique_urls": 83,
+      "asset_references": 83,
+      "unknown_asset_composition": 83,
+      "orphan_assets": 0,
+      "missing_asset_references": 0,
+      "missing_asset_observation_references": 0,
+      "past_efhub_image_http200_evidenced": 1,
+      "unknown_full_pixel_decode_count": 83,
+      "unknown_allowed_store_reread_count": 83,
+      "full_G3_probe_evidenced_count": 0
+    },
+    "efhub_past_sample": {
+      "evidence": {
+        "file": "data/research/source-observations.json",
+        "pointer": "/observations/10"
+      },
+      "source_card_id": "88046292727298",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/88046292727298_l.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 186474,
+      "body_sha256": "a6dcf91810e83044679e3f50bbc2a1bf6865cbf8f664c097f84bcd21335a9b50",
+      "png_metadata": {
+        "format": "PNG",
+        "width": 240,
+        "height": 340,
+        "png_color_type": 6,
+        "delivery_form": "Single PNG used as a full card image element; text/OVR also rendered as DOM overlays. Pixel composition not visually inspected."
+      },
+      "explicit_magic_signature_evidence": null,
+      "full_pixel_decode_evidence": null,
+      "authorized_image_store_path": null,
+      "stored_image_reread_hash_evidence": null,
+      "sample_in_product79": false,
+      "limits_evidence": {
+        "file": "data/research/source-observations.json",
+        "pointer": "/limitations/5"
+      }
+    },
+    "peslig_separate_past_sample": {
+      "evidence": {
+        "file": "data/research/data-supply-chain-observations.json",
+        "pointer": "/peslig_independent_public_observations/image_sample"
+      },
+      "url": "https://peslig.com.tr/efootball/card-image.php?id=106800804418912",
+      "method": "GET",
+      "status": 200,
+      "mime": "image/png",
+      "response_bytes": 159422,
+      "png_signature_verified": true,
+      "id_discovery": "public HTML, not selected from API rows",
+      "scope": "one image only; not all images or reuse rights",
+      "body_sha256_evidence": null,
+      "full_pixel_decode_evidence": null,
+      "authorized_image_store_path": null,
+      "stored_image_reread_hash_evidence": null,
+      "not_added_to_efhub_url_test_count": true
+    },
+    "manager_sample_excluded": {
+      "evidence": {
+        "file": "data/research/source-observations.json",
+        "pointer": "/observations/11"
+      },
+      "url": "https://efimg.com/efootballhub22/images/coach_cards/17610439655559.png",
+      "source_id": "17610439655559",
+      "status": 200,
+      "outside_card_and_current_official_scope": true
+    },
+    "current_network_or_image_requests": 0,
+    "current_image_storage_attempts": 0,
+    "rights_status": "not_verified",
+    "full_image_probe_hold_reason": "Prior rights evidence does not authorize current all-image load/store/redistribution probe. URL and old transport evidence audited independently;not a failure of current image downloads.",
+    "unknown_is_not_zero_actual_availability": true
+  },
+  "primary_rights": {
+    "direct_requests": [
+      {
+        "url": "https://efhub.com/privacy",
+        "discovery": "공개검색의 EFHub 개인정보처리방침 실제 결과",
+        "method": "GET",
+        "observed_at": "2026-10-25T15:23:56.531505+00:00",
+        "status": 403,
+        "final_url": "https://efhub.com/privacy",
+        "response_bytes_sample": 17,
+        "sample_sha256": "2938e9f1284180959e33ab1718d0793a72ff6e4cdb8108c34dcd14e69446de5c",
+        "headers_allowlist": {
+          "Content-Type": "text/plain; charset=UTF-8",
+          "Cache-Control": "private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+          "Date": "Sun, 25 Oct 2026 15:23:56 GMT",
+          "Content-Length": "17"
+        },
+        "error": "Forbidden",
+        "legal_links": []
+      },
+      {
+        "url": "https://peslig.com.tr/kvkk.php",
+        "discovery": "공개검색의 PesLig KVKK 실제 결과",
+        "method": "GET",
+        "observed_at": "2026-10-25T15:23:57.546889+00:00",
+        "status": 200,
+        "final_url": "https://peslig.com.tr/kvkk.php",
+        "response_bytes": 50102,
+        "sha256": "50dc3878141a7f5da51d797411ee41e4403c137f87b01c900178a61bf01dda91",
+        "headers_allowlist": {
+          "Content-Type": "text/html; charset=UTF-8",
+          "Date": "Sun, 25 Oct 2026 15:23:59 GMT"
+        },
+        "title": "KVKK Aydınlatma Metni | PesLig",
+        "legal_links": [
+          "https://peslig.com.tr/hakkimizda.php",
+          "https://peslig.com.tr/kvkk.php"
+        ]
+      },
+      {
+        "url": "https://peslig.com.tr/pesdb.php",
+        "discovery": "기존200 원문에 기록된 공개 카드DB 페이지; API 응답이나 이미지 파일을 요청하지 않음",
+        "method": "GET",
+        "observed_at": "2026-10-25T15:24:00.541148+00:00",
+        "status": 200,
+        "final_url": "https://peslig.com.tr/pesdb.php",
+        "response_bytes": 228774,
+        "sha256": "d93bbc2b124643ca5a5fd79e9a2076eec7c87b8964de43b1511d312cf9805dab",
+        "headers_allowlist": {
+          "Content-Type": "text/html; charset=UTF-8",
+          "Cache-Control": "no-store, no-cache, must-revalidate",
+          "Date": "Sun, 25 Oct 2026 15:24:01 GMT"
+        },
+        "title": "eFootball 2027 Global Kart Veritabanı: Epic, Show Time, Big Time | PesLig",
+        "legal_links": [
+          "https://peslig.com.tr/hakkimizda.php",
+          "https://peslig.com.tr/kvkk.php"
+        ]
+      },
+      {
+        "url": "https://peslig.com.tr/hakkimizda.php",
+        "observed_at": "2026-10-25T15:25:30.381561+00:00",
+        "method": "GET",
+        "discovery": "직전200 KVKK·DB HTML에 실제 연결된 Hakkımızda 링크",
+        "status": 200,
+        "final_url": "https://peslig.com.tr/hakkimizda.php",
+        "response_bytes": 36675,
+        "sha256": "dd069f6030a1ca8757d0e6f6c41b9757fe93e759059081e046d4821a2ad7d6bd",
+        "headers_allowlist": {
+          "Content-Type": "text/html; charset=UTF-8",
+          "Date": "Sun, 25 Oct 2026 15:25:32 GMT"
+        },
+        "legal_links": [
+          "https://peslig.com.tr/hakkimizda.php",
+          "https://peslig.com.tr/kvkk.php"
+        ]
+      }
+    ],
+    "matrix": [
+      {
+        "provider": "EFHub",
+        "action": "automated_access",
+        "action_ko": "자동 접근/주기적 수집",
+        "classification": "미확인",
+        "explicit_allow_quote": null,
+        "explicit_prohibit_quote": null,
+        "evidence_urls": [
+          "https://efhub.com/privacy"
+        ],
+        "reason_ko": "현재 확인한 문서는 개인정보/일반 사이트 소개이며 해당 카드 공급·재사용 계약의 허용 또는 금지 문구를 찾지 못함. 검색/표본 문서에서 미확인인 것이며 전체 사이트에 조항이 없다는 증명은 아님.",
+        "needed_evidence_ko": "허용된 API/feed·요청 방법·로봇/자동화 조건과 권한 범위"
+      },
+      {
+        "provider": "EFHub",
+        "action": "raw_storage",
+        "action_ko": "raw 응답·관측 원문 보관",
+        "classification": "미확인",
+        "explicit_allow_quote": null,
+        "explicit_prohibit_quote": null,
+        "evidence_urls": [
+          "https://efhub.com/privacy"
+        ],
+        "reason_ko": "현재 확인한 문서는 개인정보/일반 사이트 소개이며 해당 카드 공급·재사용 계약의 허용 또는 금지 문구를 찾지 못함. 검색/표본 문서에서 미확인인 것이며 전체 사이트에 조항이 없다는 증명은 아님.",
+        "needed_evidence_ko": "보관 가능한 원본 범위·보유기간·관측/해시 보존·삭제 요구 처리"
+      },
+      {
+        "provider": "EFHub",
+        "action": "normalized_storage",
+        "action_ko": "정규화 DB/변경 이력 저장",
+        "classification": "미확인",
+        "explicit_allow_quote": null,
+        "explicit_prohibit_quote": null,
+        "evidence_urls": [
+          "https://efhub.com/privacy"
+        ],
+        "reason_ko": "현재 확인한 문서는 개인정보/일반 사이트 소개이며 해당 카드 공급·재사용 계약의 허용 또는 금지 문구를 찾지 못함. 검색/표본 문서에서 미확인인 것이며 전체 사이트에 조항이 없다는 증명은 아님.",
+        "needed_evidence_ko": "선택 필드의 정규화·ID 관계·이력 보존·파생 데이터 이용 범위"
+      },
+      {
+        "provider": "EFHub",
+        "action": "image_browser_load",
+        "action_ko": "원격 이미지 URL의 사이트 로드",
+        "classification": "미확인",
+        "explicit_allow_quote": null,
+        "explicit_prohibit_quote": null,
+        "evidence_urls": [
+          "https://efhub.com/privacy"
+        ],
+        "reason_ko": "현재 확인한 문서는 개인정보/일반 사이트 소개이며 해당 카드 공급·재사용 계약의 허용 또는 금지 문구를 찾지 못함. 검색/표본 문서에서 미확인인 것이며 전체 사이트에 조항이 없다는 증명은 아님.",
+        "needed_evidence_ko": "이미지 권리/제공 조건·hotlink 허용·출처 표기·트래픽 조건"
+      },
+      {
+        "provider": "EFHub",
+        "action": "image_cache_and_redistribution",
+        "action_ko": "이미지 파일 캐시·재호스팅/재배포",
+        "classification": "미확인",
+        "explicit_allow_quote": null,
+        "explicit_prohibit_quote": null,
+        "evidence_urls": [
+          "https://efhub.com/privacy"
+        ],
+        "reason_ko": "현재 확인한 문서는 개인정보/일반 사이트 소개이며 해당 카드 공급·재사용 계약의 허용 또는 금지 문구를 찾지 못함. 검색/표본 문서에서 미확인인 것이며 전체 사이트에 조항이 없다는 증명은 아님.",
+        "needed_evidence_ko": "영구/임시 캐시·CDN/R2·수정/최적화·공개 재배포 허용 범위"
+      },
+      {
+        "provider": "EFHub",
+        "action": "public_site_and_api",
+        "action_ko": "자체 검색 사이트·공개 DB API 제공",
+        "classification": "미확인",
+        "explicit_allow_quote": null,
+        "explicit_prohibit_quote": null,
+        "evidence_urls": [
+          "https://efhub.com/privacy"
+        ],
+        "reason_ko": "현재 확인한 문서는 개인정보/일반 사이트 소개이며 해당 카드 공급·재사용 계약의 허용 또는 금지 문구를 찾지 못함. 검색/표본 문서에서 미확인인 것이며 전체 사이트에 조항이 없다는 증명은 아님.",
+        "needed_evidence_ko": "공개 표시/선택 필드 API 제공·다운로드·상업/비상업·attribution·재배포 조건"
+      },
+      {
+        "provider": "EFHub",
+        "action": "quota_and_cost",
+        "action_ko": "요청 쿼터·비용",
+        "classification": "미확인",
+        "explicit_allow_quote": null,
+        "explicit_prohibit_quote": null,
+        "evidence_urls": [
+          "https://efhub.com/privacy"
+        ],
+        "reason_ko": "현재 확인한 문서는 개인정보/일반 사이트 소개이며 해당 카드 공급·재사용 계약의 허용 또는 금지 문구를 찾지 못함. 검색/표본 문서에서 미확인인 것이며 전체 사이트에 조항이 없다는 증명은 아님.",
+        "needed_evidence_ko": "요청/동시성/버스트·무료/유료 한도·서비스 제한의 공개 계약"
+      },
+      {
+        "provider": "EFHub",
+        "action": "stable_feed_and_updates",
+        "action_ko": "안정 feed/URL·실제 갱신 조건",
+        "classification": "미확인",
+        "explicit_allow_quote": null,
+        "explicit_prohibit_quote": null,
+        "evidence_urls": [
+          "https://efhub.com/privacy"
+        ],
+        "reason_ko": "현재 확인한 문서는 개인정보/일반 사이트 소개이며 해당 카드 공급·재사용 계약의 허용 또는 금지 문구를 찾지 못함. 검색/표본 문서에서 미확인인 것이며 전체 사이트에 조항이 없다는 증명은 아님.",
+        "needed_evidence_ko": "정상 discovery/버전·필드 계약·갱신/폐기·증분/전체 snapshot·허용 주기·실패 시 처리"
+      },
+      {
+        "provider": "PesLig",
+        "action": "automated_access",
+        "action_ko": "자동 접근/주기적 수집",
+        "classification": "미확인",
+        "explicit_allow_quote": null,
+        "explicit_prohibit_quote": null,
+        "evidence_urls": [
+          "https://peslig.com.tr/kvkk.php",
+          "https://peslig.com.tr/pesdb.php",
+          "https://peslig.com.tr/hakkimizda.php"
+        ],
+        "reason_ko": "현재 확인한 문서는 개인정보/일반 사이트 소개이며 해당 카드 공급·재사용 계약의 허용 또는 금지 문구를 찾지 못함. 검색/표본 문서에서 미확인인 것이며 전체 사이트에 조항이 없다는 증명은 아님.",
+        "needed_evidence_ko": "허용된 API/feed·요청 방법·로봇/자동화 조건과 권한 범위"
+      },
+      {
+        "provider": "PesLig",
+        "action": "raw_storage",
+        "action_ko": "raw 응답·관측 원문 보관",
+        "classification": "미확인",
+        "explicit_allow_quote": null,
+        "explicit_prohibit_quote": null,
+        "evidence_urls": [
+          "https://peslig.com.tr/kvkk.php",
+          "https://peslig.com.tr/pesdb.php",
+          "https://peslig.com.tr/hakkimizda.php"
+        ],
+        "reason_ko": "현재 확인한 문서는 개인정보/일반 사이트 소개이며 해당 카드 공급·재사용 계약의 허용 또는 금지 문구를 찾지 못함. 검색/표본 문서에서 미확인인 것이며 전체 사이트에 조항이 없다는 증명은 아님.",
+        "needed_evidence_ko": "보관 가능한 원본 범위·보유기간·관측/해시 보존·삭제 요구 처리"
+      },
+      {
+        "provider": "PesLig",
+        "action": "normalized_storage",
+        "action_ko": "정규화 DB/변경 이력 저장",
+        "classification": "미확인",
+        "explicit_allow_quote": null,
+        "explicit_prohibit_quote": null,
+        "evidence_urls": [
+          "https://peslig.com.tr/kvkk.php",
+          "https://peslig.com.tr/pesdb.php",
+          "https://peslig.com.tr/hakkimizda.php"
+        ],
+        "reason_ko": "현재 확인한 문서는 개인정보/일반 사이트 소개이며 해당 카드 공급·재사용 계약의 허용 또는 금지 문구를 찾지 못함. 검색/표본 문서에서 미확인인 것이며 전체 사이트에 조항이 없다는 증명은 아님.",
+        "needed_evidence_ko": "선택 필드의 정규화·ID 관계·이력 보존·파생 데이터 이용 범위"
+      },
+      {
+        "provider": "PesLig",
+        "action": "image_browser_load",
+        "action_ko": "원격 이미지 URL의 사이트 로드",
+        "classification": "미확인",
+        "explicit_allow_quote": null,
+        "explicit_prohibit_quote": null,
+        "evidence_urls": [
+          "https://peslig.com.tr/kvkk.php",
+          "https://peslig.com.tr/pesdb.php",
+          "https://peslig.com.tr/hakkimizda.php"
+        ],
+        "reason_ko": "현재 확인한 문서는 개인정보/일반 사이트 소개이며 해당 카드 공급·재사용 계약의 허용 또는 금지 문구를 찾지 못함. 검색/표본 문서에서 미확인인 것이며 전체 사이트에 조항이 없다는 증명은 아님.",
+        "needed_evidence_ko": "이미지 권리/제공 조건·hotlink 허용·출처 표기·트래픽 조건"
+      },
+      {
+        "provider": "PesLig",
+        "action": "image_cache_and_redistribution",
+        "action_ko": "이미지 파일 캐시·재호스팅/재배포",
+        "classification": "미확인",
+        "explicit_allow_quote": null,
+        "explicit_prohibit_quote": null,
+        "evidence_urls": [
+          "https://peslig.com.tr/kvkk.php",
+          "https://peslig.com.tr/pesdb.php",
+          "https://peslig.com.tr/hakkimizda.php"
+        ],
+        "reason_ko": "현재 확인한 문서는 개인정보/일반 사이트 소개이며 해당 카드 공급·재사용 계약의 허용 또는 금지 문구를 찾지 못함. 검색/표본 문서에서 미확인인 것이며 전체 사이트에 조항이 없다는 증명은 아님.",
+        "needed_evidence_ko": "영구/임시 캐시·CDN/R2·수정/최적화·공개 재배포 허용 범위"
+      },
+      {
+        "provider": "PesLig",
+        "action": "public_site_and_api",
+        "action_ko": "자체 검색 사이트·공개 DB API 제공",
+        "classification": "미확인",
+        "explicit_allow_quote": null,
+        "explicit_prohibit_quote": null,
+        "evidence_urls": [
+          "https://peslig.com.tr/kvkk.php",
+          "https://peslig.com.tr/pesdb.php",
+          "https://peslig.com.tr/hakkimizda.php"
+        ],
+        "reason_ko": "현재 확인한 문서는 개인정보/일반 사이트 소개이며 해당 카드 공급·재사용 계약의 허용 또는 금지 문구를 찾지 못함. 검색/표본 문서에서 미확인인 것이며 전체 사이트에 조항이 없다는 증명은 아님.",
+        "needed_evidence_ko": "공개 표시/선택 필드 API 제공·다운로드·상업/비상업·attribution·재배포 조건"
+      },
+      {
+        "provider": "PesLig",
+        "action": "quota_and_cost",
+        "action_ko": "요청 쿼터·비용",
+        "classification": "미확인",
+        "explicit_allow_quote": null,
+        "explicit_prohibit_quote": null,
+        "evidence_urls": [
+          "https://peslig.com.tr/kvkk.php",
+          "https://peslig.com.tr/pesdb.php",
+          "https://peslig.com.tr/hakkimizda.php"
+        ],
+        "reason_ko": "현재 확인한 문서는 개인정보/일반 사이트 소개이며 해당 카드 공급·재사용 계약의 허용 또는 금지 문구를 찾지 못함. 검색/표본 문서에서 미확인인 것이며 전체 사이트에 조항이 없다는 증명은 아님.",
+        "needed_evidence_ko": "요청/동시성/버스트·무료/유료 한도·서비스 제한의 공개 계약"
+      },
+      {
+        "provider": "PesLig",
+        "action": "stable_feed_and_updates",
+        "action_ko": "안정 feed/URL·실제 갱신 조건",
+        "classification": "미확인",
+        "explicit_allow_quote": null,
+        "explicit_prohibit_quote": null,
+        "evidence_urls": [
+          "https://peslig.com.tr/kvkk.php",
+          "https://peslig.com.tr/pesdb.php",
+          "https://peslig.com.tr/hakkimizda.php"
+        ],
+        "reason_ko": "현재 확인한 문서는 개인정보/일반 사이트 소개이며 해당 카드 공급·재사용 계약의 허용 또는 금지 문구를 찾지 못함. 검색/표본 문서에서 미확인인 것이며 전체 사이트에 조항이 없다는 증명은 아님.",
+        "needed_evidence_ko": "정상 discovery/버전·필드 계약·갱신/폐기·증분/전체 snapshot·허용 주기·실패 시 처리"
+      }
+    ],
+    "minimum_resolution": [
+      {
+        "provider": "EFHub",
+        "who": "efhub.com 데이터/API 제공 권한을 가진 운영 주체. 현재 개인정보 정책의 연락 창구가 API/이미지 권리 승인 담당인지와 법적 제공 주체는 미확인.",
+        "required_material": "범위가 일치하는 공개 API/feed 문서·이용약관/라이선스 또는 권한 있는 제공자의 허용 문서: 공식 KR 대상의 특수 카드 필드·상품 관계·raw/정규화/이력 저장·자체 사이트/API 표시·이미지 이용·주기/쿼터/비용·버전/갱신 조건.",
+        "scope_note": "이미지의 제3자 권리를 제공자가 허용할 수 있는 근거가 포함되는지 확인하고, 아니면 해당 이미지 권리자 또는 권한 있는 제공 경로의 조건을 별도로 확보한다."
+      },
+      {
+        "provider": "PesLig",
+        "who": "PesLig의 DB/API 제공·재사용 권한을 가진 운영 주체. 사이트는 PesLig.Com.TR와 Cihan ACAR를 표시하지만 KVKK 연락/개인정보 책임 표시는 게임 데이터 재배포 권한 증명이 아니다.",
+        "required_material": "brief/index feed의 자동 요청·로컬 raw·정규화/변경 이력·공개 필드 API·이미지별 이용·캐시/재배포 범위, attribution·상업 조건·쿼터/비용·버전 discovery와 갱신 정책을 명시한 제공 문서/라이선스.",
+        "scope_note": "KONAMI 원본 파일에서 비롯된다는 제공자 선언만으로 제3자 이미지/데이터 권리 처리가 완료됐다고 보지 않는다."
+      },
+      {
+        "who": "프로젝트 사용자",
+        "required_material": "추가 연락·계정/계약/유료 활성화가 필요해지는 경우 그 구체 행동에 대한 권한. 사용자 승인만으로 공급자/제3자의 데이터·이미지 이용 허가를 대체하지 않는다.",
+        "action_now": "이번에는 연락·가입·계정/토큰 취득·계약·결제·추가 서비스 활성화를 하지 않음."
+      }
+    ],
+    "decision": {
+      "G1_rights": "미통과/미확인 — 필요한 자동 공급·저장·이미지·공개 재사용 범위의 명시 근거를 확보하지 못함.",
+      "G3_access_stability": "현재 EFHub 개인정보 문서는403, 과거 목록 성공과 별개. PesLig DB HTML200은 확인했으나 현재 API 버전/정상 공급·실제 갱신/쿼터 계약은 미확인. 이 법적 조사만으로 G3를 통과시키지 않음.",
+      "explicit_permission_found": false,
+      "explicit_prohibition_found": false,
+      "classification_caution": "허용을 확인하지 못한 상태이며 추측으로 법적 금지라고 판정하지 않는다. 일시 HTTP 접근 거부와 데이터 재사용 조건도 별개다.",
+      "excluded_transfers": [
+        "동명 EFHUB 논문/학술 데이터셋 라이선스를 efhub.com에 전용하지 않음",
+        "다른 DB/서비스의 CC/MIT/약관을 EFHub 또는 PesLig에 전용하지 않음",
+        "개인정보 보유/자동 수집 조항을 카드 DB 수집·보관 허가로 전용하지 않음"
+      ],
+      "adoption_status": "필수 공급 계약/권리 범위가 문서로 확인되기 전 최종 공급자 선정은 보류. 기존 연구 raw를 공개하거나 새 활성 import/API 재배포를 실행하지 않음."
+    },
+    "scope_limit": "Inspected publicdocuments/search only;unverified is neither explicitpermission nor prohibition. No additionalAPI/image requests."
+  },
+  "alternative_providers": {
+    "direct_requests": [
+      {
+        "url": "https://pesdatabase.com/pack/list",
+        "requested_at": "2026-10-25T15:23:41.302947Z",
+        "method": "GET",
+        "status": 200,
+        "final_url": "https://pesdatabase.com/pack/list",
+        "observed_at": "2026-10-25T15:23:43.059982Z",
+        "content_type": "text/html;charset=utf-8",
+        "response_bytes": 22078,
+        "sha256": "8bf92023393fcfc7deaec44e909412f66c06f077d52df017ff6b7406e2dcc442",
+        "hash_scope": "complete HTTP response body bytes",
+        "headers": {
+          "Date": "Sun, 25 Oct 2026 15:23:43 GMT",
+          "Last-Modified": "Sun, 25 Oct 2026 15:23:42 GMT",
+          "Cache-Control": "max-age=300"
+        },
+        "title": "卡包列表 / Pack List - eFootball Database",
+        "documentation_links": [
+          {
+            "url": "https://pesdatabase.com/about",
+            "label": "关于",
+            "discovery": "normal public HTML anchor; actual target response recorded separately when fetched",
+            "previously_denied": false,
+            "target_http_status_this_review": null
+          },
+          {
+            "url": "https://pesdatabase.com/contact",
+            "label": "联系",
+            "discovery": "normal public HTML anchor; actual target response recorded separately when fetched",
+            "previously_denied": false,
+            "target_http_status_this_review": null
+          },
+          {
+            "url": "https://pesdatabase.com/privacy",
+            "label": "隐私政策",
+            "discovery": "normal public HTML anchor; actual target response recorded separately when fetched",
+            "previously_denied": false,
+            "target_http_status_this_review": null
+          },
+          {
+            "url": "https://pesdatabase.com/terms",
+            "label": "条款",
+            "discovery": "normal public HTML anchor; actual target response recorded separately when fetched",
+            "previously_denied": false,
+            "target_http_status_this_review": 200
+          }
+        ]
+      },
+      {
+        "url": "https://thewinningxi.com/en/cards/",
+        "requested_at": "2026-10-25T15:23:41.303399Z",
+        "method": "GET",
+        "status": 200,
+        "final_url": "https://thewinningxi.com/en/cards/",
+        "observed_at": "2026-10-25T15:23:42.434639Z",
+        "content_type": "text/html; charset=utf-8",
+        "response_bytes": 294540,
+        "sha256": "c71429ca8a6335b5a3e1167cc342cef1530b16b8599f9b647b592fffb328f85a",
+        "hash_scope": "complete HTTP response body bytes",
+        "headers": {
+          "Date": "Sun, 25 Oct 2026 15:23:42 GMT",
+          "Cache-Control": "public, max-age=0, must-revalidate"
+        },
+        "title": "This week’s cards · The Winning XI",
+        "documentation_links": [
+          {
+            "url": "https://thewinningxi.com/en/privacy/",
+            "label": "Privacy notice",
+            "discovery": "normal public HTML anchor; actual target response recorded separately when fetched",
+            "previously_denied": false,
+            "target_http_status_this_review": null
+          }
+        ]
+      },
+      {
+        "url": "https://pesdatabase.com/terms",
+        "requested_at": "2026-10-25T15:24:24.570342Z",
+        "method": "GET",
+        "status": 200,
+        "final_url": "https://pesdatabase.com/terms",
+        "observed_at": "2026-10-25T15:24:24.885104Z",
+        "content_type": "text/html;charset=utf-8",
+        "response_bytes": 11810,
+        "sha256": "131cb6abc3e0401d9d4d728c62725b844f775b255a22e7b945cfe9d11aeb799d",
+        "hash_scope": "complete HTTP response body bytes",
+        "title": "条款与免责声明 - eFootball Database",
+        "documentation_links": [
+          {
+            "url": "https://pesdatabase.com/about",
+            "label": "关于",
+            "discovery": "normal public HTML anchor; actual target response recorded separately when fetched",
+            "previously_denied": false,
+            "target_http_status_this_review": null
+          },
+          {
+            "url": "https://pesdatabase.com/contact",
+            "label": "联系",
+            "discovery": "normal public HTML anchor; actual target response recorded separately when fetched",
+            "previously_denied": false,
+            "target_http_status_this_review": null
+          },
+          {
+            "url": "https://pesdatabase.com/terms",
+            "label": "条款",
+            "discovery": "normal public HTML anchor; actual target response recorded separately when fetched",
+            "previously_denied": false,
+            "target_http_status_this_review": 200
+          }
+        ]
+      }
+    ],
+    "results": [
+      {
+        "provider": "PESDATABASE.com",
+        "selected": false,
+        "public_pages_verified_this_review": [
+          "https://pesdatabase.com/pack/list",
+          "https://pesdatabase.com/terms"
+        ],
+        "api_export_feed": {
+          "state": "not_verified",
+          "inspection_scope": "The inspected pack-list/terms anchors did not expose an API, downloadable export, feed contract or stable-latest manifest. This does not prove none exists elsewhere.",
+          "discovered_links": [
+            "https://pesdatabase.com/about",
+            "https://pesdatabase.com/contact",
+            "https://pesdatabase.com/privacy",
+            "https://pesdatabase.com/terms"
+          ],
+          "api_response_verified": false,
+          "export_response_verified": false
+        },
+        "permission_gate": {
+          "state": "not_passed_prior_contact_required",
+          "evidence_url": "https://pesdatabase.com/terms",
+          "automatic_access": "normal HTML factual inspection only in this review; bulk automatic collection not authorized by these observations",
+          "raw_storage": "permission not established; no raw cache written",
+          "normalized_storage_and_public_reuse": "bulk/commercial use requires prior contact; agreement not obtained",
+          "image_load_store_redistribute": "underlying rights remain with rights holders; required usage/redistribution permission not established",
+          "contact_or_contract_performed": false
+        },
+        "price_quota_gate": {
+          "state": "unknown",
+          "feed_price": null,
+          "allowed_quota": null,
+          "note": "Public browsing success is not a free recurring-feed agreement."
+        },
+        "freshness_gate": {
+          "state": "provider_marker_only",
+          "observed_page_marker": "2026-10-22",
+          "observed_catalogue_label": "2124 packs",
+          "note": "Catalogue/date and Last-Modified/cache headers are not a stable update contract or observed new/changed/deleted-card delta."
+        },
+        "current_seven_full_special_gate": {
+          "state": "not_verified",
+          "prior_sample": "Magical Dribblers intro11 on a UUID detail; no new detail request",
+          "scope_limit": "Pack catalogue 2124 is not current KR seven; list suffix numbers 7/5 were not interpreted as player counts. No same-round complete special-card ID manifest was verified."
+        },
+        "next_allowed_step": "Use supplied explicit permission/feed documentation if provided; do not scrape additional catalogue rows or probe images before G1 is resolved."
+      },
+      {
+        "provider": "TheWinningXI",
+        "selected": false,
+        "public_pages_verified_this_review": [
+          "https://thewinningxi.com/en/cards/"
+        ],
+        "api_export_feed": {
+          "state": "not_verified",
+          "inspection_scope": "The inspected cards HTML exposes a privacy anchor and pack previews; no explicit permitted API/export/feed contract was discovered. This is a scoped observation, not proof of absence.",
+          "discovered_links": [
+            "https://thewinningxi.com/en/privacy/"
+          ],
+          "api_response_verified": false,
+          "export_response_verified": false
+        },
+        "permission_gate": {
+          "state": "unknown_not_passed",
+          "automatic_access": "normal independent HTML factual inspection only",
+          "raw_storage": "not established; body not persisted",
+          "normalized_storage_and_public_reuse": "not established",
+          "image_load_store_redistribute": "not established; no images requested"
+        },
+        "price_quota_gate": {
+          "state": "unknown",
+          "feed_price": null,
+          "allowed_quota": null
+        },
+        "freshness_gate": {
+          "state": "provider_statement_only",
+          "statement_original": "Card data rebuilt weekly, after each Live Update",
+          "note": "No stable discovery contract or actual upstream before/after change was validated."
+        },
+        "current_seven_full_special_gate": {
+          "state": "not_verified",
+          "observed_preview_original": "Magical Dribblers 11 players 11 new; POTW European Club Championship 22 Oct 26 11 players 11 new; POTW Worldwide 22 Oct 26 11 players 11 new",
+          "scope_limit": "Weekly new-card previews/game pack-table statements do not prove all special types for all seven official rounds, nor a complete API manifest."
+        },
+        "next_allowed_step": "Require a documented permitted feed/API and storage/image-use terms before inactive bulk or image-wide selection probes."
+      },
+      {
+        "provider": "eFootballDB.info",
+        "selected": false,
+        "public_pages_verified_this_review": [],
+        "api_export_feed": {
+          "state": "discovery_and_prior_failure_only",
+          "discovered_api": "https://api.efootballdb.info/api/v2/players/88046292727298",
+          "prior_specific_api_status": 404,
+          "current_api_response_verified": false,
+          "export_response_verified": false,
+          "note": "A prior exact card-detail request and client route discovery are not a current valid product/full-special feed. Failed path not retried or varied."
+        },
+        "permission_gate": {
+          "state": "restricted_description_permission_not_established",
+          "evidence_url": "https://efootballdb.info/en/dataset-license",
+          "prior_direct_status": 403,
+          "later_evidence": "Stored parent public-read correction describes personal/noncommercial community data and unauthorized-bulk restrictions; not a service storage/redistribution grant",
+          "current_direct_license_requests": 0,
+          "raw_storage": "not established; no raw cache written",
+          "normalized_storage_and_public_reuse": "not established for this public catalogue service",
+          "image_load_store_redistribute": "not established; no image request"
+        },
+        "price_quota_gate": {
+          "state": "unknown",
+          "feed_price": null,
+          "allowed_quota": null
+        },
+        "freshness_gate": {
+          "state": "weekly_update_declaration_only",
+          "actual_delta_verified": false
+        },
+        "current_seven_full_special_gate": {
+          "state": "not_verified",
+          "prior_sample": "European Clubs Midfielders filtered HTML11",
+          "scope_limit": "No exact official round mapping/all-special completeness for seven; same label/count alone not sufficient."
+        },
+        "next_allowed_step": "Reuse existing metadata; require newly supplied explicit allowed-feed/license documentation. No denied license/detail path retry or substitute guessing."
+      }
+    ],
+    "minimum_user_decision": {
+      "decision_needed_if_continuing_with_these_alternatives": "명시 허용 feed와 이용조건을 직접 제공하거나, 특정 공급자에 허용범위·가격·쿼터를 문의하는 별도 연락을 허가할지 결정해야 한다. 이 분담에서는 연락하지 않았다.",
+      "recommended_first_candidate_for_permission_clarification": "PESDATABASE.com: 실제 terms가 bulk/commercial prior-contact를 요구하므로 요청해야 할 조건이 가장 명확함. 이는 후보 추천이지 공급자 선정 아님.",
+      "minimum_provider_answers": [
+        "자동 접근용 정확 feed/API/export와 최신 발견 방식·갱신/중단 계약",
+        "전체 공식 회차별 특수-card manifest/타입/수량과 완전성 확인 방법",
+        "raw 및 정규화 DB 보관·공개 파생 이용·출처표기·철회/삭제 조건",
+        "이미지 로드·저장·재배포 각각의 허용 범위",
+        "서비스의 공개/상업 이용 조건·쿼터·가격"
+      ],
+      "budget_decision": "유료 조건이 실제로 제시되기 전 예산을 임의 가정하지 않음. 결제·계약은 별도 사용자 결정.",
+      "if_no_permission_or_feed_is_provided": "선정 미완료를 유지한다. 공개 HTML만으로 허용 DB 공급자를 선정하거나 기존 G1~G5 기준을 낮추지 않는다."
+    },
+    "scope_limit": [
+      "명시 feed 링크를 검사한 페이지에서 발견하지 못한 것은 전체 사이트에 API/export가 없다는 증명이 아니다.",
+      "HTTP200·공개 HTML·최근 날짜·주간갱신 설명을 자동 수집/저장/이미지 재배포 허가로 대체하지 않는다.",
+      "PESDB는 명시 자동 수집 금지에 따라 후보에서 제외했고 요청하지 않았다.",
+      "이전에 거부된 home/about/license/detail 경로와 특정 실패 API를 재요청하거나 파라미터/헤더/키로 우회하지 않았다.",
+      "선정용 inactive bulk/raw/image probe는 이용 권한이 확인되지 않아 수행하지 않았다. 새로 수행한 것은 제한된 독립 HTML/공식 범위와의 사실 대조뿐이다.",
+      "사용자 연락 허가가 향후 생겨도 본 기록을 공급자 동의나 실제 feed 검증으로 확대하지 않는다."
+    ]
+  },
+  "freshness_evidence": {
+    "unchanged_successful_response_groups": [
+      {
+        "url": "https://efhub.com/ko/players/88046292727298",
+        "sha256": "7f242583b999a8fed0c20f690ec86380a7aebbe0bfd19fffba538c411d446d49",
+        "observations": [
+          {
+            "url": "https://efhub.com/ko/players/88046292727298",
+            "observed_at": "2026-10-25T03:44:13+00:00",
+            "sha256": "7f242583b999a8fed0c20f690ec86380a7aebbe0bfd19fffba538c411d446d49",
+            "evidence": {
+              "file": "data/research/source-observations.json",
+              "pointer": "/observations/3"
+            }
+          },
+          {
+            "url": "https://efhub.com/ko/players/88046292727298",
+            "observed_at": "2026-10-25T03:45:23+00:00",
+            "sha256": "7f242583b999a8fed0c20f690ec86380a7aebbe0bfd19fffba538c411d446d49",
+            "evidence": {
+              "file": "data/research/source-observations.json",
+              "pointer": "/observations/16"
+            }
+          }
+        ],
+        "distinct_observation_times": 2,
+        "actual_source_change_demonstrated": false
+      },
+      {
+        "url": "https://efhub.com/_next/static/chunks/8964e7af23583e8b.js?dpl=dpl_31Riks92A4aWRR56JjnttQdARhMg",
+        "sha256": "241046ee60771205e8a331364dccb65b9e5cf39e7471e08bd75c2123152744bc",
+        "observations": [
+          {
+            "url": "https://efhub.com/_next/static/chunks/8964e7af23583e8b.js?dpl=dpl_31Riks92A4aWRR56JjnttQdARhMg",
+            "observed_at": "2026-10-25T03:44:54+00:00",
+            "sha256": "241046ee60771205e8a331364dccb65b9e5cf39e7471e08bd75c2123152744bc",
+            "evidence": {
+              "file": "data/research/source-observations.json",
+              "pointer": "/observations/7"
+            }
+          },
+          {
+            "url": "https://efhub.com/_next/static/chunks/8964e7af23583e8b.js?dpl=dpl_31Riks92A4aWRR56JjnttQdARhMg",
+            "observed_at": "2026-10-25T03:47:03+00:00",
+            "sha256": "241046ee60771205e8a331364dccb65b9e5cf39e7471e08bd75c2123152744bc",
+            "evidence": {
+              "file": "data/research/source-observations.json",
+              "pointer": "/observations/25"
+            }
+          }
+        ],
+        "distinct_observation_times": 2,
+        "actual_source_change_demonstrated": false
+      },
+      {
+        "url": "https://efhub.com/api/public/packs?search=&page=1&limit=30",
+        "sha256": "7999608d1fad35a5c709b04d232cc4129efa2259b83ee7d79d5c07ec213bbb14",
+        "observations": [
+          {
+            "url": "https://efhub.com/api/public/packs?search=&page=1&limit=30",
+            "observed_at": "2026-10-25T03:45:23+00:00",
+            "sha256": "7999608d1fad35a5c709b04d232cc4129efa2259b83ee7d79d5c07ec213bbb14",
+            "evidence": {
+              "file": "data/research/source-observations.json",
+              "pointer": "/observations/12"
+            }
+          },
+          {
+            "url": "https://efhub.com/api/public/packs?search=&page=1&limit=30",
+            "observed_at": "2026-10-25T03:47:03+00:00",
+            "sha256": "7999608d1fad35a5c709b04d232cc4129efa2259b83ee7d79d5c07ec213bbb14",
+            "evidence": {
+              "file": "data/research/source-observations.json",
+              "pointer": "/observations/23"
+            }
+          },
+          {
+            "url": "https://efhub.com/api/public/packs?search=&page=1&limit=30",
+            "observed_at": "2026-10-25T04:58:52.412Z",
+            "sha256": "7999608d1fad35a5c709b04d232cc4129efa2259b83ee7d79d5c07ec213bbb14",
+            "evidence": {
+              "file": "data/research/current-catalog-observations.json",
+              "pointer": "/observations/0"
+            }
+          },
+          {
+            "url": "https://efhub.com/api/public/packs?search=&page=1&limit=30",
+            "observed_at": "2026-10-25T11:57:38.792Z",
+            "sha256": "7999608d1fad35a5c709b04d232cc4129efa2259b83ee7d79d5c07ec213bbb14",
+            "evidence": {
+              "file": "data/research/current-shop-observations.json",
+              "pointer": "/efhub_fetches/records/0"
+            }
+          }
+        ],
+        "distinct_observation_times": 4,
+        "actual_source_change_demonstrated": false
+      },
+      {
+        "url": "https://efhub.com/api/public/packs?search=&page=2&limit=30",
+        "sha256": "5d2a21a19e196c847d6f5cee2678a59111ebfd974b426e35a58773a7516269d7",
+        "observations": [
+          {
+            "url": "https://efhub.com/api/public/packs?search=&page=2&limit=30",
+            "observed_at": "2026-10-25T03:46:05+00:00",
+            "sha256": "5d2a21a19e196c847d6f5cee2678a59111ebfd974b426e35a58773a7516269d7",
+            "evidence": {
+              "file": "data/research/source-observations.json",
+              "pointer": "/observations/17"
+            }
+          },
+          {
+            "url": "https://efhub.com/api/public/packs?search=&page=2&limit=30",
+            "observed_at": "2026-10-25T11:57:39.490Z",
+            "sha256": "5d2a21a19e196c847d6f5cee2678a59111ebfd974b426e35a58773a7516269d7",
+            "evidence": {
+              "file": "data/research/current-shop-observations.json",
+              "pointer": "/efhub_fetches/records/1"
+            }
+          }
+        ],
+        "distinct_observation_times": 2,
+        "actual_source_change_demonstrated": false
+      },
+      {
+        "url": "https://efhub.com/ko/packs/magical-dribblers-22-oct-26",
+        "sha256": "9c58a4d89515f09ca8401794e2d39b2bde4faa0aa7e154689659b41674c1f598",
+        "observations": [
+          {
+            "url": "https://efhub.com/ko/packs/magical-dribblers-22-oct-26",
+            "observed_at": "2026-10-25T03:46:06+00:00",
+            "sha256": "9c58a4d89515f09ca8401794e2d39b2bde4faa0aa7e154689659b41674c1f598",
+            "evidence": {
+              "file": "data/research/source-observations.json",
+              "pointer": "/observations/19"
+            }
+          },
+          {
+            "url": "https://efhub.com/ko/packs/magical-dribblers-22-oct-26",
+            "observed_at": "2026-10-25T03:47:03+00:00",
+            "sha256": "9c58a4d89515f09ca8401794e2d39b2bde4faa0aa7e154689659b41674c1f598",
+            "evidence": {
+              "file": "data/research/source-observations.json",
+              "pointer": "/observations/24"
+            }
+          },
+          {
+            "url": "https://efhub.com/ko/packs/magical-dribblers-22-oct-26",
+            "observed_at": "2026-10-25T04:59:03.273Z",
+            "sha256": "9c58a4d89515f09ca8401794e2d39b2bde4faa0aa7e154689659b41674c1f598",
+            "evidence": {
+              "file": "data/research/current-catalog-observations.json",
+              "pointer": "/observations/9"
+            }
+          }
+        ],
+        "distinct_observation_times": 3,
+        "actual_source_change_demonstrated": false
+      },
+      {
+        "url": "https://efhub.com/ko/packs/borussia-dortmund-pack-26-27",
+        "sha256": "e855a287ff7519916d507fd0dade30b058e1680c3ff0cd41ca67767a32f1a4c6",
+        "observations": [
+          {
+            "url": "https://efhub.com/ko/packs/borussia-dortmund-pack-26-27",
+            "observed_at": "2026-10-25T03:46:06+00:00",
+            "sha256": "e855a287ff7519916d507fd0dade30b058e1680c3ff0cd41ca67767a32f1a4c6",
+            "evidence": {
+              "file": "data/research/source-observations.json",
+              "pointer": "/observations/20"
+            }
+          },
+          {
+            "url": "https://efhub.com/ko/packs/borussia-dortmund-pack-26-27",
+            "observed_at": "2026-10-25T04:58:55.218Z",
+            "sha256": "e855a287ff7519916d507fd0dade30b058e1680c3ff0cd41ca67767a32f1a4c6",
+            "evidence": {
+              "file": "data/research/current-catalog-observations.json",
+              "pointer": "/observations/3"
+            }
+          }
+        ],
+        "distinct_observation_times": 2,
+        "actual_source_change_demonstrated": false
+      },
+      {
+        "url": "https://efootball-web.konami.net/probability_kr.php",
+        "sha256": "8d641fd6b0e1deb21b8f5cc225fa6283ad3ac9da264fcc23693bf46cd80672ec",
+        "observations": [
+          {
+            "url": "https://efootball-web.konami.net/probability_kr.php",
+            "observed_at": "2026-10-25T03:46:07+00:00",
+            "sha256": "8d641fd6b0e1deb21b8f5cc225fa6283ad3ac9da264fcc23693bf46cd80672ec",
+            "evidence": {
+              "file": "data/research/source-observations.json",
+              "pointer": "/observations/22"
+            }
+          },
+          {
+            "url": "https://efootball-web.konami.net/probability_kr.php",
+            "observed_at": "2026-10-25T15:21:55.435Z",
+            "sha256": "8d641fd6b0e1deb21b8f5cc225fa6283ad3ac9da264fcc23693bf46cd80672ec",
+            "evidence": {
+              "file": "artifacts/t009/official-current-20261025T152154208Z.observation.json",
+              "pointer": ""
+            }
+          }
+        ],
+        "distinct_observation_times": 2,
+        "actual_source_change_demonstrated": false
+      }
+    ],
+    "actual_data_change_verified": false,
+    "peslig_independent_success_snapshots_available": 1,
+    "peslig_generated_at_is_provider_claim_not_two_snapshot_change": true,
+    "new_root_http403_body_is_error_not_catalogue_delta": true,
+    "no_source_update_or_collection_scheduler_claim": true
+  },
+  "probe_preservation": {
+    "all_input_sha256_unchanged_after_audit": true,
+    "source_snapshot_redownloads": 0,
+    "network_requests_by_this_agent": 0,
+    "active_data_or_db_changed": false
+  },
+  "minimum_next_evidence": [
+    "Provider-authorized stable API/feed documents for current officialrounds and complete specialcard manifests.",
+    "Explicit allowed automated use,normalized/data retention/publicAPI and cardimage load/store/redistribution terms,quota and price.",
+    "Actual source update evidence,required fields and all-target image storage validation after the permission/special-manifest gates."
+  ],
+  "minimum_user_action_options": [
+    "Provide an already authorized API/feed and applicable data/image terms.",
+    "Separately authorize a bounded provider inquiry for these exact terms;no externalmessage has been sent."
+  ],
+  "preserved_limits": [
+    "No source chosen by weakening a gate.",
+    "No explicitrefusal bypass/retry and no broad claim that everyAPI isblocked.",
+    "Current403/1010 documentation context is not the missing cause/body of oldplayers403.",
+    "No activecatalogue/schema/DB/UI/simulator/Standardplaceholder changes;no deployment/push/newcredential/schedule."
+  ],
+  "supporting_private_artifacts": [
+    {
+      "path": "artifacts/t009/official-current-20261025T152154208Z.observation.json",
+      "bytes": 16541,
+      "sha256": "bc9fcfbd56fc22e9b4af20a6c1905416184648dfabc762d51f532a2002eee37f",
+      "tracking": "private local audit artifact;not an active catalogue/import"
+    },
+    {
+      "path": "artifacts/t009/catalog-probe.json",
+      "bytes": 196236,
+      "sha256": "4a05d68973700045d9f3707fd2dba531f3a11200f4e921babd2a2f9f0a9ecef4",
+      "tracking": "private local audit artifact;not an active catalogue/import"
+    },
+    {
+      "path": "artifacts/t009/primary-rights.json",
+      "bytes": 24776,
+      "sha256": "38e613e0302c28a2df761fd0aa9c7ab1ba022821e54e862642096a0eedb84cf4",
+      "tracking": "private local audit artifact;not an active catalogue/import"
+    },
+    {
+      "path": "artifacts/t009/alternative-provider-gates.json",
+      "bytes": 23346,
+      "sha256": "96cd4f1733e44fb2acd4331a86f40c2dfffc573e50f321e4794d718e76331862",
+      "tracking": "private local audit artifact;not an active catalogue/import"
+    },
+    {
+      "path": "artifacts/t009/efhub-known-page1-observation.json",
+      "bytes": 2252,
+      "sha256": "4cd3925300b94337b062d14727c83da81e46999bfda69509a42f46560ace116e",
+      "tracking": "private local audit artifact;not an active catalogue/import"
+    }
+  ]
+}
