@@ -31,7 +31,9 @@
 | C016 | 일괄 구매·지급형 팩은 코인 결제여도 미래 시뮬레이터 대상에서 제외 | R2~R6 이후 | purchase_mode bundle과 draw 구분; DB/검색은 유지. 현재 시뮬레이터 구현 없음 | 적용 중 |
 | C017 | 전체 카드 감사는 R1/T002·R5의 기존 범위이며 공개 확대 전 R4/T005에서 보강 | R1·R4·R5 | 새 중복 작업 대신 페이지·ID·누락·오류·이미지·타입·이름 필드 검증 보강 | 첫 요청 403·전수 미검증 |
 | C018 | 403 이후 정상 공개 UI/JS의 요청 경로·메서드·페이지 크기 차이만 진단 | R4~R6 | 추가 API/이미지 호출·토큰/쿠키·헤더 위장·프록시 변경·실패 요청 반복 금지 | 진단 완료·접근 제약 유지 |
-| C019 | 기존 Pages 정적 root 경로 호환을 위해 공개 7개 파일을 추적 생성 | R4~R6 | 원본 web/seed→dist→고정 export, CI는 bytes 검사만. 직접 수정 금지 | 로컬 검증·원격 미실행 |
+| C019 | 기존 Pages 정적 root 경로 호환을 위해 공개 7개 파일을 추적 생성 | R4~R6 | 원본 web/seed→dist→고정 export, CI는 bytes 검사만. 직접 수정 금지 | 미리보기 검증·main 미병합 |
+| C020 | P1 리뷰: 최신 수집 창에서 빠진 이전 상품·카드가 fresh CI에서 소실될 수 있음 | R3~R6 | 기존 committed 누적 카탈로그를 기준으로 새 관측 병합, 삭제 자동 금지·원본 보존, fresh CI/같은 크기 창 교체 회귀 검증 | 수정·로컬 회귀 검증 완료, 새 SHA CI 대기 |
+| C021 | PR #1은 draft이며 명시적 병합 권한 없이 main에 반영하지 않음 | R4 | 커밋/CI/미리보기 검증과 운영 병합을 구분 | 적용 중 |
 
 ## T000 — 목표 확인과 저장소 실측
 
@@ -347,16 +349,21 @@ C008/C009의 데이터 공백을 추적합니다. C010의 새 자료는 지역·
 ### 검증
 
 - 고정 Node 24.19.0·npm 11.9.0에서 npm ci, data:prepare, build 통과. 활성 상품 9개·카드 83개이며 모든 감독 데이터·관계는 지원 범위에서 제외했습니다.
-- 전체 Node 테스트 **110개 모두 통과**. 전체성 오판·감독 입력 거부·코인 팩의 bundle/draw 구분·체크포인트·403 무재시도·정규화·실패 보존·배포 생성물을 검증합니다.
+- P1 보강 후 최신 전체 Node 테스트 **126개 모두 통과**. 전체성 오판·감독 입력 거부·코인 팩의 bundle/draw 구분·체크포인트·403 무재시도·정규화·실패 보존·배포 생성물을 검증합니다.
 - 실제 Chromium 브라우저 **7개 묶음 통과**, pageerror 0. 모든 9상품에서 감독 미지원·부분 구성 표시, 상품↔카드·버전·검색·직접 주소·뒤로 이동·빈 결과·실패/재시도·이미지 대체와 768/390/320px 넘침 없음을 확인했습니다.
-- pages:export 후 pages:check 통과: 고정 7개 파일의 dist/root bytes 일치. project:check --base d8891f2 통과: 파일 55개·작업 8개·변경 경로 55개. JS 문법·git diff --check 통과.
+- pages:export 후 pages:check 통과: 고정 7개 파일의 dist/root bytes 일치. 최신 project:check 통과: 파일 57개·작업 8개. JS 문법·git diff --check 통과.
 - 전체 API 감사의 실제 결과는 data/research/card-api-audit.json과 CARD_API_AUDIT 문서를 기준으로 합니다. 실제 1요청403·0페이지·0카드·이미지0이며 진단2GET와 fixture 성공을 전수 수집 성공으로 표현하지 않습니다.
 - 신규 파일까지 포함한 git diff --cached --check에서 문서 끝의 추가 빈 줄 4건을 발견해 정리했습니다. 제품 코드·원문 관측은 변경하지 않았습니다.
 - work 71a98e982d51539b8540cf0153e0e787d69ef796을 원격 반영하고 PR #1을 생성했습니다. 같은 SHA의 push CI 40165286498·PR CI 40165315462와 Cloudflare check는 성공했습니다. main은 아직 초기 d8891f2입니다.
 - 최초 미리보기 https://dbbacfe3.efsimulator.pages.dev 의 HTML/JS/CSS/404/JSON은 로컬 생성물과 바이트 일치했습니다. 예약 _headers/_redirects는 같은 SHA의 GitHub blob으로 대조했고 누락 JSON·감독 주소404와 cache-control도 확인했습니다.
-- 원격에서 실제 상품/카드 직접 주소가 308 Location:/로 이동하는 오류를 발견했습니다. /index.html 재작성 대상이 Pages 정규화와 충돌하는 것으로 판단해 / 200 대상으로 수정했습니다. 아직 새 SHA 미리보기의 직접 주소 검증은 대기 중입니다. 초기 원격 브라우저 실패 증거는 artifacts/preview-remote/browser-check-initial-redirect.json에 보존했습니다.
+- 원격에서 실제 상품/카드 직접 주소가 308 Location:/로 이동하는 오류를 발견해 /index.html 대신 / 200 재작성으로 수정했습니다. 수정 SHA c482a786fa6d2b2af26b15656b197e13548540f8의 CI 40165664344·40165662244 및 Cloudflare check가 성공했습니다.
+- 수정 미리보기 https://ac479958.efsimulator.pages.dev 에서 실제 원격 브라우저 7개 흐름·pageerror 0, 직접 주소/끝 슬래시/404 등 raw HTTP 13개·Location 없음, 공개 5개 파일 바이트 일치를 확인했습니다. 예약 설정 2개는 같은 커밋 blob과 대조합니다. 최초 실패 증거와 수정 후 결과는 artifacts/preview-remote 및 preview-remote-fixed에 분리 보존했습니다.
+- P1 리뷰 discussion_r4369776161을 실제 CLI로 재현했습니다. 기존 9상품83카드가 작은 최신 창 적용 시 2상품16카드로 줄어도 성공했고, 동일 크기 9상품83카드 창 교체에서도 기존 상품ID1·카드ID12·자산ID12·관측ID2가 소실됐습니다.
+- 추적 seed를 누적 canonical로 보존하는 catalog-history 병합과 준비 단계의 고유 임시 파일·바이트 동시변경 검사·원자 교체를 추가했습니다. 동일 크기 창 교체 후 누적 10상품95카드와 모든 기존 ID를 보존합니다. 실제 저장소 seed는 9상품83카드 그대로이며 fixture의 가상 상품을 활성 데이터에 넣지 않았습니다.
+- P1 수정 후 실제 data:prepare 재실행은 추적 seed 바이트를 바꾸지 않았습니다. 실제 build·Pages 7개 bytes 검사·로컬 Chromium 7개 흐름도 재통과했고 pageerror는 0건입니다.
+- 독립 검토에서 관련 24개 테스트(history9·실제CLI8·수집병합7)가 통과했습니다. 오래된 관계 근거 역행·확인된 복수 분류/조건 소실·같은 상품 구성 축소·관측 충돌·입력손상·ENOSPC는 거부/보존하고 같은 입력 재실행은 바이트 차이가 없습니다. 전체 SQLite 개정 DB 복원을 구현했다고 주장하지 않습니다. 새 SHA 전체 CI와 미리보기 검증은 후속 기록합니다.
 - 브라우저 검사 도구는 로컬과 확인된 efsimulator HTTPS Pages 호스트만 허용하도록 확장했습니다. 임의 호스트/원격HTTP/userinfo/다른포트는 거부합니다. 전체 카드 API 재조회는 하지 않았습니다.
-- 생산 main 반영과 운영 공개 검증은 미실행입니다. R4 진행 중·전체 API 미검증·R6 미완료 상태를 유지합니다.
+- PR #1을 draft로 전환했습니다. 생산 main 반영과 운영 공개 검증은 미실행이며 명시적 병합 권한 없이 병합하지 않습니다. R4 진행 중·전체 API 미검증·R6 미완료 상태를 유지합니다.
 
 ### 완료조건과 남은 작업
 
@@ -396,6 +403,8 @@ C015~C019를 적용합니다. 팩은 코인 결제여도 일괄 지급형이며 
 | `scripts/collected-products.mjs` | 수정 | 명시 원본 ID·필드 근거로 수집 상품/카드를 병합하고 감독 범위 위반·구성 축소 거부 |
 | `scripts/export-pages.mjs` | 수정 | 허용된 공개 7개 파일만 root로 내보내고 읽기 전용 bytes 검사·실패 복구 |
 | `scripts/prepare-seed.mjs` | 수정 | 실제 조사 증거를 명시적 ID·관계·미확인을 보존한 표본으로 정규화 |
+| `scripts/catalog-history.mjs` | 수정 | 추적 누적 seed를 기준으로 현재 창 밖의 개체·관측·조건·관계 보존, 자동 삭제 거부 |
+| `tests/catalog-history.test.mjs` | 수정 | 누적 ID·역시간/충돌·복수 분류·구성 축소·입력 불변 회귀 검사 |
 | `scripts/serve.mjs` | 수정 | 지원하는 상품·카드 주소의 정적 미리보기와 제외된 감독/누락 자산의 404 처리 |
 | `styles.css` | 수정 | Pages root 배포용 추적 생성물; web/styles.css를 기준으로 build/export하며 직접 수정 금지 |
 | `README.md` | 수정 | 프로젝트 진입점과 관리 문서·실행 명령 안내 |

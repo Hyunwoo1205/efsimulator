@@ -1,10 +1,16 @@
-import { createHash } from 'node:crypto';
-import { readFile, mkdir, rename, writeFile } from 'node:fs/promises';
+import { createHash, randomUUID } from 'node:crypto';
+import { readFile, mkdir, rename, rm, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { addCollectedProducts } from './collected-products.mjs';
+import { mergeCatalogHistory } from './catalog-history.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+const target = resolve(root, 'data/catalog.seed.json');
+let original;
+try { original = await readFile(target); }
+catch (error) { if (error.code !== 'ENOENT') throw error; }
+const canonical = original === undefined ? undefined : JSON.parse(original.toString('utf8'));
 const evidence = JSON.parse(await readFile(resolve(root, 'data/research/source-observations.json'), 'utf8'));
 const byId = new Map(evidence.observations.map((observation) => [observation.id, observation]));
 const requireObservation = (id) => {
@@ -121,9 +127,21 @@ if (cardAudit) {
   if (!cardAudit.complete) seed.coverage.notes.push('전체 카드 API 전수 검증은 완료되지 않았습니다. 출처가 보고한 약 5만 카드 총계는 이 사이트의 확보 수량이나 서로 다른 실존 선수 수가 아닙니다.');
 }
 const { validateCatalog } = await import('./catalog.mjs');
+// The tracked seed, not a newest-page window or a local build DB, is durable.
+// Replaying a bootstrap/current window can add proofs but cannot delete history.
+seed = mergeCatalogHistory(canonical, seed);
 validateCatalog(seed);
-const target = resolve(root, 'data/catalog.seed.json');
 await mkdir(dirname(target), { recursive: true });
-await writeFile(`${target}.tmp`, `${JSON.stringify(seed, null, 2)}\n`);
-await rename(`${target}.tmp`, target);
+const bytes = Buffer.from(`${JSON.stringify(seed, null, 2)}\n`);
+if (!original?.equals(bytes)) {
+  const temporary = `${target}.${randomUUID()}.tmp`;
+  try {
+    await writeFile(temporary, bytes);
+    let current;
+    try { current = await readFile(target); }
+    catch (error) { if (error.code !== 'ENOENT') throw error; }
+    if (original === undefined ? current !== undefined : !current?.equals(original)) throw new Error('준비 도중 누적 seed가 변경되었습니다. 기존 파일을 덮어쓰지 않습니다.');
+    await rename(temporary, target);
+  } finally { await rm(temporary, { force: true }); }
+}
 process.stdout.write(`검증된 조사 표본 준비: 상품 ${seed.products.length}개, 카드 ${seed.cards.length}개. 감독은 지원 범위 제외. 전체 수집 완료 아님.\n`);
