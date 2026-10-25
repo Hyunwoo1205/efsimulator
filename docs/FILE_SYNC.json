@@ -322,7 +322,8 @@
         "scripts/prepare-seed.mjs",
         "docs/DEPLOYMENT.md",
         "scripts/catalog-history.mjs",
-        "tests/catalog-history.test.mjs"
+        "tests/catalog-history.test.mjs",
+        "docs/sources/FULL_ROSTER_RESEARCH.md"
       ],
       "update_when": [
         "데이터 계약·파이프라인·라우팅·이력 영속화·운영 방식 변경"
@@ -339,7 +340,8 @@
         "data/research/current-catalog-observations.json",
         "docs/WORKPLAN.md",
         "scripts/catalog-history.mjs",
-        "tests/catalog-history.test.mjs"
+        "tests/catalog-history.test.mjs",
+        "docs/sources/FULL_ROSTER_RESEARCH.md"
       ],
       "update_when": [
         "해당 계약·지원 범위·실행/관측 결과 변경 시 관련 파일 검토; 비활성 참고는 현재 모델로 재채택하지 않음"
@@ -388,7 +390,8 @@
         "docs/WORKPLAN.md",
         "docs/FILE_SYNC.json",
         "AGENTS.md",
-        "README.md"
+        "README.md",
+        "docs/sources/FULL_ROSTER_RESEARCH.md"
       ],
       "update_when": [
         "단계 상태·현재/이전/다음 작업·완료 조건·추가 요구 변경"
@@ -402,7 +405,8 @@
       "related_paths": [
         "docs/ROADMAP.md",
         "docs/FILE_SYNC.json",
-        "scripts/project-check.mjs"
+        "scripts/project-check.mjs",
+        "docs/sources/FULL_ROSTER_RESEARCH.md"
       ],
       "update_when": [
         "매 작업 착수·추가 요구·파일 변경·검증 결과·작업 종료"
@@ -666,7 +670,9 @@
       "related_paths": [
         "scripts/audit-cards.mjs",
         "data/research/card-api-audit.json",
-        "docs/WORKPLAN.md"
+        "docs/WORKPLAN.md",
+        "docs/sources/FULL_ROSTER_RESEARCH.md",
+        "data/research/roster-source-observations.json"
       ],
       "update_when": [
         "해당 계약·지원 범위·실행/관측 결과 변경 시 관련 파일 검토; 비활성 참고는 현재 모델로 재채택하지 않음"
@@ -957,6 +963,41 @@
       ],
       "update_when": [
         "해당 계약·지원 범위·실행/관측 결과 변경 시 관련 파일 검토; 비활성 참고는 현재 모델로 재채택하지 않음"
+      ],
+      "reviewed_in": "T005"
+    },
+    {
+      "path": "data/research/roster-source-observations.json",
+      "role": "T005의 403 원인/근거 한계·상품별 소개목록/타입·공식 초기풀·후보API 관측과 미확인 보존",
+      "priority": "P0",
+      "related_paths": [
+        "data/research/card-api-audit.json",
+        "data/research/current-catalog-observations.json",
+        "data/research/source-observations.json",
+        "docs/sources/FULL_ROSTER_RESEARCH.md",
+        "docs/sources/CARD_API_AUDIT.md",
+        "docs/COLLECTION.md",
+        "docs/WORKPLAN.md"
+      ],
+      "update_when": [
+        "403 원인 근거·상품 원본ID/전체 구성·공식 총계/기간·후보API/페이지네이션·허용 수집 조건 변경"
+      ],
+      "reviewed_in": "T005"
+    },
+    {
+      "path": "docs/sources/FULL_ROSTER_RESEARCH.md",
+      "role": "Standard 포함 초기 전체 선수 풀과 소개목록을 구분한 후보 조사·403 결론·기존 단계별 실증 계획/완료조건",
+      "priority": "P1",
+      "related_paths": [
+        "data/research/roster-source-observations.json",
+        "docs/sources/CARD_API_AUDIT.md",
+        "docs/ARCHITECTURE.md",
+        "docs/COLLECTION.md",
+        "docs/ROADMAP.md",
+        "docs/WORKPLAN.md"
+      ],
+      "update_when": [
+        "공식 상품/출시 카드 ID 대응·초기/잔여 pool·후보API 성공/제약·필요 결정과 범위 변경"
       ],
       "reviewed_in": "T005"
     }

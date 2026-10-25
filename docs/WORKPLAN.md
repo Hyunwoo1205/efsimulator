@@ -35,6 +35,8 @@
 | C020 | P1 리뷰: 최신 수집 창에서 빠진 이전 상품·카드가 fresh CI에서 소실될 수 있음 | R3~R6 | 기존 committed 누적 카탈로그를 기준으로 새 관측 병합, 삭제 자동 금지·원본 보존, fresh CI/같은 크기 창 교체 회귀 검증 | 4e0f1e3 수정·로컬/원격 CI·미리보기 검증 완료 |
 | C021 | PR #1은 draft이며 명시적 병합 권한 없이 main에 반영하지 않음 | R4 | 커밋/CI/미리보기 검증과 운영 병합을 구분 | 적용 중 |
 | C022 | 오프라인 mock 재현: 손상된 counter로 예산 초과, null checkpoint를 신규 실행으로 오인 | R4·R6 | 기존 T005에서 파일 부재와 손상 구분·counter/log/page/status 재개 전 검증; 손상 원본 보존·정상 빈 응답 blocked 무재시도. 실제 API/403 원본은 변경하지 않음 | 오프라인 수정·49개 감사/전체156개 테스트 통과 |
+| C023 | 목록 API403 원인과 limit100 지원 여부 진단 요청 | R1·R4·R5 | 기존 성공/실패·저장 본문/헤더·공개 클라이언트 근거부터 대조. 원인/가설 구분·동일 거부 요청 반복/우회 금지 | 조사 완료·원인 미확정 |
+| C024 | 상품별 Standard 포함 초기 전체 추첨풀 확보 방안 요청 | R1·R4·R5 | 글로벌 카드 카탈로그·소개 카드·실제 상품 구성 분리; 공식명/기간/총계와 상품별 카드ID 대조·임의Standard 보충 금지 | 조사 완료·전체 구성 API 미확보 |
 
 ## T000 — 목표 확인과 저장소 실측
 
@@ -352,7 +354,7 @@ C008/C009의 데이터 공백을 추적합니다. C010의 새 자료는 지역·
 - 고정 Node 24.19.0·npm 11.9.0에서 npm ci, data:prepare, build 통과. 활성 상품 9개·카드 83개이며 모든 감독 데이터·관계는 지원 범위에서 제외했습니다.
 - P1·체크포인트 보강 후 최신 전체 Node 테스트 **156개 모두 통과**. 전체성 오판·감독 입력 거부·코인 팩의 bundle/draw 구분·체크포인트·403 무재시도·정규화·실패 보존·배포 생성물을 검증합니다.
 - 실제 Chromium 브라우저 **7개 묶음 통과**, pageerror 0. 모든 9상품에서 감독 미지원·부분 구성 표시, 상품↔카드·버전·검색·직접 주소·뒤로 이동·빈 결과·실패/재시도·이미지 대체와 768/390/320px 넘침 없음을 확인했습니다.
-- pages:export 후 pages:check 통과: 고정 7개 파일의 dist/root bytes 일치. 최신 project:check 통과: 파일 57개·작업 8개. JS 문법·git diff --check 통과.
+- pages:export 후 pages:check 통과: 고정 7개 파일의 dist/root bytes 일치. 최신 project:check 통과: 파일 59개·작업 8개. JS 문법·git diff --check 통과.
 - 전체 API 감사의 실제 결과는 data/research/card-api-audit.json과 CARD_API_AUDIT 문서를 기준으로 합니다. 실제 1요청403·0페이지·0카드·이미지0이며 진단2GET와 fixture 성공을 전수 수집 성공으로 표현하지 않습니다.
 - 신규 파일까지 포함한 git diff --cached --check에서 문서 끝의 추가 빈 줄 4건을 발견해 정리했습니다. 제품 코드·원문 관측은 변경하지 않았습니다.
 - work 71a98e982d51539b8540cf0153e0e787d69ef796을 원격 반영하고 PR #1을 생성했습니다. 같은 SHA의 push CI 40165286498·PR CI 40165315462와 Cloudflare check는 성공했습니다. main은 아직 초기 d8891f2입니다.
@@ -373,6 +375,25 @@ C008/C009의 데이터 공백을 추적합니다. C010의 새 자료는 지역·
 
 - 오프라인 재개 보호 구현 SHA 14896eda13d9995b61a7c186dfcdfd5f3c1abb33의 push CI 40168471856·PR CI 40168474526 및 Cloudflare check가 모두 성공했습니다. CI 로그에서 tests156/pass156/fail0·실제9상품83카드 build·Pages7파일 검사 통과를 확인했습니다.
 - 같은 SHA의 미리보기 https://91d78e88.efsimulator.pages.dev 에서 공개5파일의 로컬 bytes 일치와 raw HTTP13개(실제 상세/끝슬래시200·Location없음·없는자산/감독404)를 확인했습니다. 검증 도구의 최초 /index.html 요청은 정상 canonical308이므로 기존 검증과 같은 / 및 /404 주소에서 파일을 대조했고 이 경위를 artifacts/checkpoint-offline/preview-http.json에 남겼습니다. 브라우저 실행은 앞서 검증한 동일 UI/data bytes의4e0f1e3 결과를 기준으로 하며 새 브라우저 실행으로 표시하지 않습니다. main 미병합·R4 진행 중·R6 미완료를 유지합니다.
+
+### 추가 조사 — 403 원인과 Standard 포함 상품 전체 구성
+
+이번 사용자 요청은 기존 R1/T002의 출처/필드 검증과 R4/T005의 전체 API·상품 구성 선행 조사, R5/T006의 확장 범위에 속합니다. 새 작업 ID를 만들지 않고 C023/C024로 보강합니다.
+
+1. 저장된 실패 응답·헤더의 실제 보존 여부, 당시 성공 요청과 공개 JS의 경로·쿼리를 확인합니다. 현재 환경 정책을 당시 출처 응답의 원인으로 단정하지 않습니다.
+2. 현재 9개 상품의 출처 표시 수·확보 고유 ID·타입·판매/버전 근거를 대조하고 파서 필터와 출처 범위를 구분합니다.
+3. 공식 확률/프로모션과 공개 대체 출처를 읽어 상품별 전체 명단 API·ID 연결·총계/페이지네이션·최신성/제약을 비교합니다. 이미 거부된 동일 요청을 반복하거나 비공개 게임 인증 API를 분석하지 않습니다.
+4. 후보 자료와 확인/미확인·현실적인 수집/검증 순서·필요 결정을 조사 문서에 정리합니다. 새 자료를 활성 seed·상품 관계에 자동 반영하지 않습니다.
+
+입력은 기존 조사 JSON·체크포인트·실제 수집/정규화 코드와 정상 공개 자료입니다. 영향 파일은 이 작업의 최신화 검토 표와 FILE_SYNC를 기준으로 하고, 상품별 전체 구성의 성공 조건을 보강합니다. 감독 지원 제외·bundle 팩의 미래 시뮬레이터 제외·운영 병합 승인 대기 조건을 유지합니다.
+
+실제 결과는 [전체 명단 조사](sources/FULL_ROSTER_RESEARCH.md)와 [구조화한 관측](../data/research/roster-source-observations.json)을 기준으로 합니다. 목록403의 실패 본문/헤더가 보존되지 않아 원인/반환 계층·limit100 지원은 미확정입니다. 다른 상세 API의 오류 본문을 전용하지 않았고 EFHub 새 요청은0회입니다.
+
+- 현재9상품의 소개79카드(Showtime16·Highlight23·Trending40)와 Yaya 상세/버전4카드를 구분했습니다. grid 내부 누락0은 전체 추첨풀 완료가 아닙니다. Standard로 확인된 포함 관계·게임 전체 누락 수/ID는 미확인이고 타입 제외 파서는 없습니다.
+- 공식/PESDB3회·대체 출처7회, 총10회 순차 공개 GET으로 공식 초기150명과 외부 소개11명, .info의 실제11명 필터와 특정 카드 상세 API404를 확인했습니다. 웹검색/열람 요청은 이 직접 GET 수와 구분합니다. API 전체 차단이나 존재하지 않음을 선언하지 않았습니다.
+- 공급자 허용 API/export→동일 상품/회차의 초기150명 ID·수량 실증→공식 총계/전 페이지 대조 순서를 기존 R1/R4/R5에 보강했습니다. 초기/잔여 구분과 글로벌 카드·소개 관계·실제 풀의 분리는 구조 계획이며 미구현입니다. 다른 일반 Standard 카드로 채우지 않습니다.
+- 독립 검토에서 JSON pointer51개·입력9파일 해시·상품별 ID/타입·10GET·공식 기간/초기 수가 원본과 일치했습니다. 실질적인 수정 요청은 없으며 기존403·canonical/public 해시는 유지됩니다. 단계는 R4/T005 진행 중이고 main 운영 병합은 승인 대기, R6는 미완료입니다.
+- 이번 조사 반영 후 전체 Node156개·실제 data:prepare/build·Pages7파일 일치·관리 검사59파일/8작업이 통과했습니다. 활성 seed·공개 JSON·실제 감사 기록·수집기 코드에 차이가 없어 브라우저는 재실행하지 않았습니다. 새 테스트/서비스/수집기를 추가하지 않았고 원격 반영은 이 조사 커밋의 CI와 구분해 확인합니다.
 
 ### 출처 API 접근 없이 가능한 작업과 접근 회복이 필요한 작업
 
@@ -402,12 +423,14 @@ C015~C019를 적용합니다. 팩은 코인 결제여도 일괄 지급형이며 
 | `_headers` | 수정 | Pages root 배포용 추적 생성물; scripts/build.mjs를 기준으로 build/export하며 직접 수정 금지 |
 | `_redirects` | 수정 | Pages root 배포용 추적 생성물; scripts/build.mjs를 기준으로 build/export하며 직접 수정 금지 |
 | `app.js` | 수정 | Pages root 배포용 추적 생성물; web/app.js를 기준으로 build/export하며 직접 수정 금지 |
-| `data/catalog.json` | 수정 | Pages root 배포용 추적 생성물; data/catalog.seed.json를 기준으로 build/export하며 직접 수정 금지 |
-| `data/catalog.seed.json` | 수정 | 정상 API/상품 구성에서 정규화한 활성 카드·상품 표본; 감독 범위 제외·전수 감사 미완료 표시 |
+| `data/catalog.json` | 수정 | 기존 생성물 보존; 원본 seed/UI가 동일하므로 추가 export 불필요, 재빌드 bytes 검사 |
+| `data/catalog.seed.json` | 수정 | 기존 활성9상품83카드와 부분 구성·감독 제외를 유지. 새 연구를 import하지 않아 이번 변경 불필요 |
 | `data/research/card-api-audit.json` | 수정 | 실제 전체 카드 감사의 403·0쪽·미완료와 정상 UI 형식 진단 결과 |
 | `data/research/current-catalog-observations.json` | 수정 | 정상 재수집한 9개 상품과 카드 payload·목록/상세 원문 근거 |
-| `docs/ARCHITECTURE.md` | 수정 | 선정한 데이터·SQLite·정적 검색·갱신 보호 구조와 운영 한계; 단일 writer·Git/canonical 복구와 SQLite 이력 백업의 미운영 범위 |
-| `docs/COLLECTION.md` | 수정 | 수집 실행·관측 경계·정규화·요청 예산·부분 범위·실패 보호 설명 |
+| `data/research/roster-source-observations.json` | 수정 | 신규 연구 근거; 403 진단·9상품별 표시/확보/타입·공식 총계·후보의 실제 경로/응답/제약. 활성 import 없음 |
+| `docs/sources/FULL_ROSTER_RESEARCH.md` | 수정 | 신규 조사·한계·전체 초기 선수 풀 완료 조건·기존 단계의 실증 계획과 필요한 결정 |
+| `docs/ARCHITECTURE.md` | 수정 | 기존 구조·복구 한계에 글로벌 카드/소개 관계/초기 pool_snapshot 구분의 미구현 계획 추가 |
+| `docs/COLLECTION.md` | 수정 | 기존 수집 범위와 Standard 전체명단의 공식 회차·초기 수·포함 ID·실패 증거 보존 선행 조건 구분 |
 | `docs/DEPLOYMENT.md` | 수정 | 실제 빌드·CI·branch 미리보기 검증과 미검증 대시보드/main 운영 상태 구분 |
 | `docs/FILE_SYNC.json` | 수정 | 관리 파일 역할·연관 경로·우선순위·갱신 조건·검토 작업의 단일 목록 |
 | `docs/ROADMAP.md` | 수정 | R0~R6 목표·완료조건·진행 위치의 기준 |
@@ -415,11 +438,11 @@ C015~C019를 적용합니다. 팩은 코인 결제여도 일괄 지급형이며 
 | `index.html` | 수정 | Pages root 배포용 추적 생성물; web/index.html를 기준으로 build/export하며 직접 수정 금지 |
 | `package-lock.json` | 검토 결과 변경 불필요 | npm 의존성 추가 없이 런타임·루트 메타데이터 동일; 잠금 파일 재설치로 확인 |
 | `package.json` | 수정 | 관리·도메인·데이터 표본·정적 사이트·미리보기·브라우저 명령과 도구 버전 선언 |
-| `scripts/audit-cards.mjs` | 수정 | 전체 카드 열거 감사; 재개 전 counter/log/page/status 정합성·고정 예산·403 무재시도 보호 |
+| `scripts/audit-cards.mjs` | 수정 | 기존 재개 검증 유지; 실패 본문/헤더 미보존을 진단했지만 이번 요청은 조사 범위이므로 추가 코드/실제 재감사 없음 |
 | `scripts/build.mjs` | 수정 | DB와 정적 데이터·사이트를 staging에서 빌드하고 Pages 규칙 생성 |
-| `scripts/catalog.mjs` | 수정 | 활성 카드/상품 계약·감독 지원 제외·상품 전체성 금지·출처·SQLite 이력·실패 보호 검증 |
-| `scripts/collect-efhub.mjs` | 수정 | 정상 상품 목록과 같은 제목·수량·직속 구성 경계를 재수집하고 실패 시 기존 자료 보존 |
-| `scripts/collected-products.mjs` | 수정 | 명시 원본 ID·필드 근거로 수집 상품/카드를 병합하고 감독 범위 위반·구성 축소 거부 |
+| `scripts/catalog.mjs` | 수정 | 기존 검증·부분 구성·감독 제외 계약 유지. pool_snapshot은 미구현 계획이며 새로운 확인 관계가 없어 코드 추가 변경 불필요 |
+| `scripts/collect-efhub.mjs` | 수정 | 기존 수정 유지; 이번 읽기 검토에서 타입 제외 없이 정확 grid 전원 보존 확인. 전체 풀 수집 경로 미확보로 코드 추가 변경 불필요 |
+| `scripts/collected-products.mjs` | 수정 | 기존 수정 유지; raw1도 일반 타입 매핑으로 허용. Standard 임의 보충·관계 확장 없이 변경 불필요 |
 | `scripts/export-pages.mjs` | 수정 | 허용된 공개 7개 파일만 root로 내보내고 읽기 전용 bytes 검사·실패 복구 |
 | `scripts/prepare-seed.mjs` | 수정 | 실제 조사 증거를 명시적 ID·관계·미확인을 보존한 표본으로 정규화 |
 | `scripts/catalog-history.mjs` | 수정 | 추적 누적 seed를 기준으로 현재 창 밖의 개체·관측·조건·관계 보존, 자동 삭제 거부 |
@@ -427,7 +450,7 @@ C015~C019를 적용합니다. 팩은 코인 결제여도 일괄 지급형이며 
 | `scripts/serve.mjs` | 수정 | 지원하는 상품·카드 주소의 정적 미리보기와 제외된 감독/누락 자산의 404 처리 |
 | `styles.css` | 수정 | Pages root 배포용 추적 생성물; web/styles.css를 기준으로 build/export하며 직접 수정 금지 |
 | `README.md` | 수정 | 프로젝트 진입점과 관리 문서·실행 명령 안내 |
-| `docs/sources/CARD_API_AUDIT.md` | 수정 | R1/T002·R5의 R4/T005 실행 근거·요청 차이·필드별 확인 범위·오프라인 재개 검증 설명 |
+| `docs/sources/CARD_API_AUDIT.md` | 수정 | 기존 감사/재개 기록에 실패 본문·헤더 미보존, 원인/응답 계층·limit100 미확정과 정상 접근 조건 보강 |
 | `docs/sources/FOLLOWUP_RESEARCH.md` | 수정 | 추가 공식·플랫폼 조사와 상품별 가격·무료 조건·미확인 적용 범위 |
 | `docs/sources/INITIAL_RESEARCH.md` | 수정 | R1 출처별 필드 확보·전체 구성·접근 제약과 다음 조사 |
 | `scripts/browser-check.py` | 수정 | 실제 자료량·상품↔카드·감독 일괄 제외·반응형·오류/재시도 브라우저 검사 |
@@ -438,7 +461,7 @@ C015~C019를 적용합니다. 팩은 코인 결제여도 일괄 지급형이며 
 | `tests/export-pages.test.mjs` | 수정 | 수집·범위·접근 제한·실패 보호·배포 생성물 계약의 회귀 검사 |
 | `tests/prepare-seed.test.mjs` | 수정 | 실제 조사 재현·새 관측과 카드 ID·과거 근거 보존 검사 |
 | `tests/serve.test.mjs` | 수정 | 정적 서버 HTTP·라우팅·경로 안전성 회귀 검사 |
-| `web/app.js` | 수정 | 상품·카드 검색/상세·관계·감독 일괄 제외는 기존 검증 유지; 이번 audit/문서 변경으로 UI 코드 변경 불필요 |
+| `web/app.js` | 수정 | 기존 부분 구성·미확인·감독 제외 표시 유지. 새 전체 명단/확정 총계가 없어 이번 UI 코드 변경 불필요 |
 | `web/index.html` | 수정 | 한국어 정적 앱·주요 탐색·초기 로딩·JS 비활성 안내 |
 | `web/styles.css` | 수정 | 독자 디자인과 모바일·태블릿·데스크톱·접근성 스타일 |
 | `data/research/mourinho-product-observations.json` | 수정 | 활성 import가 금지된 기사·게시물·상품 화면의 원본 관측과 문자열 ID 보존 |
@@ -460,7 +483,7 @@ C015~C019를 적용합니다. 팩은 코인 결제여도 일괄 지급형이며 
 
 ### 검증과 완료조건
 
-출처 범위·고유 카드 ID·중복·누락·원문 필드·이미지 표본/전수 구분·버전/관계·검색 성능을 대조하고 부분 확보와 전체 완료를 구분합니다. 감독 지원 제외와 팩/추첨 구분을 유지합니다.
+출처 범위·고유 출시 카드 ID·수량·중복/누락·원문 필드·이미지 표본/전수·검색 성능을 대조합니다. Standard 포함 초기 선수 풀은 공식 상품/회차·지역/버전·기간·초기/잔여 연결, 명시 포함 ID, 전체 페이지/마지막 응답과 공식 초기 수의 일치가 필요합니다. 소개 목록과 글로벌 카드만으로 완료 처리하지 않으며 감독 지원 제외와 팩/추첨 구분을 유지합니다.
 
 ### 추가조건
 
