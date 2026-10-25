@@ -1,0 +1,55 @@
+import { createHash } from 'node:crypto';
+
+const idFor = (kind, source, raw) => `${kind}_${createHash('sha256').update(`${source}:${kind}:${raw}`).digest('hex').slice(0, 24)}`;
+
+/** A separately identified screenshot record, never an inferred EFHub identity. */
+export function addManagerProduct(seed, evidence) {
+  const result = structuredClone(seed);
+  const raw = evidence.product_record;
+  if (!raw || typeof raw.post_id !== 'string' || !/^\d+$/.test(raw.post_id) || raw.known_full_composition !== false || raw.official_crosscheck !== 'unverified') throw new Error('독립된 원문 게시물과 부분 구성·공식 미확인 상태가 필요합니다.');
+  if (!Number.isSafeInteger(raw.price_coins) || raw.price_coins < 0) throw new Error('직접 확인한 상품 가격이 필요합니다.');
+  const fan = 'efootball_pes_fan';
+  const article = 'sportsdunia';
+  const observationIds = new Map();
+  for (const observation of evidence.observations) {
+    if (observation.status !== 200) throw new Error('실패한 관측을 관계의 근거로 채택하지 않습니다.');
+    const id = idFor('obs', observation.source_id, `${observation.id}:${observation.url}:${observation.observed_at}:${observation.sha256}`);
+    observationIds.set(observation.id, id);
+    result.observations.push({ id, source_id: observation.source_id, url: observation.url, source_entity_kind: observation.source_entity_kind, source_entity_id: observation.source_entity_id, observed_at: observation.observed_at, http_status: observation.status, body_sha256: observation.sha256, excerpt: JSON.stringify({ verified_fields: observation.verified_fields, excerpts: observation.excerpts }).slice(0, 12000) });
+  }
+  for (const source of evidence.sources) if (!result.sources.some(item => item.id === source.id)) result.sources.push(source);
+  const screenshotProof = observationIds.get(raw.observation_ids.screenshot);
+  const articleProof = observationIds.get(raw.observation_ids.article);
+  if (!screenshotProof || !articleProof) throw new Error('상품 화면과 본문의 직접 근거가 모두 필요합니다.');
+  const assetId = idFor('asset', fan, raw.image_url);
+  result.assets.push({ id: assetId, url: raw.image_url, kind: 'product_screenshot', composition: 'combined', observation_id: screenshotProof });
+  const identificationNote = '제3자 보도가 인용한 게임 화면의 기록입니다. 공식 교차 검증·게임 원본 ID·현재 판매 여부는 미확인입니다. 식별자는 원문 게시물 안의 위치이며 EFHub 카드·감독과 병합하지 않았습니다.';
+  const managerId = idFor('manager', fan, `${raw.post_id}:manager:1`);
+  result.managers.push({ id: managerId, external_ids: [{ source: fan, id_type: 'screenshot_manager_slot_1', value: raw.post_id }], name: raw.manager_name, asset_ids: [assetId], verification_note: identificationNote, provenance: { name: screenshotProof, asset_ids: screenshotProof, verification_note: screenshotProof } });
+  const cardEntries = raw.players.map(player => {
+    if (!Number.isSafeInteger(player.slot) || player.slot < 1) throw new Error('캡처 내 카드 위치가 필요합니다.');
+    const id = idFor('card', fan, `${raw.post_id}:card:${player.slot}`);
+    result.cards.push({
+      id, external_ids: [{ source: fan, id_type: `screenshot_card_slot_${player.slot}`, value: raw.post_id }, { source: article, id_type: `article_card_slot_${player.slot}`, value: raw.article_url }], person_id: null, name: player.name,
+      overall: { value: player.overall, conditions: raw.overall_conditions },
+      types: [{ label: 'Highlight', raw_value: 'highlight cards', source: article }], asset_ids: [assetId], other_version_ids: [], verification_note: identificationNote,
+      provenance: { name: screenshotProof, overall: screenshotProof, types: articleProof, asset_ids: screenshotProof, verification_note: screenshotProof },
+    });
+    return { kind: 'card', target_id: id, quantity: 1, observation_id: screenshotProof };
+  });
+  result.products.push({
+    id: idFor('product', fan, raw.post_id), external_ids: [{ source: fan, id_type: 'post_id', value: raw.post_id }, { source: article, id_type: 'article_url', value: raw.article_url }],
+    name: raw.name, kind: 'pack', purchase_mode: 'bundle', list_types: [], asset_ids: [assetId], verification_note: identificationNote,
+    source_listed_player_count: raw.players.length, total_player_count: null, composition_status: 'partial',
+    entries: [...cardEntries, { kind: 'manager', target_id: managerId, quantity: 1, observation_id: screenshotProof }],
+    price: { amount: raw.price_coins, currency: 'eFootball 코인', conditions: '2026-09-10 게시물의 게임 화면에 표시된 상품 가격. 현재 적용 여부·지역·플랫폼은 미확인입니다.' }, currency: 'eFootball 코인', opening_options: null, limits: null,
+    availability: { start: null, end: null, status: 'unknown' },
+    provenance: { name: screenshotProof, kind: articleProof, purchase_mode: articleProof, asset_ids: screenshotProof, source_listed_player_count: screenshotProof, price: screenshotProof, currency: screenshotProof, verification_note: screenshotProof },
+  });
+  result.observed_at = [seed.observed_at, evidence.observed_at].sort((a, b) => Date.parse(a) - Date.parse(b)).at(-1);
+  result.coverage.scope = `출처 조사 표본: 상품 ${result.products.length}개, 선수 카드 ${result.cards.length}개, 감독 ${result.managers.length}명. 게임 전체 구성·현재 판매 여부·지속 갱신은 검증 전입니다.`;
+  result.coverage.notes = result.coverage.notes.filter(note => !note.startsWith('가격·재화·개봉 옵션'));
+  result.coverage.notes.push('José Mourinho 사례의 포함 관계·750코인은 제3자 보도에 인용된 게임 화면의 관측입니다. 기사와 게시물은 인용 관계이며 독립된 두 검증이 아닙니다. 개별 카드·감독 사진 대신 상품 화면 원본을 표시합니다.');
+  result.coverage.notes.push('상품별 확인 범위는 다릅니다. Magical Dribblers의 가격·감독 관계는 미확인이고, 다른 상품의 조건을 옮겨 넣지 않습니다.');
+  return result;
+}

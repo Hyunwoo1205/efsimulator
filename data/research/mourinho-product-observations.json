@@ -1,0 +1,264 @@
+{
+  "schema_version": 1,
+  "research_stage": "R3 source-reported product-manager relation sample",
+  "observed_at": "2026-10-25T04:51:28.876044Z",
+  "research_status": "source_reported_relation_observed_official_crosscheck_pending",
+  "method": {
+    "transport": "Normal public HTTPS GET through inherited proxy with TLS verification enabled",
+    "user_agent": "Mozilla/5.0 (compatible; efsimulator research)",
+    "refresh_request_count": 3,
+    "refresh_scope": "Only the already discovered article, its embedded public post, and the exact image URL provided by that post were fetched to capture exact timestamps and response hashes.",
+    "visual_review": "The screenshot was directly viewed before this refresh. The refreshed image bytes were checked against the directly viewed image SHA256.",
+    "storage": "No screenshot is rehosted in the repository. Preserve the original source image URL.",
+    "restrictions": "No login, access-control bypass, service signup, environment change, scheduled collection or EFHub identity merge."
+  },
+  "sources": [
+    {
+      "id": "sportsdunia",
+      "name": "Sportsdunia",
+      "url": "https://www.sportsdunia.com/",
+      "type": "third_party_editorial_news"
+    },
+    {
+      "id": "efootball_pes_fan",
+      "name": "eFootball__PES (Fan account)",
+      "url": "https://x.com/Efootball__PES",
+      "type": "third_party_fan_account"
+    }
+  ],
+  "observations": [
+    {
+      "id": "mourinho_article_product",
+      "source_id": "sportsdunia",
+      "url": "https://www.sportsdunia.com/esports/efootball-adds-new-jose-mourinho-manager-pack",
+      "final_url": "https://www.sportsdunia.com/esports/efootball-adds-new-jose-mourinho-manager-pack",
+      "observed_at": "2026-10-25T04:51:27.053418Z",
+      "status": 200,
+      "sha256": "b3447332517b956be09fd3ddb2aa22c05ce20f2f468f9aad650b7d7521630a9d",
+      "sha256_scope": "HTTP response body bytes",
+      "content_type": "text/html; charset=utf-8",
+      "byte_count": 279976,
+      "source_entity_kind": "product",
+      "source_entity_id": "https://www.sportsdunia.com/esports/efootball-adds-new-jose-mourinho-manager-pack",
+      "verified_fields": {
+        "headline": "Konami Brings Back Jose Mourinho to eFootball With Two Link-Up Styles: Should You Sign Him?",
+        "author": {
+          "@type": "Person",
+          "name": "Shubhrajit Goswami",
+          "url": "https://www.sportsdunia.com/authors/shubhrajit-goswami"
+        },
+        "date_published_original": "2026-09-10T07:52:23.056Z",
+        "date_modified_original": "2026-09-12T22:49:40.865Z",
+        "product_label_original": "eFootball Jose Mourinho manager pack",
+        "reported_release_date_original": "September 10, 2026",
+        "reported_price": {
+          "amount": 750,
+          "currency": "eFootball coins",
+          "kind": "product purchase price"
+        },
+        "reported_manager_name": "Jose Mourinho",
+        "reported_players": [
+          {
+            "name": "Arda Guler",
+            "classification_original": "highlight"
+          },
+          {
+            "name": "Brahim Diaz",
+            "classification_original": "highlight"
+          }
+        ],
+        "embedded_source_post_url": "https://x.com/Efootball__PES/status/2097939763076669826",
+        "evidence_level": "source_reported",
+        "official_crosscheck": "unverified",
+        "extraction_location": "h2#jose-mourinho-arrives-in-a-new-manager-pack followed by the next paragraph; also NewsArticle JSON-LD articleBody"
+      },
+      "excerpts": [
+        {
+          "kind": "html_text",
+          "location": "h2#jose-mourinho-arrives-in-a-new-manager-pack + following p",
+          "text": "The new eFootball Jose Mourinho manager pack was released on September 10, 2026. The manager pack is listed at a price of 750 eFootball coins, and it includes Jose Mourinho as the manager and Arda Guler and Brahim Diaz as the two highlight cards."
+        },
+        {
+          "kind": "json_ld",
+          "location": "NewsArticle",
+          "text": "{\"datePublished\": \"2026-09-10T07:52:23.056Z\", \"dateModified\": \"2026-09-12T22:49:40.865Z\", \"author\": {\"@type\": \"Person\", \"name\": \"Shubhrajit Goswami\", \"url\": \"https://www.sportsdunia.com/authors/shubhrajit-goswami\"}}"
+        }
+      ]
+    },
+    {
+      "id": "mourinho_post_product",
+      "source_id": "efootball_pes_fan",
+      "url": "https://x.com/Efootball__PES/status/2097939763076669826",
+      "final_url": "https://x.com/Efootball__PES/status/2097939763076669826",
+      "observed_at": "2026-10-25T04:51:27.741720Z",
+      "status": 200,
+      "sha256": "d915b94990abe80d7c0c42367138ae89049955f070c896e0f46039ada391bcab",
+      "sha256_scope": "HTTP response body bytes",
+      "content_type": "text/html; charset=UTF-8",
+      "byte_count": 132883,
+      "source_entity_kind": "product",
+      "source_entity_id": "2097939763076669826",
+      "verified_fields": {
+        "post_id": "2097939763076669826",
+        "account_name": "eFootball__PES",
+        "account_handle": "Efootball__PES",
+        "account_label_original": "Fan account",
+        "post_text_original": "Manager Pack: JOSE MOURINHO\n\nLONG BALL COUNTER 90 ⚡",
+        "displayed_post_time_original": "6:46 AM · Sep 10, 2026",
+        "post_time_timezone": "unverified; preserve display text without conversion",
+        "media_id": "HR1hEoXawAAdgDk",
+        "image_url": "https://pbs.twimg.com/media/HR1hEoXawAAdgDk?format=webp&name=large",
+        "embedded_by_article_url": "https://www.sportsdunia.com/esports/efootball-adds-new-jose-mourinho-manager-pack",
+        "evidence_level": "source_reported",
+        "official_crosscheck": "unverified"
+      },
+      "excerpts": [
+        {
+          "kind": "html_meta",
+          "location": "meta[property=\"og:description\"]",
+          "text": "Manager Pack: JOSE MOURINHO\n\nLONG BALL COUNTER 90 ⚡"
+        },
+        {
+          "kind": "html_text",
+          "location": "post author label",
+          "text": "Fan account"
+        },
+        {
+          "kind": "html_meta",
+          "location": "meta[property=\"og:image\"]",
+          "text": "https://pbs.twimg.com/media/HR1hEoXawAAdgDk?format=webp&name=large"
+        }
+      ]
+    },
+    {
+      "id": "mourinho_product_screenshot",
+      "source_id": "efootball_pes_fan",
+      "url": "https://pbs.twimg.com/media/HR1hEoXawAAdgDk?format=webp&name=large",
+      "final_url": "https://pbs.twimg.com/media/HR1hEoXawAAdgDk?format=webp&name=large",
+      "observed_at": "2026-10-25T04:51:28.876044Z",
+      "status": 200,
+      "sha256": "d21927ca5f7bd8adf5eca0d900aca7733f58c963487ce1563213b32478cc7b63",
+      "sha256_scope": "HTTP response body bytes",
+      "content_type": "image/webp",
+      "byte_count": 245832,
+      "source_entity_kind": "product",
+      "source_entity_id": "2097939763076669826",
+      "verified_fields": {
+        "post_id": "2097939763076669826",
+        "media_id": "HR1hEoXawAAdgDk",
+        "visual_review": "The image bytes match the previously directly viewed product screenshot; no OCR-only inference.",
+        "image_width": 2048,
+        "image_height": 1449,
+        "image_kind": "product_screenshot",
+        "composition": "combined in-game UI screenshot with product title, manager portrait/icon, two player cards and purchase display; not isolated manager/player assets",
+        "product_name_original": "José Mourinho 11-12",
+        "manager_display_name_original": "José Mourinho 11-12",
+        "team_playstyle_proficiency_original": "Long Ball Counter 90",
+        "price_display": {
+          "amount": 750,
+          "currency": "eFootball coins",
+          "evidence": "coin icon plus 750 on the same product screen; currency wording corroborated by the article"
+        },
+        "visible_players": [
+          {
+            "screenshot_slot": 1,
+            "name_original": "Arda Güler",
+            "overall_displayed": 95,
+            "position_displayed": "AMF"
+          },
+          {
+            "screenshot_slot": 2,
+            "name_original": "Brahim Díaz",
+            "overall_displayed": 93,
+            "position_displayed": "CF"
+          }
+        ],
+        "overall_conditions_original": "*The displayed Overall Ratings reflect the highest possible Ratings of the players.",
+        "remaining_original": "Remaining: 1",
+        "remaining_scope": "remaining quantity displayed for the source account at capture time; universal purchase limit not established",
+        "relative_availability_original": "Ends in: 83 day(s) 19 hr(s)",
+        "relative_availability_scope": "relative text at an unverified capture time; absolute end date not derived",
+        "unopened_control_original": "Content",
+        "known_full_composition": false,
+        "evidence_level": "source_reported",
+        "official_crosscheck": "unverified"
+      },
+      "excerpts": [
+        {
+          "kind": "image_visual",
+          "location": "upper-left product title",
+          "text": "José Mourinho 11-12"
+        },
+        {
+          "kind": "image_visual",
+          "location": "manager portrait/icon and two cards on the same product screen",
+          "text": "Arda Güler; Brahim Díaz; Long Ball Counter 90"
+        },
+        {
+          "kind": "image_visual",
+          "location": "lower-right purchase display",
+          "text": "Remaining: 1; coin icon 750"
+        },
+        {
+          "kind": "image_visual",
+          "location": "upper-left below product title",
+          "text": "Ends in: 83 day(s) 19 hr(s)"
+        },
+        {
+          "kind": "image_visual",
+          "location": "footnote below playstyle and player preview",
+          "text": "*The displayed Overall Ratings reflect the highest possible Ratings of the players."
+        }
+      ]
+    }
+  ],
+  "product_record": {
+    "post_id": "2097939763076669826",
+    "media_id": "HR1hEoXawAAdgDk",
+    "name": "José Mourinho 11-12",
+    "manager_name": "José Mourinho 11-12",
+    "price_coins": 750,
+    "image_url": "https://pbs.twimg.com/media/HR1hEoXawAAdgDk?format=webp&name=large",
+    "players": [
+      {
+        "slot": 1,
+        "name": "Arda Güler",
+        "overall": 95
+      },
+      {
+        "slot": 2,
+        "name": "Brahim Díaz",
+        "overall": 93
+      }
+    ],
+    "overall_conditions": "*The displayed Overall Ratings reflect the highest possible Ratings of the players.",
+    "article_url": "https://www.sportsdunia.com/esports/efootball-adds-new-jose-mourinho-manager-pack",
+    "post_url": "https://x.com/Efootball__PES/status/2097939763076669826",
+    "known_full_composition": false,
+    "evidence_level": "source_reported",
+    "official_crosscheck": "unverified",
+    "remaining_original": "Remaining: 1",
+    "relative_availability_original": "Ends in: 83 day(s) 19 hr(s)",
+    "observation_ids": {
+      "article": "mourinho_article_product",
+      "post": "mourinho_post_product",
+      "screenshot": "mourinho_product_screenshot"
+    }
+  },
+  "limitations": [
+    "The article embeds this fan-account post. They are an attribution chain, not two independent confirmations. No official product-level crosscheck was established.",
+    "Source-reported facts apply only to this observed José Mourinho 11-12 product and version. They must not be assigned to Magical Dribblers, Dortmund or any EFHub product by name similarity.",
+    "Original in-game product, manager and player-card IDs are unknown. The post ID identifies a source publication; the media ID identifies its image. Neither is an in-game entity ID.",
+    "A screenshot_slot identifies a local record position inside this source screenshot. It is not an original game-card or manager ID. Locally assigned internal IDs must retain that scope.",
+    "No EFHub entity identity or cross-source version match was verified. Do not merge managers or cards by names, clubs, similar images or guessed ID patterns.",
+    "Content was not opened. The preview and article support the named manager and two displayed/reported players, but not a complete product roster or the absence of other items. known_full_composition remains false.",
+    "Remaining: 1 is a source-account observation, not a verified universal purchase limit. Ends in: 83 day(s) 19 hr(s) is relative to an unverified screenshot capture time. No absolute expiry or present availability was derived.",
+    "Displayed player overalls 95 and 93 must retain the source footnote that they reflect the highest possible ratings. They are not unconditioned base ratings.",
+    "Region, platform, universally applicable purchase conditions and full availability period were not established.",
+    "The image combines the complete visible product UI and several portraits/cards. It is not a separately supplied manager portrait, player image or card-background asset.",
+    "The Sportsdunia hero image is an editorial composite and was not adopted as product-composition evidence or as a separate in-game manager asset.",
+    "An updated news article and other recent eFootball coverage do not prove complete or automatic weekly data maintenance. Continuous collection and actual source-change propagation remain unverified."
+  ],
+  "usage": "inactive_reference_only",
+  "active_product_import_allowed": false
+}

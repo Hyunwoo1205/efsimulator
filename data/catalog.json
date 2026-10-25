@@ -1,0 +1,4414 @@
+{
+  "version": 1,
+  "observed_at": "2026-10-25T04:59:03.276Z",
+  "coverage": {
+    "scope": "출처 조사·수집 표본: 상품 9개, 선수 카드 83개. 감독 구성은 수집 범위에서 제외합니다. 게임 전체 구성·현재 판매 여부·지속 갱신은 검증 전입니다.",
+    "complete": false,
+    "manager_support": "excluded_bulk_api_unavailable",
+    "notes": [
+      "EFHub 목록 총계는 출처가 보고한 규모이며, 이 사이트가 확보한 수량이 아닙니다.",
+      "상품 페이지의 11개 카드는 확보한 출처 목록입니다. 게임의 전체 구성 수는 미확인입니다.",
+      "공식 동명 상품의 150명과 EFHub 상품은 명시적인 ID 연결이 없어 병합하지 않았습니다.",
+      "가격·재화·개봉 옵션·이용 제한·판매 기간은 상품별 미확인입니다.",
+      "감독 포함 정보를 일괄 조회하는 API를 확보하지 못해 모든 상품의 감독 정보와 독립 감독 목록을 지원 범위에서 제외했습니다. 실제 상품에 감독이 없다는 뜻이 아닙니다.",
+      "일괄 지급형 팩은 DB·검색에 포함하지만 코인 결제여도 미래 개봉 시뮬레이터 대상에서 제외합니다.",
+      "종합 능력은 관측한 표시값입니다. 레벨·부스터 등 적용 조건은 미확인입니다.",
+      "이미지 URL은 출처에서 제공한 그대로 사용합니다. 배경/선수 자산의 분리 여부와 모든 이미지의 응답은 미검증입니다.",
+      "선수의 내부 실인물 식별은 미확정이며, 다른 버전은 상세 페이지의 명시적인 링크만 연결했습니다.",
+      "EFHub 상품 수집은 출처에 표시된 카드 목록의 표본이며 게임 전체 구성이나 판매 중 상태를 뜻하지 않습니다.",
+      "감독 구성은 일괄 검증 가능한 상품 연결 출처를 확보하지 못해 수집 범위에서 제외합니다.",
+      "EFHub 카드 목록 총계는 이번 상품 수집에서 재조회하지 않은 이전 관측값입니다.",
+      "EFHub 수집 범위: 목록 총계와 출처 표시 카드 수는 게임의 전체 구성·판매 중 여부를 입증하지 않습니다.",
+      "EFHub 수집 범위: 가격·재화·횟수 제한·상품과 감독의 관계를 수집하지 않았습니다.",
+      "EFHub 수집 범위: 이미지는 출처가 참조한 URL이며 이 수집기에서 실제 이미지 응답·합성 형태를 검증하지 않았습니다.",
+      "EFHub 수집 범위: 원본 문자열 ID와 전달 sentinel을 보존합니다. 정규화 단계에서 미확인을 null로 구분해야 합니다.",
+      "EFHub 수집 범위: 선수 전체 목록·차단된 선수 상세 API·주기적 스케줄은 이 수집기의 범위에 포함하지 않습니다.",
+      "전체 카드 API 전수 검증은 완료되지 않았습니다. 출처가 보고한 약 5만 카드 총계는 이 사이트의 확보 수량이나 서로 다른 실존 선수 수가 아닙니다."
+    ],
+    "source_totals": {
+      "products": 1698,
+      "cards": 50840
+    },
+    "card_api_audit": {
+      "status": "blocked",
+      "complete": false,
+      "pages_visited": 0,
+      "unique_cards": 0,
+      "observed_at": "2026-10-25T05:02:17.771Z"
+    }
+  },
+  "sources": [
+    {
+      "id": "efhub",
+      "name": "EFHub",
+      "url": "https://efhub.com/ko"
+    }
+  ],
+  "observations": [
+    {
+      "id": "obs_4c58aa49e0d900d4f358a475",
+      "research_id": "efhub_magical_payload",
+      "source_id": "efhub",
+      "url": "https://efhub.com/ko/packs/magical-dribblers-22-oct-26",
+      "source_entity_kind": "product",
+      "source_entity_id": "magical-dribblers-22-oct-26",
+      "observed_at": "2026-10-25T03:47:03+00:00",
+      "excerpt": "found. Magical Dribblers 22 Oct '26 22 October 2026 · 11 players 86 RWF Desire Doue 86 LWF Jeremy Doku 85 CF Raphinha 82 RWF Savio 82 CF Lois Openda 81 SS Rafa Silva 80 SS Samuele Inacio 80 LWF Arnaut Danjuma 80 RB Kingsley Ehizibue 80 LB Ulisses Garcia 79 RWF Tijjani Noslin Advertise on this site. © 2026 eFHUB. All rights reserved. Vacancies · Privacy Policy ",
+      "http_status": 200,
+      "body_sha256": "9c58a4d89515f09ca8401794e2d39b2bde4faa0aa7e154689659b41674c1f598"
+    },
+    {
+      "id": "obs_163c0517bfbf814cacb8b487",
+      "research_id": "efhub_player_payload",
+      "source_id": "efhub",
+      "url": "https://efhub.com/ko/players/88046292727298",
+      "source_entity_kind": "card",
+      "source_entity_id": "88046292727298",
+      "observed_at": "2026-10-25T03:45:23+00:00",
+      "excerpt": "llhub22/images/player_cards/88046292727298_l.png\",\"playerId\":\"88046292727298\",\"gpValue\":0,\"datapackId\":20251204,\"playerType\":5,\"boostId\":1199,\"boostId2\":1214,\"levelCap\":33}}],[\"$\",\"div\",null,{\"id\":\"player-screenshot-content\",\"className\":\"mx-auto max-w-[70rem] o | ate\",\"children\":\"앵커맨\"}]]}],null,[\"$\",\"$L49\",null,{\"playerId\":\"88046292727298\",\"position\":\"DMF\",\"playerName\":\"Yaya Toure\"}],[\"$\",\"div\",null,{\"className\":\"mt-auto pt-4\",\"children\":[\"$\",\"$L4a\",null,{\"showLock\":true}]}]]}],[\"$\",\"div\",null,{\"className\":\"relative z-1 | creenshot-hide\":true,\"children\":[\"$\",\"$L5c\",null,{\"playerId\":\"88046292727298\"}]}]\n50:[\"$\",\"div\",null,{\"data-screenshot-hide\":true,\"children\":[\"$\",\"$L5d\",null,{\"playerKey\":\"88046292727298\"}]}]\n51:[\"$\",\"$11\",null,{\"fallback\":null,\"children\":[[\"$\",\"$L5e\",null,{\"pl\n98_l.png\",\"playerId\":\"88046292727298\",\"gpValue\":0,\"datapackId\":20251204,\"playerType\":5,\"boostId\":1199,\"boostId2\":1214,\"levelCap\":33}}],[\"$\",\"div\",null,{\"id\":\"player-screenshot-content\",\"className\":\"mx-auto max-w-[70rem] overflow-x-clip px-2 py-6 pb-52 md:pb-6\",\"c",
+      "http_status": 200,
+      "body_sha256": "7f242583b999a8fed0c20f690ec86380a7aebbe0bfd19fffba538c411d446d49"
+    },
+    {
+      "id": "obs_41fa990f0219084066d2e36d",
+      "research_id": "efhub_player_payload",
+      "source_id": "efhub",
+      "url": "https://efhub.com/ko/players/88046292727298",
+      "source_entity_kind": "card_list",
+      "source_entity_id": "other_versions:88046292727298",
+      "observed_at": "2026-10-25T03:45:23+00:00",
+      "excerpt": "llhub22/images/player_cards/88046292727298_l.png\",\"playerId\":\"88046292727298\",\"gpValue\":0,\"datapackId\":20251204,\"playerType\":5,\"boostId\":1199,\"boostId2\":1214,\"levelCap\":33}}],[\"$\",\"div\",null,{\"id\":\"player-screenshot-content\",\"className\":\"mx-auto max-w-[70rem] o | ate\",\"children\":\"앵커맨\"}]]}],null,[\"$\",\"$L49\",null,{\"playerId\":\"88046292727298\",\"position\":\"DMF\",\"playerName\":\"Yaya Toure\"}],[\"$\",\"div\",null,{\"className\":\"mt-auto pt-4\",\"children\":[\"$\",\"$L4a\",null,{\"showLock\":true}]}]]}],[\"$\",\"div\",null,{\"className\":\"relative z-1 | creenshot-hide\":true,\"children\":[\"$\",\"$L5c\",null,{\"playerId\":\"88046292727298\"}]}]\n50:[\"$\",\"div\",null,{\"data-screenshot-hide\":true,\"children\":[\"$\",\"$L5d\",null,{\"playerKey\":\"88046292727298\"}]}]\n51:[\"$\",\"$11\",null,{\"fallback\":null,\"children\":[[\"$\",\"$L5e\",null,{\"pl\n98_l.png\",\"playerId\":\"88046292727298\",\"gpValue\":0,\"datapackId\":20251204,\"playerType\":5,\"boostId\":1199,\"boostId2\":1214,\"levelCap\":33}}],[\"$\",\"div\",null,{\"id\":\"player-screenshot-content\",\"className\":\"mx-auto max-w-[70rem] overflow-x-clip px-2 py-6 pb-52 md:pb-6\",\"c",
+      "http_status": 200,
+      "body_sha256": "7f242583b999a8fed0c20f690ec86380a7aebbe0bfd19fffba538c411d446d49"
+    },
+    {
+      "id": "obs_30da4d016ed95bef38f0a37b",
+      "research_id": "efhub_types_js",
+      "source_id": "efhub",
+      "url": "https://efhub.com/_next/static/chunks/8964e7af23583e8b.js?dpl=dpl_31Riks92A4aWRR56JjnttQdARhMg",
+      "source_entity_kind": "definition",
+      "source_entity_id": "player_type_translation_keys",
+      "observed_at": "2026-10-25T03:47:03+00:00",
+      "excerpt": "76),i=e.i(271645),n=e.i(861745),r=e.i(948148),l=e.i(532972);let a=[{id:1,tKey:\"normal\"},{id:2,tKey:\"featured\"},{id:3,tKey:\"trending\"},{id:4,tKey:\"legend\"},{id:5,tKey:\"epic\"},{id:6,tKey:\"highlight\"},{id:7,tKey:\"bigtime\"},{id:8,tKey:\"showtime\"}],s=[\"GK\",\"CB\",\"LB\",\"RB\",\"DMF\",\"CMF\",\"LMF\",\"RMF\",\"AMF\",\"LWF\",\"RWF\",\"SS\",\"CF\"],o=[{tKey:\"attacking\",stats:[{tKey:\"offensiveAwareness\",col:\"OffensiveAwareness\"},{tKey:\"ballControl\",col:\"BallControl\"},{tKey:\"dribbling\",col:\"Dribbling\"},{tKey:\"tightPossession\",col:\"TightPossession\"},{tKey:\"lowPass\",col:\"LowPass\"},{tKey:\"loftedPass\",col:\"LoftedPass\"},{tKey:\"finishing\",col:\"Finishing\"},{tKey:\"heading\",col:\"Heading\"},{tKey:\"setPieceTaking\",col:\"PlaceKicking\"},{tKey:\"curl\",col:\"Curl\"}]},{tKey:\"defending\",stats:[{tKey:\"defensiveAware\nline-size] dark:from-zinc-800 dark:to-zinc-900\",children:[e.imageUrl?(0,t.jsx)(\"img\",{src:e.imageUrl,alt:o,className:\"h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-105\"}):(0,t.jsx)(\"div\",{className:\"flex h-full w-full items-end justify-center\",children:(0,t.jsx)(\"svg\",{viewBox:\"0 0 24 24\",fill:\"currentColor\",className:\"h-3/4 w-3/4 translate-y-4 text-zinc-300 dark:text-zinc-700\",children:(0,t.jsx)(\"path\",{d:\"M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z\"})})}),(0,t.jsxs)(\"div\",{className:\"pointer-events-none absolute flex flex-col items-center text-center leading-none\",style:{fontFamily:\"'eFootballStencil', sans-serif\",lef",
+      "http_status": 200,
+      "body_sha256": "241046ee60771205e8a331364dccb65b9e5cf39e7471e08bd75c2123152744bc"
+    },
+    {
+      "id": "obs_acdc14a1a96bacbfba28d111",
+      "research_id": "efhub_packs_page1_metadata",
+      "source_id": "efhub",
+      "url": "https://efhub.com/api/public/packs?search=&page=1&limit=30",
+      "source_entity_kind": "product_list",
+      "source_entity_id": "page=1&limit=30",
+      "observed_at": "2026-10-25T03:47:03+00:00",
+      "excerpt": ":\"piemonte-bn-selection-5-oct-26\",\"date\":\"2026-10-01\",\"playerCount\":8}],\"total\":1698,\"page\":1,\"limit\":30,\"hasMore\":true}",
+      "http_status": 200,
+      "body_sha256": "7999608d1fad35a5c709b04d232cc4129efa2259b83ee7d79d5c07ec213bbb14"
+    },
+    {
+      "id": "obs_afb0cd3e335550da8be4e05d",
+      "research_id": "efhub_players_page2",
+      "source_id": "efhub",
+      "url": "https://efhub.com/api/public/players?page=2",
+      "source_entity_kind": "card_list",
+      "source_entity_id": "page=2&limit=24",
+      "observed_at": "2026-10-25T03:46:05+00:00",
+      "excerpt": "{\"pagination\":{\"total\":50840,\"page\":2,\"limit\":24,\"totalPages\":2119},\"returned_count\":24,\"sample\":[{\"id\":\"55072755132831\",\"name\":\"Declan Rice\",\"nameJa\":\"デクラン ライス\",\"nameZh\":\"德克兰·赖斯\",\"slug\":\"declan-rice\",\"nationality\":\"\",\"nationalityCode\":\"\",\"team\":\"Arsenal FC\",\"position\":\"CMF\",\"overallRating\":97,\"playingStyle\":\"Box To Box\",\"imageUrl\":\"https://efimg.com/efootballhub22/images/player_cards/55072755132831_l.png\",\"playerType\":3},{\"id\":\"55070607666913\",\"name\":\"William Saliba\",\"nameJa\":\"ウィリアム サリバ\",\"nameZh\":\"威廉·萨利巴\",\"slug\":\"william-saliba\",\"nationality\":\"\",\"nationalityCode\":\"\",\"team\":\"Arsenal FC\",\"position\":\"CB\",\"overallRating\":97,\"playingStyle\":\"Build Up\",\"imageUrl\":\"https://efimg.com/efootballhub22/images/player_cards/55070607666913_l.png\",\"playerType\":3},{\"id\":\"55070339149151\",\"name\":\"Thibaut Courtois\",\"nameJa\":\"ティボー クルトワ\",\"nameZh\":\"蒂博·库尔图瓦\",\"slug\":\"thibaut-courtois\",\"nationality\":\"\",\"nationalityCode\":\"\",\"team\":\"Madrid Chamartin B\",\"position\":\"GK\",\"overallRating\":97,\"playingStyle\":\"Defensive Goalkeeper\",\"imageUrl\":\"https://efimg.com/efootballhub22/images/player_cards/55070339149151_l.png\",\"playerType\":3}],\"last_sample\":{\"id\":\"52884469297278\",\"name\":\"Kylian Mbappe\",\"nameJa\":\"キリアン エムバペ\",\"nameZh\":\"基利安·姆巴佩\",\"slug\":\"kylian-mbappe\",\"nationality\":\"\",\"nationalityCode\":\"\",\"team\":\"Madrid Chamartin B\",\"position\":\"CF\",\"overallRating\":97,\"playingStyle\":\"Deep-Lying Forward\",\"imageUrl\":\"https://efimg.com/efootballhub22/images/player_cards/52884469297278_l.png\",\"playerType\":3}}",
+      "http_status": 200,
+      "body_sha256": "a437501af851216686ef0c4b4b3e20b830c972f5f280bfe87ea244874490ef73"
+    },
+    {
+      "id": "efhub_obs_473b7e2ec8365e1d282639a3",
+      "source_id": "efhub",
+      "url": "https://efhub.com/api/public/packs?search=&page=1&limit=30",
+      "source_entity_kind": "product_list",
+      "source_entity_id": "page=1&limit=30",
+      "observed_at": "2026-10-25T04:58:52.412Z",
+      "excerpt": "{\"packs\":[{\"name\":\"Ranking Event Rewards 2027\",\"slug\":\"ranking-event-rewards-2027\",\"date\":\"2026-10-22\",\"playerCount\":12},{\"name\":\"Halloween Campaign 22 Oct '26\",\"slug\":\"halloween-campaign-22-oct-26\",\"date\":\"2026-10-22\",\"playerCount\":5},{\"name\":\"Borussia Dortmund Pack 26-27\",\"slug\":\"borussia-dortmund-pack-26-27\",\"date\":\"2026-10-22\",\"playerCount\":11},{\"name\":\"POTM J1 LEAGUE 22 Oct '26\",\"slug\":\"potm-j1-league-22-oct-26\",\"date\":\"2026-10-22\",\"playerCount\":6},{\"name\":\"POTW 22 Oct '26\",\"slug\":\"potw-22-oct-26\",\"date\":\"2026-10-22\",\"playerCount\":11},{\"name\":\"POTM Trendyol Süper Lig 22 Oct '26\",\"slug\":\"potm-trendyol-s-per-lig-22-oct-26\",\"date\":\"2026-10-22\",\"playerCount\":6},{\"name\":\"POTM Brasileirão 22 Oct '26\",\"slug\":\"potm-brasileir-o-22-oct-26\",\"date\":\"2026-10-22\",\"playerCount\":6},{\"name\":\"POTW European Club Championship 22 Oct '26\",\"slug\":\"potw-european-club-championship-22-oct-26\",\"date\":\"2026-10-22\",\"playerCount\":11},{\"name\":\"Magical Dribblers 22 Oct '26\",\"slug\":\"magical-dribblers-22-oct-26\",\"date\":\"2026-10-22\",\"playerCount\":11},{\"name\":\"Manager Pack 15 Oct '26\",\"slug\":\"manager-pack-15-oct-26\",\"date\":\"2026-10-15\",\"playerCount\":2},{\"name\":\"Trusted Shields 15 Oct '26\",\"slug\":\"trusted-shields-15-oct-26\",\"date\":\"2026-10-15\",\"playerCount\":11},{\"name\":\"Big Time Indonesia 5 Oct '26\",\"slug\":\"big-time-indonesia-5-oct-26\",\"date\":\"2026-10-15\",\"playerCount\":1},{\"name\":\"Southeast Asia Selection 15 Oct '26\",\"slug\":\"southeast-asia-selection-15-oct-26\",\"date\":\"2026-10-15\",\"playerCount\":11},{\"name\":\"European Clubs Selection Midfielders 19 Oct '26\",\"slug\":\"european-clubs-selection-midfielders-19-oct-26\",\"date\":\"2026-10-15\",\"playerCount\":8},{\"name\":\"Trendyol Süper Lig Monthly MVPs Sep '26\",\"slug\":\"trendyol-s-per-lig-monthly-mvps-sep-26\",\"date\":\"2026-10-15\",\"playerCount\":11},{\"name\":\"POTW 15 Oct '26\",\"slug\":\"potw-15-oct-26\",\"date\":\"2026-10-15\",\"playerCount\":11},{\"name\":\"Trendyol Süper Lig Selection 15 Oct '26\",\"slug\":\"trendyol-s-per-lig-selection-15-oct-26\",\"date\":\"2026-10-15\",\"playerCount\":4},{\"name\":\"UNIFI LIGA SUPER Selection 8 Oct '26\",\"slug\":\"unifi-liga-super-selection-8-oct-26\",\"date\":\"2026-10-08\",\"playerCount\":12},{\"name\":\"Internazionale Milano Pack 26-27\",\"slug\":\"internazionale-milano-pack-26-27\",\"date\":\"2026-10-08\",\"playerCount\":11},{\"name\":\"Skill Up 2027\",\"slug\":\"skill-up-2027\",\"date\":\"2026-10-08\",\"playerCount\":3},{\"name\":\"POTW National Teams 8 Oct '26\",\"slug\":\"potw-national-teams-8-oct-26\",\"date\":\"2026-10-08\",\"playerCount\":11},{\"name\":\"Italian League Selection 8 Oct '26\",\"slug\":\"italian-league-selection-8-oct-26\",\"date\":\"2026-10-08\",\"playerCount\":11},{\"name\":\"Spanish League Selection Guardians 8 Oct '26\",\"slug\":\"spanish-league-selection-guardians-8-oct-26\",\"date\":\"2026-10-08\",\"playerCount\":8},{\"name\":\"Wonderkids 8 Oct '26\",\"slug\":\"wonderkids-8-oct-26\",\"date\":\"2026-10-08\",\"playerCount\":8},{\"name\":\"New Playing Style Campaign\",\"slug\":\"new-playing-style-campaign\",\"date\":\"2026-10-08\",\"playerCount\":5},{\"name\":\"eFootball™ League 2027 Rewards Phase 3\",\"slug\":\"efootball-league-2027-rewards-phase-3\",\"date\":\"2026-10-08\",\"playerCount\":1},{\"name\":\"English League Selection Attackers 12 Oct '26\",\"slug\":\"english-league-selection-attackers-12-oct-26\",\"date\":\"2026-10-08\",\"playerCount\":11},{\"name\":\"J1 LEAGUE Selection 1 Oct '26\",\"slug\":\"j1-league-selection-1-oct-26\",\"date\":\"2026-10-01\",\"playerCount\":8},{\"name\":\"POTW National Teams 1 Oct '26\",\"slug\":\"potw-national-teams-1-oct-26\",\"date\":\"2026-10-01\",\"playerCount\":11},{\"name\":\"Piemonte BN Selection 5 Oct '26\",\"slug\":\"piemonte-bn-selection-5-oct-26\",\"date\":\"2026-10-01\",\"playerCount\":8}],\"total\":1698,\"page\":1,\"limit\":30,\"hasMore\":true}",
+      "http_status": 200,
+      "body_sha256": "7999608d1fad35a5c709b04d232cc4129efa2259b83ee7d79d5c07ec213bbb14"
+    },
+    {
+      "id": "efhub_obs_4da7faaf6cb715e80baa5bee",
+      "source_id": "efhub",
+      "url": "https://efhub.com/ko/packs/ranking-event-rewards-2027",
+      "source_entity_kind": "product",
+      "source_entity_id": "ranking-event-rewards-2027",
+      "observed_at": "2026-10-25T04:58:52.985Z",
+      "excerpt": "{\"name\":\"Ranking Event Rewards 2027\",\"source_displayed_count\":12,\"first_cards\":[{\"id\":\"106798388457476\",\"name\":\"Mikel Oyarzabal\",\"nameJa\":\"ミケル オヤルサバル\",\"nameZh\":\"米克尔·奥亚尔萨瓦尔\",\"slug\":\"mikel-oyarzabal\",\"nationality\":\"\",\"nationalityCode\":\"\",\"team\":\"Vasco Gipuzkoa AB\",\"position\":\"CF\",\"overallRating\":85,\"playingStyle\":\"Deep-Lying Forward\",\"playingStyleDefensive\":\"Front Line Pressure\",\"imageUrl\":\"https://efimg.com/efootballhub22/images/player_cards/106798388457476_l.png\",\"playerType\":8},{\"id\":\"106796241006650\",\"name\":\"Carney Chukwuemeka\",\"nameJa\":\"カーニー チュクウェメカ\",\"nameZh\":\"卡尼·丘库埃梅卡\",\"slug\":\"carney-chukwuemeka\",\"nationality\":\"\",\"nationalityCode\":\"\",\"team\":\"Borussia Dortmund\",\"position\":\"AMF\",\"overallRating\":84,\"playingStyle\":\"Creative Playmaker\",\"playingStyleDefensive\":\"All Action Defender\",\"imageUrl\":\"https://efimg.com/efootballhub22/images/player_cards/106796241006650_l.png\",\"playerType\":8}]}",
+      "http_status": 200,
+      "body_sha256": "8183e45608d99915eee1a026f56f7d72ae64ddb82ff829c995c0cb0f44dee276"
+    },
+    {
+      "id": "efhub_obs_801f548f8258290840714976",
+      "source_id": "efhub",
+      "url": "https://efhub.com/ko/packs/halloween-campaign-22-oct-26",
+      "source_entity_kind": "product",
+      "source_entity_id": "halloween-campaign-22-oct-26",
+      "observed_at": "2026-10-25T04:58:54.681Z",
+      "excerpt": "{\"name\":\"Halloween Campaign 22 Oct '26\",\"source_displayed_count\":5,\"first_cards\":[{\"id\":\"105892687165161\",\"name\":\"Emre Can\",\"nameJa\":\"エムレ ジャン\",\"nameZh\":\"埃姆雷·詹\",\"slug\":\"emre-can\",\"nationality\":\"\",\"nationalityCode\":\"\",\"team\":\"Borussia Dortmund\",\"position\":\"CB\",\"overallRating\":93,\"playingStyle\":\"Build Up\",\"playingStyleDefensive\":\"Destroyer\",\"imageUrl\":\"https://efimg.com/efootballhub22/images/player_cards/105892687165161_l.png\",\"playerType\":6},{\"id\":\"105892687220862\",\"name\":\"Marcel Sabitzer\",\"nameJa\":\"マルセル ザービツァー\",\"nameZh\":\"马塞尔·萨比策\",\"slug\":\"marcel-sabitzer\",\"nationality\":\"\",\"nationalityCode\":\"\",\"team\":\"Borussia Dortmund\",\"position\":\"CMF\",\"overallRating\":93,\"playingStyle\":\"Box To Box\",\"playingStyleDefensive\":\"$undefined\",\"imageUrl\":\"https://efimg.com/efootballhub22/images/player_cards/105892687220862_l.png\",\"playerType\":6}]}",
+      "http_status": 200,
+      "body_sha256": "e46a5864b970d4329c59828c4feeb3ebea9cc5c43ae0f7534940c0b624850ee0"
+    },
+    {
+      "id": "efhub_obs_a5d608a3ff672a919dcaec12",
+      "source_id": "efhub",
+      "url": "https://efhub.com/ko/packs/borussia-dortmund-pack-26-27",
+      "source_entity_kind": "product",
+      "source_entity_id": "borussia-dortmund-pack-26-27",
+      "observed_at": "2026-10-25T04:58:55.218Z",
+      "excerpt": "{\"name\":\"Borussia Dortmund Pack 26-27\",\"source_displayed_count\":11,\"first_cards\":[{\"id\":\"106802146570881\",\"name\":\"Felix Nmecha\",\"nameJa\":\"フェリックス ヌメチャ\",\"nameZh\":\"费利克斯·恩梅沙\",\"slug\":\"felix-nmecha\",\"nationality\":\"\",\"nationalityCode\":\"\",\"team\":\"Borussia Dortmund\",\"position\":\"CMF\",\"overallRating\":85,\"playingStyle\":\"Box To Box\",\"playingStyleDefensive\":\"$undefined\",\"imageUrl\":\"https://efimg.com/efootballhub22/images/player_cards/106802146570881_l.png\",\"playerType\":8},{\"id\":\"105891076607840\",\"name\":\"Serhou Guirassy\",\"nameJa\":\"セル ギラシ\",\"nameZh\":\"塞鲁·吉拉西\",\"slug\":\"serhou-guirassy\",\"nationality\":\"\",\"nationalityCode\":\"\",\"team\":\"Borussia Dortmund\",\"position\":\"CF\",\"overallRating\":84,\"playingStyle\":\"Fox In The Box\",\"playingStyleDefensive\":\"Attack Outlet\",\"imageUrl\":\"https://efimg.com/efootballhub22/images/player_cards/105891076607840_l.png\",\"playerType\":6}]}",
+      "http_status": 200,
+      "body_sha256": "e855a287ff7519916d507fd0dade30b058e1680c3ff0cd41ca67767a32f1a4c6"
+    },
+    {
+      "id": "efhub_obs_f319c78a714c1a4c3ef09533",
+      "source_id": "efhub",
+      "url": "https://efhub.com/ko/packs/potm-j1-league-22-oct-26",
+      "source_entity_kind": "product",
+      "source_entity_id": "potm-j1-league-22-oct-26",
+      "observed_at": "2026-10-25T04:58:56.825Z",
+      "excerpt": "{\"name\":\"POTM J1 LEAGUE 22 Oct '26\",\"source_displayed_count\":6,\"first_cards\":[{\"id\":\"53985859981027\",\"name\":\"Matheus Thuler\",\"nameJa\":\"マテウス トゥーレル\",\"nameZh\":\"图莱尔\",\"slug\":\"matheus-thuler\",\"nationality\":\"\",\"nationalityCode\":\"\",\"team\":\"Vissel Kobe\",\"position\":\"CB\",\"overallRating\":92,\"playingStyle\":\"Build Up\",\"playingStyleDefensive\":\"Covering Role\",\"imageUrl\":\"https://efimg.com/efootballhub22/images/player_cards/53985859981027_l.png\",\"playerType\":3},{\"id\":\"53985859923942\",\"name\":\"Kim Seung-Gyu\",\"nameJa\":\"キム スンギュ\",\"nameZh\":\"金承奎\",\"slug\":\"kim-seung-gyu\",\"nationality\":\"\",\"nationalityCode\":\"\",\"team\":\"FC TOKYO\",\"position\":\"GK\",\"overallRating\":91,\"playingStyle\":\"$undefined\",\"playingStyleDefensive\":\"Defensive Goalkeeper\",\"imageUrl\":\"https://efimg.com/efootballhub22/images/player_cards/53985859923942_l.png\",\"playerType\":3}]}",
+      "http_status": 200,
+      "body_sha256": "92b5979c5001287b8f82e1c06b0e10db7280430723a45f6640c8c7b95d57b573"
+    },
+    {
+      "id": "efhub_obs_d4cf3d8e862b6829ccc3be1a",
+      "source_id": "efhub",
+      "url": "https://efhub.com/ko/packs/potw-22-oct-26",
+      "source_entity_kind": "product",
+      "source_entity_id": "potw-22-oct-26",
+      "observed_at": "2026-10-25T04:58:58.391Z",
+      "excerpt": "{\"name\":\"POTW 22 Oct '26\",\"source_displayed_count\":11,\"first_cards\":[{\"id\":\"52904333543847\",\"name\":\"Erling Haaland\",\"nameJa\":\"アーリング ハーランド\",\"nameZh\":\"埃尔林·哈兰德\",\"slug\":\"erling-haaland\",\"nationality\":\"\",\"nationalityCode\":\"\",\"team\":\"Manchester B\",\"position\":\"CF\",\"overallRating\":97,\"playingStyle\":\"Goal Poacher\",\"playingStyleDefensive\":\"Front Line Pressure\",\"imageUrl\":\"https://efimg.com/efootballhub22/images/player_cards/52904333543847_l.png\",\"playerType\":3},{\"id\":\"52904333576000\",\"name\":\"Pau Cubarsi\",\"nameJa\":\"パウ クバルシ\",\"nameZh\":\"保·库巴尔西\",\"slug\":\"pau-cubarsi\",\"nationality\":\"\",\"nationalityCode\":\"\",\"team\":\"FC Barcelona\",\"position\":\"CB\",\"overallRating\":96,\"playingStyle\":\"Build Up\",\"playingStyleDefensive\":\"High Line Master\",\"imageUrl\":\"https://efimg.com/efootballhub22/images/player_cards/52904333576000_l.png\",\"playerType\":3}]}",
+      "http_status": 200,
+      "body_sha256": "68d7605c9558d8ad8e7778ee39a178233aaa571e74d338c1f3577c01c34fc232"
+    },
+    {
+      "id": "efhub_obs_8abf50f3dc013d58d5974a10",
+      "source_id": "efhub",
+      "url": "https://efhub.com/ko/packs/potm-trendyol-s-per-lig-22-oct-26",
+      "source_entity_kind": "product",
+      "source_entity_id": "potm-trendyol-s-per-lig-22-oct-26",
+      "observed_at": "2026-10-25T04:58:59.804Z",
+      "excerpt": "{\"name\":\"POTM Trendyol Süper Lig 22 Oct '26\",\"source_displayed_count\":6,\"first_cards\":[{\"id\":\"53988275902638\",\"name\":\"Irfan Can Kahveci\",\"nameJa\":\"イルファン ジャン カフヴェジ\",\"nameZh\":\"伊尔凡·卡赫韦吉\",\"slug\":\"irfan-can-kahveci\",\"nationality\":\"\",\"nationalityCode\":\"\",\"team\":\"Fenerbahce SK\",\"position\":\"AMF\",\"overallRating\":92,\"playingStyle\":\"Creative Playmaker\",\"playingStyleDefensive\":\"Pass Disruptor\",\"imageUrl\":\"https://efimg.com/efootballhub22/images/player_cards/53988275902638_l.png\",\"playerType\":3},{\"id\":\"53988275907363\",\"name\":\"Abdulkerim Bardakci\",\"nameJa\":\"アブデュルケリム バルダクジュ\",\"nameZh\":\"阿卜杜勒-克里姆·巴尔达克吉\",\"slug\":\"abdulkerim-bardakci\",\"nationality\":\"\",\"nationalityCode\":\"\",\"team\":\"Galatasaray SK\",\"position\":\"CB\",\"overallRating\":92,\"playingStyle\":\"$undefined\",\"playingStyleDefensive\":\"Tough Marker\",\"imageUrl\":\"https://efimg.com/efootballhub22/images/player_cards/53988275907363_l.png\",\"playerType\":3}]}",
+      "http_status": 200,
+      "body_sha256": "da7f0ca79006f019753bb2f50fe4212aba0ee60e158f1781a7ad1d448f2ded78"
+    },
+    {
+      "id": "efhub_obs_c3d96d0edb219b919bc709e5",
+      "source_id": "efhub",
+      "url": "https://efhub.com/ko/packs/potm-brasileir-o-22-oct-26",
+      "source_entity_kind": "product",
+      "source_entity_id": "potm-brasileir-o-22-oct-26",
+      "observed_at": "2026-10-25T04:59:01.175Z",
+      "excerpt": "{\"name\":\"POTM Brasileirão 22 Oct '26\",\"source_displayed_count\":6,\"first_cards\":[{\"id\":\"53991228723165\",\"name\":\"Vitor Roque\",\"nameJa\":\"ヴィトール ホッキ\",\"nameZh\":\"维克托·罗克\",\"slug\":\"vitor-roque\",\"nationality\":\"\",\"nationalityCode\":\"\",\"team\":\"SE Palmeiras\",\"position\":\"CF\",\"overallRating\":94,\"playingStyle\":\"Goal Poacher\",\"playingStyleDefensive\":\"Front Line Pressure\",\"imageUrl\":\"https://efimg.com/efootballhub22/images/player_cards/53991228723165_l.png\",\"playerType\":3},{\"id\":\"53991228575687\",\"name\":\"Fabio\",\"nameJa\":\"ファビオ\",\"nameZh\":\"法比奥\",\"slug\":\"fabio\",\"nationality\":\"\",\"nationalityCode\":\"\",\"team\":\"Fluminense FC\",\"position\":\"GK\",\"overallRating\":93,\"playingStyle\":\"$undefined\",\"playingStyleDefensive\":\"Offensive Goalkeeper\",\"imageUrl\":\"https://efimg.com/efootballhub22/images/player_cards/53991228575687_l.png\",\"playerType\":3}]}",
+      "http_status": 200,
+      "body_sha256": "31371dd7979ed28dabc533f77a25135c5dc7e4ce46436c3d2a7110149afa47d6"
+    },
+    {
+      "id": "efhub_obs_ad28201cee515d523ef7f5c3",
+      "source_id": "efhub",
+      "url": "https://efhub.com/ko/packs/potw-european-club-championship-22-oct-26",
+      "source_entity_kind": "product",
+      "source_entity_id": "potw-european-club-championship-22-oct-26",
+      "observed_at": "2026-10-25T04:59:02.734Z",
+      "excerpt": "{\"name\":\"POTW European Club Championship 22 Oct '26\",\"source_displayed_count\":11,\"first_cards\":[{\"id\":\"52912655044507\",\"name\":\"Vitinha\",\"nameJa\":\"ヴィティーニャ\",\"nameZh\":\"维蒂尼亚\",\"slug\":\"vitinha\",\"nationality\":\"\",\"nationalityCode\":\"\",\"team\":\"Paris Saint-Germain\",\"position\":\"CMF\",\"overallRating\":97,\"playingStyle\":\"Orchestrator\",\"playingStyleDefensive\":\"Pass Disruptor\",\"imageUrl\":\"https://efimg.com/efootballhub22/images/player_cards/52912655044507_l.png\",\"playerType\":3},{\"id\":\"52912655024346\",\"name\":\"Eberechi Eze\",\"nameJa\":\"エベレチ エゼ\",\"nameZh\":\"埃贝雷奇·埃泽\",\"slug\":\"eberechi-eze\",\"nationality\":\"\",\"nationalityCode\":\"\",\"team\":\"Arsenal FC\",\"position\":\"LMF\",\"overallRating\":95,\"playingStyle\":\"Hole Player\",\"playingStyleDefensive\":\"Pass Disruptor\",\"imageUrl\":\"https://efimg.com/efootballhub22/images/player_cards/52912655024346_l.png\",\"playerType\":3}]}",
+      "http_status": 200,
+      "body_sha256": "38b209afa7eb7d796f8b7e281f8643bd1e5da205004cd56290f837d286acf5e0"
+    },
+    {
+      "id": "efhub_obs_e83416aead9946a907dc083d",
+      "source_id": "efhub",
+      "url": "https://efhub.com/ko/packs/magical-dribblers-22-oct-26",
+      "source_entity_kind": "product",
+      "source_entity_id": "magical-dribblers-22-oct-26",
+      "observed_at": "2026-10-25T04:59:03.273Z",
+      "excerpt": "{\"name\":\"Magical Dribblers 22 Oct '26\",\"source_displayed_count\":11,\"first_cards\":[{\"id\":\"106800804418912\",\"name\":\"Desire Doue\",\"nameJa\":\"デジレ ドゥエ\",\"nameZh\":\"德西雷·杜埃\",\"slug\":\"desire-doue\",\"nationality\":\"\",\"nationalityCode\":\"\",\"team\":\"Paris Saint-Germain\",\"position\":\"RWF\",\"overallRating\":86,\"playingStyle\":\"Prolific Winger\",\"playingStyleDefensive\":\"Press Back\",\"imageUrl\":\"https://efimg.com/efootballhub22/images/player_cards/106800804418912_l.png\",\"playerType\":8},{\"id\":\"106800804393500\",\"name\":\"Jeremy Doku\",\"nameJa\":\"ジェレミ ドク\",\"nameZh\":\"杰雷米·多库\",\"slug\":\"jeremy-doku\",\"nationality\":\"\",\"nationalityCode\":\"\",\"team\":\"Manchester B\",\"position\":\"LWF\",\"overallRating\":86,\"playingStyle\":\"Prolific Winger\",\"playingStyleDefensive\":\"Front Line Poacher\",\"imageUrl\":\"https://efimg.com/efootballhub22/images/player_cards/106800804393500_l.png\",\"playerType\":8}]}",
+      "http_status": 200,
+      "body_sha256": "9c58a4d89515f09ca8401794e2d39b2bde4faa0aa7e154689659b41674c1f598"
+    }
+  ],
+  "persons": [],
+  "assets": [
+    {
+      "id": "asset_33c10bdaac13133b8fafa9f8",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/106800804418912_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_e83416aead9946a907dc083d"
+    },
+    {
+      "id": "asset_363792be6bdeb549d4aae8d2",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/106800804393500_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_e83416aead9946a907dc083d"
+    },
+    {
+      "id": "asset_a275dd9d7f5f5575729ba3e4",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/106800804376628_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_e83416aead9946a907dc083d"
+    },
+    {
+      "id": "asset_e2d1fff55cedc05bcc59cf19",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/105896176917926_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_e83416aead9946a907dc083d"
+    },
+    {
+      "id": "asset_6ec6fede6d2e63b7701a9521",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/105896176904634_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_e83416aead9946a907dc083d"
+    },
+    {
+      "id": "asset_5619361089fec792fd5eeff4",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/105896176839655_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_e83416aead9946a907dc083d"
+    },
+    {
+      "id": "asset_08e295f996e51dad39d24165",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/105896176957170_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_e83416aead9946a907dc083d"
+    },
+    {
+      "id": "asset_953720b685179d4d0450bdd1",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/105896176893674_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_e83416aead9946a907dc083d"
+    },
+    {
+      "id": "asset_12068947f6e9dca798bba32c",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/105896176886332_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_e83416aead9946a907dc083d"
+    },
+    {
+      "id": "asset_cf867cf88591c1d312b70b18",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/105896176881795_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_e83416aead9946a907dc083d"
+    },
+    {
+      "id": "asset_76b88bd741f667ac3b05122e",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/105896176926765_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_e83416aead9946a907dc083d"
+    },
+    {
+      "id": "asset_7f1b727fa0649e1a413efa1b",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/88046292727298_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "obs_163c0517bfbf814cacb8b487"
+    },
+    {
+      "id": "asset_5cf1505f4758d55a181316ac",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/88036360615426_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "obs_41fa990f0219084066d2e36d"
+    },
+    {
+      "id": "asset_576a3c4a9582038f2f887f07",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/88040387147266_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "obs_41fa990f0219084066d2e36d"
+    },
+    {
+      "id": "asset_6969c1449f40176c5b906f6d",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/88035823744514_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "obs_41fa990f0219084066d2e36d"
+    },
+    {
+      "id": "asset_6d5cbfd7572383d415f45d00",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/106798388457476_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_4da7faaf6cb715e80baa5bee"
+    },
+    {
+      "id": "asset_eb726f5b646d513a212bc616",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/106796241006650_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_4da7faaf6cb715e80baa5bee"
+    },
+    {
+      "id": "asset_a5f083607329047ba0c9dcc3",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/106798388494170_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_4da7faaf6cb715e80baa5bee"
+    },
+    {
+      "id": "asset_03c6e7d897fadd7a53e8a69d",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/106798388454829_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_4da7faaf6cb715e80baa5bee"
+    },
+    {
+      "id": "asset_031575322a2711d7589e4c06",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/106798388478166_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_4da7faaf6cb715e80baa5bee"
+    },
+    {
+      "id": "asset_5578b9de74fb8bd277fefeb7",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/106798388461815_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_4da7faaf6cb715e80baa5bee"
+    },
+    {
+      "id": "asset_638e6bc97443f4d7ec2903c1",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/106798388407327_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_4da7faaf6cb715e80baa5bee"
+    },
+    {
+      "id": "asset_5ee248c620c30339d42d77d9",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/106795972530896_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_4da7faaf6cb715e80baa5bee"
+    },
+    {
+      "id": "asset_a23166a16c690a1056a9a23a",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/106798656890465_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_4da7faaf6cb715e80baa5bee"
+    },
+    {
+      "id": "asset_3d83f910b77ccf43ff4f00ab",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/106798656929345_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_4da7faaf6cb715e80baa5bee"
+    },
+    {
+      "id": "asset_123cc87f69f0d9176e711d2b",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/106798925278449_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_4da7faaf6cb715e80baa5bee"
+    },
+    {
+      "id": "asset_4c491c9be8a94b81ecce12e3",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/106798925332853_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_4da7faaf6cb715e80baa5bee"
+    },
+    {
+      "id": "asset_0201a8b662fd0f4b9e8ff808",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/105892687165161_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_801f548f8258290840714976"
+    },
+    {
+      "id": "asset_3e7890c257a55352c1d61bed",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/105892687220862_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_801f548f8258290840714976"
+    },
+    {
+      "id": "asset_f84ab8510d9befa410fc712a",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/105892687234354_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_801f548f8258290840714976"
+    },
+    {
+      "id": "asset_2a900ab5dfca2f208cf4a80c",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/105892687251310_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_801f548f8258290840714976"
+    },
+    {
+      "id": "asset_c53c2ca487d2c378d29c251e",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/105892687260495_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_801f548f8258290840714976"
+    },
+    {
+      "id": "asset_8202466c4d7df68967131476",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/106802146570881_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_a5d608a3ff672a919dcaec12"
+    },
+    {
+      "id": "asset_eabb770c481b7525e8121012",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/105891076607840_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_a5d608a3ff672a919dcaec12"
+    },
+    {
+      "id": "asset_2babe674a05a6221d89e2de4",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/105891076647837_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_a5d608a3ff672a919dcaec12"
+    },
+    {
+      "id": "asset_94c5c11d794ba53d84aeb113",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/105891076647661_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_a5d608a3ff672a919dcaec12"
+    },
+    {
+      "id": "asset_157a4a3e1f37bfc1d261c101",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/105891076647836_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_a5d608a3ff672a919dcaec12"
+    },
+    {
+      "id": "asset_1d5a6772c721cd334bcebe5b",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/105891076664168_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_a5d608a3ff672a919dcaec12"
+    },
+    {
+      "id": "asset_852ce81e8c0393e795b92ea6",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/105891076665540_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_a5d608a3ff672a919dcaec12"
+    },
+    {
+      "id": "asset_c2a77471d2f334a9f80e670f",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/105891076652937_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_a5d608a3ff672a919dcaec12"
+    },
+    {
+      "id": "asset_8bce23445098cf539b031b4c",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/105891076647663_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_a5d608a3ff672a919dcaec12"
+    },
+    {
+      "id": "asset_a1bee4149267f9aecf21b046",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/105891076673336_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_a5d608a3ff672a919dcaec12"
+    },
+    {
+      "id": "asset_47dfc6ac3447eed94beab2fb",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/105891076644042_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_a5d608a3ff672a919dcaec12"
+    },
+    {
+      "id": "asset_28a124a51097874cb9f8e9d4",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/53985859981027_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_f319c78a714c1a4c3ef09533"
+    },
+    {
+      "id": "asset_e80512be07712a4bfca29852",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/53985859923942_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_f319c78a714c1a4c3ef09533"
+    },
+    {
+      "id": "asset_b9e86a21fcdfa9b4b54b2b43",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/53985859977501_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_f319c78a714c1a4c3ef09533"
+    },
+    {
+      "id": "asset_216e9983ce1281bd523509b8",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/53985859984212_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_f319c78a714c1a4c3ef09533"
+    },
+    {
+      "id": "asset_5d7612fe712acb4ad177da99",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/53985859992654_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_f319c78a714c1a4c3ef09533"
+    },
+    {
+      "id": "asset_90396d1ffc5891c9181fd5f5",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/53985859992727_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_f319c78a714c1a4c3ef09533"
+    },
+    {
+      "id": "asset_5b346d3ab495f5cbed81d7fe",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/52904333543847_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_d4cf3d8e862b6829ccc3be1a"
+    },
+    {
+      "id": "asset_849f408fb32c837a03b9d211",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/52904333576000_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_d4cf3d8e862b6829ccc3be1a"
+    },
+    {
+      "id": "asset_47cdc328f3247b8aab4ed4ed",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/52904333551882_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_d4cf3d8e862b6829ccc3be1a"
+    },
+    {
+      "id": "asset_ac697e209eb27aaa9b9d9189",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/52904333527391_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_d4cf3d8e862b6829ccc3be1a"
+    },
+    {
+      "id": "asset_f3b077f9de6683886b321356",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/52904333571536_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_d4cf3d8e862b6829ccc3be1a"
+    },
+    {
+      "id": "asset_176b1b177cc5d074302a4242",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/52904333457355_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_d4cf3d8e862b6829ccc3be1a"
+    },
+    {
+      "id": "asset_b67a8b17619d88e24e0418de",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/52904333584293_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_d4cf3d8e862b6829ccc3be1a"
+    },
+    {
+      "id": "asset_4ba830fc227db36926723790",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/52904333532168_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_d4cf3d8e862b6829ccc3be1a"
+    },
+    {
+      "id": "asset_57f86a003476d8539af31228",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/52904333532623_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_d4cf3d8e862b6829ccc3be1a"
+    },
+    {
+      "id": "asset_e89097e4c7c598072c8ce0f9",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/52904333545669_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_d4cf3d8e862b6829ccc3be1a"
+    },
+    {
+      "id": "asset_266b81fa432500be7b34a50e",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/52904333546402_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_d4cf3d8e862b6829ccc3be1a"
+    },
+    {
+      "id": "asset_e6a88b5cfb03533ac4242d4e",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/53988275902638_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_8abf50f3dc013d58d5974a10"
+    },
+    {
+      "id": "asset_8d1ef6874ae7e73f855f0097",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/53988275907363_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_8abf50f3dc013d58d5974a10"
+    },
+    {
+      "id": "asset_817e13eefed36a70bc16be7b",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/53988275941823_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_8abf50f3dc013d58d5974a10"
+    },
+    {
+      "id": "asset_a360b9fdd34cc310e2641bb8",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/53988275905208_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_8abf50f3dc013d58d5974a10"
+    },
+    {
+      "id": "asset_ef98d73e4999f11335b3b224",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/53988275928737_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_8abf50f3dc013d58d5974a10"
+    },
+    {
+      "id": "asset_4baf1d87a9234aba4f4e6156",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/53988275961077_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_8abf50f3dc013d58d5974a10"
+    },
+    {
+      "id": "asset_d33674a3adaed5d46d726269",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/53991228723165_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_c3d96d0edb219b919bc709e5"
+    },
+    {
+      "id": "asset_59d8c389dd34cb423758b2b0",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/53991228575687_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_c3d96d0edb219b919bc709e5"
+    },
+    {
+      "id": "asset_e3fda32216872bc1d2a5989a",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/53991228698710_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_c3d96d0edb219b919bc709e5"
+    },
+    {
+      "id": "asset_f1411588adb494f2c423e34d",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/53991228619568_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_c3d96d0edb219b919bc709e5"
+    },
+    {
+      "id": "asset_dc57aa3276bd7cea4c8c762e",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/53991228688058_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_c3d96d0edb219b919bc709e5"
+    },
+    {
+      "id": "asset_269c51726b03df1176ff7b79",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/53991228739881_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_c3d96d0edb219b919bc709e5"
+    },
+    {
+      "id": "asset_0b7b89a48304f161eb42637b",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/52912655044507_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_ad28201cee515d523ef7f5c3"
+    },
+    {
+      "id": "asset_b5b67d83a347e0bda30367f9",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/52912655024346_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_ad28201cee515d523ef7f5c3"
+    },
+    {
+      "id": "asset_4f2032bb0f4ff1da83eb52dd",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/52912655014117_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_ad28201cee515d523ef7f5c3"
+    },
+    {
+      "id": "asset_f02acc0a17e579fdc6fed974",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/52912655053878_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_ad28201cee515d523ef7f5c3"
+    },
+    {
+      "id": "asset_c2b20e480d682405b99c3639",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/52912655057395_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_ad28201cee515d523ef7f5c3"
+    },
+    {
+      "id": "asset_371c784f5a376124a6576743",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/52912655062348_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_ad28201cee515d523ef7f5c3"
+    },
+    {
+      "id": "asset_8558c5b83b9b8322906486a1",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/52912655050310_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_ad28201cee515d523ef7f5c3"
+    },
+    {
+      "id": "asset_ffcaf95c0f70c98349182ac4",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/52912655086762_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_ad28201cee515d523ef7f5c3"
+    },
+    {
+      "id": "asset_ccc65c44b124ed9ca1b73ee0",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/52912655061235_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_ad28201cee515d523ef7f5c3"
+    },
+    {
+      "id": "asset_266edf666f7478566644fa24",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/52912655073911_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_ad28201cee515d523ef7f5c3"
+    },
+    {
+      "id": "asset_8a21960ad576fc0318595f94",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/52912655074031_l.png",
+      "kind": "card_image",
+      "composition": "unknown",
+      "observation_id": "efhub_obs_ad28201cee515d523ef7f5c3"
+    }
+  ],
+  "cards": [
+    {
+      "id": "card_20f0679e22ec3e40f1338405",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "106800804418912"
+        }
+      ],
+      "person_id": null,
+      "name": "Desire Doue",
+      "overall": {
+        "value": 86,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Showtime",
+          "raw_value": "8",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_33c10bdaac13133b8fafa9f8"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_e83416aead9946a907dc083d",
+        "overall": "efhub_obs_e83416aead9946a907dc083d",
+        "types": "efhub_obs_e83416aead9946a907dc083d",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_e83416aead9946a907dc083d"
+      }
+    },
+    {
+      "id": "card_ae312e3f811ece0fc4177e74",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "106800804393500"
+        }
+      ],
+      "person_id": null,
+      "name": "Jeremy Doku",
+      "overall": {
+        "value": 86,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Showtime",
+          "raw_value": "8",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_363792be6bdeb549d4aae8d2"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_e83416aead9946a907dc083d",
+        "overall": "efhub_obs_e83416aead9946a907dc083d",
+        "types": "efhub_obs_e83416aead9946a907dc083d",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_e83416aead9946a907dc083d"
+      }
+    },
+    {
+      "id": "card_d55255d81ff925181332aaf3",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "106800804376628"
+        }
+      ],
+      "person_id": null,
+      "name": "Raphinha",
+      "overall": {
+        "value": 85,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Showtime",
+          "raw_value": "8",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_a275dd9d7f5f5575729ba3e4"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_e83416aead9946a907dc083d",
+        "overall": "efhub_obs_e83416aead9946a907dc083d",
+        "types": "efhub_obs_e83416aead9946a907dc083d",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_e83416aead9946a907dc083d"
+      }
+    },
+    {
+      "id": "card_87f51a4715272175f0451d9e",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "105896176917926"
+        }
+      ],
+      "person_id": null,
+      "name": "Savio",
+      "overall": {
+        "value": 82,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Highlight",
+          "raw_value": "6",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_e2d1fff55cedc05bcc59cf19"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_e83416aead9946a907dc083d",
+        "overall": "efhub_obs_e83416aead9946a907dc083d",
+        "types": "efhub_obs_e83416aead9946a907dc083d",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_e83416aead9946a907dc083d"
+      }
+    },
+    {
+      "id": "card_d003a1ce0c141811cb54ee82",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "105896176904634"
+        }
+      ],
+      "person_id": null,
+      "name": "Lois Openda",
+      "overall": {
+        "value": 82,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Highlight",
+          "raw_value": "6",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_6ec6fede6d2e63b7701a9521"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_e83416aead9946a907dc083d",
+        "overall": "efhub_obs_e83416aead9946a907dc083d",
+        "types": "efhub_obs_e83416aead9946a907dc083d",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_e83416aead9946a907dc083d"
+      }
+    },
+    {
+      "id": "card_ef6d0c75523c868c690f9e12",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "105896176839655"
+        }
+      ],
+      "person_id": null,
+      "name": "Rafa Silva",
+      "overall": {
+        "value": 81,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Highlight",
+          "raw_value": "6",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_5619361089fec792fd5eeff4"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_e83416aead9946a907dc083d",
+        "overall": "efhub_obs_e83416aead9946a907dc083d",
+        "types": "efhub_obs_e83416aead9946a907dc083d",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_e83416aead9946a907dc083d"
+      }
+    },
+    {
+      "id": "card_c1d7d17c4667a0fb5ee18f8c",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "105896176957170"
+        }
+      ],
+      "person_id": null,
+      "name": "Samuele Inacio",
+      "overall": {
+        "value": 80,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Highlight",
+          "raw_value": "6",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_08e295f996e51dad39d24165"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_e83416aead9946a907dc083d",
+        "overall": "efhub_obs_e83416aead9946a907dc083d",
+        "types": "efhub_obs_e83416aead9946a907dc083d",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_e83416aead9946a907dc083d"
+      }
+    },
+    {
+      "id": "card_9b166580d5cf44ab969d24f3",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "105896176893674"
+        }
+      ],
+      "person_id": null,
+      "name": "Arnaut Danjuma",
+      "overall": {
+        "value": 80,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Highlight",
+          "raw_value": "6",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_953720b685179d4d0450bdd1"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_e83416aead9946a907dc083d",
+        "overall": "efhub_obs_e83416aead9946a907dc083d",
+        "types": "efhub_obs_e83416aead9946a907dc083d",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_e83416aead9946a907dc083d"
+      }
+    },
+    {
+      "id": "card_a81bdaf7bd5850c0ac02e70c",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "105896176886332"
+        }
+      ],
+      "person_id": null,
+      "name": "Kingsley Ehizibue",
+      "overall": {
+        "value": 80,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Highlight",
+          "raw_value": "6",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_12068947f6e9dca798bba32c"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_e83416aead9946a907dc083d",
+        "overall": "efhub_obs_e83416aead9946a907dc083d",
+        "types": "efhub_obs_e83416aead9946a907dc083d",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_e83416aead9946a907dc083d"
+      }
+    },
+    {
+      "id": "card_774b8ae4ddc68b561e01a393",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "105896176881795"
+        }
+      ],
+      "person_id": null,
+      "name": "Ulisses Garcia",
+      "overall": {
+        "value": 80,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Highlight",
+          "raw_value": "6",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_cf867cf88591c1d312b70b18"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_e83416aead9946a907dc083d",
+        "overall": "efhub_obs_e83416aead9946a907dc083d",
+        "types": "efhub_obs_e83416aead9946a907dc083d",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_e83416aead9946a907dc083d"
+      }
+    },
+    {
+      "id": "card_d5dbf729548317f3b06b3c9d",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "105896176926765"
+        }
+      ],
+      "person_id": null,
+      "name": "Tijjani Noslin",
+      "overall": {
+        "value": 79,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Highlight",
+          "raw_value": "6",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_76b88bd741f667ac3b05122e"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_e83416aead9946a907dc083d",
+        "overall": "efhub_obs_e83416aead9946a907dc083d",
+        "types": "efhub_obs_e83416aead9946a907dc083d",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_e83416aead9946a907dc083d"
+      }
+    },
+    {
+      "id": "card_477888a0ddd42678e4dd9cb3",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "88046292727298"
+        }
+      ],
+      "person_id": null,
+      "name": "Yaya Toure",
+      "overall": {
+        "value": 86,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Epic",
+          "raw_value": "5",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_7f1b727fa0649e1a413efa1b"
+      ],
+      "other_version_ids": [
+        "card_a714d2bb7a0fe818b298fc97",
+        "card_ce8384f37818a67d7f9283bb",
+        "card_09cfd602c46196979284779a"
+      ],
+      "provenance": {
+        "name": "obs_163c0517bfbf814cacb8b487",
+        "overall": "obs_163c0517bfbf814cacb8b487",
+        "types": "obs_163c0517bfbf814cacb8b487",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "other_version_ids": "obs_163c0517bfbf814cacb8b487"
+      }
+    },
+    {
+      "id": "card_a714d2bb7a0fe818b298fc97",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "88036360615426"
+        }
+      ],
+      "person_id": null,
+      "name": "Yaya Toure",
+      "overall": {
+        "value": 86,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Epic",
+          "raw_value": "5",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_5cf1505f4758d55a181316ac"
+      ],
+      "other_version_ids": [
+        "card_477888a0ddd42678e4dd9cb3"
+      ],
+      "provenance": {
+        "name": "obs_41fa990f0219084066d2e36d",
+        "overall": "obs_41fa990f0219084066d2e36d",
+        "types": "obs_41fa990f0219084066d2e36d",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "other_version_ids": "obs_41fa990f0219084066d2e36d"
+      }
+    },
+    {
+      "id": "card_ce8384f37818a67d7f9283bb",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "88040387147266"
+        }
+      ],
+      "person_id": null,
+      "name": "Yaya Toure",
+      "overall": {
+        "value": 86,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Epic",
+          "raw_value": "5",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_576a3c4a9582038f2f887f07"
+      ],
+      "other_version_ids": [
+        "card_477888a0ddd42678e4dd9cb3"
+      ],
+      "provenance": {
+        "name": "obs_41fa990f0219084066d2e36d",
+        "overall": "obs_41fa990f0219084066d2e36d",
+        "types": "obs_41fa990f0219084066d2e36d",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "other_version_ids": "obs_41fa990f0219084066d2e36d"
+      }
+    },
+    {
+      "id": "card_09cfd602c46196979284779a",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "88035823744514"
+        }
+      ],
+      "person_id": null,
+      "name": "Yaya Toure",
+      "overall": {
+        "value": 85,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Epic",
+          "raw_value": "5",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_6969c1449f40176c5b906f6d"
+      ],
+      "other_version_ids": [
+        "card_477888a0ddd42678e4dd9cb3"
+      ],
+      "provenance": {
+        "name": "obs_41fa990f0219084066d2e36d",
+        "overall": "obs_41fa990f0219084066d2e36d",
+        "types": "obs_41fa990f0219084066d2e36d",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "other_version_ids": "obs_41fa990f0219084066d2e36d"
+      }
+    },
+    {
+      "id": "card_9c848f244eae3f0fb3c05463",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "106798388457476"
+        }
+      ],
+      "person_id": null,
+      "name": "Mikel Oyarzabal",
+      "overall": {
+        "value": 85,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Showtime",
+          "raw_value": "8",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_6d5cbfd7572383d415f45d00"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_4da7faaf6cb715e80baa5bee",
+        "overall": "efhub_obs_4da7faaf6cb715e80baa5bee",
+        "types": "efhub_obs_4da7faaf6cb715e80baa5bee",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_4da7faaf6cb715e80baa5bee"
+      }
+    },
+    {
+      "id": "card_441c623d4537288fca8eb695",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "106796241006650"
+        }
+      ],
+      "person_id": null,
+      "name": "Carney Chukwuemeka",
+      "overall": {
+        "value": 84,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Showtime",
+          "raw_value": "8",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_eb726f5b646d513a212bc616"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_4da7faaf6cb715e80baa5bee",
+        "overall": "efhub_obs_4da7faaf6cb715e80baa5bee",
+        "types": "efhub_obs_4da7faaf6cb715e80baa5bee",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_4da7faaf6cb715e80baa5bee"
+      }
+    },
+    {
+      "id": "card_79adf24e87675c148d16fbe3",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "106798388494170"
+        }
+      ],
+      "person_id": null,
+      "name": "Giuliano Simeone",
+      "overall": {
+        "value": 84,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Showtime",
+          "raw_value": "8",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_a5f083607329047ba0c9dcc3"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_4da7faaf6cb715e80baa5bee",
+        "overall": "efhub_obs_4da7faaf6cb715e80baa5bee",
+        "types": "efhub_obs_4da7faaf6cb715e80baa5bee",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_4da7faaf6cb715e80baa5bee"
+      }
+    },
+    {
+      "id": "card_bed1cec33bb508bc6d9b6890",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "106798388454829"
+        }
+      ],
+      "person_id": null,
+      "name": "Manuel Locatelli",
+      "overall": {
+        "value": 84,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Showtime",
+          "raw_value": "8",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_03c6e7d897fadd7a53e8a69d"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_4da7faaf6cb715e80baa5bee",
+        "overall": "efhub_obs_4da7faaf6cb715e80baa5bee",
+        "types": "efhub_obs_4da7faaf6cb715e80baa5bee",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_4da7faaf6cb715e80baa5bee"
+      }
+    },
+    {
+      "id": "card_0cb5579e797012c5ef3b7120",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "106798388478166"
+        }
+      ],
+      "person_id": null,
+      "name": "Marc Guehi",
+      "overall": {
+        "value": 84,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Showtime",
+          "raw_value": "8",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_031575322a2711d7589e4c06"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_4da7faaf6cb715e80baa5bee",
+        "overall": "efhub_obs_4da7faaf6cb715e80baa5bee",
+        "types": "efhub_obs_4da7faaf6cb715e80baa5bee",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_4da7faaf6cb715e80baa5bee"
+      }
+    },
+    {
+      "id": "card_a657c0ede136b104a43a04f2",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "106798388461815"
+        }
+      ],
+      "person_id": null,
+      "name": "Morgan Gibbs-White",
+      "overall": {
+        "value": 84,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Showtime",
+          "raw_value": "8",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_5578b9de74fb8bd277fefeb7"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_4da7faaf6cb715e80baa5bee",
+        "overall": "efhub_obs_4da7faaf6cb715e80baa5bee",
+        "types": "efhub_obs_4da7faaf6cb715e80baa5bee",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_4da7faaf6cb715e80baa5bee"
+      }
+    },
+    {
+      "id": "card_876f340a866548072b9e63f6",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "106798388407327"
+        }
+      ],
+      "person_id": null,
+      "name": "Mike Maignan",
+      "overall": {
+        "value": 83,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Showtime",
+          "raw_value": "8",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_638e6bc97443f4d7ec2903c1"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_4da7faaf6cb715e80baa5bee",
+        "overall": "efhub_obs_4da7faaf6cb715e80baa5bee",
+        "types": "efhub_obs_4da7faaf6cb715e80baa5bee",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_4da7faaf6cb715e80baa5bee"
+      }
+    },
+    {
+      "id": "card_3b1fa86a335df7d76a1f4d5b",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "106795972530896"
+        }
+      ],
+      "person_id": null,
+      "name": "Ivan Provedel",
+      "overall": {
+        "value": 82,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Showtime",
+          "raw_value": "8",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_5ee248c620c30339d42d77d9"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_4da7faaf6cb715e80baa5bee",
+        "overall": "efhub_obs_4da7faaf6cb715e80baa5bee",
+        "types": "efhub_obs_4da7faaf6cb715e80baa5bee",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_4da7faaf6cb715e80baa5bee"
+      }
+    },
+    {
+      "id": "card_bbeed2eb377b233342c0bd25",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "106798656890465"
+        }
+      ],
+      "person_id": null,
+      "name": "Lucas Torreira",
+      "overall": {
+        "value": 81,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Showtime",
+          "raw_value": "8",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_a23166a16c690a1056a9a23a"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_4da7faaf6cb715e80baa5bee",
+        "overall": "efhub_obs_4da7faaf6cb715e80baa5bee",
+        "types": "efhub_obs_4da7faaf6cb715e80baa5bee",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_4da7faaf6cb715e80baa5bee"
+      }
+    },
+    {
+      "id": "card_7ea2afaa25ec8c687b23d1af",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "106798656929345"
+        }
+      ],
+      "person_id": null,
+      "name": "Archie Brown",
+      "overall": {
+        "value": 81,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Showtime",
+          "raw_value": "8",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_3d83f910b77ccf43ff4f00ab"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_4da7faaf6cb715e80baa5bee",
+        "overall": "efhub_obs_4da7faaf6cb715e80baa5bee",
+        "types": "efhub_obs_4da7faaf6cb715e80baa5bee",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_4da7faaf6cb715e80baa5bee"
+      }
+    },
+    {
+      "id": "card_5539dc749f35dfedfa65dd8a",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "106798925278449"
+        }
+      ],
+      "person_id": null,
+      "name": "Jonathan Calleri",
+      "overall": {
+        "value": 81,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Showtime",
+          "raw_value": "8",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_123cc87f69f0d9176e711d2b"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_4da7faaf6cb715e80baa5bee",
+        "overall": "efhub_obs_4da7faaf6cb715e80baa5bee",
+        "types": "efhub_obs_4da7faaf6cb715e80baa5bee",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_4da7faaf6cb715e80baa5bee"
+      }
+    },
+    {
+      "id": "card_2c080e09a5cc20ebfa4b52fb",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "106798925332853"
+        }
+      ],
+      "person_id": null,
+      "name": "Murilo",
+      "overall": {
+        "value": 81,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Showtime",
+          "raw_value": "8",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_4c491c9be8a94b81ecce12e3"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_4da7faaf6cb715e80baa5bee",
+        "overall": "efhub_obs_4da7faaf6cb715e80baa5bee",
+        "types": "efhub_obs_4da7faaf6cb715e80baa5bee",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_4da7faaf6cb715e80baa5bee"
+      }
+    },
+    {
+      "id": "card_52a6d6383b2e882e0b118765",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "105892687165161"
+        }
+      ],
+      "person_id": null,
+      "name": "Emre Can",
+      "overall": {
+        "value": 93,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Highlight",
+          "raw_value": "6",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_0201a8b662fd0f4b9e8ff808"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_801f548f8258290840714976",
+        "overall": "efhub_obs_801f548f8258290840714976",
+        "types": "efhub_obs_801f548f8258290840714976",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_801f548f8258290840714976"
+      }
+    },
+    {
+      "id": "card_bd6c2f52abba1364cb54e4a2",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "105892687220862"
+        }
+      ],
+      "person_id": null,
+      "name": "Marcel Sabitzer",
+      "overall": {
+        "value": 93,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Highlight",
+          "raw_value": "6",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_3e7890c257a55352c1d61bed"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_801f548f8258290840714976",
+        "overall": "efhub_obs_801f548f8258290840714976",
+        "types": "efhub_obs_801f548f8258290840714976",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_801f548f8258290840714976"
+      }
+    },
+    {
+      "id": "card_655f26836e4b49bb540e6a60",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "105892687234354"
+        }
+      ],
+      "person_id": null,
+      "name": "Joey Veerman",
+      "overall": {
+        "value": 93,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Highlight",
+          "raw_value": "6",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_f84ab8510d9befa410fc712a"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_801f548f8258290840714976",
+        "overall": "efhub_obs_801f548f8258290840714976",
+        "types": "efhub_obs_801f548f8258290840714976",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_801f548f8258290840714976"
+      }
+    },
+    {
+      "id": "card_2e59da4310136a467c08375c",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "105892687251310"
+        }
+      ],
+      "person_id": null,
+      "name": "Fabio Silva",
+      "overall": {
+        "value": 93,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Highlight",
+          "raw_value": "6",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_2a900ab5dfca2f208cf4a80c"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_801f548f8258290840714976",
+        "overall": "efhub_obs_801f548f8258290840714976",
+        "types": "efhub_obs_801f548f8258290840714976",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_801f548f8258290840714976"
+      }
+    },
+    {
+      "id": "card_6acadc32a395aecbcf66e5a3",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "105892687260495"
+        }
+      ],
+      "person_id": null,
+      "name": "Maximilian Beier",
+      "overall": {
+        "value": 93,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Highlight",
+          "raw_value": "6",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_c53c2ca487d2c378d29c251e"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_801f548f8258290840714976",
+        "overall": "efhub_obs_801f548f8258290840714976",
+        "types": "efhub_obs_801f548f8258290840714976",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_801f548f8258290840714976"
+      }
+    },
+    {
+      "id": "card_bcedbec670974a7bf7493de1",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "106802146570881"
+        }
+      ],
+      "person_id": null,
+      "name": "Felix Nmecha",
+      "overall": {
+        "value": 85,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Showtime",
+          "raw_value": "8",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_8202466c4d7df68967131476"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_a5d608a3ff672a919dcaec12",
+        "overall": "efhub_obs_a5d608a3ff672a919dcaec12",
+        "types": "efhub_obs_a5d608a3ff672a919dcaec12",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_a5d608a3ff672a919dcaec12"
+      }
+    },
+    {
+      "id": "card_d2512f102f8288f9d0dd3acd",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "105891076607840"
+        }
+      ],
+      "person_id": null,
+      "name": "Serhou Guirassy",
+      "overall": {
+        "value": 84,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Highlight",
+          "raw_value": "6",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_eabb770c481b7525e8121012"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_a5d608a3ff672a919dcaec12",
+        "overall": "efhub_obs_a5d608a3ff672a919dcaec12",
+        "types": "efhub_obs_a5d608a3ff672a919dcaec12",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_a5d608a3ff672a919dcaec12"
+      }
+    },
+    {
+      "id": "card_6923047884b514b6c456c8ee",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "105891076647837"
+        }
+      ],
+      "person_id": null,
+      "name": "Nico Schlotterbeck",
+      "overall": {
+        "value": 83,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Highlight",
+          "raw_value": "6",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_2babe674a05a6221d89e2de4"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_a5d608a3ff672a919dcaec12",
+        "overall": "efhub_obs_a5d608a3ff672a919dcaec12",
+        "types": "efhub_obs_a5d608a3ff672a919dcaec12",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_a5d608a3ff672a919dcaec12"
+      }
+    },
+    {
+      "id": "card_a0ad2d4f0b2b6fe96a96a639",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "105891076647661"
+        }
+      ],
+      "person_id": null,
+      "name": "Gregor Kobel",
+      "overall": {
+        "value": 83,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Highlight",
+          "raw_value": "6",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_94c5c11d794ba53d84aeb113"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_a5d608a3ff672a919dcaec12",
+        "overall": "efhub_obs_a5d608a3ff672a919dcaec12",
+        "types": "efhub_obs_a5d608a3ff672a919dcaec12",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_a5d608a3ff672a919dcaec12"
+      }
+    },
+    {
+      "id": "card_92cee27f984bee1c5eb909fb",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "105891076647836"
+        }
+      ],
+      "person_id": null,
+      "name": "Julian Ryerson",
+      "overall": {
+        "value": 82,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Highlight",
+          "raw_value": "6",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_157a4a3e1f37bfc1d261c101"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_a5d608a3ff672a919dcaec12",
+        "overall": "efhub_obs_a5d608a3ff672a919dcaec12",
+        "types": "efhub_obs_a5d608a3ff672a919dcaec12",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_a5d608a3ff672a919dcaec12"
+      }
+    },
+    {
+      "id": "card_6176e33811bdd5ca62f1e48b",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "105891076664168"
+        }
+      ],
+      "person_id": null,
+      "name": "Ethan Nwaneri",
+      "overall": {
+        "value": 82,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Highlight",
+          "raw_value": "6",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_1d5a6772c721cd334bcebe5b"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_a5d608a3ff672a919dcaec12",
+        "overall": "efhub_obs_a5d608a3ff672a919dcaec12",
+        "types": "efhub_obs_a5d608a3ff672a919dcaec12",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_a5d608a3ff672a919dcaec12"
+      }
+    },
+    {
+      "id": "card_88b5cbf7749384c5a7295c0f",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "105891076665540"
+        }
+      ],
+      "person_id": null,
+      "name": "K. Karetsas",
+      "overall": {
+        "value": 82,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Highlight",
+          "raw_value": "6",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_852ce81e8c0393e795b92ea6"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_a5d608a3ff672a919dcaec12",
+        "overall": "efhub_obs_a5d608a3ff672a919dcaec12",
+        "types": "efhub_obs_a5d608a3ff672a919dcaec12",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_a5d608a3ff672a919dcaec12"
+      }
+    },
+    {
+      "id": "card_5d14bdc48afa5d64e446fc79",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "105891076652937"
+        }
+      ],
+      "person_id": null,
+      "name": "Jobe Bellingham",
+      "overall": {
+        "value": 82,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Highlight",
+          "raw_value": "6",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_c2a77471d2f334a9f80e670f"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_a5d608a3ff672a919dcaec12",
+        "overall": "efhub_obs_a5d608a3ff672a919dcaec12",
+        "types": "efhub_obs_a5d608a3ff672a919dcaec12",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_a5d608a3ff672a919dcaec12"
+      }
+    },
+    {
+      "id": "card_53d67f8f8414933e4c627edf",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "105891076647663"
+        }
+      ],
+      "person_id": null,
+      "name": "Waldemar Anton",
+      "overall": {
+        "value": 82,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Highlight",
+          "raw_value": "6",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_8bce23445098cf539b031b4c"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_a5d608a3ff672a919dcaec12",
+        "overall": "efhub_obs_a5d608a3ff672a919dcaec12",
+        "types": "efhub_obs_a5d608a3ff672a919dcaec12",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_a5d608a3ff672a919dcaec12"
+      }
+    },
+    {
+      "id": "card_988fabcaf5961bc92d38545a",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "105891076673336"
+        }
+      ],
+      "person_id": null,
+      "name": "Joane Gadou",
+      "overall": {
+        "value": 81,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Highlight",
+          "raw_value": "6",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_a1bee4149267f9aecf21b046"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_a5d608a3ff672a919dcaec12",
+        "overall": "efhub_obs_a5d608a3ff672a919dcaec12",
+        "types": "efhub_obs_a5d608a3ff672a919dcaec12",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_a5d608a3ff672a919dcaec12"
+      }
+    },
+    {
+      "id": "card_13899a18c5ed109ce9b2ee5a",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "105891076644042"
+        }
+      ],
+      "person_id": null,
+      "name": "Daniel Svensson",
+      "overall": {
+        "value": 81,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Highlight",
+          "raw_value": "6",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_47dfc6ac3447eed94beab2fb"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_a5d608a3ff672a919dcaec12",
+        "overall": "efhub_obs_a5d608a3ff672a919dcaec12",
+        "types": "efhub_obs_a5d608a3ff672a919dcaec12",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_a5d608a3ff672a919dcaec12"
+      }
+    },
+    {
+      "id": "card_56882cee0cba0557c8d8fa61",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "53985859981027"
+        }
+      ],
+      "person_id": null,
+      "name": "Matheus Thuler",
+      "overall": {
+        "value": 92,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Trending",
+          "raw_value": "3",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_28a124a51097874cb9f8e9d4"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_f319c78a714c1a4c3ef09533",
+        "overall": "efhub_obs_f319c78a714c1a4c3ef09533",
+        "types": "efhub_obs_f319c78a714c1a4c3ef09533",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_f319c78a714c1a4c3ef09533"
+      }
+    },
+    {
+      "id": "card_62b519a71230dfc56d82a65a",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "53985859923942"
+        }
+      ],
+      "person_id": null,
+      "name": "Kim Seung-Gyu",
+      "overall": {
+        "value": 91,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Trending",
+          "raw_value": "3",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_e80512be07712a4bfca29852"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_f319c78a714c1a4c3ef09533",
+        "overall": "efhub_obs_f319c78a714c1a4c3ef09533",
+        "types": "efhub_obs_f319c78a714c1a4c3ef09533",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_f319c78a714c1a4c3ef09533"
+      }
+    },
+    {
+      "id": "card_58daa82de2bbbe2bfb334b04",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "53985859977501"
+        }
+      ],
+      "person_id": null,
+      "name": "Marcinho",
+      "overall": {
+        "value": 91,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Trending",
+          "raw_value": "3",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_b9e86a21fcdfa9b4b54b2b43"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_f319c78a714c1a4c3ef09533",
+        "overall": "efhub_obs_f319c78a714c1a4c3ef09533",
+        "types": "efhub_obs_f319c78a714c1a4c3ef09533",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_f319c78a714c1a4c3ef09533"
+      }
+    },
+    {
+      "id": "card_3e5f0b10f30e8cfaf1ba32c2",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "53985859984212"
+        }
+      ],
+      "person_id": null,
+      "name": "Tatsuta Yugo",
+      "overall": {
+        "value": 91,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Trending",
+          "raw_value": "3",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_216e9983ce1281bd523509b8"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_f319c78a714c1a4c3ef09533",
+        "overall": "efhub_obs_f319c78a714c1a4c3ef09533",
+        "types": "efhub_obs_f319c78a714c1a4c3ef09533",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_f319c78a714c1a4c3ef09533"
+      }
+    },
+    {
+      "id": "card_fd4bdde309d94a5f9082cfe3",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "53985859992654"
+        }
+      ],
+      "person_id": null,
+      "name": "Mateus Brunetti",
+      "overall": {
+        "value": 91,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Trending",
+          "raw_value": "3",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_5d7612fe712acb4ad177da99"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_f319c78a714c1a4c3ef09533",
+        "overall": "efhub_obs_f319c78a714c1a4c3ef09533",
+        "types": "efhub_obs_f319c78a714c1a4c3ef09533",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_f319c78a714c1a4c3ef09533"
+      }
+    },
+    {
+      "id": "card_32ed64f70c099c6a944261e7",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "53985859992727"
+        }
+      ],
+      "person_id": null,
+      "name": "Kaneko Takuro",
+      "overall": {
+        "value": 91,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Trending",
+          "raw_value": "3",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_90396d1ffc5891c9181fd5f5"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_f319c78a714c1a4c3ef09533",
+        "overall": "efhub_obs_f319c78a714c1a4c3ef09533",
+        "types": "efhub_obs_f319c78a714c1a4c3ef09533",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_f319c78a714c1a4c3ef09533"
+      }
+    },
+    {
+      "id": "card_db7297dd56e9ba29387f6d51",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "52904333543847"
+        }
+      ],
+      "person_id": null,
+      "name": "Erling Haaland",
+      "overall": {
+        "value": 97,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Trending",
+          "raw_value": "3",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_5b346d3ab495f5cbed81d7fe"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_d4cf3d8e862b6829ccc3be1a",
+        "overall": "efhub_obs_d4cf3d8e862b6829ccc3be1a",
+        "types": "efhub_obs_d4cf3d8e862b6829ccc3be1a",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_d4cf3d8e862b6829ccc3be1a"
+      }
+    },
+    {
+      "id": "card_53869b9d73222661a344d61a",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "52904333576000"
+        }
+      ],
+      "person_id": null,
+      "name": "Pau Cubarsi",
+      "overall": {
+        "value": 96,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Trending",
+          "raw_value": "3",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_849f408fb32c837a03b9d211"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_d4cf3d8e862b6829ccc3be1a",
+        "overall": "efhub_obs_d4cf3d8e862b6829ccc3be1a",
+        "types": "efhub_obs_d4cf3d8e862b6829ccc3be1a",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_d4cf3d8e862b6829ccc3be1a"
+      }
+    },
+    {
+      "id": "card_2a0283a173e872942a23008a",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "52904333551882"
+        }
+      ],
+      "person_id": null,
+      "name": "Arda Guler",
+      "overall": {
+        "value": 95,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Trending",
+          "raw_value": "3",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_47cdc328f3247b8aab4ed4ed"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_d4cf3d8e862b6829ccc3be1a",
+        "overall": "efhub_obs_d4cf3d8e862b6829ccc3be1a",
+        "types": "efhub_obs_d4cf3d8e862b6829ccc3be1a",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_d4cf3d8e862b6829ccc3be1a"
+      }
+    },
+    {
+      "id": "card_4b39d6cf8f68e418575d298c",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "52904333527391"
+        }
+      ],
+      "person_id": null,
+      "name": "Pedro Neto",
+      "overall": {
+        "value": 95,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Trending",
+          "raw_value": "3",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_ac697e209eb27aaa9b9d9189"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_d4cf3d8e862b6829ccc3be1a",
+        "overall": "efhub_obs_d4cf3d8e862b6829ccc3be1a",
+        "types": "efhub_obs_d4cf3d8e862b6829ccc3be1a",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_d4cf3d8e862b6829ccc3be1a"
+      }
+    },
+    {
+      "id": "card_cb14e910c584d2ed5cdf09d4",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "52904333571536"
+        }
+      ],
+      "person_id": null,
+      "name": "Diego Gomez",
+      "overall": {
+        "value": 94,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Trending",
+          "raw_value": "3",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_f3b077f9de6683886b321356"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_d4cf3d8e862b6829ccc3be1a",
+        "overall": "efhub_obs_d4cf3d8e862b6829ccc3be1a",
+        "types": "efhub_obs_d4cf3d8e862b6829ccc3be1a",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_d4cf3d8e862b6829ccc3be1a"
+      }
+    },
+    {
+      "id": "card_faf3b60f4c628aed87ab1f3a",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "52904333457355"
+        }
+      ],
+      "person_id": null,
+      "name": "Adrien Rabiot",
+      "overall": {
+        "value": 94,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Trending",
+          "raw_value": "3",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_176b1b177cc5d074302a4242"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_d4cf3d8e862b6829ccc3be1a",
+        "overall": "efhub_obs_d4cf3d8e862b6829ccc3be1a",
+        "types": "efhub_obs_d4cf3d8e862b6829ccc3be1a",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_d4cf3d8e862b6829ccc3be1a"
+      }
+    },
+    {
+      "id": "card_c9da5401a5f5071bdf69824c",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "52904333584293"
+        }
+      ],
+      "person_id": null,
+      "name": "Victor Munoz",
+      "overall": {
+        "value": 93,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Trending",
+          "raw_value": "3",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_b67a8b17619d88e24e0418de"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_d4cf3d8e862b6829ccc3be1a",
+        "overall": "efhub_obs_d4cf3d8e862b6829ccc3be1a",
+        "types": "efhub_obs_d4cf3d8e862b6829ccc3be1a",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_d4cf3d8e862b6829ccc3be1a"
+      }
+    },
+    {
+      "id": "card_dbbb3e8773c88d1ac9a458f9",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "52904333532168"
+        }
+      ],
+      "person_id": null,
+      "name": "Kubo Takefusa",
+      "overall": {
+        "value": 93,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Trending",
+          "raw_value": "3",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_4ba830fc227db36926723790"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_d4cf3d8e862b6829ccc3be1a",
+        "overall": "efhub_obs_d4cf3d8e862b6829ccc3be1a",
+        "types": "efhub_obs_d4cf3d8e862b6829ccc3be1a",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_d4cf3d8e862b6829ccc3be1a"
+      }
+    },
+    {
+      "id": "card_fe018d44542d62b775c705c3",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "52904333532623"
+        }
+      ],
+      "person_id": null,
+      "name": "Lassine Sinayoko",
+      "overall": {
+        "value": 93,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Trending",
+          "raw_value": "3",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_57f86a003476d8539af31228"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_d4cf3d8e862b6829ccc3be1a",
+        "overall": "efhub_obs_d4cf3d8e862b6829ccc3be1a",
+        "types": "efhub_obs_d4cf3d8e862b6829ccc3be1a",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_d4cf3d8e862b6829ccc3be1a"
+      }
+    },
+    {
+      "id": "card_3e7eb40b511d76ddfe74d5b2",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "52904333545669"
+        }
+      ],
+      "person_id": null,
+      "name": "Filip Stankovic",
+      "overall": {
+        "value": 93,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Trending",
+          "raw_value": "3",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_e89097e4c7c598072c8ce0f9"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_d4cf3d8e862b6829ccc3be1a",
+        "overall": "efhub_obs_d4cf3d8e862b6829ccc3be1a",
+        "types": "efhub_obs_d4cf3d8e862b6829ccc3be1a",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_d4cf3d8e862b6829ccc3be1a"
+      }
+    },
+    {
+      "id": "card_d477b52a1f47cb981bee1116",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "52904333546402"
+        }
+      ],
+      "person_id": null,
+      "name": "Illia Zabarnyi",
+      "overall": {
+        "value": 93,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Trending",
+          "raw_value": "3",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_266b81fa432500be7b34a50e"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_d4cf3d8e862b6829ccc3be1a",
+        "overall": "efhub_obs_d4cf3d8e862b6829ccc3be1a",
+        "types": "efhub_obs_d4cf3d8e862b6829ccc3be1a",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_d4cf3d8e862b6829ccc3be1a"
+      }
+    },
+    {
+      "id": "card_02e6fbb7f1b1beed5035380a",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "53988275902638"
+        }
+      ],
+      "person_id": null,
+      "name": "Irfan Can Kahveci",
+      "overall": {
+        "value": 92,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Trending",
+          "raw_value": "3",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_e6a88b5cfb03533ac4242d4e"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_8abf50f3dc013d58d5974a10",
+        "overall": "efhub_obs_8abf50f3dc013d58d5974a10",
+        "types": "efhub_obs_8abf50f3dc013d58d5974a10",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_8abf50f3dc013d58d5974a10"
+      }
+    },
+    {
+      "id": "card_8f8a86ce25b5565812735d76",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "53988275907363"
+        }
+      ],
+      "person_id": null,
+      "name": "Abdulkerim Bardakci",
+      "overall": {
+        "value": 92,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Trending",
+          "raw_value": "3",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_8d1ef6874ae7e73f855f0097"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_8abf50f3dc013d58d5974a10",
+        "overall": "efhub_obs_8abf50f3dc013d58d5974a10",
+        "types": "efhub_obs_8abf50f3dc013d58d5974a10",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_8abf50f3dc013d58d5974a10"
+      }
+    },
+    {
+      "id": "card_62d66c657253531b0f6ef526",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "53988275941823"
+        }
+      ],
+      "person_id": null,
+      "name": "Gift Orban",
+      "overall": {
+        "value": 92,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Trending",
+          "raw_value": "3",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_817e13eefed36a70bc16be7b"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_8abf50f3dc013d58d5974a10",
+        "overall": "efhub_obs_8abf50f3dc013d58d5974a10",
+        "types": "efhub_obs_8abf50f3dc013d58d5974a10",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_8abf50f3dc013d58d5974a10"
+      }
+    },
+    {
+      "id": "card_eac403fac2b4009a359615e8",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "53988275905208"
+        }
+      ],
+      "person_id": null,
+      "name": "Emirhan Topcu",
+      "overall": {
+        "value": 91,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Trending",
+          "raw_value": "3",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_a360b9fdd34cc310e2641bb8"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_8abf50f3dc013d58d5974a10",
+        "overall": "efhub_obs_8abf50f3dc013d58d5974a10",
+        "types": "efhub_obs_8abf50f3dc013d58d5974a10",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_8abf50f3dc013d58d5974a10"
+      }
+    },
+    {
+      "id": "card_759f99e18d3c57c62751c3d1",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "53988275928737"
+        }
+      ],
+      "person_id": null,
+      "name": "Adrian Benedyczak",
+      "overall": {
+        "value": 91,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Trending",
+          "raw_value": "3",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_ef98d73e4999f11335b3b224"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_8abf50f3dc013d58d5974a10",
+        "overall": "efhub_obs_8abf50f3dc013d58d5974a10",
+        "types": "efhub_obs_8abf50f3dc013d58d5974a10",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_8abf50f3dc013d58d5974a10"
+      }
+    },
+    {
+      "id": "card_d8755d67487f5827cd32d6f2",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "53988275961077"
+        }
+      ],
+      "person_id": null,
+      "name": "Noah Saviolo",
+      "overall": {
+        "value": 91,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Trending",
+          "raw_value": "3",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_4baf1d87a9234aba4f4e6156"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_8abf50f3dc013d58d5974a10",
+        "overall": "efhub_obs_8abf50f3dc013d58d5974a10",
+        "types": "efhub_obs_8abf50f3dc013d58d5974a10",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_8abf50f3dc013d58d5974a10"
+      }
+    },
+    {
+      "id": "card_81ba99b17b29999994fa9691",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "53991228723165"
+        }
+      ],
+      "person_id": null,
+      "name": "Vitor Roque",
+      "overall": {
+        "value": 94,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Trending",
+          "raw_value": "3",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_d33674a3adaed5d46d726269"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_c3d96d0edb219b919bc709e5",
+        "overall": "efhub_obs_c3d96d0edb219b919bc709e5",
+        "types": "efhub_obs_c3d96d0edb219b919bc709e5",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_c3d96d0edb219b919bc709e5"
+      }
+    },
+    {
+      "id": "card_1f21d9bc0773e7e764a907b4",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "53991228575687"
+        }
+      ],
+      "person_id": null,
+      "name": "Fabio",
+      "overall": {
+        "value": 93,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Trending",
+          "raw_value": "3",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_59d8c389dd34cb423758b2b0"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_c3d96d0edb219b919bc709e5",
+        "overall": "efhub_obs_c3d96d0edb219b919bc709e5",
+        "types": "efhub_obs_c3d96d0edb219b919bc709e5",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_c3d96d0edb219b919bc709e5"
+      }
+    },
+    {
+      "id": "card_b01cf4645b067d52b9b7077a",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "53991228698710"
+        }
+      ],
+      "person_id": null,
+      "name": "Kaio Jorge",
+      "overall": {
+        "value": 93,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Trending",
+          "raw_value": "3",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_e3fda32216872bc1d2a5989a"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_c3d96d0edb219b919bc709e5",
+        "overall": "efhub_obs_c3d96d0edb219b919bc709e5",
+        "types": "efhub_obs_c3d96d0edb219b919bc709e5",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_c3d96d0edb219b919bc709e5"
+      }
+    },
+    {
+      "id": "card_24ea301d75c5f5441b9945af",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "53991228619568"
+        }
+      ],
+      "person_id": null,
+      "name": "Guillermo Varela",
+      "overall": {
+        "value": 91,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Trending",
+          "raw_value": "3",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_f1411588adb494f2c423e34d"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_c3d96d0edb219b919bc709e5",
+        "overall": "efhub_obs_c3d96d0edb219b919bc709e5",
+        "types": "efhub_obs_c3d96d0edb219b919bc709e5",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_c3d96d0edb219b919bc709e5"
+      }
+    },
+    {
+      "id": "card_672fc106dbcb2b1f3b784914",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "53991228688058"
+        }
+      ],
+      "person_id": null,
+      "name": "Marcinho",
+      "overall": {
+        "value": 91,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Trending",
+          "raw_value": "3",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_dc57aa3276bd7cea4c8c762e"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_c3d96d0edb219b919bc709e5",
+        "overall": "efhub_obs_c3d96d0edb219b919bc709e5",
+        "types": "efhub_obs_c3d96d0edb219b919bc709e5",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_c3d96d0edb219b919bc709e5"
+      }
+    },
+    {
+      "id": "card_078e77d339ef37ddf1c2c530",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "53991228739881"
+        }
+      ],
+      "person_id": null,
+      "name": "Alvaro Montoro",
+      "overall": {
+        "value": 91,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Trending",
+          "raw_value": "3",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_269c51726b03df1176ff7b79"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_c3d96d0edb219b919bc709e5",
+        "overall": "efhub_obs_c3d96d0edb219b919bc709e5",
+        "types": "efhub_obs_c3d96d0edb219b919bc709e5",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_c3d96d0edb219b919bc709e5"
+      }
+    },
+    {
+      "id": "card_54c42d69a6fe600ee32c2269",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "52912655044507"
+        }
+      ],
+      "person_id": null,
+      "name": "Vitinha",
+      "overall": {
+        "value": 97,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Trending",
+          "raw_value": "3",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_0b7b89a48304f161eb42637b"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_ad28201cee515d523ef7f5c3",
+        "overall": "efhub_obs_ad28201cee515d523ef7f5c3",
+        "types": "efhub_obs_ad28201cee515d523ef7f5c3",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_ad28201cee515d523ef7f5c3"
+      }
+    },
+    {
+      "id": "card_711d9c70128ddd70c86c9458",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "52912655024346"
+        }
+      ],
+      "person_id": null,
+      "name": "Eberechi Eze",
+      "overall": {
+        "value": 95,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Trending",
+          "raw_value": "3",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_b5b67d83a347e0bda30367f9"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_ad28201cee515d523ef7f5c3",
+        "overall": "efhub_obs_ad28201cee515d523ef7f5c3",
+        "types": "efhub_obs_ad28201cee515d523ef7f5c3",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_ad28201cee515d523ef7f5c3"
+      }
+    },
+    {
+      "id": "card_d0cbdd45cb7db526d582dce9",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "52912655014117"
+        }
+      ],
+      "person_id": null,
+      "name": "Antonio Rudiger",
+      "overall": {
+        "value": 95,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Trending",
+          "raw_value": "3",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_4f2032bb0f4ff1da83eb52dd"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_ad28201cee515d523ef7f5c3",
+        "overall": "efhub_obs_ad28201cee515d523ef7f5c3",
+        "types": "efhub_obs_ad28201cee515d523ef7f5c3",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_ad28201cee515d523ef7f5c3"
+      }
+    },
+    {
+      "id": "card_132b92de4677a352b0d104b8",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "52912655053878"
+        }
+      ],
+      "person_id": null,
+      "name": "Karim Adeyemi",
+      "overall": {
+        "value": 95,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Trending",
+          "raw_value": "3",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_f02acc0a17e579fdc6fed974"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_ad28201cee515d523ef7f5c3",
+        "overall": "efhub_obs_ad28201cee515d523ef7f5c3",
+        "types": "efhub_obs_ad28201cee515d523ef7f5c3",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_ad28201cee515d523ef7f5c3"
+      }
+    },
+    {
+      "id": "card_c74b6919910fdf3c7cf1876a",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "52912655057395"
+        }
+      ],
+      "person_id": null,
+      "name": "Bradley Barcola",
+      "overall": {
+        "value": 95,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Trending",
+          "raw_value": "3",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_c2b20e480d682405b99c3639"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_ad28201cee515d523ef7f5c3",
+        "overall": "efhub_obs_ad28201cee515d523ef7f5c3",
+        "types": "efhub_obs_ad28201cee515d523ef7f5c3",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_ad28201cee515d523ef7f5c3"
+      }
+    },
+    {
+      "id": "card_5023b75f1bf6d2f3b0617d2c",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "52912655062348"
+        }
+      ],
+      "person_id": null,
+      "name": "Pablo Barrios",
+      "overall": {
+        "value": 94,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Trending",
+          "raw_value": "3",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_371c784f5a376124a6576743"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_ad28201cee515d523ef7f5c3",
+        "overall": "efhub_obs_ad28201cee515d523ef7f5c3",
+        "types": "efhub_obs_ad28201cee515d523ef7f5c3",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_ad28201cee515d523ef7f5c3"
+      }
+    },
+    {
+      "id": "card_52cf30da92caa06ccf702af7",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "52912655050310"
+        }
+      ],
+      "person_id": null,
+      "name": "Nicolas Jackson",
+      "overall": {
+        "value": 94,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Trending",
+          "raw_value": "3",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_8558c5b83b9b8322906486a1"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_ad28201cee515d523ef7f5c3",
+        "overall": "efhub_obs_ad28201cee515d523ef7f5c3",
+        "types": "efhub_obs_ad28201cee515d523ef7f5c3",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_ad28201cee515d523ef7f5c3"
+      }
+    },
+    {
+      "id": "card_e1f343ea9fa7000eaeddf168",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "52912655086762"
+        }
+      ],
+      "person_id": null,
+      "name": "Nicolo Tresoldi",
+      "overall": {
+        "value": 93,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Trending",
+          "raw_value": "3",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_ffcaf95c0f70c98349182ac4"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_ad28201cee515d523ef7f5c3",
+        "overall": "efhub_obs_ad28201cee515d523ef7f5c3",
+        "types": "efhub_obs_ad28201cee515d523ef7f5c3",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_ad28201cee515d523ef7f5c3"
+      }
+    },
+    {
+      "id": "card_fe03d2eb0c08378badf14e6a",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "52912655061235"
+        }
+      ],
+      "person_id": null,
+      "name": "Kaique",
+      "overall": {
+        "value": 93,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Trending",
+          "raw_value": "3",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_ccc65c44b124ed9ca1b73ee0"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_ad28201cee515d523ef7f5c3",
+        "overall": "efhub_obs_ad28201cee515d523ef7f5c3",
+        "types": "efhub_obs_ad28201cee515d523ef7f5c3",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_ad28201cee515d523ef7f5c3"
+      }
+    },
+    {
+      "id": "card_2782abced4866fd20051cebf",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "52912655073911"
+        }
+      ],
+      "person_id": null,
+      "name": "Gjivai Zechiel",
+      "overall": {
+        "value": 93,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Trending",
+          "raw_value": "3",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_266edf666f7478566644fa24"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_ad28201cee515d523ef7f5c3",
+        "overall": "efhub_obs_ad28201cee515d523ef7f5c3",
+        "types": "efhub_obs_ad28201cee515d523ef7f5c3",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_ad28201cee515d523ef7f5c3"
+      }
+    },
+    {
+      "id": "card_0b604d14ed0c89a4e8586198",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "card_id",
+          "value": "52912655074031"
+        }
+      ],
+      "person_id": null,
+      "name": "Santiago Mourino",
+      "overall": {
+        "value": 93,
+        "conditions": null
+      },
+      "types": [
+        {
+          "label": "Trending",
+          "raw_value": "3",
+          "source": "efhub"
+        }
+      ],
+      "asset_ids": [
+        "asset_8a21960ad576fc0318595f94"
+      ],
+      "other_version_ids": [],
+      "provenance": {
+        "name": "efhub_obs_ad28201cee515d523ef7f5c3",
+        "overall": "efhub_obs_ad28201cee515d523ef7f5c3",
+        "types": "efhub_obs_ad28201cee515d523ef7f5c3",
+        "type_mapping": "obs_30da4d016ed95bef38f0a37b",
+        "asset_ids": "efhub_obs_ad28201cee515d523ef7f5c3"
+      }
+    }
+  ],
+  "managers": [],
+  "products": [
+    {
+      "id": "product_77f34cf6c2ca9259f2edaea9",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "pack_slug",
+          "value": "magical-dribblers-22-oct-26"
+        }
+      ],
+      "name": "Magical Dribblers 22 Oct '26",
+      "kind": null,
+      "purchase_mode": null,
+      "list_types": [],
+      "source_listed_player_count": 11,
+      "total_player_count": null,
+      "composition_status": "partial",
+      "entries": [
+        {
+          "kind": "card",
+          "target_id": "card_20f0679e22ec3e40f1338405",
+          "quantity": 1,
+          "observation_id": "efhub_obs_e83416aead9946a907dc083d"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_ae312e3f811ece0fc4177e74",
+          "quantity": 1,
+          "observation_id": "efhub_obs_e83416aead9946a907dc083d"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_d55255d81ff925181332aaf3",
+          "quantity": 1,
+          "observation_id": "efhub_obs_e83416aead9946a907dc083d"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_87f51a4715272175f0451d9e",
+          "quantity": 1,
+          "observation_id": "efhub_obs_e83416aead9946a907dc083d"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_d003a1ce0c141811cb54ee82",
+          "quantity": 1,
+          "observation_id": "efhub_obs_e83416aead9946a907dc083d"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_ef6d0c75523c868c690f9e12",
+          "quantity": 1,
+          "observation_id": "efhub_obs_e83416aead9946a907dc083d"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_c1d7d17c4667a0fb5ee18f8c",
+          "quantity": 1,
+          "observation_id": "efhub_obs_e83416aead9946a907dc083d"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_9b166580d5cf44ab969d24f3",
+          "quantity": 1,
+          "observation_id": "efhub_obs_e83416aead9946a907dc083d"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_a81bdaf7bd5850c0ac02e70c",
+          "quantity": 1,
+          "observation_id": "efhub_obs_e83416aead9946a907dc083d"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_774b8ae4ddc68b561e01a393",
+          "quantity": 1,
+          "observation_id": "efhub_obs_e83416aead9946a907dc083d"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_d5dbf729548317f3b06b3c9d",
+          "quantity": 1,
+          "observation_id": "efhub_obs_e83416aead9946a907dc083d"
+        }
+      ],
+      "price": null,
+      "currency": null,
+      "opening_options": null,
+      "limits": null,
+      "availability": {
+        "start": null,
+        "end": null,
+        "status": "unknown"
+      },
+      "provenance": {
+        "name": "efhub_obs_473b7e2ec8365e1d282639a3",
+        "source_listed_player_count": "efhub_obs_473b7e2ec8365e1d282639a3"
+      }
+    },
+    {
+      "id": "product_84c723a1780c717a8a9588fc",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "pack_slug",
+          "value": "ranking-event-rewards-2027"
+        }
+      ],
+      "name": "Ranking Event Rewards 2027",
+      "kind": null,
+      "purchase_mode": null,
+      "list_types": [],
+      "source_listed_player_count": 12,
+      "total_player_count": null,
+      "composition_status": "partial",
+      "entries": [
+        {
+          "kind": "card",
+          "target_id": "card_9c848f244eae3f0fb3c05463",
+          "quantity": 1,
+          "observation_id": "efhub_obs_4da7faaf6cb715e80baa5bee"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_441c623d4537288fca8eb695",
+          "quantity": 1,
+          "observation_id": "efhub_obs_4da7faaf6cb715e80baa5bee"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_79adf24e87675c148d16fbe3",
+          "quantity": 1,
+          "observation_id": "efhub_obs_4da7faaf6cb715e80baa5bee"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_bed1cec33bb508bc6d9b6890",
+          "quantity": 1,
+          "observation_id": "efhub_obs_4da7faaf6cb715e80baa5bee"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_0cb5579e797012c5ef3b7120",
+          "quantity": 1,
+          "observation_id": "efhub_obs_4da7faaf6cb715e80baa5bee"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_a657c0ede136b104a43a04f2",
+          "quantity": 1,
+          "observation_id": "efhub_obs_4da7faaf6cb715e80baa5bee"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_876f340a866548072b9e63f6",
+          "quantity": 1,
+          "observation_id": "efhub_obs_4da7faaf6cb715e80baa5bee"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_3b1fa86a335df7d76a1f4d5b",
+          "quantity": 1,
+          "observation_id": "efhub_obs_4da7faaf6cb715e80baa5bee"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_bbeed2eb377b233342c0bd25",
+          "quantity": 1,
+          "observation_id": "efhub_obs_4da7faaf6cb715e80baa5bee"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_7ea2afaa25ec8c687b23d1af",
+          "quantity": 1,
+          "observation_id": "efhub_obs_4da7faaf6cb715e80baa5bee"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_5539dc749f35dfedfa65dd8a",
+          "quantity": 1,
+          "observation_id": "efhub_obs_4da7faaf6cb715e80baa5bee"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_2c080e09a5cc20ebfa4b52fb",
+          "quantity": 1,
+          "observation_id": "efhub_obs_4da7faaf6cb715e80baa5bee"
+        }
+      ],
+      "price": null,
+      "currency": null,
+      "opening_options": null,
+      "limits": null,
+      "availability": {
+        "start": null,
+        "end": null,
+        "status": "unknown"
+      },
+      "provenance": {
+        "name": "efhub_obs_473b7e2ec8365e1d282639a3",
+        "source_listed_player_count": "efhub_obs_473b7e2ec8365e1d282639a3"
+      }
+    },
+    {
+      "id": "product_8c310a229321225ce0bc0672",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "pack_slug",
+          "value": "halloween-campaign-22-oct-26"
+        }
+      ],
+      "name": "Halloween Campaign 22 Oct '26",
+      "kind": null,
+      "purchase_mode": null,
+      "list_types": [],
+      "source_listed_player_count": 5,
+      "total_player_count": null,
+      "composition_status": "partial",
+      "entries": [
+        {
+          "kind": "card",
+          "target_id": "card_52a6d6383b2e882e0b118765",
+          "quantity": 1,
+          "observation_id": "efhub_obs_801f548f8258290840714976"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_bd6c2f52abba1364cb54e4a2",
+          "quantity": 1,
+          "observation_id": "efhub_obs_801f548f8258290840714976"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_655f26836e4b49bb540e6a60",
+          "quantity": 1,
+          "observation_id": "efhub_obs_801f548f8258290840714976"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_2e59da4310136a467c08375c",
+          "quantity": 1,
+          "observation_id": "efhub_obs_801f548f8258290840714976"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_6acadc32a395aecbcf66e5a3",
+          "quantity": 1,
+          "observation_id": "efhub_obs_801f548f8258290840714976"
+        }
+      ],
+      "price": null,
+      "currency": null,
+      "opening_options": null,
+      "limits": null,
+      "availability": {
+        "start": null,
+        "end": null,
+        "status": "unknown"
+      },
+      "provenance": {
+        "name": "efhub_obs_473b7e2ec8365e1d282639a3",
+        "source_listed_player_count": "efhub_obs_473b7e2ec8365e1d282639a3"
+      }
+    },
+    {
+      "id": "product_6eb630e37e055d6730baac70",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "pack_slug",
+          "value": "borussia-dortmund-pack-26-27"
+        }
+      ],
+      "name": "Borussia Dortmund Pack 26-27",
+      "kind": null,
+      "purchase_mode": null,
+      "list_types": [],
+      "source_listed_player_count": 11,
+      "total_player_count": null,
+      "composition_status": "partial",
+      "entries": [
+        {
+          "kind": "card",
+          "target_id": "card_bcedbec670974a7bf7493de1",
+          "quantity": 1,
+          "observation_id": "efhub_obs_a5d608a3ff672a919dcaec12"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_d2512f102f8288f9d0dd3acd",
+          "quantity": 1,
+          "observation_id": "efhub_obs_a5d608a3ff672a919dcaec12"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_6923047884b514b6c456c8ee",
+          "quantity": 1,
+          "observation_id": "efhub_obs_a5d608a3ff672a919dcaec12"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_a0ad2d4f0b2b6fe96a96a639",
+          "quantity": 1,
+          "observation_id": "efhub_obs_a5d608a3ff672a919dcaec12"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_92cee27f984bee1c5eb909fb",
+          "quantity": 1,
+          "observation_id": "efhub_obs_a5d608a3ff672a919dcaec12"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_6176e33811bdd5ca62f1e48b",
+          "quantity": 1,
+          "observation_id": "efhub_obs_a5d608a3ff672a919dcaec12"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_88b5cbf7749384c5a7295c0f",
+          "quantity": 1,
+          "observation_id": "efhub_obs_a5d608a3ff672a919dcaec12"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_5d14bdc48afa5d64e446fc79",
+          "quantity": 1,
+          "observation_id": "efhub_obs_a5d608a3ff672a919dcaec12"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_53d67f8f8414933e4c627edf",
+          "quantity": 1,
+          "observation_id": "efhub_obs_a5d608a3ff672a919dcaec12"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_988fabcaf5961bc92d38545a",
+          "quantity": 1,
+          "observation_id": "efhub_obs_a5d608a3ff672a919dcaec12"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_13899a18c5ed109ce9b2ee5a",
+          "quantity": 1,
+          "observation_id": "efhub_obs_a5d608a3ff672a919dcaec12"
+        }
+      ],
+      "price": null,
+      "currency": null,
+      "opening_options": null,
+      "limits": null,
+      "availability": {
+        "start": null,
+        "end": null,
+        "status": "unknown"
+      },
+      "provenance": {
+        "name": "efhub_obs_473b7e2ec8365e1d282639a3",
+        "source_listed_player_count": "efhub_obs_473b7e2ec8365e1d282639a3"
+      }
+    },
+    {
+      "id": "product_ea9dfb8288f80560099bb9dc",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "pack_slug",
+          "value": "potm-j1-league-22-oct-26"
+        }
+      ],
+      "name": "POTM J1 LEAGUE 22 Oct '26",
+      "kind": null,
+      "purchase_mode": null,
+      "list_types": [],
+      "source_listed_player_count": 6,
+      "total_player_count": null,
+      "composition_status": "partial",
+      "entries": [
+        {
+          "kind": "card",
+          "target_id": "card_56882cee0cba0557c8d8fa61",
+          "quantity": 1,
+          "observation_id": "efhub_obs_f319c78a714c1a4c3ef09533"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_62b519a71230dfc56d82a65a",
+          "quantity": 1,
+          "observation_id": "efhub_obs_f319c78a714c1a4c3ef09533"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_58daa82de2bbbe2bfb334b04",
+          "quantity": 1,
+          "observation_id": "efhub_obs_f319c78a714c1a4c3ef09533"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_3e5f0b10f30e8cfaf1ba32c2",
+          "quantity": 1,
+          "observation_id": "efhub_obs_f319c78a714c1a4c3ef09533"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_fd4bdde309d94a5f9082cfe3",
+          "quantity": 1,
+          "observation_id": "efhub_obs_f319c78a714c1a4c3ef09533"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_32ed64f70c099c6a944261e7",
+          "quantity": 1,
+          "observation_id": "efhub_obs_f319c78a714c1a4c3ef09533"
+        }
+      ],
+      "price": null,
+      "currency": null,
+      "opening_options": null,
+      "limits": null,
+      "availability": {
+        "start": null,
+        "end": null,
+        "status": "unknown"
+      },
+      "provenance": {
+        "name": "efhub_obs_473b7e2ec8365e1d282639a3",
+        "source_listed_player_count": "efhub_obs_473b7e2ec8365e1d282639a3"
+      }
+    },
+    {
+      "id": "product_b7f720124d11a9dbf756d07b",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "pack_slug",
+          "value": "potw-22-oct-26"
+        }
+      ],
+      "name": "POTW 22 Oct '26",
+      "kind": null,
+      "purchase_mode": null,
+      "list_types": [],
+      "source_listed_player_count": 11,
+      "total_player_count": null,
+      "composition_status": "partial",
+      "entries": [
+        {
+          "kind": "card",
+          "target_id": "card_db7297dd56e9ba29387f6d51",
+          "quantity": 1,
+          "observation_id": "efhub_obs_d4cf3d8e862b6829ccc3be1a"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_53869b9d73222661a344d61a",
+          "quantity": 1,
+          "observation_id": "efhub_obs_d4cf3d8e862b6829ccc3be1a"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_2a0283a173e872942a23008a",
+          "quantity": 1,
+          "observation_id": "efhub_obs_d4cf3d8e862b6829ccc3be1a"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_4b39d6cf8f68e418575d298c",
+          "quantity": 1,
+          "observation_id": "efhub_obs_d4cf3d8e862b6829ccc3be1a"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_cb14e910c584d2ed5cdf09d4",
+          "quantity": 1,
+          "observation_id": "efhub_obs_d4cf3d8e862b6829ccc3be1a"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_faf3b60f4c628aed87ab1f3a",
+          "quantity": 1,
+          "observation_id": "efhub_obs_d4cf3d8e862b6829ccc3be1a"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_c9da5401a5f5071bdf69824c",
+          "quantity": 1,
+          "observation_id": "efhub_obs_d4cf3d8e862b6829ccc3be1a"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_dbbb3e8773c88d1ac9a458f9",
+          "quantity": 1,
+          "observation_id": "efhub_obs_d4cf3d8e862b6829ccc3be1a"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_fe018d44542d62b775c705c3",
+          "quantity": 1,
+          "observation_id": "efhub_obs_d4cf3d8e862b6829ccc3be1a"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_3e7eb40b511d76ddfe74d5b2",
+          "quantity": 1,
+          "observation_id": "efhub_obs_d4cf3d8e862b6829ccc3be1a"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_d477b52a1f47cb981bee1116",
+          "quantity": 1,
+          "observation_id": "efhub_obs_d4cf3d8e862b6829ccc3be1a"
+        }
+      ],
+      "price": null,
+      "currency": null,
+      "opening_options": null,
+      "limits": null,
+      "availability": {
+        "start": null,
+        "end": null,
+        "status": "unknown"
+      },
+      "provenance": {
+        "name": "efhub_obs_473b7e2ec8365e1d282639a3",
+        "source_listed_player_count": "efhub_obs_473b7e2ec8365e1d282639a3"
+      }
+    },
+    {
+      "id": "product_b63ffe79ad2f30c6b92fa729",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "pack_slug",
+          "value": "potm-trendyol-s-per-lig-22-oct-26"
+        }
+      ],
+      "name": "POTM Trendyol Süper Lig 22 Oct '26",
+      "kind": null,
+      "purchase_mode": null,
+      "list_types": [],
+      "source_listed_player_count": 6,
+      "total_player_count": null,
+      "composition_status": "partial",
+      "entries": [
+        {
+          "kind": "card",
+          "target_id": "card_02e6fbb7f1b1beed5035380a",
+          "quantity": 1,
+          "observation_id": "efhub_obs_8abf50f3dc013d58d5974a10"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_8f8a86ce25b5565812735d76",
+          "quantity": 1,
+          "observation_id": "efhub_obs_8abf50f3dc013d58d5974a10"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_62d66c657253531b0f6ef526",
+          "quantity": 1,
+          "observation_id": "efhub_obs_8abf50f3dc013d58d5974a10"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_eac403fac2b4009a359615e8",
+          "quantity": 1,
+          "observation_id": "efhub_obs_8abf50f3dc013d58d5974a10"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_759f99e18d3c57c62751c3d1",
+          "quantity": 1,
+          "observation_id": "efhub_obs_8abf50f3dc013d58d5974a10"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_d8755d67487f5827cd32d6f2",
+          "quantity": 1,
+          "observation_id": "efhub_obs_8abf50f3dc013d58d5974a10"
+        }
+      ],
+      "price": null,
+      "currency": null,
+      "opening_options": null,
+      "limits": null,
+      "availability": {
+        "start": null,
+        "end": null,
+        "status": "unknown"
+      },
+      "provenance": {
+        "name": "efhub_obs_473b7e2ec8365e1d282639a3",
+        "source_listed_player_count": "efhub_obs_473b7e2ec8365e1d282639a3"
+      }
+    },
+    {
+      "id": "product_f241574e7bc427bad5ba97cf",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "pack_slug",
+          "value": "potm-brasileir-o-22-oct-26"
+        }
+      ],
+      "name": "POTM Brasileirão 22 Oct '26",
+      "kind": null,
+      "purchase_mode": null,
+      "list_types": [],
+      "source_listed_player_count": 6,
+      "total_player_count": null,
+      "composition_status": "partial",
+      "entries": [
+        {
+          "kind": "card",
+          "target_id": "card_81ba99b17b29999994fa9691",
+          "quantity": 1,
+          "observation_id": "efhub_obs_c3d96d0edb219b919bc709e5"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_1f21d9bc0773e7e764a907b4",
+          "quantity": 1,
+          "observation_id": "efhub_obs_c3d96d0edb219b919bc709e5"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_b01cf4645b067d52b9b7077a",
+          "quantity": 1,
+          "observation_id": "efhub_obs_c3d96d0edb219b919bc709e5"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_24ea301d75c5f5441b9945af",
+          "quantity": 1,
+          "observation_id": "efhub_obs_c3d96d0edb219b919bc709e5"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_672fc106dbcb2b1f3b784914",
+          "quantity": 1,
+          "observation_id": "efhub_obs_c3d96d0edb219b919bc709e5"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_078e77d339ef37ddf1c2c530",
+          "quantity": 1,
+          "observation_id": "efhub_obs_c3d96d0edb219b919bc709e5"
+        }
+      ],
+      "price": null,
+      "currency": null,
+      "opening_options": null,
+      "limits": null,
+      "availability": {
+        "start": null,
+        "end": null,
+        "status": "unknown"
+      },
+      "provenance": {
+        "name": "efhub_obs_473b7e2ec8365e1d282639a3",
+        "source_listed_player_count": "efhub_obs_473b7e2ec8365e1d282639a3"
+      }
+    },
+    {
+      "id": "product_62106e0d6959a0e800d7a2c4",
+      "external_ids": [
+        {
+          "source": "efhub",
+          "id_type": "pack_slug",
+          "value": "potw-european-club-championship-22-oct-26"
+        }
+      ],
+      "name": "POTW European Club Championship 22 Oct '26",
+      "kind": null,
+      "purchase_mode": null,
+      "list_types": [],
+      "source_listed_player_count": 11,
+      "total_player_count": null,
+      "composition_status": "partial",
+      "entries": [
+        {
+          "kind": "card",
+          "target_id": "card_54c42d69a6fe600ee32c2269",
+          "quantity": 1,
+          "observation_id": "efhub_obs_ad28201cee515d523ef7f5c3"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_711d9c70128ddd70c86c9458",
+          "quantity": 1,
+          "observation_id": "efhub_obs_ad28201cee515d523ef7f5c3"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_d0cbdd45cb7db526d582dce9",
+          "quantity": 1,
+          "observation_id": "efhub_obs_ad28201cee515d523ef7f5c3"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_132b92de4677a352b0d104b8",
+          "quantity": 1,
+          "observation_id": "efhub_obs_ad28201cee515d523ef7f5c3"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_c74b6919910fdf3c7cf1876a",
+          "quantity": 1,
+          "observation_id": "efhub_obs_ad28201cee515d523ef7f5c3"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_5023b75f1bf6d2f3b0617d2c",
+          "quantity": 1,
+          "observation_id": "efhub_obs_ad28201cee515d523ef7f5c3"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_52cf30da92caa06ccf702af7",
+          "quantity": 1,
+          "observation_id": "efhub_obs_ad28201cee515d523ef7f5c3"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_e1f343ea9fa7000eaeddf168",
+          "quantity": 1,
+          "observation_id": "efhub_obs_ad28201cee515d523ef7f5c3"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_fe03d2eb0c08378badf14e6a",
+          "quantity": 1,
+          "observation_id": "efhub_obs_ad28201cee515d523ef7f5c3"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_2782abced4866fd20051cebf",
+          "quantity": 1,
+          "observation_id": "efhub_obs_ad28201cee515d523ef7f5c3"
+        },
+        {
+          "kind": "card",
+          "target_id": "card_0b604d14ed0c89a4e8586198",
+          "quantity": 1,
+          "observation_id": "efhub_obs_ad28201cee515d523ef7f5c3"
+        }
+      ],
+      "price": null,
+      "currency": null,
+      "opening_options": null,
+      "limits": null,
+      "availability": {
+        "start": null,
+        "end": null,
+        "status": "unknown"
+      },
+      "provenance": {
+        "name": "efhub_obs_473b7e2ec8365e1d282639a3",
+        "source_listed_player_count": "efhub_obs_473b7e2ec8365e1d282639a3"
+      }
+    }
+  ]
+}

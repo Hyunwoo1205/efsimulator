@@ -1,0 +1,919 @@
+{
+  "version": 1,
+  "exclusions": [
+    {
+      "pattern": "node_modules/**",
+      "reason": "비추적 npm 설치물; 추적 파일은 이 규칙으로 제외하지 않음"
+    },
+    {
+      "pattern": "dist/**",
+      "reason": "비추적 빌드 출력; 원본·추적 생성물은 별도 등록"
+    },
+    {
+      "pattern": ".cache/**",
+      "reason": "비추적 캐시"
+    },
+    {
+      "pattern": "coverage/**",
+      "reason": "비추적 테스트 커버리지"
+    },
+    {
+      "pattern": "artifacts/**",
+      "reason": "비추적 로컬 검증 출력"
+    }
+  ],
+  "external_dependencies": [
+    {
+      "path": "/workspace/efsimulator-environment/activate.sh",
+      "role": "저장소 밖의 개발 도구 활성화와 npm 캐시 설정",
+      "check": "새 셸에서 source 후 node --version=v24.19.0, npm --version=11.9.0 확인"
+    },
+    {
+      "path": "/workspace/efsimulator-environment/efsimulator 새 환경 인수인계.md",
+      "role": "2026-10-25 초기 요구와 환경 설정의 참고 기록",
+      "check": "최신 사용자 지시·저장소 문서·실제 관측 우선; 과거 상태와 현재 상태 구별"
+    },
+    {
+      "path": "https://github.com/Hyunwoo1205/efsimulator",
+      "role": "원격 저장소; 운영 브랜치 main",
+      "check": "작업 시작 시 현재 Git 상태와 원격 최신 커밋 비교; 사용자 변경 보존"
+    },
+    {
+      "path": "https://efsimulator.pages.dev",
+      "role": "기존 Cloudflare Pages 공개 배포",
+      "check": "실제 배포 후 페이지·데이터·이미지·직접 주소 확인; 응답 일치와 배포 SHA 검증 구별"
+    },
+    {
+      "path": "OCI Ampere A1 Flex (2 OCPU, 12GB RAM)",
+      "role": "사용자 보유 ARM64 인스턴스; 무료 웹/API 호스팅 검토 후 차선책",
+      "check": "선정 시 실제 접근·ARM64 호환성·운영·백업 검증; 아직 연결하거나 배포하지 않음"
+    },
+    {
+      "path": "Python + Playwright + Chromium (선택적 로컬 검증)",
+      "role": "실제 브라우저 검증 도구이며 사이트 실행·빌드에는 불필요",
+      "check": "Python playwright와 Chromium이 설치된 환경에서 preview 실행 후 npm run test:browser. 현재 CI는 Node 검사와 빌드만 수행."
+    },
+    {
+      "path": "https://efhub.com/ko + https://efhub.com/api/public/",
+      "role": "최초 조사 자료의 원본 출처. 현재 앱은 저장한 표본을 사용하며 실시간 API에 의존하지 않음",
+      "check": "새 자료 수집 시 정상 페이지/요청·페이지네이션·ID/필드·관찰 시각 재검증"
+    },
+    {
+      "path": "https://efimg.com",
+      "role": "출처가 제공한 카드·감독 이미지의 원본 호스트",
+      "check": "이미지 응답·제공 형태를 관측별 확인하고 실패 시 대체 표시; 출처 URL을 추측 생성하지 않음"
+    },
+    {
+      "path": "https://www.konami.com/efootball/ + https://efootball-web.konami.net/",
+      "role": "공식 상품·캠페인·확률 안내의 조사 출처",
+      "check": "상품/지역/조건·시각별 확인, EFHub와 명시적 ID 대응 없이 병합하지 않음"
+    },
+    {
+      "path": "https://fonts.googleapis.com + https://fonts.gstatic.com",
+      "role": "선택적 한국어 웹폰트; 실패하면 시스템 글꼴 사용",
+      "check": "화면·네트워크 정책 변경 시 폰트 로딩/대체와 레이아웃 확인"
+    }
+  ],
+  "files": [
+    {
+      "path": ".github/workflows/project-check.yml",
+      "role": "PR와 main/work 푸시의 관리 기록·회귀 테스트·실제 표본 재현과 정적 빌드 검사",
+      "priority": "P0",
+      "related_paths": [
+        "package.json",
+        "package-lock.json",
+        ".nvmrc",
+        "scripts/project-check.mjs",
+        "tests/project-check.test.mjs",
+        "scripts/build.mjs",
+        "scripts/prepare-seed.mjs",
+        "data/catalog.seed.json",
+        "web/app.js",
+        "scripts/export-pages.mjs",
+        "index.html",
+        "app.js",
+        "styles.css",
+        "404.html",
+        "_headers",
+        "_redirects",
+        "data/catalog.json"
+      ],
+      "update_when": [
+        "검사 명령·Node/npm 버전·브랜치 정책 변경"
+      ],
+      "reviewed_in": "T005"
+    },
+    {
+      "path": ".gitignore",
+      "role": "비추적 의존성·빌드 출력·로컬 설정 제외",
+      "priority": "P0",
+      "related_paths": [
+        "docs/FILE_SYNC.json",
+        "scripts/project-check.mjs"
+      ],
+      "update_when": [
+        "생성물 경로·외부 서비스의 로컬 설정 추가"
+      ],
+      "reviewed_in": "T001"
+    },
+    {
+      "path": ".nvmrc",
+      "role": "Node.js 런타임 고정",
+      "priority": "P0",
+      "related_paths": [
+        "package.json",
+        "package-lock.json",
+        ".github/workflows/project-check.yml",
+        "AGENTS.md",
+        "README.md",
+        "docs/ARCHITECTURE.md",
+        "docs/DEPLOYMENT.md"
+      ],
+      "update_when": [
+        "프로젝트 런타임 버전 변경"
+      ],
+      "reviewed_in": "T004"
+    },
+    {
+      "path": "404.html",
+      "role": "Pages root 배포용 추적 생성물; scripts/build.mjs를 기준으로 build/export하며 직접 수정 금지",
+      "priority": "P0",
+      "related_paths": [
+        "scripts/build.mjs",
+        "scripts/export-pages.mjs",
+        "docs/DEPLOYMENT.md",
+        ".github/workflows/project-check.yml"
+      ],
+      "generated_from": "scripts/build.mjs",
+      "update_when": [
+        "원본 변경 후 build→pages:export→pages:check; dist 직접 배포 전환 검증 후 사본과 참조를 함께 삭제"
+      ],
+      "reviewed_in": "T005"
+    },
+    {
+      "path": "AGENTS.md",
+      "role": "매 작업의 확인·변경 영향 검토·검증·상태 갱신 규칙",
+      "priority": "P0",
+      "related_paths": [
+        "docs/ROADMAP.md",
+        "docs/WORKPLAN.md",
+        "docs/FILE_SYNC.json"
+      ],
+      "update_when": [
+        "사용자 요구·작업 절차·검증 명령·제품 및 운영 원칙 변경"
+      ],
+      "reviewed_in": "T005"
+    },
+    {
+      "path": "_headers",
+      "role": "Pages root 배포용 추적 생성물; scripts/build.mjs를 기준으로 build/export하며 직접 수정 금지",
+      "priority": "P0",
+      "related_paths": [
+        "scripts/build.mjs",
+        "scripts/export-pages.mjs",
+        "docs/DEPLOYMENT.md",
+        ".github/workflows/project-check.yml"
+      ],
+      "generated_from": "scripts/build.mjs",
+      "update_when": [
+        "원본 변경 후 build→pages:export→pages:check; dist 직접 배포 전환 검증 후 사본과 참조를 함께 삭제"
+      ],
+      "reviewed_in": "T005"
+    },
+    {
+      "path": "_redirects",
+      "role": "Pages root 배포용 추적 생성물; scripts/build.mjs를 기준으로 build/export하며 직접 수정 금지",
+      "priority": "P0",
+      "related_paths": [
+        "scripts/build.mjs",
+        "scripts/export-pages.mjs",
+        "docs/DEPLOYMENT.md",
+        ".github/workflows/project-check.yml"
+      ],
+      "generated_from": "scripts/build.mjs",
+      "update_when": [
+        "원본 변경 후 build→pages:export→pages:check; dist 직접 배포 전환 검증 후 사본과 참조를 함께 삭제"
+      ],
+      "reviewed_in": "T005"
+    },
+    {
+      "path": "app.js",
+      "role": "Pages root 배포용 추적 생성물; web/app.js를 기준으로 build/export하며 직접 수정 금지",
+      "priority": "P0",
+      "related_paths": [
+        "web/app.js",
+        "scripts/export-pages.mjs",
+        "docs/DEPLOYMENT.md",
+        ".github/workflows/project-check.yml"
+      ],
+      "generated_from": "web/app.js",
+      "update_when": [
+        "원본 변경 후 build→pages:export→pages:check; dist 직접 배포 전환 검증 후 사본과 참조를 함께 삭제"
+      ],
+      "reviewed_in": "T005"
+    },
+    {
+      "path": "data/catalog.json",
+      "role": "Pages root 배포용 추적 생성물; data/catalog.seed.json를 기준으로 build/export하며 직접 수정 금지",
+      "priority": "P0",
+      "related_paths": [
+        "data/catalog.seed.json",
+        "scripts/export-pages.mjs",
+        "docs/DEPLOYMENT.md",
+        ".github/workflows/project-check.yml"
+      ],
+      "generated_from": "data/catalog.seed.json",
+      "update_when": [
+        "원본 변경 후 build→pages:export→pages:check; dist 직접 배포 전환 검증 후 사본과 참조를 함께 삭제"
+      ],
+      "reviewed_in": "T005"
+    },
+    {
+      "path": "data/catalog.seed.json",
+      "role": "정상 API/상품 구성에서 정규화한 활성 카드·상품 표본; 감독 범위 제외·전수 감사 미완료 표시",
+      "priority": "P0",
+      "related_paths": [
+        "data/research/source-observations.json",
+        "scripts/prepare-seed.mjs",
+        "scripts/catalog.mjs",
+        "tests/prepare-seed.test.mjs",
+        "README.md",
+        "web/app.js",
+        "scripts/browser-check.py",
+        "docs/ARCHITECTURE.md",
+        "docs/DEPLOYMENT.md",
+        "scripts/collected-products.mjs",
+        "data/research/current-catalog-observations.json",
+        "data/research/card-api-audit.json"
+      ],
+      "update_when": [
+        "출처 증거·정규화·표본 범위·필드/관계 계약 변경; data:prepare로 재생성"
+      ],
+      "reviewed_in": "T005"
+    },
+    {
+      "path": "data/research/card-api-audit.json",
+      "role": "실제 전체 카드 감사의 403·0쪽·미완료와 정상 UI 형식 진단 결과",
+      "priority": "P0",
+      "related_paths": [
+        "scripts/audit-cards.mjs",
+        "docs/sources/CARD_API_AUDIT.md",
+        "scripts/prepare-seed.mjs",
+        "docs/WORKPLAN.md"
+      ],
+      "update_when": [
+        "해당 계약·지원 범위·실행/관측 결과 변경 시 관련 파일 검토; 비활성 참고는 현재 모델로 재채택하지 않음"
+      ],
+      "reviewed_in": "T005"
+    },
+    {
+      "path": "data/research/current-catalog-observations.json",
+      "role": "정상 재수집한 9개 상품과 카드 payload·목록/상세 원문 근거",
+      "priority": "P0",
+      "related_paths": [
+        "scripts/collect-efhub.mjs",
+        "scripts/collected-products.mjs",
+        "data/catalog.seed.json",
+        "docs/COLLECTION.md"
+      ],
+      "update_when": [
+        "해당 계약·지원 범위·실행/관측 결과 변경 시 관련 파일 검토; 비활성 참고는 현재 모델로 재채택하지 않음"
+      ],
+      "reviewed_in": "T005"
+    },
+    {
+      "path": "data/research/followup-observations.json",
+      "role": "후속 10회 요청·원문·상품/지역/플랫폼 범위·미확인 근거",
+      "priority": "P0",
+      "related_paths": [
+        "docs/sources/FOLLOWUP_RESEARCH.md",
+        "docs/WORKPLAN.md"
+      ],
+      "update_when": [
+        "별도 후속 관측 추가; 기존 관측 ID의 내용은 재사용하지 않음"
+      ],
+      "reviewed_in": "T004"
+    },
+    {
+      "path": "data/research/source-observations.json",
+      "role": "실제 HTTP 관측·필드·원문 근거·미확인 범위의 조사 증거",
+      "priority": "P0",
+      "related_paths": [
+        "docs/sources/INITIAL_RESEARCH.md",
+        "docs/WORKPLAN.md",
+        "scripts/prepare-seed.mjs",
+        "data/catalog.seed.json",
+        "tests/prepare-seed.test.mjs"
+      ],
+      "update_when": [
+        "정상 출처 재조회·필드/관계/이미지 검증·접근성 변화"
+      ],
+      "reviewed_in": "T004"
+    },
+    {
+      "path": "docs/ARCHITECTURE.md",
+      "role": "선정한 데이터·SQLite·정적 검색·갱신 보호 구조와 운영 한계",
+      "priority": "P0",
+      "related_paths": [
+        "scripts/catalog.mjs",
+        "scripts/build.mjs",
+        "scripts/prepare-seed.mjs",
+        "docs/DEPLOYMENT.md"
+      ],
+      "update_when": [
+        "데이터 계약·파이프라인·라우팅·이력 영속화·운영 방식 변경"
+      ],
+      "reviewed_in": "T005"
+    },
+    {
+      "path": "docs/COLLECTION.md",
+      "role": "수집 실행·관측 경계·정규화·요청 예산·부분 범위·실패 보호 설명",
+      "priority": "P0",
+      "related_paths": [
+        "scripts/collect-efhub.mjs",
+        "scripts/collected-products.mjs",
+        "data/research/current-catalog-observations.json",
+        "docs/WORKPLAN.md"
+      ],
+      "update_when": [
+        "해당 계약·지원 범위·실행/관측 결과 변경 시 관련 파일 검토; 비활성 참고는 현재 모델로 재채택하지 않음"
+      ],
+      "reviewed_in": "T005"
+    },
+    {
+      "path": "docs/DEPLOYMENT.md",
+      "role": "실제 빌드에 맞는 Pages 전환 값·공개 검증과 미실행 상태",
+      "priority": "P0",
+      "related_paths": [
+        "package.json",
+        ".nvmrc",
+        ".github/workflows/project-check.yml",
+        "scripts/build.mjs",
+        "docs/WORKPLAN.md"
+      ],
+      "update_when": [
+        "빌드 명령·출력·라우팅·배포 설정·공개 검증 결과 변경"
+      ],
+      "reviewed_in": "T005"
+    },
+    {
+      "path": "docs/FILE_SYNC.json",
+      "role": "관리 파일 역할·연관 경로·우선순위·갱신 조건·검토 작업의 단일 목록",
+      "priority": "P0",
+      "related_paths": [
+        "AGENTS.md",
+        "docs/WORKPLAN.md",
+        "scripts/project-check.mjs",
+        "docs/ROADMAP.md",
+        "tests/project-check.test.mjs"
+      ],
+      "update_when": [
+        "파일 추가·삭제·이름 변경·역할/의존관계 변경·영향 검토"
+      ],
+      "reviewed_in": "T005"
+    },
+    {
+      "path": "docs/ROADMAP.md",
+      "role": "R0~R6 목표·완료조건·진행 위치의 기준",
+      "priority": "P0",
+      "related_paths": [
+        "docs/WORKPLAN.md",
+        "docs/FILE_SYNC.json",
+        "AGENTS.md",
+        "README.md"
+      ],
+      "update_when": [
+        "단계 상태·현재/이전/다음 작업·완료 조건·추가 요구 변경"
+      ],
+      "reviewed_in": "T005"
+    },
+    {
+      "path": "docs/WORKPLAN.md",
+      "role": "단계별 상세 계획·작업 결과·추가 조건·파일 검토 기록",
+      "priority": "P0",
+      "related_paths": [
+        "docs/ROADMAP.md",
+        "docs/FILE_SYNC.json",
+        "scripts/project-check.mjs"
+      ],
+      "update_when": [
+        "매 작업 착수·추가 요구·파일 변경·검증 결과·작업 종료"
+      ],
+      "reviewed_in": "T005"
+    },
+    {
+      "path": "index.html",
+      "role": "Pages root 배포용 추적 생성물; web/index.html를 기준으로 build/export하며 직접 수정 금지",
+      "priority": "P0",
+      "related_paths": [
+        "web/index.html",
+        "scripts/export-pages.mjs",
+        "docs/DEPLOYMENT.md",
+        ".github/workflows/project-check.yml"
+      ],
+      "generated_from": "web/index.html",
+      "update_when": [
+        "원본 변경 후 build→pages:export→pages:check; dist 직접 배포 전환 검증 후 사본과 참조를 함께 삭제"
+      ],
+      "reviewed_in": "T005"
+    },
+    {
+      "path": "package-lock.json",
+      "role": "npm 의존성·루트 런타임 선언의 재현 가능한 잠금 파일",
+      "priority": "P0",
+      "related_paths": [
+        "package.json",
+        ".github/workflows/project-check.yml"
+      ],
+      "update_when": [
+        "package.json의 의존성·패키지 메타데이터 변경"
+      ],
+      "reviewed_in": "T005"
+    },
+    {
+      "path": "package.json",
+      "role": "관리·도메인·데이터 표본·정적 사이트·미리보기·브라우저 명령과 도구 버전 선언",
+      "priority": "P0",
+      "related_paths": [
+        "package-lock.json",
+        ".nvmrc",
+        ".github/workflows/project-check.yml",
+        "scripts/project-check.mjs",
+        "tests/project-check.test.mjs",
+        "README.md",
+        "AGENTS.md",
+        "scripts/build.mjs",
+        "scripts/serve.mjs",
+        "scripts/prepare-seed.mjs",
+        "scripts/browser-check.py",
+        "docs/ARCHITECTURE.md",
+        "docs/DEPLOYMENT.md"
+      ],
+      "update_when": [
+        "의존성·npm 명령·Node/npm 버전·앱 구성 추가"
+      ],
+      "reviewed_in": "T005"
+    },
+    {
+      "path": "scripts/audit-cards.mjs",
+      "role": "전체 카드 페이지·고유 ID·중복·누락·필드·이미지 표본·체크포인트와 접근 중단 감사",
+      "priority": "P0",
+      "related_paths": [
+        "tests/audit-cards.test.mjs",
+        "docs/sources/CARD_API_AUDIT.md",
+        "data/research/card-api-audit.json"
+      ],
+      "update_when": [
+        "해당 계약·지원 범위·실행/관측 결과 변경 시 관련 파일 검토; 비활성 참고는 현재 모델로 재채택하지 않음"
+      ],
+      "reviewed_in": "T005"
+    },
+    {
+      "path": "scripts/build.mjs",
+      "role": "DB와 정적 데이터·사이트를 staging에서 빌드하고 Pages 규칙 생성",
+      "priority": "P0",
+      "related_paths": [
+        "scripts/catalog.mjs",
+        "data/catalog.seed.json",
+        "web/index.html",
+        "web/app.js",
+        "web/styles.css",
+        "tests/catalog.test.mjs",
+        "docs/DEPLOYMENT.md",
+        "scripts/serve.mjs"
+      ],
+      "update_when": [
+        "빌드 출력·데이터 계약·라우팅·실패 복구·Pages 한도 변경"
+      ],
+      "reviewed_in": "T005"
+    },
+    {
+      "path": "scripts/catalog.mjs",
+      "role": "활성 카드/상품 계약·감독 지원 제외·상품 전체성 금지·출처·SQLite 이력·실패 보호 검증",
+      "priority": "P0",
+      "related_paths": [
+        "data/catalog.seed.json",
+        "scripts/build.mjs",
+        "scripts/prepare-seed.mjs",
+        "tests/catalog.test.mjs",
+        "docs/ARCHITECTURE.md",
+        "web/app.js"
+      ],
+      "update_when": [
+        "원본 필드·식별·관계·출처/조건·갱신 보호 계약 변경"
+      ],
+      "reviewed_in": "T005"
+    },
+    {
+      "path": "scripts/collect-efhub.mjs",
+      "role": "정상 상품 목록과 같은 제목·수량·직속 구성 경계를 재수집하고 실패 시 기존 자료 보존",
+      "priority": "P0",
+      "related_paths": [
+        "scripts/collected-products.mjs",
+        "tests/collect-efhub.test.mjs",
+        "docs/COLLECTION.md"
+      ],
+      "update_when": [
+        "해당 계약·지원 범위·실행/관측 결과 변경 시 관련 파일 검토; 비활성 참고는 현재 모델로 재채택하지 않음"
+      ],
+      "reviewed_in": "T005"
+    },
+    {
+      "path": "scripts/collected-products.mjs",
+      "role": "명시 원본 ID·필드 근거로 수집 상품/카드를 병합하고 감독 범위 위반·구성 축소 거부",
+      "priority": "P0",
+      "related_paths": [
+        "scripts/collect-efhub.mjs",
+        "scripts/catalog.mjs",
+        "scripts/prepare-seed.mjs",
+        "tests/collected-products.test.mjs"
+      ],
+      "update_when": [
+        "해당 계약·지원 범위·실행/관측 결과 변경 시 관련 파일 검토; 비활성 참고는 현재 모델로 재채택하지 않음"
+      ],
+      "reviewed_in": "T005"
+    },
+    {
+      "path": "scripts/export-pages.mjs",
+      "role": "허용된 공개 7개 파일만 root로 내보내고 읽기 전용 bytes 검사·실패 복구",
+      "priority": "P0",
+      "related_paths": [
+        "scripts/build.mjs",
+        "tests/export-pages.test.mjs",
+        ".github/workflows/project-check.yml",
+        "docs/DEPLOYMENT.md"
+      ],
+      "update_when": [
+        "해당 계약·지원 범위·실행/관측 결과 변경 시 관련 파일 검토; 비활성 참고는 현재 모델로 재채택하지 않음"
+      ],
+      "reviewed_in": "T005"
+    },
+    {
+      "path": "scripts/prepare-seed.mjs",
+      "role": "실제 조사 증거를 명시적 ID·관계·미확인을 보존한 표본으로 정규화",
+      "priority": "P0",
+      "related_paths": [
+        "data/research/source-observations.json",
+        "data/catalog.seed.json",
+        "scripts/catalog.mjs",
+        "tests/prepare-seed.test.mjs",
+        "docs/WORKPLAN.md",
+        "scripts/collected-products.mjs",
+        "data/research/current-catalog-observations.json",
+        "data/research/card-api-audit.json"
+      ],
+      "update_when": [
+        "조사 증거 구조·카드/상품 표본·ID·정규화 규칙 변경"
+      ],
+      "reviewed_in": "T005"
+    },
+    {
+      "path": "scripts/project-check.mjs",
+      "role": "Git 파일·등록 목록·작업 검토·JSON 및 사람용 현재 상태의 정합성을 읽기 전용 검사",
+      "priority": "P0",
+      "related_paths": [
+        "docs/FILE_SYNC.json",
+        "docs/ROADMAP.md",
+        "docs/WORKPLAN.md",
+        "tests/project-check.test.mjs",
+        ".github/workflows/project-check.yml"
+      ],
+      "update_when": [
+        "관리 스키마·작업 기록 형식·검사 정책·파일 수집 방식 변경"
+      ],
+      "reviewed_in": "T004"
+    },
+    {
+      "path": "scripts/serve.mjs",
+      "role": "지원하는 상품·카드 주소의 정적 미리보기와 제외된 감독/누락 자산의 404 처리",
+      "priority": "P0",
+      "related_paths": [
+        "tests/serve.test.mjs",
+        "package.json",
+        "docs/DEPLOYMENT.md",
+        "scripts/browser-check.py"
+      ],
+      "update_when": [
+        "정적 출력·라우팅·헤더·미리보기 명령 변경"
+      ],
+      "reviewed_in": "T005"
+    },
+    {
+      "path": "styles.css",
+      "role": "Pages root 배포용 추적 생성물; web/styles.css를 기준으로 build/export하며 직접 수정 금지",
+      "priority": "P0",
+      "related_paths": [
+        "web/styles.css",
+        "scripts/export-pages.mjs",
+        "docs/DEPLOYMENT.md",
+        ".github/workflows/project-check.yml"
+      ],
+      "generated_from": "web/styles.css",
+      "update_when": [
+        "원본 변경 후 build→pages:export→pages:check; dist 직접 배포 전환 검증 후 사본과 참조를 함께 삭제"
+      ],
+      "reviewed_in": "T005"
+    },
+    {
+      "path": "README.md",
+      "role": "프로젝트 진입점과 관리 문서·실행 명령 안내",
+      "priority": "P1",
+      "related_paths": [
+        "AGENTS.md",
+        "package.json",
+        "docs/ROADMAP.md",
+        "docs/WORKPLAN.md",
+        "docs/FILE_SYNC.json"
+      ],
+      "update_when": [
+        "설치·실행·검증·표본 범위·진입 문서·공개 상태 변경"
+      ],
+      "reviewed_in": "T005"
+    },
+    {
+      "path": "docs/sources/CARD_API_AUDIT.md",
+      "role": "R1/T002·R5의 기존 전수 검증 범위와 R4/T005 실행·접근 제약·표본/전수 구분",
+      "priority": "P1",
+      "related_paths": [
+        "scripts/audit-cards.mjs",
+        "data/research/card-api-audit.json",
+        "docs/WORKPLAN.md"
+      ],
+      "update_when": [
+        "해당 계약·지원 범위·실행/관측 결과 변경 시 관련 파일 검토; 비활성 참고는 현재 모델로 재채택하지 않음"
+      ],
+      "reviewed_in": "T005"
+    },
+    {
+      "path": "docs/sources/FOLLOWUP_RESEARCH.md",
+      "role": "추가 공식·플랫폼 조사와 상품별 가격·무료 조건·미확인 적용 범위",
+      "priority": "P1",
+      "related_paths": [
+        "data/research/followup-observations.json",
+        "docs/sources/INITIAL_RESEARCH.md",
+        "docs/WORKPLAN.md"
+      ],
+      "update_when": [
+        "추가 출처·가격/조건 근거·상품/지역/플랫폼 대응·데이터 공백 변경"
+      ],
+      "reviewed_in": "T005"
+    },
+    {
+      "path": "docs/sources/INITIAL_RESEARCH.md",
+      "role": "R1 출처별 필드 확보·전체 구성·접근 제약과 다음 조사",
+      "priority": "P1",
+      "related_paths": [
+        "data/research/source-observations.json",
+        "docs/WORKPLAN.md"
+      ],
+      "update_when": [
+        "출처 재관측·새 확보 경로·필드 검증·공백 해소"
+      ],
+      "reviewed_in": "T005"
+    },
+    {
+      "path": "scripts/browser-check.py",
+      "role": "실제 자료량·상품↔카드·감독 일괄 제외·반응형·오류/재시도 브라우저 검사",
+      "priority": "P1",
+      "related_paths": [
+        "web/app.js",
+        "web/styles.css",
+        "data/catalog.seed.json",
+        "package.json"
+      ],
+      "update_when": [
+        "화면·라우팅·표본 범위·분류·오류 동작 변경"
+      ],
+      "reviewed_in": "T005"
+    },
+    {
+      "path": "tests/audit-cards.test.mjs",
+      "role": "수집·범위·접근 제한·실패 보호·배포 생성물 계약의 회귀 검사",
+      "priority": "P1",
+      "related_paths": [
+        "scripts/audit-cards.mjs",
+        "docs/WORKPLAN.md"
+      ],
+      "update_when": [
+        "연결 모듈의 계약 변경 또는 새 오류 발견"
+      ],
+      "reviewed_in": "T005"
+    },
+    {
+      "path": "tests/catalog.test.mjs",
+      "role": "ID·관계·전체성·개정 이력·중복·실패 보호·빌드 회귀 검사",
+      "priority": "P1",
+      "related_paths": [
+        "scripts/catalog.mjs",
+        "scripts/build.mjs"
+      ],
+      "update_when": [
+        "데이터/출처/관계/완전성·빌드 동작 변경·오류 발견"
+      ],
+      "reviewed_in": "T005"
+    },
+    {
+      "path": "tests/collect-efhub.test.mjs",
+      "role": "수집·범위·접근 제한·실패 보호·배포 생성물 계약의 회귀 검사",
+      "priority": "P1",
+      "related_paths": [
+        "scripts/collect-efhub.mjs",
+        "docs/WORKPLAN.md"
+      ],
+      "update_when": [
+        "연결 모듈의 계약 변경 또는 새 오류 발견"
+      ],
+      "reviewed_in": "T005"
+    },
+    {
+      "path": "tests/collected-products.test.mjs",
+      "role": "수집·범위·접근 제한·실패 보호·배포 생성물 계약의 회귀 검사",
+      "priority": "P1",
+      "related_paths": [
+        "scripts/collected-products.mjs",
+        "docs/WORKPLAN.md"
+      ],
+      "update_when": [
+        "연결 모듈의 계약 변경 또는 새 오류 발견"
+      ],
+      "reviewed_in": "T005"
+    },
+    {
+      "path": "tests/export-pages.test.mjs",
+      "role": "수집·범위·접근 제한·실패 보호·배포 생성물 계약의 회귀 검사",
+      "priority": "P1",
+      "related_paths": [
+        "scripts/export-pages.mjs",
+        "docs/WORKPLAN.md"
+      ],
+      "update_when": [
+        "연결 모듈의 계약 변경 또는 새 오류 발견"
+      ],
+      "reviewed_in": "T005"
+    },
+    {
+      "path": "tests/prepare-seed.test.mjs",
+      "role": "실제 조사 재현·새 관측과 카드 ID·과거 근거 보존 검사",
+      "priority": "P1",
+      "related_paths": [
+        "scripts/prepare-seed.mjs",
+        "scripts/catalog.mjs",
+        "data/research/source-observations.json"
+      ],
+      "update_when": [
+        "조사 증거·표본 정규화·ID·시각·근거 계약 변경"
+      ],
+      "reviewed_in": "T005"
+    },
+    {
+      "path": "tests/project-check.test.mjs",
+      "role": "누락·삭제·이름 변경·참조·변경 검토 누락의 회귀 검사",
+      "priority": "P1",
+      "related_paths": [
+        "scripts/project-check.mjs",
+        "docs/FILE_SYNC.json",
+        ".github/workflows/project-check.yml"
+      ],
+      "update_when": [
+        "검사 동작 변경·새 오류 사례 발견"
+      ],
+      "reviewed_in": "T004"
+    },
+    {
+      "path": "tests/serve.test.mjs",
+      "role": "정적 서버 HTTP·라우팅·경로 안전성 회귀 검사",
+      "priority": "P1",
+      "related_paths": [
+        "scripts/serve.mjs"
+      ],
+      "update_when": [
+        "서버 동작 변경·실패 사례 발견"
+      ],
+      "reviewed_in": "T005"
+    },
+    {
+      "path": "web/app.js",
+      "role": "상품 중심 검색·카드/감독 상세·관계 이동·출처·미확인·오류 상태",
+      "priority": "P1",
+      "related_paths": [
+        "data/catalog.seed.json",
+        "scripts/catalog.mjs",
+        "web/index.html",
+        "web/styles.css",
+        "scripts/browser-check.py"
+      ],
+      "update_when": [
+        "공개 데이터 계약·검색·필터·관계·라우팅·표시 조건 변경"
+      ],
+      "reviewed_in": "T005"
+    },
+    {
+      "path": "web/index.html",
+      "role": "한국어 정적 앱·주요 탐색·초기 로딩·JS 비활성 안내",
+      "priority": "P1",
+      "related_paths": [
+        "web/app.js",
+        "web/styles.css",
+        "scripts/build.mjs",
+        "scripts/browser-check.py"
+      ],
+      "update_when": [
+        "문서 구조·주요 탐색·정적 자산·접근성·기본 메타 변경"
+      ],
+      "reviewed_in": "T005"
+    },
+    {
+      "path": "web/styles.css",
+      "role": "독자 디자인과 모바일·태블릿·데스크톱·접근성 스타일",
+      "priority": "P1",
+      "related_paths": [
+        "web/index.html",
+        "web/app.js",
+        "scripts/browser-check.py"
+      ],
+      "update_when": [
+        "화면 구조·이미지·레이아웃·포커스·반응형 요구 변경"
+      ],
+      "reviewed_in": "T005"
+    },
+    {
+      "path": "data/research/manager-product-observations.json",
+      "role": "비활성 감독·상품 관계와 일반 목록 조사 보존; 개별 관계의 활성 import 및 추가 수집 금지",
+      "priority": "P2",
+      "related_paths": [
+        "docs/sources/MANAGER_PRODUCT_RESEARCH.md",
+        "docs/WORKPLAN.md"
+      ],
+      "update_when": [
+        "새 정상 관측·명시적 상품↔감독 근거·관계 미확인 범위 변경"
+      ],
+      "reviewed_in": "T004"
+    },
+    {
+      "path": "data/research/mourinho-product-observations.json",
+      "role": "활성 import가 금지된 기사·게시물·상품 화면의 원본 관측과 문자열 ID 보존",
+      "priority": "P2",
+      "related_paths": [
+        "docs/sources/MOURINHO_PRODUCT_RESEARCH.md",
+        "docs/reference/retired-manager-product.mjs.txt"
+      ],
+      "update_when": [
+        "해당 계약·지원 범위·실행/관측 결과 변경 시 관련 파일 검토; 비활성 참고는 현재 모델로 재채택하지 않음"
+      ],
+      "reviewed_in": "T005"
+    },
+    {
+      "path": "docs/reference/retired-manager-product.mjs.txt",
+      "role": "최신 범위 변경으로 비활성화한 옛 수동 감독 정규화 코드 보존; 실행 금지",
+      "priority": "P2",
+      "related_paths": [
+        "docs/reference/retired-manager-product.test.mjs.txt",
+        "docs/sources/MOURINHO_PRODUCT_RESEARCH.md"
+      ],
+      "update_when": [
+        "해당 계약·지원 범위·실행/관측 결과 변경 시 관련 파일 검토; 비활성 참고는 현재 모델로 재채택하지 않음"
+      ],
+      "reviewed_in": "T005"
+    },
+    {
+      "path": "docs/reference/retired-manager-product.test.mjs.txt",
+      "role": "비활성 옛 수동 감독 사례의 테스트 코드 보존; 자동 테스트 대상 아님",
+      "priority": "P2",
+      "related_paths": [
+        "docs/reference/retired-manager-product.mjs.txt",
+        "docs/WORKPLAN.md"
+      ],
+      "update_when": [
+        "해당 계약·지원 범위·실행/관측 결과 변경 시 관련 파일 검토; 비활성 참고는 현재 모델로 재채택하지 않음"
+      ],
+      "reviewed_in": "T005"
+    },
+    {
+      "path": "docs/sources/MANAGER_PRODUCT_RESEARCH.md",
+      "role": "비활성 감독 API/관계 조사 기록; 활성 데이터나 추가 개별 조사의 근거로 사용하지 않음",
+      "priority": "P2",
+      "related_paths": [
+        "data/research/manager-product-observations.json",
+        "docs/WORKPLAN.md"
+      ],
+      "update_when": [
+        "해당 계약·지원 범위·실행/관측 결과 변경 시 관련 파일 검토; 비활성 참고는 현재 모델로 재채택하지 않음"
+      ],
+      "reviewed_in": "T005"
+    },
+    {
+      "path": "docs/sources/MOURINHO_PRODUCT_RESEARCH.md",
+      "role": "비활성 수동 상품·감독 관계 조사 원본과 한계 보존",
+      "priority": "P2",
+      "related_paths": [
+        "data/research/mourinho-product-observations.json",
+        "docs/reference/retired-manager-product.mjs.txt",
+        "docs/WORKPLAN.md"
+      ],
+      "update_when": [
+        "해당 계약·지원 범위·실행/관측 결과 변경 시 관련 파일 검토; 비활성 참고는 현재 모델로 재채택하지 않음"
+      ],
+      "reviewed_in": "T005"
+    }
+  ]
+}

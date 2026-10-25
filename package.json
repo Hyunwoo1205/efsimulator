@@ -1,0 +1,25 @@
+{
+  "name": "efsimulator",
+  "version": "0.0.0",
+  "private": true,
+  "description": "efsimulator 개발 관리와 데이터 조사",
+  "type": "module",
+  "engines": {
+    "node": "24.19.0",
+    "npm": "11.9.0"
+  },
+  "packageManager": "npm@11.9.0",
+  "scripts": {
+    "project:check": "node scripts/project-check.mjs",
+    "test": "node --test",
+    "test:browser": "python scripts/browser-check.py",
+    "data:prepare": "node scripts/prepare-seed.mjs",
+    "data:collect": "node --use-env-proxy scripts/collect-efhub.mjs",
+    "data:audit-cards": "node --use-env-proxy scripts/audit-cards.mjs",
+    "build": "node scripts/build.mjs",
+    "pages:export": "node scripts/export-pages.mjs",
+    "pages:check": "node scripts/export-pages.mjs --check",
+    "dev": "node scripts/build.mjs && node scripts/serve.mjs --dir dist",
+    "preview": "node scripts/serve.mjs --dir dist"
+  }
+}
