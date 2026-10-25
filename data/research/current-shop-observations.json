@@ -5619,5 +5619,487 @@
     "sourceYamalDeluxe8vs11 retained",
     "old players limit100403 body remains unavailable; new packs403 is a different request",
     "no canonical/public import or scope-filter code change"
-  ]
+  ],
+  "targeted_followup": {
+    "task_id": "T005",
+    "condition_id": "C029",
+    "baseline_commit": "4b2211ad9cd2e5e73787bfb58ce084a14f633f1b",
+    "purpose": "Bounded followup of three exact unresolved/current product correspondences using public search and disclosed public detail links. No historical catalogue sweep.",
+    "request_accounting": {
+      "additional_direct_detail_gets": 2,
+      "responses_200": 1,
+      "responses_403": 1,
+      "efhub_api_requests": 0,
+      "denied_api_retries": 0,
+      "denied_detail_retries": 0,
+      "additional_catalogue_pages": 0,
+      "images_or_auth_requests": 0,
+      "headers_proxy_or_identity_changed": false,
+      "search_tool_origin_requests": "not exposed;excluded from directGET accounting",
+      "baseline_direct_gets": 14,
+      "combined_observed_direct_gets": 16
+    },
+    "national": {
+      "schema_version": 1,
+      "task_id": "T005",
+      "purpose": "공식 Worldwide Sep26의 EFHub 대응을 표적 조사. 이름·총수만으로 동일시하지 않는다.",
+      "runtime": {
+        "spec_revision": "48",
+        "observations_current": true,
+        "network_policy": {
+          "mode": "unrestricted",
+          "state": "enforced"
+        },
+        "proxy_preserved": true,
+        "tls_verification": true
+      },
+      "direct_detail_get_budget": 1,
+      "direct_detail_get_count": 1,
+      "api_requests": 0,
+      "image_requests": 0,
+      "auth_requests": 0,
+      "search": {
+        "calls": 2,
+        "queries": [
+          {
+            "q": "site:efhub.com/packs \"National Team Selection\" \"Worldwide\" \"Sep\"",
+            "result": "empty"
+          },
+          {
+            "q": "site:efhub.com \"Worldwide Sep\" \"26\"",
+            "result": "empty"
+          },
+          {
+            "q": "site:efhub.com/packs \"National Teams Selection\" \"10 Sep\"",
+            "result": "National Teams Selection 10 Sep26 exact result",
+            "url": "https://efhub.com/packs/national-teams-selection-10-sep-26"
+          },
+          {
+            "q": "site:efhub.com \"National Team Selection\" \"Sep\"",
+            "result": "combined second call returned one exact10Sep page; individual-query attribution not exposed"
+          }
+        ],
+        "origin_request_count": "not exposed by search tool"
+      },
+      "official_target": {
+        "source_file": "data/research/current-shop-observations.json",
+        "json_pointer": "/official_current_lists/lists/0",
+        "official_name": "National Team Selection: Worldwide Sep '26",
+        "scope": "probability_table_entry",
+        "source_urls": [
+          "https://efootball-web.konami.net/probability_kr.php",
+          "https://efootball-web.konami.net/probability_jp.php"
+        ],
+        "official_list_id": null,
+        "source_ids": {
+          "probability_page_kr": "probability_kr.php",
+          "probability_page_jp": "probability_jp.php"
+        },
+        "source_entry_position": 1,
+        "evidence_observation_ids": [
+          "official_probability_kr_recheck",
+          "official_probability_jp_recheck"
+        ],
+        "region": {
+          "document_locales": [
+            "ko",
+            "ja"
+          ],
+          "eligible_countries_or_regions": null,
+          "all_regions_verified": false,
+          "caveat": "일부 국가/지역에서는 실시되지 않을 수 있다고 공식 확률표가 명시한다. KR/JP는 문서 언어이며 계정 국가를 뜻하지 않는다."
+        },
+        "platforms": {
+          "eligible_platforms": null,
+          "all_platforms_verified": false,
+          "note": "홈의 게임 지원 디바이스 목록을 개별 명단의 동일 제공 근거로 사용하지 않는다."
+        },
+        "period": {
+          "starts_at": null,
+          "ends_at": "2026-11-05T01:59:59Z",
+          "end_precision": "second",
+          "time_zone": "UTC",
+          "announcement_date": null
+        },
+        "current_assessment": {
+          "judged_at": "2026-10-25T11:57:49.406Z",
+          "status": "officially_listed_with_future_end",
+          "basis": "판정 시각에 공개 확률표에 게재되었고 명시 종료 전이다. 시작 시각은 미기재다.",
+          "all_accounts_can_recruit_now": null
+        },
+        "product_kind": {
+          "source_label": "특수 선수 명단 / スペシャル選手リスト",
+          "draw_probability_published": true,
+          "bulk_grant_pack": null
+        },
+        "payment": {
+          "currency": null,
+          "coin_cost": null,
+          "free": null,
+          "chance_deal": null,
+          "nominating_contract": null,
+          "note": "확률표에는 가격·재화·무료 여부·코인/추첨/지명 계약권 사용 방식이 명시되지 않았다. 명단명으로 추정하지 않는다."
+        },
+        "pool": {
+          "initial_total": 11,
+          "initial_per_player_probability_percent_display": "9.0909",
+          "remaining_for_user": null,
+          "full_card_ids": null,
+          "scope": "첫 영입 시 초기 구성. 개인 잔여 수량이 아니다."
+        },
+        "introduction": {
+          "highlighted_card_count": null,
+          "counts_by_type": null,
+          "individual_card_ids": null,
+          "type_from_name_only": "National Team Selection"
+        },
+        "unknown_fields": [
+          "start_time",
+          "account_eligibility",
+          "country/platform_eligibility",
+          "price/currency",
+          "draw_options/limits",
+          "full_individual_card_ids",
+          "highlighted_card_count/types"
+        ]
+      },
+      "prior_candidate_list_evidence": {
+        "source_file": "data/research/current-shop-observations.json",
+        "observation_id": "efhub_current_shop_page_2",
+        "url": "https://efhub.com/api/public/packs?search=&page=2&limit=30",
+        "observed_at": "2026-10-25T11:57:39.490Z",
+        "payload": {
+          "name": "National Teams Selection 10 Sep '26",
+          "slug": "national-teams-selection-10-sep-26",
+          "date": "2026-09-10",
+          "playerCount": 11
+        },
+        "json_pointer": "/efhub_fetches"
+      },
+      "observations": [
+        {
+          "id": "target_national_10sep_detail",
+          "url": "https://efhub.com/packs/national-teams-selection-10-sep-26",
+          "discovery": "Exact public search result; also existing published catalogue row and known frontend detail-link template",
+          "requested_at": "2026-10-25T12:32:15.952Z",
+          "observed_at": "2026-10-25T12:32:17.414Z",
+          "method": "GET",
+          "status": 200,
+          "content_type": "text/html; charset=utf-8",
+          "response_bytes": 158316,
+          "sha256": "4262b6b6d3127cadc6b2399f1bed72804e0ff58d24a9094e8f9752ee7b1d96dd",
+          "source_ids": {
+            "pack_slug": "national-teams-selection-10-sep-26"
+          },
+          "canonical_url": "",
+          "headers": {
+            "date": "Sun, 25 Oct 2026 12:32:17 GMT",
+            "cache-control": "private, max-age=14400, must-revalidate",
+            "server": "envoy",
+            "x-vercel-cache": "MISS"
+          },
+          "heading": "National Teams Selection 10 Sep &#x27;26",
+          "scoped_visible_text": "National Teams Selection 10 Sep &#x27;26\n10 September 2026·11 players\n85DMF\nRodri\n84CB\nJonathan Tah\n84CB\nDayot Upamecano\n83GK\nDiogo Costa\n82LB\nDjed Spence\n82CF\nIsmael Saibari\n81CMF\nChristian Eriksen\n81AMF\nLucas Paqueta\n81CF\nMateo Retegui\n81RB\nJulian Ryerson\n80LMF\nRuben Vargas",
+          "parse_error": "구성 grid에 다른 출처나 다른 종류의 링크가 있습니다.",
+          "players_payload": null,
+          "card_count": null,
+          "raw_player_type_counts": null,
+          "individual_ids_are_strings": null,
+          "explicit_konami_links": []
+        }
+      ],
+      "raw_response_preservation": {
+        "raw_html_retained": false,
+        "retained_evidence": [
+          "response metadata/hash",
+          "scoped visible text",
+          "parser error"
+        ],
+        "limit": "The original HTML cannot be reparsed from this research record;null structured payload is an extraction failure,not source field absence."
+      }
+    },
+    "quaresma": {
+      "schema_version": 1,
+      "task_id": "T005",
+      "target": "Epic: Ricardo Quaresma",
+      "checked_at": "2026-10-25T12:31:45.766931+00:00",
+      "purpose": "Narrow independent public-search check after bounded60-row catalogue did not identify the product;not a retry of deniedEFHub API search.",
+      "method": {
+        "search_tool": "public web search",
+        "search_calls": 2,
+        "search_queries": [
+          {
+            "batch": 1,
+            "query": "site:efhub.com/packs \"Quaresma\""
+          },
+          {
+            "batch": 1,
+            "query": "site:efhub.com \"Quaresma\" \"Oct\" \"26\""
+          },
+          {
+            "batch": 2,
+            "query": "site:efhub.com/packs \"Ricardo Quaresma\""
+          },
+          {
+            "batch": 2,
+            "query": "site:efhub.com/ko/packs \"Quaresma\""
+          },
+          {
+            "batch": 2,
+            "query": "site:efhub.com \"Epic: Ricardo Quaresma\""
+          }
+        ],
+        "efhub_direct_get_requests": 0,
+        "efhub_product_detail_html_requests": 0,
+        "efhub_api_requests": 0,
+        "denied_query_retries": 0,
+        "alternative_api_query_variants": 0,
+        "additional_historical_catalogue_pages": 0,
+        "new_endpoint_or_slug_guesses": 0,
+        "ua_token_cookie_or_proxy_changes": false,
+        "images_requested": 0,
+        "active_imports": 0,
+        "tracked_file_changes": false,
+        "existing_artifact_changes": false,
+        "stop_reason": "No relevant publicly linkedRicardoQuaresma product detail URL was found within these5targeted search conditions. No guessed URL or player detail fetch was performed."
+      },
+      "prior_saved_evidence": {
+        "coverage_file": "data/research/current-shop-observations.json",
+        "catalogue_pages": 2,
+        "catalogue_unique_rows": 60,
+        "product_name_or_slug_candidate_in_saved_60": false,
+        "meaning": "Not identified in bounded60-row window;not a catalogue-wide absence claim.",
+        "denied_search": {
+          "file": "data/research/current-shop-observations.json",
+          "json_pointer": "/efhub_fetches/keyword_queries/0",
+          "url": "https://efhub.com/api/public/packs?search=Quaresma&page=1&limit=30",
+          "http_status": 403,
+          "observed_at": "2026-10-25T11:58:12.358Z",
+          "retry_performed": false
+        },
+        "coverage_json_pointer": "/efhub_coverage"
+      },
+      "official_target": {
+        "evidence_file": "data/research/current-shop-observations.json",
+        "json_pointer": "/official_current_lists/lists/2",
+        "official_name": "Epic: Ricardo Quaresma",
+        "source_urls": [
+          "https://efootball-web.konami.net/probability_kr.php",
+          "https://efootball-web.konami.net/probability_jp.php",
+          "https://www.konami.com/efootball/ko/topic/promotion/agent/1405/"
+        ],
+        "source_ids": {
+          "probability_page_kr": "probability_kr.php",
+          "probability_page_jp": "probability_jp.php",
+          "promotion_agent_id": "1405"
+        },
+        "evidence_observation_ids": [
+          "official_probability_kr_recheck",
+          "official_probability_jp_recheck",
+          "official_agent_1405_recheck"
+        ],
+        "official_list_id": null,
+        "initial_pool_count": 50,
+        "full_original_card_ids": null,
+        "period": {
+          "starts_at": null,
+          "ends_at": "2026-10-29T01:59:59Z",
+          "end_precision": "second",
+          "time_zone": "UTC",
+          "announcement_date": "2026-10-15",
+          "announcement_date_is_start": false
+        },
+        "current_assessment": {
+          "judged_at": "2026-10-25T11:57:49.406Z",
+          "status": "officially_listed_with_future_end",
+          "basis": "판정 시각에 공개 확률표에 게재되었고 명시 종료 전이다. 시작 시각은 미기재다.",
+          "all_accounts_can_recruit_now": null
+        },
+        "introduction": {
+          "highlighted_card_count": null,
+          "counts_by_type": null,
+          "individual_card_ids": null,
+          "named_subject": "Ricardo Quaresma",
+          "type_in_official_title": "Epic",
+          "note": "공지 제목은 인물·Epic을 명시하지만 소개 카드 전체 수·유형별 수는 미기재다. 일반 Highlight 설명만으로 포함 수량을 추정하지 않는다."
+        },
+        "note": "Official promotion agent1405 and initial50 belong to this official list. No sharedEFHub product/card identifier was established by the public search."
+      },
+      "new_public_search_findings": [
+        {
+          "kind": "player_card_page_search_result",
+          "url": "https://efhub.com/ar/players/88045487395246",
+          "source_original_card_id": "88045487395246",
+          "title": "Ricardo Quaresma",
+          "short_search_excerpt": "Ricardo Quaresma — 85 OVR; 85 RWF",
+          "evidence_method": "Search result text and publicly exposed URL only. No directHTML fetch.",
+          "http_status_verified": null,
+          "provider_crawl_label": "yesterday",
+          "provider_crawl_label_is_exact_observation_time": false,
+          "raw_card_type": null,
+          "source_release_date": null,
+          "source_product_id": null,
+          "source_product_url": null,
+          "official_round_link": null,
+          "assessment": "Same named player/card lead, not an identified product or verified member of the official1405round.",
+          "limits": [
+            "Do not inferEpic from the cardID prefix or official subject name.",
+            "Displayed85OVR has no independently verified calculation conditions.",
+            "A player page link is not a full50-player roster or a product-membership edge."
+          ]
+        },
+        {
+          "kind": "homepage_search_result",
+          "url": "https://efhub.com/",
+          "short_search_excerpt": "85RWF Ricardo Quaresma",
+          "evidence_method": "Indexed latest-player text only",
+          "assessment": "Corroborates a same-name card being publicly indexed;does not expose a target product page or round ID."
+        }
+      ],
+      "excluded_false_positives": [
+        {
+          "url": "https://efhub.com/packs/european-clubs-selection-guardians-14-may-26",
+          "kind": "past_product_for_different_player",
+          "source_title": "European Clubs Selection Guardians 14 May '26",
+          "search_excerpt_subject": "Eduardo Quaresma",
+          "listed_cards_in_search_excerpt": 8,
+          "excluded_because": "Different given name, May14round andGuardians grouping. It is not RicardoQuaresma/officialOctoberagent1405."
+        },
+        {
+          "url": "https://efhub.com/ko/tier-list/community/LKKz1X2ouDiVWyMv4ljf",
+          "kind": "community_tier_list",
+          "source_title": "European Clubs Selection Guardians 14 May '26",
+          "excluded_because": "Community ranking includesEduardoQuaresma and other cards;neither a target product detail nor the official50-player pool."
+        },
+        {
+          "urls": [
+            "https://efhub.com/fr/articles/260919_2-short-centre-backs-where-they-stand",
+            "https://efhub.com/de/players/89138288270047"
+          ],
+          "kind": "comment_author_name",
+          "search_match": "QUARESMA@qua7bjk",
+          "excluded_because": "A commenter handle is not RicardoQuaresma card/product evidence."
+        },
+        {
+          "url": "https://efhub.com/players/132754",
+          "kind": "different_player_card",
+          "source_title": "Eduardo Quaresma",
+          "excluded_because": "Different player;must not merge by shared surname."
+        }
+      ],
+      "target_product_assessment": {
+        "publicly_discovered_product_detail_url": null,
+        "product_detail_verified": false,
+        "source_product_slug": null,
+        "source_displayed_card_count": null,
+        "source_displayed_original_card_ids": null,
+        "source_displayed_type_distribution": null,
+        "exact_release_round_verified": false,
+        "explicit_official1405_to_efhub_product_link": null,
+        "full50_player_pool_reconciled": false,
+        "standard_member_ids": null,
+        "missing_card_ids": null,
+        "missing_card_count": null,
+        "catalogue_absence_proven": false,
+        "prior_missing_scope_resolved": false
+      },
+      "limits_and_next_evidence": [
+        "Public search indexing is incomplete and may relax path/phrase filters;it cannot establish that no relevant product page exists.",
+        "No relevant directproduct URL was disclosed,so the authorized singleproductHTML read was unused.",
+        "The existing60-row unknown status remains unchanged;the new cardURL is a separate search-only lead.",
+        "A published exactround/product link or authoritative original-card membership edge is still needed to connect anyEFHubcard to official1405/50.",
+        "No deniedAPI search was retried, varied, or bypassed;no further historical pagination or source endpoint guessing was used."
+      ],
+      "preservation": {
+        "frozen_inputs": [
+          {
+            "path": "artifacts/current-shop/efhub-coverage.json",
+            "sha256": "c04a227e09b70a448b8beb413c440493ca62dd41e4153f68e6fa16c6743186cd",
+            "unchanged": true
+          },
+          {
+            "path": "artifacts/current-shop/official-lists.json",
+            "sha256": "0c16c253845b7f77bacf0c1a630d5ae08f7698aedbf6e154ddb40075ebfc1225",
+            "unchanged": true
+          },
+          {
+            "path": "artifacts/current-shop/efhub-list-pages.json",
+            "sha256": "18434fceb5b917c25fc36829acfd9c93703dd2b0d25f877004e6b7ddd8c025ee",
+            "unchanged": true
+          },
+          {
+            "path": "data/catalog.seed.json",
+            "sha256": "571381d807ced176eb7e4f7b2bf76e8ff3d00adfedbd85b45b28f94b63045b04",
+            "unchanged": true
+          }
+        ],
+        "source_raw_or_seed_modified": false,
+        "existing_document_or_json_modified": false,
+        "source_observations_remain_as_recorded": true
+      }
+    },
+    "midfielders": {
+      "id": "target_midfielders_source8_public_detail",
+      "url": "https://efhub.com/ko/packs/european-clubs-selection-midfielders-19-oct-26",
+      "discovery": "source slug already returned by observed EFHub list; normal public detail, no API request",
+      "method": "GET",
+      "requested_at": "2026-10-25T12:32:11.836250+00:00",
+      "observed_at": "2026-10-25T12:32:12.150856+00:00",
+      "status": 403,
+      "response_bytes": 17,
+      "sha256": "2938e9f1284180959e33ab1718d0793a72ff6e4cdb8108c34dcd14e69446de5c",
+      "headers_allowlist": {
+        "date": "Sun, 25 Oct 2026 12:32:12 GMT",
+        "content-type": "text/plain; charset=UTF-8",
+        "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+        "server": "envoy"
+      },
+      "retry_count": 0,
+      "header_changes": false,
+      "api_requests": 0,
+      "failure_excerpt": "error code: 1010\n",
+      "task_id": "T005",
+      "target": "Epic: European Clubs Midfielders",
+      "source_displayed_candidate_count": 8,
+      "public_search_queries_recorded": [
+        "site:efhub.com \"European Clubs Midfielders\" \"19 Oct\"",
+        "site:efhub.com \"Seedorf\" \"Midfielders\" \"26\"",
+        "site:efhub.com/packs \"Midfielders\" \"2026\"",
+        "site:efhub.com/packs/ \"midfielders-19-oct-26\"",
+        "site:efhub.com \"European Clubs\" \"Yaya\" \"19 October 2026\"",
+        "site:efhub.com \"European Clubs Selection Midfielders 19 Oct\""
+      ],
+      "public_search_result": "No same-round separateEpic3 product detail URL established by the targeted search. Search article/card mentions do not establish product membership.",
+      "public_article_search_lead": {
+        "url": "https://efhub.com/articles/261024_6-seedorf-final-rating",
+        "method": "public search result only",
+        "explicit_product_link_or_membership": null
+      },
+      "source_card_payload": null,
+      "raw_types": null,
+      "official_epic3_or_highlight8_membership_verified": false,
+      "separate_epic3_product_url": null,
+      "full150_pool_verified": false,
+      "denied_api_retries": 0,
+      "denied_detail_retries": 0,
+      "raw_body_excerpt": "error code: 1010\n",
+      "cause_limit": "This newly saved public-detail403 does not identify the cause or missing response body/headers of the earlier playersAPI403. No claim that everyAPI/public page is blocked."
+    },
+    "conclusion": {
+      "name_date_candidates_unchanged": 5,
+      "insufficient_candidates_unchanged": [
+        "National Team Selection: Worldwide Sep '26",
+        "Epic: Ricardo Quaresma"
+      ],
+      "explicit_official_efhub_links": 0,
+      "complete_initial_rosters_verified": 0,
+      "catalogue_wide_absence_proven": false,
+      "active_imports": 0
+    },
+    "stop_conditions": [
+      "No exact public product/membership link recovered for unresolved cases within targeted search.",
+      "DeniedMidfieldersdetail stopped after one request;deniedAPI was not retried.",
+      "Further progress requires newly disclosed normal source/round/membership evidence;do not guess endpoints or fill the pool."
+    ]
+  }
 }

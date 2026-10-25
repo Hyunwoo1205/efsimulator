@@ -1061,7 +1061,7 @@
     },
     {
       "path": "data/research/current-shop-observations.json",
-      "role": "현행공개상품 제한모수·EFHub60행/5후보·PS부록·가격/기간/구성충돌·scope변경 근거; 활성import아님",
+      "role": "현행공개상품 제한모수·EFHub60행/5후보·표적3건후속·PS부록·기간/구성충돌·범위변경 근거; 활성import아님",
       "priority": "P0",
       "related_paths": [
         "docs/sources/CURRENT_SHOP_COVERAGE.md",
@@ -1072,13 +1072,14 @@
         "data/research/current-catalog-observations.json"
       ],
       "update_when": [
-        "현행모수·대상지역/플랫폼·공식/출처대응·판매기간/상태·최소카드필드·관측/범위변경"
+        "현행모수·대상지역/플랫폼·공식/출처대응·판매기간/상태·최소카드필드·관측/범위변경",
+        "미확인상품의표적공개검색/상세·구조화추출한계·별도요청집계보강"
       ],
       "reviewed_in": "T005"
     },
     {
       "path": "docs/sources/CURRENT_SHOP_COVERAGE.md",
-      "role": "현재판매/이용상품 우선범위·공식7/캠페인/PS별도모수·EFHub후보/구성/모수한계와최소데이터/갱신계획",
+      "role": "현재상품 우선범위·공식7/캠페인/PS별도모수·EFHub후보와표적3건결과·구성한계와최소데이터/갱신계획",
       "priority": "P1",
       "related_paths": [
         "data/research/current-shop-observations.json",

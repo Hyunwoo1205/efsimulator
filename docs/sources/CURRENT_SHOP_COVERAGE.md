@@ -14,10 +14,10 @@
 
 | 공식 명단 | 초기 수 / 종료(UTC) | EFHub에서 관측한 대응 후보 | 구성 확보와 한계 |
 | --- | --- | --- | --- |
-| National Team Selection: Worldwide Sep '26 | 11 / 11-05 01:59:59 | 60행에서 충분한 후보 미확인 | 일반 National Teams Selection9/10·9/17행은 같은 회차로 확정하지 않음. EFHub 전체 부재가 아님 |
+| National Team Selection: Worldwide Sep '26 | 11 / 11-05 01:59:59 | 60행·표적 후속에서 충분한 후보 미확인 | 9/10 상세200·표시11명은 확인. Worldwide 공식 회차와의 연결은 미확정. EFHub 전체 부재가 아님 |
 | League Selection: Italian Oct '26 | 11 / 12-03 01:59:59 | [Italian League Selection 8 Oct '26](https://efhub.com/ko/packs/italian-league-selection-8-oct-26) | 목록 표시11; 상세 구성/타입 미수집. 같은 수량만으로 동일성/완전성 확정 불가 |
 | Epic: Ricardo Quaresma | 50 / 10-29 01:59:59 | 60행에서 미확인; Quaresma검색403 | 검색 결과0이 아니라 요청 거부. 전체 카탈로그 부재 판정 불가 |
-| Epic: European Clubs Midfielders | 150 / 10-26 01:59:59 | [European Clubs Selection Midfielders19Oct](https://efhub.com/ko/packs/european-clubs-selection-midfielders-19-oct-26) | 목록8; 상세/타입 미수집. source date10/15와 제목10/19 차이. 다른 소개 그룹과 임의 합산 금지 |
+| Epic: European Clubs Midfielders | 150 / 10-26 01:59:59 | [European Clubs Selection Midfielders19Oct](https://efhub.com/ko/packs/european-clubs-selection-midfielders-19-oct-26) | 목록8; 후속 상세GET403·카드payload/타입 미확보. source date10/15와 제목10/19 차이. 별도 Epic3 목록 미확인, 임의 합산 금지 |
 | Show Time: Magical Dribblers | 150 / 10-29 01:59:59 | [Magical Dribblers22Oct](https://efhub.com/ko/packs/magical-dribblers-22-oct-26) | 소개11카드 확보: Showtime3·Highlight8. 전체150과 별개 |
 | POTW: Worldwide22Oct '26 | 11 / 10-29 01:59:59 | [POTW22Oct](https://efhub.com/ko/packs/potw-22-oct-26) | 소개11 확보: Trending11. Worldwide 생략·공식 카드ID 연결 미확인 |
 | POTW: European Club Championship | 11 / 10-29 01:59:59 | [POTW UCL22Oct](https://efhub.com/ko/packs/potw-european-club-championship-22-oct-26) | 소개11 확보: Trending11. 공식 표에는 회차 날짜가 없어 동일 상품/카드 구성 연결 미확인 |
@@ -25,6 +25,18 @@
 이름·시기 후보는 **7개 중5개**, 충분한 후보 미확인2개는 **National Team Selection: Worldwide Sep '26와 Epic: Ricardo Quaresma**다. 이5개도 공식 상품/회차와 EFHub의 명시적 식별자 연결은0건이며 전체 게임 풀 대조 완료는0건이다. 관측한 source slug·URL·공식 문서/기사 ID·카드 ID/타입은 JSON에 둔다. 이름만으로 활성 관계나 판매 상태를 변경하지 않았다.
 
 Midfielders [공식 소개1407](https://www.konami.com/efootball/ko/topic/promotion/agent/1407/)는 Epic3·Highlight8 외 현역139명을 명시한다. EFHub의8명 목록을 이150명 전체로 보지 않으며139명의 타입/ID도 추정하지 않는다. [Quaresma 소개1405](https://www.konami.com/efootball/ko/topic/promotion/agent/1405/)의 게시일은 판매 시작 시각으로 치환하지 않는다.
+
+## 미확인3건의 표적 후속 확인
+
+12:31~12:32 UTC에 과거 카탈로그를 추가 순회하지 않고 공개 검색과 이미 공개된 상세 링크로 다음3건만 보강했다. 기존14회 직접 GET과 구분하여 상세 GET2회(200·403 각1회)를 추가했고, 거부된 API는 재요청하지 않았다. **후보5개·충분한 후보 미확인2개·명시적 공식ID 연결0건·전체 풀 검증0건이라는 결론은 그대로다.**
+
+| 대상 | 추가로 확인한 것 | 남은 한계와 처리 |
+| --- | --- | --- |
+| National Team Selection: Worldwide Sep '26 | 공개 검색에 나온 [National Teams Selection10Sep](https://efhub.com/packs/national-teams-selection-10-sep-26) 상세 GET200. 제목·9/10·표시11명과 이름/표시OVR 텍스트 확인 | Worldwide·공식 종료11/5·공식 상품 연결은 미확인. 기존 수집 파서의 카드 링크 검증에서 구조화 추출 실패. 정확한 계약 차이는 원문 미보존으로 재검증 불가. 카드ID/타입이 출처에 없다는 뜻이 아니며 이번 기록에서는 미확보. 원문 HTML은 보존하지 못했고 응답 메타/해시·발췌만 보존. 공식 회차 연결은 승격하지 않음 |
+| Epic: Ricardo Quaresma | 공개 검색5개 조건에서 [동명 카드URL](https://efhub.com/ar/players/88045487395246)과85 RWF 발췌 확인 | 표적 상품URL은 찾지 못함. 카드 상세GET0. Epic 타입·회차·공식50명 구성 관계는 미확인. Eduardo Quaresma와 댓글 계정은 오탐으로 제외. 검색 미발견은 전체 카탈로그 부재 증명이 아님 |
+| Epic: European Clubs Midfielders | 기존 목록의8명 후보 상세를1회 GET했으나403, 본문 `error code: 1010` | 즉시 중단. 공개 검색에서도 같은 회차의 별도 Epic3명 상품 링크를 확보하지 못함.8명을 공식 Highlight8과 연결하거나 다른 기사/카드와 합산하지 않음. 이 새 상세403은 과거 players API 실패 본문/원인의 증거가 아님 |
+
+정상 목록에서 확인한 형식은 `GET /api/public/packs?search=&page=1&limit=30`과2쪽이며 키워드 쿼리 형식도 공개 클라이언트에서 확인했다. 그러나 실제 Quaresma 검색은403이었고 전체 판매 상태 필터의 지원 근거도 없다. 이 형식을 발견했다는 이유로 거부 쿼리를 변형·반복하거나 무제한 페이지 순회하지 않았다. 추가로 공개된 정확한 상품 링크·회차/카드 관계 근거가 없으면 여기서 미확정으로 남긴다. 요청별 시각·상태·보존 한계는 JSON의 `targeted_followup`을 따른다.
 
 ## 확률표 밖의 현재 캠페인
 
