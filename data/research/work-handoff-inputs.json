@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "task": "T020",
+  "observed_at": "2026-10-26T04:12:32Z",
+  "scope": "문서/이관 입력 상태. 원본 내용·전체 수집·이미지 성공을 증명하지 않음",
+  "git": {
+    "repository": "https://github.com/Hyunwoo1205/efsimulator",
+    "local_branch": "work",
+    "starting_head": "d7f30688b5bcf610f9b35b2d7f680485949f6c19",
+    "remote_main": "d8891f241e113632884445d60746d9e059a1583b",
+    "remote_work": "5d2cc0abe63f102084e226f9ee385487420aadb5",
+    "verification": "git ls-remote origin refs/heads/main refs/heads/work 정상 읽기",
+    "starting_commits_ahead_of_remote_work": 3,
+    "starting_commits_ahead_of_remote_main": 17,
+    "push_performed": false
+  },
+  "players_raw": {
+    "evidence_level": "사용자 제작 보고 + 부모 Library 조회 메타 전달; 이 task는 본문 미검증",
+    "library_file_id": "libfile_cc5085f5c4788191b7c3707a66e0529a",
+    "file_id": "file_000000002b808206a31e146aa54fdc3f",
+    "version_id": 1,
+    "library_path": "/players_raw.json",
+    "reported_size_bytes": 16801176,
+    "reported_modified_at": "2026-10-26T01:23:42.466991Z",
+    "executor_materialization": "차단: 현재 ALL_TOOLS에 Library 검색/prepare_materialize/reference 다운로드/업로드 도구 없음",
+    "workspace_path": null,
+    "sha256": null,
+    "json_shape": null,
+    "row_count": null,
+    "unique_card_ids": null,
+    "duplicate_ids": null,
+    "conflicting_ids": null,
+    "missing_required_fields": null,
+    "numeric_precision_verified": false,
+    "source_page_completeness": "미확인: 파일/원래 페이지 메타를 아직 읽지 못함",
+    "image_url_presence": "미검증",
+    "image_downloads_performed": 0,
+    "reported_historical_total": 50840,
+    "reported_historical_pages": 2119,
+    "historical_counts_are_verified_current_completeness": false
+  },
+  "packs_raw": {
+    "complete_raw_location": null,
+    "validation": "미확인",
+    "pack_detail_card_mapping": "미확인",
+    "existing_research": "연구 래퍼의 1/2쪽 각30행은 전수 raw가 아님",
+    "target_work_status": "최신 사용자 보고: 대상 Work 채팅에서 수집 준비 중. 수집 완료 아님",
+    "continuation": "기존 대상 채팅의 출력/체크포인트/계획을 먼저 확인하고 이어받음. 중복 수집/새 채팅 생성 금지"
+  },
+  "sites": {
+    "migration": "최신 사용자 지시로 별도 초기 페이지/소스/번들 의도적 제외",
+    "copied_or_bundled": false,
+    "modified_or_deleted": false,
+    "actual_application_index_files_preserved": true
+  },
+  "library_handoff_upload": {
+    "available": false,
+    "library_file_id": null,
+    "blocker": "이 task에 Library upload/save 도구가 없어 로컬 MD/본문과 bundle로 전달; 부모가 지원 흐름으로 저장 가능"
+  },
+  "network_in_T020": {
+    "efhub_requests": 0,
+    "official_probability_requests": 0,
+    "image_requests": 0,
+    "github_read": "git ls-remote 1회",
+    "sites_read": "get_site 1회",
+    "push_merge_deploy": 0
+  }
+}

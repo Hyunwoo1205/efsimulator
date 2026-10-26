@@ -395,7 +395,7 @@ C008/C009의 데이터 공백을 추적합니다. C010의 새 자료는 지역·
 
 입력은 기존 조사 JSON·체크포인트·실제 수집/정규화 코드와 정상 공개 자료입니다. 영향 파일은 이 작업의 최신화 검토 표와 FILE_SYNC를 기준으로 하고, 상품별 전체 구성의 성공 조건을 보강합니다. 감독 지원 제외·bundle 팩의 미래 시뮬레이터 제외·운영 병합 승인 대기 조건을 유지합니다.
 
-실제 결과는 [전체 명단 조사](sources/FULL_ROSTER_RESEARCH.md)와 [구조화한 관측](../data/research/roster-source-observations.json)을 기준으로 합니다. 목록403의 실패 본문/헤더가 보존되지 않아 원인/반환 계층·limit100 지원은 미확정입니다. 다른 상세 API의 오류 본문을 전용하지 않았고 EFHub 새 요청은0회입니다.
+실제 결과는 [전체 명단 조사](../sources/FULL_ROSTER_RESEARCH.md)와 [구조화한 관측](../../data/research/roster-source-observations.json)을 기준으로 합니다. 목록403의 실패 본문/헤더가 보존되지 않아 원인/반환 계층·limit100 지원은 미확정입니다. 다른 상세 API의 오류 본문을 전용하지 않았고 EFHub 새 요청은0회입니다.
 
 - 현재9상품의 소개79카드(Showtime16·Highlight23·Trending40)와 Yaya 상세/버전4카드를 구분했습니다. grid 내부 누락0은 전체 추첨풀 완료가 아닙니다. Standard로 확인된 포함 관계·게임 전체 누락 수/ID는 미확인이고 타입 제외 파서는 없습니다.
 - 공식/PESDB3회·대체 출처7회, 총10회 순차 공개 GET으로 공식 초기150명과 외부 소개11명, .info의 실제11명 필터와 특정 카드 상세 API404를 확인했습니다. 웹검색/열람 요청은 이 직접 GET 수와 구분합니다. API 전체 차단이나 존재하지 않음을 선언하지 않았습니다.
@@ -412,7 +412,7 @@ PesLig의 실제 공개 클라이언트 brief 경로는 독립 관측에서200�
 
 C026은 조사 후 판단할 보류 요구입니다. Standard 카드 자체 확보와 상품별 Standard 포함 관계 확보를 구분하며, 새로운 카탈로그 경로가 확인됐다고 상품 풀까지 완료한 것으로 보지 않습니다. 공식 초기 수에서 소개 카드 수만 뺀 차이를 바로 Standard로 만들지 않습니다. 공급망 조사 결과와 최소 확보 계획은 새 조사 문서에 연결하고 기존 작업 ID를 유지합니다.
 
-실제 결과는 [공급망 조사](sources/DATA_SUPPLY_CHAIN.md)와 [구조화 근거](../data/research/data-supply-chain-observations.json)를 기준으로 합니다.
+실제 결과는 [공급망 조사](../sources/DATA_SUPPLY_CHAIN.md)와 [구조화 근거](../../data/research/data-supply-chain-observations.json)를 기준으로 합니다.
 
 - PesLig 정상 brief1회 GET200,13,639,365bytes를 artifacts에 보존했다. 실제46,742행/고유키/행ID·48열, 중복키/ID·키/ID불일치0을 검사했다. Standard19,018·variant13,947·기타13,777이며 non-Standard 전체를 특수로 취급하지 않는다. source=dt870/schema/generated_at은 공급자 선언으로 구분했다.
 - 현재83EFHub 원본ID가 모두 겹치나 OVR14건과 분류가 다르다. 스킬/AI는 전행 빈값, max_level0+server_level_cap_required는43,116행이다. 이미지URL·명시 버전/인물·상품 관계·OVR조건은 별도 검증 대상이다. source 원문은 Git/빌드/공개 데이터에 넣지 않고 activeimport0을 유지한다.
@@ -425,7 +425,7 @@ C026은 조사 후 판단할 보류 요구입니다. Standard 카드 자체 확�
 
 ### 최신 범위 — 현행 상품과 EFHub 커버리지
 
-입력은 공식확률KR/JP·현재홈이연결한프로모션/캠페인·공식판목록/PS공개페이지·정상EFHub목록2쪽과기존상세근거입니다. 결과는 [현행상품조사](sources/CURRENT_SHOP_COVERAGE.md)와 [구조화근거](../data/research/current-shop-observations.json)를기준으로합니다.
+입력은 공식확률KR/JP·현재홈이연결한프로모션/캠페인·공식판목록/PS공개페이지·정상EFHub목록2쪽과기존상세근거입니다. 결과는 [현행상품조사](../sources/CURRENT_SHOP_COVERAGE.md)와 [구조화근거](../../data/research/current-shop-observations.json)를기준으로합니다.
 
 1. 공식GET6회200으로확률7개와별도캠페인2맥락을확인했습니다. 전체상점모수는null이며지역/플랫폼·계정조건미확정입니다. 확률표언어를계정국가로바꾸지않습니다.
 2. EFHub목록1/2쪽은200·각30행/고유60slug,Quaresma검색1회403후중단했습니다. 공식7중후보5(Italian/Midfielders/Magical/POTWWorldwide/UCL),충분한후보미확인2(NationalWorldwideSep/Quaresma)입니다. 명시ID연결0·전체초기풀검증0이며검색403/미관측을부재로처리하지않습니다.

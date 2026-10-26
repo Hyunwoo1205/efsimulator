@@ -55,8 +55,8 @@
     },
     {
       "path": "https://efhub.com/ko + https://efhub.com/api/public/",
-      "role": "이전 표본 원출처와 미선정 API 검증 후보. 새 공식 대상의 모수 공급자는 아님",
-      "check": "기존 근거/403 보존; 허용 정상 경로·상품/특수 완전성·필드/저장권리·갱신/비용을 통과하기 전 채택하지 않음"
+      "role": "전체 누적 DB/API의 사용자 우선 원출처 목표. 정상 지속 공급/저장·공개조건은 미완료",
+      "check": "기존 raw 먼저 오프라인 검증. 모든 확보 가능한 players/packs 누적 범위와 공식 현행 사이트 범위를 분리. 신규ID추가/무삭제·개정이력. 거부 반복/우회 금지."
     },
     {
       "path": "https://efimg.com",
@@ -80,8 +80,13 @@
     },
     {
       "path": "https://efootball-web.konami.net/probability_kr.php",
-      "role": "새 선수팩 대상의 유일한 공식 기준; 이름/초기수/종료/확률",
-      "check": "관측시각·해시·실제전체행/파서·일시빈/실패보호. 미기재 가격/재화/규칙과 안정ID는 추정하지 않음"
+      "role": "사이트층의 유일한 현행 대상 기준; 전체 누적 수집 범위를 제한하지 않음",
+      "check": "정상 전체 목록·관측UTC/해시·종료UTC/신선도·정확한회차 검증. 실패/빈결과로전부종료X. 7개상수X/미기재규칙추정X."
+    },
+    {
+      "path": "library-file:libfile_cc5085f5c4788191b7c3707a66e0529a",
+      "role": "대상 Work에서 제작된 players_raw.json; version1/16,801,176bytes 메타 전달·본문 미검증",
+      "check": "지원 Library materialize/reference 흐름으로 같은ID 수령 후 실제 bytes/SHA/배열/ID/필드/정밀도/페이지근거 확인. File Service ID를Sediment도구에사용X. 기존대상Work packs수집준비이어받기."
     }
   ],
   "files": [
@@ -111,7 +116,7 @@
       "update_when": [
         "검사 명령·Node/npm 버전·브랜치 정책 변경"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": ".gitignore",
@@ -124,7 +129,7 @@
       "update_when": [
         "생성물 경로·외부 서비스의 로컬 설정 추가"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": ".nvmrc",
@@ -142,7 +147,7 @@
       "update_when": [
         "프로젝트 런타임 버전 변경"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "404.html",
@@ -158,7 +163,7 @@
       "update_when": [
         "원본 변경 후 build→pages:export→pages:check; dist 직접 배포 전환 검증 후 사본과 참조를 함께 삭제"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "AGENTS.md",
@@ -179,7 +184,7 @@
       "update_when": [
         "사용자 요구·작업 절차·검증 명령·제품 및 운영 원칙 변경"
       ],
-      "reviewed_in": "T019"
+      "reviewed_in": "T020"
     },
     {
       "path": "_headers",
@@ -195,7 +200,7 @@
       "update_when": [
         "원본 변경 후 build→pages:export→pages:check; dist 직접 배포 전환 검증 후 사본과 참조를 함께 삭제"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "_redirects",
@@ -211,7 +216,7 @@
       "update_when": [
         "원본 변경 후 build→pages:export→pages:check; dist 직접 배포 전환 검증 후 사본과 참조를 함께 삭제"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "app.js",
@@ -227,7 +232,7 @@
       "update_when": [
         "원본 변경 후 build→pages:export→pages:check; dist 직접 배포 전환 검증 후 사본과 참조를 함께 삭제"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "data/catalog.json",
@@ -243,7 +248,7 @@
       "update_when": [
         "원본 변경 후 build→pages:export→pages:check; dist 직접 배포 전환 검증 후 사본과 참조를 함께 삭제"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "data/catalog.seed.json",
@@ -268,7 +273,7 @@
       "update_when": [
         "출처 증거·정규화·표본 범위·필드/관계 계약 변경; data:prepare로 재생성"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "data/research/card-api-audit.json",
@@ -283,7 +288,7 @@
       "update_when": [
         "해당 계약·지원 범위·실행/관측 결과 변경 시 관련 파일 검토; 비활성 참고는 현재 모델로 재채택하지 않음"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "data/research/current-catalog-observations.json",
@@ -298,7 +303,7 @@
       "update_when": [
         "해당 계약·지원 범위·실행/관측 결과 변경 시 관련 파일 검토; 비활성 참고는 현재 모델로 재채택하지 않음"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "data/research/followup-observations.json",
@@ -311,7 +316,7 @@
       "update_when": [
         "별도 후속 관측 추가; 기존 관측 ID의 내용은 재사용하지 않음"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "data/research/source-observations.json",
@@ -327,7 +332,7 @@
       "update_when": [
         "정상 출처 재조회·필드/관계/이미지 검증·접근성 변화"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "docs/ARCHITECTURE.md",
@@ -350,7 +355,7 @@
       "update_when": [
         "데이터 계약·파이프라인·라우팅·이력 영속화·운영 방식 변경"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "docs/COLLECTION.md",
@@ -375,7 +380,7 @@
       "update_when": [
         "해당 계약·지원 범위·실행/관측 결과 변경 시 관련 파일 검토; 비활성 참고는 현재 모델로 재채택하지 않음"
       ],
-      "reviewed_in": "T019"
+      "reviewed_in": "T020"
     },
     {
       "path": "docs/DEPLOYMENT.md",
@@ -397,7 +402,7 @@
       "update_when": [
         "빌드 명령·출력·라우팅·배포 설정·공개 검증 결과 변경"
       ],
-      "reviewed_in": "T009"
+      "reviewed_in": "T020"
     },
     {
       "path": "docs/FILE_SYNC.json",
@@ -414,7 +419,7 @@
       "update_when": [
         "파일 추가·삭제·이름 변경·역할/의존관계 변경·영향 검토"
       ],
-      "reviewed_in": "T019"
+      "reviewed_in": "T020"
     },
     {
       "path": "docs/ROADMAP.md",
@@ -437,7 +442,7 @@
       "update_when": [
         "단계 상태·현재/이전/다음 작업·완료 조건·추가 요구 변경"
       ],
-      "reviewed_in": "T019"
+      "reviewed_in": "T020"
     },
     {
       "path": "docs/WORKPLAN.md",
@@ -459,7 +464,7 @@
       "update_when": [
         "매 작업 착수·추가 요구·파일 변경·검증 결과·작업 종료"
       ],
-      "reviewed_in": "T019"
+      "reviewed_in": "T020"
     },
     {
       "path": "index.html",
@@ -475,7 +480,7 @@
       "update_when": [
         "원본 변경 후 build→pages:export→pages:check; dist 직접 배포 전환 검증 후 사본과 참조를 함께 삭제"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "package-lock.json",
@@ -488,7 +493,7 @@
       "update_when": [
         "package.json의 의존성·패키지 메타데이터 변경"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "package.json",
@@ -513,7 +518,7 @@
       "update_when": [
         "의존성·npm 명령·Node/npm 버전·앱 구성 추가"
       ],
-      "reviewed_in": "T019"
+      "reviewed_in": "T020"
     },
     {
       "path": "scripts/audit-cards.mjs",
@@ -527,7 +532,7 @@
       "update_when": [
         "체크포인트 스키마·요청 예산·재개/실패 계약·접근 중단·실제 관측 변경"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "scripts/build.mjs",
@@ -546,7 +551,7 @@
       "update_when": [
         "빌드 출력·데이터 계약·라우팅·실패 복구·Pages 한도 변경"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "scripts/catalog-history.mjs",
@@ -563,7 +568,7 @@
       "update_when": [
         "누적 병합·근거 우선순위·보존/명시적 삭제 정책 변경 및 회귀 발견"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "scripts/catalog.mjs",
@@ -580,7 +585,7 @@
       "update_when": [
         "원본 필드·식별·관계·출처/조건·갱신 보호 계약 변경"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "scripts/collect-efhub.mjs",
@@ -594,7 +599,7 @@
       "update_when": [
         "해당 계약·지원 범위·실행/관측 결과 변경 시 관련 파일 검토; 비활성 참고는 현재 모델로 재채택하지 않음"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "scripts/collected-products.mjs",
@@ -609,7 +614,7 @@
       "update_when": [
         "해당 계약·지원 범위·실행/관측 결과 변경 시 관련 파일 검토; 비활성 참고는 현재 모델로 재채택하지 않음"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "scripts/export-pages.mjs",
@@ -624,7 +629,7 @@
       "update_when": [
         "해당 계약·지원 범위·실행/관측 결과 변경 시 관련 파일 검토; 비활성 참고는 현재 모델로 재채택하지 않음"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "scripts/prepare-seed.mjs",
@@ -645,7 +650,7 @@
       "update_when": [
         "조사 증거 구조·카드/상품 표본·ID·정규화 규칙 변경"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "scripts/project-check.mjs",
@@ -661,7 +666,7 @@
       "update_when": [
         "관리 스키마·작업 기록 형식·검사 정책·파일 수집 방식 변경"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "scripts/serve.mjs",
@@ -676,7 +681,7 @@
       "update_when": [
         "정적 출력·라우팅·헤더·미리보기 명령 변경"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "styles.css",
@@ -692,7 +697,7 @@
       "update_when": [
         "원본 변경 후 build→pages:export→pages:check; dist 직접 배포 전환 검증 후 사본과 참조를 함께 삭제"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "README.md",
@@ -716,7 +721,7 @@
       "update_when": [
         "설치·실행·검증·표본 범위·진입 문서·공개 상태 변경"
       ],
-      "reviewed_in": "T019"
+      "reviewed_in": "T020"
     },
     {
       "path": "docs/sources/CARD_API_AUDIT.md",
@@ -734,7 +739,7 @@
       "update_when": [
         "해당 계약·지원 범위·실행/관측 결과 변경 시 관련 파일 검토; 비활성 참고는 현재 모델로 재채택하지 않음"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "docs/sources/FOLLOWUP_RESEARCH.md",
@@ -748,7 +753,7 @@
       "update_when": [
         "추가 출처·가격/조건 근거·상품/지역/플랫폼 대응·데이터 공백 변경"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "docs/sources/INITIAL_RESEARCH.md",
@@ -761,7 +766,7 @@
       "update_when": [
         "출처 재관측·새 확보 경로·필드 검증·공백 해소"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "scripts/browser-check.py",
@@ -776,7 +781,7 @@
       "update_when": [
         "화면·라우팅·표본 범위·분류·오류 동작 변경"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "tests/audit-cards.test.mjs",
@@ -789,7 +794,7 @@
       "update_when": [
         "연결 모듈의 계약 변경 또는 새 오류 발견"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "tests/catalog-history.test.mjs",
@@ -803,7 +808,7 @@
       "update_when": [
         "누적 병합·근거 우선순위·보존/명시적 삭제 정책 변경 및 회귀 발견"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "tests/catalog.test.mjs",
@@ -816,7 +821,7 @@
       "update_when": [
         "데이터/출처/관계/완전성·빌드 동작 변경·오류 발견"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "tests/collect-efhub.test.mjs",
@@ -829,7 +834,7 @@
       "update_when": [
         "연결 모듈의 계약 변경 또는 새 오류 발견"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "tests/collected-products.test.mjs",
@@ -842,7 +847,7 @@
       "update_when": [
         "연결 모듈의 계약 변경 또는 새 오류 발견"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "tests/export-pages.test.mjs",
@@ -855,7 +860,7 @@
       "update_when": [
         "연결 모듈의 계약 변경 또는 새 오류 발견"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "tests/prepare-seed.test.mjs",
@@ -871,7 +876,7 @@
       "update_when": [
         "조사 증거·표본 정규화·ID·시각·근거 계약 변경"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "tests/project-check.test.mjs",
@@ -885,7 +890,7 @@
       "update_when": [
         "검사 동작 변경·새 오류 사례 발견"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "tests/serve.test.mjs",
@@ -897,7 +902,7 @@
       "update_when": [
         "서버 동작 변경·실패 사례 발견"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "web/app.js",
@@ -913,7 +918,7 @@
       "update_when": [
         "공개 데이터 계약·검색·필터·관계·라우팅·표시 조건 변경"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "web/index.html",
@@ -928,7 +933,7 @@
       "update_when": [
         "문서 구조·주요 탐색·정적 자산·접근성·기본 메타 변경"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "web/styles.css",
@@ -942,7 +947,7 @@
       "update_when": [
         "화면 구조·이미지·레이아웃·포커스·반응형 요구 변경"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "data/research/manager-product-observations.json",
@@ -955,7 +960,7 @@
       "update_when": [
         "새 정상 관측·명시적 상품↔감독 근거·관계 미확인 범위 변경"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "data/research/mourinho-product-observations.json",
@@ -968,7 +973,7 @@
       "update_when": [
         "해당 계약·지원 범위·실행/관측 결과 변경 시 관련 파일 검토; 비활성 참고는 현재 모델로 재채택하지 않음"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "docs/reference/retired-manager-product.mjs.txt",
@@ -981,7 +986,7 @@
       "update_when": [
         "해당 계약·지원 범위·실행/관측 결과 변경 시 관련 파일 검토; 비활성 참고는 현재 모델로 재채택하지 않음"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "docs/reference/retired-manager-product.test.mjs.txt",
@@ -994,7 +999,7 @@
       "update_when": [
         "해당 계약·지원 범위·실행/관측 결과 변경 시 관련 파일 검토; 비활성 참고는 현재 모델로 재채택하지 않음"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "docs/sources/MANAGER_PRODUCT_RESEARCH.md",
@@ -1007,7 +1012,7 @@
       "update_when": [
         "해당 계약·지원 범위·실행/관측 결과 변경 시 관련 파일 검토; 비활성 참고는 현재 모델로 재채택하지 않음"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "docs/sources/MOURINHO_PRODUCT_RESEARCH.md",
@@ -1021,7 +1026,7 @@
       "update_when": [
         "해당 계약·지원 범위·실행/관측 결과 변경 시 관련 파일 검토; 비활성 참고는 현재 모델로 재채택하지 않음"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "data/research/roster-source-observations.json",
@@ -1039,7 +1044,7 @@
       "update_when": [
         "403 원인 근거·상품 원본ID/전체 구성·공식 총계/기간·후보API/페이지네이션·허용 수집 조건 변경"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "docs/sources/FULL_ROSTER_RESEARCH.md",
@@ -1058,7 +1063,7 @@
       "update_when": [
         "공식 상품/출시 카드 ID 대응·초기/잔여 pool·후보API 성공/제약·필요 결정과 범위 변경"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "data/research/data-supply-chain-observations.json",
@@ -1075,7 +1080,7 @@
       "update_when": [
         "공급망/API·필드/버전·이용조건·후속사이트/커뮤니티·현재인용·우선범위/보류상태 변경"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "docs/sources/DATA_SUPPLY_CHAIN.md",
@@ -1095,7 +1100,7 @@
       "update_when": [
         "사이트 공급망/정확한 API계약·실제취득결과·사용조건·갱신/익명슬롯 판단 근거 변경"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "data/research/current-shop-observations.json",
@@ -1113,7 +1118,7 @@
         "현행모수·대상지역/플랫폼·공식/출처대응·판매기간/상태·최소카드필드·관측/범위변경",
         "미확인상품의표적공개검색/상세·구조화추출한계·별도요청집계보강"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "docs/sources/CURRENT_SHOP_COVERAGE.md",
@@ -1135,7 +1140,7 @@
       "update_when": [
         "현행범위/모수·상품별판매/구성근거·공개상태/필드·보류조건변경"
       ],
-      "reviewed_in": "T009"
+      "reviewed_in": "T020"
     },
     {
       "path": "docs/API_SELECTION.md",
@@ -1154,7 +1159,7 @@
       "update_when": [
         "해당 범위/입력/완료조건·관계·권한/운영 근거 변경. reference의 과거 관측값은 덮어쓰지 않음"
       ],
-      "reviewed_in": "T019"
+      "reviewed_in": "T020"
     },
     {
       "path": "docs/DATA_LIFECYCLE.md",
@@ -1170,7 +1175,7 @@
       "update_when": [
         "해당 범위/입력/완료조건·관계·권한/운영 근거 변경. reference의 과거 관측값은 덮어쓰지 않음"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "docs/SIMULATOR_PLAN.md",
@@ -1186,7 +1191,7 @@
       "update_when": [
         "해당 범위/입력/완료조건·관계·권한/운영 근거 변경. reference의 과거 관측값은 덮어쓰지 않음"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "data/research/probability-scope-baseline.json",
@@ -1201,7 +1206,7 @@
       "update_when": [
         "해당 범위/입력/완료조건·관계·권한/운영 근거 변경. reference의 과거 관측값은 덮어쓰지 않음"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "docs/reference/WORKPLAN_BEFORE_PROBABILITY_SCOPE.md",
@@ -1214,7 +1219,7 @@
       "update_when": [
         "해당 범위/입력/완료조건·관계·권한/운영 근거 변경. reference의 과거 관측값은 덮어쓰지 않음"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "docs/reference/ARCHITECTURE_BEFORE_PROBABILITY_SCOPE.md",
@@ -1227,7 +1232,7 @@
       "update_when": [
         "해당 범위/입력/완료조건·관계·권한/운영 근거 변경. reference의 과거 관측값은 덮어쓰지 않음"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "docs/reference/COLLECTION_BEFORE_PROBABILITY_SCOPE.md",
@@ -1240,7 +1245,7 @@
       "update_when": [
         "해당 범위/입력/완료조건·관계·권한/운영 근거 변경. reference의 과거 관측값은 덮어쓰지 않음"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "docs/reference/DEPLOYMENT_BEFORE_PROBABILITY_SCOPE.md",
@@ -1253,7 +1258,7 @@
       "update_when": [
         "해당 범위/입력/완료조건·관계·권한/운영 근거 변경. reference의 과거 관측값은 덮어쓰지 않음"
       ],
-      "reviewed_in": "T008"
+      "reviewed_in": "T020"
     },
     {
       "path": "data/research/api-selection-validation.json",
@@ -1268,7 +1273,7 @@
       "update_when": [
         "T009 관측/게이트·대상/권리/공급계약·재개조건·검증/작업상태 변경"
       ],
-      "reviewed_in": "T009"
+      "reviewed_in": "T020"
     },
     {
       "path": "docs/sources/API_SELECTION_VALIDATION.md",
@@ -1284,7 +1289,7 @@
       "update_when": [
         "T009 관측/게이트·대상/권리/공급계약·재개조건·검증/작업상태 변경"
       ],
-      "reviewed_in": "T009"
+      "reviewed_in": "T020"
     },
     {
       "path": "scripts/merge-api-pages.mjs",
@@ -1299,7 +1304,7 @@
       "update_when": [
         "원본입력/병합보존·페이지/ID검증·report/CLI·발행/복구계약·중간요청범위 변경"
       ],
-      "reviewed_in": "T019"
+      "reviewed_in": "T020"
     },
     {
       "path": "tests/merge-api-pages.test.mjs",
@@ -1313,7 +1318,7 @@
       "update_when": [
         "원본입력/병합보존·페이지/ID검증·report/CLI·발행/복구계약·중간요청범위 변경"
       ],
-      "reviewed_in": "T019"
+      "reviewed_in": "T020"
     },
     {
       "path": "docs/RAW_PAGE_MERGE.md",
@@ -1329,7 +1334,55 @@
       "update_when": [
         "원본입력/병합보존·페이지/ID검증·report/CLI·발행/복구계약·중간요청범위 변경"
       ],
-      "reviewed_in": "T019"
+      "reviewed_in": "T020"
+    },
+    {
+      "path": "docs/CHATGPT_WORK_HANDOFF.md",
+      "role": "한국어 자급적 Work 인수인계: 미푸시/원격 차이·두 계층·raw 검증·기존 대상 채팅 이어받기·Sites 초기 소스 이관 제외",
+      "priority": "P1",
+      "related_paths": [
+        "docs/ROADMAP.md",
+        "docs/WORKPLAN.md",
+        "docs/FILE_SYNC_AUDIT.md",
+        "docs/ARCHITECTURE.md",
+        "docs/COLLECTION.md",
+        "docs/DEPLOYMENT.md",
+        "data/research/work-handoff-inputs.json"
+      ],
+      "update_when": [
+        "사용자 범위/입력 상태·원격/로컬 반영·이관/검증 결과·지원 도구/작업 상태 변경"
+      ],
+      "reviewed_in": "T020"
+    },
+    {
+      "path": "docs/FILE_SYNC_AUDIT.md",
+      "role": "T020 전체 관리 파일의 등록/내용 영향 판정·GitHub 미반영·구현 공백·검증/이관 한계 보고",
+      "priority": "P1",
+      "related_paths": [
+        "docs/FILE_SYNC.json",
+        "docs/WORKPLAN.md",
+        "docs/CHATGPT_WORK_HANDOFF.md",
+        "data/research/work-handoff-inputs.json"
+      ],
+      "update_when": [
+        "사용자 범위/입력 상태·원격/로컬 반영·이관/검증 결과·지원 도구/작업 상태 변경"
+      ],
+      "reviewed_in": "T020"
+    },
+    {
+      "path": "data/research/work-handoff-inputs.json",
+      "role": "T020 Git/Library 입력 메타·원문 검증 대기·대상 Work packs 수집 준비·Sites 의도적 이관 제외의 구조화 근거",
+      "priority": "P0",
+      "related_paths": [
+        "docs/CHATGPT_WORK_HANDOFF.md",
+        "docs/FILE_SYNC_AUDIT.md",
+        "docs/WORKPLAN.md",
+        "docs/COLLECTION.md"
+      ],
+      "update_when": [
+        "사용자 범위/입력 상태·원격/로컬 반영·이관/검증 결과·지원 도구/작업 상태 변경"
+      ],
+      "reviewed_in": "T020"
     }
   ]
 }
