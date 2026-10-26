@@ -1,0 +1,112 @@
+> 이 문서는 **사이트층**의 공식 기준표다. 전체 누적 DB/API 범위는 EFHub에서 확보 가능한 모든 players/packs이며 [수집 계획](../COLLECTION.md)을 따른다. 아래7행은2026-10-25 관측 이력으로 현재 판매 수가 아니다. 종료 UTC를 지난 항목은 새 정상 관측/신선도 확인 없이 현행으로 재사용하지 않는다. T020은 공식 페이지를 다시 요청하지 않았다.
+
+# 공식 확률표 대상과 최신 기준표
+
+최신 T009 관측은 **2026-10-25 15:21:55.435 UTC** GET200·7행이며 아래13:45기준표와 제목/N/종료/확률·원문해시가 동일했다. [API 선정 실행 결과](API_SELECTION_VALIDATION.md)와 [새 관측 JSON](../../data/research/api-selection-validation.json)의 `official_snapshot`을 함께 확인한다. 카드 API 선정과 전체 특수 구성 검증은 아직 통과하지 않았다.
+
+2026-10-25 13:41 UTC 사용자 결정 이후 **대상 목록의 유일한 기준은 [한국어 공식 확률표](https://efootball-web.konami.net/probability_kr.php)**다. 웹상점/PS특별판/캠페인으로 대상을 추가하지 않는다. 지역/플랫폼 질문은 이 모수를 정하는 차단 요인이 아니다. 페이지에 있는 명단을 대상으로 삼는 사용자 결정이며 모든 계정의 구매 가능성이나 코인 전용 재화를 이 페이지만으로 증명했다는 뜻은 아니다.
+
+원래 기준표의 직접 관측은2026-10-25 **13:45:12.034 UTC**, 정상GET1회200·2,834bytes·SHA256 `8d641fd6b0e1deb21b8f5cc225fa6283ad3ac9da264fcc23693bf46cd80672ec`다. 원문 컨테이너7개를 모두 읽었고, 부모의 독립13:44:19관측도 같은 해시였다. [구조화 기준표](../../data/research/probability-scope-baseline.json)에 시각·메타·필드/미확인을 보존한다. 이7개는 해당 응답의 목록이며 앞으로 개수를 고정하지 않는다.
+
+| 공식 명단 | 초기 카드 수 | 종료 UTC / 한국 시각 | 초기 개별 확률(표시값) |
+| --- | --- | --- | --- |
+| National Team Selection: Worldwide Sep '26 | 11 | 2026-11-05 01:59:59 / 10:59:59 | 9.0909% |
+| League Selection: Italian Oct '26 | 11 | 2026-12-03 01:59:59 / 10:59:59 | 9.0909% |
+| Epic: Ricardo Quaresma | 50 | 2026-10-29 01:59:59 / 10:59:59 | 2% |
+| Epic: European Clubs Midfielders | 150 | 2026-10-26 01:59:59 / 10:59:59 | 0.6667% |
+| Show Time: Magical Dribblers | 150 | 2026-10-29 01:59:59 / 10:59:59 | 0.6667% |
+| POTW: Worldwide 22 Oct '26 | 11 | 2026-10-29 01:59:59 / 10:59:59 | 9.0909% |
+| POTW: European Club Championship | 11 | 2026-10-29 01:59:59 / 10:59:59 | 9.0909% |
+
+공식 설명은 명단 내 균등 확률·소수점 반올림·잔여 명단에 따른 이후 확률 변동을 안내한다. **판매 시작·가격/재화·무료 횟수·다회 옵션/할인·제한·리셋·개별 카드ID/이미지/OVR·공식 안정 상품ID는 미기재**다. 이를 이름/종류로 추정하지 않는다. 행 순번은 이번 응답의 위치이지 장기 식별자가 아니다. 내부 ID/회차 대응은 [구조 계획](../ARCHITECTURE.md), 공급자는 [API 선정표](../API_SELECTION.md)를 따른다.
+
+사이트층 Standard 실명은 수집 대상이 아니다. 같은 팩/회차의 모든 특수 카드가 검증돼야 공식총원과의 차이를 익명 Standard 슬롯으로 정의할 수 있다. 예전의 전체 Standard 명단 확보 요청은 이 모델 방향으로 대체한다. 실제 DB/시뮬레이터에는 아직 반영하지 않았다.
+
+## 이전 범위의 조사 이력 — 최신 실행 지침 아님
+
+아래는13:41 UTC 이전의 공식7개 대 EFHub60행 대조/표적 후속/웹상점 부록을 보존한 기록이다. 이름/시기 후보5개·미확인2개, 공식 상품ID 연결0·전체 풀 검증0이라는 당시 근거는 API 선정에 재사용한다. PS특별판·캠페인·비코인 대상·지역 질문·익명Standard 보류 문구는 당시 범위이며 **새 대상/모델은 위와 최신 ROADMAP/WORKPLAN이 우선**한다. 기존 JSON은 관측 이력으로 보존하고 새 기준표로 덮어쓰지 않는다.
+
+# 이전: 현행 상품·구성 카드 범위와 EFHub 대조
+
+2026-10-25 11:57 UTC 이후 공개 관측을 기준으로 기존 R1/T002·R4/T005를 보강한다. 최신 사용자 범위는 **현재 구입·교환·이용 가능한 선수 관련 상품과 그 안의 카드, 판매 기간/상태와 갱신**이다. 과거 상품 전체·전역 카드 전수 확보·다른 버전 신규 수집은 핵심 완료 조건에서 보류한다. 기존 데이터·기능·조사 근거는 보존한다. [구조화 근거](../../data/research/current-shop-observations.json)를 함께 관리한다.
+
+## 결론과 비교 모수
+
+**EFHub에 현행 상점 상품이 전부 있다고 확인할 수 없다. 현재 앱의9상품도 현행 상점 전체가 아니다.** EFHub는 판매 시작/종료·현재 상태를 제공한 것으로 검증되지 않은 역사 카탈로그다. 이번 정상 목록1·2쪽의60행·총계1,698개를 현행 판매 수로 사용할 수 없다.
+
+공식 한국어/일본어 확률표는 동일한 특수 명단7개와 초기 인원·종료 시각을 보여준다. 그러나 같은 시점 캠페인에는 이 표 밖의 Daily Free Draw와 Dortmund 추첨 계약권 대상이 따로 있다. 플랫폼별 특별판도 별도다. **7+2+4를 전체 상점 수로 합산하지 않는다.** 전체 공개 상점 모수, 국가/플랫폼별 차이, 계정 한정·복귀/신규·영입 완료/계약권 보유 조건은 미확인이다. 목표 지역/플랫폼 답변 전 한국 PlayStation을 전체 상점 기본값으로 확정하지 않는다.
+
+## 공통 공개 특수 명단: 확률표7개 대조
+
+공식 출처는 [한국어 확률표](https://efootball-web.konami.net/probability_kr.php)와 [일본어 확률표](https://efootball-web.konami.net/probability_jp.php)다. 아래 종료는 UTC이며 모두 관측 시각 이후다. 시작은 미기재다. 한국어/일본어는 문서 언어이며 국가별 계정의 제공 자격을 뜻하지 않는다. 개별 플랫폼·가격·코인/무료/지명 방식도 이 표만으로 확정할 수 없다.
+
+| 공식 명단 | 초기 수 / 종료(UTC) | EFHub에서 관측한 대응 후보 | 구성 확보와 한계 |
+| --- | --- | --- | --- |
+| National Team Selection: Worldwide Sep '26 | 11 / 11-05 01:59:59 | 60행·표적 후속에서 충분한 후보 미확인 | 9/10 상세200·표시11명은 확인. Worldwide 공식 회차와의 연결은 미확정. EFHub 전체 부재가 아님 |
+| League Selection: Italian Oct '26 | 11 / 12-03 01:59:59 | [Italian League Selection 8 Oct '26](https://efhub.com/ko/packs/italian-league-selection-8-oct-26) | 목록 표시11; 상세 구성/타입 미수집. 같은 수량만으로 동일성/완전성 확정 불가 |
+| Epic: Ricardo Quaresma | 50 / 10-29 01:59:59 | 60행에서 미확인; Quaresma검색403 | 검색 결과0이 아니라 요청 거부. 전체 카탈로그 부재 판정 불가 |
+| Epic: European Clubs Midfielders | 150 / 10-26 01:59:59 | [European Clubs Selection Midfielders19Oct](https://efhub.com/ko/packs/european-clubs-selection-midfielders-19-oct-26) | 목록8; 후속 상세GET403·카드payload/타입 미확보. source date10/15와 제목10/19 차이. 별도 Epic3 목록 미확인, 임의 합산 금지 |
+| Show Time: Magical Dribblers | 150 / 10-29 01:59:59 | [Magical Dribblers22Oct](https://efhub.com/ko/packs/magical-dribblers-22-oct-26) | 소개11카드 확보: Showtime3·Highlight8. 전체150과 별개 |
+| POTW: Worldwide22Oct '26 | 11 / 10-29 01:59:59 | [POTW22Oct](https://efhub.com/ko/packs/potw-22-oct-26) | 소개11 확보: Trending11. Worldwide 생략·공식 카드ID 연결 미확인 |
+| POTW: European Club Championship | 11 / 10-29 01:59:59 | [POTW UCL22Oct](https://efhub.com/ko/packs/potw-european-club-championship-22-oct-26) | 소개11 확보: Trending11. 공식 표에는 회차 날짜가 없어 동일 상품/카드 구성 연결 미확인 |
+
+이름·시기 후보는 **7개 중5개**, 충분한 후보 미확인2개는 **National Team Selection: Worldwide Sep '26와 Epic: Ricardo Quaresma**다. 이5개도 공식 상품/회차와 EFHub의 명시적 식별자 연결은0건이며 전체 게임 풀 대조 완료는0건이다. 관측한 source slug·URL·공식 문서/기사 ID·카드 ID/타입은 JSON에 둔다. 이름만으로 활성 관계나 판매 상태를 변경하지 않았다.
+
+Midfielders [공식 소개1407](https://www.konami.com/efootball/ko/topic/promotion/agent/1407/)는 Epic3·Highlight8 외 현역139명을 명시한다. EFHub의8명 목록을 이150명 전체로 보지 않으며139명의 타입/ID도 추정하지 않는다. [Quaresma 소개1405](https://www.konami.com/efootball/ko/topic/promotion/agent/1405/)의 게시일은 판매 시작 시각으로 치환하지 않는다.
+
+## 미확인3건의 표적 후속 확인
+
+12:31~12:32 UTC에 과거 카탈로그를 추가 순회하지 않고 공개 검색과 이미 공개된 상세 링크로 다음3건만 보강했다. 기존14회 직접 GET과 구분하여 상세 GET2회(200·403 각1회)를 추가했고, 거부된 API는 재요청하지 않았다. **후보5개·충분한 후보 미확인2개·명시적 공식ID 연결0건·전체 풀 검증0건이라는 결론은 그대로다.**
+
+| 대상 | 추가로 확인한 것 | 남은 한계와 처리 |
+| --- | --- | --- |
+| National Team Selection: Worldwide Sep '26 | 공개 검색에 나온 [National Teams Selection10Sep](https://efhub.com/packs/national-teams-selection-10-sep-26) 상세 GET200. 제목·9/10·표시11명과 이름/표시OVR 텍스트 확인 | Worldwide·공식 종료11/5·공식 상품 연결은 미확인. 기존 수집 파서의 카드 링크 검증에서 구조화 추출 실패. 정확한 계약 차이는 원문 미보존으로 재검증 불가. 카드ID/타입이 출처에 없다는 뜻이 아니며 이번 기록에서는 미확보. 원문 HTML은 보존하지 못했고 응답 메타/해시·발췌만 보존. 공식 회차 연결은 승격하지 않음 |
+| Epic: Ricardo Quaresma | 공개 검색5개 조건에서 [동명 카드URL](https://efhub.com/ar/players/88045487395246)과85 RWF 발췌 확인 | 표적 상품URL은 찾지 못함. 카드 상세GET0. Epic 타입·회차·공식50명 구성 관계는 미확인. Eduardo Quaresma와 댓글 계정은 오탐으로 제외. 검색 미발견은 전체 카탈로그 부재 증명이 아님 |
+| Epic: European Clubs Midfielders | 기존 목록의8명 후보 상세를1회 GET했으나403, 본문 `error code: 1010` | 즉시 중단. 공개 검색에서도 같은 회차의 별도 Epic3명 상품 링크를 확보하지 못함.8명을 공식 Highlight8과 연결하거나 다른 기사/카드와 합산하지 않음. 이 새 상세403은 과거 players API 실패 본문/원인의 증거가 아님 |
+
+정상 목록에서 확인한 형식은 `GET /api/public/packs?search=&page=1&limit=30`과2쪽이며 키워드 쿼리 형식도 공개 클라이언트에서 확인했다. 그러나 실제 Quaresma 검색은403이었고 전체 판매 상태 필터의 지원 근거도 없다. 이 형식을 발견했다는 이유로 거부 쿼리를 변형·반복하거나 무제한 페이지 순회하지 않았다. 추가로 공개된 정확한 상품 링크·회차/카드 관계 근거가 없으면 여기서 미확정으로 남긴다. 요청별 시각·상태·보존 한계는 JSON의 `targeted_followup`을 따른다.
+
+## 확률표 밖의 현재 캠페인
+
+[Halloween919](https://www.konami.com/efootball/ko/topic/promotion/campaign/919/)는2026-10-22 02:00 UTC부터11-05 01:59 UTC까지를 분 단위로 안내한다. 종료 초를 임의로 채우지 않는다.
+
+| 대상 | 확인된 이용 방식 | EFHub 대조/미확인 |
+| --- | --- | --- |
+| Epic: Daily Free Draw | 무료1일1회, 02:00 UTC 리셋; Forlán 소개. 12회 계약 후 미등장 시 별도 보상 조건 | 전체 초기 수/ID·동일 EFHub상품 미확인. 소개1명이나12회 조건을 전체 풀 수로 보지 않음 |
+| Highlight: Borussia Dortmund | 로그인 선물 추첨 계약권1개·추가 활동 보상 | 배포 기간과 명단 영입 종료를 구분. 최대5명 영입 안내≠초기 풀5명. EFHub Halloween5·Dortmund Pack11과 동일상품 근거 미확인 |
+
+이 자료는 무료·계약권도 DB 범위에 남겨야 할 근거다. 단순 현금 판매 목록과 다르며, 코인/지명/무료를 명칭만으로 판정하지 않는다. 현재 지명 계약 상품의 완전한 공개 모수도 미확인이다.
+
+## 별도 부록: 한국 PlayStation 특별판
+
+[공식 특별판 목록](https://www.konami.com/efootball/ko/page/download_edition_list)이 연결한 아래4개 페이지를 각각1회 GET200으로 확인했다. PS4/PS5·한국 `ko-kr`의 공개 가격/상품 설명이며 계정별 실제 구매 자격·Xbox/모바일/Steam의 같은 조건을 검증한 것이 아니다. 목표 플랫폼의 전체 상점 기본값으로 사용하지 않는다.
+
+| 상품·PS 원본 ID 끝자리 | 가격 | 본문 카드 구성 | 현재/기간과 미확인 |
+| --- | --- | --- | --- |
+| [Leo Messi Deluxe / …013](https://store.playstation.com/ko-kr/product/HP0101-CUSA26994_00-EDITION000000013) | 28,000 KRW | Epic1+Highlight10 | 공개 구매 표시·판매 종료2027-08-05 01:59:59 UTC. 개별 카드ID/이미지/OVR 미확보 |
+| [Lamine Yamal Deluxe / …015](https://store.playstation.com/ko-kr/product/HP0101-CUSA26994_00-EDITION000000015) | 28,000 KRW | 본문Epic1+Highlight7 / 비교표Epic1+Highlight10 | 제목/가격은Deluxe이나8·11카드 충돌. 구성 수 확정 보류 |
+| [Leo Messi / …012](https://store.playstation.com/ko-kr/product/HP0101-CUSA26994_00-EDITION000000012) | 18,000 KRW | Epic1+Highlight7 | 같은 판매 종료. 개별 카드ID/이미지/OVR 미확보 |
+| [Lamine Yamal / …014](https://store.playstation.com/ko-kr/product/HP0101-CUSA26994_00-EDITION000000014) | 18,000 KRW | Epic1+Highlight7 | 같은 판매 종료. 개별 카드ID/이미지/OVR 미확보 |
+
+스토어 `releaseDate=2026-08-12T22:00:00Z`는 별도로 보존하며 게임 내 상품 판매 시작과 동일시하지 않는다. 포함 코인250/450개는 보너스이지 결제 재화가 아니다. 일괄 지급 에디션은 DB/검색 참고 대상이지만 미래 개봉 시뮬레이터에서 제외한다. 4종 모두 관측한 EFHub60행에서 식별되지 않았으며, Gracias Leo 등 이름 유사 행으로 연결하지 않는다. 이것도 전체 EFHub 부재의 증거는 아니다.
+
+## 현재 DB와 다음 완료 조건
+
+활성9상품·상품 연결79카드·별도 Yaya 상세/버전4카드를 보존했다. 9상품의 `availability`는 모두unknown이며 확정 시작/종료는0건이다. 최신 카탈로그에 보인다는 이유로 판매 중으로 승격하지 않는다. 누적 보존 데이터와 현행 판매 뷰는 분리하고, 기간 종료는 삭제가 아니라 근거 있는 상태/노출 변경으로 다룬다. 이 뷰는 후속 구현 계획이며 이번에는 앱/seed를 변경하지 않았다.
+
+최소 필드는 다음 이유로 필요하다. 미확인은null로 남기며 모든 확장 필드 수집을 요구하지 않는다.
+
+| 최소 정보 | 필요한 이유 |
+| --- | --- |
+| 카드 이름·이미지·표시 OVR 및 확인된 적용 조건 | 사용자가 찾는 카드 정보. 서로 다른 조건의 수치를 섞지 않음 |
+| 출처별 안정 상품/출시 카드 ID·상품 연결 | 동명 카드 구별, 중복 방지, 정확한 구성과 갱신 |
+| 타입·상품 종류·일괄 지급/추첨/지명 방식 | 희귀도/구성 구분과 시뮬레이터 대상 판정 |
+| 지역·플랫폼·판매 시작/종료·상태·확인 시각 | 어떤 상점의 “현재”인지 판정하고 종료/신규 상품 갱신 |
+| 확인된 가격·재화·개봉 옵션/확률·제한/리셋 | 추후 비용·추첨 규칙을 정확히 재현. 현재는 미확인 표시 가능 |
+| 출처 URL·관찰 시각·필드 근거 | 오류/변경 추적과 서로 다른 자료의 충돌 처리 |
+
+T005는 대상 지역/플랫폼과 공개 비교 범위를 확인하고 상품별 대응 근거·판매 기간·필수 카드 필드를 보강한다. R5/T006은 **현행 상품의 구성·상태·필드 공백 보강**으로 바꾸며 과거 전체/다른 버전 신규 수집을 보류한다. 기존 버전 탐색 기능과 기록은 삭제하지 않는다. R6는 현행 신규/종료·조건 변경의 실제 반영과 실패 시 정상 자료 보존을 검증하며 전역5만 카드 전수 감사 완료에 종속시키지 않는다.
+
+목록 수준은 범위가 정해진 공식 모수와 상품별 판매 상태/기간을 대조해야 하고, 구성 수준은 소개 목록/전체 초기 풀/미확인을 구분해야 한다. 부분 공개와 대상 범위 완료를 구분한다. 익명 Standard 슬롯과 시뮬레이터는 계속 미도입이다.
+
+`dt870_console_win.cpk`는 API 주소가 아닌 게임 DB 파일 컨테이너다. PesLig는 그 파일을 출처로 선언한 자체 JSON API를 제공하지만 내부 추출/정규화 과정은 미확인이다. 이 전역 snapshot은 현재 상품의 필요한 카드 조회에 참고할 후보이지 전역/역사 수집을 다시 필수화하는 근거가 아니다. 별도10개 최근 카드 DB·인물 DB·커뮤니티 비교는 [공급망 조사](DATA_SUPPLY_CHAIN.md)의 후속 절을 따른다.

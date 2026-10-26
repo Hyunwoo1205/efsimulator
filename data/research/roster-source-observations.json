@@ -1,0 +1,2264 @@
+{
+  "schema_version": 1,
+  "task_id": "T005",
+  "existing_scope": [
+    "R1/T002",
+    "R4/T005",
+    "R5/T006"
+  ],
+  "condition_ids": [
+    "C023",
+    "C024"
+  ],
+  "observed_at": "2026-10-25T07:18:52.467487+00:00",
+  "baseline_commit": "304b7e77b5aae5f5ef024371c4b7e2dac27d5418",
+  "purpose": "403 원인과 상품별 Standard 포함 초기 전체 선수 풀 조사. 활성 데이터 import가 아닌 연구 근거.",
+  "status": {
+    "diagnosis": "root_cause_unconfirmed_missing_failed_response",
+    "full_product_roster_api": "not_acquired_within_investigated_scope",
+    "production_catalog_changed": false,
+    "all_source_apis_impossible_claim": false
+  },
+  "request_scope": {
+    "new_efhub_http_requests": 0,
+    "new_direct_public_get_requests": 10,
+    "direct_public_get_requests_definition": "아래 root_public_observations3개와 alternate_source_observations7개의 순차 GET. 웹검색/열람 도구 요청 수는 별도이며 합계에 포함하지 않음.",
+    "accounts_tokens_installations_contacts_or_deploy_configuration_changed": false
+  },
+  "api403_diagnosis": {
+    "diagnosed_at": "2026-10-25T07:11:54Z",
+    "mode": "offline_saved_evidence_only",
+    "result": {
+      "root_cause": "unconfirmed",
+      "confirmed_failure_scope": "2026-10-25T05:02:17.364Z의 GET https://efhub.com/api/public/players?page=1&limit=100 한 요청에 대해 response.status=403. 1요청 후 중단, 0페이지·0카드·0이미지.",
+      "response_producer": "unconfirmed_source_or_cdn_or_environment_proxy",
+      "limit_100_public_client_support": "not_verified",
+      "current_default_api_accessibility": "not_retested_and_unknown",
+      "all_api_blocked_claim_supported": false,
+      "all_api_blocked_status": "not_established"
+    },
+    "current_environment_metadata": {
+      "recorded_at": "2026-10-25T07:11:54Z",
+      "source": "cloud_environment.environment_status / /etc/codex/network-policy.json",
+      "spec_revision": "17",
+      "observed_spec_revision": "17",
+      "observations_current": true,
+      "connectivity": "connected",
+      "network_policy": {
+        "mode": "unrestricted",
+        "state": "enforced"
+      },
+      "network_diagnostics": null,
+      "vpn_configured": false,
+      "http_proxy_configured": true,
+      "tls_verification": "preserved",
+      "limitations": [
+        "현재의 설정·관측이며 05:02 감사 당시의 정책이나 원격 응답 생성 계층을 소급 증명하지 않는다.",
+        "unrestricted에도 플랫폼 보호가 적용될 수 있다. network_diagnostics=null은 프록시 오류 또는 출처 접근 조건이 없다는 증거가 아니다."
+      ]
+    },
+    "failed_audit": {
+      "run_id": "598a90c5-4392-4cb8-bda4-f677a6072f30",
+      "request": {
+        "url": "https://efhub.com/api/public/players?page=1&limit=100",
+        "kind": "page",
+        "page": 1,
+        "attempt": 0,
+        "requested_at": "2026-10-25T05:02:17.364Z",
+        "observed_at": "2026-10-25T05:02:17.771Z",
+        "status": 403
+      },
+      "request_times_kst": {
+        "requested_at": "2026-10-25T14:02:17.364+09:00",
+        "observed_at": "2026-10-25T14:02:17.771+09:00"
+      },
+      "complete": false,
+      "pages_collected": 0,
+      "cards_collected": 0,
+      "evidence_paths": [
+        "artifacts/card-audit/state.json",
+        "artifacts/card-audit/latest-summary.json",
+        "data/research/card-api-audit.json"
+      ],
+      "preserved_fields": [
+        "URL",
+        "요청/응답 관측 시각",
+        "HTTP status 403",
+        "요청 종류·page·attempt",
+        "로컬 오류 코드/문구",
+        "blocked 상태와 미완료 수량"
+      ],
+      "missing_fields": [
+        "실패 응답 본문 원문/발췌",
+        "실패 본문 SHA256/바이트 수",
+        "실패 응답 Content-Type",
+        "전체 응답 헤더",
+        "Server/Via/요청 추적 헤더/정책 거부 코드",
+        "실제 wire request headers 또는 프록시 trace"
+      ],
+      "body_saved": false,
+      "response_headers_saved": false,
+      "content_type_saved": false,
+      "raw_pages_directory_exists": false,
+      "error_message_provenance": "errors의 HTTP 403: 정상 경로 요청을 중단합니다.는 auditor가 만든 로컬 메시지다. 서버 본문의 인용이 아니다.",
+      "code_evidence": {
+        "path": "scripts/audit-cards.mjs",
+        "historical_commit": "6644ab5",
+        "historical_and_current_behavior": "request()가 status를 기록한 뒤 비200·비재시도 응답에서 AuditStop을 던진다. response.text()/Content-Type 읽기는 request()가 성공 반환한 뒤에만 실행된다.",
+        "request_method": "GET",
+        "configured_headers": {
+          "user-agent": "Mozilla/5.0",
+          "accept": "application/json"
+        },
+        "header_evidence_scope": "역사 커밋 및 현재 구현상 설정. wire header 전체를 저장한 기록은 아니다."
+      }
+    },
+    "separate_detail_403": {
+      "source_file": "data/research/source-observations.json",
+      "observation_id": "efhub_player_api",
+      "url": "https://efhub.com/api/public/players/88046292727298",
+      "source_ids": {
+        "card_id": "88046292727298"
+      },
+      "observed_at": "2026-10-25T03:44:55+00:00",
+      "status": 403,
+      "content_type": "application/json",
+      "response_bytes": 21,
+      "response_sha256": "18e11a797e00b786f40daa25b22dd4cee77ad3efc4b71e0dea081993d7adca44",
+      "body_excerpt": "{\"error\":\"Forbidden\"}",
+      "full_response_headers_saved": false,
+      "limitation": "별도 선수 상세 URL의 JSON 오류 응답이다. 이번 목록 limit100 요청의 본문/헤더로 대입할 수 없으며 이 JSON 형식만으로 응답 생성 계층도 확정할 수 없다."
+    },
+    "prior_successes": [
+      {
+        "id": "efhub_players_api",
+        "url": "https://efhub.com/api/public/players",
+        "requested_at": "2026-10-25T03:45:23+00:00",
+        "observed_at": "2026-10-25T03:45:23+00:00",
+        "status": 200,
+        "content_type": "application/json",
+        "response_bytes": 9103,
+        "sha256": "330d1ec731b3887564b752bb8111a6752c5217828b8fb0ba54736bfc02bd778f",
+        "source_file": "data/research/source-observations.json",
+        "preserved_scope": "선택 sample 및 응답 메타. 전체 원문 응답 파일은 이번 검색에서 발견하지 못했다."
+      },
+      {
+        "id": "efhub_players_page2",
+        "url": "https://efhub.com/api/public/players?page=2",
+        "requested_at": "2026-10-25T03:46:05+00:00",
+        "observed_at": "2026-10-25T03:46:05+00:00",
+        "status": 200,
+        "content_type": "application/json",
+        "response_bytes": 9104,
+        "sha256": "a437501af851216686ef0c4b4b3e20b830c972f5f280bfe87ea244874490ef73",
+        "source_file": "data/research/source-observations.json",
+        "preserved_scope": "선택 sample 및 응답 메타. 전체 원문 응답 파일은 이번 검색에서 발견하지 못했다.",
+        "pagination": {
+          "total": 50840,
+          "page": 2,
+          "limit": 24,
+          "totalPages": 2119
+        },
+        "returned_count": 24
+      }
+    ],
+    "saved_public_client": {
+      "evidence_path": "data/research/card-api-audit.json#/source_ui_recheck",
+      "original_full_html_js_located": false,
+      "preserved_form": "HTTP 관측 시각·상태·응답 바이트 수·SHA256와 선택 발췌. 이번 오프라인 검색에서 별도 전체 HTML/JS 원문 파일은 발견하지 못했다.",
+      "observations": [
+        {
+          "id": "current_players_page_html",
+          "url": "https://efhub.com/ko/players",
+          "requested_at": "2026-10-25T05:06:22.331482+00:00",
+          "observed_at": "2026-10-25T05:06:22.646773+00:00",
+          "status": 200,
+          "response_bytes": 287734,
+          "sha256": "938dc1df9b4b7ad54236820c400a38bd1c87e27a2522aaba10d9cb3e232aaca9",
+          "excerpts": [
+            {
+              "pattern": "fetch('/api/auth/token'",
+              "text": "ipt><script>(function(){try{if(!document.cookie.split(';').some(function(c){return c.trim().startsWith('__hub_req=')})){fetch('/api/auth/token',{credentials:'include'}).catch(function(){})}}catch(e){}})()</script><script src=\"/_next/static/chunks/a6dad97d9634a72d.js?dpl=dpl_31Riks92A4aWRR56Jj"
+            },
+            {
+              "pattern": "__hub_req",
+              "text": "ch(e){}})()</script><script>(function(){try{if(!document.cookie.split(';').some(function(c){return c.trim().startsWith('__hub_req=')})){fetch('/api/auth/token',{credentials:'include'}).catch(function(){})}}catch(e){}})()</script><script src=\"/_next/static/chunks/a6dad97d9634a72d"
+            }
+          ],
+          "discovered_players_script": "/_next/static/chunks/8964e7af23583e8b.js?dpl=dpl_31Riks92A4aWRR56JjnttQdARhMg"
+        },
+        {
+          "id": "current_players_page_actual_js",
+          "url": "https://efhub.com/_next/static/chunks/8964e7af23583e8b.js?dpl=dpl_31Riks92A4aWRR56JjnttQdARhMg",
+          "requested_at": "2026-10-25T05:06:22.647838+00:00",
+          "observed_at": "2026-10-25T05:06:22.814554+00:00",
+          "status": 200,
+          "response_bytes": 61902,
+          "sha256": "241046ee60771205e8a331364dccb65b9e5cf39e7471e08bd75c2123152744bc",
+          "excerpts": [
+            {
+              "pattern": "fetch(`/api/public/players",
+              "text": "=(0,i.useState)(z),[d,u]=(0,i.useState)(!0);(0,i.useEffect)(()=>{let e=s.toString();u(!0),fetch(`/api/public/players${e?`?${e}`:\"\"}`).then(e=>e.json()).then(e=>{c(e),u(!1)}).catch(()=>u(!1))},[s]);let h={};return s.forEach((e,t)=>{h[t]=e}),(0,t.jsxs)(t.Fragment,{children:[(0,t.jsx)(\"div\",{className:\"sticky top-0 z-40 border-b border-zinc-200 bg-white/95 backdrop-blur-md dark:border-zinc-800 dark:bg-[#13151d]/95\",children:(0,t.jsx)(\"div\",{className:\"mx-auto max-w-7xl px-4 sm:px-6 lg:px-8\",children:(0,t.jsx)(y,{t"
+            },
+            {
+              "pattern": "let z={players:[]",
+              "text": "00 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-100\"),...l,children:i})}let z={players:[],total:0,page:1,limit:24,totalPages:0};function P({clubs:e,leagues:r,countries:a}){let s=(0,n.useSearchParams)(),[o,c]=(0,i.useState)(z),[d,u]=(0,i.useState)(!0);(0,i.useEffect)(()=>{let e=s.toString();u(!0),fetch(`/api/public/players${e?`?${e}`:\"\"}`).then(e=>e.json()).then(e=>{c(e),u(!1)}).catch(()=>u(!1))},[s]);let h={};return s.forEach((e,t)=>{h[t]=e}),(0,t.jsxs)(t.Fragment,{children:[(0,t.jsx)"
+            },
+            {
+              "pattern": "function j({page:",
+              "text": "arams:c,updateParams:f,clubs:r,leagues:l,countries:a})]})}var v=e.i(456904),S=e.i(806908);function j({page:e,totalPages:i,searchParams:n}){if(i<=1)return null;function r(e){let t=new URLSearchParams;for(let[e,i]of Object.entries(n))\"page\"!==e&&\"string\"==typeof i&&t.set(e,i);e>1&&t.set(\"page\",String(e));let i=t.toString();return`/players${i?`?${i}`:\"\"}`}let l=function(e,t){if(t<=7)return Array.from({length:t},(e,t)=>t+1);let i=[],n=Math.max(2,e-2),r=Math.min(t-1,e+2);i.push(1),n>2&&i.push(\"...\");for(let"
+            },
+            {
+              "pattern": "e>1&&t.set(\"page\"",
+              "text": "LSearchParams;for(let[e,i]of Object.entries(n))\"page\"!==e&&\"string\"==typeof i&&t.set(e,i);e>1&&t.set(\"page\",String(e));let i=t.toString();return`/players${i?`?${i}`:\"\"}`}let l=function(e,t){if(t<=7)return Array.from({length:t},(e,t)=>t+1);let i=[],n=Math.max(2,e-2),r=Math.min(t-1,e+2);i.push(1),n>2&&i.push(\"...\");for(let e=n;e<=r;e++)i.push(e);return r<t-1&&i.push(\"...\"),i.push(t),i}(e,i);return(0,t.jsxs)(\"nav\",{className:\"flex items-center justify-center gap-1\",\"aria-label\":\"Pagination\",children:[(0,t"
+            }
+          ],
+          "explicit_limit_query_in_fetch": false
+        }
+      ],
+      "verified_behavior": [
+        "useSearchParams().toString()을 /api/public/players 뒤에 그대로 연결한다.",
+        "초기 로컬 상태 limit은 24다.",
+        "기본 /ko/players는 query가 없고, 페이지 이동 코드는 2쪽 이상에서 page만 추가한다.",
+        "limit=100을 생성하는 기본 UI 옵션은 저장된 발췌에서 확인되지 않는다.",
+        "HTML은 __hub_req가 없으면 /api/auth/token을 credentials:include로 호출하는 부트스트랩 코드를 포함한다."
+      ],
+      "unknown": [
+        "임의 URLSearchParams 전달은 limit100을 서버가 지원한다는 증거가 아니다.",
+        "보존 발췌만으로 전체 클라이언트의 모든 코드 경로에 limit100이 없다고 전칭할 수 없다.",
+        "초기 로컬 limit24는 서버의 모든 허용 limit 목록을 설명하지 않는다.",
+        "부트스트랩이 이번 목록 API의 필수 조건인지, 누락이 실제 403을 유발했는지는 검증하지 않았다."
+      ],
+      "auth_endpoint_called": false,
+      "cookie_or_token_acquired_or_replayed": false,
+      "search_scope": {
+        "roots": [
+          "/workspace/efsimulator",
+          "/tmp"
+        ],
+        "ignored_artifacts_included": true,
+        "result": "별도 전체 HTML/JS 원문은 발견하지 못했으며 관측JSON 발췌와 메타데이터를 확인했다."
+      }
+    },
+    "hypotheses": [
+      {
+        "id": "query_contract_or_source_guard",
+        "status": "unconfirmed",
+        "for": [
+          "기존 기본 URL과 page2는 200, 이번 page=1&limit=100은 403이다.",
+          "기본 공개 UI가 limit100을 생성한다는 보존 근거가 없다."
+        ],
+        "limits": [
+          "시각·클라이언트 구현 등도 달라 파라미터가 유일한 변수인 비교가 아니다.",
+          "서버 허용 파라미터/상한 문서와 이번 실패 본문이 없다."
+        ],
+        "required_evidence": "출처가 공개/승인한 페이지 크기·파라미터 계약 또는 정상 bulk feed 문서. 새 요청 없이 확보 가능한 출처 설명 우선."
+      },
+      {
+        "id": "source_session_or_request_guard",
+        "status": "unconfirmed",
+        "for": [
+          "정상 HTML에 __hub_req 부트스트랩 코드가 있다.",
+          "감사 구현은 브라우저 세션 부트스트랩을 실행하지 않았다."
+        ],
+        "limits": [
+          "실패 응답의 guard 오류 코드/본문/헤더가 없다.",
+          "과거 기본 API는 인증·쿠키 취득 없이 200으로 기록되었으나 그때의 완전한 wire headers는 보존되지 않았다."
+        ],
+        "required_evidence": "출처의 비인증 수집 허용 여부와 정상 자동 접근 조건에 관한 공개 문서 또는 출처 운영자의 명시적 안내. 쿠키/토큰 취득·복사·재생으로 검증하지 않는다."
+      },
+      {
+        "id": "source_cdn_antibot_or_rate_policy",
+        "status": "unconfirmed",
+        "for": [
+          "HTTP403은 출처/CDN의 요청·빈도 정책과 양립한다."
+        ],
+        "limits": [
+          "관련 응답 본문/헤더·Retry-After·정책 코드가 없다.",
+          "감사는 첫 요청에서 중단했고 시간차 관측만으로 속도 제한이나 IP 차단을 입증할 수 없다."
+        ],
+        "required_evidence": "출처가 허용하는 자동 수집 범위·쿼터·정상 bulk 제공 경로 안내. 현재 요청 패턴 변경이나 challenge 우회는 하지 않는다."
+      },
+      {
+        "id": "environment_proxy_policy",
+        "status": "unconfirmed_no_specific_denial_evidence",
+        "for": [
+          "관측은 환경 프록시를 통과했으므로 생성 계층의 가능성 자체를 배제할 수 없다."
+        ],
+        "against": [
+          "현재 상태는 spec17, unrestricted/enforced, observations_current=true다.",
+          "같은 출처의 이전 기본 API와 이후 정상 HTML/실제 JS는 200으로 기록되어 있다.",
+          "보존 자료에서 프록시 정책 거부 식별자/진단은 발견하지 못했다."
+        ],
+        "limits": [
+          "현재 정책은 실패 당시 정책의 소급 증거가 아니고 플랫폼 보호는 별도다.",
+          "실패 본문/헤더와 당시 프록시 진단이 없어 원인을 확정하거나 배제할 수 없다."
+        ],
+        "required_evidence": "명시적인 destination-policy denial 또는 신선한 플랫폼 진단이 실제 확인되는 경우에만 지원되는 환경 설정 검토 절차를 따른다. 현재는 프록시 변경 필요가 입증되지 않았다."
+      },
+      {
+        "id": "all_default_endpoints_blocked_or_limit100_definitely_unsupported",
+        "status": "not_supported_by_saved_evidence",
+        "for": [],
+        "limits": [
+          "한 query의 403을 기본 API 전체로 일반화할 수 없다.",
+          "limit100의 지원/미지원은 이번403만으로 판정할 수 없다."
+        ],
+        "required_evidence": "출처의 명확한 계약/허용 접근 조건 확인 전 미확인으로 유지한다."
+      }
+    ],
+    "protected_file_snapshots": [
+      {
+        "path": "artifacts/card-audit/state.json",
+        "bytes": 6425,
+        "sha256": "268936e0b6d76b49f2cc4de639fc7b7d247b4ee7f65e16f8e40e692fb390a9f5"
+      },
+      {
+        "path": "artifacts/card-audit/latest-summary.json",
+        "bytes": 9732,
+        "sha256": "8172e23b8f2b39d05ea701a8149b9873e56519a56f37bb38aa491ba79fe4a3f3"
+      },
+      {
+        "path": "data/research/card-api-audit.json",
+        "bytes": 9732,
+        "sha256": "8172e23b8f2b39d05ea701a8149b9873e56519a56f37bb38aa491ba79fe4a3f3"
+      },
+      {
+        "path": "data/catalog.seed.json",
+        "bytes": 149343,
+        "sha256": "571381d807ced176eb7e4f7b2bf76e8ff3d00adfedbd85b45b28f94b63045b04"
+      },
+      {
+        "path": "scripts/audit-cards.mjs",
+        "bytes": 31972,
+        "sha256": "9f5af109aba068efae9b97195623736f01dc323998b5463f89ca1f81ae85f1f2"
+      }
+    ]
+  },
+  "current_product_coverage": {
+    "method": {
+      "network_requests": 0,
+      "source_mutations": 0,
+      "normalization_or_publication_performed": false,
+      "inputs": [
+        {
+          "path": "data/catalog.seed.json",
+          "sha256": "571381d807ced176eb7e4f7b2bf76e8ff3d00adfedbd85b45b28f94b63045b04",
+          "bytes": 149343
+        },
+        {
+          "path": "data/research/current-catalog-observations.json",
+          "sha256": "8c0afd9f90b139d9454c382343fd4a9241513492a40cf2366173b7d5cdab3ddf",
+          "bytes": 128106
+        },
+        {
+          "path": "data/research/source-observations.json",
+          "sha256": "8d348bb00a3a0bced116cdc7483714383a3af89eff322033d5284d5f0840a15b",
+          "bytes": 67953
+        },
+        {
+          "path": "data/research/followup-observations.json",
+          "sha256": "e3458f1433655e70eb72cce313f5ab9c6a840ae2b268e85ab52aed8f50b75f56",
+          "bytes": 23260
+        },
+        {
+          "path": "data/research/manager-product-observations.json",
+          "sha256": "bd8d600358091207b2b767c8d5d869b85a100e09ade61f6c12b339c04eb8536b",
+          "bytes": 64210
+        },
+        {
+          "path": "data/research/card-api-audit.json",
+          "sha256": "8172e23b8f2b39d05ea701a8149b9873e56519a56f37bb38aa491ba79fe4a3f3",
+          "bytes": 9732
+        },
+        {
+          "path": "scripts/collect-efhub.mjs",
+          "sha256": "deccd8233de402feda613a06d8455b55b0edca5a5b02355b03e557e28262516d",
+          "bytes": 22822
+        },
+        {
+          "path": "scripts/collected-products.mjs",
+          "sha256": "e6f1fdcb429b24eb10e5f6b14743456088b29df0abb79c578b1ea0f36fd3d009",
+          "bytes": 16224
+        },
+        {
+          "path": "scripts/prepare-seed.mjs",
+          "sha256": "3b9e114108c91fd133724fa7f5ed66b63d99537e07ef19b905d4d5c64a013c0d",
+          "bytes": 10368
+        }
+      ],
+      "coverage_limits": [
+        "Full response HTML files were not retained in the inspected tracked research inputs; only SHA-256, extracted complete grid payload and bounded excerpts are available.",
+        "Recorded original DOM/Flight agreement can be reviewed from implementation and prior excerpts, but full HTML parsing cannot be replayed for all nine products from these inputs.",
+        "Official names and dates are candidate linkage evidence only; no source IDs are joined by name."
+      ],
+      "reproduction": {
+        "runtime": "Node.js 24.19.0; builtins only",
+        "steps": [
+          "JSON.parse the hashed input files.",
+          "For each collection.products record, locate canonical product by external_ids(source=efhub,id_type=pack_slug,value=slug).",
+          "Compare raw playerCount, unique players_payload[].id, detail verified_fields.source_listed_player_count and canonical card entry target IDs resolved through card external IDs.",
+          "Count players_payload[].playerType without filtering; read translation keys from efhub_types_js.",
+          "Keep official observations in a separate candidate namespace until an explicit product/card identifier mapping is verified.",
+          "Use null for unknown full-game counts and missing ID sets; never subtract a source-visible grid from an unlinked official total."
+        ]
+      }
+    },
+    "semantics": {
+      "source_product_total": "1698 is EFHub packs catalogue reported total, including historical/reward/campaign entries; not current sale count or draw-pool size.",
+      "source_card_total": "50840 is the earlier EFHub card catalogue reported total, not actual persons and not validated unique acquired cards.",
+      "source_listed_player_count": "Count of cards displayed for the EFHub product page/grid; collection checks this count but does not prove full game composition.",
+      "official_initial_player_count": "Initial draw pool count explicitly reported by official probability page, not a user remaining pool; only applies to that identified official list.",
+      "unverified_missing_values": "null means unknown, not zero. Empty missing IDs are used only for the source displayed grid whose IDs are enumerated.",
+      "source_date": "API date and HTML date are source display metadata; sale periods require product-specific official evidence."
+    },
+    "summary": {
+      "canonical_products": 9,
+      "canonical_cards": 83,
+      "source_displayed_product_cards_rows": 79,
+      "source_displayed_product_cards_unique": 79,
+      "canonical_unlinked_to_these_product_rosters_cards": 4,
+      "source_displayed_card_grid_mismatch_products": 0,
+      "raw_player_type_counts": {
+        "1": 0,
+        "2": 0,
+        "3": 40,
+        "4": 0,
+        "5": 0,
+        "6": 23,
+        "7": 0,
+        "8": 16
+      },
+      "full_in_game_rosters_identified": 0,
+      "products_with_unknown_in_game_missing_counts": 9,
+      "products_with_explicit_official_id_mapping": 0,
+      "products_with_verified_kind": 0,
+      "products_with_verified_purchase_mode": 0,
+      "products_with_verified_sale_period": 0
+    },
+    "parser_review": {
+      "standard_filter_present": false,
+      "type_filter_present": false,
+      "boundary_filter_present": true,
+      "boundary_policy": "Only direct PlayerCard children in exact product title/count sibling grid, compared to direct DOM player links; recommendations remain outside the roster boundary.",
+      "code_evidence": [
+        {
+          "file": "scripts/collect-efhub.mjs",
+          "lines": [
+            93,
+            120
+          ],
+          "purpose": "Exact title/count/grid direct children, explicit lazy record resolution; no playerType selection."
+        },
+        {
+          "file": "scripts/collect-efhub.mjs",
+          "lines": [
+            189,
+            207
+          ],
+          "purpose": "Validate all IDs/types, require declared count and DOM ID agreement, return the whole grid."
+        },
+        {
+          "file": "scripts/collected-products.mjs",
+          "lines": [
+            87,
+            127
+          ],
+          "purpose": "Normalize every raw card; known type1 is accepted by the same mapping as all other supported types."
+        },
+        {
+          "file": "scripts/prepare-seed.mjs",
+          "lines": [
+            41,
+            66
+          ],
+          "purpose": "Includes normal label and maps every bootstrap player; no type-based exclusion."
+        },
+        {
+          "file": "scripts/collect-efhub.mjs",
+          "lines": [
+            256,
+            263
+          ],
+          "purpose": "Hash full bytes, retain observation metadata; no complete response body file written."
+        },
+        {
+          "file": "scripts/collect-efhub.mjs",
+          "lines": [
+            289,
+            292
+          ],
+          "purpose": "Preserve complete extracted players_payload and bounded first-card excerpt."
+        }
+      ],
+      "type_definition": {
+        "file": "data/research/source-observations.json",
+        "json_pointer": "/observations/25",
+        "observation_id": "efhub_types_js"
+      },
+      "type_definition_unknown_fields": [
+        "additional_simultaneous_card_categories",
+        "canonical_mapping_of_normal_featured_trending_to_current_game_terms"
+      ],
+      "conclusion": "No evidence of collector-side Standard/normal omission. The saved verified grid has no raw type1. Whether Standard cards exist outside that grid or in a full in-game pool remains unknown."
+    },
+    "products": [
+      {
+        "product_id": "product_84c723a1780c717a8a9588fc",
+        "source": {
+          "id": "efhub",
+          "external_id_type": "pack_slug",
+          "external_id": "ranking-event-rewards-2027"
+        },
+        "name": "Ranking Event Rewards 2027",
+        "source_dates": {
+          "listed_date": "2026-10-22",
+          "meaning": "EFHub date field/display date only; not verified sale start or end",
+          "observed_at": "2026-10-25T04:58:52.985Z"
+        },
+        "types": {
+          "raw_player_type_counts": {
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 12
+          },
+          "nonzero_translation_keys": [
+            {
+              "raw_value": "8",
+              "translation_key": "showtime",
+              "count": 12
+            }
+          ],
+          "type_mapping_evidence": {
+            "file": "data/research/source-observations.json",
+            "json_pointer": "/observations/25",
+            "observation_id": "efhub_types_js"
+          },
+          "normal_raw_type_1_count": 0,
+          "normal_to_official_standard_mapping": "unverified",
+          "standard_missing_count": null,
+          "standard_missing_ids": null,
+          "standard_missing_status": "unknown_no_identified_full_in_game_roster"
+        },
+        "in_game_composition": {
+          "total_player_count": null,
+          "composition_status": "partial",
+          "identified_full_roster_available": false,
+          "missing_count": null,
+          "missing_card_ids": null,
+          "reason": "No explicit product identity mapping and no full game roster with original card IDs; source visible count cannot supply the denominator.",
+          "manager_support": "excluded_bulk_api_unavailable_not_a_zero_manager_claim"
+        },
+        "product_classification": {
+          "kind": null,
+          "purchase_mode": null,
+          "currency": null,
+          "list_types": [],
+          "reason": "No product-specific verified evidence; EFHub /packs URL, product title and card type do not establish game kind, purchase mode or currency."
+        },
+        "availability": {
+          "catalog_value": {
+            "start": null,
+            "end": null,
+            "status": "unknown"
+          },
+          "evidence_for_verified_sale_period": [],
+          "sale_period_status": "unknown",
+          "source_list_date_is_sale_evidence": false,
+          "related_unlinked_official_candidates": [],
+          "related_official_context": []
+        },
+        "evidence": {
+          "canonical": {
+            "file": "data/catalog.seed.json",
+            "json_pointer": "/products/1"
+          },
+          "raw": {
+            "file": "data/research/current-catalog-observations.json",
+            "json_pointer": "/products/0"
+          },
+          "list_observation": {
+            "file": "data/research/current-catalog-observations.json",
+            "json_pointer": "/observations/0",
+            "observation_id": "efhub_obs_473b7e2ec8365e1d282639a3",
+            "url": "https://efhub.com/api/public/packs?search=&page=1&limit=30",
+            "http_status": 200,
+            "observed_at": "2026-10-25T04:58:52.412Z",
+            "response_body_sha256": "7999608d1fad35a5c709b04d232cc4129efa2259b83ee7d79d5c07ec213bbb14"
+          },
+          "detail_observation": {
+            "file": "data/research/current-catalog-observations.json",
+            "json_pointer": "/observations/1",
+            "observation_id": "efhub_obs_4da7faaf6cb715e80baa5bee",
+            "url": "https://efhub.com/ko/packs/ranking-event-rewards-2027",
+            "http_status": 200,
+            "observed_at": "2026-10-25T04:58:52.985Z",
+            "response_body_sha256": "8183e45608d99915eee1a026f56f7d72ae64ddb82ff829c995c0cb0f44dee276"
+          },
+          "seed_entry_observation_ids": [
+            "efhub_obs_4da7faaf6cb715e80baa5bee"
+          ]
+        },
+        "source_displayed_card_grid": {
+          "listed_count": 12,
+          "detail_reported_count": 12,
+          "payload_rows": 12,
+          "payload_unique_cards": 12,
+          "seed_card_entries": 12,
+          "seed_unique_cards": 12,
+          "missing_from_source_displayed_grid_count": 0,
+          "external_card_ids": [
+            "106798388457476",
+            "106796241006650",
+            "106798388494170",
+            "106798388454829",
+            "106798388478166",
+            "106798388461815",
+            "106798388407327",
+            "106795972530896",
+            "106798656890465",
+            "106798656929345",
+            "106798925278449",
+            "106798925332853"
+          ],
+          "scope": "exact same-title/count direct PlayerCard grid; not asserted to be whole in-game draw pool"
+        }
+      },
+      {
+        "product_id": "product_8c310a229321225ce0bc0672",
+        "source": {
+          "id": "efhub",
+          "external_id_type": "pack_slug",
+          "external_id": "halloween-campaign-22-oct-26"
+        },
+        "name": "Halloween Campaign 22 Oct '26",
+        "source_dates": {
+          "listed_date": "2026-10-22",
+          "meaning": "EFHub date field/display date only; not verified sale start or end",
+          "observed_at": "2026-10-25T04:58:54.681Z"
+        },
+        "types": {
+          "raw_player_type_counts": {
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 5,
+            "7": 0,
+            "8": 0
+          },
+          "nonzero_translation_keys": [
+            {
+              "raw_value": "6",
+              "translation_key": "highlight",
+              "count": 5
+            }
+          ],
+          "type_mapping_evidence": {
+            "file": "data/research/source-observations.json",
+            "json_pointer": "/observations/25",
+            "observation_id": "efhub_types_js"
+          },
+          "normal_raw_type_1_count": 0,
+          "normal_to_official_standard_mapping": "unverified",
+          "standard_missing_count": null,
+          "standard_missing_ids": null,
+          "standard_missing_status": "unknown_no_identified_full_in_game_roster"
+        },
+        "in_game_composition": {
+          "total_player_count": null,
+          "composition_status": "partial",
+          "identified_full_roster_available": false,
+          "missing_count": null,
+          "missing_card_ids": null,
+          "reason": "No explicit product identity mapping and no full game roster with original card IDs; source visible count cannot supply the denominator.",
+          "manager_support": "excluded_bulk_api_unavailable_not_a_zero_manager_claim"
+        },
+        "product_classification": {
+          "kind": null,
+          "purchase_mode": null,
+          "currency": null,
+          "list_types": [],
+          "reason": "No product-specific verified evidence; EFHub /packs URL, product title and card type do not establish game kind, purchase mode or currency."
+        },
+        "availability": {
+          "catalog_value": {
+            "start": null,
+            "end": null,
+            "status": "unknown"
+          },
+          "evidence_for_verified_sale_period": [],
+          "sale_period_status": "unknown",
+          "source_list_date_is_sale_evidence": false,
+          "related_unlinked_official_candidates": [],
+          "related_official_context": [
+            {
+              "evidence": {
+                "file": "data/research/followup-observations.json",
+                "json_pointer": "/observations/3",
+                "observation_id": "official_halloween_daily_free_draw"
+              },
+              "relation": "same named campaign context only",
+              "official_named_list": "Epic: Daily Free Draw",
+              "period": {
+                "starts_at": "2026-10-22T02:00:00Z",
+                "ends_at_display": "2026/11/05 01:59 (UTC)"
+              },
+              "applied_to_product": false,
+              "reason": "A named list within a campaign is not identified with the EFHub campaign card-summary product."
+            }
+          ]
+        },
+        "evidence": {
+          "canonical": {
+            "file": "data/catalog.seed.json",
+            "json_pointer": "/products/2"
+          },
+          "raw": {
+            "file": "data/research/current-catalog-observations.json",
+            "json_pointer": "/products/1"
+          },
+          "list_observation": {
+            "file": "data/research/current-catalog-observations.json",
+            "json_pointer": "/observations/0",
+            "observation_id": "efhub_obs_473b7e2ec8365e1d282639a3",
+            "url": "https://efhub.com/api/public/packs?search=&page=1&limit=30",
+            "http_status": 200,
+            "observed_at": "2026-10-25T04:58:52.412Z",
+            "response_body_sha256": "7999608d1fad35a5c709b04d232cc4129efa2259b83ee7d79d5c07ec213bbb14"
+          },
+          "detail_observation": {
+            "file": "data/research/current-catalog-observations.json",
+            "json_pointer": "/observations/2",
+            "observation_id": "efhub_obs_801f548f8258290840714976",
+            "url": "https://efhub.com/ko/packs/halloween-campaign-22-oct-26",
+            "http_status": 200,
+            "observed_at": "2026-10-25T04:58:54.681Z",
+            "response_body_sha256": "e46a5864b970d4329c59828c4feeb3ebea9cc5c43ae0f7534940c0b624850ee0"
+          },
+          "seed_entry_observation_ids": [
+            "efhub_obs_801f548f8258290840714976"
+          ]
+        },
+        "source_displayed_card_grid": {
+          "listed_count": 5,
+          "detail_reported_count": 5,
+          "payload_rows": 5,
+          "payload_unique_cards": 5,
+          "seed_card_entries": 5,
+          "seed_unique_cards": 5,
+          "missing_from_source_displayed_grid_count": 0,
+          "external_card_ids": [
+            "105892687165161",
+            "105892687220862",
+            "105892687234354",
+            "105892687251310",
+            "105892687260495"
+          ],
+          "scope": "exact same-title/count direct PlayerCard grid; not asserted to be whole in-game draw pool"
+        }
+      },
+      {
+        "product_id": "product_6eb630e37e055d6730baac70",
+        "source": {
+          "id": "efhub",
+          "external_id_type": "pack_slug",
+          "external_id": "borussia-dortmund-pack-26-27"
+        },
+        "name": "Borussia Dortmund Pack 26-27",
+        "source_dates": {
+          "listed_date": "2026-10-22",
+          "meaning": "EFHub date field/display date only; not verified sale start or end",
+          "observed_at": "2026-10-25T04:58:55.218Z"
+        },
+        "types": {
+          "raw_player_type_counts": {
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 10,
+            "7": 0,
+            "8": 1
+          },
+          "nonzero_translation_keys": [
+            {
+              "raw_value": "6",
+              "translation_key": "highlight",
+              "count": 10
+            },
+            {
+              "raw_value": "8",
+              "translation_key": "showtime",
+              "count": 1
+            }
+          ],
+          "type_mapping_evidence": {
+            "file": "data/research/source-observations.json",
+            "json_pointer": "/observations/25",
+            "observation_id": "efhub_types_js"
+          },
+          "normal_raw_type_1_count": 0,
+          "normal_to_official_standard_mapping": "unverified",
+          "standard_missing_count": null,
+          "standard_missing_ids": null,
+          "standard_missing_status": "unknown_no_identified_full_in_game_roster"
+        },
+        "in_game_composition": {
+          "total_player_count": null,
+          "composition_status": "partial",
+          "identified_full_roster_available": false,
+          "missing_count": null,
+          "missing_card_ids": null,
+          "reason": "No explicit product identity mapping and no full game roster with original card IDs; source visible count cannot supply the denominator.",
+          "manager_support": "excluded_bulk_api_unavailable_not_a_zero_manager_claim"
+        },
+        "product_classification": {
+          "kind": null,
+          "purchase_mode": null,
+          "currency": null,
+          "list_types": [],
+          "reason": "No product-specific verified evidence; EFHub /packs URL, product title and card type do not establish game kind, purchase mode or currency."
+        },
+        "availability": {
+          "catalog_value": {
+            "start": null,
+            "end": null,
+            "status": "unknown"
+          },
+          "evidence_for_verified_sale_period": [],
+          "sale_period_status": "unknown",
+          "source_list_date_is_sale_evidence": false,
+          "related_unlinked_official_candidates": [],
+          "related_official_context": [
+            {
+              "evidence": {
+                "file": "data/research/followup-observations.json",
+                "json_pointer": "/observations/3",
+                "observation_id": "official_halloween_daily_free_draw"
+              },
+              "relation": "same club name in separate campaign gift",
+              "official_item": "Highlight: Borussia Dortmund 추첨 계약권",
+              "quantity": 1,
+              "applied_to_product": false,
+              "reason": "A draw ticket for a named list is not an ID link to the EFHub Pack 26-27 or proof of its purchase mode."
+            }
+          ]
+        },
+        "evidence": {
+          "canonical": {
+            "file": "data/catalog.seed.json",
+            "json_pointer": "/products/3"
+          },
+          "raw": {
+            "file": "data/research/current-catalog-observations.json",
+            "json_pointer": "/products/2"
+          },
+          "list_observation": {
+            "file": "data/research/current-catalog-observations.json",
+            "json_pointer": "/observations/0",
+            "observation_id": "efhub_obs_473b7e2ec8365e1d282639a3",
+            "url": "https://efhub.com/api/public/packs?search=&page=1&limit=30",
+            "http_status": 200,
+            "observed_at": "2026-10-25T04:58:52.412Z",
+            "response_body_sha256": "7999608d1fad35a5c709b04d232cc4129efa2259b83ee7d79d5c07ec213bbb14"
+          },
+          "detail_observation": {
+            "file": "data/research/current-catalog-observations.json",
+            "json_pointer": "/observations/3",
+            "observation_id": "efhub_obs_a5d608a3ff672a919dcaec12",
+            "url": "https://efhub.com/ko/packs/borussia-dortmund-pack-26-27",
+            "http_status": 200,
+            "observed_at": "2026-10-25T04:58:55.218Z",
+            "response_body_sha256": "e855a287ff7519916d507fd0dade30b058e1680c3ff0cd41ca67767a32f1a4c6"
+          },
+          "seed_entry_observation_ids": [
+            "efhub_obs_a5d608a3ff672a919dcaec12"
+          ]
+        },
+        "source_displayed_card_grid": {
+          "listed_count": 11,
+          "detail_reported_count": 11,
+          "payload_rows": 11,
+          "payload_unique_cards": 11,
+          "seed_card_entries": 11,
+          "seed_unique_cards": 11,
+          "missing_from_source_displayed_grid_count": 0,
+          "external_card_ids": [
+            "106802146570881",
+            "105891076607840",
+            "105891076647837",
+            "105891076647661",
+            "105891076647836",
+            "105891076664168",
+            "105891076665540",
+            "105891076652937",
+            "105891076647663",
+            "105891076673336",
+            "105891076644042"
+          ],
+          "scope": "exact same-title/count direct PlayerCard grid; not asserted to be whole in-game draw pool"
+        }
+      },
+      {
+        "product_id": "product_ea9dfb8288f80560099bb9dc",
+        "source": {
+          "id": "efhub",
+          "external_id_type": "pack_slug",
+          "external_id": "potm-j1-league-22-oct-26"
+        },
+        "name": "POTM J1 LEAGUE 22 Oct '26",
+        "source_dates": {
+          "listed_date": "2026-10-22",
+          "meaning": "EFHub date field/display date only; not verified sale start or end",
+          "observed_at": "2026-10-25T04:58:56.825Z"
+        },
+        "types": {
+          "raw_player_type_counts": {
+            "1": 0,
+            "2": 0,
+            "3": 6,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          },
+          "nonzero_translation_keys": [
+            {
+              "raw_value": "3",
+              "translation_key": "trending",
+              "count": 6
+            }
+          ],
+          "type_mapping_evidence": {
+            "file": "data/research/source-observations.json",
+            "json_pointer": "/observations/25",
+            "observation_id": "efhub_types_js"
+          },
+          "normal_raw_type_1_count": 0,
+          "normal_to_official_standard_mapping": "unverified",
+          "standard_missing_count": null,
+          "standard_missing_ids": null,
+          "standard_missing_status": "unknown_no_identified_full_in_game_roster"
+        },
+        "in_game_composition": {
+          "total_player_count": null,
+          "composition_status": "partial",
+          "identified_full_roster_available": false,
+          "missing_count": null,
+          "missing_card_ids": null,
+          "reason": "No explicit product identity mapping and no full game roster with original card IDs; source visible count cannot supply the denominator.",
+          "manager_support": "excluded_bulk_api_unavailable_not_a_zero_manager_claim"
+        },
+        "product_classification": {
+          "kind": null,
+          "purchase_mode": null,
+          "currency": null,
+          "list_types": [],
+          "reason": "No product-specific verified evidence; EFHub /packs URL, product title and card type do not establish game kind, purchase mode or currency."
+        },
+        "availability": {
+          "catalog_value": {
+            "start": null,
+            "end": null,
+            "status": "unknown"
+          },
+          "evidence_for_verified_sale_period": [],
+          "sale_period_status": "unknown",
+          "source_list_date_is_sale_evidence": false,
+          "related_unlinked_official_candidates": [],
+          "related_official_context": []
+        },
+        "evidence": {
+          "canonical": {
+            "file": "data/catalog.seed.json",
+            "json_pointer": "/products/4"
+          },
+          "raw": {
+            "file": "data/research/current-catalog-observations.json",
+            "json_pointer": "/products/3"
+          },
+          "list_observation": {
+            "file": "data/research/current-catalog-observations.json",
+            "json_pointer": "/observations/0",
+            "observation_id": "efhub_obs_473b7e2ec8365e1d282639a3",
+            "url": "https://efhub.com/api/public/packs?search=&page=1&limit=30",
+            "http_status": 200,
+            "observed_at": "2026-10-25T04:58:52.412Z",
+            "response_body_sha256": "7999608d1fad35a5c709b04d232cc4129efa2259b83ee7d79d5c07ec213bbb14"
+          },
+          "detail_observation": {
+            "file": "data/research/current-catalog-observations.json",
+            "json_pointer": "/observations/4",
+            "observation_id": "efhub_obs_f319c78a714c1a4c3ef09533",
+            "url": "https://efhub.com/ko/packs/potm-j1-league-22-oct-26",
+            "http_status": 200,
+            "observed_at": "2026-10-25T04:58:56.825Z",
+            "response_body_sha256": "92b5979c5001287b8f82e1c06b0e10db7280430723a45f6640c8c7b95d57b573"
+          },
+          "seed_entry_observation_ids": [
+            "efhub_obs_f319c78a714c1a4c3ef09533"
+          ]
+        },
+        "source_displayed_card_grid": {
+          "listed_count": 6,
+          "detail_reported_count": 6,
+          "payload_rows": 6,
+          "payload_unique_cards": 6,
+          "seed_card_entries": 6,
+          "seed_unique_cards": 6,
+          "missing_from_source_displayed_grid_count": 0,
+          "external_card_ids": [
+            "53985859981027",
+            "53985859923942",
+            "53985859977501",
+            "53985859984212",
+            "53985859992654",
+            "53985859992727"
+          ],
+          "scope": "exact same-title/count direct PlayerCard grid; not asserted to be whole in-game draw pool"
+        }
+      },
+      {
+        "product_id": "product_b7f720124d11a9dbf756d07b",
+        "source": {
+          "id": "efhub",
+          "external_id_type": "pack_slug",
+          "external_id": "potw-22-oct-26"
+        },
+        "name": "POTW 22 Oct '26",
+        "source_dates": {
+          "listed_date": "2026-10-22",
+          "meaning": "EFHub date field/display date only; not verified sale start or end",
+          "observed_at": "2026-10-25T04:58:58.391Z"
+        },
+        "types": {
+          "raw_player_type_counts": {
+            "1": 0,
+            "2": 0,
+            "3": 11,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          },
+          "nonzero_translation_keys": [
+            {
+              "raw_value": "3",
+              "translation_key": "trending",
+              "count": 11
+            }
+          ],
+          "type_mapping_evidence": {
+            "file": "data/research/source-observations.json",
+            "json_pointer": "/observations/25",
+            "observation_id": "efhub_types_js"
+          },
+          "normal_raw_type_1_count": 0,
+          "normal_to_official_standard_mapping": "unverified",
+          "standard_missing_count": null,
+          "standard_missing_ids": null,
+          "standard_missing_status": "unknown_no_identified_full_in_game_roster"
+        },
+        "in_game_composition": {
+          "total_player_count": null,
+          "composition_status": "partial",
+          "identified_full_roster_available": false,
+          "missing_count": null,
+          "missing_card_ids": null,
+          "reason": "No explicit product identity mapping and no full game roster with original card IDs; source visible count cannot supply the denominator.",
+          "manager_support": "excluded_bulk_api_unavailable_not_a_zero_manager_claim"
+        },
+        "product_classification": {
+          "kind": null,
+          "purchase_mode": null,
+          "currency": null,
+          "list_types": [],
+          "reason": "No product-specific verified evidence; EFHub /packs URL, product title and card type do not establish game kind, purchase mode or currency."
+        },
+        "availability": {
+          "catalog_value": {
+            "start": null,
+            "end": null,
+            "status": "unknown"
+          },
+          "evidence_for_verified_sale_period": [],
+          "sale_period_status": "unknown",
+          "source_list_date_is_sale_evidence": false,
+          "related_unlinked_official_candidates": [
+            {
+              "candidate_id": "konami_probability_potw_worldwide_22oct",
+              "official_name": "POTW: Worldwide 22 Oct '26",
+              "initial_draw_pool_count": 11,
+              "ends_at_utc": "2026-10-29T01:59:59Z",
+              "source_scope": "official initial draw pool; not user remaining count",
+              "matching_basis": [
+                "POTW and explicit 22 Oct 26 date",
+                "EFHub title omits Worldwide",
+                "Counts agreeing is not an identifier link"
+              ],
+              "identity_link": {
+                "status": "unverified",
+                "efhub_slug_in_official_evidence": false,
+                "official_product_id_in_efhub_evidence": false,
+                "shared_card_id_pairs": [],
+                "explicit_cross_source_link": null
+              },
+              "applied_to_catalog": false,
+              "evidence": [
+                {
+                  "file": "data/research/source-observations.json",
+                  "json_pointer": "/observations/22",
+                  "observation_id": "official_probability"
+                }
+              ]
+            }
+          ],
+          "related_official_context": []
+        },
+        "evidence": {
+          "canonical": {
+            "file": "data/catalog.seed.json",
+            "json_pointer": "/products/5"
+          },
+          "raw": {
+            "file": "data/research/current-catalog-observations.json",
+            "json_pointer": "/products/4"
+          },
+          "list_observation": {
+            "file": "data/research/current-catalog-observations.json",
+            "json_pointer": "/observations/0",
+            "observation_id": "efhub_obs_473b7e2ec8365e1d282639a3",
+            "url": "https://efhub.com/api/public/packs?search=&page=1&limit=30",
+            "http_status": 200,
+            "observed_at": "2026-10-25T04:58:52.412Z",
+            "response_body_sha256": "7999608d1fad35a5c709b04d232cc4129efa2259b83ee7d79d5c07ec213bbb14"
+          },
+          "detail_observation": {
+            "file": "data/research/current-catalog-observations.json",
+            "json_pointer": "/observations/5",
+            "observation_id": "efhub_obs_d4cf3d8e862b6829ccc3be1a",
+            "url": "https://efhub.com/ko/packs/potw-22-oct-26",
+            "http_status": 200,
+            "observed_at": "2026-10-25T04:58:58.391Z",
+            "response_body_sha256": "68d7605c9558d8ad8e7778ee39a178233aaa571e74d338c1f3577c01c34fc232"
+          },
+          "seed_entry_observation_ids": [
+            "efhub_obs_d4cf3d8e862b6829ccc3be1a"
+          ]
+        },
+        "source_displayed_card_grid": {
+          "listed_count": 11,
+          "detail_reported_count": 11,
+          "payload_rows": 11,
+          "payload_unique_cards": 11,
+          "seed_card_entries": 11,
+          "seed_unique_cards": 11,
+          "missing_from_source_displayed_grid_count": 0,
+          "external_card_ids": [
+            "52904333543847",
+            "52904333576000",
+            "52904333551882",
+            "52904333527391",
+            "52904333571536",
+            "52904333457355",
+            "52904333584293",
+            "52904333532168",
+            "52904333532623",
+            "52904333545669",
+            "52904333546402"
+          ],
+          "scope": "exact same-title/count direct PlayerCard grid; not asserted to be whole in-game draw pool"
+        }
+      },
+      {
+        "product_id": "product_b63ffe79ad2f30c6b92fa729",
+        "source": {
+          "id": "efhub",
+          "external_id_type": "pack_slug",
+          "external_id": "potm-trendyol-s-per-lig-22-oct-26"
+        },
+        "name": "POTM Trendyol Süper Lig 22 Oct '26",
+        "source_dates": {
+          "listed_date": "2026-10-22",
+          "meaning": "EFHub date field/display date only; not verified sale start or end",
+          "observed_at": "2026-10-25T04:58:59.804Z"
+        },
+        "types": {
+          "raw_player_type_counts": {
+            "1": 0,
+            "2": 0,
+            "3": 6,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          },
+          "nonzero_translation_keys": [
+            {
+              "raw_value": "3",
+              "translation_key": "trending",
+              "count": 6
+            }
+          ],
+          "type_mapping_evidence": {
+            "file": "data/research/source-observations.json",
+            "json_pointer": "/observations/25",
+            "observation_id": "efhub_types_js"
+          },
+          "normal_raw_type_1_count": 0,
+          "normal_to_official_standard_mapping": "unverified",
+          "standard_missing_count": null,
+          "standard_missing_ids": null,
+          "standard_missing_status": "unknown_no_identified_full_in_game_roster"
+        },
+        "in_game_composition": {
+          "total_player_count": null,
+          "composition_status": "partial",
+          "identified_full_roster_available": false,
+          "missing_count": null,
+          "missing_card_ids": null,
+          "reason": "No explicit product identity mapping and no full game roster with original card IDs; source visible count cannot supply the denominator.",
+          "manager_support": "excluded_bulk_api_unavailable_not_a_zero_manager_claim"
+        },
+        "product_classification": {
+          "kind": null,
+          "purchase_mode": null,
+          "currency": null,
+          "list_types": [],
+          "reason": "No product-specific verified evidence; EFHub /packs URL, product title and card type do not establish game kind, purchase mode or currency."
+        },
+        "availability": {
+          "catalog_value": {
+            "start": null,
+            "end": null,
+            "status": "unknown"
+          },
+          "evidence_for_verified_sale_period": [],
+          "sale_period_status": "unknown",
+          "source_list_date_is_sale_evidence": false,
+          "related_unlinked_official_candidates": [],
+          "related_official_context": []
+        },
+        "evidence": {
+          "canonical": {
+            "file": "data/catalog.seed.json",
+            "json_pointer": "/products/6"
+          },
+          "raw": {
+            "file": "data/research/current-catalog-observations.json",
+            "json_pointer": "/products/5"
+          },
+          "list_observation": {
+            "file": "data/research/current-catalog-observations.json",
+            "json_pointer": "/observations/0",
+            "observation_id": "efhub_obs_473b7e2ec8365e1d282639a3",
+            "url": "https://efhub.com/api/public/packs?search=&page=1&limit=30",
+            "http_status": 200,
+            "observed_at": "2026-10-25T04:58:52.412Z",
+            "response_body_sha256": "7999608d1fad35a5c709b04d232cc4129efa2259b83ee7d79d5c07ec213bbb14"
+          },
+          "detail_observation": {
+            "file": "data/research/current-catalog-observations.json",
+            "json_pointer": "/observations/6",
+            "observation_id": "efhub_obs_8abf50f3dc013d58d5974a10",
+            "url": "https://efhub.com/ko/packs/potm-trendyol-s-per-lig-22-oct-26",
+            "http_status": 200,
+            "observed_at": "2026-10-25T04:58:59.804Z",
+            "response_body_sha256": "da7f0ca79006f019753bb2f50fe4212aba0ee60e158f1781a7ad1d448f2ded78"
+          },
+          "seed_entry_observation_ids": [
+            "efhub_obs_8abf50f3dc013d58d5974a10"
+          ]
+        },
+        "source_displayed_card_grid": {
+          "listed_count": 6,
+          "detail_reported_count": 6,
+          "payload_rows": 6,
+          "payload_unique_cards": 6,
+          "seed_card_entries": 6,
+          "seed_unique_cards": 6,
+          "missing_from_source_displayed_grid_count": 0,
+          "external_card_ids": [
+            "53988275902638",
+            "53988275907363",
+            "53988275941823",
+            "53988275905208",
+            "53988275928737",
+            "53988275961077"
+          ],
+          "scope": "exact same-title/count direct PlayerCard grid; not asserted to be whole in-game draw pool"
+        }
+      },
+      {
+        "product_id": "product_f241574e7bc427bad5ba97cf",
+        "source": {
+          "id": "efhub",
+          "external_id_type": "pack_slug",
+          "external_id": "potm-brasileir-o-22-oct-26"
+        },
+        "name": "POTM Brasileirão 22 Oct '26",
+        "source_dates": {
+          "listed_date": "2026-10-22",
+          "meaning": "EFHub date field/display date only; not verified sale start or end",
+          "observed_at": "2026-10-25T04:59:01.175Z"
+        },
+        "types": {
+          "raw_player_type_counts": {
+            "1": 0,
+            "2": 0,
+            "3": 6,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          },
+          "nonzero_translation_keys": [
+            {
+              "raw_value": "3",
+              "translation_key": "trending",
+              "count": 6
+            }
+          ],
+          "type_mapping_evidence": {
+            "file": "data/research/source-observations.json",
+            "json_pointer": "/observations/25",
+            "observation_id": "efhub_types_js"
+          },
+          "normal_raw_type_1_count": 0,
+          "normal_to_official_standard_mapping": "unverified",
+          "standard_missing_count": null,
+          "standard_missing_ids": null,
+          "standard_missing_status": "unknown_no_identified_full_in_game_roster"
+        },
+        "in_game_composition": {
+          "total_player_count": null,
+          "composition_status": "partial",
+          "identified_full_roster_available": false,
+          "missing_count": null,
+          "missing_card_ids": null,
+          "reason": "No explicit product identity mapping and no full game roster with original card IDs; source visible count cannot supply the denominator.",
+          "manager_support": "excluded_bulk_api_unavailable_not_a_zero_manager_claim"
+        },
+        "product_classification": {
+          "kind": null,
+          "purchase_mode": null,
+          "currency": null,
+          "list_types": [],
+          "reason": "No product-specific verified evidence; EFHub /packs URL, product title and card type do not establish game kind, purchase mode or currency."
+        },
+        "availability": {
+          "catalog_value": {
+            "start": null,
+            "end": null,
+            "status": "unknown"
+          },
+          "evidence_for_verified_sale_period": [],
+          "sale_period_status": "unknown",
+          "source_list_date_is_sale_evidence": false,
+          "related_unlinked_official_candidates": [],
+          "related_official_context": []
+        },
+        "evidence": {
+          "canonical": {
+            "file": "data/catalog.seed.json",
+            "json_pointer": "/products/7"
+          },
+          "raw": {
+            "file": "data/research/current-catalog-observations.json",
+            "json_pointer": "/products/6"
+          },
+          "list_observation": {
+            "file": "data/research/current-catalog-observations.json",
+            "json_pointer": "/observations/0",
+            "observation_id": "efhub_obs_473b7e2ec8365e1d282639a3",
+            "url": "https://efhub.com/api/public/packs?search=&page=1&limit=30",
+            "http_status": 200,
+            "observed_at": "2026-10-25T04:58:52.412Z",
+            "response_body_sha256": "7999608d1fad35a5c709b04d232cc4129efa2259b83ee7d79d5c07ec213bbb14"
+          },
+          "detail_observation": {
+            "file": "data/research/current-catalog-observations.json",
+            "json_pointer": "/observations/7",
+            "observation_id": "efhub_obs_c3d96d0edb219b919bc709e5",
+            "url": "https://efhub.com/ko/packs/potm-brasileir-o-22-oct-26",
+            "http_status": 200,
+            "observed_at": "2026-10-25T04:59:01.175Z",
+            "response_body_sha256": "31371dd7979ed28dabc533f77a25135c5dc7e4ce46436c3d2a7110149afa47d6"
+          },
+          "seed_entry_observation_ids": [
+            "efhub_obs_c3d96d0edb219b919bc709e5"
+          ]
+        },
+        "source_displayed_card_grid": {
+          "listed_count": 6,
+          "detail_reported_count": 6,
+          "payload_rows": 6,
+          "payload_unique_cards": 6,
+          "seed_card_entries": 6,
+          "seed_unique_cards": 6,
+          "missing_from_source_displayed_grid_count": 0,
+          "external_card_ids": [
+            "53991228723165",
+            "53991228575687",
+            "53991228698710",
+            "53991228619568",
+            "53991228688058",
+            "53991228739881"
+          ],
+          "scope": "exact same-title/count direct PlayerCard grid; not asserted to be whole in-game draw pool"
+        }
+      },
+      {
+        "product_id": "product_62106e0d6959a0e800d7a2c4",
+        "source": {
+          "id": "efhub",
+          "external_id_type": "pack_slug",
+          "external_id": "potw-european-club-championship-22-oct-26"
+        },
+        "name": "POTW European Club Championship 22 Oct '26",
+        "source_dates": {
+          "listed_date": "2026-10-22",
+          "meaning": "EFHub date field/display date only; not verified sale start or end",
+          "observed_at": "2026-10-25T04:59:02.734Z"
+        },
+        "types": {
+          "raw_player_type_counts": {
+            "1": 0,
+            "2": 0,
+            "3": 11,
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          },
+          "nonzero_translation_keys": [
+            {
+              "raw_value": "3",
+              "translation_key": "trending",
+              "count": 11
+            }
+          ],
+          "type_mapping_evidence": {
+            "file": "data/research/source-observations.json",
+            "json_pointer": "/observations/25",
+            "observation_id": "efhub_types_js"
+          },
+          "normal_raw_type_1_count": 0,
+          "normal_to_official_standard_mapping": "unverified",
+          "standard_missing_count": null,
+          "standard_missing_ids": null,
+          "standard_missing_status": "unknown_no_identified_full_in_game_roster"
+        },
+        "in_game_composition": {
+          "total_player_count": null,
+          "composition_status": "partial",
+          "identified_full_roster_available": false,
+          "missing_count": null,
+          "missing_card_ids": null,
+          "reason": "No explicit product identity mapping and no full game roster with original card IDs; source visible count cannot supply the denominator.",
+          "manager_support": "excluded_bulk_api_unavailable_not_a_zero_manager_claim"
+        },
+        "product_classification": {
+          "kind": null,
+          "purchase_mode": null,
+          "currency": null,
+          "list_types": [],
+          "reason": "No product-specific verified evidence; EFHub /packs URL, product title and card type do not establish game kind, purchase mode or currency."
+        },
+        "availability": {
+          "catalog_value": {
+            "start": null,
+            "end": null,
+            "status": "unknown"
+          },
+          "evidence_for_verified_sale_period": [],
+          "sale_period_status": "unknown",
+          "source_list_date_is_sale_evidence": false,
+          "related_unlinked_official_candidates": [
+            {
+              "candidate_id": "konami_probability_potw_ucl",
+              "official_name": "POTW: European Club Championship",
+              "initial_draw_pool_count": 11,
+              "ends_at_utc": "2026-10-29T01:59:59Z",
+              "source_scope": "official initial draw pool; not user remaining count",
+              "matching_basis": [
+                "European Club Championship phrase",
+                "Observed in the same contemporary probability page",
+                "Official title in stored excerpt omits the EFHub 22 Oct 26 date"
+              ],
+              "identity_link": {
+                "status": "unverified",
+                "efhub_slug_in_official_evidence": false,
+                "official_product_id_in_efhub_evidence": false,
+                "shared_card_id_pairs": [],
+                "explicit_cross_source_link": null
+              },
+              "applied_to_catalog": false,
+              "evidence": [
+                {
+                  "file": "data/research/source-observations.json",
+                  "json_pointer": "/observations/22",
+                  "observation_id": "official_probability"
+                }
+              ]
+            }
+          ],
+          "related_official_context": []
+        },
+        "evidence": {
+          "canonical": {
+            "file": "data/catalog.seed.json",
+            "json_pointer": "/products/8"
+          },
+          "raw": {
+            "file": "data/research/current-catalog-observations.json",
+            "json_pointer": "/products/7"
+          },
+          "list_observation": {
+            "file": "data/research/current-catalog-observations.json",
+            "json_pointer": "/observations/0",
+            "observation_id": "efhub_obs_473b7e2ec8365e1d282639a3",
+            "url": "https://efhub.com/api/public/packs?search=&page=1&limit=30",
+            "http_status": 200,
+            "observed_at": "2026-10-25T04:58:52.412Z",
+            "response_body_sha256": "7999608d1fad35a5c709b04d232cc4129efa2259b83ee7d79d5c07ec213bbb14"
+          },
+          "detail_observation": {
+            "file": "data/research/current-catalog-observations.json",
+            "json_pointer": "/observations/8",
+            "observation_id": "efhub_obs_ad28201cee515d523ef7f5c3",
+            "url": "https://efhub.com/ko/packs/potw-european-club-championship-22-oct-26",
+            "http_status": 200,
+            "observed_at": "2026-10-25T04:59:02.734Z",
+            "response_body_sha256": "38b209afa7eb7d796f8b7e281f8643bd1e5da205004cd56290f837d286acf5e0"
+          },
+          "seed_entry_observation_ids": [
+            "efhub_obs_ad28201cee515d523ef7f5c3"
+          ]
+        },
+        "source_displayed_card_grid": {
+          "listed_count": 11,
+          "detail_reported_count": 11,
+          "payload_rows": 11,
+          "payload_unique_cards": 11,
+          "seed_card_entries": 11,
+          "seed_unique_cards": 11,
+          "missing_from_source_displayed_grid_count": 0,
+          "external_card_ids": [
+            "52912655044507",
+            "52912655024346",
+            "52912655014117",
+            "52912655053878",
+            "52912655057395",
+            "52912655062348",
+            "52912655050310",
+            "52912655086762",
+            "52912655061235",
+            "52912655073911",
+            "52912655074031"
+          ],
+          "scope": "exact same-title/count direct PlayerCard grid; not asserted to be whole in-game draw pool"
+        }
+      },
+      {
+        "product_id": "product_77f34cf6c2ca9259f2edaea9",
+        "source": {
+          "id": "efhub",
+          "external_id_type": "pack_slug",
+          "external_id": "magical-dribblers-22-oct-26"
+        },
+        "name": "Magical Dribblers 22 Oct '26",
+        "source_dates": {
+          "listed_date": "2026-10-22",
+          "meaning": "EFHub date field/display date only; not verified sale start or end",
+          "observed_at": "2026-10-25T04:59:03.273Z"
+        },
+        "types": {
+          "raw_player_type_counts": {
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 8,
+            "7": 0,
+            "8": 3
+          },
+          "nonzero_translation_keys": [
+            {
+              "raw_value": "6",
+              "translation_key": "highlight",
+              "count": 8
+            },
+            {
+              "raw_value": "8",
+              "translation_key": "showtime",
+              "count": 3
+            }
+          ],
+          "type_mapping_evidence": {
+            "file": "data/research/source-observations.json",
+            "json_pointer": "/observations/25",
+            "observation_id": "efhub_types_js"
+          },
+          "normal_raw_type_1_count": 0,
+          "normal_to_official_standard_mapping": "unverified",
+          "standard_missing_count": null,
+          "standard_missing_ids": null,
+          "standard_missing_status": "unknown_no_identified_full_in_game_roster"
+        },
+        "in_game_composition": {
+          "total_player_count": null,
+          "composition_status": "partial",
+          "identified_full_roster_available": false,
+          "missing_count": null,
+          "missing_card_ids": null,
+          "reason": "No explicit product identity mapping and no full game roster with original card IDs; source visible count cannot supply the denominator.",
+          "manager_support": "excluded_bulk_api_unavailable_not_a_zero_manager_claim"
+        },
+        "product_classification": {
+          "kind": null,
+          "purchase_mode": null,
+          "currency": null,
+          "list_types": [],
+          "reason": "No product-specific verified evidence; EFHub /packs URL, product title and card type do not establish game kind, purchase mode or currency."
+        },
+        "availability": {
+          "catalog_value": {
+            "start": null,
+            "end": null,
+            "status": "unknown"
+          },
+          "evidence_for_verified_sale_period": [],
+          "sale_period_status": "unknown",
+          "source_list_date_is_sale_evidence": false,
+          "related_unlinked_official_candidates": [
+            {
+              "candidate_id": "konami_probability_show_time_magical",
+              "official_name": "Show Time: Magical Dribblers",
+              "initial_draw_pool_count": 150,
+              "ends_at_utc": "2026-10-29T01:59:59Z",
+              "source_scope": "official initial draw pool; not user remaining count",
+              "matching_basis": [
+                "Magical Dribblers name phrase",
+                "EFHub source date 2026-10-22 precedes official ending date",
+                "Official probability title itself has no release date or EFHub ID"
+              ],
+              "identity_link": {
+                "status": "unverified",
+                "efhub_slug_in_official_evidence": false,
+                "official_product_id_in_efhub_evidence": false,
+                "shared_card_id_pairs": [],
+                "explicit_cross_source_link": null
+              },
+              "applied_to_catalog": false,
+              "evidence": [
+                {
+                  "file": "data/research/source-observations.json",
+                  "json_pointer": "/observations/22",
+                  "observation_id": "official_probability"
+                }
+              ]
+            }
+          ],
+          "related_official_context": []
+        },
+        "evidence": {
+          "canonical": {
+            "file": "data/catalog.seed.json",
+            "json_pointer": "/products/0"
+          },
+          "raw": {
+            "file": "data/research/current-catalog-observations.json",
+            "json_pointer": "/products/8"
+          },
+          "list_observation": {
+            "file": "data/research/current-catalog-observations.json",
+            "json_pointer": "/observations/0",
+            "observation_id": "efhub_obs_473b7e2ec8365e1d282639a3",
+            "url": "https://efhub.com/api/public/packs?search=&page=1&limit=30",
+            "http_status": 200,
+            "observed_at": "2026-10-25T04:58:52.412Z",
+            "response_body_sha256": "7999608d1fad35a5c709b04d232cc4129efa2259b83ee7d79d5c07ec213bbb14"
+          },
+          "detail_observation": {
+            "file": "data/research/current-catalog-observations.json",
+            "json_pointer": "/observations/9",
+            "observation_id": "efhub_obs_e83416aead9946a907dc083d",
+            "url": "https://efhub.com/ko/packs/magical-dribblers-22-oct-26",
+            "http_status": 200,
+            "observed_at": "2026-10-25T04:59:03.273Z",
+            "response_body_sha256": "9c58a4d89515f09ca8401794e2d39b2bde4faa0aa7e154689659b41674c1f598"
+          },
+          "seed_entry_observation_ids": [
+            "efhub_obs_e83416aead9946a907dc083d"
+          ]
+        },
+        "source_displayed_card_grid": {
+          "listed_count": 11,
+          "detail_reported_count": 11,
+          "payload_rows": 11,
+          "payload_unique_cards": 11,
+          "seed_card_entries": 11,
+          "seed_unique_cards": 11,
+          "missing_from_source_displayed_grid_count": 0,
+          "external_card_ids": [
+            "106800804418912",
+            "106800804393500",
+            "106800804376628",
+            "105896176917926",
+            "105896176904634",
+            "105896176839655",
+            "105896176957170",
+            "105896176893674",
+            "105896176886332",
+            "105896176881795",
+            "105896176926765"
+          ],
+          "scope": "exact same-title/count direct PlayerCard grid; not asserted to be whole in-game draw pool"
+        }
+      }
+    ],
+    "extra_cards": [
+      {
+        "id": "card_477888a0ddd42678e4dd9cb3",
+        "source_card_id": "88046292727298",
+        "name": "Yaya Toure",
+        "reason": "Independent player-detail/explicit other-version sample; not a member of these nine product rosters",
+        "observation_ids": [
+          "obs_163c0517bfbf814cacb8b487",
+          "obs_30da4d016ed95bef38f0a37b"
+        ]
+      },
+      {
+        "id": "card_a714d2bb7a0fe818b298fc97",
+        "source_card_id": "88036360615426",
+        "name": "Yaya Toure",
+        "reason": "Independent player-detail/explicit other-version sample; not a member of these nine product rosters",
+        "observation_ids": [
+          "obs_41fa990f0219084066d2e36d",
+          "obs_30da4d016ed95bef38f0a37b"
+        ]
+      },
+      {
+        "id": "card_ce8384f37818a67d7f9283bb",
+        "source_card_id": "88040387147266",
+        "name": "Yaya Toure",
+        "reason": "Independent player-detail/explicit other-version sample; not a member of these nine product rosters",
+        "observation_ids": [
+          "obs_41fa990f0219084066d2e36d",
+          "obs_30da4d016ed95bef38f0a37b"
+        ]
+      },
+      {
+        "id": "card_09cfd602c46196979284779a",
+        "source_card_id": "88035823744514",
+        "name": "Yaya Toure",
+        "reason": "Independent player-detail/explicit other-version sample; not a member of these nine product rosters",
+        "observation_ids": [
+          "obs_41fa990f0219084066d2e36d",
+          "obs_30da4d016ed95bef38f0a37b"
+        ]
+      }
+    ],
+    "scope_caution": "표시 grid 내부 누락0과 게임 전체 선수 풀 누락unknown은 별개. EFHub 목록1698은 판매중 상품수·전체pool수 아님."
+  },
+  "root_public_observations": [
+    {
+      "id": "official_probability_jp_current",
+      "url": "https://efootball-web.konami.net/probability_jp.php",
+      "method": "GET",
+      "requested_at": "2026-10-25T07:12:30.220984+00:00",
+      "observed_at": "2026-10-25T07:12:31.480394+00:00",
+      "http_status": 200,
+      "final_url": "https://efootball-web.konami.net/probability_jp.php",
+      "response_bytes": 2744,
+      "sha256": "97e7ac6a3c373b23503f9a363c5cd09ce81f3404e13851adbb79677065c2ea86",
+      "response_headers_allowlist": {
+        "date": "Sun, 25 Oct 2026 07:12:31 GMT",
+        "content-type": "text/html; charset=UTF-8",
+        "server": "envoy"
+      },
+      "limitations": [
+        "No cookie/token acquisition or custom impersonation headers. Response headers are a noncredential allowlist. Public HTML is not a product membership API."
+      ],
+      "findings": {
+        "kind": "official_initial_pool_counts",
+        "lists": [
+          {
+            "name": "National Team Selection: Worldwide Sep '26",
+            "initial_count": 11,
+            "ends_at_utc": "2026-11-05T01:59:59Z"
+          },
+          {
+            "name": "League Selection: Italian Oct '26",
+            "initial_count": 11,
+            "ends_at_utc": "2026-12-03T01:59:59Z"
+          },
+          {
+            "name": "Epic: Ricardo Quaresma",
+            "initial_count": 50,
+            "ends_at_utc": "2026-10-29T01:59:59Z"
+          },
+          {
+            "name": "Epic: European Clubs Midfielders",
+            "initial_count": 150,
+            "ends_at_utc": "2026-10-26T01:59:59Z"
+          },
+          {
+            "name": "Show Time: Magical Dribblers",
+            "initial_count": 150,
+            "ends_at_utc": "2026-10-29T01:59:59Z"
+          },
+          {
+            "name": "POTW: Worldwide 22 Oct '26",
+            "initial_count": 11,
+            "ends_at_utc": "2026-10-29T01:59:59Z"
+          },
+          {
+            "name": "POTW: European Club Championship",
+            "initial_count": 11,
+            "ends_at_utc": "2026-10-29T01:59:59Z"
+          }
+        ],
+        "member_ids_available": false,
+        "initial_not_remaining": true,
+        "region_caveat": true,
+        "in_game_view_all_reference": true
+      }
+    },
+    {
+      "id": "official_midfielders_promotion",
+      "url": "https://www.konami.com/efootball/ko/topic/promotion/agent/1407/",
+      "method": "GET",
+      "requested_at": "2026-10-25T07:12:31.980773+00:00",
+      "observed_at": "2026-10-25T07:12:33.574625+00:00",
+      "http_status": 200,
+      "final_url": "https://www.konami.com/efootball/ko/topic/promotion/agent/1407/",
+      "response_bytes": 73951,
+      "sha256": "c3df4665109513252781d0b8f80704a83dafac661ec2a4e6d05b95471c5b8e39",
+      "response_headers_allowlist": {
+        "server": "envoy",
+        "content-type": "text/html; charset=UTF-8",
+        "date": "Sun, 25 Oct 2026 07:12:33 GMT"
+      },
+      "limitations": [
+        "No cookie/token acquisition or custom impersonation headers. Response headers are a noncredential allowlist. Public HTML is not a product membership API."
+      ],
+      "findings": {
+        "kind": "official_promotion",
+        "title": "Epic: European Clubs Midfielders",
+        "publication_date": "2026-10-19",
+        "epic_count": 3,
+        "highlight_count": 8,
+        "other_active_players_count": 139,
+        "other_active_players_standard_type_explicitly_verified": false,
+        "member_ids_available": false,
+        "applies_to_current_nine_products": false
+      }
+    },
+    {
+      "id": "pesdb_magical_detail",
+      "url": "https://pesdb.net/efootball/packs/magical-dribblers-2026-10-22",
+      "method": "GET",
+      "requested_at": "2026-10-25T07:12:34.075187+00:00",
+      "observed_at": "2026-10-25T07:12:35.645232+00:00",
+      "http_status": 200,
+      "final_url": "https://pesdb.net/efootball/packs/magical-dribblers-2026-10-22",
+      "response_bytes": 31254,
+      "sha256": "d25841f1874207b08d55dd1c259a999ce737b7309cbcee1d29bb433b39c4d889",
+      "response_headers_allowlist": {
+        "server": "envoy",
+        "date": "Sun, 25 Oct 2026 07:12:35 GMT",
+        "content-type": "text/html; charset=UTF-8",
+        "cache-control": "private, no-store"
+      },
+      "limitations": [
+        "No cookie/token acquisition or custom impersonation headers. Response headers are a noncredential allowlist. Public HTML is not a product membership API."
+      ],
+      "findings": {
+        "kind": "unofficial_featured_product_list",
+        "title": "Show Time: Magical Dribblers",
+        "date": "2026-10-22",
+        "displayed_count": 11,
+        "names": [
+          "Désiré Doué",
+          "Jérémy Doku",
+          "Raphinha",
+          "Sávio",
+          "Loïs Openda",
+          "Rafa Silva",
+          "Samuele Inácio",
+          "Arnaut Danjuma",
+          "Kingsley Ehizibue",
+          "Ulisses Garcia",
+          "Tijjani Noslin"
+        ],
+        "full_initial_pool_verified": false,
+        "official_product_id_mapping_verified": false
+      }
+    }
+  ],
+  "alternate_source_observations": [
+    {
+      "url": "https://www.pesmaster.com/efootball-2022/player/featured/?date=2026-10-22",
+      "observed_at": "2026-10-25T07:09:43.133867+00:00",
+      "request_method": "GET",
+      "status": 200,
+      "final_url": "https://www.pesmaster.com/efootball-2022/player/featured/?date=2026-10-22",
+      "content_type": "text/html; charset=UTF-8",
+      "response_bytes": 1101899,
+      "sha256": "015f51ea0e8751cc32aced111c078816082b2a8e1f2f23319dbb31f04dcb04bc",
+      "title": "Featured Players - 2026-10-22 - eFootball",
+      "version_markers": [
+        "2026-10-15",
+        "2026-10-22"
+      ]
+    },
+    {
+      "url": "https://www.efootballdb.com/",
+      "observed_at": "2026-10-25T07:09:45.206291+00:00",
+      "request_method": "GET",
+      "status": 200,
+      "final_url": "https://www.efootballdb.com/",
+      "content_type": "text/html; charset=utf-8",
+      "response_bytes": 58253,
+      "sha256": "bac9ee0e9cdc33c4b39068031a2397eb1265503e9dfb33a0f2823afac2b25613",
+      "title": "eFootball DB - The best eFootball database experience",
+      "version_markers": [
+        "eFootball 2022",
+        "eFootball 2023"
+      ]
+    },
+    {
+      "url": "https://efootballdb.info/en",
+      "observed_at": "2026-10-25T07:09:46.319308+00:00",
+      "request_method": "GET",
+      "status": 200,
+      "final_url": "https://efootballdb.info/en",
+      "content_type": "text/html; charset=utf-8",
+      "response_bytes": 119177,
+      "sha256": "e71e06417a0b45d03f3f33d8efe643840d544e99918c28202ebb99faf93120bb",
+      "title": "eFootball Database, Player Ratings & Squad Builder | eDB",
+      "version_markers": [
+        "2026-10-15",
+        "2026-10-19",
+        "eFootball 2026"
+      ]
+    },
+    {
+      "url": "https://efootballlab.com/new-packs",
+      "observed_at": "2026-10-25T07:09:48.535621+00:00",
+      "request_method": "GET",
+      "status": 200,
+      "final_url": "https://efootballlab.com/new-packs",
+      "content_type": "text/html; charset=UTF-8",
+      "response_bytes": 136679,
+      "sha256": "2d91216742b9eaf4d20f98125c6d1a01f1731cae71e4a57421c447f115d54cc8",
+      "title": "eFootball 2027 Pack Opening Simulator & New Packs | eFootballLAB",
+      "version_markers": [
+        "eFootball 2027"
+      ]
+    },
+    {
+      "url": "https://efootballdb.info/assets/index-CEwWGUbi.js",
+      "observed_at": "2026-10-25T07:12:11.013295+00:00",
+      "request_method": "GET",
+      "status": 200,
+      "final_url": "https://efootballdb.info/assets/index-CEwWGUbi.js",
+      "content_type": "text/javascript; charset=utf-8",
+      "response_bytes": 507436,
+      "sha256": "36a47f5e60c01ca54af559de1b3c9e34bc76b0b4e217a70aad85ec0e754d914c",
+      "discovery": "실제 성공한 efootballdb.info/en HTML에 연결된 경로",
+      "api_string_refs": [
+        "https://api.efootballdb.info",
+        "${T_()}/api/v2/players/${encodeURIComponent(e)}${a}"
+      ],
+      "client_call_evidence": [
+        "hParams;r.length&&i.set(`include`,r.join(`,`));let a=i.size?`?${i}`:``,o=await Fe(`${T_()}/api/v2/players/${encodeURIComponent(e)}${a}`,`Could not load player v2 details`,{signal:n});if(o.schema_version!==2||o.identity?.id!==e)throw Error(`Unexpected player v2 response identity or version`);return o}function O_(e){if(!e)return;l"
+      ]
+    },
+    {
+      "url": "https://efootballdb.info/en/players?pack=European+Clubs+Midfielders",
+      "observed_at": "2026-10-25T07:12:13.476611+00:00",
+      "request_method": "GET",
+      "status": 200,
+      "final_url": "https://efootballdb.info/en/players?pack=European+Clubs+Midfielders",
+      "content_type": "text/html; charset=utf-8",
+      "response_bytes": 78564,
+      "sha256": "9e8d1ecb3d0eb93dd6bdaab4e5af03eb9159b0351e7ad1fd46c601bb25b48c48",
+      "discovery": "실제 성공한 efootballdb.info/en HTML에 연결된 경로",
+      "api_string_refs": [
+        "https://api.efootballdb.info/media/images/players/89136409091415/portrait.avif?v=09c0e866c9bd8bd69a993a04d5c1fe202c461ef635ac7c1a0bbfbd649de89d7f&amp;width=64",
+        "https://api.efootballdb.info/media/images/players/89138556575063/portrait.avif?v=ed9331fabbcd4f6cafc545d2a12fd71b3e141a849efce26e319f8e8e55f4da97&amp;width=64",
+        "https://api.efootballdb.info/media/images/players/88045755863174/portrait.avif?v=ca394a4d26ebb0c4892857a41f1310448f6ef91d1a3811da0d283134d36009c3&amp;width=64",
+        "https://api.efootballdb.info/media/images/players/89137214427270/portrait.avif?v=fb1d825affea418c84623f72976c309e5136e9a2f782e4c1d11ac9cc7bcaa31b&amp;width=64",
+        "https://api.efootballdb.info/media/images/players/88045755960808/portrait.avif?v=51986679f6da81e668024b06713eca9b612fb3d13fadb27ead8bc729bfb5c530&amp;width=64",
+        "https://api.efootballdb.info/media/images/players/105895908484113/primary.avif?v=989f9c08423d43d55dd83aebfcac26aed22150f827d8e7874f68352e95941e35&amp;width=128",
+        "https://api.efootballdb.info/media/images/players/105895908496006/primary.avif?v=a84c08b354a53ca3037313060d67239bf9997f526b62bd1484d60326ccb0f3eb&amp;width=128",
+        "https://api.efootballdb.info/media/images/players/105895908388335/primary.avif?v=f516910bf7813db623effa2c45921febd493218136bdefb7159165890e24460f&amp;width=128",
+        "https://api.efootballdb.info/media/images/players/105895908444236/primary.avif?v=42d38ce089fdbf119109750926df0f6bc5e854b52666d920df7f7443a45c2e8b&amp;width=128",
+        "https://api.efootballdb.info/media/images/players/105895908461801/primary.avif?v=6de13604e14660471980142f887e3ca5657df8325681018e317109fbf203cb15&amp;width=128",
+        "https://api.efootballdb.info/media/images/players/105895908512700/primary.avif?v=305fb154b46fad386e095a05f5d7c062c6aceac7ed62a179e1dd1de543b78846&amp;width=128",
+        "https://api.efootballdb.info/media/images/players/105895908490584/primary.avif?v=2b11ae05eb1afcc2ce9e033290bd194c0a59786f69859948d715d1fc4839b39a&amp;width=128",
+        "https://api.efootballdb.info/media/images/players/105895908488510/primary.avif?v=f2635a98229ee0636f3505707623d53ec83f51f8cfecd4087655d4ae5f2972e7&amp;width=128",
+        "https://api.efootballdb.info/media/images/players/88046292698013/primary.avif?v=c185534280595f631760ae5514e16c6b3368af1f4497ab2d043c4c47dcb73d27&amp;width=128",
+        "https://api.efootballdb.info/media/images/players/88046292831741/primary.avif?v=8d10d8d86a35a38511d747f4c7c76690bdebc16b6b4301017b901c3fc65ef39b&amp;width=128",
+        "https://api.efootballdb.info/media/images/players/88046292727298/primary.avif?v=5681e869194064ba42de488893b2efbc0c7d8efc8053cb35867da8a9cd68df0d&amp;width=128"
+      ],
+      "filtered_result_count": 11,
+      "count_evidence": "11 players found",
+      "filter_evidence": {
+        "query_key": "pack",
+        "query_value": "European Clubs Midfielders"
+      },
+      "link_count_caution": "페이지의 16개 고유 선수 링크에는 상단 추천 영역도 있으므로 모두 상품 구성으로 취급하지 않음.",
+      "page_or_next_links": []
+    },
+    {
+      "url": "https://api.efootballdb.info/api/v2/players/88046292727298",
+      "observed_at": "2026-10-25T07:12:49.548539+00:00",
+      "request_method": "GET",
+      "status": 404,
+      "final_url": "https://api.efootballdb.info/api/v2/players/88046292727298",
+      "discovery": {
+        "script": "https://efootballdb.info/assets/index-CEwWGUbi.js",
+        "api_origin_literal": "https://api.efootballdb.info",
+        "client_path_template": "${T_()}/api/v2/players/${encodeURIComponent(e)}${a}",
+        "card_id_source": "https://efootballdb.info/en/players/yaya-toure-88046292727298",
+        "scope": "공개 클라이언트에서 확인된 선수 상세 경로; 상품별 전체 명단 요청으로 간주하지 않음"
+      },
+      "error": "Not Found",
+      "error_field_scope": "Client HTTP error reason, not a preserved source response body."
+    }
+  ],
+  "alternate_source_assessments": [
+    {
+      "candidate": "PESMaster",
+      "urls": [
+        "https://www.pesmaster.com/efootball-2022/player/featured/?date=2026-10-22"
+      ],
+      "http_statuses": [
+        200
+      ],
+      "latest_observed_version_or_date": "2026-10-22 날짜별 Featured 페이지. URL의 efootball-2022는 경로명이며 최신 게임 버전의 증거로 쓰지 않음.",
+      "sale_period": {
+        "verified": false,
+        "value": null,
+        "reason": "출시/featured 날짜를 판매 시작·종료 기간으로 변환하지 않음."
+      },
+      "product_identification": "날짜별 featured 페이지에서 Magical Dribblers 표시는 확인. 상품 고유 ID·전체 명단 계약은 미확인.",
+      "card_identification": {
+        "type": "공개 상세 URL의 숫자 문자열 ID",
+        "examples": [
+          "52904333543847",
+          "52904333576000"
+        ],
+        "cross_source_mapping": "ID 개정본·조건·같은 선수 관계의 출처 간 동등성은 미검증."
+      },
+      "full_pool": {
+        "verified": false,
+        "total": null,
+        "pagination": "이전 featured 날짜 링크는 관측. 상품 내부 전체 구성 페이지네이션은 미검증.",
+        "standard_membership_status": "not_verified_not_a_claim_of_real_absence"
+      },
+      "public_client_data": "공개 스크립트 URL은 관측했으나 이 후보의 API/JSON 계약은 직접 검증하지 않음.",
+      "official_comparison": "상품명·날짜 후보 대조만 가능. 공식 총계와 개별 ID의 대응은 검증되지 않음.",
+      "decision": "최신 카드 식별 보강 후보이며 Standard 포함 전체 추첨풀의 확보 경로로 확정할 수 없음."
+    },
+    {
+      "candidate": "eFootballDB.com",
+      "urls": [
+        "https://www.efootballdb.com/"
+      ],
+      "http_statuses": [
+        200
+      ],
+      "latest_observed_version_or_date": "홈 본문에 eFootball 2022·2023 표기. 현재 2027 상품 데이터 최신성은 이 요청으로 검증되지 않음.",
+      "sale_period": {
+        "verified": false,
+        "value": null
+      },
+      "product_identification": "상품별 명단 경로를 관측하지 못함.",
+      "card_identification": {
+        "type": "/players 진입 링크",
+        "cross_source_mapping": "개별 카드 ID/상품 관계는 미검증."
+      },
+      "full_pool": {
+        "verified": false,
+        "total": null,
+        "pagination": "미검증",
+        "standard_membership_status": "not_verified_not_a_claim_of_real_absence"
+      },
+      "public_client_data": "Next.js 공개 스크립트 참조까지만 확인했으며 API/상품 명단 계약은 미검증.",
+      "official_comparison": "최신 상품의 비교 기준이 확보되지 않음.",
+      "decision": "오래된 게임 표기를 최신 전체 상품 풀로 간주할 수 없음."
+    },
+    {
+      "candidate": "eFootballDB.info",
+      "urls": [
+        "https://efootballdb.info/en",
+        "https://efootballdb.info/en/players?pack=European+Clubs+Midfielders",
+        "https://efootballdb.info/assets/index-CEwWGUbi.js",
+        "https://api.efootballdb.info/api/v2/players/88046292727298"
+      ],
+      "http_statuses": [
+        200,
+        200,
+        200,
+        404
+      ],
+      "latest_observed_version_or_date": "홈에서 2026-10-19·2026-10-15 자료와 European Clubs Midfielders 이름 확인. 버전/판매 기간의 정확한 계약은 미검증.",
+      "sale_period": {
+        "verified": false,
+        "value": null
+      },
+      "product_identification": {
+        "query_key": "pack",
+        "value": "European Clubs Midfielders",
+        "stable_product_id": null,
+        "limitation": "이름 필터이며 공식 상품 고유 ID와의 연결은 확인하지 못함."
+      },
+      "card_identification": {
+        "examples": [
+          "88046292727298",
+          "88046292698013",
+          "88046292831741"
+        ],
+        "cross_source_mapping": "공개 URL의 문자열 ID를 관측. EFHub ID와의 값 일치만으로 개정본·조건까지 동일하다고 확정하지 않음."
+      },
+      "full_pool": {
+        "verified": false,
+        "filtered_result_count": 11,
+        "pagination": "해당 필터 HTML의 page/offset/cursor 링크는 관측되지 않았고 전체성 API 계약은 미검증.",
+        "standard_membership_status": "not_verified_not_a_claim_of_real_absence"
+      },
+      "public_client_data": {
+        "origin_literal": "https://api.efootballdb.info",
+        "path_template": "${T_()}/api/v2/players/${encodeURIComponent(e)}${a}",
+        "optional_query_parameter": "include 인수를 URLSearchParams로 만드는 공개 코드가 보임. 기본값과 옵션별 응답 계약은 미검증.",
+        "actual_probe_status": 404,
+        "classification": "카드 상세 조회 경로이며 상품 전체 구성 조회 경로가 아님."
+      },
+      "official_comparison": "동명 Midfielders의 필터 결과 11명을 공식 전체 150명과 동일하게 처리할 근거가 없음.",
+      "decision": "상품명 필터가 작동하는 카드 검색 근거는 있으나 139명 추가 구성(타입별 전체 구성 미확인)·전체 상품 풀 API는 확보하지 못함. 404 뒤 대체 경로를 추측하거나 재시도하지 않음."
+    },
+    {
+      "candidate": "eFootballLAB",
+      "urls": [
+        "https://efootballlab.com/new-packs"
+      ],
+      "http_statuses": [
+        200
+      ],
+      "latest_observed_version_or_date": "eFootball 2027 표기와 Magical Dribblers 카드 링크가 보임. 정확한 판매 기간은 미검증.",
+      "sale_period": {
+        "verified": false,
+        "value": null
+      },
+      "product_identification": "페이지 내 상품명 표시는 있으나 안정적인 상품 ID와 공식 ID 대응은 미검증.",
+      "card_identification": {
+        "type": "사이트 고유 slug/짧은 내부 숫자",
+        "example": "/player/desire-doue-2027-783",
+        "cross_source_mapping": "게임/EFHub의 긴 카드 ID와 명시적으로 연결된 근거는 확보하지 못함."
+      },
+      "full_pool": {
+        "verified": false,
+        "total": null,
+        "pagination": "이 조사에서는 미검증. 시뮬레이터/pool 표기만으로 게임의 전체 추첨풀과 같다고 판단하지 않음.",
+        "standard_membership_status": "not_verified_not_a_claim_of_real_absence"
+      },
+      "public_client_data": {
+        "linked_script": "https://efootballlab.com/assets/js/new-packs.js?v=1791489450",
+        "script_fetched_in_this_probe": false,
+        "api_or_export_contract_verified": false
+      },
+      "official_comparison": "상품명과 선수 이름의 후보 비교만 가능하며 전체 수량·원본 카드 ID 동등성은 미검증.",
+      "decision": "부모가 별도로 조사 중인 후보와 중복을 늘리지 않고 추가 요청을 중단함. 공개 웹 UI를 확인했으나 전체 구성 수집 가능성을 확정하지 않음."
+    }
+  ],
+  "comparison": {
+    "magical": {
+      "official_initial_count": 150,
+      "efhub_displayed_and_acquired_count": 11,
+      "pesdb_displayed_count": 11,
+      "arithmetic_difference_if_same_official_edition": 139,
+      "all_missing_card_ids": null,
+      "all_missing_standard_count": null,
+      "official_efhub_product_id_mapping": "unverified",
+      "applied_to_seed": false
+    },
+    "midfielders": {
+      "official_initial_count": 150,
+      "official_featured_count": 11,
+      "official_other_active_count": 139,
+      "edb_info_filter_result_count": 11,
+      "part_of_active_nine_products": false,
+      "all_missing_card_ids": null,
+      "applied_to_seed": false
+    }
+  },
+  "additional_reported_candidates": [
+    {
+      "name": "PesLig",
+      "url": "https://peslig.com.tr/pesdb.php?cardType=Standard",
+      "evidence_scope": "상위 작업의 독립 조사 공유. 이 작업에서 새 직접 GET으로 검증하지 않음.",
+      "reported": "2026-10-22 Standard19018, Magical11",
+      "full_product_membership_verified": false
+    },
+    {
+      "name": "TheWinningXI",
+      "url": null,
+      "evidence_scope": "상위 작업의 독립 조사 공유. 원본URL/전체 pool/공개 API 이 작업 미검증.",
+      "reported": "게임 pack-table 출처 주장이나 Magical3Showtime8Highlight11만 표시",
+      "full_product_membership_verified": false
+    },
+    {
+      "name": "PlayersDB",
+      "url": "https://playersdb.app/",
+      "evidence_scope": "상위 작업의 독립 조사 공유. CSV/JSONL 최신성·상품 관계를 이 작업에서 새 검증하지 않음.",
+      "reported": "카드 식별 보강 자료; 상품 전체 초기 풀의 권위 아님",
+      "full_product_membership_verified": false
+    },
+    {
+      "name": "CptnPES",
+      "url": "https://cptnpes.com/en/blog/efootball-pack-odds/",
+      "evidence_scope": "상위 작업의 독립 조사 공유. 앱 주장 외 허용 API/export·실제150 ID는 미검증.",
+      "reported": "앱에서 Standard 포함150pool 주장; 공급자 협의 후보일 뿐",
+      "full_product_membership_verified": false
+    }
+  ],
+  "acceptance_criteria": [
+    "공식 상품명·회차·지역/플랫폼·판매기간·공급자 상품ID와 초기/잔여 범위를 연결한다.",
+    "공식 초기 수와 공급자 전체 페이지/최종응답·총계 안정성을 대조한다.",
+    "출시 카드 원본 문자열 ID·상품 포함 관계·수량·분류·관찰시각과 버전의 근거를 보존한다.",
+    "고유ID 수·수량 합계·중복/누락을 별도로 확인하고 임의 Standard/이름/숫자규칙으로 채우지 않는다.",
+    "Magical150 목표는 공식 동일회차 연결과 실제150 전체ID 실증 전 성공으로 선언하지 않는다.",
+    "이미지URL/이름/표시값 전체 검사와 실제 이미지 응답의 표본/전수 검사를 구분한다.",
+    "실패/빈응답/구성감소는 정상 누적 관계와 공개 데이터를 자동 삭제하지 않는다.",
+    "선수 초기 풀의 완료는 감독/다른구성까지 포함한 상품 전체 완료·R6실제운영 완료가 아니다."
+  ],
+  "next_steps": [
+    "공급자 허용 API/일괄 export·query계약·쿼터·자료갱신/출처 조건 확인",
+    "Magical 단일 회차150명의 명시 포함 관계와 공식 비교를 먼저 실증",
+    "글로벌 카드·소개 관계·초기 pool_snapshot을 구분하는 구조 보강 후 R5 확대",
+    "게임 초기명단 수동대조는 선택적 대안이며 자동 API 확보와 구분"
+  ],
+  "user_decisions": [
+    "공급자에게 허용 API/export 협의를 진행할지(이번에는 연락하지 않음)",
+    "완전한 게임 내 초기목록을 수동 검증 보조 자료로 병행할지(자동 API 대체 성공 아님)"
+  ]
+}

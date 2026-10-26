@@ -1,0 +1,42 @@
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import test from 'node:test';
+import { addManagerProduct } from '../scripts/manager-product.mjs';
+import { validateCatalog } from '../scripts/catalog.mjs';
+
+const evidence = JSON.parse(readFileSync(new URL('../data/research/mourinho-product-observations.json', import.meta.url), 'utf8'));
+const base = { version: 1, observed_at: evidence.observed_at, coverage: { scope: '독립 관계 검증', complete: false, notes: [], source_totals: { products: 1698, cards: 50840 } }, sources: [], observations: [], persons: [], cards: [], managers: [], products: [], assets: [] };
+
+test('원문 캡처의 감독·선수 관계와 21자리 게시물 ID를 출처 위치로 보존한다', () => {
+  const seed = addManagerProduct(base, evidence);
+  validateCatalog(seed);
+  assert.equal(seed.managers.length, 1);
+  assert.equal(seed.products[0].entries.filter(entry => entry.kind === 'manager')[0].target_id, seed.managers[0].id);
+  assert.equal(seed.managers[0].external_ids[0].value, '2097939763076669826');
+  assert.equal(seed.cards.length, 2);
+  assert.equal(seed.assets[0].kind, 'product_screenshot');
+  assert.ok(seed.cards.every(card => card.overall.conditions.includes('highest possible Ratings')));
+  assert.equal(seed.products[0].price.amount, 750);
+  assert.equal(seed.products[0].purchase_mode, 'bundle');
+  assert.equal(seed.products[0].limits, null);
+  assert.equal(seed.products[0].availability.end, null);
+  assert.equal(seed.products[0].total_player_count, null);
+  assert.equal(seed.products[0].composition_status, 'partial');
+});
+
+test('코인 결제 팩도 일괄 지급형이며 추첨 명단으로 바꿀 수 없다', () => {
+  const seed = addManagerProduct(base, evidence);
+  seed.products[0].purchase_mode = 'draw';
+  assert.throws(() => validateCatalog(seed), /팩은 일괄 구매·지급/);
+  seed.products[0].purchase_mode = 'bundle';
+  seed.products[0].kind = 'special_list';
+  assert.throws(() => validateCatalog(seed), /일괄 지급형 팩과 특수 선수 명단/);
+});
+
+test('확인하지 않은 공식 검증·전체 구성을 승격하거나 게시물 ID를 숫자로 만들면 거부한다', () => {
+  for (const mutate of [e => { e.product_record.post_id = Number(e.product_record.post_id); }, e => { e.product_record.known_full_composition = true; }, e => { e.product_record.official_crosscheck = 'verified'; }]) {
+    const changed = structuredClone(evidence);
+    mutate(changed);
+    assert.throws(() => addManagerProduct(base, changed));
+  }
+});

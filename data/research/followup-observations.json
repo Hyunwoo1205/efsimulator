@@ -1,0 +1,628 @@
+{
+  "schema_version": 1,
+  "research_stage": "R1 follow-up during R3 sample implementation",
+  "observed_at": "2026-10-25T04:03:29.781739Z",
+  "research_status": "additional_evidence_observed_no_seed_merge",
+  "request_count": 10,
+  "method": {
+    "transport": "Normal public HTTPS GET through inherited proxy with TLS verification enabled",
+    "user_agent": "Mozilla/5.0",
+    "restrictions": "No endpoint guessing, access-control bypass, authentication, scheduling, bulk collection, service signup or seed merge. Initial observations remain unchanged.",
+    "scope": "Ten bounded public-source requests including repeated HTML reads to inspect inline structures."
+  },
+  "observations": [
+    {
+      "id": "official_news_inline_discovery",
+      "url": "https://www.konami.com/efootball/ko/topic/news/list",
+      "observed_at": "2026-10-25T04:01:25.874034Z",
+      "status": 200,
+      "source": "konami",
+      "source_ids": {
+        "locale": "ko"
+      },
+      "verified_fields": {
+        "delivery": "JSON array embedded in inline Vue data() property newsData; no separate network feed required for this observed page",
+        "inline_property": "newsData"
+      },
+      "excerpts": [
+        {
+          "kind": "javascript",
+          "text": "data(){ return { language: 'ko', newsData: [{\"id\":6043,\"beginDate\":\"2026-10-23 11:00:00\",\"title\":\"Regarding Match Connection Quality\""
+        }
+      ],
+      "unknown_fields": [
+        "complete_promotion_archive",
+        "additional_news_pagination",
+        "full_product_compositions"
+      ],
+      "access_limitations": [],
+      "applicability": {
+        "region": "not established by Korean locale",
+        "platforms": "per news entry; not a product sales scope",
+        "product": "news catalogue"
+      }
+    },
+    {
+      "id": "official_news_inline_parsed",
+      "url": "https://www.konami.com/efootball/ko/topic/news/list",
+      "observed_at": "2026-10-25T04:01:42.683721Z",
+      "status": 200,
+      "source": "konami",
+      "source_ids": {
+        "locale": "ko",
+        "first_news_id": "6043",
+        "last_news_id": "5408"
+      },
+      "verified_fields": {
+        "entry_count": 170,
+        "first_entry": {
+          "id": "6043",
+          "beginDate": "2026-10-23 11:00:00",
+          "title": "Regarding Match Connection Quality"
+        },
+        "last_entry": {
+          "id": "5408",
+          "beginDate": "2026-06-18 11:45:00",
+          "title": "POTD Banner Issue"
+        },
+        "relevant_entries": [
+          {
+            "id": "6017",
+            "title": "[추가 정보] eFootball™ 코인 상품 구성 변경 안내",
+            "beginDate": "2026-10-22 02:00:02"
+          },
+          {
+            "id": "6012",
+            "title": "eFootball™ 코인의 가격 변경 안내 (2026/10/22)",
+            "beginDate": "2026-10-22 02:00:01"
+          },
+          {
+            "id": "5905",
+            "title": "\"Show Time: Welcome to eFootball™\" 선수 카드 변경 안내",
+            "beginDate": "2026-10-01 02:00:00"
+          }
+        ],
+        "extraction": "Locate newsData followed by a colon and use JSONDecoder.raw_decode for the array. Read-only extraction from the normal HTML."
+      },
+      "excerpts": [
+        {
+          "kind": "json",
+          "text": "{\"id\":6017,\"beginDate\":\"2026-10-22 02:00:02\",\"title\":\"[추가 정보] eFootball™ 코인 상품 구성 변경 안내\"}"
+        },
+        {
+          "kind": "json",
+          "text": "{\"id\":5905,\"beginDate\":\"2026-10-01 02:00:00\",\"title\":\"\\\"Show Time: Welcome to eFootball™\\\" 선수 카드 변경 안내\"}"
+        }
+      ],
+      "unknown_fields": [
+        "full_promotion_archive",
+        "card_pack_prices",
+        "manager_product_links"
+      ],
+      "access_limitations": [
+        "Coin purchase-price notices concern currency bundles and cannot establish a player-list draw price. News details were not fetched in this follow-up."
+      ],
+      "applicability": {
+        "region": "per news entry; Korean locale is not proof of Korea-only eligibility",
+        "platforms": "device flags exist per news entry",
+        "product": "news catalogue; sample article dates are raw source values without an independently verified timezone"
+      }
+    },
+    {
+      "id": "efhub_manager_product_fields_scan",
+      "url": "https://efhub.com/ko/managers/17610439655559",
+      "observed_at": "2026-10-25T04:01:41.675574Z",
+      "status": 200,
+      "source": "efhub",
+      "source_ids": {
+        "manager_id": "17610439655559"
+      },
+      "verified_fields": {
+        "payload_scan_counts": {
+          "packId": 0,
+          "packIds": 0,
+          "productId": 0,
+          "price": 0,
+          "currency": 0
+        },
+        "packs_key_occurrences": 1,
+        "packs_key_context": "Translation dictionary only."
+      },
+      "excerpts": [
+        {
+          "kind": "flight",
+          "text": "\"players\":\"선수들\",\"allPlayers\":\"전체 선수\",\"packs\":\"팩\""
+        }
+      ],
+      "unknown_fields": [
+        "included_product_ids",
+        "price",
+        "currency"
+      ],
+      "access_limitations": [
+        "Absence of these keys in this sampled HTML payload does not prove the relationship is unavailable in every source."
+      ],
+      "applicability": {
+        "region": "unknown",
+        "platforms": "unknown",
+        "product": "manager Niko Kovač; no product link verified"
+      }
+    },
+    {
+      "id": "official_halloween_daily_free_draw",
+      "url": "https://www.konami.com/efootball/ko/topic/promotion/campaign/919/",
+      "observed_at": "2026-10-25T04:02:12.170798Z",
+      "status": 200,
+      "source": "konami",
+      "source_ids": {
+        "promotion_campaign_id": "919",
+        "locale": "ko"
+      },
+      "verified_fields": {
+        "campaign_name": "Halloween Campaign",
+        "announcement_date": "2026-10-22",
+        "named_list": "Epic: Daily Free Draw",
+        "cost_condition_original": "하루 한 번, 무료로 에픽을 영입할 수 있는 기회!",
+        "usage_limit": {
+          "draws_per_day": 1,
+          "reset_time_utc": "02:00",
+          "box_reset_resets_daily_limit": false
+        },
+        "period": {
+          "starts_at": "2026-10-22T02:00:00Z",
+          "ends_at_display": "2026/11/05 01:59 (UTC)",
+          "end_precision": "minute; no seconds supplied"
+        },
+        "conditional_reward": {
+          "subject": "Diego Forlán",
+          "condition": "Epic: Daily Free Draw에서 12회 계약해도 Diego Forlán이 등장하지 않으면 도전 과제 보상으로 획득"
+        },
+        "separate_campaign_gift": {
+          "item_name_original": "Highlight: Borussia Dortmund 추첨 계약권",
+          "quantity": 1,
+          "condition": "캠페인 기간에 로그인",
+          "period_display": "2026/10/22 02:00 (UTC) - 2026/11/05 01:59 (UTC)"
+        }
+      },
+      "excerpts": [
+        {
+          "kind": "visible_text",
+          "text": "하루 한 번, 무료로 에픽을 영입할 수 있는 기회! Epic: Daily Free Draw 에픽 Diego Forlán 등장!"
+        },
+        {
+          "kind": "visible_text",
+          "text": "본 특수 선수 명단은 하루에 1번만 선수를 영입할 수 있습니다. 02:00 (UTC)에 남은 횟수가 리셋됩니다. 상자를 리셋하더라도 남은 횟수는 리셋되지 않습니다."
+        },
+        {
+          "kind": "visible_text",
+          "text": "Epic: Daily Free Draw에서 12회 계약해도 Diego Forlán이 등장하지 않으면 도전 과제 보상으로 획득할 수 있습니다."
+        },
+        {
+          "kind": "visible_text",
+          "text": "배포 기간 2026/10/22 02:00 (UTC) - 2026/11/05 01:59 (UTC)"
+        },
+        {
+          "kind": "visible_text",
+          "text": "내용 ・‘Highlight: Borussia Dortmund’ 추첨 계약권 ×1"
+        }
+      ],
+      "unknown_fields": [
+        "full_card_ids",
+        "full_roster_count",
+        "manager_relation",
+        "cross_source_product_identifier",
+        "region_and_device_eligibility_details"
+      ],
+      "access_limitations": [
+        "These daily free-draw conditions apply to Epic: Daily Free Draw. They are not prices or limits for Magical Dribblers or Borussia Dortmund Pack 26-27.",
+        "The separate login-gift ticket refers to Highlight: Borussia Dortmund, not an established match to the EFHub paid-pack group."
+      ],
+      "applicability": {
+        "region": "not enumerated in observed text; Korean source locale only",
+        "platforms": "not enumerated in observed text",
+        "product": "Epic: Daily Free Draw; separate login gift explicitly distinguished",
+        "currency": "free opportunity as explicitly described; no coin amount inferred"
+      }
+    },
+    {
+      "id": "official_overview_definitions",
+      "url": "https://www.konami.com/efootball/ko/page/overview",
+      "observed_at": "2026-10-25T04:02:13.782658Z",
+      "status": 200,
+      "source": "konami",
+      "source_ids": {
+        "locale": "ko"
+      },
+      "verified_fields": {
+        "pack_definition_original": "선수와 감독, 유니폼 등 다양한 보너스가 포함된 팩이 판매됩니다.",
+        "currencies_and_tickets_described": [
+          "eFootball™ 코인",
+          "GP",
+          "eFootball™ 포인트",
+          "추첨 계약권",
+          "지명 계약권",
+          "선택 계약권"
+        ]
+      },
+      "excerpts": [
+        {
+          "kind": "visible_text",
+          "text": "・팩 선수와 감독, 유니폼 등 다양한 보너스가 포함된 팩이 판매됩니다."
+        },
+        {
+          "kind": "visible_text",
+          "text": "GP 선수 영입, 감독 영입 등에 사용할 수 있는 포인트입니다."
+        }
+      ],
+      "unknown_fields": [
+        "named_pack_manager_links",
+        "specific_product_prices",
+        "specific_product_currency_or_limits"
+      ],
+      "access_limitations": [
+        "A general pack definition does not establish that any particular sampled pack contains a manager."
+      ],
+      "applicability": {
+        "region": "general Korean-language game guide",
+        "platforms": "not assigned to a specific sale offering",
+        "product": "general definitions only"
+      }
+    },
+    {
+      "id": "official_edition_store_links",
+      "url": "https://www.konami.com/efootball/ko/page/download_edition_list",
+      "observed_at": "2026-10-25T04:02:12.430815Z",
+      "status": 200,
+      "source": "konami",
+      "source_ids": {
+        "locale": "ko",
+        "playstation_product_id": "HP0101-CUSA26994_00-EDITION000000013",
+        "microsoft_product_id": "9NQ0Q5P5QBXD"
+      },
+      "verified_fields": {
+        "edition_name": "Leo Messi Edition 2027 [Deluxe]",
+        "playstation_link": "https://store.playstation.com/ko-kr/product/HP0101-CUSA26994_00-EDITION000000013",
+        "microsoft_link": "https://microsoft.com/store/apps/9NQ0Q5P5QBXD"
+      },
+      "excerpts": [
+        {
+          "kind": "visible_text",
+          "text": "특별판 Leo Messi Edition 2027 [Deluxe] Lamine Yamal Edition 2027 [Deluxe] Leo Messi Edition 2027 Lamine Yamal Edition 2027"
+        },
+        {
+          "kind": "link",
+          "text": "https://store.playstation.com/ko-kr/product/HP0101-CUSA26994_00-EDITION000000013"
+        },
+        {
+          "kind": "link",
+          "text": "https://microsoft.com/store/apps/9NQ0Q5P5QBXD"
+        }
+      ],
+      "unknown_fields": [
+        "edition_item_prices_on_official_list",
+        "manager_link"
+      ],
+      "access_limitations": [],
+      "applicability": {
+        "region": "official Korean-language page; actual regional scope follows each linked store",
+        "platforms": "linked store-specific",
+        "product": "Leo Messi Edition 2027 [Deluxe]"
+      }
+    },
+    {
+      "id": "playstation_messi_deluxe_korea",
+      "url": "https://store.playstation.com/ko-kr/product/HP0101-CUSA26994_00-EDITION000000013",
+      "observed_at": "2026-10-25T04:02:53.760620Z",
+      "status": 200,
+      "source": "playstation",
+      "source_ids": {
+        "product_id": "HP0101-CUSA26994_00-EDITION000000013",
+        "store_locale": "ko-kr"
+      },
+      "verified_fields": {
+        "name": "eFootball™: Leo Messi Edition 2027 [Deluxe]",
+        "publisher": "KONAMI",
+        "platforms": [
+          "PS4",
+          "PS5"
+        ],
+        "price": {
+          "value": 28000,
+          "currency": "KRW",
+          "display": "28,000원",
+          "kind": "store purchase price for this edition bundle",
+          "json_ld_offer": {
+            "@type": "Offer",
+            "price": 28000,
+            "priceCurrency": "KRW"
+          }
+        },
+        "detailed_description_composition": [
+          {
+            "kind": "game",
+            "name": "eFootball™ 게임 본편",
+            "quantity": "not stated"
+          },
+          {
+            "kind": "player_card",
+            "name": "Epic Lionel Messi (2020-21 FC Barcelona)",
+            "quantity": 1
+          },
+          {
+            "kind": "player_cards",
+            "name": "하이라이트 선수 카드",
+            "quantity": 10
+          },
+          {
+            "kind": "item",
+            "name": "Exp. 4,000 토큰",
+            "quantity": 22
+          },
+          {
+            "kind": "item",
+            "name": "유니폼: Leo Messi Edition 2027 [Deluxe]",
+            "quantity": 1
+          },
+          {
+            "kind": "item",
+            "name": "프로필 배너: Leo Messi Edition 2027 [Deluxe]",
+            "quantity": 1
+          },
+          {
+            "kind": "item",
+            "name": "초대형 현수막: Leo Messi Edition '27",
+            "quantity": 1
+          },
+          {
+            "kind": "item",
+            "name": "대형 소품: Leo Messi Edition '27",
+            "quantity": 1
+          },
+          {
+            "kind": "bonus_currency",
+            "name": "eFootball™ 코인 (무료 코인)",
+            "quantity": 450
+          }
+        ],
+        "sale_ends_at": "2027-08-05T01:59:59Z",
+        "claim_deadline": "2027-08-12T01:59:59Z",
+        "release_date_display": "2026/8/12",
+        "explicit_condition": "본 상품을 구입한 계정에 한해 증정",
+        "same_page_discrepancy": "Edition comparison grid labels the shirt as Leo Messi Edition 2025 [Deluxe], while the detailed product description labels it Leo Messi Edition 2027 [Deluxe]. Preserve both source contexts; do not silently resolve."
+      },
+      "excerpts": [
+        {
+          "kind": "json_ld",
+          "text": "\"offers\":{\"@type\":\"Offer\",\"price\":28000,\"priceCurrency\":\"KRW\"}"
+        },
+        {
+          "kind": "visible_text",
+          "text": "28,000원"
+        },
+        {
+          "kind": "visible_text",
+          "text": "・ 에픽 Lionel Messi (2020-21 FC Barcelona) x1"
+        },
+        {
+          "kind": "visible_text",
+          "text": "・ 하이라이트 선수 카드 ×10 ・Exp. 4,000 토큰 ×22 ・유니폼: Leo Messi Edition 2027 [Deluxe] ×1"
+        },
+        {
+          "kind": "visible_text",
+          "text": "또한 아래 보너스 아이템도 포함됩니다. ・eFootball™ 코인 450개(무료 코인)"
+        },
+        {
+          "kind": "visible_text",
+          "text": "*본 상품의 판매 종료 일시는 2027/08/05 01:59:59 (UTC)입니다. *상품과 보너스 아이템의 수령 기한은 2027/08/12 01:59:59 (UTC)까지입니다."
+        },
+        {
+          "kind": "visible_text",
+          "text": "*본 상품을 구입한 계정에 한해 증정해 드립니다."
+        }
+      ],
+      "unknown_fields": [
+        "full_highlight_card_ids",
+        "efhub_card_or_product_id_correspondence",
+        "named_manager_or_manager_id",
+        "purchase_count_limit",
+        "release_date_timezone",
+        "shirt_grid_vs_detail_label_resolution"
+      ],
+      "access_limitations": [
+        "This is a KRW purchase price for the Korean PS4/PS5 edition bundle, not an eFootball-coin draw price and not a price for Magical Dribblers or a Dortmund pack.",
+        "450 eFootball coins are included as a free-coin bonus; they are not the purchase currency.",
+        "No manager in the inspected description is not proof that manager count is zero.",
+        "The source was reached from a real link on Konami official edition listing; no guessed retail endpoint or authentication was used."
+      ],
+      "applicability": {
+        "region": "South Korea store (ko-kr)",
+        "platforms": [
+          "PS4",
+          "PS5"
+        ],
+        "product": "eFootball™: Leo Messi Edition 2027 [Deluxe]",
+        "purchase_currency": "KRW",
+        "sales_period": "end verified; start not inferred from release date",
+        "manager_relation": "unknown"
+      },
+      "final_url": "https://store.playstation.com/ko-kr/product/HP0101-CUSA26994_00-EDITION000000013"
+    },
+    {
+      "id": "microsoft_edition_access",
+      "url": "https://microsoft.com/store/apps/9NQ0Q5P5QBXD",
+      "observed_at": "2026-10-25T04:02:53.012200Z",
+      "status": 403,
+      "source": "microsoft",
+      "source_ids": {
+        "product_id": "9NQ0Q5P5QBXD"
+      },
+      "verified_fields": {},
+      "excerpts": [
+        {
+          "kind": "html_title",
+          "text": "Microsoft"
+        }
+      ],
+      "unknown_fields": [
+        "product_price",
+        "currency",
+        "composition",
+        "platform_specific_terms"
+      ],
+      "access_limitations": [
+        "Officially linked normal store request returned HTTP403. No retry with altered credentials, cookie/token impersonation or alternate-route guessing."
+      ],
+      "applicability": {
+        "region": "not verified",
+        "platforms": "not verified",
+        "product": "officially linked edition listing; content not read"
+      }
+    },
+    {
+      "id": "efhub_manager_coach_payload",
+      "url": "https://efhub.com/ko/managers/17610439655559",
+      "observed_at": "2026-10-25T04:03:29.757149Z",
+      "status": 200,
+      "source": "efhub",
+      "source_ids": {
+        "manager_id": "17610439655559"
+      },
+      "verified_fields": {
+        "coach": {
+          "id": "17610439655559",
+          "name": "Niko Kovac",
+          "accentedName": "Niko Kovač",
+          "japName": "ニコ コヴァッチ",
+          "chineseName": "尼科·科瓦奇",
+          "country": 2,
+          "age": 55,
+          "affinity": 1,
+          "skills": {
+            "possessionGame": 90,
+            "quickCounter": 67,
+            "longBallCounter": 59,
+            "outWide": 89,
+            "longBall": 53,
+            "overload": 57
+          },
+          "boosts": [
+            1,
+            11
+          ],
+          "hasBoost": true,
+          "linkupId": 6,
+          "linkupId2": 27
+        },
+        "coachId_component_prop": "17610439655559",
+        "payload_scan_counts": {
+          "packId": 0,
+          "managerId": 0,
+          "price": 0,
+          "currency": 0,
+          "gpValue": 0
+        }
+      },
+      "excerpts": [
+        {
+          "kind": "flight",
+          "text": "\"coach\":{\"id\":17610439655559,\"name\":\"Niko Kovac\",\"accentedName\":\"Niko Kovač\",\"japName\":\"ニコ コヴァッチ\",\"chineseName\":\"尼科·科瓦奇\""
+        },
+        {
+          "kind": "flight",
+          "text": "\"coachId\":\"17610439655559\""
+        }
+      ],
+      "unknown_fields": [
+        "product_link",
+        "price",
+        "currency"
+      ],
+      "access_limitations": [
+        "The numeric source id in the raw coach object is preserved as a decimal string in verified_fields/source_ids; the same string is explicitly present in the coachId component prop.",
+        "Coach attributes alone do not identify a sale offering."
+      ],
+      "applicability": {
+        "region": "unknown",
+        "platforms": "unknown",
+        "product": "manager Niko Kovač; offering relationship unverified"
+      }
+    },
+    {
+      "id": "efhub_dortmund_manager_link_scan",
+      "url": "https://efhub.com/ko/packs/borussia-dortmund-pack-26-27",
+      "observed_at": "2026-10-25T04:03:29.781739Z",
+      "status": 200,
+      "source": "efhub",
+      "source_ids": {
+        "pack_slug": "borussia-dortmund-pack-26-27",
+        "candidate_manager_id_checked": "17610439655559"
+      },
+      "verified_fields": {
+        "payload_scan_counts": {
+          "17610439655559": 0,
+          "coach": 0,
+          "coachId": 0,
+          "managerId": 0,
+          "price": 0,
+          "currency": 0,
+          "gpValue": 0,
+          "packId": 0
+        },
+        "cost_key_context": "One translation-dictionary occurrence, not a confirmed amount."
+      },
+      "excerpts": [
+        {
+          "kind": "flight",
+          "text": "\"cost\":\"비용\" (translation dictionary)"
+        }
+      ],
+      "unknown_fields": [
+        "manager_product_relation",
+        "price",
+        "currency",
+        "complete_sale_offering_composition"
+      ],
+      "access_limitations": [
+        "No explicit manager/source-ID relation in the inspected normal payload. Matching club or manager names would be an unsupported inference; no relation was added."
+      ],
+      "applicability": {
+        "region": "unknown",
+        "platforms": "unknown",
+        "product": "EFHub group borussia-dortmund-pack-26-27"
+      }
+    }
+  ],
+  "resolved_gaps": [
+    {
+      "field_group": "official_news_delivery",
+      "result": "Normal page embeds parseable newsData JSON array of170 entries; no separate feed was needed for the observed list.",
+      "observation_ids": [
+        "official_news_inline_discovery",
+        "official_news_inline_parsed"
+      ]
+    },
+    {
+      "field_group": "specific_non_coin_usage_conditions",
+      "result": "Epic: Daily Free Draw has official free once-per-day and02:00UTC reset conditions; specific period and conditional12-draw reward confirmed.",
+      "observation_ids": [
+        "official_halloween_daily_free_draw"
+      ]
+    },
+    {
+      "field_group": "specific_retail_product_price_and_contents",
+      "result": "Officially linked Korean PlayStation MessiDeluxe2027 bundle is28000KRW with stated components and sale/claim deadlines. This is independent of coin-draw offerings.",
+      "observation_ids": [
+        "official_edition_store_links",
+        "playstation_messi_deluxe_korea"
+      ]
+    }
+  ],
+  "remaining_gaps": [
+    "Explicit product-to-manager relationship for the sampled EFHub products",
+    "Complete in-game roster and unambiguous cross-source product/card identifier links",
+    "Coin draw prices/options/usage limits for Magical Dribblers and the current sample offerings",
+    "Platform/region variation beyond the specific Korean PS4/PS5 retail listing",
+    "Actual upstream new/changed data reaching the implemented refresh pipeline"
+  ],
+  "integration_policy": "Research evidence only. Do not automatically merge new products, amounts, limits, managers or card identities into the current seed. Apply every fact only to its observed product, region, platform, currency and period."
+}

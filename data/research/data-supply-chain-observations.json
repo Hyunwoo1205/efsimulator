@@ -1,0 +1,3148 @@
+{
+  "schema_version": 1,
+  "task_id": "T005",
+  "conditions": [
+    "C025",
+    "C026",
+    "C027"
+  ],
+  "baseline_commit": "987c8342d620a2a72900ed40bef852ad84f6ad67",
+  "investigated_at": "2026-10-25T09:19:03.219597+00:00",
+  "purpose": "DB 공급망과 실제 공개 카드 취득 경로/업데이트 운영의 증거 수준 조사. 활성 데이터가 아님.",
+  "overall_status": {
+    "new_site_catalogue_response_verified": true,
+    "received_snapshot_structural_validation": true,
+    "entire_game_catalogue_complete": false,
+    "product_standard_memberships_verified": false,
+    "konami_original_player_api_proven": false,
+    "provider_adoption_or_reuse_approved": false,
+    "simulator_or_anonymous_slots_implemented": false
+  },
+  "evidence_levels": [
+    "direct_http_and_saved_bytes",
+    "offline_saved_response_full_row_audit",
+    "operator_statement_via_public_document",
+    "public_code_read_only",
+    "search_indexed_statement",
+    "trusted_independent_read_report",
+    "not_verified"
+  ],
+  "request_accounting": {
+    "worker_direct_source_gets": 10,
+    "efhub_html_js_gets": 4,
+    "efhub_api_requests": 0,
+    "other_site_document_gets": 3,
+    "root_document_gets": 2,
+    "peslig_brief_gets": 1,
+    "root_image_requests": 0,
+    "auth_token_or_private_game_api_requests": 0,
+    "note": "웹검색/문서열람/연결GitHub도구의 origin요청수는 이10회 직접GET에 포함하지 않음. 부모의 앞선brief/이미지 표본은 별도 보고로 구분. 동일 거부URL/헤더변경 재시도0."
+  },
+  "peslig_response": {
+    "url": "https://peslig.com.tr/pesdb.php?api=brief&v=1792698603-30310520",
+    "method": "GET",
+    "requested_at": "2026-10-25T09:07:42.237919+00:00",
+    "observed_at": "2026-10-25T09:08:26.962080+00:00",
+    "http_status": 200,
+    "final_url": "https://peslig.com.tr/pesdb.php?api=brief&v=1792698603-30310520",
+    "response_bytes": 13639365,
+    "sha256": "add1257a3a8a1dc12ed27f176bc838c666d9a117a76da0e2a28ed645a518efb7",
+    "headers_allowlist": {
+      "content-type": "application/json; charset=utf-8",
+      "cache-control": "public, max-age=86400, s-maxage=604800, immutable",
+      "date": "Sun, 25 Oct 2026 09:07:44 GMT",
+      "server": "envoy"
+    },
+    "request_count": 1,
+    "retry_count": 0,
+    "headers_changed": false,
+    "cookies_tokens_acquired": false,
+    "source": "site_api_not_konami_api",
+    "top_level_keys": [
+      "meta",
+      "players"
+    ],
+    "top_level_shapes": {
+      "meta": {
+        "type": "dict",
+        "length": 18
+      },
+      "players": {
+        "type": "dict",
+        "length": 46742
+      }
+    },
+    "local_raw_policy": {
+      "path": "artifacts/supply-chain/peslig-brief-response.bin",
+      "tracked": false,
+      "published": false,
+      "normalized_import": false,
+      "scope": "single permitted public frontend request, local research snapshot only"
+    }
+  },
+  "peslig_row_audit": {
+    "schema_version": 1,
+    "task_id": "T005",
+    "audit_kind": "offline_saved_public_brief_catalogue_rows",
+    "audited_at": "2026-10-25T09:13:36.239297+00:00",
+    "method": {
+      "network_requests": 0,
+      "image_requests": 0,
+      "active_imports": 0,
+      "raw_file_mutations": 0,
+      "parser": "Python 3 standard-library json, UTF-8 strict, integer arbitrary precision, object_pairs_hook preserves every object member before duplicate detection; NaN/Infinity rejected",
+      "duplicate_key_policy": "Compare decoded member keys at every JSON object path, including escaped spelling equivalence. Do not count only the last-wins dict.",
+      "scope": "Source/API supply feasibility evidence only. No fallback anonymous Standard import or adoption decision.",
+      "output_contains_complete_source_dataset": false,
+      "reproduction": [
+        "Verify raw byte count and SHA-256.",
+        "Decode JSON using object_pairs_hook that returns tagged pair lists; recursively detect repeated decoded keys before materializing dicts.",
+        "Map every players[key] array by meta.fields positional indices; compare lengths, decoded key and exact integer row ID.",
+        "Count nonempty/name/overall/type/variant/stat fields without dropping archived/unavailable rows.",
+        "Compare actual card_type/is_variant histograms with meta; separately reconstruct family/availability arithmetic, whose per-row columns are absent.",
+        "Compare existing EFHub original string IDs against players object keys only; values remain separate source observations."
+      ]
+    },
+    "input": {
+      "path": "artifacts/supply-chain/peslig-brief-response.bin",
+      "bytes": 13639365,
+      "sha256": "add1257a3a8a1dc12ed27f176bc838c666d9a117a76da0e2a28ed645a518efb7",
+      "hash_matches_parent_observation": true,
+      "source_url": "https://peslig.com.tr/pesdb.php?api=brief&v=1792698603-30310520",
+      "http_status": 200,
+      "requested_at": "2026-10-25T09:07:42.237919+00:00",
+      "observed_at": "2026-10-25T09:08:26.962080+00:00",
+      "request_count_by_parent": 1,
+      "fetch_record": "artifacts/supply-chain/peslig-validation.json",
+      "source_status": "PesLig site API response; not a Konami API or independently authenticated game-file extraction",
+      "publication_policy": "Local research artifact only; raw response is not tracked in Git and must not be included in public deployment."
+    },
+    "json_structure": {
+      "top_level_keys": [
+        "meta",
+        "players"
+      ],
+      "object_count": 6,
+      "object_member_count_before_materialization": 46788,
+      "duplicate_object_key_occurrences": 0,
+      "duplicate_object_key_details": [],
+      "players_member_occurrences_before_materialization": 46742,
+      "players_unique_keys": 46742,
+      "ordinary_last_wins_parse_would_hide_rows": false,
+      "row_container": "array indexed by meta.fields; not object per player",
+      "field_count": 48,
+      "field_name_duplicates": {},
+      "row_length_counts": {
+        "48": 46742
+      },
+      "row_shape_violations": [],
+      "all_row_values_are_scalar": true
+    },
+    "source_metadata": {
+      "schema": "pml-efootball-all-cards-v15.1-current-cpk",
+      "generated_at": "2026-10-22T14:30:18.575785+00:00",
+      "source": "dt870_console_win.cpk",
+      "total_cards": 46742,
+      "player_count": 46742,
+      "standard_count": 19018,
+      "raw_base_count": 32795,
+      "deleted_base_count": 9816,
+      "active_base_count": 22979,
+      "authentic_only_base_count": 3961,
+      "variant_count": 13947,
+      "fields": [
+        "id",
+        "short_name",
+        "name",
+        "shirt_name",
+        "position",
+        "overall",
+        "age",
+        "height_cm",
+        "weight_kg",
+        "foot",
+        "nationality_name",
+        "playing_style",
+        "weekly_rating",
+        "max_level",
+        "card_type",
+        "is_variant",
+        "form",
+        "weak_foot_accuracy",
+        "injury_resistance",
+        "development_mode",
+        "offensive_awareness",
+        "ball_control",
+        "dribbling",
+        "tight_possession",
+        "low_pass",
+        "lofted_pass",
+        "finishing",
+        "heading",
+        "set_piece_taking",
+        "curl",
+        "speed",
+        "acceleration",
+        "kicking_power",
+        "jumping",
+        "physical_contact",
+        "balance",
+        "stamina",
+        "defensive_awareness",
+        "tackling",
+        "aggression",
+        "defensive_engagement",
+        "gk_awareness",
+        "gk_catching",
+        "gk_parrying",
+        "gk_reflexes",
+        "gk_reach",
+        "player_skills",
+        "ai_playing_styles"
+      ],
+      "skill_count": 65,
+      "ai_style_count": 7,
+      "card_type_counts": {
+        "Standard": 19018,
+        "Archived Base": 9816,
+        "Unavailable Base": 3851,
+        "Event/Special Character": 99,
+        "Internal/Fake Player": 11,
+        "Legendary": 255,
+        "Trending": 3626,
+        "Other Special": 478,
+        "Epic": 909,
+        "Big Time": 183,
+        "Highlight": 7758,
+        "Show Time": 738
+      },
+      "card_family_type_counts": {
+        "Standard Family": 32795,
+        "Legendary": 255,
+        "Trending": 3626,
+        "Other Special": 478,
+        "Epic": 909,
+        "Big Time": 183,
+        "Highlight": 7758,
+        "Show Time": 738
+      },
+      "availability_class_counts": {
+        "signable_standard": 19018,
+        "deleted_unavailable": 9816,
+        "base_non_signable": 3851,
+        "special_assignment": 99,
+        "internal_fake_team": 11,
+        "special_variant": 13947
+      },
+      "brief": true
+    },
+    "identifiers": {
+      "dictionary_key_type": "string",
+      "all_keys_are_decimal_digit_strings": true,
+      "non_decimal_keys": [],
+      "leading_zero_keys": [],
+      "row_id_json_types": {
+        "integer": 46742
+      },
+      "actual_rows": 46742,
+      "unique_dictionary_keys": 46742,
+      "unique_row_ids": 46742,
+      "duplicate_row_ids": {},
+      "key_row_id_mismatch_count": 0,
+      "key_row_id_mismatches": [],
+      "row_id_min_original_decimal": "84",
+      "row_id_max_original_decimal": "387113187158919",
+      "javascript_max_safe_integer_decimal": "9007199254740991",
+      "ids_exceeding_javascript_safe_integer": 0,
+      "current_integer_literals_exactly_representable_in_javascript": true,
+      "future_import_contract": "Dictionary keys retain original decimal strings. A future larger numeric literal must not be parsed to an imprecise Number then converted to string. Source-specific ID semantics and cross-version relationships remain unverified."
+    },
+    "field_audit": {
+      "id": {
+        "column_index_zero_based": 0,
+        "present": 46742,
+        "null": 0,
+        "empty_strings": 0,
+        "json_types": {
+          "integer": 46742
+        },
+        "numeric_range": {
+          "min": 84,
+          "max": 387113187158919
+        }
+      },
+      "short_name": {
+        "column_index_zero_based": 1,
+        "present": 46742,
+        "null": 0,
+        "empty_strings": 83,
+        "json_types": {
+          "string": 46742
+        },
+        "first_empty_source_keys": [
+          "123416",
+          "161785",
+          "166922",
+          "173367",
+          "178070",
+          "180184",
+          "180185",
+          "180530"
+        ]
+      },
+      "name": {
+        "column_index_zero_based": 2,
+        "present": 46742,
+        "null": 0,
+        "empty_strings": 0,
+        "json_types": {
+          "string": 46742
+        }
+      },
+      "shirt_name": {
+        "column_index_zero_based": 3,
+        "present": 46742,
+        "null": 0,
+        "empty_strings": 0,
+        "json_types": {
+          "string": 46742
+        }
+      },
+      "position": {
+        "column_index_zero_based": 4,
+        "present": 46742,
+        "null": 0,
+        "empty_strings": 0,
+        "json_types": {
+          "string": 46742
+        }
+      },
+      "overall": {
+        "column_index_zero_based": 5,
+        "present": 46742,
+        "null": 0,
+        "empty_strings": 0,
+        "json_types": {
+          "integer": 46742
+        },
+        "numeric_range": {
+          "min": 26,
+          "max": 101
+        }
+      },
+      "age": {
+        "column_index_zero_based": 6,
+        "present": 46742,
+        "null": 0,
+        "empty_strings": 0,
+        "json_types": {
+          "integer": 46742
+        },
+        "numeric_range": {
+          "min": 15,
+          "max": 50
+        }
+      },
+      "height_cm": {
+        "column_index_zero_based": 7,
+        "present": 46742,
+        "null": 0,
+        "empty_strings": 0,
+        "json_types": {
+          "integer": 46742
+        },
+        "numeric_range": {
+          "min": 155,
+          "max": 206
+        }
+      },
+      "weight_kg": {
+        "column_index_zero_based": 8,
+        "present": 46742,
+        "null": 0,
+        "empty_strings": 0,
+        "json_types": {
+          "integer": 46742
+        },
+        "numeric_range": {
+          "min": 41,
+          "max": 113
+        }
+      },
+      "foot": {
+        "column_index_zero_based": 9,
+        "present": 46742,
+        "null": 0,
+        "empty_strings": 0,
+        "json_types": {
+          "string": 46742
+        }
+      },
+      "nationality_name": {
+        "column_index_zero_based": 10,
+        "present": 46742,
+        "null": 0,
+        "empty_strings": 129,
+        "json_types": {
+          "string": 46742
+        },
+        "first_empty_source_keys": [
+          "34813",
+          "38051",
+          "40422",
+          "42415",
+          "46539",
+          "59796",
+          "107641",
+          "108360"
+        ]
+      },
+      "playing_style": {
+        "column_index_zero_based": 11,
+        "present": 46742,
+        "null": 0,
+        "empty_strings": 0,
+        "json_types": {
+          "string": 46742
+        }
+      },
+      "weekly_rating": {
+        "column_index_zero_based": 12,
+        "present": 46742,
+        "null": 0,
+        "empty_strings": 31329,
+        "json_types": {
+          "string": 46742
+        },
+        "first_empty_source_keys": [
+          "84",
+          "2489",
+          "4522",
+          "4882",
+          "5226",
+          "5308",
+          "5518",
+          "7474"
+        ]
+      },
+      "max_level": {
+        "column_index_zero_based": 13,
+        "present": 46742,
+        "null": 0,
+        "empty_strings": 0,
+        "json_types": {
+          "integer": 46742
+        },
+        "numeric_range": {
+          "min": 0,
+          "max": 1
+        }
+      },
+      "card_type": {
+        "column_index_zero_based": 14,
+        "present": 46742,
+        "null": 0,
+        "empty_strings": 0,
+        "json_types": {
+          "string": 46742
+        }
+      },
+      "is_variant": {
+        "column_index_zero_based": 15,
+        "present": 46742,
+        "null": 0,
+        "empty_strings": 0,
+        "json_types": {
+          "integer": 46742
+        },
+        "numeric_range": {
+          "min": 0,
+          "max": 1
+        }
+      },
+      "form": {
+        "column_index_zero_based": 16,
+        "present": 46742,
+        "null": 0,
+        "empty_strings": 0,
+        "json_types": {
+          "string": 46742
+        }
+      },
+      "weak_foot_accuracy": {
+        "column_index_zero_based": 17,
+        "present": 46742,
+        "null": 0,
+        "empty_strings": 0,
+        "json_types": {
+          "string": 46742
+        }
+      },
+      "injury_resistance": {
+        "column_index_zero_based": 18,
+        "present": 46742,
+        "null": 0,
+        "empty_strings": 0,
+        "json_types": {
+          "string": 46742
+        }
+      },
+      "development_mode": {
+        "column_index_zero_based": 19,
+        "present": 46742,
+        "null": 0,
+        "empty_strings": 0,
+        "json_types": {
+          "string": 46742
+        }
+      },
+      "offensive_awareness": {
+        "column_index_zero_based": 20,
+        "present": 46742,
+        "null": 0,
+        "empty_strings": 0,
+        "json_types": {
+          "integer": 46742
+        },
+        "numeric_range": {
+          "min": 40,
+          "max": 97
+        }
+      },
+      "ball_control": {
+        "column_index_zero_based": 21,
+        "present": 46742,
+        "null": 0,
+        "empty_strings": 0,
+        "json_types": {
+          "integer": 46742
+        },
+        "numeric_range": {
+          "min": 40,
+          "max": 98
+        }
+      },
+      "dribbling": {
+        "column_index_zero_based": 22,
+        "present": 46742,
+        "null": 0,
+        "empty_strings": 0,
+        "json_types": {
+          "integer": 46742
+        },
+        "numeric_range": {
+          "min": 40,
+          "max": 98
+        }
+      },
+      "tight_possession": {
+        "column_index_zero_based": 23,
+        "present": 46742,
+        "null": 0,
+        "empty_strings": 0,
+        "json_types": {
+          "integer": 46742
+        },
+        "numeric_range": {
+          "min": 40,
+          "max": 96
+        }
+      },
+      "low_pass": {
+        "column_index_zero_based": 24,
+        "present": 46742,
+        "null": 0,
+        "empty_strings": 0,
+        "json_types": {
+          "integer": 46742
+        },
+        "numeric_range": {
+          "min": 40,
+          "max": 98
+        }
+      },
+      "lofted_pass": {
+        "column_index_zero_based": 25,
+        "present": 46742,
+        "null": 0,
+        "empty_strings": 0,
+        "json_types": {
+          "integer": 46742
+        },
+        "numeric_range": {
+          "min": 40,
+          "max": 93
+        }
+      },
+      "finishing": {
+        "column_index_zero_based": 26,
+        "present": 46742,
+        "null": 0,
+        "empty_strings": 0,
+        "json_types": {
+          "integer": 46742
+        },
+        "numeric_range": {
+          "min": 40,
+          "max": 98
+        }
+      },
+      "heading": {
+        "column_index_zero_based": 27,
+        "present": 46742,
+        "null": 0,
+        "empty_strings": 0,
+        "json_types": {
+          "integer": 46742
+        },
+        "numeric_range": {
+          "min": 40,
+          "max": 95
+        }
+      },
+      "set_piece_taking": {
+        "column_index_zero_based": 28,
+        "present": 46742,
+        "null": 0,
+        "empty_strings": 0,
+        "json_types": {
+          "integer": 46742
+        },
+        "numeric_range": {
+          "min": 40,
+          "max": 95
+        }
+      },
+      "curl": {
+        "column_index_zero_based": 29,
+        "present": 46742,
+        "null": 0,
+        "empty_strings": 0,
+        "json_types": {
+          "integer": 46742
+        },
+        "numeric_range": {
+          "min": 40,
+          "max": 97
+        }
+      },
+      "speed": {
+        "column_index_zero_based": 30,
+        "present": 46742,
+        "null": 0,
+        "empty_strings": 0,
+        "json_types": {
+          "integer": 46742
+        },
+        "numeric_range": {
+          "min": 40,
+          "max": 98
+        }
+      },
+      "acceleration": {
+        "column_index_zero_based": 31,
+        "present": 46742,
+        "null": 0,
+        "empty_strings": 0,
+        "json_types": {
+          "integer": 46742
+        },
+        "numeric_range": {
+          "min": 40,
+          "max": 98
+        }
+      },
+      "kicking_power": {
+        "column_index_zero_based": 32,
+        "present": 46742,
+        "null": 0,
+        "empty_strings": 0,
+        "json_types": {
+          "integer": 46742
+        },
+        "numeric_range": {
+          "min": 40,
+          "max": 96
+        }
+      },
+      "jumping": {
+        "column_index_zero_based": 33,
+        "present": 46742,
+        "null": 0,
+        "empty_strings": 0,
+        "json_types": {
+          "integer": 46742
+        },
+        "numeric_range": {
+          "min": 40,
+          "max": 93
+        }
+      },
+      "physical_contact": {
+        "column_index_zero_based": 34,
+        "present": 46742,
+        "null": 0,
+        "empty_strings": 0,
+        "json_types": {
+          "integer": 46742
+        },
+        "numeric_range": {
+          "min": 40,
+          "max": 96
+        }
+      },
+      "balance": {
+        "column_index_zero_based": 35,
+        "present": 46742,
+        "null": 0,
+        "empty_strings": 0,
+        "json_types": {
+          "integer": 46742
+        },
+        "numeric_range": {
+          "min": 40,
+          "max": 93
+        }
+      },
+      "stamina": {
+        "column_index_zero_based": 36,
+        "present": 46742,
+        "null": 0,
+        "empty_strings": 0,
+        "json_types": {
+          "integer": 46742
+        },
+        "numeric_range": {
+          "min": 40,
+          "max": 96
+        }
+      },
+      "defensive_awareness": {
+        "column_index_zero_based": 37,
+        "present": 46742,
+        "null": 0,
+        "empty_strings": 0,
+        "json_types": {
+          "integer": 46742
+        },
+        "numeric_range": {
+          "min": 40,
+          "max": 98
+        }
+      },
+      "tackling": {
+        "column_index_zero_based": 38,
+        "present": 46742,
+        "null": 0,
+        "empty_strings": 0,
+        "json_types": {
+          "integer": 46742
+        },
+        "numeric_range": {
+          "min": 40,
+          "max": 98
+        }
+      },
+      "aggression": {
+        "column_index_zero_based": 39,
+        "present": 46742,
+        "null": 0,
+        "empty_strings": 0,
+        "json_types": {
+          "integer": 46742
+        },
+        "numeric_range": {
+          "min": 40,
+          "max": 96
+        }
+      },
+      "defensive_engagement": {
+        "column_index_zero_based": 40,
+        "present": 46742,
+        "null": 0,
+        "empty_strings": 0,
+        "json_types": {
+          "integer": 46742
+        },
+        "numeric_range": {
+          "min": 40,
+          "max": 92
+        }
+      },
+      "gk_awareness": {
+        "column_index_zero_based": 41,
+        "present": 46742,
+        "null": 0,
+        "empty_strings": 0,
+        "json_types": {
+          "integer": 46742
+        },
+        "numeric_range": {
+          "min": 40,
+          "max": 91
+        }
+      },
+      "gk_catching": {
+        "column_index_zero_based": 42,
+        "present": 46742,
+        "null": 0,
+        "empty_strings": 0,
+        "json_types": {
+          "integer": 46742
+        },
+        "numeric_range": {
+          "min": 40,
+          "max": 91
+        }
+      },
+      "gk_parrying": {
+        "column_index_zero_based": 43,
+        "present": 46742,
+        "null": 0,
+        "empty_strings": 0,
+        "json_types": {
+          "integer": 46742
+        },
+        "numeric_range": {
+          "min": 40,
+          "max": 91
+        }
+      },
+      "gk_reflexes": {
+        "column_index_zero_based": 44,
+        "present": 46742,
+        "null": 0,
+        "empty_strings": 0,
+        "json_types": {
+          "integer": 46742
+        },
+        "numeric_range": {
+          "min": 40,
+          "max": 93
+        }
+      },
+      "gk_reach": {
+        "column_index_zero_based": 45,
+        "present": 46742,
+        "null": 0,
+        "empty_strings": 0,
+        "json_types": {
+          "integer": 46742
+        },
+        "numeric_range": {
+          "min": 40,
+          "max": 94
+        }
+      },
+      "player_skills": {
+        "column_index_zero_based": 46,
+        "present": 46742,
+        "null": 0,
+        "empty_strings": 46742,
+        "json_types": {
+          "string": 46742
+        },
+        "first_empty_source_keys": [
+          "84",
+          "2489",
+          "4039",
+          "4522",
+          "4882",
+          "5226",
+          "5308",
+          "5518"
+        ]
+      },
+      "ai_playing_styles": {
+        "column_index_zero_based": 47,
+        "present": 46742,
+        "null": 0,
+        "empty_strings": 46742,
+        "json_types": {
+          "string": 46742
+        },
+        "first_empty_source_keys": [
+          "84",
+          "2489",
+          "4039",
+          "4522",
+          "4882",
+          "5226",
+          "5308",
+          "5518"
+        ]
+      }
+    },
+    "required_field_summary": {
+      "name_missing_or_blank": 0,
+      "short_name_missing_or_blank": 83,
+      "shirt_name_missing_or_blank": 0,
+      "overall_missing_or_blank": 0,
+      "card_type_missing_or_blank": 0,
+      "is_variant_missing_or_blank": 0,
+      "is_variant_outside_integer_0_1": 0,
+      "stat_fields_count": 26,
+      "stat_fields": [
+        "offensive_awareness",
+        "ball_control",
+        "dribbling",
+        "tight_possession",
+        "low_pass",
+        "lofted_pass",
+        "finishing",
+        "heading",
+        "set_piece_taking",
+        "curl",
+        "speed",
+        "acceleration",
+        "kicking_power",
+        "jumping",
+        "physical_contact",
+        "balance",
+        "stamina",
+        "defensive_awareness",
+        "tackling",
+        "aggression",
+        "defensive_engagement",
+        "gk_awareness",
+        "gk_catching",
+        "gk_parrying",
+        "gk_reflexes",
+        "gk_reach"
+      ],
+      "stat_missing_rows": 0,
+      "stat_noninteger_rows": 0,
+      "overall_range": {
+        "min": 26,
+        "max": 101
+      },
+      "player_skills_blank_rows": 46742,
+      "ai_playing_styles_blank_rows": 46742,
+      "caveats": [
+        "Nonempty name is structural presence, not verified real-person identity, language accuracy, or unique-card identity.",
+        "All26 ability values are present integers but in-game calculation and source decoding correctness were not independently verified.",
+        "meta skill_count65/ai_style_count7 are dictionary/schema metadata; brief player_skills/ai_playing_styles are empty for every row, so this response does not provide per-card skill memberships."
+      ]
+    },
+    "classifications": {
+      "card_type_counts_observed": {
+        "Standard": 19018,
+        "Archived Base": 9816,
+        "Unavailable Base": 3851,
+        "Event/Special Character": 99,
+        "Internal/Fake Player": 11,
+        "Legendary": 255,
+        "Trending": 3626,
+        "Other Special": 478,
+        "Epic": 909,
+        "Big Time": 183,
+        "Highlight": 7758,
+        "Show Time": 738
+      },
+      "card_type_counts_exact_meta_match": true,
+      "is_variant_counts_observed": {
+        "0": 32795,
+        "1": 13947
+      },
+      "card_type_variant_cross_counts": [
+        {
+          "card_type": "Standard",
+          "is_variant": 0,
+          "count": 19018
+        },
+        {
+          "card_type": "Archived Base",
+          "is_variant": 0,
+          "count": 9816
+        },
+        {
+          "card_type": "Unavailable Base",
+          "is_variant": 0,
+          "count": 3851
+        },
+        {
+          "card_type": "Event/Special Character",
+          "is_variant": 0,
+          "count": 99
+        },
+        {
+          "card_type": "Internal/Fake Player",
+          "is_variant": 0,
+          "count": 11
+        },
+        {
+          "card_type": "Legendary",
+          "is_variant": 1,
+          "count": 255
+        },
+        {
+          "card_type": "Trending",
+          "is_variant": 1,
+          "count": 3626
+        },
+        {
+          "card_type": "Other Special",
+          "is_variant": 1,
+          "count": 478
+        },
+        {
+          "card_type": "Epic",
+          "is_variant": 1,
+          "count": 909
+        },
+        {
+          "card_type": "Big Time",
+          "is_variant": 1,
+          "count": 183
+        },
+        {
+          "card_type": "Highlight",
+          "is_variant": 1,
+          "count": 7758
+        },
+        {
+          "card_type": "Show Time",
+          "is_variant": 1,
+          "count": 738
+        }
+      ],
+      "standard_rows": 19018,
+      "non_standard_rows": 27724,
+      "non_variant_base_rows": 32795,
+      "special_variant_rows": 13947,
+      "non_standard_non_variant_rows": 13777,
+      "non_standard_is_not_synonym_for_special_variant": true,
+      "row_card_family_field_present": false,
+      "row_availability_class_field_present": false,
+      "family_counts_reconstructed_from_card_type": {
+        "Standard Family": 32795,
+        "Legendary": 255,
+        "Trending": 3626,
+        "Other Special": 478,
+        "Epic": 909,
+        "Big Time": 183,
+        "Highlight": 7758,
+        "Show Time": 738
+      },
+      "family_counts_arithmetic_meta_match": true,
+      "availability_counts_reconstructed_from_card_type": {
+        "signable_standard": 19018,
+        "deleted_unavailable": 9816,
+        "base_non_signable": 3851,
+        "special_assignment": 99,
+        "internal_fake_team": 11,
+        "special_variant": 13947
+      },
+      "availability_counts_arithmetic_meta_match": true,
+      "reconstruction_mapping": {
+        "Standard": "signable_standard",
+        "Archived Base": "deleted_unavailable",
+        "Unavailable Base": "base_non_signable",
+        "Event/Special Character": "special_assignment",
+        "Internal/Fake Player": "internal_fake_team"
+      },
+      "meta_scalar_checks": [
+        {
+          "field": "total_cards",
+          "declared": 46742,
+          "observed_or_reconstructed": 46742,
+          "matches": true,
+          "verification": "direct row count"
+        },
+        {
+          "field": "player_count",
+          "declared": 46742,
+          "observed_or_reconstructed": 46742,
+          "matches": true,
+          "verification": "direct row count"
+        },
+        {
+          "field": "standard_count",
+          "declared": 19018,
+          "observed_or_reconstructed": 19018,
+          "matches": true,
+          "verification": "direct row count"
+        },
+        {
+          "field": "raw_base_count",
+          "declared": 32795,
+          "observed_or_reconstructed": 32795,
+          "matches": true,
+          "verification": "direct row count"
+        },
+        {
+          "field": "deleted_base_count",
+          "declared": 9816,
+          "observed_or_reconstructed": 9816,
+          "matches": true,
+          "verification": "arithmetic from card_type/is_variant; source availability semantics not independently verified"
+        },
+        {
+          "field": "active_base_count",
+          "declared": 22979,
+          "observed_or_reconstructed": 22979,
+          "matches": true,
+          "verification": "arithmetic from card_type/is_variant; source availability semantics not independently verified"
+        },
+        {
+          "field": "authentic_only_base_count",
+          "declared": 3961,
+          "observed_or_reconstructed": 3961,
+          "matches": true,
+          "verification": "arithmetic from card_type/is_variant; source availability semantics not independently verified"
+        },
+        {
+          "field": "variant_count",
+          "declared": 13947,
+          "observed_or_reconstructed": 13947,
+          "matches": true,
+          "verification": "direct row count"
+        }
+      ],
+      "semantic_limits": [
+        "card_type and is_variant distributions were checked directly from every row. family/availability breakdowns are reconstructed arithmetic only; no original per-row family or availability columns exist.",
+        "active_base22979 includes3851Unavailable Base+99Event/Special Character+11Internal/Fake Player besides19018Standard; active_base must not be relabeled signable Standard.",
+        "The source labels signable/deleted/archived are source classifications, not independently verified present game availability.",
+        "Global Standard membership does not imply inclusion in any particular product or special-player-list draw pool."
+      ]
+    },
+    "development_and_conditions": {
+      "development_mode_counts": {
+        "server_level_cap_required": 43116,
+        "fixed_max": 3626
+      },
+      "max_level_counts": {
+        "0": 43116,
+        "1": 3626
+      },
+      "development_mode_max_level_cross_counts": [
+        {
+          "development_mode": "server_level_cap_required",
+          "max_level": 0,
+          "count": 43116
+        },
+        {
+          "development_mode": "fixed_max",
+          "max_level": 1,
+          "count": 3626
+        }
+      ],
+      "weekly_rating_counts": {
+        "": 31329,
+        "C": 4161,
+        "A": 2732,
+        "B": 6012,
+        "D": 2075,
+        "E": 433
+      },
+      "max_level_zero_server_required_rows": 43116,
+      "fixed_max_rows_all_trending": true,
+      "interpretation": [
+        "max_level0 with server_level_cap_required is an unresolved server-cap condition, not confirmed maximum level0 or proof that development is unavailable.",
+        "fixed_max1 is a source value/classification; it does not independently establish actual game semantics.",
+        "overall26..101 is a source observation. Applied level/booster/progression/stat-mode conditions are not specified, despite form/weekly_rating fields.",
+        "meta.generated_at and schema apply to the whole response; there is no per-card valid time/revision/condition record."
+      ]
+    },
+    "unexposed_relationships_and_assets": {
+      "image_url_fields": [],
+      "product_relation_fields": [],
+      "explicit_cross_version_identity_fields": [],
+      "per_card_version_fields": [],
+      "explicit_overall_conditions_fields": [],
+      "related_but_not_sufficient_conditions_fields": [
+        "form",
+        "weekly_rating",
+        "max_level",
+        "development_mode"
+      ],
+      "http_url_value_occurrences": 0,
+      "http_url_value_locations": [],
+      "image_extension_value_occurrences": 0,
+      "image_extension_value_locations": [],
+      "all_players_are_flat_arrays": true,
+      "full_product_roster_provided": false,
+      "standard_to_product_membership_provided": false,
+      "explicit_variant_to_base_link_provided": false,
+      "image_url_or_card_background_provided": false,
+      "limits": [
+        "No product/pack/roster/pool ID field or nested relation object is in this brief response. A player surname containing Pack is not a product relation.",
+        "is_variant0/1 does not provide person_id, base_id, or a verified other-version edge. Do not infer those edges from names or ID bit patterns.",
+        "No image URL values or image file suffix values were found; image availability cannot be inferred or tested without a separate authorized source.",
+        "brief may omit fields supplied by other routes. No additional route was requested; absence here is not a claim that the service can never supply them."
+      ],
+      "image_field_detection_method": "Exact explicit image field names, separately from actual HTTP(S) URL value detection; substrings such as url within ability curl are not image-field evidence."
+    },
+    "existing_efhub_id_comparison": {
+      "seed_path": "data/catalog.seed.json",
+      "seed_sha256": "571381d807ced176eb7e4f7b2bf76e8ff3d00adfedbd85b45b28f94b63045b04",
+      "efhub_card_ids_count": 83,
+      "efhub_unique_source_ids": 83,
+      "overlap_count": 83,
+      "absent_count": 0,
+      "absent_source_ids": [],
+      "overlapping_peslig_card_type_counts": {
+        "Show Time": 16,
+        "Highlight": 13,
+        "Epic": 4,
+        "Other Special": 21,
+        "Trending": 29
+      },
+      "overall_raw_value_differences_count": 14,
+      "overall_difference_examples": [
+        {
+          "source_key": "106800804418912",
+          "efhub_internal_card_id": "card_20f0679e22ec3e40f1338405",
+          "efhub_overall_value": 86,
+          "peslig_overall": 87
+        },
+        {
+          "source_key": "106798388407327",
+          "efhub_internal_card_id": "card_876f340a866548072b9e63f6",
+          "efhub_overall_value": 83,
+          "peslig_overall": 84
+        },
+        {
+          "source_key": "106795972530896",
+          "efhub_internal_card_id": "card_3b1fa86a335df7d76a1f4d5b",
+          "efhub_overall_value": 82,
+          "peslig_overall": 83
+        }
+      ],
+      "comparison_scope": "Exact original ID-key overlap and raw reported OVR inequality only. No imported or replaced values, inferred identity graph, rating correction, or semantic/type equivalence.",
+      "conditions_equivalence_established": false,
+      "current_source_version_equivalence_established": false,
+      "limits": [
+        "83exact ID-key matches are useful source coverage evidence; they do not prove identical card revision, calculated OVR conditions, classification mapping, image, or product membership.",
+        "A raw OVR disagreement has no preferred/correct source assigned without condition/version evidence."
+      ]
+    },
+    "conclusion": {
+      "structural_rows_and_ids_verified": true,
+      "direct_card_type_metadata_consistency_verified": true,
+      "image_supply_verified": false,
+      "full_product_standard_composition_verified": false,
+      "card_version_and_condition_equivalence_verified": false,
+      "adoption_or_fallback_import_decision_made": false,
+      "data_imported": false,
+      "remaining_gaps": [
+        "Usage/license/adoption conditions are outside this saved-row structural audit.",
+        "Source extraction correctness, current game version and actual update cadence need separate evidence.",
+        "Product-specific full initial pool and original Standard member IDs remain unverified.",
+        "Separate source/provenance and version/conditions must be retained before any future normalized integration."
+      ]
+    },
+    "preservation_check": {
+      "raw_sha256_after": "add1257a3a8a1dc12ed27f176bc838c666d9a117a76da0e2a28ed645a518efb7",
+      "raw_bytes_unchanged": true,
+      "seed_bytes_unchanged": true,
+      "network_requests": 0,
+      "active_imports": 0
+    }
+  },
+  "peslig_independent_public_observations": {
+    "evidence_level": "trusted_independent_read_report_not_retrieved_by_this_worker",
+    "observed_date": "2026-10-25",
+    "time_precision": "date_only_in_received_report",
+    "raw_report_local_path_available": false,
+    "frontend": {
+      "url": "https://peslig.com.tr/pesdb.php",
+      "found_literal_urls": [
+        "/pesdb.php?api=brief&v=1792698603-30310520",
+        "/pesdb.php?api=index&v=1792698603-30310520"
+      ],
+      "usage": "normal frontend fetch; meta.generated_at used as update label",
+      "full_index_response_verified": false
+    },
+    "operations_ui": {
+      "url": "https://peslig.com.tr/efootball/?lang=tr",
+      "claims": [
+        "Decoder V20.4.1",
+        "PlayerWeekly A-E",
+        "Standard added/deleted diff"
+      ],
+      "actual_automated_schedule_or_delta_feed_verified": false
+    },
+    "field_origin_ui": {
+      "url": "https://peslig.com.tr/efootball/futbolcu/63738-portu",
+      "claims": [
+        "some MaxLevel values missing from DT870 are looked up per card and cached",
+        "OVR can be a simulated weighting calculation"
+      ],
+      "raw_vs_calculated_vs_enriched_equivalence_verified": false
+    },
+    "image_sample": {
+      "url": "https://peslig.com.tr/efootball/card-image.php?id=106800804418912",
+      "method": "GET",
+      "status": 200,
+      "mime": "image/png",
+      "response_bytes": 159422,
+      "png_signature_verified": true,
+      "id_discovery": "public HTML, not selected from API rows",
+      "scope": "one image only; not all images or reuse rights"
+    },
+    "reuse_terms": {
+      "published_reuse_license_verified": false,
+      "contact_url": "https://peslig.com.tr/kvkk.php",
+      "contact_acted_on": false,
+      "registration_or_payment": false
+    }
+  },
+  "efhub_supply_chain": {
+    "research_scope": "EFHub public frontend and saved observations; no source API retries, auth bootstrap or cookie/token acquisition",
+    "runtime": {
+      "spec_revision": "21",
+      "observations_current": true,
+      "network_policy": {
+        "mode": "unrestricted",
+        "state": "enforced"
+      },
+      "vpn_configured": false,
+      "proxy_preserved": true,
+      "tls_verification": true
+    },
+    "source_direct_get_count": 4,
+    "source_api_requests": 0,
+    "image_requests": 0,
+    "request_accounting": {
+      "source_direct_gets": 4,
+      "source_direct_status_counts": {
+        "200": 4
+      },
+      "source_html_gets": 2,
+      "source_js_gets": 2,
+      "source_api_requests": 0,
+      "image_requests": 0,
+      "auth_bootstrap_requests": 0,
+      "web_search_calls": 2,
+      "web_search_queries": 4,
+      "web_search_origin_fetch_count": "not_exposed_by_search_tool",
+      "note": "검색 결과를 읽은 호출과 직접 EFHub GET 4회를 분리한다. 실제 API 응답 검증은 아래 과거 관측을 재사용했으며 이번에는 요청하지 않았다."
+    },
+    "conclusion": {
+      "verified_boundary": "EFHub의 같은 origin 공개 사이트 API/상세 HTML·Flight → 공개 프런트 상태·지역화·카드 렌더링",
+      "upstream_game_to_efhub_collection": "미확인",
+      "internal_normalization_and_storage": "미확인",
+      "automatic_update_schedule": "미확인",
+      "konami_original_player_api_found": false,
+      "konami_original_player_api_note": "공개 자산/저장 자료에서 발견되지 않았다는 범위의 결과다. 존재하지 않는다고 증명한 것은 아니다.",
+      "all_card_collection_complete": false,
+      "note": "공개 사이트 API 발견과 정상 응답 표본은 Konami 원본 게임 API 또는 EFHub 전체 수집/저장 구조의 공개를 의미하지 않는다."
+    },
+    "saved_evidence_reused": [
+      {
+        "evidence_id": "efhub_players_api",
+        "stored_in": "data/research/source-observations.json",
+        "url": "https://efhub.com/api/public/players",
+        "observed_at": "2026-10-25T03:45:23+00:00",
+        "status": 200,
+        "verified_fields": {
+          "field_keys": [
+            "id",
+            "name",
+            "nameJa",
+            "nameZh",
+            "slug",
+            "nationality",
+            "nationalityCode",
+            "team",
+            "position",
+            "overallRating",
+            "playingStyle",
+            "imageUrl",
+            "playerType"
+          ],
+          "sample": [
+            {
+              "id": "123236838841410",
+              "name": "Robert Lewandowski",
+              "nameJa": "ロベルト レヴァンドフスキ",
+              "nameZh": "罗伯特·莱万多夫斯基",
+              "slug": "robert-lewandowski",
+              "nationality": "",
+              "nationalityCode": "",
+              "team": "FC Barcelona",
+              "position": "CF",
+              "overallRating": 102,
+              "playingStyle": "Goal Poacher",
+              "imageUrl": "https://efimg.com/efootballhub22/images/player_cards/123236838841410_l.png",
+              "playerType": 2
+            },
+            {
+              "id": "105899666447703",
+              "name": "Lionel Messi",
+              "nameJa": "リオネル メッシ",
+              "nameZh": "利昂内尔·梅西",
+              "slug": "lionel-messi",
+              "nationality": "",
+              "nationalityCode": "",
+              "team": "Argentina",
+              "position": "SS",
+              "overallRating": 100,
+              "playingStyle": "Classic No. 10",
+              "playingStyleDefensive": "Attack Outlet",
+              "imageUrl": "https://efimg.com/efootballhub22/images/player_cards/105899666447703_l.png",
+              "playerType": 6
+            }
+          ]
+        },
+        "source_ids": {}
+      },
+      {
+        "evidence_id": "efhub_players_page2",
+        "stored_in": "data/research/source-observations.json",
+        "url": "https://efhub.com/api/public/players?page=2",
+        "observed_at": "2026-10-25T03:46:05+00:00",
+        "status": 200,
+        "verified_fields": {
+          "pagination": {
+            "total": 50840,
+            "page": 2,
+            "limit": 24,
+            "totalPages": 2119
+          },
+          "returned_count": 24
+        },
+        "source_ids": {}
+      },
+      {
+        "evidence_id": "efhub_packs_js",
+        "stored_in": "data/research/source-observations.json",
+        "url": "https://efhub.com/_next/static/chunks/85078b8cbc229ae6.js?dpl=dpl_31Riks92A4aWRR56JjnttQdARhMg",
+        "observed_at": "2026-10-25T03:44:54+00:00",
+        "status": 200,
+        "verified_fields": {
+          "normal_request_path": "/api/public/packs",
+          "query_keys": [
+            "search",
+            "page",
+            "limit"
+          ],
+          "initial_page": 1,
+          "requested_limit": 30,
+          "response_keys_used": [
+            "packs",
+            "hasMore"
+          ],
+          "detail_link_template": "/packs/${slug}"
+        },
+        "source_ids": {}
+      },
+      {
+        "evidence_id": "efhub_packs_api",
+        "stored_in": "data/research/source-observations.json",
+        "url": "https://efhub.com/api/public/packs?search=&page=1&limit=30",
+        "observed_at": "2026-10-25T03:45:23+00:00",
+        "status": 200,
+        "verified_fields": {
+          "field_keys": [
+            "name",
+            "slug",
+            "date",
+            "playerCount"
+          ],
+          "sample": [
+            {
+              "name": "Magical Dribblers 22 Oct '26",
+              "slug": "magical-dribblers-22-oct-26",
+              "date": "2026-10-22",
+              "playerCount": 11
+            }
+          ]
+        },
+        "source_ids": {}
+      },
+      {
+        "evidence_id": "efhub_player_payload",
+        "stored_in": "data/research/source-observations.json",
+        "url": "https://efhub.com/ko/players/88046292727298",
+        "observed_at": "2026-10-25T03:45:23+00:00",
+        "status": 200,
+        "verified_fields": {
+          "card": {
+            "id": "88046292727298",
+            "name": "Yaya Toure",
+            "slug": "yaya-toure",
+            "team": "FC Barcelona",
+            "position": "DMF",
+            "overallRating": 86,
+            "imageUrl": "https://efimg.com/efootballhub22/images/player_cards/88046292727298_l.png",
+            "playerId": "88046292727298",
+            "datapackId": 20251204,
+            "playerType": 5,
+            "boostId": 1199,
+            "boostId2": 1214,
+            "levelCap": 33
+          },
+          "other_versions": [
+            {
+              "id": "88036360615426",
+              "name": "Yaya Toure",
+              "overallRating": 86,
+              "imageUrl": "https://efimg.com/efootballhub22/images/player_cards/88036360615426_l.png",
+              "playerType": 5
+            },
+            {
+              "id": "88040387147266",
+              "name": "Yaya Toure",
+              "overallRating": 86,
+              "imageUrl": "https://efimg.com/efootballhub22/images/player_cards/88040387147266_l.png",
+              "playerType": 5
+            },
+            {
+              "id": "88035823744514",
+              "name": "Yaya Toure",
+              "overallRating": 85,
+              "imageUrl": "https://efimg.com/efootballhub22/images/player_cards/88035823744514_l.png",
+              "playerType": 5
+            }
+          ]
+        },
+        "source_ids": {
+          "card_id": "88046292727298",
+          "datapack_id": "20251204"
+        }
+      },
+      {
+        "evidence_id": "efhub_types_js",
+        "stored_in": "data/research/source-observations.json",
+        "url": "https://efhub.com/_next/static/chunks/8964e7af23583e8b.js?dpl=dpl_31Riks92A4aWRR56JjnttQdARhMg",
+        "observed_at": "2026-10-25T03:47:03+00:00",
+        "status": 200,
+        "verified_fields": {
+          "raw_player_type_translation_keys": {
+            "1": "normal",
+            "2": "featured",
+            "3": "trending",
+            "4": "legend",
+            "5": "epic",
+            "6": "highlight",
+            "7": "bigtime",
+            "8": "showtime"
+          },
+          "image_rendering": "Single imageUrl element plus text and OVR DOM overlays"
+        },
+        "source_ids": {}
+      },
+      {
+        "evidence_id": "efhub_player_image",
+        "stored_in": "data/research/source-observations.json",
+        "url": "https://efimg.com/efootballhub22/images/player_cards/88046292727298_l.png",
+        "observed_at": "2026-10-25T03:44:55+00:00",
+        "status": 200,
+        "verified_fields": {
+          "format": "PNG",
+          "width": 240,
+          "height": 340,
+          "delivery_form": "Single PNG used as a full card image element; text/OVR also rendered as DOM overlays. Pixel composition not visually inspected."
+        },
+        "source_ids": {
+          "card_id": "88046292727298"
+        }
+      }
+    ],
+    "supply_chain_stages": [
+      {
+        "stage": "게임 원본 → EFHub 수집",
+        "status": "미확인",
+        "confirmed": [],
+        "unknown": [
+          "공식 Konami 선수 원본 API 여부/주소/계약",
+          "클라이언트 게임 파일·CPK 추출 여부와 버전",
+          "수집·변환 프로그램·운영 주체·승인 범위"
+        ],
+        "evidence_limit": "팬 사이트 비소속 고지와 기술 분석 글은 EFHub 카탈로그 공급 경로를 설명하지 않는다."
+      },
+      {
+        "stage": "EFHub 내부 정규화·저장",
+        "status": "미확인",
+        "confirmed": [
+          "공개 응답에 문자열 id, 다국어 이름, imageUrl, playerType, overallRating 등 사이트용 필드가 있다."
+        ],
+        "unknown": [
+          "원본→사이트 필드 매핑/정규화 규칙",
+          "내부 DB 엔진·스키마·이력/백업",
+          "수집 DB와 공개 API의 연결·동기화 방식"
+        ],
+        "evidence_limit": "HTTP 응답 스키마·React props는 내부 DB 스키마가 아니다. 우리 관측 관리 필드도 EFHub wire 필드가 아니다."
+      },
+      {
+        "stage": "EFHub 저장 데이터 → 사이트 제공",
+        "status": "공개 제공 형태 확인, 저장 연결 미확인",
+        "confirmed": [
+          "과거 같은 origin players/packs JSON 200 표본",
+          "상세 HTML·Flight에 표본 카드 데이터와 명시적 다른 버전 관계 존재",
+          "정상 팩 제목·표시 인원수 바로 아래 직속 PlayerCard 영역의 카드 데이터 존재"
+        ],
+        "unknown": [
+          "API 서버 구현과 데이터 저장소",
+          "캐시 무효화와 원자적 스냅샷 보장"
+        ],
+        "evidence_limit": "Flight의 응답 로컬 참조값은 영속 원본 ID가 아니다. 추천 객체까지 전체 재귀 수집하지 않는다."
+      },
+      {
+        "stage": "사이트 API/HTML → 프런트 렌더링",
+        "status": "확인",
+        "confirmed": [
+          "players JS는 query 변경에 따라 fetch 후 JSON을 React 상태에 설정한다.",
+          "new-players HTML에 실제 카드 상세 링크가 있으며 페이지 고유 JS는 localeName·/players/${id}·imageUrl로 카드를 표시한다.",
+          "new-players 고유 JS 한 파일에서 /api 경로가 발견되지 않았다."
+        ],
+        "unknown": [
+          "다른 미조사 청크·서버 컴포넌트의 모든 호출"
+        ],
+        "evidence_limit": "개별 청크에 API가 없다는 관측을 사이트 전체 API 부재로 확대하지 않는다."
+      },
+      {
+        "stage": "신규/변경 데이터 → 업데이트",
+        "status": "화면 안내·자산 캐시 단서만 확인",
+        "confirmed": [
+          "new-players 메타 설명은 새 카드/팩/테마를 릴리스마다 반영한다고 자체 안내한다.",
+          "실제 JS의 useEffect는 URLSearchParams 변화에 반응한다.",
+          "정적 자산·HTML에 Cache-Control, 일부 자산에 Last-Modified/ETag가 있다."
+        ],
+        "unknown": [
+          "수집/정규화 배치·자동 스케줄·빈도",
+          "원본 변화 감지 방법·실제 반영 지연",
+          "수정/삭제 이력·정합성·실패 복구 운영"
+        ],
+        "evidence_limit": "메타 소개는 관측된 지속 갱신 증거가 아니다. query 반응형 fetch도 정기 데이터 수집 작업을 의미하지 않는다."
+      }
+    ],
+    "version_and_update_clues": [
+      {
+        "clue": "동일 players HTML/JS SHA256 재관측",
+        "evidence": [
+          "data/research/card-api-audit.json#/source_ui_recheck",
+          "public_players_html_recheck",
+          "public_players_actual_js_recheck"
+        ],
+        "interpretation": "05:06과09:02/09:03 동일 웹 자산을 제공했다. JS는03:44 기록과도 같다.",
+        "not_proven": "카드 DB가 같은 상태인지, 갱신 작업이 실행됐는지, 신규 데이터가 언제 반영되는지"
+      },
+      {
+        "clue": "HTML Cache-Control public max-age=14400; JS public max-age=31536000 immutable",
+        "evidence": [
+          "public_players_html_recheck",
+          "public_new_players_html",
+          "public_players_actual_js_recheck",
+          "public_new_players_actual_js"
+        ],
+        "interpretation": "관측된 웹 응답 캐시 지시다.",
+        "not_proven": "4시간 수집 스케줄 또는1년 데이터 미갱신을 뜻하지 않는다. 캐시 헤더는 DB 업데이트 주기가 아니다."
+      },
+      {
+        "clue": "두 JS Last-Modified 2026-10-22 23:46:01/23:46:11 GMT; 공통 dpl 배포 표지",
+        "evidence": [
+          "public_players_actual_js_recheck",
+          "public_new_players_actual_js"
+        ],
+        "interpretation": "정적 웹 자산/배포 버전의 단서다.",
+        "not_proven": "해당 시각에 게임 데이터 전체를 수집/저장/게시했다는 증거가 아니다. server:envoy/x-vercel-cache도 DB 스택을 증명하지 않는다."
+      },
+      {
+        "clue": "datapackId:20251204; playerId:\"88046292727298\"",
+        "evidence": [
+          "efhub_player_payload"
+        ],
+        "interpretation": "공개 상세 payload의 필드와 값이다.",
+        "not_proven": "datapackId의 날짜/파일 의미, 공식 게임 데이터팩 버전 또는 실존 인물의 정규 ID가 미확인이다."
+      },
+      {
+        "clue": "datapackIdA/B 문자열",
+        "evidence": [
+          "data/research/manager-product-observations.json#manager_detail_js_abb22cc21329b4fe"
+        ],
+        "interpretation": "선수 비교/빌드 playerA/playerB 객체의 필드다.",
+        "not_proven": "상품 packId·원본 수집 API·DB 스택이 아니다."
+      },
+      {
+        "clue": "다른 버전 3개 및 playerType 1..8 매핑",
+        "evidence": [
+          "efhub_player_payload",
+          "efhub_types_js"
+        ],
+        "interpretation": "표본 카드 관계와 EFHub UI 분류 매핑은 명시적으로 제공된다.",
+        "not_proven": "전체 카드 버전·공식 분류 체계·복수 동시 분류·원본 사람 ID를 모두 확보한 것이 아니다."
+      }
+    ],
+    "evidence_boundaries": {
+      "source_ids": "EFHub id/playerId와 다른 버전 ID는 원본 문자열을 유지했다. 카드 수는 실존 선수 수가 아니다.",
+      "images": "efimg.com/efootballhub22 경로의 이미지 제공과 표본 PNG만 확인했다. 원본 게임 호스트·자산 추출/합성·배경 분리·efootballhub22가 지칭하는 버전은 미확인이다.",
+      "our_metadata_not_wire_fields": [
+        "source_entity_kind",
+        "source_entity_id",
+        "composition_scope",
+        "our observation IDs"
+      ],
+      "canonical_scope": "활성 83카드·9상품은 별도 HTML/상세 표본이며 이번4GET은 데이터 확장·seed 병합이 아니다.",
+      "403": "기존 감사 artifact의 요청 URL·시각·HTTP상태 기록을 그대로 보존했다. 그 감사403의 응답본문·헤더는 미보존이다. 기본 API의 현재 접근성 또는 원인 확정으로 확대하지 않는다.",
+      "separate_source": "다른 출처의 원본 파일/전수API 관측을 EFHub에 전이하지 않는다. PesLig 관련 GET은 하지 않았다."
+    },
+    "actions_not_taken": [
+      "기존403 API 재요청/다른query 감사",
+      "어떠한 EFHub API endpoint GET",
+      "이미지 GET",
+      "쿠키/토큰 취득·복사·재생·bootstrap",
+      "UA/프록시/TLS 변경",
+      "challenge 우회",
+      "원본 연구 JSON·seed·auditor 코드·추적 문서 변경",
+      "다른 출처 bulk API 중복 조회"
+    ],
+    "observations": [
+      {
+        "id": "public_players_html_recheck",
+        "url": "https://efhub.com/ko/players",
+        "requested_at": "2026-10-25T09:02:52.349Z",
+        "observed_at": "2026-10-25T09:02:52.573Z",
+        "method": "GET",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "response_bytes": 287734,
+        "sha256": "938dc1df9b4b7ad54236820c400a38bd1c87e27a2522aaba10d9cb3e232aaca9",
+        "headers": {
+          "cache-control": "public, max-age=14400, must-revalidate",
+          "age": "27976",
+          "server": "envoy",
+          "x-vercel-cache": "HIT"
+        },
+        "excerpts": [
+          {
+            "pattern": "new-players",
+            "text": "t-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-100\" href=\"/ko/new-players\">새로운 선수</a><a class=\"rounded-md px-3 py-2.5 text-sm font-medium text-zinc-600 transition-colors hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-zinc-100\" href=\"/ko/packs\">팩</a><a class=\"rounded-md px-3 py-2.5 text-sm font-medium text-zinc-6"
+          },
+          {
+            "pattern": "dataPack",
+            "text": "커트 비하인드 \\u0026 턴\\\",\\\"cyprus\\\":\\\"키프로스\\\",\\\"czechRepublic\\\":\\\"체코 공화국\\\",\\\"dataPack2\\\":{\\\"00Changes\\\":\\\"데이터 팩 2.00 변경\\\"},\\\"dataPack3\\\":{\\\"00Changes\\\":\\\"데이터 팩 3.00 변경\\\"},\\\"dataPackChanges\\\":\\\"데이터 팩 변경\\\",\\\"deepLyingForward\\\":\\\"플레이메이킹 포워드\\\",\\\"default\\\":\\\"기본\\\",\\\"defence\\\":\\\"수비\\\",\\\"defend\\\":\\\"지키다\\\",\\\"defending\\\":\\\"수비\\\",\\\"defensive\\\":\\\"방어적인\\\",\\\"defensiveAwareness\\\":\\\"수비 센스\\\",\\\"d"
+          },
+          {
+            "pattern": "/privacy",
+            "text": "nsition-colors hover:text-zinc-600 dark:hover:text-zinc-300\" href=\"/ko/privacy\">Privacy Policy</a></p></div></div></footer><!--$--><!--/$--><script>requestAnimationFrame(function(){$RT=performance.now()});</script><script src=\"/_next/static/chunks/faf4a0202735b81c.js?dpl=dpl_31Riks92A4aWRR56JjnttQdARhMg\" id=\"_R_\" async=\"\"></script><div hidden id=\"S:0\"><div class=\"bord"
+          },
+          {
+            "pattern": "__hub_req",
+            "text": "cument.cookie.split(';').some(function(c){return c.trim().startsWith('__hub_req=')})){fetch('/api/auth/token',{credentials:'include'}).catch(function(){})}}catch(e){}})()</script><script src=\"/_next/static/chunks/a6dad97d9634a72d.js?dpl=dpl_31Riks92A4aWRR56JjnttQdARhMg\" noModule=\"\"></script></head><body class=\"bg-slate-50 font-sans text-zinc-900 antialiased dark:bg-[#"
+          }
+        ]
+      },
+      {
+        "id": "public_players_actual_js_recheck",
+        "discovered_in": "public_players_html_recheck",
+        "url": "https://efhub.com/_next/static/chunks/8964e7af23583e8b.js?dpl=dpl_31Riks92A4aWRR56JjnttQdARhMg",
+        "requested_at": "2026-10-25T09:03:14.392Z",
+        "observed_at": "2026-10-25T09:03:14.727Z",
+        "method": "GET",
+        "status": 200,
+        "content_type": "application/javascript; charset=utf-8",
+        "response_bytes": 61902,
+        "sha256": "241046ee60771205e8a331364dccb65b9e5cf39e7471e08bd75c2123152744bc",
+        "headers": {
+          "etag": "\"0321c98545c1c2197c82f96874bfd626\"",
+          "last-modified": "Thu, 22 Oct 2026 23:46:01 GMT",
+          "cache-control": "public, max-age=31536000, immutable",
+          "age": "77386",
+          "server": "envoy",
+          "x-vercel-cache": "HIT"
+        },
+        "api_paths_discovered_not_requested": [
+          "/api/public/players"
+        ],
+        "query_literal_keys_in_saved_chunk": [
+          "position",
+          "otherPosition",
+          "playerType",
+          "condition",
+          "statMode",
+          "team",
+          "league",
+          "nation",
+          "skill",
+          "comSkill",
+          "search",
+          "playingStyle",
+          "defensivePlayingStyle",
+          "basic",
+          "abilities",
+          "model",
+          "skills",
+          "club",
+          "page"
+        ],
+        "excerpts": [
+          {
+            "pattern": "fetch(`/api/public/players",
+            "text": "tate)(z),[d,u]=(0,i.useState)(!0);(0,i.useEffect)(()=>{let e=s.toString();u(!0),fetch(`/api/public/players${e?`?${e}`:\"\"}`).then(e=>e.json()).then(e=>{c(e),u(!1)}).catch(()=>u(!1))},[s]);let h={};return s.forEach((e,t)=>{h[t]=e}),(0,t.jsxs)(t.Fragment,{children:[(0,t.jsx)(\"div\",{className:\"sticky top-0 z-40 border-b border-zinc-200 bg-white/95 backdrop-blur-md dark:border-zinc-800 dark:bg-[#13151d]/95\",children:(0,t.jsx)(\"div\",{className:\"mx-auto max-w-7xl px-4 sm:px-6 lg:px-8\",children:(0,t.jsx)(y,{total:o.total,clubs:e,lea"
+          },
+          {
+            "pattern": "let z={players:[]",
+            "text": "xt-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-100\"),...l,children:i})}let z={players:[],total:0,page:1,limit:24,totalPages:0};function P({clubs:e,leagues:r,countries:a}){let s=(0,n.useSearchParams)(),[o,c]=(0,i.useState)(z),[d,u]=(0,i.useState)(!0);(0,i.useEffect)(()=>{let e=s.toString();u(!0),fetch(`/api/public/players${e?`?${e}`:\"\"}`).then(e=>e.json()).then(e=>{c(e),u(!1)}).catch(()=>u(!1))},[s]);let h={};return s.forEach((e,t)=>{h[t]=e}),(0,t.jsxs)(t.Fragment,{children:[(0,t.jsx)(\"div\",{className:\"sticky top-0 z"
+          },
+          {
+            "pattern": "function j({page:",
+            "text": "dateParams:f,clubs:r,leagues:l,countries:a})]})}var v=e.i(456904),S=e.i(806908);function j({page:e,totalPages:i,searchParams:n}){if(i<=1)return null;function r(e){let t=new URLSearchParams;for(let[e,i]of Object.entries(n))\"page\"!==e&&\"string\"==typeof i&&t.set(e,i);e>1&&t.set(\"page\",String(e));let i=t.toString();return`/players${i?`?${i}`:\"\"}`}let l=function(e,t){if(t<=7)return Array.from({length:t},(e,t)=>t+1);let i=[],n=Math.max(2,e-2),r=Math.min(t-1,e+2);i.push(1),n>2&&i.push(\"...\");for(let e=n;e<=r;e++)i.push(e);return r<"
+          },
+          {
+            "pattern": "sort",
+            "text": "...e,styles:L,param:\"defensivePlayingStyle\"})}let F=Object.entries(l.SKILL_KEY).sort((e,t)=>e[1].localeCompare(t[1])),R=Object.entries(l.COM_SKILL_KEY).sort((e,t)=>e[1].localeCompare(t[1]));function A({searchParams:e,updateParams:n}){let l=(0,r.useTranslations)(),a=e.get(\"skill\")??\"\",s=new Set(a?a.split(\",\").filter(Boolean):[]),o=e.get(\"comSkill\")??\"\",c=new Set(o?o.split(\",\").filter(Boolean):[]),[d,u]=(0,i.useState)(\"\"),h=d.toLowerCase(),g=h?F.filter(([,e])=>l(e).toLowerCase().includes(h)):F,p=h?R.filter(([,e])=>l(e).toLower"
+          }
+        ],
+        "client_literal_keys_scope": "해당 JS의 get/set/delete/has 문자열 리터럴 정규식 검출 결과이며 UI 탭값도 섞일 수 있다. 모든 후보가 URLSearchParams인지, API가 각 키/값을 허용하는지는 개별 검증하지 않았다."
+      },
+      {
+        "id": "public_new_players_html",
+        "discovered_in": "public_players_html_recheck",
+        "url": "https://efhub.com/ko/new-players",
+        "requested_at": "2026-10-25T09:03:33.587Z",
+        "observed_at": "2026-10-25T09:03:34.390Z",
+        "method": "GET",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "response_bytes": 360125,
+        "sha256": "4baa395de1c55bb8f5bccbe7af60f44bf2daad2413b803c59f676fa7e66257b9",
+        "headers": {
+          "cache-control": "public, max-age=14400, must-revalidate",
+          "server": "envoy",
+          "x-vercel-cache": "HIT"
+        },
+        "excerpts": [
+          {
+            "pattern": "<title>",
+            "text": "=G-535EXL68RL\" as=\"script\"/><meta name=\"next-size-adjust\" content=\"\"/><title>새로운 선수 — eFHUB | eFHUB</title><meta name=\"description\" content=\"eFootball에 추가된 최신 선수 카드 — 팩, 에이전트, 테마 드롭이 릴리스마다 업데이트됩니다.\"/><link rel=\"manifest\" href=\"/manifest.json\"/><meta name=\"keywords\" content=\"eFootball,player database,stats,ratings,PES\"/><meta name=\"robots\" content=\"index, follow\"/><link rel=\"canonical\" href=\"https://efhub.com/new-players\"/><meta name=\"mobile-web-app-capable\" content=\"yes\"/><meta name=\"apple-mobile-web-app-title\" con"
+          },
+          {
+            "pattern": "newPlayers",
+            "text": ":\\\"네덜란드\\\",\\\"networkError\\\":\\\"네트워크 오류\\\",\\\"newCaledonia\\\":\\\"뉴 칼레도니아\\\",\\\"newPlayers\\\":\\\"새로운 선수\\\",\\\"newPlayersDescription\\\":\\\"eFootball에 추가된 최신 선수 카드 — 팩, 에이전트, 테마 드롭이 릴리스마다 업데이트됩니다.\\\",\\\"newSearch\\\":\\\"새로운 검색\\\",\\\"newSquad\\\":\\\"새로운 분대\\\",\\\"newZealand\\\":\\\"뉴질랜드\\\",\\\"nicaragua\\\":\\\"니카라과\\\",\\\"niger\\\":\\\"니제르\\\",\\\"nigeria\\\":\\\"나이지리아\\\",\\\"noLookPass\\\":\\\"노룩 패스\\\",\\\"noResults\\\":\\\"결과가 없습니다\\\",\\\"noSeeAdsThatAreLessRelevant\\\":\\\"아니요, 관련성이 낮은 광고를보십시오\\\",\\\"noStyle\\\":\\\"스타일 없음\\\",\\\"noUsersFound\\\":\\\"No users found.\\\",\\\"normal\\\":\\\"표준\\\",\\\"northMacedonia"
+          },
+          {
+            "pattern": "new-players",
+            "text": "ontent=\"index, follow\"/><link rel=\"canonical\" href=\"https://efhub.com/new-players\"/><meta name=\"mobile-web-app-capable\" content=\"yes\"/><meta name=\"apple-mobile-web-app-title\" content=\"eFHUB\"/><meta name=\"apple-mobile-web-app-status-bar-style\" content=\"black-translucent\"/><meta property=\"og:title\" content=\"eFHUB — eFootball Player Database &amp; Community\"/><meta property=\"og:description\" content=\"eFHUB is the ultimate eFootball platform. Browse our database of 40,000+ player stats and ratings, share builds, and con"
+          },
+          {
+            "pattern": "dataPack",
+            "text": "커트 비하인드 \\u0026 턴\\\",\\\"cyprus\\\":\\\"키프로스\\\",\\\"czechRepublic\\\":\\\"체코 공화국\\\",\\\"dataPack2\\\":{\\\"00Changes\\\":\\\"데이터 팩 2.00 변경\\\"},\\\"dataPack3\\\":{\\\"00Changes\\\":\\\"데이터 팩 3.00 변경\\\"},\\\"dataPackChanges\\\":\\\"데이터 팩 변경\\\",\\\"deepLyingForward\\\":\\\"플레이메이킹 포워드\\\",\\\"default\\\":\\\"기본\\\",\\\"defence\\\":\\\"수비\\\",\\\"defend\\\":\\\"지키다\\\",\\\"defending\\\":\\\"수비\\\",\\\"defensive\\\":\\\"방어적인\\\",\\\"defensiveAwareness\\\":\\\"수비 센스\\\",\\\"defensiveEngagement\\\":\\\"수비 자세\\\",\\\"defensiveFullBack\\\":\\\"수비형 사이드백\\\",\\\"defensiveGoalkeeper\\\":\\\"수비형 GK\\\",\\\"defensiveLine\\\":\\\"수비 라인 위치\\\",\\\"defensiveMid\\\":\\"
+          },
+          {
+            "pattern": "fetch(",
+            "text": "lit(';').some(function(c){return c.trim().startsWith('__hub_req=')})){fetch('/api/auth/token',{credentials:'include'}).catch(function(){})}}catch(e){}})()</script><script src=\"/_next/static/chunks/a6dad97d9634a72d.js?dpl=dpl_31Riks92A4aWRR56JjnttQdARhMg\" noModule=\"\"></script></head><body class=\"bg-slate-50 font-sans text-zinc-900 antialiased dark:bg-[#13151d] dark:text-zinc-50\"><div hidden=\"\"><!--$--><!--/$--></div><header data-screenshot-hide=\"true\" class=\"sticky top-0 z-50 border-b border-zinc-200 bg-white/90 bac"
+          }
+        ]
+      },
+      {
+        "id": "public_new_players_actual_js",
+        "discovered_in": "public_new_players_html",
+        "url": "https://efhub.com/_next/static/chunks/c0133bd3d37ecfb7.js?dpl=dpl_31Riks92A4aWRR56JjnttQdARhMg",
+        "requested_at": "2026-10-25T09:03:45.222Z",
+        "observed_at": "2026-10-25T09:03:45.322Z",
+        "method": "GET",
+        "status": 200,
+        "content_type": "application/javascript; charset=utf-8",
+        "response_bytes": 5620,
+        "sha256": "906e2fb4b7ebc81c31ed63a6b2d515a0257be1f995f05c9a0f52ffb26bed8fa7",
+        "headers": {
+          "etag": "\"de76b66d75ff75385f8f84bfb47e30e6\"",
+          "last-modified": "Thu, 22 Oct 2026 23:46:11 GMT",
+          "cache-control": "public, max-age=31536000, immutable",
+          "age": "77553",
+          "server": "envoy",
+          "x-vercel-cache": "HIT"
+        },
+        "api_paths_discovered_not_requested": [],
+        "excerpts": [
+          {
+            "pattern": "group",
+            "text": ".nameZh);return(0,t.jsx)(r.Link,{href:`/players/${e.id}`,prefetch:!1,className:`group relative flex ${i?\"w-full\":\"w-[168px] shrink-0\"} flex-col overflow-hidden border border-zinc-200 bg-white transition-all duration-200 hover:-translate-y-0.5 hover:border-zinc-300 hover:shadow-xl hover:shadow-zinc-300/60 dark:border-zinc-800 dark:bg-[#171922] dark:hover:border-zinc-600 dark:hover:shadow-black/50`,children:(0,t.jsxs)(\"div\",{className:\"relative aspect-[4/5.7] w-full overflow-hidden bg-gradient-to-br from-zinc-100 to-zinc-200 [container-type:inline-size] dark:from-zinc-800 dark:to-zinc-900\",children:[e.imageUrl?(0,t.jsx)(\"img\",{src:e.imageUrl,alt:c,className:\"h-full w-full object-cover object-top transition-transf"
+          },
+          {
+            "pattern": "players",
+            "text": "),c=(0,a.localeName)(e.name,e.nameJa,s,e.nameZh);return(0,t.jsx)(r.Link,{href:`/players/${e.id}`,prefetch:!1,className:`group relative flex ${i?\"w-full\":\"w-[168px] shrink-0\"} flex-col overflow-hidden border border-zinc-200 bg-white transition-all duration-200 hover:-translate-y-0.5 hover:border-zinc-300 hover:shadow-xl hover:shadow-zinc-300/60 dark:border-zinc-800 dark:bg-[#171922] dark:hover:border-zinc-600 dark:hover:shadow-black/50`,children:(0,t.jsxs)(\"div\",{className:\"relative aspect-[4/5.7] w-full overflow-hidden bg-gradient-to-br from-zinc-100 to-zinc-200 [container-type:inline-size] dark:from-zinc-800 dark:to-zinc-900\",children:[e.imageUrl?(0,t.jsx)(\"img\",{src:e.imageUrl,alt:c,className:\"h-full w-full o"
+          },
+          {
+            "pattern": "useEffect",
+            "text": ";e&&(i(e.scrollLeft>2),o(e.scrollLeft+e.clientWidth<e.scrollWidth-2))},[]);(0,r.useEffect)(()=>{let e=l.current;if(!e)return;c();let t=new ResizeObserver(c);t.observe(e);let r=new MutationObserver(c);return r.observe(e,{childList:!0,subtree:!0}),()=>{t.disconnect(),r.disconnect()}},[c]);let d=e=>{let t=l.current;t&&t.scrollBy({left:e*t.clientWidth*.6,behavior:\"smooth\"})},h=\"flex h-6 w-6 items-center justify-center rounded-full border border-zinc-300 bg-white text-zinc-600 shadow-sm transition-colors hover:border-zinc-400 hover:text-zinc-900 dark:border-zinc-600 dark:bg-[#1b1e29] dark:text-zinc-300 dark:hover:border-zinc-400 dark:hover:text-white\";return(0,t.jsxs)(\"div\",{className:\"relative min-w-0 flex-1\",child"
+          }
+        ]
+      }
+    ],
+    "api_inventory": [
+      {
+        "url_pattern": "https://efhub.com/api/public/players[?current URLSearchParams]",
+        "method": "GET",
+        "classification": "EFHub same-origin site API; Konami original API not established",
+        "normal_purpose": "사이트의 선수 카드 검색·필터·페이지 목록 상태를 갱신한다.",
+        "query_behavior": "초기 무쿼리. 페이지 이동은 2쪽부터 page 추가. 검색·필터의 현재 URLSearchParams를 전달한다.",
+        "response_keys": [
+          "players",
+          "total",
+          "page",
+          "limit",
+          "totalPages"
+        ],
+        "discovered_in": "public_players_actual_js_recheck",
+        "endpoint_requested_this_task": false,
+        "prior_verified_response_evidence": [
+          "efhub_players_api",
+          "efhub_players_page2"
+        ],
+        "limit100_support": "미확인. 기본 UI가 생성하는 옵션은 확인되지 않았고 임의 쿼리 전달은 지원 증거가 아니다.",
+        "client_parameter_literal_candidates": [
+          "position",
+          "otherPosition",
+          "playerType",
+          "condition",
+          "statMode",
+          "team",
+          "league",
+          "nation",
+          "skill",
+          "comSkill",
+          "search",
+          "playingStyle",
+          "defensivePlayingStyle",
+          "basic",
+          "abilities",
+          "model",
+          "skills",
+          "club",
+          "page"
+        ],
+        "query_contract_limit": "프런트에서 발견한 문자열 후보와 생성 요청 형식을 기록한다. API 서버가 모든 후보·값을 지원한다는 계약은 아니다."
+      },
+      {
+        "url_pattern": "https://efhub.com/api/public/packs?search={text}&page={n}&limit=30",
+        "method": "GET",
+        "classification": "EFHub same-origin site API; Konami original API not established",
+        "normal_purpose": "사이트 팩 목록 검색·추가 페이지를 가져오고 slug 상세 링크를 만든다.",
+        "query_keys": [
+          "search",
+          "page",
+          "limit"
+        ],
+        "response_keys_used_by_saved_client": [
+          "packs",
+          "hasMore"
+        ],
+        "row_fields_in_saved_response": [
+          "name",
+          "slug",
+          "date",
+          "playerCount"
+        ],
+        "discovered_in": "efhub_packs_js",
+        "endpoint_requested_this_task": false,
+        "prior_verified_response_evidence": [
+          "efhub_packs_api"
+        ],
+        "limitation": "팩 경로나 이름·날짜가 게임 내 구매 방식·현재 판매·전체 구성·가격·재화를 증명하지 않는다."
+      }
+    ],
+    "public_document_search_evidence": [
+      {
+        "url": "https://efhub.com/privacy",
+        "evidence_type": "primary_site_document_search_excerpt",
+        "retrieved_via": "connected_web_search",
+        "direct_http_status_verified_this_task": false,
+        "reported_document_date": "March 2026",
+        "finding": "EFHub는 팬이 만든 eFootball 통계·선수 데이터 사이트이며 Konami/eFootball과 소속 관계가 없다고 자사 개인정보처리방침에 명시한다.",
+        "limitation": "검색 결과 발췌만 확인했다. 이 문서는 카탈로그 수집 API·원본 제공 방식·재사용 허가·DB·갱신 주기를 설명하는 근거가 아니다."
+      },
+      {
+        "url": "https://efhub.com/articles/260822_1-efootball-2027-engine-summary",
+        "evidence_type": "primary_site_article_search_excerpt",
+        "retrieved_via": "connected_web_search",
+        "direct_http_status_verified_this_task": false,
+        "finding": "엔진 분석 글은 새 버전 데이터 decode가 갱신되어야 후속 수치 실험이 가능하다고 설명한다.",
+        "limitation": "특정 분석 글의 연구 과정 설명이다. EFHub 전체 카드 카탈로그의 수집기·파일·API·스케줄을 입증하지 않는다."
+      },
+      {
+        "url": "https://efhub.com/zh/articles/261017_3-17-october-2026-efootball-s-skill-mechanics-cracked-the-complete-guide",
+        "evidence_type": "primary_site_article_search_excerpt",
+        "retrieved_via": "connected_web_search",
+        "direct_http_status_verified_this_task": false,
+        "finding": "기술 분석 글은 패키지/라이브러리·ARM64 명령 분석과 연구 증거 파일을 서술한다.",
+        "limitation": "연구 글에 게임 바이너리 분석이 있다는 사실을 카드 DB의 동일 추출·정규화·저장 파이프라인으로 일반화하지 않는다. 파일 다운로드·추출·API 호출은 하지 않았다."
+      }
+    ]
+  },
+  "other_sites": {
+    "task": "T005",
+    "purpose": "제3 출처의 원본→정규화→저장→사이트 API→업데이트 공개 공급망 근거",
+    "started_at": "2026-10-25T09:01:57.684947+00:00",
+    "method": {
+      "transport": "inherited proxy; TLS verified",
+      "direct_get_budget": 6,
+      "sequential": true,
+      "no_data_file_download": true,
+      "no_authentication": true,
+      "no_previous_404_retries": true,
+      "client": "Python urllib 기본 클라이언트; 인증·쿠키·사용자 지정 헤더 없음",
+      "http_403_handling": "403 경로는 재시도하지 않고 헤더 변경·대체 경로 추측 없이 직접 요청 중단",
+      "efhub_or_private_game_api_requests": 0,
+      "bulk_downloads": 0,
+      "tracked_files_modified": false
+    },
+    "direct_get_count": 3,
+    "observations": [
+      {
+        "url": "https://efootballdb.info/en/dataset-license",
+        "observed_at": "2026-10-25T09:01:57.684958+00:00",
+        "method": "GET",
+        "status": 403,
+        "final_url": "https://efootballdb.info/en/dataset-license",
+        "error": "Forbidden"
+      },
+      {
+        "url": "https://playersdb.app/",
+        "observed_at": "2026-10-25T09:01:58.622287+00:00",
+        "method": "GET",
+        "status": 403,
+        "final_url": "https://playersdb.app/",
+        "error": "Forbidden"
+      },
+      {
+        "url": "https://playersdb.app/about",
+        "observed_at": "2026-10-25T09:01:59.423631+00:00",
+        "method": "GET",
+        "status": 403,
+        "final_url": "https://playersdb.app/about",
+        "error": "Forbidden"
+      }
+    ],
+    "sites": [
+      {
+        "site": "eFootballDB.info",
+        "pipeline": [
+          {
+            "stage": "원본",
+            "level": "미확인",
+            "finding": "Konami 공식 카드 원본 API·파일 공급처·EFHub/PESDB 등 선행 DB 사용 여부의 공개 명시를 확인하지 못함. 공식 뉴스 링크와 카드 원본 공급망은 분리함.",
+            "source_urls": [
+              "https://efootballdb.info/en"
+            ]
+          },
+          {
+            "stage": "정규화",
+            "level": "부분 확인 / 나머지 미확인",
+            "finding": "과거 공개 클라이언트는 카드 상세 응답의 schema_version=2, identity.id 일치를 검사한다. 서버 측 원본 변환 규칙·실제 선수/카드 ID 대응·계산 능력치의 생성 방식은 미확인.",
+            "source_urls": [
+              "https://efootballdb.info/assets/index-CEwWGUbi.js"
+            ]
+          },
+          {
+            "stage": "저장",
+            "level": "미확인",
+            "finding": "UI가 실패 시 이전 자료를 표시한다고 설명하지만, 이를 데이터베이스 종류·원본 보관·서버 증분 저장의 증거로 확대하지 않음."
+          },
+          {
+            "stage": "사이트 API",
+            "level": "경로 관측 확인 / 성공 응답 미확인",
+            "finding": "과거 JS에서 https://api.efootballdb.info origin 문자열, /api/v2/players/${encodeURIComponent(e)} 경로와 include URLSearchParams를 확인. 이는 카드 상세이며 상품 전체 구성·원본 Konami API가 아니다. 당시 조합 URL의 실제 GET은404였다. 이번에는 재시도하지 않음.",
+            "endpoint_template": "${T_()}/api/v2/players/${encodeURIComponent(e)}${a}",
+            "parameters": {
+              "path": "문자열 카드 ID e",
+              "include": "쉼표로 연결하는 optional query; 허용값·기본값·응답 필드 계약 미확인"
+            },
+            "previous_actual_probe": {
+              "url": "https://api.efootballdb.info/api/v2/players/88046292727298",
+              "status": 404,
+              "observed_at": "2026-10-25T07:12:49.548539+00:00"
+            }
+          },
+          {
+            "stage": "업데이트",
+            "level": "사이트 주장 / 운영 미확인",
+            "finding": "Weekly Updates와 날짜가 있는 상품 표시는 보이나, 원본 변경 감지 트리거·cron·증분 API·삭제 처리·ETag·배포 버전·두 시점의 실제 변경 반영은 검증하지 못함."
+          }
+        ],
+        "license": {
+          "level": "미확인",
+          "url": "https://efootballdb.info/en/dataset-license",
+          "current_http_status": 403,
+          "finding": "실제 연결된 라이선스 경로는 알지만 이번 정상 GET이403이어서 본문/범위를 확인하지 못함. 공개 메뉴가 있다는 것만으로 재사용 허가를 확정하지 않음."
+        },
+        "product_roster_scope": {
+          "level": "과거 표본 확인",
+          "pack_filter": "European Clubs Midfielders",
+          "observed_result_count": 11,
+          "finding": "상품명 필터 결과11명을 전체150명 또는 미확보 Standard139명으로 확장하지 않음."
+        }
+      },
+      {
+        "site": "PlayersDB",
+        "pipeline": [
+          {
+            "stage": "원본",
+            "level": "사이트 주장 / 구체 공급처 미확인",
+            "finding": "자체 소개는 PES/eFootball 시리즈 전반의 커뮤니티·제3자 자료를 다루는 독립 팬 DB라고 밝힌다. Konami 공식 원본 API 사용·추출 도구·개별 버전의 출처는 명시 근거를 확보하지 못함.",
+            "source_urls": [
+              "https://playersdb.app/",
+              "https://playersdb.app/about"
+            ]
+          },
+          {
+            "stage": "정규화",
+            "level": "사이트 주장",
+            "finding": "Konami ID, 역사 정보, FIFA/FM/Transfermarkt 등의 ID/링크와 커뮤니티 수정 제안을 관리한다고 설명. 104,505는 이 사이트가 주장하는 시리즈 전반의 고유 선수 규모이며 eFootball 현행 출시 카드 수로 간주하지 않음. 문자열 ID·실인물/카드 개정본 구분·원본 필드 계약은 파일을 받지 않아 미검증."
+          },
+          {
+            "stage": "저장",
+            "level": "배포 형식 주장 / 내부 저장 미확인",
+            "finding": "버전2026.10.22와 CSV29.38MB/JSONL35.51MB가 공개 홈 색인에 표시됨. 실제 다운로드·파일 해시·행수·내부 DB·원본 보존 방식은 검증하지 않음."
+          },
+          {
+            "stage": "사이트 API",
+            "level": "미확인",
+            "finding": "CSV/JSONL 내보내기 제공 설명은 있으나 문서화된 REST API·정상 JSON 응답·파일 스키마는 확보하지 못함. /players의 검색·recent-players 웹 쿼리는 API나 완전한 증분 change feed로 간주하지 않음. 대량 파일은 요청하지 않음."
+          },
+          {
+            "stage": "업데이트",
+            "level": "사이트의 릴리스 이력 주장 / 실행 원리 미확인",
+            "finding": "색인에10월8일·15일·22일 공개 이력이 있어 날짜별 릴리스 관행의 단서는 있다. 원본 업데이트 감지, 자동/수동 실행 여부, 수정·삭제분의 완전한 증분 제공, 현재 인스턴스의 실제 갱신 동작은 확인하지 못함."
+          }
+        ],
+        "license": {
+          "level": "미확인",
+          "finding": "Open Datasets라는 소개와 Terms of Service 메뉴 표시는 재배포 라이선스 본문이 아니다. 구체적 라이선스 명칭·범위·조건은 확인하지 못함. 직접 접근403 뒤 경로를 추측하거나 우회하지 않음."
+        },
+        "fit_for_efsimulator": "추후 실인물 식별·외부 ID 교차 참조를 검증할 후보로 볼 수 있으나, 현재 팩별 전체 구성·가격·판매 기간의 원본으로 채택할 근거는 없음."
+      }
+    ],
+    "completed_at": "2026-10-25T09:05:14.067035+00:00",
+    "status": "공개 근거 정리 완료; 원본 공급망과 현재 접근성은 미확인 구간 있음",
+    "evidence_levels": {
+      "확인": "해당 시각의 직접 HTTP 응답 또는 저장된 과거 성공 응답/공개 코드에서 관측",
+      "사이트 주장": "운영 사이트의 소개·홈·검색 색인에 표시된 설명; 원본 공급망 운영을 독립 검증한 것은 아님",
+      "미확인": "제공자 원본·라이선스 세부·실제 갱신 작업·증분 계약 등을 확인하지 못함"
+    },
+    "search_evidence": [
+      {
+        "url": "https://playersdb.app/",
+        "access_kind": "웹 검색 색인",
+        "observed_at": "2026-10-25T09:05:14.067035+00:00",
+        "claims_summarized": {
+          "project": "PES/eFootball 시리즈 전반의 선수 정보와 ID를 보존하는 커뮤니티 DB",
+          "reported_unique_konami_players": "104,505",
+          "reported_release_version": "2026.10.22",
+          "reported_last_update": "2026-10-22",
+          "reported_recent_releases": [
+            "2026-10-22",
+            "2026-10-15",
+            "2026-10-08 (eFootball 6.1.0 표기)"
+          ],
+          "reported_download_formats": [
+            "CSV",
+            "JSONL"
+          ],
+          "reported_sizes_mb": {
+            "CSV": "29.38",
+            "JSONL": "35.51"
+          },
+          "reported_contributions": "590 approved community contributions",
+          "disclosure": "독립 팬 프로젝트이며 제3자·커뮤니티에서 선수 자료가 올 수 있다고 밝힘"
+        },
+        "quote": "Player data may originate from third-party and community sources.",
+        "verification_limit": "다운로드 본문·헤더·해시·행수·필드 스키마는 내려받거나 검증하지 않음. 현재 직접 홈 GET은403."
+      },
+      {
+        "url": "https://playersdb.app/about",
+        "access_kind": "웹 검색 색인",
+        "observed_at": "2026-10-25T09:05:14.067035+00:00",
+        "claims_summarized": {
+          "identification": "Konami ID와 EA FC/FIFA·FM·Transfermarkt 등의 교차 참조를 제공한다고 설명",
+          "normalization": "커뮤니티가 실명·생년월일·외부 링크 수정을 제안하는 기여 체계라고 설명",
+          "formats": "CSV/JSONL을 다른 도구·웹사이트 통합용으로 제공한다고 설명"
+        },
+        "verification_limit": "소개 설명은 API·파일 스키마·구체적인 재배포 라이선스나 원본 공식 API 계약을 증명하지 않음. 직접 about GET은403."
+      },
+      {
+        "url": "https://efootballdb.info/en",
+        "access_kind": "웹 검색 색인 및 이전 직접 응답 기록",
+        "observed_at": "2026-10-25T09:05:14.067035+00:00",
+        "claims_summarized": {
+          "project": "비공식 커뮤니티 선수·감독 DB와 스쿼드 도구",
+          "updates": "Weekly Updates 문구와 2026-10-19 상품이 표시됨",
+          "current_pack": "European Clubs Midfielders: 11명 표시",
+          "ui_behavior": "여러 영역에서 갱신 실패 시 이전 로드 자료를 표시한다는 안내가 함께 보임",
+          "license_navigation": "Dataset license 메뉴가 있음"
+        },
+        "verification_limit": "공식 공지 링크는 뉴스 출처에 관한 근거이며 카드 DB의 공식 원본 API 근거로 사용하지 않음. 카드 원본 수집처·변환·저장소는 이 설명에서 확인되지 않음."
+      }
+    ],
+    "reused_prior_observations": [
+      {
+        "url": "https://efootballdb.info/assets/index-CEwWGUbi.js",
+        "observed_at": "2026-10-25T07:12:11.013295+00:00",
+        "status": 200,
+        "sha256": "36a47f5e60c01ca54af559de1b3c9e34bc76b0b4e217a70aad85ec0e754d914c",
+        "api_string_refs": [
+          "https://api.efootballdb.info",
+          "${T_()}/api/v2/players/${encodeURIComponent(e)}${a}"
+        ],
+        "client_call_evidence": [
+          "hParams;r.length&&i.set(`include`,r.join(`,`));let a=i.size?`?${i}`:``,o=await Fe(`${T_()}/api/v2/players/${encodeURIComponent(e)}${a}`,`Could not load player v2 details`,{signal:n});if(o.schema_version!==2||o.identity?.id!==e)throw Error(`Unexpected player v2 response identity or version`);return o}function O_(e){if(!e)return;l"
+        ],
+        "discovery": "실제 성공한 efootballdb.info/en HTML에 연결된 경로"
+      },
+      {
+        "url": "https://efootballdb.info/en/players?pack=European+Clubs+Midfielders",
+        "observed_at": "2026-10-25T07:12:13.476611+00:00",
+        "status": 200,
+        "sha256": "9e8d1ecb3d0eb93dd6bdaab4e5af03eb9159b0351e7ad1fd46c601bb25b48c48",
+        "api_string_refs": [
+          "https://api.efootballdb.info/media/images/players/89136409091415/portrait.avif?v=09c0e866c9bd8bd69a993a04d5c1fe202c461ef635ac7c1a0bbfbd649de89d7f&amp;width=64",
+          "https://api.efootballdb.info/media/images/players/89138556575063/portrait.avif?v=ed9331fabbcd4f6cafc545d2a12fd71b3e141a849efce26e319f8e8e55f4da97&amp;width=64",
+          "https://api.efootballdb.info/media/images/players/88045755863174/portrait.avif?v=ca394a4d26ebb0c4892857a41f1310448f6ef91d1a3811da0d283134d36009c3&amp;width=64",
+          "https://api.efootballdb.info/media/images/players/89137214427270/portrait.avif?v=fb1d825affea418c84623f72976c309e5136e9a2f782e4c1d11ac9cc7bcaa31b&amp;width=64",
+          "https://api.efootballdb.info/media/images/players/88045755960808/portrait.avif?v=51986679f6da81e668024b06713eca9b612fb3d13fadb27ead8bc729bfb5c530&amp;width=64",
+          "https://api.efootballdb.info/media/images/players/105895908484113/primary.avif?v=989f9c08423d43d55dd83aebfcac26aed22150f827d8e7874f68352e95941e35&amp;width=128",
+          "https://api.efootballdb.info/media/images/players/105895908496006/primary.avif?v=a84c08b354a53ca3037313060d67239bf9997f526b62bd1484d60326ccb0f3eb&amp;width=128",
+          "https://api.efootballdb.info/media/images/players/105895908388335/primary.avif?v=f516910bf7813db623effa2c45921febd493218136bdefb7159165890e24460f&amp;width=128",
+          "https://api.efootballdb.info/media/images/players/105895908444236/primary.avif?v=42d38ce089fdbf119109750926df0f6bc5e854b52666d920df7f7443a45c2e8b&amp;width=128",
+          "https://api.efootballdb.info/media/images/players/105895908461801/primary.avif?v=6de13604e14660471980142f887e3ca5657df8325681018e317109fbf203cb15&amp;width=128",
+          "https://api.efootballdb.info/media/images/players/105895908512700/primary.avif?v=305fb154b46fad386e095a05f5d7c062c6aceac7ed62a179e1dd1de543b78846&amp;width=128",
+          "https://api.efootballdb.info/media/images/players/105895908490584/primary.avif?v=2b11ae05eb1afcc2ce9e033290bd194c0a59786f69859948d715d1fc4839b39a&amp;width=128",
+          "https://api.efootballdb.info/media/images/players/105895908488510/primary.avif?v=f2635a98229ee0636f3505707623d53ec83f51f8cfecd4087655d4ae5f2972e7&amp;width=128",
+          "https://api.efootballdb.info/media/images/players/88046292698013/primary.avif?v=c185534280595f631760ae5514e16c6b3368af1f4497ab2d043c4c47dcb73d27&amp;width=128",
+          "https://api.efootballdb.info/media/images/players/88046292831741/primary.avif?v=8d10d8d86a35a38511d747f4c7c76690bdebc16b6b4301017b901c3fc65ef39b&amp;width=128",
+          "https://api.efootballdb.info/media/images/players/88046292727298/primary.avif?v=5681e869194064ba42de488893b2efbc0c7d8efc8053cb35867da8a9cd68df0d&amp;width=128"
+        ],
+        "filter_evidence": {
+          "query_key": "pack",
+          "query_value": "European Clubs Midfielders"
+        },
+        "filtered_result_count": 11,
+        "count_evidence": "11 players found",
+        "discovery": "실제 성공한 efootballdb.info/en HTML에 연결된 경로"
+      },
+      {
+        "url": "https://api.efootballdb.info/api/v2/players/88046292727298",
+        "observed_at": "2026-10-25T07:12:49.548539+00:00",
+        "status": 404,
+        "discovery": {
+          "script": "https://efootballdb.info/assets/index-CEwWGUbi.js",
+          "api_origin_literal": "https://api.efootballdb.info",
+          "client_path_template": "${T_()}/api/v2/players/${encodeURIComponent(e)}${a}",
+          "card_id_source": "https://efootballdb.info/en/players/yaya-toure-88046292727298",
+          "scope": "공개 클라이언트에서 확인된 선수 상세 경로; 상품별 전체 명단 요청으로 간주하지 않음"
+        }
+      }
+    ],
+    "reused_prior_observations_source": "artifacts/roster-investigation/alternate-sources.json",
+    "conclusions": {
+      "official_card_source_api_proven": false,
+      "other_sites_api_is_upstream_official_proof": false,
+      "documented_working_new_api_or_export_verified": false,
+      "verified_now": "새 직접 GET 3건은403. 과거 .info 공개 클라이언트의 카드 상세 선언과 당시404 응답은 기존 아티팩트로 재확인함.",
+      "reported_by_sites": "PlayersDB는 커뮤니티/제3자 자료·교차 ID·CSV/JSONL·버전별 릴리스를 설명한다. .info는 비공식 DB와 주간 갱신을 표방한다.",
+      "unknown": "두 사이트 모두 원본→정규화→내부 저장→증분 운영의 완전한 공개 공급망은 확보하지 못함. 공식 뉴스 링크·자체 API·표시된 최근 날짜를 원본 공식 카드 API나 실제 자동 갱신의 증거로 대체하지 않음.",
+      "next_boundary": "본문과 정상 응답을 검증하기 전 새 provider/ID 병합/라이선스/자동 갱신 가능성을 확정하지 않는다. 이번 조사는 코드·seed·설정 변경이나 외부 연락을 포함하지 않는다."
+    }
+  },
+  "public_game_data_research": {
+    "schema_version": 1,
+    "task_id": "T005",
+    "title": "공개 eFootball 데이터 도구·포맷 문서와 사이트 공급망 주장 조사",
+    "checked_at": "2026-10-25",
+    "scope": {
+      "method": "공개 GitHub README·포맷 문서·소스·릴리스와 사이트 운영자 공개 소개/약관의 읽기 조사",
+      "protected_game_data_downloads": 0,
+      "tool_installations": 0,
+      "extractor_executions": 0,
+      "decryption_or_protection_bypass_performed": false,
+      "game_or_site_dataset_downloads": 0,
+      "code_or_seed_changes": false,
+      "artifact_only": true,
+      "limits": [
+        "설명과 소스의 존재를 확인했으며 실제 게임 파일·도구 실행·산출물의 정확성이나 완전성은 검증하지 않았다.",
+        "공개 소스 텍스트를 읽은 것은 게임 데이터 파일·DB·이미지 묶음 다운로드와 구분한다.",
+        "사이트별 특정 추출 도구 사용은 운영자 명시 없이는 연결하지 않는다.",
+        "게임의 팀 스쿼드, 글로벌 카드 카탈로그, 개별 상품 소개 카드, 전체 초기 추첨풀, 계정별 남은 풀은 서로 다른 관계다."
+      ]
+    },
+    "runtime": {
+      "environment_observed_phase": "running",
+      "environment_observations_current": true,
+      "environment_spec_revision": "22",
+      "environment_check_method": "cloud_environment.environment_status",
+      "local_shell_used_only_for": "저장소 지침 읽기·JSON 보고서 저장/검증; 외부 소스 요청은 web/GitHub 도구"
+    },
+    "observations": [
+      {
+        "id": "pesplatform_current_unavailable",
+        "url": "https://github.com/bleachevil/PESPLATFORM",
+        "checked_at": "2026-10-25",
+        "reader": "catalog_backend",
+        "method": [
+          "GitHub connector repository GET",
+          "web open"
+        ],
+        "status": 404,
+        "evidence_level": "current_access_failure",
+        "short_evidence": "GitHub API Not Found와 web open HTTP404.",
+        "limits": [
+          "비공개 전환·삭제·이름 변경 중 어느 원인인지는 확인하지 않았다.",
+          "현재 소스/README를 확보한 것으로 표시하지 않는다."
+        ]
+      },
+      {
+        "id": "pesplatform_search_cached_readme",
+        "url": "https://github.com/bleachevil/PESPLATFORM",
+        "checked_at": "2026-10-25",
+        "reader": "catalog_backend",
+        "method": "web search indexed excerpt only; crawled five days ago as reported by search provider",
+        "status": null,
+        "evidence_level": "historical_search_cache_not_current_source_verification",
+        "short_evidence": "This project does not decrypt Konami’s player container.",
+        "reported_inputs": [
+          "설치된 게임의 주간 live-update CPK dt870_console_win.cpk",
+          "common/etc/pesdb/Player.bin",
+          "Team.bin",
+          "PlayerAssignment.bin",
+          "외부 Player.bin 편집기가 내보낸 PID·이름·포지션·능력·Skills·AIStyles CSV"
+        ],
+        "reported_workflow": "게임의 주간 갱신 후 사용자가 CSV를 내보내 가져오는 로컬 DB; 저장 데이터의 WESYS 보호는 외부 편집기 의존이라고 색인이 설명한다.",
+        "reported_standard_path": "PESDB의 Standard 목록을 읽고 일부 레벨·능력을 EFHub와 계산으로 보완하는 별도 개인용 경로를 색인이 설명한다.",
+        "limits": [
+          "현재 원문이404라 이 설명의 현행 코드 구현·동작 여부 미검증.",
+          "이 도구가 EFHub 또는 PESDB의 공급자라는 주장이 아니다. 색인상 흐름은 오히려 그 사이트 자료를 이 도구가 소비하는 경로다.",
+          "이미지 원본·카드 타입 체계·상품 전체 Standard 명단이나 가격/기간의 확보는 입증하지 않는다."
+        ]
+      },
+      {
+        "id": "mod_studio_readme",
+        "url": "https://github.com/Master-Antonio/Efootball-Mod-Studio/blob/main/README.md",
+        "blob_sha": "e8de7aa9dddb8d30dde57962f1a668cc55a093ff",
+        "checked_at": "2026-10-25",
+        "reader": "catalog_backend",
+        "method": "GitHub UTF-8 source read",
+        "evidence_level": "maintainer_claim_and_readable_source",
+        "short_evidence": "These values are evidence for that build, not constants.",
+        "claims": [
+          "Windows/Steam 설치의 dt870 CPK와 WESYS 데이터베이스 처리를 설명한다.",
+          "392바이트 live/400바이트 base Player 레이아웃과 assignment v1/v2 검증을 명시한다.",
+          "manifest에 수량·레이아웃·경고·SHA-256을 기록한다고 설명한다.",
+          "2026-08-17 빌드의 Player34303·Assignment23163·Team975는 그 빌드 관측값이라고 제한한다."
+        ],
+        "limits": [
+          "우리는 추출·복호화·설치·실행하지 않았다.",
+          "README의 asset incremental scan은 실행 중 자산 참조 탐색 기능이며 주간 카드 DB 증분 전송과 다르다.",
+          "README에 있는 실시간 카메라·모드 삽입 기능은 이번 조사 범위 밖이며 수행하지 않았다."
+        ]
+      },
+      {
+        "id": "mod_studio_format",
+        "url": "https://github.com/Master-Antonio/Efootball-Mod-Studio/blob/main/docs/PESDB_DATABASE_FORMAT.md",
+        "blob_sha": "527c1c6356546f15108a96e03ba55602f016bb47",
+        "checked_at": "2026-10-25",
+        "reader": "catalog_backend",
+        "method": "GitHub UTF-8 documentation read",
+        "evidence_level": "maintainer_documented_format",
+        "short_evidence": "It is a full update layer with layout drift",
+        "line_refs": [
+          [
+            13,
+            46
+          ],
+          [
+            176,
+            196
+          ],
+          [
+            225,
+            284
+          ],
+          [
+            286,
+            302
+          ],
+          [
+            330,
+            341
+          ]
+        ],
+        "claims": [
+          "dt200 Steam corpus와2026-08-17 dt870를 구분하며 dt870를 전체 update layer라고 설명한다.",
+          "Player의 native PID와 외부 PID는64비트이며 다른 테이블 참조에는 외부 PID를 쓴다고 설명한다.",
+          "PlayerAssignment는 카드↔팀·등번호·역할 관계를 설명한다. 상품 상품ID↔추첨풀 관계를 설명하는 테이블이 아니다.",
+          "PlayerAppearance는 외부 PID별 외형 메타데이터이며 Player 전체에 대한 완전한 행 집합은 아니라고 설명한다.",
+          "특수판 카드 ID를 일부 high-bit 패턴으로 설명하지만 단순 비트마스크로 base 카드를 복구하는 규칙은 실패한다고 경고한다."
+        ],
+        "limits": [
+          "native/external PID를 실인물 ID·Standard 관계와 자동 동일시하지 않는다.",
+          "문서의 연구 corpus 범위·날짜를 현재 모든 플랫폼/최신 빌드에 일반화하지 않는다.",
+          "이 문서만으로 상품별 Standard 카드 ID·수량·판매 기간을 확보할 수 없다.",
+          "팀 구성·외형 자료는 카드 디자인 이미지/배경 원본이나 상품의 감독 포함 관계를 입증하지 않는다."
+        ]
+      },
+      {
+        "id": "mod_studio_parser",
+        "url": "https://github.com/Master-Antonio/Efootball-Mod-Studio/blob/main/ui/core/pesdb.py",
+        "blob_sha": "56ef7be45855c42633d27aae4091e04a1c24895d",
+        "checked_at": "2026-10-25",
+        "reader": "catalog_backend",
+        "method": "GitHub UTF-8 source read only",
+        "evidence_level": "code_inspected_not_executed",
+        "short_evidence": "player_id; display_name; nationality_id; position_id; layout",
+        "line_refs": [
+          [
+            28,
+            84
+          ],
+          [
+            133,
+            194
+          ],
+          [
+            401,
+            422
+          ]
+        ],
+        "observed_outputs": [
+          "Player행: native_player_id·player_id·5개이름·국적·키·몸무게·포지션·레이아웃 등",
+          "Player CSV columns: row,player_id,display_name,nationality_id,height_cm,weight_kg,position_id,layout",
+          "Assignment행: player_id,team_id,등번호,정렬키,role flags 등"
+        ],
+        "limits": [
+          "검토한 Player CSV 스키마에는 카드 이미지 URL·상품 ID·구매 방식·전체 추첨풀·Standard 상품관계가 없다.",
+          "그 외 연구문서의 더 많은 속성 설명을 현재 CSV에 모두 구현되었다고 표현하지 않는다.",
+          "비트 offset·암호 상수나 추출 절차를 efsimulator에 도입하지 않았다."
+        ]
+      },
+      {
+        "id": "mod_studio_service",
+        "url": "https://github.com/Master-Antonio/Efootball-Mod-Studio/blob/main/ui/services/database.py",
+        "blob_sha": "bd1a10f4d4dd0adfb05d9d40796adfb30e7468c2",
+        "checked_at": "2026-10-25",
+        "reader": "catalog_backend",
+        "method": "GitHub UTF-8 source read only",
+        "evidence_level": "code_inspected_not_executed",
+        "short_evidence": "Player.bin, PlayerAssignment.bin, Team.bin",
+        "line_refs": [
+          [
+            25,
+            29
+          ],
+          [
+            104,
+            145
+          ],
+          [
+            161,
+            179
+          ]
+        ],
+        "observed_behavior": [
+          "선택 대상 테이블3개가 소스에 명시되어 있다.",
+          "packed/decoded 파일 해시·레이아웃·record count·unique player count·assignment 검증·team count를 manifest로 기록한다.",
+          "CSV 내보내기는 정해진 columns로 수행된다."
+        ],
+        "limits": [
+          "이 서비스의 테이블 목록은 개별 상품의 뽑기 풀 테이블이 아니다.",
+          "파일 해시는 재현/비교 메타데이터이며 주간 변경이 정확히 반영되었다는 실제 운영 증거는 아니다."
+        ]
+      },
+      {
+        "id": "mod_studio_changelog",
+        "url": "https://github.com/Master-Antonio/Efootball-Mod-Studio/blob/main/CHANGELOG.md",
+        "blob_sha": "0138135a954562d526789577593676fce590d5b6",
+        "checked_at": "2026-10-25",
+        "reader": "catalog_backend",
+        "method": "GitHub UTF-8 changelog read",
+        "evidence_level": "maintainer_release_notes",
+        "short_evidence": "2026-08-20: dt870 live extraction,392/400-byte records. 2026-09-26: rebranding.",
+        "claims": [
+          "레이아웃 지원과 검증 도구 개선을 릴리스 기록으로 설명한다.",
+          "특정 주마다 카탈로그를 자동 배포하거나 개별 상품/Standard 관계를 공개한다는 약속은 확인하지 못했다."
+        ],
+        "limits": [
+          "툴 버전 이력과 게임 데이터셋의 주간 버전 이력은 구분한다."
+        ]
+      },
+      {
+        "id": "pesdatabase_readme",
+        "url": "https://github.com/kisni07/PESDatabase/blob/main/README.md",
+        "blob_sha": "7aa9444f386ac30e4f9d8fcf615125c1aff526fc",
+        "checked_at": "2026-10-25",
+        "reader": "catalog_backend",
+        "method": "GitHub UTF-8 README read",
+        "evidence_level": "maintainer_claim",
+        "short_evidence": "eFootball 2027 (Weekly Live Update)",
+        "claims": [
+          "eFootball2027 주간 Live Update 및 과거eFootball/PES 버전 지원을 명시한다."
+        ],
+        "limits": [
+          "이 README는 전체 소스/서버 데이터/원본 취득 경로를 공개하지 않는다."
+        ]
+      },
+      {
+        "id": "pesdatabase_weekly_release",
+        "url": "https://github.com/kisni07/PESDatabase/releases/tag/v0.2.4",
+        "checked_at": "2026-10-25",
+        "reader": "catalog_backend",
+        "method": "GitHub release metadata/body read",
+        "published_at": "2026-08-28T22:49:18Z",
+        "evidence_level": "maintainer_operational_claim_unverified",
+        "short_evidence": "from Friday through Sunday, without an app version update",
+        "claims": [
+          "자체 서버 연결로 주간 live-update 기반 DB를금~일에 반영하며 앱 버전 업데이트는 불필요하다고 주장한다.",
+          "메이저 게임 버전 변경은 바이너리 bit/offset 이동 때문에 별도 대응이 필요하다고 설명한다.",
+          "Special Player export 방법은 beta라고 설명한다."
+        ],
+        "limits": [
+          "서버의 실제 자동화·업데이트 지연·완전성·증분 패치 형식은 검증하지 않았다.",
+          "DB를 새로 내려주는지 행 단위 delta인지 릴리스 설명만으로 결정할 수 없다.",
+          "Special Player export가 게임 상품별 전체 추첨풀 export를 의미하지 않는다."
+        ]
+      },
+      {
+        "id": "pesbuilder_current_release",
+        "url": "https://github.com/kisni07/PESDatabase/releases/tag/v0.2.9",
+        "checked_at": "2026-10-25",
+        "reader": "catalog_backend",
+        "method": "GitHub release metadata/body read",
+        "published_at": "2026-09-27T15:28:14Z",
+        "evidence_level": "maintainer_release_notes",
+        "short_evidence": "Project Renamed: PESDatabase ➔ PESBuilder",
+        "claims": [
+          "서버 이전과PESBuilder로의명칭변경을 설명한다.",
+          "Weekly Live Update2026-09-27 기반Power Tackle추가와DB/Option File 형식의 Export Roster를 명시한다."
+        ],
+        "limits": [
+          "이 문맥의roster는patcher/modder용 선수·팀 export이며 유료 상품의초기뽑기풀이라고 명시하지 않는다.",
+          "다운로드·로그인·결제·앱/데이터실행은 수행하지 않았다."
+        ]
+      },
+      {
+        "id": "player_bin_study_guide",
+        "url": "https://jiahao.uk/en/blog/efootball-player-bin-study-guide/",
+        "checked_at": "2026-10-25",
+        "reader": "catalog_backend_and_parent_comparison",
+        "method": "public article web text; parent supplied already-read section9 comparison; no repeat GET",
+        "evidence_level": "author_format_research_claim",
+        "short_evidence": "It’s not a complete card database either.",
+        "claims": [
+          "SteamPC의오프라인Player.bin을 설명하며Dream Team특수카드전체가아닌일부만포함한다고 명시한다.",
+          "오프라인Player의능력·스킬·팀구성과계정소유/육성/부스터·서버정보를 구분한다.",
+          "포함된특수카드의유래pack label 및 PlayerVariationDetail.bin 관계를 설명한다고 부모가 이미읽은해당절을전달했다."
+        ],
+        "limits": [
+          "패치된커뮤니티DB와공식원본의특수카드수가다르므로둘을섞으면안된다.",
+          "기원pack label은상품의현재전체Standard포함추첨명단·가격·기간을완성하는관계가아니다.",
+          "본문의카드ID분류설명은저자의연구주장으로기록하며검증없이efs 카드ID/실인물병합규칙으로채택하지않는다.",
+          "보호처리알고리즘·상수·실행절차는이보고서에수록하지않았다."
+        ]
+      },
+      {
+        "id": "master_league_parent_review",
+        "url": "https://github.com/tjgg260/eFootball-Master-League/blob/main/tools/first_run.py",
+        "additional_url": "https://github.com/tjgg260/eFootball-Master-League",
+        "checked_at": "2026-10-25",
+        "reader": "parent_root",
+        "method": "parent-delegated primary source observation; no duplicate fetch by this agent",
+        "evidence_level": "parent_read_public_source",
+        "short_evidence": "dt200 → game_world.db + game_catalog.json; 얼굴/문장 별도,업데이트후rebase.",
+        "claims": [
+          "부모가2027PC/Steam README및v0.1.2(2026-09-20)를확인했다고전달했다.",
+          "설치된dt200의오프라인세계/카탈로그를만들며얼굴·문장자산은별도라고전달했다."
+        ],
+        "limits": [
+          "본agent가소스를다시GET하거나도구/게임파일을실행하지않았다.",
+          "오프라인MasterLeague게임세계DB는DreamTeam상품별초기추첨풀과다르다.",
+          "rebase는그프로젝트의기준DB재구성정책이며전체사이트들의주간증분전송방식근거가아니다."
+        ]
+      }
+    ],
+    "site_operator_claims": [
+      {
+        "site": "PESDB",
+        "url": "https://pesdb.net/terms/",
+        "checked_at": "2026-10-25T09:02:10Z",
+        "reader": "site_supply_claims",
+        "method": "delegated public web read",
+        "section": "4",
+        "short_evidence": "Player data are extracted or derived from game data",
+        "game_origin_claim": "explicit",
+        "exact_source_file": "not_verified",
+        "exact_extractor": "not_verified",
+        "image_supply_chain": "not_verified",
+        "full_product_standard_pool": "not_verified"
+      },
+      {
+        "site": "PESDB",
+        "url": "https://pesdb.net/efootball/updates/",
+        "checked_at": "2026-10-25T09:02:10Z",
+        "reader": "site_supply_claims",
+        "method": "delegated public web read",
+        "short_evidence": "6.1.0 / 2026-10-08: 신규1450·수정1543·이적300",
+        "version_change_summary": "explicit",
+        "incremental_delivery_format": "not_verified",
+        "limits": [
+          "사이트의변경집계는서버delta파일·완전한원본집합을입증하지않는다.",
+          "홈페이지6.0.0과업데이트기록6.1.0의차이가관찰되어단일버전라벨만으로최신성을판정하지않는다."
+        ]
+      },
+      {
+        "site": "eFootballDB",
+        "url": "https://efootballdb.com/",
+        "checked_at": "2026-10-25T09:02:10Z",
+        "reader": "site_supply_claims",
+        "method": "delegated public web read",
+        "section": "About Us",
+        "short_evidence": "using the official data from eFootball, which is updated weekly",
+        "game_origin_claim": "explicit",
+        "weekly_update_claim": "explicit",
+        "exact_source_file": "not_verified",
+        "exact_extractor": "not_verified",
+        "limits": [
+          "2022/2023·15000선수소개는현행규모·정확성검증으로사용하지않는다.",
+          "efootballdb.info와동일운영·동일데이터라고연결하지않는다."
+        ]
+      },
+      {
+        "site": "PES Master",
+        "url": "https://www.pesmaster.com/efootball-2022/",
+        "checked_at": "2026-10-25T09:02:10Z",
+        "reader": "site_supply_claims",
+        "method": "delegated public web read",
+        "short_evidence": "We update the database with the weekly Live Updates every Thursday.",
+        "weekly_update_claim": "explicit_Thursday",
+        "exact_source_file": "not_verified",
+        "exact_extractor": "not_verified",
+        "incremental_delivery_format": "not_verified",
+        "full_product_standard_pool_supply_chain": "not_verified"
+      },
+      {
+        "site": "EFHub",
+        "urls": [
+          "https://efhub.com/",
+          "https://apps.apple.com/in/app/efhub-27/id1591724001?platform=ipad",
+          "https://efhub.com/articles/261017_3-17-october-2026-efootball-s-skill-mechanics-cracked-the-complete-guide"
+        ],
+        "checked_at": "2026-10-25T09:02:10Z",
+        "reader": "site_supply_claims",
+        "method": "delegated public web read",
+        "short_evidence": "주간감독전술기능설명·외부연구재게시스킬기사;카드catalog의특정원본/추출기명시는미확인.",
+        "catalogue_source_pipeline": "not_verified_within_checked_pages",
+        "weekly_manager_feature": "explicit_but_not_catalogue_pipeline",
+        "skill_article_external_research_attribution": "explicit_but_not_catalogue_pipeline",
+        "limits": [
+          "wyzzzzzzz연구에대한스킬기사의원본package분석근거를카드DB전체공급망공개로일반화하지않는다.",
+          "이범위에서찾지못했다는뜻이며운영자가다른곳에서도밝힌적없다고단정하지않는다."
+        ]
+      }
+    ],
+    "support_matrix": [
+      {
+        "feature": "원본선수/카드ID",
+        "public_evidence": "64비트native/external PID 설명·parser출력존재",
+        "caveat": "출처와빌드·native/external구분필수.efs입력은문자열보존.실인물·Standard연결비트규칙자동채택금지."
+      },
+      {
+        "feature": "카드분류",
+        "public_evidence": "variant/high-bit와일부특수type에관한연구설명존재",
+        "caveat": "현재coreCSV에완전분류열없음.모든현행복수type·조건의정확성미검증."
+      },
+      {
+        "feature": "선수능력/이름/팀",
+        "public_evidence": "Player와Team/Assignment레이아웃및일부필드·CSV가공개됨",
+        "caveat": "게임빌드별레이아웃이달라짐.팀스쿼드의완전성과상품풀의완전성은별개."
+      },
+      {
+        "feature": "이미지/배경",
+        "public_evidence": "모드문서는자산컨테이너·탐색을설명하고MasterLeague는별도자산을설명함",
+        "caveat": "검토한DB서비스는카드이미지URL/배경내보내기를입증하지않음.공급사이트CDN생성과의연결미확인."
+      },
+      {
+        "feature": "상품label/특수카드기원",
+        "public_evidence": "연구기사의PlayerVariationDetail/기원pack label설명이있음",
+        "caveat": "현재상품ID·판매회차와의연결,모든Standard구성원,수량·감독·가격·기간미확인."
+      },
+      {
+        "feature": "상품전체추첨풀·Standard관계",
+        "public_evidence": "검토한도구/포맷자료에서는확보하지못함",
+        "caveat": "글로벌Player목록이나팀Assignment에서생성하지않음.상품별공식회차·초기수와명시카드ID관계가필요."
+      },
+      {
+        "feature": "주간갱신",
+        "public_evidence": "설치live-update재가공/별도서버DB갱신/PESMaster목요일/PESDB버전변경표",
+        "caveat": "운영자주장·기록이며우리가실제신규자료반영·자동화/실패복구를검증한것은아님."
+      },
+      {
+        "feature": "증분갱신",
+        "public_evidence": "ModStudio문서는dt870fullupdate layer,다른도구는DB업데이트·rebase를설명함",
+        "caveat": "공통행delta프로토콜·정확한추가/삭제신호·모든사이트공급망은미확인."
+      }
+    ],
+    "links": {
+      "PESPLATFORM_to_EFHub": "not_verified",
+      "Mod_Studio_to_EFHub": "not_verified",
+      "PESDatabase_or_PESBuilder_to_EFHub": "not_verified",
+      "Master_League_to_EFHub": "not_verified",
+      "any_reviewed_extractor_to_PESDB_PESMaster_eFootballDB": "not_verified",
+      "game_files_to_complete_current_DreamTeam_product_standard_pool": "not_verified"
+    },
+    "conclusions": [
+      "공개설명은게임로컬DB에서일부카드·능력·팀관계·원본ID를구하는경로가있음을보여주지만특정도구를현재사이트공급망으로확정하지못한다.",
+      "PESPLATFORM현재404를검색캐시로성공처리하지않는다.",
+      "공식오프라인Player파일에모든DreamTeam특수카드가있다는가정은연구원문과맞지않는다.",
+      "팀Assignment·pack label·글로벌Standard목록은특정상품전체Standard구성관계와대체할수없다.",
+      "이번조사결과로기존9상품의total_player_count·누락StandardIDs·판매상태를채우거나전체수집을완료처리하지않는다."
+    ],
+    "related_local_artifacts": [
+      "artifacts/supply-chain/efhub.json",
+      "artifacts/supply-chain/other-sites.json",
+      "artifacts/roster-investigation/current-product-coverage.json"
+    ],
+    "unperformed": [
+      "보호된CPK/Player.bin/SQLite/이미지/게임package다운로드",
+      "공개도구설치·실행",
+      "복호화·키추출·메모리접근·보호우회",
+      "EFHub API재시도·인증토큰/쿠키취득",
+      "코드/seed/공개데이터변경"
+    ],
+    "generated_at": "2026-10-25T09:06:44.561Z"
+  },
+  "operator_documents": [
+    {
+      "id": "pesdb_terms",
+      "url": "https://pesdb.net/terms/",
+      "observed_date": "2026-10-25",
+      "method": "public web document open; HTTP status not exposed by this tool",
+      "evidence_level": "operator_statement",
+      "effective_date": "2026-10-04",
+      "findings": {
+        "section_4_source": "game data extracted or derived; exact file/tool unknown",
+        "section_3_usage": "automated collection, database reconstruction and redistribution prohibited; no bulk export/feed/whitelisting offered",
+        "automated_backend_candidate": "excluded"
+      },
+      "catalogue_downloaded": false
+    },
+    {
+      "id": "lab_privacy_sources",
+      "url": "https://efootballlab.com/privacy",
+      "observed_date": "2026-10-25",
+      "method": "public web document open before separate direct403",
+      "evidence_level": "operator_statement",
+      "policy_last_updated": "2026-09-16",
+      "findings": {
+        "data_sources": [
+          "efootballhub.net",
+          "efootballdb.com"
+        ],
+        "scope": "some player data and statistics; not proof all data comes from those hosts",
+        "footer_credit": "EFHub.com imagery/database material",
+        "konami_origin_api_proven": false
+      },
+      "direct_http_status_separate": 403
+    },
+    {
+      "id": "pesmaster_schedule",
+      "url": "https://www.pesmaster.com/efootball-2022/",
+      "observed_date": "2026-10-25",
+      "method": "public web document and search-indexed first-party description; separate direct403",
+      "evidence_level": "operator_statement",
+      "findings": {
+        "schedule_claim": "weekly Live Updates every Thursday",
+        "observed_featured_date": "2026-10-22",
+        "exact_file_decoder_or_delta_api": "unverified",
+        "internal_database_or_auto_job": "unverified"
+      },
+      "direct_http_status_separate": 403
+    }
+  ],
+  "root_direct_document_observations": [
+    {
+      "id": "pesmaster_overview",
+      "url": "https://www.pesmaster.com/efootball-2022/",
+      "method": "GET",
+      "requested_at": "2026-10-25T09:05:29.027641+00:00",
+      "observed_at": "2026-10-25T09:05:29.335209+00:00",
+      "http_status": 403,
+      "final_url": "https://www.pesmaster.com/efootball-2022/",
+      "response_bytes": 17,
+      "sha256": "2938e9f1284180959e33ab1718d0793a72ff6e4cdb8108c34dcd14e69446de5c",
+      "headers_allowlist": {
+        "date": "Sun, 25 Oct 2026 09:05:29 GMT",
+        "content-type": "text/plain; charset=UTF-8",
+        "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0"
+      }
+    },
+    {
+      "id": "lab_privacy",
+      "url": "https://efootballlab.com/privacy",
+      "method": "GET",
+      "requested_at": "2026-10-25T09:05:29.835737+00:00",
+      "observed_at": "2026-10-25T09:05:30.162553+00:00",
+      "http_status": 403,
+      "final_url": "https://efootballlab.com/privacy",
+      "response_bytes": 17,
+      "sha256": "2938e9f1284180959e33ab1718d0793a72ff6e4cdb8108c34dcd14e69446de5c",
+      "headers_allowlist": {
+        "date": "Sun, 25 Oct 2026 09:05:30 GMT",
+        "content-type": "text/plain; charset=UTF-8",
+        "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0"
+      }
+    }
+  ],
+  "api_inventory": [
+    {
+      "url": "https://peslig.com.tr/pesdb.php?api=brief&v=1792698603-30310520",
+      "method": "GET",
+      "scope": "site_global_brief_snapshot_not_konami_api",
+      "status": "http200_and_saved_body_rows_audited",
+      "query": {
+        "api": "brief",
+        "v": "1792698603-30310520"
+      },
+      "pagination": "single players dictionary; no page/cursor traversal or all-game completeness claim"
+    },
+    {
+      "url": "https://peslig.com.tr/pesdb.php?api=index&v=1792698603-30310520",
+      "method": "GET",
+      "scope": "site_full_index_discovered_in_actual_frontend",
+      "status": "discovered_not_requested",
+      "query": {
+        "api": "index",
+        "v": "1792698603-30310520"
+      }
+    },
+    {
+      "url": "https://peslig.com.tr/efootball/card-image.php?id=106800804418912",
+      "method": "GET",
+      "scope": "separate_image_endpoint",
+      "status": "independent_one_sample200_not_all_images"
+    },
+    {
+      "url_pattern": "https://efhub.com/api/public/players[?current URLSearchParams]",
+      "method": "GET",
+      "classification": "EFHub same-origin site API; Konami original API not established",
+      "normal_purpose": "사이트의 선수 카드 검색·필터·페이지 목록 상태를 갱신한다.",
+      "query_behavior": "초기 무쿼리. 페이지 이동은 2쪽부터 page 추가. 검색·필터의 현재 URLSearchParams를 전달한다.",
+      "response_keys": [
+        "players",
+        "total",
+        "page",
+        "limit",
+        "totalPages"
+      ],
+      "discovered_in": "public_players_actual_js_recheck",
+      "endpoint_requested_this_task": false,
+      "prior_verified_response_evidence": [
+        "efhub_players_api",
+        "efhub_players_page2"
+      ],
+      "limit100_support": "미확인. 기본 UI가 생성하는 옵션은 확인되지 않았고 임의 쿼리 전달은 지원 증거가 아니다.",
+      "client_parameter_literal_candidates": [
+        "position",
+        "otherPosition",
+        "playerType",
+        "condition",
+        "statMode",
+        "team",
+        "league",
+        "nation",
+        "skill",
+        "comSkill",
+        "search",
+        "playingStyle",
+        "defensivePlayingStyle",
+        "basic",
+        "abilities",
+        "model",
+        "skills",
+        "club",
+        "page"
+      ],
+      "query_contract_limit": "프런트에서 발견한 문자열 후보와 생성 요청 형식을 기록한다. API 서버가 모든 후보·값을 지원한다는 계약은 아니다."
+    },
+    {
+      "url_pattern": "https://efhub.com/api/public/packs?search={text}&page={n}&limit=30",
+      "method": "GET",
+      "classification": "EFHub same-origin site API; Konami original API not established",
+      "normal_purpose": "사이트 팩 목록 검색·추가 페이지를 가져오고 slug 상세 링크를 만든다.",
+      "query_keys": [
+        "search",
+        "page",
+        "limit"
+      ],
+      "response_keys_used_by_saved_client": [
+        "packs",
+        "hasMore"
+      ],
+      "row_fields_in_saved_response": [
+        "name",
+        "slug",
+        "date",
+        "playerCount"
+      ],
+      "discovered_in": "efhub_packs_js",
+      "endpoint_requested_this_task": false,
+      "prior_verified_response_evidence": [
+        "efhub_packs_api"
+      ],
+      "limitation": "팩 경로나 이름·날짜가 게임 내 구매 방식·현재 판매·전체 구성·가격·재화를 증명하지 않는다."
+    },
+    {
+      "url": "https://api.efootballdb.info/api/v2/players/88046292727298",
+      "method": "GET",
+      "query": "optional include join observed in public JS; values/default contract unverified",
+      "scope": "site_card_detail_not_original_game_api_or_product_roster",
+      "status": "prior_exact_request404_no_retry_this_task",
+      "evidence": "data/research/roster-source-observations.json"
+    }
+  ],
+  "adoption_gates": [
+    "공개조회와 재사용/재배포 허용 범위를 구분하고 provider의 조건을 확인한다. PESDB는 자동수집 후보에서 제외한다.",
+    "meta/분류/원본파일명은 사이트선언이다. 현재 body행정합성과 게임원본/모든역사카드 완전성은 별개다.",
+    "schema/생성시각/원문해시/원본문자열ID/타입원문/능력조건과 계산·외부보강값을 구분한다.",
+    "83ID값이 모두 같아도 OVR14건·타입차이를 자동 덮어쓰지 않는다.",
+    "표본이미지1건과 전 이미지 로드/권리·스킬/최대레벨 미확인·상품관계 공백은 별도로 검증한다.",
+    "전체snapshot비교로 변화를 검출하는 설계는 실제 delta API/자동운영 증거가 아니다. 실제 신규/변경 전후와 실패보호 검증 전 R6완료 금지."
+  ],
+  "conditional_anonymous_standard_proposal": {
+    "condition_id": "C026",
+    "status": "deferred_not_adopted",
+    "user_intent": "Standard를 필요한범위에서 확보하지못하고 특수카드DB로진행하는조건이면 공식상품초기수와 확인된완전특수수 차이를 이름없는 스탠다드선수로표현하고 향후모션포함을원함. 우선공급망조사부터한다.",
+    "current_standard_access_finding": "global Standard19018행은 조회/검사가능. 상품별 Standard 포함관계는 미확인.",
+    "gates": [
+      "동일공식상품·회차·지역/기간·버전·초기N 및 코인특수명단형태 확인; bundle팩은 제외",
+      "모든 비Standard카드 종류/출시카드ID/수량 S의 완전성 근거; 미확인종류/빠진Highlight등은 Standard로채우지않음",
+      "남은 N-S가 Standard라는 공식/상품구성근거 및 분류의 전체성/배타성 확인; provider is_variant 이분법만으로판정금지",
+      "초기와영입후잔여, 중복과수량을구분; S>N이나 불일치시보류",
+      "가상슬롯은 실제카드/선수/외부ID/확보수/실측Standard명단과분리·가정명시"
+    ],
+    "real_card_ids_generated": false,
+    "slots_created": false,
+    "animation_implemented": false,
+    "future_motion_intent_recorded": true
+  },
+  "next_steps_existing_plan": [
+    "T005/R1: PesLig 공개경로·필드/ID·reuse조건·이미지/출처선언 확인, PESDB제외",
+    "R2/R5: 공급자별 보존형 정규화와 분류/OVR 조건차이·빈값·버전 처리 계획",
+    "R4/R5: 카드카탈로그/소개관계/검증된전체초기풀 분리, 공식상품회차·특수부분완전성 대조",
+    "R6: 실제 새 주차의 source snapshot전후/성공실패/이력·보존 운영 검증"
+  ],
+  "actions_not_taken": [
+    "원본brief 재배포/activeimport",
+    "api=index 대량추가요청",
+    "EFHub거부API 반복·토큰/쿠키취득·헤더위장/프록시변경",
+    "게임파일다운로드·도구설치/실행·복호화",
+    "provider연락·가입·결제",
+    "운영main병합·시뮬레이터구현"
+  ],
+  "followup_current_scope_and_comparison": {
+    "recorded_at": "2026-10-25T12:19:11.169496+00:00",
+    "source": "parent task public investigation supplied in trusted conversation; no duplicate live requests by this worker",
+    "scope": "10 recent card DBs excluding EFHub, including selected/partial scope; no claim all10 fully sync10-22",
+    "recent_card_database_count_excluding_efhub": 10,
+    "card_databases": [
+      {
+        "site": "PESDB",
+        "url": "https://pesdb.net/efootball/",
+        "recent_card_marker": "2026-10-22",
+        "scope": "card_database",
+        "upstream_evidence": "terms: extracted/derived game data",
+        "site_api": "not_published_in_reviewed_sources",
+        "automation": "update claims; internal job unknown",
+        "reuse": "automated collection prohibited",
+        "evidence_level": "trusted_parent_public_read_report_no_duplicate_fetch_by_worker"
+      },
+      {
+        "site": "PES Master",
+        "url": "https://www.pesmaster.com/efootball-2022/",
+        "recent_card_marker": "2026-10-22",
+        "scope": "card_database",
+        "upstream_evidence": "weekly game Live Update claim; exact file/tool unknown",
+        "site_api": "not_verified",
+        "automation": "Thursday reflection claim; internal trigger/delta unknown",
+        "evidence_level": "trusted_parent_public_read_report_no_duplicate_fetch_by_worker"
+      },
+      {
+        "site": "PesLig",
+        "url": "https://peslig.com.tr/pesdb.php",
+        "recent_card_marker": "2026-10-22 JSON generated_at",
+        "scope": "current-cpk_snapshot_with_archived_base",
+        "upstream_evidence": "response declares dt870_console_win.cpk; internal extraction unverified",
+        "site_api": "brief GET200 and local row audit recorded in original investigation",
+        "automation": "generated_at/diff UI; actual job unknown",
+        "cache_caution": "DataHub10-17 cached display does not supersede10-22 saved JSON",
+        "evidence_level": "trusted_parent_public_read_report_no_duplicate_fetch_by_worker"
+      },
+      {
+        "site": "eFootballLAB",
+        "url": "https://efootballlab.com/",
+        "recent_card_marker": "2026-10-22",
+        "scope": "card_database",
+        "upstream_evidence": "https://efootballlab.com/disclaimer credits EFHub/eFootballDB",
+        "site_api": "not_verified",
+        "automation": "not_verified",
+        "citation_correction": "current Data Sources is disclaimer, not current privacy body",
+        "evidence_level": "trusted_parent_public_read_report_no_duplicate_fetch_by_worker"
+      },
+      {
+        "site": "eFootballDB.info",
+        "url": "https://efootballdb.info/en",
+        "recent_card_marker": "10-19 product;10-23 official news separate",
+        "scope": "card_database_recent_marker_not_all_rounds",
+        "upstream_evidence": "not_disclosed; news sources not card origin",
+        "site_api": "api.efootballdb.info asset/API host; prior card detail exact request404",
+        "automation": "not_verified",
+        "reuse": "dataset-license: community compilation/personal_noncommercial/bulk_restrictions",
+        "evidence_level": "trusted_parent_public_read_report_no_duplicate_fetch_by_worker"
+      },
+      {
+        "site": "TheWinningXI",
+        "url": "https://thewinningxi.com/en/cards/",
+        "recent_card_marker": "2026-10-22 Live Update69new cards",
+        "scope": "card_database",
+        "upstream_evidence": "game pack-table and weekly rebuild claim; exact file/API undisclosed",
+        "site_api": "not_verified",
+        "automation": "weekly rebuild claim, execution unverified",
+        "evidence_level": "trusted_parent_public_read_report_no_duplicate_fetch_by_worker"
+      },
+      {
+        "site": "PESDATABASE.com",
+        "url": "https://pesdatabase.com/pack/list",
+        "recent_card_marker": "2026-10-22;2124 catalogue packs",
+        "scope": "card_and_pack_database_not_active_shop_population",
+        "upstream_evidence": "public game data organized/adjusted per updates; exact upstreamAPI undisclosed",
+        "site_api": "not_verified",
+        "example": "https://pesdatabase.com/pack/detail/fcf452ce-65af-4521-bae0-f3763775c74c Magical11",
+        "reuse": "bulk/commercial requires provider consultation; none performed",
+        "evidence_level": "trusted_parent_public_read_report_no_duplicate_fetch_by_worker"
+      },
+      {
+        "site": "eFootball.cz",
+        "url": "https://efootball.cz/en/karty",
+        "recent_card_marker": "2026-10-22;131packs/30020cards as reported",
+        "scope": "card_database_not_verified_global_or_current_shop_total",
+        "upstream_evidence": "unknown",
+        "site_api": {
+          "observed_backend_host": "https://supabase.efootball.cz",
+          "client_table": "db_cards",
+          "exact_http_request_url": null,
+          "query_method": "public JS client table query",
+          "request_verified": false,
+          "keys_extracted_or_auth_requested": false
+        },
+        "example": "Magical11",
+        "automation": "not_verified",
+        "evidence_level": "trusted_parent_public_read_report_no_duplicate_fetch_by_worker"
+      },
+      {
+        "site": "eFootMeta",
+        "url": "https://www.efootmeta.com/",
+        "recent_card_marker": "2026-10-19 Midfielders;10-22 sync unverified",
+        "scope": "card_database_recent_marker_only",
+        "upstream_evidence": "EFHub image host template; stats origin unknown",
+        "site_api": {
+          "script": "https://www.efootmeta.com/_next/static/chunks/9439-d7c0389bfd22f545.js",
+          "image_template": "https://efimg.com/efootballhub22/images/player_cards/{id}_l.png",
+          "stats_api_or_original_game_api": null
+        },
+        "automation": "not_verified",
+        "evidence_level": "trusted_parent_public_read_report_no_duplicate_fetch_by_worker"
+      },
+      {
+        "site": "イーフト攻略GOGO",
+        "url": "https://kryk55.com/efootball/",
+        "recent_card_marker": "2026-10-22",
+        "scope": "selected_cards_recent30days_or_OVR100plus_display_limit50",
+        "upstream_evidence": "not_disclosed",
+        "site_api": "inspected public HTML embeds data; separate fetch/ajax/json/csv API not found in reviewed pages",
+        "list_url": "https://kryk55.com/efootball/pl/sp_l_all.html",
+        "example_url": "https://kryk55.com/efootball/sp6/261022075.html",
+        "example": "Raphinha10-22;maxOVR101 and level1 stats/skills/growth UI; own images",
+        "reported_direct_http_statuses": [
+          200,
+          200
+        ],
+        "automation": "not_verified",
+        "evidence_level": "trusted_parent_public_read_report_no_duplicate_fetch_by_worker"
+      }
+    ],
+    "separate_identity_or_current_unverified": [
+      {
+        "site": "PlayersDB",
+        "url": "https://playersdb.app/",
+        "scope": "series_identity_catalogue_not_release_cards_or_product_pool",
+        "version": "2026-10-22",
+        "reported_people": 104505,
+        "discovered_export_links": [
+          "https://playersdb.app/download/csv",
+          "https://playersdb.app/download/jsonl"
+        ],
+        "download_or_schema_verified": false
+      },
+      {
+        "site": "eFootballDB.com",
+        "url": "https://efootballdb.com/",
+        "scope": "current_card_batch_unverified",
+        "source_claim": "official game data weekly",
+        "historical_api_hint": "api.efootballdb.com/api/2022/...; not a verified current success",
+        "same_operator_as_info_verified": false
+      }
+    ],
+    "excluded_from_recent_count": [
+      {
+        "site": "efootball.run",
+        "reason": "card creator, not verified current card DB"
+      },
+      {
+        "site": "efootball-world",
+        "reason": "search indexedW42 only; direct403, current DB not verified"
+      }
+    ],
+    "community_reports": [
+      {
+        "url": "https://www.reddit.com/r/eFootball/comments/1ixsq3u/building_a_new_efootball_app/",
+        "date": "2025-02-25",
+        "author": "u/Niroooooo",
+        "claim": "developer used an EvoWeb editor to obtain DB",
+        "level": "community_developer_self_report_not_independently_reproduced"
+      },
+      {
+        "url": "https://www.reddit.com/r/pesmobile/comments/1qg97u7/you_can_now_create_nicer_player_buid_guides_for/",
+        "date": "early2026; precise date not supplied",
+        "author": "u/Niroooooo",
+        "claim": "data/images from interpreting game files rather than an API",
+        "level": "community_developer_self_report_not_independently_reproduced"
+      },
+      {
+        "url": "https://www.reddit.com/r/eFootball/comments/1rh31wh/i_built_an_efootball_player_database_build/",
+        "date": "2026",
+        "author": "u/Sea-Equivalent2044",
+        "claim": "manual game-screen entry; new cards hours to half-day; Player.bin attempt unresolved",
+        "level": "community_developer_self_report_not_current_site_sync_proof"
+      },
+      {
+        "url": "https://www.reddit.com/r/pesmobile/comments/16b6mni/introducing_similar_player_search_mimos_analysis/",
+        "date": "2023",
+        "author": "Mimo report",
+        "claim": "historical PESDB HTML→CSV workflow",
+        "level": "historical_community_report",
+        "current_use_recommendation": "not_recommended_due_current_PESDB_terms"
+      }
+    ],
+    "evoweb_scope": "tool listing title/start date/October activity only; detail403 not read",
+    "container_clarification": "dt870_console_win.cpk is a database file container, not an original API URL. Source declaration does not reveal internal extraction.",
+    "priority_superseded_by_current_products": true,
+    "reference": "docs/sources/CURRENT_SHOP_COVERAGE.md"
+  },
+  "followup_citation_corrections": [
+    {
+      "recorded_at": "2026-10-25T12:19:11.169496+00:00",
+      "site": "eFootballLAB",
+      "current_sources_url": "https://efootballlab.com/disclaimer",
+      "prior_citation": "https://efootballlab.com/privacy",
+      "effect": "current source statement should cite disclaimer. Preserve earlier tool observation as dated evidence, not current privacy text."
+    },
+    {
+      "recorded_at": "2026-10-25T12:19:11.169496+00:00",
+      "site": "eFootballDB.info",
+      "url": "https://efootballdb.info/en/dataset-license",
+      "evidence": "trusted parent current public read",
+      "findings": "community compilation, personal/noncommercial, unauthorizedbulk reuse restrictions; no precise originalAPI",
+      "effect": "earlier direct403 is historical access result, not proof no current licence page exists"
+    }
+  ]
+}

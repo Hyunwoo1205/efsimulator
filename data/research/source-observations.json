@@ -1,0 +1,1604 @@
+{
+  "schema_version": 1,
+  "research_stage": "R1",
+  "research_status": "initial_survey_complete_with_material_gaps",
+  "observed_at": "2026-10-25T03:47:05+00:00",
+  "method": {
+    "transport": "HTTPS through inherited proxy; TLS verification enabled",
+    "user_agent": "Mozilla/5.0",
+    "scope": "Small read-only public-source sample; no authentication or access-control bypass; no bulk collection",
+    "serialization": "verified_fields contain observed source values, not a normalized application contract. source_ids are strings; raw payloads preserve original wire types and Flight sentinels."
+  },
+  "observations": [
+    {
+      "id": "efhub_home",
+      "url": "https://efhub.com/ko",
+      "requested_at": "2026-10-25T03:44:13+00:00",
+      "observed_at": "2026-10-25T03:44:13+00:00",
+      "status": 200,
+      "final_url": "https://efhub.com/ko",
+      "content_type": "text/html; charset=utf-8",
+      "response_bytes": 234050,
+      "sha256": "d61b458328ab4a393fa5c5e981a4f210c15c080a3ecb2d1da9131880d477e0dd",
+      "verified_fields": {
+        "observed_latest_article_date": "2026-10-25",
+        "sample_card_id": "88046292727298",
+        "sample_manager_id": "17610439655559"
+      },
+      "unknown_fields": [],
+      "excerpts": [
+        {
+          "kind": "visible_text",
+          "text": "몸무게: 육체적 결투에 영향을 미칠까? 2026년 10월 25일 · Amadeusz"
+        }
+      ],
+      "access_limitations": [],
+      "discovered_links": [
+        "/ko/packs",
+        "/ko/players/88046292727298",
+        "/ko/players/88046292831741",
+        "/ko/managers/17610439655559"
+      ],
+      "image_urls": [
+        "https://efimg.com/efootballhub22/images/player_cards/88046292727298_l.png",
+        "https://efimg.com/efootballhub22/images/player_cards/88046292831741_l.png"
+      ],
+      "source_ids": {},
+      "source": "efhub"
+    },
+    {
+      "id": "efhub_players",
+      "url": "https://efhub.com/ko/players",
+      "requested_at": "2026-10-25T03:44:13+00:00",
+      "observed_at": "2026-10-25T03:44:13+00:00",
+      "status": 200,
+      "final_url": "https://efhub.com/ko/players",
+      "content_type": "text/html; charset=utf-8",
+      "response_bytes": 287734,
+      "sha256": "938dc1df9b4b7ad54236820c400a38bd1c87e27a2522aaba10d9cb3e232aaca9",
+      "verified_fields": {
+        "initial_html_result_count": 0,
+        "meaning": "Client initial state; not the database total."
+      },
+      "unknown_fields": [],
+      "excerpts": [
+        {
+          "kind": "visible_text",
+          "text": "Players | eFHUB eFHUB 선수들 관리자 커뮤니티 기사 eFHUB League 한국어 eFHUB 선수들 새로운 선수 팩 Compare 티어 리스트 관리자 커뮤니티 Feed 기사 eFHUB League Get Pro — Go Ad-Free Advertise on this site. © 2026 eFHUB. All rights reserved. Vacancies · Privacy Policy Players 선수 유형 컨디션 위치 플레이 스타일 수비 플레이 스타일 능력 기술 기본 플레이어 모델 클럽 리그 국적 0 명의 선수 필터"
+        }
+      ],
+      "access_limitations": [],
+      "discovered_links": [
+        "/ko/packs"
+      ],
+      "image_urls": [],
+      "source_ids": {},
+      "source": "efhub"
+    },
+    {
+      "id": "efhub_packs",
+      "url": "https://efhub.com/ko/packs",
+      "requested_at": "2026-10-25T03:44:13+00:00",
+      "observed_at": "2026-10-25T03:44:13+00:00",
+      "status": 200,
+      "final_url": "https://efhub.com/ko/packs",
+      "content_type": "text/html; charset=utf-8",
+      "response_bytes": 139865,
+      "sha256": "175b2f8f56e44f6263752a6a9cbf3b26779e47de60d64e6c7449181b3074a16d",
+      "verified_fields": {
+        "initial_html_state": "No packs found.",
+        "meaning": "Client initial state; API returned nonempty data in a separate observation."
+      },
+      "unknown_fields": [],
+      "excerpts": [
+        {
+          "kind": "visible_text",
+          "text": "Player Packs | eFHUB eFHUB 선수들 관리자 커뮤니티 기사 eFHUB League 한국어 eFHUB 선수들 새로운 선수 팩 Compare 티어 리스트 관리자 커뮤니티 Feed 기사 eFHUB League Get Pro — Go Ad-Free Player Packs No packs found. No packs found. Select a pack to see its players. Advertise on this site. © 2026 eFHUB. All rights reserved. Vacancies · Privacy Policy"
+        }
+      ],
+      "access_limitations": [],
+      "discovered_links": [
+        "/ko/packs"
+      ],
+      "image_urls": [],
+      "source_ids": {},
+      "source": "efhub"
+    },
+    {
+      "id": "efhub_player_detail",
+      "url": "https://efhub.com/ko/players/88046292727298",
+      "requested_at": "2026-10-25T03:44:13+00:00",
+      "observed_at": "2026-10-25T03:44:13+00:00",
+      "status": 200,
+      "final_url": "https://efhub.com/ko/players/88046292727298",
+      "content_type": "text/html; charset=utf-8",
+      "response_bytes": 313393,
+      "sha256": "7f242583b999a8fed0c20f690ec86380a7aebbe0bfd19fffba538c411d446d49",
+      "verified_fields": {
+        "displayed_name": "Yaya Toure",
+        "displayed_overall_rating": 86,
+        "other_version_card_ids": [
+          "88036360615426",
+          "88040387147266",
+          "88035823744514"
+        ]
+      },
+      "unknown_fields": [
+        "overall_rating_training_and_booster_conditions",
+        "separate_background_asset",
+        "all_card_categories",
+        "included_product_ids",
+        "authoritative_real_person_id"
+      ],
+      "excerpts": [
+        {
+          "kind": "visible_text",
+          "text": "te Top Rated Newest Sign in to join the conversation 로그인 STA 70% 슛 0 / 64 Lv − 0 + GK CB LB RB DMF CMF LMF RMF AMF LWF RWF SS CF 최대 스마트 Yaya Toure의 다른 버전 3개 버전 사용 가능 86 DMF Yaya Toure 86 DMF Yaya Toure 85 DMF Yaya Toure"
+        }
+      ],
+      "access_limitations": [],
+      "discovered_links": [
+        "/ko/packs",
+        "/ko/players/88036360615426",
+        "/ko/players/88040387147266",
+        "/ko/players/88035823744514"
+      ],
+      "image_urls": [
+        "https://efimg.com/efootballhub22/images/player_cards/88046292727298_l.png",
+        "https://efimg.com/efootballhub22/images/mini-cards/mini-cards/88046292727298_l.png"
+      ],
+      "source_ids": {
+        "card_id": "88046292727298"
+      },
+      "source": "efhub"
+    },
+    {
+      "id": "efhub_manager_detail",
+      "url": "https://efhub.com/ko/managers/17610439655559",
+      "requested_at": "2026-10-25T03:44:13+00:00",
+      "observed_at": "2026-10-25T03:44:13+00:00",
+      "status": 200,
+      "final_url": "https://efhub.com/ko/managers/17610439655559",
+      "content_type": "text/html; charset=utf-8",
+      "response_bytes": 158533,
+      "sha256": "1e068dc8249b7bc3adef2728343727d1736f161197ccfabc7ea7200ff57f252d",
+      "verified_fields": {
+        "name": "Niko Kovač",
+        "image_url": "https://efimg.com/efootballhub22/images/coach_cards/17610439655559.png"
+      },
+      "unknown_fields": [
+        "included_product_ids",
+        "all_manager_listing_and_pagination"
+      ],
+      "excerpts": [
+        {
+          "kind": "visible_text",
+          "text": "Niko Kovač | eFHUB eFHUB 선수들 관리자 커뮤니티 기사 eFHUB League 한국어 eFHUB 선수들 새로운 선수 팩 Compare 티어 리스트 관리자 커뮤니티 Feed 기사 eFHUB League Get Pro — Go Ad-Free Rate 리뷰 공유 Niko Kovač 베테랑 선수 Rate 리뷰 공유 Niko Kovač 베테랑 선수 육성 유형 베테랑 선수 감독 부스터의 효과 볼 컨트롤 +1 수비 자세 +1 팀 스타일 적성 90 점유율 축구 59 역습(긴 패스) 67 역습(짧은 패스) 53 롱 볼 89 측면 돌파 57 오버로드 Link-up Aggressive Centring B 중앙 장식 공격형 사이드백 LB RB 핵심 인물 박스 안의 여우 CF Shadow Link B 중앙 장식 플레이메이킹 포워드 SS 핵심 인물 박스 안의 여우 CF LB RB CF 중앙 장식 핵심 인물 Advertise on this site. © 2026 eFHUB. All rights reserved. Vacancies · Privacy Policy"
+        }
+      ],
+      "access_limitations": [],
+      "discovered_links": [
+        "/ko/packs"
+      ],
+      "image_urls": [
+        "https://efimg.com/efootballhub22/images/coach_cards/17610439655559.png"
+      ],
+      "source_ids": {
+        "manager_id": "17610439655559"
+      },
+      "source": "efhub"
+    },
+    {
+      "id": "official_product",
+      "url": "https://www.konami.com/efootball/ko/topic/promotion/agent/1407/",
+      "requested_at": "2026-10-25T03:44:13+00:00",
+      "observed_at": "2026-10-25T03:44:15+00:00",
+      "status": 200,
+      "final_url": "https://www.konami.com/efootball/ko/topic/promotion/agent/1407/",
+      "content_type": "text/html; charset=UTF-8",
+      "response_bytes": 73951,
+      "sha256": "c3df4665109513252781d0b8f80704a83dafac661ec2a4e6d05b95471c5b8e39",
+      "verified_fields": {
+        "product_kind_original": "SPECIAL PLAYER LIST",
+        "name": "Epic: European Clubs Midfielders",
+        "announcement_date": "2026-10-19",
+        "category_counts": {
+          "epic": 3,
+          "highlight": 8,
+          "other_active_players": 139
+        },
+        "announced_total_players": 150
+      },
+      "unknown_fields": [
+        "complete_card_ids",
+        "price",
+        "currency",
+        "draw_options",
+        "draw_limits",
+        "purchase_limits",
+        "included_managers",
+        "other_items"
+      ],
+      "excerpts": [
+        {
+          "kind": "visible_text",
+          "text": "LAYER LIST 이 특수 선수 명단에서는 선정된 에픽 3명과 하이라이트 8명 외에 현재 활약 중인 선수 139명이 등장합니다. 에픽은 활약한 특정 시즌을 선정하여 당시 사진을 모티브로 한 특별한 디자인으로 등장합니다. 하이라이트 선수는 같은 이름의 스탠다드 선수와는 다른 능력치로 등장하며 더욱 성장시킬 수 있습니다. 위대한 선수를 영입하여 팀을 강화하십시오! Notice “Do Not Sell or Share My Personal Information” California Consumer Rights adidas, the 3-Bars logo, the 3-Stripe trade mark, Predator, F50, Y-3 and Climacool are trademarks of the adidas, used with permission.  The use of certain player names, images and likenesses on a collective basis is authorised by FIFPRO Commercial Enterprises BV.  Officially Licensed Product of"
+        }
+      ],
+      "access_limitations": [],
+      "discovered_links": [],
+      "image_urls": [
+        "/efootball/s/img/promotion/agent/1407/promo_agent.png"
+      ],
+      "source_ids": {
+        "promotion_agent_id": "1407"
+      },
+      "source": "konami"
+    },
+    {
+      "id": "efhub_packs_js",
+      "url": "https://efhub.com/_next/static/chunks/85078b8cbc229ae6.js?dpl=dpl_31Riks92A4aWRR56JjnttQdARhMg",
+      "requested_at": "2026-10-25T03:44:54+00:00",
+      "observed_at": "2026-10-25T03:44:54+00:00",
+      "status": 200,
+      "final_url": "https://efhub.com/_next/static/chunks/85078b8cbc229ae6.js?dpl=dpl_31Riks92A4aWRR56JjnttQdARhMg",
+      "content_type": "application/javascript; charset=utf-8",
+      "response_bytes": 4627,
+      "sha256": "74923945879ce8ce23c6d58fbd487f33522486e5557134c3891b7656716bbb13",
+      "verified_fields": {
+        "normal_request_path": "/api/public/packs",
+        "query_keys": [
+          "search",
+          "page",
+          "limit"
+        ],
+        "initial_page": 1,
+        "requested_limit": 30,
+        "response_keys_used": [
+          "packs",
+          "hasMore"
+        ],
+        "detail_link_template": "/packs/${slug}"
+      },
+      "unknown_fields": [],
+      "excerpts": [
+        {
+          "pattern": "fetch(",
+          "count": 1,
+          "text": ")=>{r?f(!0):b(!0);try{let n=new URLSearchParams({search:e,page:String(t),limit:String(30)}),s=await fetch(`/api/public/packs?${n}`);if(!s.ok)return;let c=await s.json();l(e=>r?c.packs:[...e,...c.packs]),p(c.hasMore),x(t)}finally{r?f(!1):b(!1)}},[]);(0,r.useEffect)(()=>{N(\"\",1,!0)},[N]);let y=e=>{d(e),g.current&&clearTimeout(g.current),g.current=setTimeout(()=>{v.c"
+        },
+        {
+          "pattern": "No packs found",
+          "count": 1,
+          "text": "r))}):0===i.length?(0,t.jsx)(\"p\",{className:\"px-4 py-8 text-center text-sm text-zinc-400\",children:\"No packs found.\"}):(0,t.jsxs)(t.Fragment,{children:[(0,t.jsx)(\"ul\",{className:\"px-2 pb-2\",children:i.map(e=>{let r=e.slug===a;return(0,t.jsx)(\"li\",{children:(0,t.jsxs)(s.Link,{href:`/packs/${e.slug}`,prefetch:!1,className:(0,c.cn)(\"flex items-center justify-between rounded-"
+        }
+      ],
+      "access_limitations": [],
+      "source_ids": {},
+      "source": "efhub"
+    },
+    {
+      "id": "efhub_players_js",
+      "url": "https://efhub.com/_next/static/chunks/8964e7af23583e8b.js?dpl=dpl_31Riks92A4aWRR56JjnttQdARhMg",
+      "requested_at": "2026-10-25T03:44:54+00:00",
+      "observed_at": "2026-10-25T03:44:54+00:00",
+      "status": 200,
+      "final_url": "https://efhub.com/_next/static/chunks/8964e7af23583e8b.js?dpl=dpl_31Riks92A4aWRR56JjnttQdARhMg",
+      "content_type": "application/javascript; charset=utf-8",
+      "response_bytes": 61902,
+      "sha256": "241046ee60771205e8a331364dccb65b9e5cf39e7471e08bd75c2123152744bc",
+      "verified_fields": {
+        "normal_request_path": "/api/public/players",
+        "query_source": "URLSearchParams from the current normal page URL",
+        "response_pagination_keys": [
+          "players",
+          "total",
+          "page",
+          "limit",
+          "totalPages"
+        ],
+        "initial_limit": 24
+      },
+      "unknown_fields": [],
+      "excerpts": [
+        {
+          "pattern": "fetch(",
+          "count": 1,
+          "text": "s)(),[o,c]=(0,i.useState)(z),[d,u]=(0,i.useState)(!0);(0,i.useEffect)(()=>{let e=s.toString();u(!0),fetch(`/api/public/players${e?`?${e}`:\"\"}`).then(e=>e.json()).then(e=>{c(e),u(!1)}).catch(()=>u(!1))},[s]);let h={};return s.forEach((e,t)=>{h[t]=e}),(0,t.jsxs)(t.Fragment,{children:[(0,t.jsx)(\"div\",{className:\"sticky top-0 z-40 border-b border-zinc-200 bg-white/95 "
+        },
+        {
+          "pattern": "totalPages",
+          "count": 5,
+          "text": "pdateParams:f,clubs:r,leagues:l,countries:a})]})}var v=e.i(456904),S=e.i(806908);function j({page:e,totalPages:i,searchParams:n}){if(i<=1)return null;function r(e){let t=new URLSearchParams;for(let[e,i]of Object.entries(n))\"page\"!==e&&\"string\"==typeof i&&t.set(e,i);e>1&&t.set(\"page\",String(e));let i=t.toString();return`/players${i?`?${i}`:\"\"}`}let l=function(e,t){if(t | :bg-zinc-800 dark:hover:text-zinc-100\"),...l,children:i})}let z={players:[],total:0,page:1,limit:24,totalPages:0};function P({clubs:e,leagues:r,countries:a}){let s=(0,n.useSearchParams)(),[o,c]=(0,i.useState)(z),[d,u]=(0,i.useState)(!0);(0,i.useEffect)(()=>{let e=s.toString();u(!0),fetch(`/api/public/players${e?`?${e}`:\"\"}`).then(e=>e.json()).then(e=>{c(e),u(!1)}).cat"
+        }
+      ],
+      "access_limitations": [],
+      "source_ids": {},
+      "source": "efhub"
+    },
+    {
+      "id": "efhub_player_js",
+      "url": "https://efhub.com/_next/static/chunks/e15d05f8810f898d.js?dpl=dpl_31Riks92A4aWRR56JjnttQdARhMg",
+      "requested_at": "2026-10-25T03:44:54+00:00",
+      "observed_at": "2026-10-25T03:44:54+00:00",
+      "status": 200,
+      "final_url": "https://efhub.com/_next/static/chunks/e15d05f8810f898d.js?dpl=dpl_31Riks92A4aWRR56JjnttQdARhMg",
+      "content_type": "application/javascript; charset=utf-8",
+      "response_bytes": 139360,
+      "sha256": "cee996345e37daa204d96340a8b3834690766268f1596c566216cf3cb45840ff",
+      "verified_fields": {
+        "required_catalogue_api_call_found_in_sampled_detail_chunk": false
+      },
+      "unknown_fields": [],
+      "excerpts": [],
+      "access_limitations": [
+        "Static chunk inspection only; no review/write/image-proxy/auth endpoints were invoked."
+      ],
+      "source_ids": {},
+      "source": "efhub"
+    },
+    {
+      "id": "efhub_player_api",
+      "url": "https://efhub.com/api/public/players/88046292727298",
+      "requested_at": "2026-10-25T03:44:54+00:00",
+      "observed_at": "2026-10-25T03:44:55+00:00",
+      "status": 403,
+      "final_url": "https://efhub.com/api/public/players/88046292727298",
+      "content_type": "application/json",
+      "response_bytes": 21,
+      "sha256": "18e11a797e00b786f40daa25b22dd4cee77ad3efc4b71e0dea081993d7adca44",
+      "verified_fields": {},
+      "unknown_fields": [
+        "detail_api_payload"
+      ],
+      "excerpts": [
+        {
+          "text": "{\"error\":\"Forbidden\"}"
+        }
+      ],
+      "access_limitations": [
+        "HTTP 403 Forbidden for the direct detail API. No retries with auth/token/cookie impersonation or alternate-route guessing. Normal page HTML remains separately accessible."
+      ],
+      "source_ids": {
+        "card_id": "88046292727298"
+      },
+      "source": "efhub"
+    },
+    {
+      "id": "efhub_player_image",
+      "url": "https://efimg.com/efootballhub22/images/player_cards/88046292727298_l.png",
+      "requested_at": "2026-10-25T03:44:54+00:00",
+      "observed_at": "2026-10-25T03:44:55+00:00",
+      "status": 200,
+      "final_url": "https://efimg.com/efootballhub22/images/player_cards/88046292727298_l.png",
+      "content_type": "image/png",
+      "response_bytes": 186474,
+      "sha256": "a6dcf91810e83044679e3f50bbc2a1bf6865cbf8f664c097f84bcd21335a9b50",
+      "verified_fields": {
+        "format": "PNG",
+        "width": 240,
+        "height": 340,
+        "png_color_type": 6,
+        "delivery_form": "Single PNG used as a full card image element; text/OVR also rendered as DOM overlays. Pixel composition not visually inspected."
+      },
+      "unknown_fields": [
+        "separate_player_cutout",
+        "separate_background_asset",
+        "image_redistribution_rights"
+      ],
+      "excerpts": [],
+      "access_limitations": [],
+      "source_ids": {
+        "card_id": "88046292727298"
+      },
+      "source": "efhub"
+    },
+    {
+      "id": "efhub_manager_image",
+      "url": "https://efimg.com/efootballhub22/images/coach_cards/17610439655559.png",
+      "requested_at": "2026-10-25T03:44:54+00:00",
+      "observed_at": "2026-10-25T03:44:55+00:00",
+      "status": 200,
+      "final_url": "https://efimg.com/efootballhub22/images/coach_cards/17610439655559.png",
+      "content_type": "image/png",
+      "response_bytes": 302474,
+      "sha256": "c61ab1068d0a9b08be0f576f4ab15f8f13b73dcc04c0bf1b78c1f83930e78c90",
+      "verified_fields": {
+        "format": "PNG",
+        "width": 496,
+        "height": 496,
+        "png_color_type": 6
+      },
+      "unknown_fields": [
+        "image_redistribution_rights"
+      ],
+      "excerpts": [],
+      "access_limitations": [],
+      "source_ids": {
+        "manager_id": "17610439655559"
+      },
+      "source": "efhub"
+    },
+    {
+      "id": "efhub_packs_api",
+      "url": "https://efhub.com/api/public/packs?search=&page=1&limit=30",
+      "requested_at": "2026-10-25T03:45:23+00:00",
+      "observed_at": "2026-10-25T03:45:23+00:00",
+      "status": 200,
+      "final_url": "https://efhub.com/api/public/packs?search=&page=1&limit=30",
+      "content_type": "application/json",
+      "response_bytes": 3619,
+      "sha256": "7999608d1fad35a5c709b04d232cc4129efa2259b83ee7d79d5c07ec213bbb14",
+      "verified_fields": {
+        "field_keys": [
+          "name",
+          "slug",
+          "date",
+          "playerCount"
+        ],
+        "sample": [
+          {
+            "name": "Magical Dribblers 22 Oct '26",
+            "slug": "magical-dribblers-22-oct-26",
+            "date": "2026-10-22",
+            "playerCount": 11
+          }
+        ]
+      },
+      "unknown_fields": [
+        "price",
+        "currency",
+        "limits",
+        "managers",
+        "other_items",
+        "whether_playerCount_is_full_in_game_roster"
+      ],
+      "excerpts": [],
+      "access_limitations": [],
+      "discovered_links": [],
+      "source_ids": {},
+      "source": "efhub"
+    },
+    {
+      "id": "efhub_players_api",
+      "url": "https://efhub.com/api/public/players",
+      "requested_at": "2026-10-25T03:45:23+00:00",
+      "observed_at": "2026-10-25T03:45:23+00:00",
+      "status": 200,
+      "final_url": "https://efhub.com/api/public/players",
+      "content_type": "application/json",
+      "response_bytes": 9103,
+      "sha256": "330d1ec731b3887564b752bb8111a6752c5217828b8fb0ba54736bfc02bd778f",
+      "verified_fields": {
+        "sample": [
+          {
+            "id": "123236838841410",
+            "name": "Robert Lewandowski",
+            "nameJa": "ロベルト レヴァンドフスキ",
+            "nameZh": "罗伯特·莱万多夫斯基",
+            "slug": "robert-lewandowski",
+            "nationality": "",
+            "nationalityCode": "",
+            "team": "FC Barcelona",
+            "position": "CF",
+            "overallRating": 102,
+            "playingStyle": "Goal Poacher",
+            "imageUrl": "https://efimg.com/efootballhub22/images/player_cards/123236838841410_l.png",
+            "playerType": 2
+          },
+          {
+            "id": "105899666447703",
+            "name": "Lionel Messi",
+            "nameJa": "リオネル メッシ",
+            "nameZh": "利昂内尔·梅西",
+            "slug": "lionel-messi",
+            "nationality": "",
+            "nationalityCode": "",
+            "team": "Argentina",
+            "position": "SS",
+            "overallRating": 100,
+            "playingStyle": "Classic No. 10",
+            "playingStyleDefensive": "Attack Outlet",
+            "imageUrl": "https://efimg.com/efootballhub22/images/player_cards/105899666447703_l.png",
+            "playerType": 6
+          }
+        ],
+        "field_keys": [
+          "id",
+          "name",
+          "nameJa",
+          "nameZh",
+          "slug",
+          "nationality",
+          "nationalityCode",
+          "team",
+          "position",
+          "overallRating",
+          "playingStyle",
+          "imageUrl",
+          "playerType"
+        ]
+      },
+      "unknown_fields": [
+        "overall_rating_conditions",
+        "additional_card_categories",
+        "authoritative_real_person_id"
+      ],
+      "excerpts": [],
+      "access_limitations": [],
+      "discovered_links": [],
+      "source_ids": {},
+      "source": "efhub"
+    },
+    {
+      "id": "official_home",
+      "url": "https://www.konami.com/efootball/ko/",
+      "requested_at": "2026-10-25T03:45:23+00:00",
+      "observed_at": "2026-10-25T03:45:25+00:00",
+      "status": 200,
+      "final_url": "https://www.konami.com/efootball/ko/",
+      "content_type": "text/html; charset=UTF-8",
+      "response_bytes": 98683,
+      "sha256": "cc2e6111e88a83c5e0c4b5ce8e34c2087197dcc610dafcf05af14a0eb5e0da65",
+      "verified_fields": {
+        "linked_probability_url": "https://efootball-web.konami.net/probability_kr.php",
+        "linked_promotion_agent_ids": [
+          "1407",
+          "1405"
+        ],
+        "visible_news_date": "2026-10-23"
+      },
+      "unknown_fields": [],
+      "excerpts": [
+        {
+          "kind": "link",
+          "text": "https://efootball-web.konami.net/probability_kr.php"
+        }
+      ],
+      "access_limitations": [],
+      "discovered_links": [
+        "/efootball/ko/topic/promotion/agent/1407/",
+        "/efootball/ko/topic/promotion/agent/1405/",
+        "/efootball/ko/topic/news/6043",
+        "/efootball/ko/topic/news/6041",
+        "/efootball/ko/topic/news/6040",
+        "/efootball/ko/topic/news/6039",
+        "/efootball/ko/topic/news/list",
+        "https://efootball-web.konami.net/probability_kr.php"
+      ],
+      "source_ids": {},
+      "source": "konami"
+    },
+    {
+      "id": "official_news_list",
+      "url": "https://www.konami.com/efootball/ko/topic/news/list",
+      "requested_at": "2026-10-25T03:45:23+00:00",
+      "observed_at": "2026-10-25T03:45:26+00:00",
+      "status": 200,
+      "final_url": "https://www.konami.com/efootball/ko/topic/news/list",
+      "content_type": "text/html; charset=UTF-8",
+      "response_bytes": 127589,
+      "sha256": "6c076cfca8a537c88d46ac8ea2008bed5795e13ea62711187e20a28fab3af9f6",
+      "verified_fields": {
+        "initial_markup_uses_client_template": true,
+        "template_excerpt": "${data.title} ${ formatDate(data.beginDate,language) }"
+      },
+      "unknown_fields": [
+        "actual_news_feed_request",
+        "complete_promotion_archive",
+        "archive_pagination"
+      ],
+      "excerpts": [
+        {
+          "kind": "visible_template",
+          "text": "${data.title} ${ formatDate(data.beginDate,language) }"
+        }
+      ],
+      "access_limitations": [],
+      "discovered_links": [],
+      "source_ids": {},
+      "source": "konami"
+    },
+    {
+      "id": "efhub_player_payload",
+      "url": "https://efhub.com/ko/players/88046292727298",
+      "requested_at": "2026-10-25T03:45:23+00:00",
+      "observed_at": "2026-10-25T03:45:23+00:00",
+      "status": 200,
+      "final_url": "https://efhub.com/ko/players/88046292727298",
+      "content_type": "text/html; charset=utf-8",
+      "response_bytes": 313393,
+      "sha256": "7f242583b999a8fed0c20f690ec86380a7aebbe0bfd19fffba538c411d446d49",
+      "verified_fields": {
+        "card": {
+          "id": "88046292727298",
+          "name": "Yaya Toure",
+          "slug": "yaya-toure",
+          "team": "FC Barcelona",
+          "position": "DMF",
+          "overallRating": 86,
+          "imageUrl": "https://efimg.com/efootballhub22/images/player_cards/88046292727298_l.png",
+          "playerId": "88046292727298",
+          "datapackId": 20251204,
+          "playerType": 5,
+          "boostId": 1199,
+          "boostId2": 1214,
+          "levelCap": 33
+        },
+        "other_versions": [
+          {
+            "id": "88036360615426",
+            "name": "Yaya Toure",
+            "overallRating": 86,
+            "imageUrl": "https://efimg.com/efootballhub22/images/player_cards/88036360615426_l.png",
+            "playerType": 5
+          },
+          {
+            "id": "88040387147266",
+            "name": "Yaya Toure",
+            "overallRating": 86,
+            "imageUrl": "https://efimg.com/efootballhub22/images/player_cards/88040387147266_l.png",
+            "playerType": 5
+          },
+          {
+            "id": "88035823744514",
+            "name": "Yaya Toure",
+            "overallRating": 85,
+            "imageUrl": "https://efimg.com/efootballhub22/images/player_cards/88035823744514_l.png",
+            "playerType": 5
+          }
+        ]
+      },
+      "unknown_fields": [
+        "source_real_person_id_semantics",
+        "datapackId_semantics",
+        "overall_rating_conditions",
+        "additional_card_categories",
+        "product_links"
+      ],
+      "excerpts": [
+        {
+          "pattern": "\"playerId\":",
+          "count": 3,
+          "text": "llhub22/images/player_cards/88046292727298_l.png\",\"playerId\":\"88046292727298\",\"gpValue\":0,\"datapackId\":20251204,\"playerType\":5,\"boostId\":1199,\"boostId2\":1214,\"levelCap\":33}}],[\"$\",\"div\",null,{\"id\":\"player-screenshot-content\",\"className\":\"mx-auto max-w-[70rem] o | ate\",\"children\":\"앵커맨\"}]]}],null,[\"$\",\"$L49\",null,{\"playerId\":\"88046292727298\",\"position\":\"DMF\",\"playerName\":\"Yaya Toure\"}],[\"$\",\"div\",null,{\"className\":\"mt-auto pt-4\",\"children\":[\"$\",\"$L4a\",null,{\"showLock\":true}]}]]}],[\"$\",\"div\",null,{\"className\":\"relative z-1 | creenshot-hide\":true,\"children\":[\"$\",\"$L5c\",null,{\"playerId\":\"88046292727298\"}]}]\n50:[\"$\",\"div\",null,{\"data-screenshot-hide\":true,\"children\":[\"$\",\"$L5d\",null,{\"playerKey\":\"88046292727298\"}]}]\n51:[\"$\",\"$11\",null,{\"fallback\":null,\"children\":[[\"$\",\"$L5e\",null,{\"pl"
+        },
+        {
+          "pattern": "\"datapackId\":",
+          "count": 1,
+          "text": "98_l.png\",\"playerId\":\"88046292727298\",\"gpValue\":0,\"datapackId\":20251204,\"playerType\":5,\"boostId\":1199,\"boostId2\":1214,\"levelCap\":33}}],[\"$\",\"div\",null,{\"id\":\"player-screenshot-content\",\"className\":\"mx-auto max-w-[70rem] overflow-x-clip px-2 py-6 pb-52 md:pb-6\",\"c"
+        }
+      ],
+      "access_limitations": [],
+      "discovered_links": [
+        "/_next/static/chunks/f8e050ddb5647662.css?dpl=dpl_31Riks92A4aWRR56JjnttQdARhMg",
+        "/_next/static/chunks/2d386dcdfb129c58.css?dpl=dpl_31Riks92A4aWRR56JjnttQdARhMg",
+        "/_next/static/chunks/faf4a0202735b81c.js?dpl=dpl_31Riks92A4aWRR56JjnttQdARhMg"
+      ],
+      "source_ids": {
+        "card_id": "88046292727298",
+        "datapack_id": "20251204"
+      },
+      "source": "efhub"
+    },
+    {
+      "id": "efhub_packs_page2",
+      "url": "https://efhub.com/api/public/packs?search=&page=2&limit=30",
+      "requested_at": "2026-10-25T03:46:05+00:00",
+      "observed_at": "2026-10-25T03:46:05+00:00",
+      "status": 200,
+      "final_url": "https://efhub.com/api/public/packs?search=&page=2&limit=30",
+      "content_type": "application/json",
+      "response_bytes": 3603,
+      "sha256": "5d2a21a19e196c847d6f5cee2678a59111ebfd974b426e35a58773a7516269d7",
+      "verified_fields": {
+        "pagination": {
+          "total": 1698,
+          "page": 2,
+          "limit": 30,
+          "hasMore": true
+        },
+        "returned_count": 30,
+        "sample": [
+          {
+            "name": "Brasileirão Selection 1 Oct '26",
+            "slug": "brasileir-o-selection-1-oct-26",
+            "date": "2026-10-01",
+            "playerCount": 12
+          },
+          {
+            "name": "Spanish League Selection Midfielders 5 Oct '26",
+            "slug": "spanish-league-selection-midfielders-5-oct-26",
+            "date": "2026-10-01",
+            "playerCount": 11
+          },
+          {
+            "name": "National Team Selection Netherlands 1 Oct '26",
+            "slug": "national-team-selection-netherlands-1-oct-26",
+            "date": "2026-10-01",
+            "playerCount": 8
+          }
+        ],
+        "last_sample": {
+          "name": "POTW 3 Sep '26",
+          "slug": "potw-3-sep-26",
+          "date": "2026-09-03",
+          "playerCount": 11
+        }
+      },
+      "unknown_fields": [
+        "earliest_historical_product_date",
+        "complete_list_across_all_pages",
+        "date_field_semantics"
+      ],
+      "excerpts": [],
+      "access_limitations": [],
+      "source_ids": {},
+      "source": "efhub"
+    },
+    {
+      "id": "efhub_players_page2",
+      "url": "https://efhub.com/api/public/players?page=2",
+      "requested_at": "2026-10-25T03:46:05+00:00",
+      "observed_at": "2026-10-25T03:46:05+00:00",
+      "status": 200,
+      "final_url": "https://efhub.com/api/public/players?page=2",
+      "content_type": "application/json",
+      "response_bytes": 9104,
+      "sha256": "a437501af851216686ef0c4b4b3e20b830c972f5f280bfe87ea244874490ef73",
+      "verified_fields": {
+        "pagination": {
+          "total": 50840,
+          "page": 2,
+          "limit": 24,
+          "totalPages": 2119
+        },
+        "returned_count": 24,
+        "sample": [
+          {
+            "id": "55072755132831",
+            "name": "Declan Rice",
+            "nameJa": "デクラン ライス",
+            "nameZh": "德克兰·赖斯",
+            "slug": "declan-rice",
+            "nationality": "",
+            "nationalityCode": "",
+            "team": "Arsenal FC",
+            "position": "CMF",
+            "overallRating": 97,
+            "playingStyle": "Box To Box",
+            "imageUrl": "https://efimg.com/efootballhub22/images/player_cards/55072755132831_l.png",
+            "playerType": 3
+          },
+          {
+            "id": "55070607666913",
+            "name": "William Saliba",
+            "nameJa": "ウィリアム サリバ",
+            "nameZh": "威廉·萨利巴",
+            "slug": "william-saliba",
+            "nationality": "",
+            "nationalityCode": "",
+            "team": "Arsenal FC",
+            "position": "CB",
+            "overallRating": 97,
+            "playingStyle": "Build Up",
+            "imageUrl": "https://efimg.com/efootballhub22/images/player_cards/55070607666913_l.png",
+            "playerType": 3
+          },
+          {
+            "id": "55070339149151",
+            "name": "Thibaut Courtois",
+            "nameJa": "ティボー クルトワ",
+            "nameZh": "蒂博·库尔图瓦",
+            "slug": "thibaut-courtois",
+            "nationality": "",
+            "nationalityCode": "",
+            "team": "Madrid Chamartin B",
+            "position": "GK",
+            "overallRating": 97,
+            "playingStyle": "Defensive Goalkeeper",
+            "imageUrl": "https://efimg.com/efootballhub22/images/player_cards/55070339149151_l.png",
+            "playerType": 3
+          }
+        ],
+        "last_sample": {
+          "id": "52884469297278",
+          "name": "Kylian Mbappe",
+          "nameJa": "キリアン エムバペ",
+          "nameZh": "基利安·姆巴佩",
+          "slug": "kylian-mbappe",
+          "nationality": "",
+          "nationalityCode": "",
+          "team": "Madrid Chamartin B",
+          "position": "CF",
+          "overallRating": 97,
+          "playingStyle": "Deep-Lying Forward",
+          "imageUrl": "https://efimg.com/efootballhub22/images/player_cards/52884469297278_l.png",
+          "playerType": 3
+        }
+      },
+      "unknown_fields": [
+        "complete_list_across_all_pages",
+        "overall_rating_conditions"
+      ],
+      "excerpts": [],
+      "access_limitations": [],
+      "source_ids": {},
+      "source": "efhub"
+    },
+    {
+      "id": "efhub_magical_pack",
+      "url": "https://efhub.com/ko/packs/magical-dribblers-22-oct-26",
+      "requested_at": "2026-10-25T03:46:05+00:00",
+      "observed_at": "2026-10-25T03:46:06+00:00",
+      "status": 200,
+      "final_url": "https://efhub.com/ko/packs/magical-dribblers-22-oct-26",
+      "content_type": "text/html; charset=utf-8",
+      "response_bytes": 164823,
+      "sha256": "9c58a4d89515f09ca8401794e2d39b2bde4faa0aa7e154689659b41674c1f598",
+      "verified_fields": {
+        "name": "Magical Dribblers 22 Oct '26",
+        "displayed_date": "2026-10-22",
+        "displayed_player_count": 11,
+        "linked_card_ids": [
+          "106800804418912",
+          "106800804393500",
+          "106800804376628",
+          "105896176917926",
+          "105896176904634",
+          "105896176839655",
+          "105896176957170",
+          "105896176893674",
+          "105896176886332",
+          "105896176881795",
+          "105896176926765"
+        ],
+        "observed_manager_links": []
+      },
+      "unknown_fields": [
+        "full_in_game_roster",
+        "price",
+        "currency",
+        "draw_options",
+        "draw_limits",
+        "purchase_limits",
+        "included_managers",
+        "other_items",
+        "sale_start",
+        "sale_end",
+        "official_product_identifier_link"
+      ],
+      "excerpts": [
+        {
+          "kind": "visible_text",
+          "text": "Magical Dribblers 22 Oct '26 | eFHUB eFHUB 선수들 관리자 커뮤니티 기사 eFHUB League 한국어 eFHUB 선수들 새로운 선수 팩 Compare 티어 리스트 관리자 커뮤니티 Feed 기사 eFHUB League Get Pro — Go Ad-Free Player Packs All Packs No packs found. All Packs No packs found. Magical Dribblers 22 Oct '26 22 October 2026 · 11 players 86 RWF Desire Doue 86 LWF Jeremy Doku 85 CF Raphinha 82 RWF Savio 82 CF Lois Openda 81 SS Rafa Silva 80 SS Samuele Inacio 80 LWF Arnaut Danjuma 80 RB Kingsley Ehizibue 80 LB Ulisses Garcia 79 RWF Tijjani Noslin Advertise on this site. © 2026 eFHUB. All rights reserved. Vacancies · Privacy Policy"
+        }
+      ],
+      "access_limitations": [
+        "Observed card links and source-displayed count only. No extra detail pagination link found in the inspected HTML; this does not prove in-game roster completeness."
+      ],
+      "discovered_links": [
+        "/ko/players/106800804418912",
+        "/ko/players/106800804393500",
+        "/ko/players/106800804376628",
+        "/ko/players/105896176917926",
+        "/ko/players/105896176904634",
+        "/ko/players/105896176839655",
+        "/ko/players/105896176957170",
+        "/ko/players/105896176893674",
+        "/ko/players/105896176886332",
+        "/ko/players/105896176881795",
+        "/ko/players/105896176926765"
+      ],
+      "source_ids": {
+        "pack_slug": "magical-dribblers-22-oct-26"
+      },
+      "source": "efhub"
+    },
+    {
+      "id": "efhub_dortmund_pack",
+      "url": "https://efhub.com/ko/packs/borussia-dortmund-pack-26-27",
+      "requested_at": "2026-10-25T03:46:05+00:00",
+      "observed_at": "2026-10-25T03:46:06+00:00",
+      "status": 200,
+      "final_url": "https://efhub.com/ko/packs/borussia-dortmund-pack-26-27",
+      "content_type": "text/html; charset=utf-8",
+      "response_bytes": 164974,
+      "sha256": "e855a287ff7519916d507fd0dade30b058e1680c3ff0cd41ca67767a32f1a4c6",
+      "verified_fields": {
+        "name": "Borussia Dortmund Pack 26-27",
+        "displayed_date": "2026-10-22",
+        "displayed_player_count": 11,
+        "linked_card_ids": [
+          "106802146570881",
+          "105891076607840",
+          "105891076647837",
+          "105891076647661",
+          "105891076647836",
+          "105891076664168",
+          "105891076665540",
+          "105891076652937",
+          "105891076647663",
+          "105891076673336",
+          "105891076644042"
+        ],
+        "observed_manager_links": []
+      },
+      "unknown_fields": [
+        "full_in_game_roster",
+        "price",
+        "currency",
+        "draw_options",
+        "draw_limits",
+        "purchase_limits",
+        "included_managers",
+        "other_items",
+        "sale_start",
+        "sale_end",
+        "official_product_identifier_link"
+      ],
+      "excerpts": [
+        {
+          "kind": "visible_text",
+          "text": "Borussia Dortmund Pack 26-27 | eFHUB eFHUB 선수들 관리자 커뮤니티 기사 eFHUB League 한국어 eFHUB 선수들 새로운 선수 팩 Compare 티어 리스트 관리자 커뮤니티 Feed 기사 eFHUB League Get Pro — Go Ad-Free Player Packs All Packs No packs found. All Packs No packs found. Borussia Dortmund Pack 26-27 22 October 2026 · 11 players 85 CMF Felix Nmecha 84 CF Serhou Guirassy 83 CB Nico Schlotterbeck 83 GK Gregor Kobel 82 RB Julian Ryerson 82 SS Ethan Nwaneri 82 AMF K. Karetsas 82 CMF Jobe Bellingham 82 CB Waldemar Anton 81 CB Joane Gadou 81 LB Daniel Svensson Advertise on this site. © 2026 eFHUB. All rights reserved. Vacancies · Privacy Policy"
+        }
+      ],
+      "access_limitations": [
+        "Observed card links and source-displayed count only. No extra detail pagination link found in the inspected HTML; this does not prove in-game roster completeness."
+      ],
+      "discovered_links": [
+        "/ko/players/106802146570881",
+        "/ko/players/105891076607840",
+        "/ko/players/105891076647837",
+        "/ko/players/105891076647661",
+        "/ko/players/105891076647836",
+        "/ko/players/105891076664168",
+        "/ko/players/105891076665540",
+        "/ko/players/105891076652937",
+        "/ko/players/105891076647663",
+        "/ko/players/105891076673336",
+        "/ko/players/105891076644042"
+      ],
+      "source_ids": {
+        "pack_slug": "borussia-dortmund-pack-26-27"
+      },
+      "source": "efhub"
+    },
+    {
+      "id": "efhub_manager_pack",
+      "url": "https://efhub.com/ko/packs/manager-pack-15-oct-26",
+      "requested_at": "2026-10-25T03:46:05+00:00",
+      "observed_at": "2026-10-25T03:46:06+00:00",
+      "status": 200,
+      "final_url": "https://efhub.com/ko/packs/manager-pack-15-oct-26",
+      "content_type": "text/html; charset=utf-8",
+      "response_bytes": 146208,
+      "sha256": "6b3d36efb3b53e27d0a575e9f3917d9e0136aa6d4f24af8e4351e2b033497e04",
+      "verified_fields": {
+        "name": "Manager Pack 15 Oct '26",
+        "displayed_date": "2026-10-15",
+        "displayed_player_count": 2,
+        "linked_card_ids": [
+          "105864501511999",
+          "105864501411930"
+        ],
+        "observed_manager_links": []
+      },
+      "unknown_fields": [
+        "full_in_game_roster",
+        "price",
+        "currency",
+        "draw_options",
+        "draw_limits",
+        "purchase_limits",
+        "included_managers",
+        "other_items",
+        "sale_start",
+        "sale_end",
+        "official_product_identifier_link"
+      ],
+      "excerpts": [
+        {
+          "kind": "visible_text",
+          "text": "Manager Pack 15 Oct '26 | eFHUB eFHUB 선수들 관리자 커뮤니티 기사 eFHUB League 한국어 eFHUB 선수들 새로운 선수 팩 Compare 티어 리스트 관리자 커뮤니티 Feed 기사 eFHUB League Get Pro — Go Ad-Free Player Packs All Packs No packs found. All Packs No packs found. Manager Pack 15 Oct '26 15 October 2026 · 2 players 82 CMF Alexis Mac Allister 80 CMF Endo Wataru Advertise on this site. © 2026 eFHUB. All rights reserved. Vacancies · Privacy Policy"
+        }
+      ],
+      "access_limitations": [
+        "Observed card links and source-displayed count only. No extra detail pagination link found in the inspected HTML; this does not prove in-game roster completeness.",
+        "The title Manager Pack is not evidence that the displayed two player cards are managers; no product-to-manager link was found."
+      ],
+      "discovered_links": [
+        "/ko/players/105864501511999",
+        "/ko/players/105864501411930"
+      ],
+      "source_ids": {
+        "pack_slug": "manager-pack-15-oct-26"
+      },
+      "source": "efhub"
+    },
+    {
+      "id": "official_probability",
+      "url": "https://efootball-web.konami.net/probability_kr.php",
+      "requested_at": "2026-10-25T03:46:05+00:00",
+      "observed_at": "2026-10-25T03:46:07+00:00",
+      "status": 200,
+      "final_url": "https://efootball-web.konami.net/probability_kr.php",
+      "content_type": "text/html; charset=UTF-8",
+      "response_bytes": 2834,
+      "sha256": "8d641fd6b0e1deb21b8f5cc225fa6283ad3ac9da264fcc23693bf46cd80672ec",
+      "verified_fields": {
+        "list_kind_original": "특수 선수 명단",
+        "entries": [
+          {
+            "name": "Epic: European Clubs Midfielders",
+            "initial_player_count": 150,
+            "ends_at": "2026-10-26T01:59:59Z"
+          },
+          {
+            "name": "Show Time: Magical Dribblers",
+            "initial_player_count": 150,
+            "ends_at": "2026-10-29T01:59:59Z"
+          },
+          {
+            "name": "POTW: Worldwide 22 Oct '26",
+            "initial_player_count": 11,
+            "ends_at": "2026-10-29T01:59:59Z"
+          }
+        ],
+        "original_time_zone": "UTC",
+        "scope_note": "Counts apply to the initial draw, not the user remaining pool. Some countries/regions may be excluded; contents/period may change."
+      },
+      "unknown_fields": [
+        "individual_card_ids",
+        "price",
+        "currency",
+        "draw_options",
+        "draw_limits",
+        "purchase_limits",
+        "start_time",
+        "cross_source_product_id_mapping"
+      ],
+      "excerpts": [
+        {
+          "kind": "visible_text",
+          "text": "선수 영입 확률 특수 선수 명단 선수 영입 확률은 균일합니다. 확률 표시는 반올림될 수 있습니다. 이로 인해 값을 전부 더해도 100%가 되지 않을 수 있습니다. 아래 확률 표시는 처음 영입할 때의 선수 수이며, 현재 남은 선수 수가 아닙니다. 2회차 이후 선수 영입 확률은 남은 선수 수에 따라 변합니다. 선수 명단의 남은 선수는 게임 내의 [계약] > [특수 선수 명단] > [모두 보기]에서 확인할 수 있습니다. National Team Selection: Worldwide Sep '26 종료 일시(UTC)：2026-11-05 01:59:59 처음 영입할 때의 선수 수：11 처음 영입할 때의 영입 확률：9.0909% League Selection: Italian Oct '26 종료 일시(UTC)：2026-12-03 01:59:59 처음 영입할 때의 선수 수：11 처음 영입할 때의 영입 확률：9.0909% Epic: Ricardo Quaresma 종료 일시(UTC)：2026-10-29 01:59:59 처음 영입할 때의 선수 수：50 처음 영입할 때의 영입 확률：2% Epic: European Clubs Midfielders 종료 일시(UTC)：2026-10-26 01:59:59 처음 영입할 때의 선수 수：150 처음 영입할 때의 영입 확률：0.6667% Show Time: Magical Dribblers 종료 일시(UTC)：2026-10-29 01:59:59 처음 영입할 때의 선수 수：150 처음 영입할 때의 영입 확률：0.6667% POTW: Worldwide 22 Oct '26 종료 일시(UTC)：2026-10-29 01:59:59 처음 영입할 때의 선수 수：11 처음 영입할 때의 영입 확률：9.0909% POTW: European Club Championship 종료 일시(UTC)：2026-10-29 01:59:59 처음 영입할 때의 선수 수：11 처음 영입할 때의 영입 확률：9.0909% 주의 사항 일부 국가/지역에서는 실시되지 않을 수 있습니다. 개최 기간과 내용은 예고 없이 변경될 수 있습니다."
+        }
+      ],
+      "access_limitations": [],
+      "discovered_links": [
+        "probability.css"
+      ],
+      "source_ids": {},
+      "source": "konami"
+    },
+    {
+      "id": "efhub_packs_page1_metadata",
+      "url": "https://efhub.com/api/public/packs?search=&page=1&limit=30",
+      "requested_at": "2026-10-25T03:47:03+00:00",
+      "observed_at": "2026-10-25T03:47:03+00:00",
+      "status": 200,
+      "final_url": "https://efhub.com/api/public/packs?search=&page=1&limit=30",
+      "content_type": "application/json",
+      "response_bytes": 3619,
+      "sha256": "7999608d1fad35a5c709b04d232cc4129efa2259b83ee7d79d5c07ec213bbb14",
+      "verified_fields": {
+        "pagination": {
+          "total": 1698,
+          "page": 1,
+          "limit": 30,
+          "hasMore": true
+        },
+        "returned_count": 30,
+        "sample": [
+          {
+            "name": "Ranking Event Rewards 2027",
+            "slug": "ranking-event-rewards-2027",
+            "date": "2026-10-22",
+            "playerCount": 12
+          },
+          {
+            "name": "Halloween Campaign 22 Oct '26",
+            "slug": "halloween-campaign-22-oct-26",
+            "date": "2026-10-22",
+            "playerCount": 5
+          },
+          {
+            "name": "Borussia Dortmund Pack 26-27",
+            "slug": "borussia-dortmund-pack-26-27",
+            "date": "2026-10-22",
+            "playerCount": 11
+          },
+          {
+            "name": "POTM J1 LEAGUE 22 Oct '26",
+            "slug": "potm-j1-league-22-oct-26",
+            "date": "2026-10-22",
+            "playerCount": 6
+          },
+          {
+            "name": "POTW 22 Oct '26",
+            "slug": "potw-22-oct-26",
+            "date": "2026-10-22",
+            "playerCount": 11
+          },
+          {
+            "name": "POTM Trendyol Süper Lig 22 Oct '26",
+            "slug": "potm-trendyol-s-per-lig-22-oct-26",
+            "date": "2026-10-22",
+            "playerCount": 6
+          },
+          {
+            "name": "POTM Brasileirão 22 Oct '26",
+            "slug": "potm-brasileir-o-22-oct-26",
+            "date": "2026-10-22",
+            "playerCount": 6
+          },
+          {
+            "name": "POTW European Club Championship 22 Oct '26",
+            "slug": "potw-european-club-championship-22-oct-26",
+            "date": "2026-10-22",
+            "playerCount": 11
+          },
+          {
+            "name": "Magical Dribblers 22 Oct '26",
+            "slug": "magical-dribblers-22-oct-26",
+            "date": "2026-10-22",
+            "playerCount": 11
+          }
+        ]
+      },
+      "unknown_fields": [
+        "full_in_game_rosters",
+        "complete_list_across_all_pages",
+        "date_field_semantics"
+      ],
+      "excerpts": [
+        {
+          "text": ":\"piemonte-bn-selection-5-oct-26\",\"date\":\"2026-10-01\",\"playerCount\":8}],\"total\":1698,\"page\":1,\"limit\":30,\"hasMore\":true}"
+        }
+      ],
+      "access_limitations": [],
+      "source_ids": {},
+      "source": "efhub"
+    },
+    {
+      "id": "efhub_magical_payload",
+      "url": "https://efhub.com/ko/packs/magical-dribblers-22-oct-26",
+      "requested_at": "2026-10-25T03:47:03+00:00",
+      "observed_at": "2026-10-25T03:47:03+00:00",
+      "status": 200,
+      "final_url": "https://efhub.com/ko/packs/magical-dribblers-22-oct-26",
+      "content_type": "text/html; charset=utf-8",
+      "response_bytes": 164823,
+      "sha256": "9c58a4d89515f09ca8401794e2d39b2bde4faa0aa7e154689659b41674c1f598",
+      "verified_fields": {
+        "pack_source_id": "magical-dribblers-22-oct-26",
+        "players_payload": [
+          {
+            "id": "106800804418912",
+            "name": "Desire Doue",
+            "nameJa": "デジレ ドゥエ",
+            "nameZh": "德西雷·杜埃",
+            "slug": "desire-doue",
+            "nationality": "",
+            "nationalityCode": "",
+            "team": "Paris Saint-Germain",
+            "position": "RWF",
+            "overallRating": 86,
+            "playingStyle": "Prolific Winger",
+            "playingStyleDefensive": "Press Back",
+            "imageUrl": "https://efimg.com/efootballhub22/images/player_cards/106800804418912_l.png",
+            "playerType": 8
+          },
+          {
+            "id": "106800804393500",
+            "name": "Jeremy Doku",
+            "nameJa": "ジェレミ ドク",
+            "nameZh": "杰雷米·多库",
+            "slug": "jeremy-doku",
+            "nationality": "",
+            "nationalityCode": "",
+            "team": "Manchester B",
+            "position": "LWF",
+            "overallRating": 86,
+            "playingStyle": "Prolific Winger",
+            "playingStyleDefensive": "Front Line Poacher",
+            "imageUrl": "https://efimg.com/efootballhub22/images/player_cards/106800804393500_l.png",
+            "playerType": 8
+          },
+          {
+            "id": "106800804376628",
+            "name": "Raphinha",
+            "nameJa": "ハフィーニャ",
+            "nameZh": "拉菲尼亚",
+            "slug": "raphinha",
+            "nationality": "",
+            "nationalityCode": "",
+            "team": "FC Barcelona",
+            "position": "CF",
+            "overallRating": 85,
+            "playingStyle": "Goal Poacher",
+            "playingStyleDefensive": "Front Line Pressure",
+            "imageUrl": "https://efimg.com/efootballhub22/images/player_cards/106800804376628_l.png",
+            "playerType": 8
+          },
+          {
+            "id": "105896176917926",
+            "name": "Savio",
+            "nameJa": "サヴィオ",
+            "nameZh": "萨维奥",
+            "slug": "savio",
+            "nationality": "",
+            "nationalityCode": "",
+            "team": "Tottenham WB",
+            "position": "RWF",
+            "overallRating": 82,
+            "playingStyle": "Prolific Winger",
+            "playingStyleDefensive": "$undefined",
+            "imageUrl": "https://efimg.com/efootballhub22/images/player_cards/105896176917926_l.png",
+            "playerType": 6
+          },
+          {
+            "id": "105896176904634",
+            "name": "Lois Openda",
+            "nameJa": "ロイス オペンダ",
+            "nameZh": "卢瓦斯·奥庞达",
+            "slug": "lois-openda",
+            "nationality": "",
+            "nationalityCode": "",
+            "team": "Olympique Lyonnais",
+            "position": "CF",
+            "overallRating": 82,
+            "playingStyle": "Goal Poacher",
+            "playingStyleDefensive": "$undefined",
+            "imageUrl": "https://efimg.com/efootballhub22/images/player_cards/105896176904634_l.png",
+            "playerType": 6
+          },
+          {
+            "id": "105896176839655",
+            "name": "Rafa Silva",
+            "nameJa": "ラファ シウヴァ",
+            "nameZh": "拉法·席尔瓦",
+            "slug": "rafa-silva",
+            "nationality": "",
+            "nationalityCode": "",
+            "team": "SL Benfica",
+            "position": "SS",
+            "overallRating": 81,
+            "playingStyle": "Hole Player",
+            "playingStyleDefensive": "$undefined",
+            "imageUrl": "https://efimg.com/efootballhub22/images/player_cards/105896176839655_l.png",
+            "playerType": 6
+          },
+          {
+            "id": "105896176957170",
+            "name": "Samuele Inacio",
+            "nameJa": "サムエーレ イナーチョ",
+            "nameZh": "萨穆埃莱·伊纳西奥",
+            "slug": "samuele-inacio",
+            "nationality": "",
+            "nationalityCode": "",
+            "team": "Borussia Dortmund",
+            "position": "SS",
+            "overallRating": 80,
+            "playingStyle": "Deep-Lying Forward",
+            "playingStyleDefensive": "$undefined",
+            "imageUrl": "https://efimg.com/efootballhub22/images/player_cards/105896176957170_l.png",
+            "playerType": 6
+          },
+          {
+            "id": "105896176893674",
+            "name": "Arnaut Danjuma",
+            "nameJa": "アルナウト ダンジュマ",
+            "nameZh": "阿尔瑙特·赫鲁内费尔特",
+            "slug": "arnaut-danjuma",
+            "nationality": "",
+            "nationalityCode": "",
+            "team": "Valencia BN",
+            "position": "LWF",
+            "overallRating": 80,
+            "playingStyle": "Roaming Flank",
+            "playingStyleDefensive": "$undefined",
+            "imageUrl": "https://efimg.com/efootballhub22/images/player_cards/105896176893674_l.png",
+            "playerType": 6
+          },
+          {
+            "id": "105896176886332",
+            "name": "Kingsley Ehizibue",
+            "nameJa": "キングスレイ エヒジブエ",
+            "nameZh": "金斯利·埃希泽布埃",
+            "slug": "kingsley-ehizibue",
+            "nationality": "",
+            "nationalityCode": "",
+            "team": "Genova RB",
+            "position": "RB",
+            "overallRating": 80,
+            "playingStyle": "Offensive Wingback",
+            "playingStyleDefensive": "$undefined",
+            "imageUrl": "https://efimg.com/efootballhub22/images/player_cards/105896176886332_l.png",
+            "playerType": 6
+          },
+          {
+            "id": "105896176881795",
+            "name": "Ulisses Garcia",
+            "nameJa": "ウリセス ガルシア",
+            "nameZh": "乌利塞斯·加西亚",
+            "slug": "ulisses-garcia",
+            "nationality": "",
+            "nationalityCode": "",
+            "team": "Olympique de Marseille",
+            "position": "LB",
+            "overallRating": 80,
+            "playingStyle": "Offensive Wingback",
+            "playingStyleDefensive": "$undefined",
+            "imageUrl": "https://efimg.com/efootballhub22/images/player_cards/105896176881795_l.png",
+            "playerType": 6
+          },
+          {
+            "id": "105896176926765",
+            "name": "Tijjani Noslin",
+            "nameJa": "ティジャニ ノスリン",
+            "nameZh": "蒂亚尼·诺斯林",
+            "slug": "tijjani-noslin",
+            "nationality": "",
+            "nationalityCode": "",
+            "team": "S.S. Lazio",
+            "position": "RWF",
+            "overallRating": 79,
+            "playingStyle": "Prolific Winger",
+            "playingStyleDefensive": "$undefined",
+            "imageUrl": "https://efimg.com/efootballhub22/images/player_cards/105896176926765_l.png",
+            "playerType": 6
+          }
+        ],
+        "players_payload_count": 11
+      },
+      "unknown_fields": [
+        "full_in_game_roster",
+        "price",
+        "currency",
+        "draw_options",
+        "draw_limits",
+        "purchase_limits",
+        "included_managers",
+        "other_items",
+        "sale_start",
+        "sale_end",
+        "official_product_identifier_link"
+      ],
+      "excerpts": [
+        {
+          "text": "found. Magical Dribblers 22 Oct '26 22 October 2026 · 11 players 86 RWF Desire Doue 86 LWF Jeremy Doku 85 CF Raphinha 82 RWF Savio 82 CF Lois Openda 81 SS Rafa Silva 80 SS Samuele Inacio 80 LWF Arnaut Danjuma 80 RB Kingsley Ehizibue 80 LB Ulisses Garcia 79 RWF Tijjani Noslin Advertise on this site. © 2026 eFHUB. All rights reserved. Vacancies · Privacy Policy "
+        }
+      ],
+      "access_limitations": [
+        "Raw Next.js Flight payload preserves \"$undefined\" serialization sentinels. These are not confirmed strings in the domain and must decode to unknown/absent. Empty source strings likewise do not confirm a value.",
+        "11 source-visible cards are not evidence for a full 150-player in-game roster."
+      ],
+      "source_ids": {
+        "pack_slug": "magical-dribblers-22-oct-26"
+      },
+      "source": "efhub"
+    },
+    {
+      "id": "efhub_types_js",
+      "url": "https://efhub.com/_next/static/chunks/8964e7af23583e8b.js?dpl=dpl_31Riks92A4aWRR56JjnttQdARhMg",
+      "requested_at": "2026-10-25T03:47:03+00:00",
+      "observed_at": "2026-10-25T03:47:03+00:00",
+      "status": 200,
+      "final_url": "https://efhub.com/_next/static/chunks/8964e7af23583e8b.js?dpl=dpl_31Riks92A4aWRR56JjnttQdARhMg",
+      "content_type": "application/javascript; charset=utf-8",
+      "response_bytes": 61902,
+      "sha256": "241046ee60771205e8a331364dccb65b9e5cf39e7471e08bd75c2123152744bc",
+      "verified_fields": {
+        "raw_player_type_translation_keys": {
+          "1": "normal",
+          "2": "featured",
+          "3": "trending",
+          "4": "legend",
+          "5": "epic",
+          "6": "highlight",
+          "7": "bigtime",
+          "8": "showtime"
+        },
+        "image_rendering": "Single imageUrl element plus text and OVR DOM overlays"
+      },
+      "unknown_fields": [
+        "additional_simultaneous_card_categories",
+        "canonical_mapping_of_normal_featured_trending_to_current_game_terms"
+      ],
+      "excerpts": [
+        {
+          "pattern": "let a=[{id:1",
+          "text": "76),i=e.i(271645),n=e.i(861745),r=e.i(948148),l=e.i(532972);let a=[{id:1,tKey:\"normal\"},{id:2,tKey:\"featured\"},{id:3,tKey:\"trending\"},{id:4,tKey:\"legend\"},{id:5,tKey:\"epic\"},{id:6,tKey:\"highlight\"},{id:7,tKey:\"bigtime\"},{id:8,tKey:\"showtime\"}],s=[\"GK\",\"CB\",\"LB\",\"RB\",\"DMF\",\"CMF\",\"LMF\",\"RMF\",\"AMF\",\"LWF\",\"RWF\",\"SS\",\"CF\"],o=[{tKey:\"attacking\",stats:[{tKey:\"offensiveAwareness\",col:\"OffensiveAwareness\"},{tKey:\"ballControl\",col:\"BallControl\"},{tKey:\"dribbling\",col:\"Dribbling\"},{tKey:\"tightPossession\",col:\"TightPossession\"},{tKey:\"lowPass\",col:\"LowPass\"},{tKey:\"loftedPass\",col:\"LoftedPass\"},{tKey:\"finishing\",col:\"Finishing\"},{tKey:\"heading\",col:\"Heading\"},{tKey:\"setPieceTaking\",col:\"PlaceKicking\"},{tKey:\"curl\",col:\"Curl\"}]},{tKey:\"defending\",stats:[{tKey:\"defensiveAware"
+        },
+        {
+          "pattern": "imageUrl",
+          "text": "line-size] dark:from-zinc-800 dark:to-zinc-900\",children:[e.imageUrl?(0,t.jsx)(\"img\",{src:e.imageUrl,alt:o,className:\"h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-105\"}):(0,t.jsx)(\"div\",{className:\"flex h-full w-full items-end justify-center\",children:(0,t.jsx)(\"svg\",{viewBox:\"0 0 24 24\",fill:\"currentColor\",className:\"h-3/4 w-3/4 translate-y-4 text-zinc-300 dark:text-zinc-700\",children:(0,t.jsx)(\"path\",{d:\"M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z\"})})}),(0,t.jsxs)(\"div\",{className:\"pointer-events-none absolute flex flex-col items-center text-center leading-none\",style:{fontFamily:\"'eFootballStencil', sans-serif\",lef"
+        }
+      ],
+      "access_limitations": [],
+      "source_ids": {},
+      "source": "efhub"
+    },
+    {
+      "id": "official_product_quaresma",
+      "url": "https://www.konami.com/efootball/ko/topic/promotion/agent/1405/",
+      "requested_at": "2026-10-25T03:47:03+00:00",
+      "observed_at": "2026-10-25T03:47:05+00:00",
+      "status": 200,
+      "final_url": "https://www.konami.com/efootball/ko/topic/promotion/agent/1405/",
+      "content_type": "text/html; charset=UTF-8",
+      "response_bytes": 73793,
+      "sha256": "3c1b473bd9d53d11c1b9d538cb222e171de1875b00bf13828a3c0762f42a95a5",
+      "verified_fields": {
+        "name": "Epic: Ricardo Quaresma",
+        "announcement_date": "2026-10-15",
+        "product_kind_original": "SPECIAL PLAYER LIST"
+      },
+      "unknown_fields": [
+        "complete_card_ids",
+        "price",
+        "currency",
+        "draw_options",
+        "draw_limits",
+        "purchase_limits",
+        "included_managers",
+        "other_items"
+      ],
+      "excerpts": [
+        {
+          "kind": "visible_text",
+          "text": "에픽은 활약한 특정 시즌을 선정하여 당시 사진을 모티브로 한 특별한 디자인으로 등장합니다. 하이라이트 선수는 같은 이름의 스탠다드 선수와는 다른 능력치로 등장하며 더욱 성장시킬 수 있습니다. 위대한 선수를 영입하여 팀을 강화하십시오! Notice “Do Not Sell or Share My Personal Information” California Consumer Rights adidas, the 3-Bars logo, the 3-Stripe trade mark, Predator, F50, Y-3 and Climacool are trademarks of the adidas, used with permission.  The use of certain player names, images and likenesses on a collective basis is authorised by FIFPRO Commercial Enterprises BV.  Officially Licensed Product of the MLSPA © [2026]  © 2026, DFB. Official Licensed Product of Deutscher"
+        }
+      ],
+      "access_limitations": [],
+      "image_urls": [
+        "/efootball/s/img/promotion/agent/1405/promo_agent.png"
+      ],
+      "source_ids": {
+        "promotion_agent_id": "1405"
+      },
+      "source": "konami"
+    }
+  ],
+  "field_coverage": [
+    {
+      "field_group": "player_name_and_source_card_id",
+      "status": "verified_sample",
+      "observation_ids": [
+        "efhub_player_payload",
+        "efhub_magical_payload"
+      ],
+      "notes": "Card IDs are strings; no real-person identity inference."
+    },
+    {
+      "field_group": "card_image_and_background",
+      "status": "partial",
+      "observation_ids": [
+        "efhub_player_image",
+        "efhub_types_js"
+      ],
+      "notes": "Image PNG 240x340 HTTP200. Single card image display confirmed; separate background/cutout and composition unknown."
+    },
+    {
+      "field_group": "displayed_overall_rating_and_conditions",
+      "status": "partial",
+      "observation_ids": [
+        "efhub_player_payload"
+      ],
+      "notes": "Source OVR86 confirmed; training/booster conditions unresolved."
+    },
+    {
+      "field_group": "card_categories",
+      "status": "partial",
+      "observation_ids": [
+        "efhub_types_js",
+        "efhub_magical_payload"
+      ],
+      "notes": "Primary raw playerType mapping observed; simultaneous additional categories unresolved."
+    },
+    {
+      "field_group": "other_card_versions",
+      "status": "verified_sample",
+      "observation_ids": [
+        "efhub_player_payload"
+      ],
+      "notes": "Three explicitly linked other versions; no name-only merging."
+    },
+    {
+      "field_group": "products_and_pagination",
+      "status": "verified_sample",
+      "observation_ids": [
+        "efhub_packs_js",
+        "efhub_packs_page1_metadata",
+        "efhub_packs_page2"
+      ],
+      "notes": "Two pages checked; source total1698; not fully collected; game-product semantics unresolved."
+    },
+    {
+      "field_group": "cards_and_pagination",
+      "status": "verified_sample",
+      "observation_ids": [
+        "efhub_players_js",
+        "efhub_players_api",
+        "efhub_players_page2"
+      ],
+      "notes": "First two pages read; total50840,totalPages2119,limit24; not fully collected."
+    },
+    {
+      "field_group": "product_card_relations_and_full_composition",
+      "status": "partial",
+      "observation_ids": [
+        "efhub_magical_payload",
+        "efhub_dortmund_pack",
+        "official_probability"
+      ],
+      "notes": "11/11 EFHub-visible card links confirmed for Magical and Dortmund. Full in-game composition unknown; similarly named official Magical list says150. Cross-source identity link unverified."
+    },
+    {
+      "field_group": "managers_and_images",
+      "status": "verified_sample",
+      "observation_ids": [
+        "efhub_manager_detail",
+        "efhub_manager_image"
+      ],
+      "notes": "Niko Kovač sample and PNG496x496 HTTP200; manager list pagination unverified."
+    },
+    {
+      "field_group": "product_manager_relations_and_other_items",
+      "status": "unknown",
+      "observation_ids": [
+        "efhub_manager_pack",
+        "efhub_dortmund_pack"
+      ],
+      "notes": "No explicit manager/product link or other-item quantities in inspected samples."
+    },
+    {
+      "field_group": "product_prices_currency_draw_options_limits",
+      "status": "unknown",
+      "observation_ids": [
+        "efhub_magical_pack",
+        "efhub_dortmund_pack",
+        "efhub_manager_pack",
+        "official_product",
+        "official_probability"
+      ],
+      "notes": "No verified amount/currency/options/usage limits in inspected fields or product text. Never default to0/unlimited."
+    },
+    {
+      "field_group": "sale_period_and_status",
+      "status": "partial",
+      "observation_ids": [
+        "official_probability"
+      ],
+      "notes": "Official end times and initial roster counts for sample names; sale start and cross-source identity unverified."
+    },
+    {
+      "field_group": "history_and_source_updates",
+      "status": "partial",
+      "observation_ids": [
+        "efhub_packs_page1_metadata",
+        "efhub_packs_page2",
+        "efhub_home",
+        "official_home"
+      ],
+      "notes": "Samples span Sep03-Oct22 2026, latest articleOct25. No cross-date product/card/price change or scheduled execution verified."
+    }
+  ],
+  "limitations": [
+    "Read-only initial source investigation, not full catalogue collection or production dataset. Only the first two list pages were inspected.",
+    "No price, currency, draw/purchase limits, full in-game roster, product-manager connection, or cross-source product identifier mapping was established in the inspected samples.",
+    "Public detail API returned403; normal pages and list APIs were independently observed. No access-control bypass attempted.",
+    "Source listing total and playerCount may cover EFHub catalogue groups rather than complete in-game sale offerings. Preserve source semantics and completeness separately.",
+    "Repeated equal response hashes show repeatability only, not ongoing upstream updates. No automatic job was installed/run.",
+    "Image responses were decoded for PNG metadata without visual inspection or image rehosting.",
+    "No synthetic/null/zero prices inserted. Absent values remain explicitly unknown; raw Flight \"$undefined\" and empty strings are preserved only as source evidence."
+  ],
+  "request_count": 27,
+  "next_actions": [
+    "Verify an entire small in-game product roster and an explicit product-manager relation from normal source evidence before claiming relational completeness.",
+    "Investigate officially linked news feed/archive requests and legitimate product detail evidence for prices/currencies/options/limits; do not infer from product type.",
+    "Define canonical product-vs-source-group identity and review cross-source matches using explicit evidence; do not equate similar names.",
+    "Implement a small provenance-preserving sample import with explicit partial/unknown statuses; preserve external IDs as strings and raw source enum codes.",
+    "Reobserve a genuine upstream new product/card or changed condition on a later date before accepting continuous-refresh claims."
+  ]
+}

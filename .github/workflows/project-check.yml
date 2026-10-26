@@ -1,0 +1,43 @@
+name: 프로젝트 관리 검사
+
+on:
+  pull_request:
+  push:
+    branches: [main, work]
+
+permissions:
+  contents: read
+
+jobs:
+  project-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.19.0
+          cache: npm
+      - name: 고정 npm과 잠금 파일 설치
+        run: |
+          npm install --global npm@11.9.0 --ignore-scripts --no-audit --no-fund
+          npm ci --ignore-scripts --no-audit --no-fund
+      - name: 파일 목록과 작업 기록 검사
+        env:
+          PROJECT_BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: |
+          ef_check_base="$PROJECT_BASE_SHA"
+          if [ -z "$ef_check_base" ] || [ "$ef_check_base" = "0000000000000000000000000000000000000000" ]; then
+            ef_check_base="$(git rev-list --max-parents=0 HEAD)"
+          fi
+          npm run project:check -- --base "$ef_check_base"
+      - name: 검사기 회귀 테스트
+        run: npm test
+      - name: 실제 데이터와 정적 사이트 빌드
+        run: |
+          node --check web/app.js
+          npm run data:prepare
+          git diff --exit-code -- data/catalog.seed.json
+          npm run build
+          npm run pages:check

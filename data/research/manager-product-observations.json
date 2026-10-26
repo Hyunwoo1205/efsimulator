@@ -1,0 +1,1218 @@
+{
+  "schema_version": 1,
+  "research_stage": "R3 explicit manager-product relation investigation",
+  "research_status": "manager_catalogue_and_article_image_verified_product_inclusion_unresolved",
+  "observed_at": "2026-10-25T04:49:30.146306+00:00",
+  "request_count": 26,
+  "observations": [
+    {
+      "id": "manager_list_html",
+      "url": "https://efhub.com/ko/managers",
+      "requested_at": "2026-10-25T04:41:41.934888+00:00",
+      "observed_at": "2026-10-25T04:41:42.671904+00:00",
+      "status": 200,
+      "sha256": "a5f78ed1867cb074dac3b911c0324abbe53eeb8b68bfcb467105fc1f357d0f0f",
+      "response_bytes": 154138,
+      "source": "efhub",
+      "source_ids": {
+        "locale": "ko"
+      },
+      "verified_fields": {
+        "detail_links": [],
+        "relevant_script_urls": [
+          "/_next/static/chunks/695b4bfb1720fddb.js?dpl=dpl_31Riks92A4aWRR56JjnttQdARhMg",
+          "/_next/static/chunks/a6dad97d9634a72d.js?dpl=dpl_31Riks92A4aWRR56JjnttQdARhMg"
+        ],
+        "initial_state": "0 managers; client initial state, not catalogue total"
+      },
+      "excerpts": [
+        {
+          "kind": "visible_text",
+          "text": " 관리자 | eFHUB eFHUB 선수들 관리자 커뮤니티 기사 eFHUB League 한국어 eFHUB 선수들 새로운 선수 팩 Compare 티어 리스트 관리자 커뮤니티 Feed 기사 eFHUB League Get Pro — Go Ad-Free 관리자 Advertise on this site. © 2026 eFHUB. All rights reserved. Vacancies · Privacy Policy 필터 0 managers "
+        }
+      ],
+      "unknown_fields": [
+        "product_manager_relations"
+      ],
+      "access_limitations": []
+    },
+    {
+      "id": "manager_list_js_695b4bfb1720fddb",
+      "url": "https://efhub.com/_next/static/chunks/695b4bfb1720fddb.js?dpl=dpl_31Riks92A4aWRR56JjnttQdARhMg",
+      "requested_at": "2026-10-25T04:41:53.809864+00:00",
+      "observed_at": "2026-10-25T04:41:53.884237+00:00",
+      "status": 200,
+      "sha256": "1887927693f99caba39527b9bf818a78d6563a7b560fbe433f27444d99acc89b",
+      "response_bytes": 47463,
+      "source": "efhub",
+      "source_ids": {
+        "asset_path": "/_next/static/chunks/695b4bfb1720fddb.js?dpl=dpl_31Riks92A4aWRR56JjnttQdARhMg"
+      },
+      "verified_fields": {
+        "normal_coaches_endpoint": "/api/public/coaches",
+        "normal_query_source": "Current page URLSearchParams",
+        "root_array_key": "coaches",
+        "pagination_keys": [
+          "total",
+          "page",
+          "limit",
+          "totalPages"
+        ]
+      },
+      "excerpts": [
+        {
+          "pattern": "fetch(",
+          "count": 2,
+          "text": ")(null);(0,n.useEffect)(()=>{j(!0)},[]),(0,n.useEffect)(()=>{if(!f||null!==S)return;let e=!1;return fetch(\"/api/public/coach-linkups\").then(e=>e.json()).then(t=>{e||z(t.linkups??[])}).catch(()=>{e||z([])}),()=>{e=!0}},[f,S]),(0,n.useEffect)(()=>{if(f)return document.addEventListener(\"keydown\",e),()=>document.removeEventListener(\"keydown\",e);function e(e){\"Escape\"===e.key&&y(!1)}},[f]),(0,n.useEffect)(()=>(document.body.style.overflow=f?\"hidden\":\"\",()=> | useState)(j),[o,c]=(0,n.useState)(!0);(0,n.useEffect)(()=>{let t=e.toString();c(!0);let n=!1;return fetch(`/api/public/coaches${t?`?${t}`:\"\"}`).then(e=>e.json()).then(e=>{n||(l(e),c(!1))}).catch(()=>{n||c(!1)}),()=>{n=!0}},[e]);let u={};return e.forEach((e,t)=>{u[t]=e}),(0,t.jsxs)(t.Fragment,{children:[(0,t.jsx)(\"div\",{className:\"sticky top-0 z-40 border-b border-zinc-200 bg-white/95 backdrop-blur-md dark:border-zinc-800 dark:bg-[#13151d]/95\",children:",
+          "kind": "source_javascript"
+        },
+        {
+          "pattern": "totalPages",
+          "count": 5,
+          "text": "g-0 transition-transform duration-200\",n?\"translate-x-5\":\"translate-x-0\")})})]})}function y({page:e,totalPages:n,searchParams:i}){if(n<=1)return null;function r(e){let t=new URLSearchParams;for(let[e,n]of Object.entries(i))\"page\"!==e&&\"string\"==typeof n&&t.set(e,n);e>1&&t.set(\"page\",String(e));let n=t.toString();return`/managers${n?`?${n}`:\"\"}`}let a=function(e,t){if(t<=7)return Array.from({length:t},(e,t)=>t+1);let n=[],i=Math.max(2,e-2),r=Math.min(t-1,e+ | :bg-zinc-800 dark:hover:text-zinc-100\"),...s,children:n})}let j={coaches:[],total:0,page:1,limit:24,totalPages:0};function S(){let e=(0,i.useSearchParams)(),a=(0,r.useTranslations)(),[s,l]=(0,n.useState)(j),[o,c]=(0,n.useState)(!0);(0,n.useEffect)(()=>{let t=e.toString();c(!0);let n=!1;return fetch(`/api/public/coaches${t?`?${t}`:\"\"}`).then(e=>e.json()).then(e=>{n||(l(e),c(!1))}).catch(()=>{n||c(!1)}),()=>{n=!0}},[e]);let u={};return e.forEach((e,t)=>{u[t] | ols-2 lg:grid-cols-3 xl:grid-cols-4\",children:s.coaches.map(e=>(0,t.jsx)(d,{coach:e},e.id))}),!o&&s.totalPages>1&&(0,t.jsx)(\"div\",{className:\"mt-12\",children:(0,t.jsx)(y,{page:s.page,totalPages:s.totalPages,searchParams:u})})]})]})}function z(){return(0,t.jsx)(\"div\",{className:\"grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4\",children:Array.from({length:12}).map((e,n)=>(0,t.jsxs)(\"div\",{className:\"rounded-xl border border-zinc-200 bg-wh",
+          "kind": "source_javascript"
+        }
+      ],
+      "unknown_fields": [
+        "product_manager_relations"
+      ],
+      "access_limitations": []
+    },
+    {
+      "id": "manager_list_js_a6dad97d9634a72d",
+      "url": "https://efhub.com/_next/static/chunks/a6dad97d9634a72d.js?dpl=dpl_31Riks92A4aWRR56JjnttQdARhMg",
+      "requested_at": "2026-10-25T04:41:53.810675+00:00",
+      "observed_at": "2026-10-25T04:41:54.000225+00:00",
+      "status": 200,
+      "sha256": "0973c1d64c88adc8e3c950410cb58b288f72118d5965b78049438deb8f2f9683",
+      "response_bytes": 112594,
+      "source": "efhub",
+      "source_ids": {
+        "asset_path": "/_next/static/chunks/a6dad97d9634a72d.js?dpl=dpl_31Riks92A4aWRR56JjnttQdARhMg"
+      },
+      "verified_fields": {
+        "product_relationship_calls_found": false,
+        "coaches_catalogue_calls_found": false
+      },
+      "excerpts": [],
+      "unknown_fields": [
+        "product_manager_relations"
+      ],
+      "access_limitations": []
+    },
+    {
+      "id": "normal_coaches_api",
+      "url": "https://efhub.com/api/public/coaches",
+      "requested_at": "2026-10-25T04:42:07.089760+00:00",
+      "observed_at": "2026-10-25T04:42:07.283037+00:00",
+      "status": 200,
+      "sha256": "3f92fbc54e3d378f39989bd699616b56e3b0a7ec5a73fc5375f01882125056c8",
+      "response_bytes": 14078,
+      "source": "efhub",
+      "source_ids": {
+        "request_path": "/api/public/coaches"
+      },
+      "verified_fields": {
+        "response_keys": [
+          "coaches",
+          "total",
+          "page",
+          "limit",
+          "totalPages"
+        ],
+        "pagination": {
+          "total": 2012,
+          "page": 1,
+          "limit": 24,
+          "totalPages": 84
+        },
+        "returned_count": 24,
+        "sample": [
+          {
+            "id": "17613660984975",
+            "name": "Makino Tomoaki",
+            "accentedName": "Makino Tomoaki",
+            "japName": "槙野 智章",
+            "chineseName": "槙野智章",
+            "country": 12,
+            "age": 39,
+            "affinity": 1,
+            "skills": {
+              "possessionGame": 65,
+              "quickCounter": 85,
+              "longBallCounter": 76,
+              "outWide": 64,
+              "longBall": 59,
+              "overload": 88
+            },
+            "boosts": [
+              12,
+              0
+            ],
+            "hasBoost": true,
+            "linkupId": "7",
+            "linkup": {
+              "id": "7",
+              "name": "Over-the-Top Pass C",
+              "japName": "Over-the-Top Pass C",
+              "centerPiece": 15,
+              "centerPiecePositions": [
+                1
+              ],
+              "keyMan": 4,
+              "keyManPositions": [
+                9,
+                10
+              ],
+              "defensive": false
+            },
+            "linkupId2": "12",
+            "linkup2": {
+              "id": "12",
+              "name": "1-2 Cut-in B",
+              "japName": "1-2 Cut-in B",
+              "centerPiece": 4,
+              "centerPiecePositions": [
+                9,
+                10
+              ],
+              "keyMan": 3,
+              "keyManPositions": [
+                12
+              ],
+              "defensive": false
+            }
+          },
+          {
+            "id": "17613392545968",
+            "name": "R. Rodriguez",
+            "accentedName": "R. Rodríguez",
+            "japName": "リカルド ロドリゲス",
+            "chineseName": "里卡多·罗德里格斯",
+            "country": 3,
+            "age": 52,
+            "affinity": 3,
+            "skills": {
+              "possessionGame": 88,
+              "quickCounter": 74,
+              "longBallCounter": 67,
+              "outWide": 64,
+              "longBall": 58,
+              "overload": 85
+            },
+            "boosts": [
+              2,
+              17
+            ],
+            "hasBoost": true,
+            "linkupId": "1",
+            "linkup": {
+              "id": "1",
+              "name": "Over-the-Top Pass A",
+              "japName": "Over-the-Top Pass A",
+              "centerPiece": 20,
+              "centerPiecePositions": [
+                4
+              ],
+              "keyMan": 1,
+              "keyManPositions": [
+                12
+              ],
+              "defensive": false
+            },
+            "linkupId2": "10",
+            "linkup2": {
+              "id": "10",
+              "name": "Breakthrough Pass A",
+              "japName": "Breakthrough Pass A",
+              "centerPiece": 14,
+              "centerPiecePositions": [
+                8
+              ],
+              "keyMan": 1,
+              "keyManPositions": [
+                12
+              ],
+              "defensive": false
+            }
+          },
+          {
+            "id": "17610439655559",
+            "name": "Niko Kovac",
+            "accentedName": "Niko Kovač",
+            "japName": "ニコ コヴァッチ",
+            "chineseName": "尼科·科瓦奇",
+            "country": 2,
+            "age": 55,
+            "affinity": 1,
+            "skills": {
+              "possessionGame": 90,
+              "quickCounter": 67,
+              "longBallCounter": 59,
+              "outWide": 89,
+              "longBall": 53,
+              "overload": 57
+            },
+            "boosts": [
+              1,
+              11
+            ],
+            "hasBoost": true,
+            "linkupId": "6",
+            "linkup": {
+              "id": "6",
+              "name": "Aggressive Centring B",
+              "japName": "Aggressive Centring B",
+              "centerPiece": 11,
+              "centerPiecePositions": [
+                2,
+                3
+              ],
+              "keyMan": 3,
+              "keyManPositions": [
+                12
+              ],
+              "defensive": false
+            },
+            "linkupId2": "27",
+            "linkup2": {
+              "id": "27",
+              "name": "Shadow Link B",
+              "japName": "Shadow Link B",
+              "centerPiece": 13,
+              "centerPiecePositions": [
+                11
+              ],
+              "keyMan": 3,
+              "keyManPositions": [
+                12
+              ],
+              "defensive": false
+            }
+          }
+        ],
+        "all_returned_coach_field_keys": [
+          "accentedName",
+          "affinity",
+          "age",
+          "boosts",
+          "chineseName",
+          "country",
+          "hasBoost",
+          "id",
+          "japName",
+          "linkup",
+          "linkup2",
+          "linkupId",
+          "linkupId2",
+          "name",
+          "skills"
+        ],
+        "fields_with_pack_or_product_name": []
+      },
+      "excerpts": [
+        {
+          "kind": "json_root",
+          "text": "{\"coaches\":[...],\"total\":2012,\"page\":1,\"limit\":24,\"totalPages\":84}"
+        }
+      ],
+      "unknown_fields": [
+        "product_manager_relations"
+      ],
+      "access_limitations": [
+        "Wire coach IDs were numeric; sample IDs and source identifiers are preserved here as exact decimal strings. Original small enum values retain their source types."
+      ]
+    },
+    {
+      "id": "articles_index_html",
+      "url": "https://efhub.com/ko/articles",
+      "requested_at": "2026-10-25T04:42:40.140240+00:00",
+      "observed_at": "2026-10-25T04:42:40.839445+00:00",
+      "status": 200,
+      "sha256": "2007260c23060ada3bf41d0f318bbf6f61a1d9e7127911e6309b622b3809afab",
+      "response_bytes": 584806,
+      "source": "efhub",
+      "source_ids": {
+        "locale": "ko"
+      },
+      "verified_fields": {
+        "article_links": [
+          "/ko/articles/261017_1-the-first-defensive-link-up-play-how-does-it-perform",
+          "/ko/articles/261006_1-the-link-up-with-the-coolest-name-shadow-link",
+          "/ko/articles/260910_3-it-s-here-the-first-manager-with-90-long-ball-counter-proficiency",
+          "/ko/articles/260907_3-the-real-madrid-pack-has-the-best-featured-midfielder"
+        ],
+        "observed_article_link_count": 177
+      },
+      "excerpts": [
+        {
+          "kind": "visible_text",
+          "text": "기사 eFootball 분석, 가이드 및 뉴스 전체 177"
+        }
+      ],
+      "unknown_fields": [
+        "explicit_manager_product_relation"
+      ],
+      "access_limitations": []
+    },
+    {
+      "id": "article_manager_261017_1",
+      "url": "https://efhub.com/ko/articles/261017_1-the-first-defensive-link-up-play-how-does-it-perform",
+      "requested_at": "2026-10-25T04:43:08.029688+00:00",
+      "observed_at": "2026-10-25T04:43:09.923887+00:00",
+      "status": 200,
+      "sha256": "05166473d87f7d254f7ce34dd7ea63d96e4f81b4e174bf1847a274b7878e9875",
+      "response_bytes": 169117,
+      "source": "efhub",
+      "source_ids": {
+        "article_slug": "261017_1-the-first-defensive-link-up-play-how-does-it-perform"
+      },
+      "verified_fields": {
+        "manager_or_pack_links": [],
+        "content_image_urls": [
+          "/api/articles/cover/261023_1?v=1792737861886",
+          "/api/articles/cover/261021_4?v=1792525218275"
+        ]
+      },
+      "excerpts": [
+        {
+          "kind": "visible_text",
+          "text": " 첫 번째 수비 연계 플레이: 효과는 어떨까요? — eFHUB | eFHUB eFHUB 선수들 관리자 커뮤니티 기사 eFHUB League 한국어 eFHUB 선수들 새로운 선수 팩 Compare 티어 리스트 관리자 커뮤니티 Feed 기사 eFHUB League Get Pro — Go Ad-Free ← 모든 기사 게임 메커니즘 2026-10-17 첫 번째 수비 연계 플레이: 효과는 어떨까요? Amadeusz @ amadeusz 영어에서 자동 번역되었습니다 위르겐 클롭: 수비 연계 플레이 중앙 미드필더 또는 핵심 미드필더가 미드필드에서 볼 소유자를 압박할 때, 두 선수는 강력한 압박을 주고받습니다. 압박하는 동안 두 선수 모두 태클과 공격성 능력치가 상승합니다. | 역할 | 필요한 플레이 스타일 | 포지션 | | --- | --- | --- | | 중앙 미드필더 | 수비형 미드필더 | 중앙 미드필더 | 핵심 미드필더 | 수비형 미드필더 | 중앙 미드필더 | 국제 경기에서 처음으로 수비 연계 플레이가 도입되었습니다. 일부 선수들은 오랫동안 기다려온 \"더블 팀\"이 드디어 등장했다고 생각했습니다. 하지만 실제로는 그렇지 않습니다. 경기 영상을 확인해 보세요. 제 생각: 기대했던 더블 팀 플레이는 거의 눈에 띄지 않습니다. 연계 플레이는 디스트로이어의 공격성을 높이지만, 플레이 스타일 자체가 이미 충분히 공격적이기 때문에 차이를 느끼기 어렵습니다. 연계 플레이를 활성화하려면 두 디스트로이어 모두 중앙 미드필더(CMF) 위치에서 플레이해야 하며, 수비형 미드필더(DMF) 위치에서는 불가능합니다. 이 때문에 실용성이 크게 제한됩니다. 우선, 현재로서는 안정적인 빌드업 능력을 갖춘 디스트로이어 두 명을 찾기가 어렵습니다. 게다가 트랙 백 스킬을 가진 디스트로이어라 하더라도, CMF 위치에서는 해당 스킬을 사용할 수 없습니다. 첫 번째 수비형 연계 플레이인 만큼, 실질적인 전력 강화 효과 없이 단순히 시험 삼아 도입된 것으로 보입니다. 클롭 감독님, 너무 큰 기대는 하지 마세요. 게임 메커니즘 기사 더 보기 1 게임 메커니즘 몸무게: 육체적 결투에 영향을 미칠까? 2 게임 메커니즘 불가사의한 속성: 더 강한 손 3 게임 메커니즘 플레이어 모델별 이점이 대폭 하향 조정되었습니다! 4 게임 메커니즘 포지션 숙련도는 없지만, 통계상 불이익은 없다니? 5 게임 메커니즘 놀라운 사진의 비밀 6 게임 메커니즘 투지: 어떤 포지션에 가장 필요한가? 7 게임 메커니즘 코드 분석을 통해 알 수 있는 스크립팅의 의미 8 게임 메커니즘 6가지 팀 플레이 스타일: 숨겨진 핵심 요소 공개 Advertise on this site. © 2026 eFHUB. All rights reserved. Vacancies · Privacy Policy "
+        }
+      ],
+      "unknown_fields": [
+        "explicit_manager_product_relation"
+      ],
+      "access_limitations": []
+    },
+    {
+      "id": "article_manager_260910_3",
+      "url": "https://efhub.com/ko/articles/260910_3-it-s-here-the-first-manager-with-90-long-ball-counter-proficiency",
+      "requested_at": "2026-10-25T04:43:08.030488+00:00",
+      "observed_at": "2026-10-25T04:43:09.841099+00:00",
+      "status": 200,
+      "sha256": "7851eb084d07c89c902cb4fae2f98fc178462f1cee512f5457fa37710f9efb20",
+      "response_bytes": 166009,
+      "source": "efhub",
+      "source_ids": {
+        "article_slug": "260910_3-it-s-here-the-first-manager-with-90-long-ball-counter-proficiency"
+      },
+      "verified_fields": {
+        "manager_or_pack_links": [],
+        "content_image_urls": [
+          "/api/articles/cover/261021_1?v=1792524919760",
+          "/api/articles/cover/261016_3?v=1792164068521"
+        ]
+      },
+      "excerpts": [
+        {
+          "kind": "visible_text",
+          "text": " 드디어 나왔습니다! 장타 카운터 숙련도 90을 달성한 최초의 감독 — eFHUB | eFHUB eFHUB 선수들 관리자 커뮤니티 기사 eFHUB League 한국어 eFHUB 선수들 새로운 선수 팩 Compare 티어 리스트 관리자 커뮤니티 Feed 기사 eFHUB League Get Pro — Go Ad-Free ← 모든 기사 분석 2026-09-10 드디어 나왔습니다! 장타 카운터 숙련도 90을 달성한 최초의 감독 Amadeusz @ amadeusz 영어에서 자동 번역되었습니다 오늘 글로벌 버전의 목요일 점검과 함께 세 번째 여름 이적 팩이 출시됩니다. 이번 팩에는 세 가지 특수 스킬(파괴자)을 보유한 아라우호 카드가 포함되어 있습니다. 또한 e풋볼 역사상 최초로 롱볼 카운터 숙련도 90을 달성한 감독도 만나볼 수 있습니다. 이제 선수 육성 빌드에서 숙련도 90의 감독을 새로운 기준으로 삼을 수 있게 되었습니다. 분석 기사 더 보기 1 분석 모든 포지션에서 가장 쉽게 활용할 수 있는 선수들 2 분석 반 데 벤: 최종 평가 3 분석 전체 순위 포함 | CF 톱 10 순위 (10월 18일) 4 분석 스킬 슬롯 추가: 이 선수들에게는 스킬 슬롯이 절실히 필요합니다! 5 분석 작고 빠르며 민첩한 7가지 전략 요약 6 분석 T0 탑 3 선발 라인업을 유지하면서 얼마나 오랫동안 교체 없이 버틸 수 있을까요? 7 분석 AMF 톱 10 순위 (10월 11일) | 전체 순위 포함 8 분석 SS/CMF 상위 10위 순위 (10월 11일) Advertise on this site. © 2026 eFHUB. All rights reserved. Vacancies · Privacy Policy "
+        }
+      ],
+      "unknown_fields": [
+        "explicit_manager_product_relation"
+      ],
+      "access_limitations": []
+    },
+    {
+      "id": "manager_detail_structure",
+      "url": "https://efhub.com/ko/managers/17610439655559",
+      "requested_at": "2026-10-25T04:44:51.512565+00:00",
+      "observed_at": "2026-10-25T04:44:51.591234+00:00",
+      "status": 200,
+      "sha256": "1e068dc8249b7bc3adef2728343727d1736f161197ccfabc7ea7200ff57f252d",
+      "response_bytes": 158533,
+      "source": "efhub",
+      "source_ids": {
+        "manager_id": "17610439655559"
+      },
+      "verified_fields": {
+        "payload_product_key_counts": {
+          "\"packId\":": 0,
+          "\"packIds\":": 0,
+          "\"productId\":": 0,
+          "\"managerId\":": 0,
+          "\"price\":": 0,
+          "\"currency\":": 0
+        },
+        "client_exports": [
+          "ManagerSubHeader",
+          "ManagerOverview",
+          "ManagerCommentsSection"
+        ]
+      },
+      "excerpts": [
+        {
+          "kind": "flight",
+          "text": "k\"]\nc:[[\"$\",\"$L2b\",null,{\"coach\":{\"id\":17610439655559,\"name\":\"Niko Kovac\",\"accentedName\":\"Niko Kovač\",\"japName\":\"ニコ コヴァッチ\",\"chineseName\":\"尼科·科瓦奇\",\"country\":2,\"age\":55,\"affinity\":1,\"skills\":{\"possessionGame\":90,\"quickCounter\":67,\"longBallCounter\":59,\"outWide\":89,\"longBall\":53,\"overload\":57},\"boosts\":[1,11],\"hasBoost\":true,\"linkupId\":6,\"linkup\":{\"id\":6,\"name\":\"Aggressive Centring B\",\"japName\":\"Aggressive Centring B\",\"centerPiece\":11,\"centerPiecePositions\":[2,3],\"keyMan\":3,\"keyManPositions\":[12],\"defensive\":false},\"linkupId2\":27,\"linkup2\":{\"id\":27,\"name\":\"Shadow Link B\",\"japName\":\"Shadow Link B\",\"centerPiece\":13,\"centerPiecePositions\":[11],\"keyMan\":3,\"keyManPositions\":[12],\"def"
+        },
+        {
+          "kind": "flight",
+          "text": "\"coachId\":\"17610439655559\""
+        }
+      ],
+      "unknown_fields": [
+        "product_manager_relations"
+      ],
+      "access_limitations": []
+    },
+    {
+      "id": "manager_detail_js_7f7ba7e59071f828",
+      "url": "https://efhub.com/_next/static/chunks/7f7ba7e59071f828.js?dpl=dpl_31Riks92A4aWRR56JjnttQdARhMg",
+      "requested_at": "2026-10-25T04:45:03.748931+00:00",
+      "observed_at": "2026-10-25T04:45:03.805148+00:00",
+      "status": 200,
+      "response_bytes": 26117,
+      "sha256": "9713da63e0230448b1880f445d2e15bf1b580c42c8d493b80bcf00ad14988a6f",
+      "source": "efhub",
+      "source_ids": {
+        "asset_hash": "7f7ba7e59071f828"
+      },
+      "verified_fields": {
+        "required_product_key_counts": {
+          "packId": 0,
+          "packIds": 0,
+          "/packs/": 0,
+          "productId": 0,
+          "price": 0,
+          "currency": 0
+        }
+      },
+      "excerpts": [
+        {
+          "pattern": "/api/",
+          "count": 11,
+          "text": "==t||(i-=1),d(e=>e+i),m(!0);try{if(!(await fetch(`/api/comments/${e}/vote`,{method:\"POST\",headers:{\"Content-Type\":\"application/json\"},body:JSON.stringify({voteType:r})})).ok)throw Error(\"Vote failed\")}catch{x(u),d(l)}finally{m(!1)}}let y=l>0?`+${l}`:String(l),v=l>0?\"text-indigo-400 dark:text-in | \"commentDeleteConfirm\"))){z(!0);try{(await fetch(`/api/comments/${e.id}`,{method:\"DELETE\"})).ok&&a(e.id)}finally{z(!1)}}}async function A(t){v(!1);try{await fetch(`/api/comments/${e.id}/report`,{method:\"POST\",headers:{\"Content-Type\":\"application/json\"},body:JSON.stringify({reason:t})}),g(!0)}ca",
+          "kind": "source_javascript"
+        }
+      ],
+      "unknown_fields": [
+        "explicit_manager_product_relation"
+      ],
+      "access_limitations": [
+        "Read-only static JS inspection; no comment/review/write endpoints were called."
+      ]
+    },
+    {
+      "id": "manager_detail_js_abb22cc21329b4fe",
+      "url": "https://efhub.com/_next/static/chunks/abb22cc21329b4fe.js?dpl=dpl_31Riks92A4aWRR56JjnttQdARhMg",
+      "requested_at": "2026-10-25T04:45:03.749501+00:00",
+      "observed_at": "2026-10-25T04:45:03.804172+00:00",
+      "status": 200,
+      "response_bytes": 20994,
+      "sha256": "4878f6e6f262bd16fdf65a8004835f28f16cb81cb9adcb76565c5338b1e7d25a",
+      "source": "efhub",
+      "source_ids": {
+        "asset_hash": "abb22cc21329b4fe"
+      },
+      "verified_fields": {
+        "required_product_key_counts": {
+          "packId": 4,
+          "packIds": 0,
+          "/packs/": 0,
+          "productId": 0,
+          "price": 0,
+          "currency": 0
+        },
+        "packId_substring_meaning": "Four lexical hits are datapackIdA/datapackIdB within player build data, not a product pack ID."
+      },
+      "excerpts": [
+        {
+          "pattern": "packId",
+          "count": 4,
+          "text": "..t,id:e,kind:n,playerA:{playerId:t.playerIdA,datapackId:t.datapackIdA,buildName:t.buildNameA,position:t.positionA,statUpgrades:t.statUpgradesA,booster2:t.booster2A,selectedManagerID:t.selectedManagerIdA,additionalSkills:t.additionalSkillsA??[],levelCap:t.levelCapA},playerB:{playerId:t.playerIdB | :n,playerA:{playerId:t.playerIdA,datapackId:t.datapackIdA,buildName:t.buildNameA,position:t.positionA,statUpgrades:t.statUpgradesA,booster2:t.booster2A,selectedManagerID:t.selectedManagerIdA,additionalSkills:t.additionalSkillsA??[],levelCap:t.levelCapA},playerB:{playerId:t.playerIdB,datapackId:t",
+          "kind": "source_javascript"
+        }
+      ],
+      "unknown_fields": [
+        "explicit_manager_product_relation"
+      ],
+      "access_limitations": [
+        "Read-only static JS inspection; no comment/review/write endpoints were called."
+      ]
+    },
+    {
+      "id": "manager_detail_js_33c41e730f9fc3bd",
+      "url": "https://efhub.com/_next/static/chunks/33c41e730f9fc3bd.js?dpl=dpl_31Riks92A4aWRR56JjnttQdARhMg",
+      "requested_at": "2026-10-25T04:45:03.749944+00:00",
+      "observed_at": "2026-10-25T04:45:03.840810+00:00",
+      "status": 200,
+      "response_bytes": 62487,
+      "sha256": "333acadd9eaa7283055f4b314bc3f18e0545705f6efbf62500831a201683826a",
+      "source": "efhub",
+      "source_ids": {
+        "asset_hash": "33c41e730f9fc3bd"
+      },
+      "verified_fields": {
+        "required_product_key_counts": {
+          "packId": 0,
+          "packIds": 0,
+          "/packs/": 0,
+          "productId": 0,
+          "price": 0,
+          "currency": 0
+        }
+      },
+      "excerpts": [
+        {
+          "pattern": "/api/",
+          "count": 3,
+          "text": "anguage}));if(0!==t.length)try{let e=await fetch(\"/api/comments/translate\",{method:\"POST\",headers:{\"Content-Type\":\"application/json\"},body:JSON.stringify({items:t,targetLanguage:f})});if(!e.ok)return;let n=await e.json();C(e=>({...e,...n.results}))}catch{}},[f]),W=(0,n.useCallback)(async(e,t)=> | tyKey:p});e&&n.set(\"cursor\",e);let l=await fetch(`/api/comments?${n}`);if(!l.ok)return;let a=await l.json();j(e=>t?a.comments:[...e,...a.comments]),I(a.nextCursor),M(!0),window.ramp?.que&&window.ramp.que.push(()=>window.ramp.pageReprocess()),A&&a.comments.length>0&&O(a.comments)}finally{z(!1)}}",
+          "kind": "source_javascript"
+        }
+      ],
+      "unknown_fields": [
+        "explicit_manager_product_relation"
+      ],
+      "access_limitations": [
+        "Read-only static JS inspection; no comment/review/write endpoints were called."
+      ]
+    },
+    {
+      "id": "manager_detail_js_86daff0e52f3398f",
+      "url": "https://efhub.com/_next/static/chunks/86daff0e52f3398f.js?dpl=dpl_31Riks92A4aWRR56JjnttQdARhMg",
+      "requested_at": "2026-10-25T04:45:03.750256+00:00",
+      "observed_at": "2026-10-25T04:45:03.844199+00:00",
+      "status": 200,
+      "response_bytes": 55964,
+      "sha256": "c794d3d84e72629169122dd6ee7f5889f4f41ee7575087b676f1e66c378c4617",
+      "source": "efhub",
+      "source_ids": {
+        "asset_hash": "86daff0e52f3398f"
+      },
+      "verified_fields": {
+        "required_product_key_counts": {
+          "packId": 0,
+          "packIds": 0,
+          "/packs/": 0,
+          "productId": 0,
+          "price": 0,
+          "currency": 0
+        }
+      },
+      "excerpts": [
+        {
+          "pattern": "/api/",
+          "count": 13,
+          "text": "null);(0,n.useEffect)(()=>{let t=!1;return fetch(`/api/coach-tier?coachId=${encodeURIComponent(e)}`).then(e=>e.ok?e.json():null).then(e=>{!t&&e&&l(e)}).catch(()=>{}),()=>{t=!0}},[e,o]),(0,n.useEffect)(()=>{function t(t){t.detail===e&&c(e=>e+1)}return window.addEventListener(\"efhub:manager-rated | e)return;let t=!1,n=`mgr_${a}_${c}`;return fetch(`/api/coach-reviews/text?reviewId=${encodeURIComponent(n)}`).then(e=>e.ok?e.json():null).then(e=>{!t&&e&&\"string\"==typeof e.text&&N(e.text)}).catch(()=>{}),()=>{t=!0}},[e,a,c]),(0,n.useEffect)(()=>{if(!e)return;let t=e=>{\"Escape\"===e.key&&f()};do",
+          "kind": "source_javascript"
+        },
+        {
+          "pattern": "ManagerOverview",
+          "count": 1,
+          "text": "-up\"}),(0,t.jsx)(x,{linkups:c})]}):d})]})})}e.s([\"ManagerOverview\",()=>p],734644)},388398,e=>{\"use strict\";var t=e.i(843476),n=e.i(271645),r=e.i(948148),a=e.i(912035),s=e.i(543e3),i=e.i(337880),l=e.i(690438),o=e.i(806908),c=e.i(643958),d=e.i(174080),x=e.i(861745),u=e.i(322953),m=e.i(856685);let h=[...l.T",
+          "kind": "source_javascript"
+        },
+        {
+          "pattern": "ManagerSubHeader",
+          "count": 1,
+          "text": "oach:e,managerName:d,onClose:()=>N(!1)})]})}e.s([\"ManagerSubHeader\",()=>U],388398)},142671,e=>{\"use strict\";var t=e.i(843476),n=e.i(298246);function r({coachId:e}){return(0,t.jsx)(n.EntityCommentsSection,{entityKey:`manager:${e}`})}e.s([\"ManagerCommentsSection\",()=>r])}]);",
+          "kind": "source_javascript"
+        }
+      ],
+      "unknown_fields": [
+        "explicit_manager_product_relation"
+      ],
+      "access_limitations": [
+        "Read-only static JS inspection; no comment/review/write endpoints were called."
+      ]
+    },
+    {
+      "id": "article_original_media_inspection",
+      "url": "https://efhub.com/ko/articles/260910_3-it-s-here-the-first-manager-with-90-long-ball-counter-proficiency",
+      "requested_at": "2026-10-25T04:46:34.396477+00:00",
+      "observed_at": "2026-10-25T04:46:34.727423+00:00",
+      "status": 200,
+      "response_bytes": 166009,
+      "sha256": "7851eb084d07c89c902cb4fae2f98fc178462f1cee512f5457fa37710f9efb20",
+      "source": "efhub",
+      "source_ids": {
+        "article_slug": "260910_3-it-s-here-the-first-manager-with-90-long-ball-counter-proficiency"
+      },
+      "verified_fields": {
+        "article_body_media_urls": [
+          "https://cdn.efhub.com/external-assets/amadeusz-panel/260910_3/260910_3_1.webp",
+          "https://cdn.efhub.com/external-assets/amadeusz-panel/260910_3/260910_3_2.png"
+        ]
+      },
+      "excerpts": [
+        {
+          "kind": "flight",
+          "text": "[\"$\",\"img\",\"img-0\",{\"src\":\"https://cdn.efhub.com/external-assets/amadeusz-panel/260910_3/260910_3_1.webp\",\"alt\":\"640 (14)\",\"loading\":\"lazy\",\"className\":\"my-6 w-full rounded-xl\"}]"
+        },
+        {
+          "kind": "flight",
+          "text": "[\"$\",\"img\",\"img-0\",{\"src\":\"https://cdn.efhub.com/external-assets/amadeusz-panel/260910_3/260910_3_2.png\",\"alt\":\"SCR-20260910-bcjr\",\"loading\":\"lazy\",\"className\":\"my-6 w-full rounded-xl\"}]"
+        },
+        {
+          "kind": "visible_text",
+          "text": "오늘 글로벌 버전의 목요일 점검과 함께 세 번째 여름 이적 팩이 출시됩니다. 이번 팩에는 세 가지 특수 스킬(파괴자)을 보유한 아라우호 카드가 포함되어 있습니다. 또한 e풋볼 역사상 최초로 롱볼 카운터 숙련도 90을 달성한 감독도 만나볼 수 있습니다."
+        }
+      ],
+      "unknown_fields": [
+        "explicit_manager_product_relation"
+      ],
+      "access_limitations": []
+    },
+    {
+      "id": "magical_roster_boundary_inspection",
+      "url": "https://efhub.com/ko/packs/magical-dribblers-22-oct-26",
+      "requested_at": "2026-10-25T04:46:34.397247+00:00",
+      "observed_at": "2026-10-25T04:46:34.709867+00:00",
+      "status": 200,
+      "response_bytes": 164823,
+      "sha256": "9c58a4d89515f09ca8401794e2d39b2bde4faa0aa7e154689659b41674c1f598",
+      "source": "efhub",
+      "source_ids": {
+        "pack_slug": "magical-dribblers-22-oct-26"
+      },
+      "verified_fields": {
+        "flight_record_observed": "e (response-local reference, not a stable identifier)",
+        "wrapper_class": "py-6 md:px-6",
+        "wrapper_direct_children": [
+          "div.mb-6 with exact product h1 and date/count paragraph",
+          "div.grid gap-3 grid-cols-3 md:grid-cols-[repeat(auto-fill,minmax(168px,1fr))] with direct PlayerCard children"
+        ],
+        "header_name": "Magical Dribblers 22 Oct '26",
+        "header_player_count": 11,
+        "boundary_policy": "Accept only direct PlayerCard children within the sibling roster grid of the matching product heading/count, then compare to direct DOM a[href=/ko/players/ID] in that same grid. Never collect every recursively found player object across the page."
+      },
+      "excerpts": [
+        {
+          "pattern": "<h1",
+          "text": "value=\"\"/></div></div><div class=\"flex-1 overflow-y-auto\"><p class=\"px-4 py-8 text-center text-sm text-zinc-400\">No packs found.</p></div></div></div></div><div class=\"py-6 md:px-6\"><div class=\"mb-6\"><h1 class=\"text-xl font-bold text-zinc-900 dark:text-white\">Magical Dribblers 22 Oct &#x27;26</h1><p class=\"mt-1 text-sm text-zinc-500\">22 October 2026<span class=\"mx-2 text-zinc-300 dark:text-zinc-700\">·</span>11<!-- --> players</p></div><div class=\"grid gap-3 grid-cols-3 md:grid-cols-[repeat(auto-fill,minmax(168px,1fr))]\"><a class=\"group flex flex-col overflow-hidden border border-zinc-200 bg-white transition-all duration-200 hover:border-zinc-300 hover:shadow-md hover:shadow-black/10 dark:border-zinc-800 dark:bg-[#171922] dark:hover:border-zinc-600 dark:hover:shadow-black/40\" href=\"/ko/players/106800804418912\"><div class=\"relative aspect-[4/5.7] w-full overflow-hidden bg-gradient-to-br from-zinc-100 to-zinc-200 [container-type:inline-size] dark:from-zinc-800 dark:to-zinc-900\"><img src=\"https://efimg.com/efootballhub22/images/player_cards/106800804418912_l.png\" alt=\"Desire Doue\" class=\"h-full w-full object-cover object-top transition-tra",
+          "kind": "source_excerpt"
+        },
+        {
+          "pattern": "\"children\":\"Magical",
+          "text": "next/static/chunks/d96012bcfc98706a.js?dpl=dpl_31Riks92A4aWRR56JjnttQdARhMg\",\"/_next/static/chunks/73e3194f06db260e.js?dpl=dpl_31Riks92A4aWRR56JjnttQdARhMg\"],\"IconMark\"]\n11:null\n15:[[\"$\",\"title\",\"0\",{\"children\":\"Magical Dribblers 22 Oct '26 | eFHUB\"}],[\"$\",\"meta\",\"1\",{\"name\":\"description\",\"content\":\"Browse 11 players in the Magical Dribblers 22 Oct '26 pack.\"}],[\"$\",\"link\",\"2\",{\"rel\":\"manifest\",\"href\":\"/manifest.json\",\"crossOrigin\":\"$undefined\"}],[\"$\",\"meta\",\"3\",{\"name\":\"keywords\",\"content\":\"eFootball,player database,stats,ratings,PES\"}],[\"$\",\"meta\",\"4\",{\"name\":\"robots\",\"content\":\"index, follow\"}],[\"$\",\"meta\",\"5\",{\"name\":\"mobile-web-app-capable\",\"content\":\"yes\"}],[\"$\",\"meta\",\"6\",{\"name\":\"apple-mobile-web-app-title\",\"content\":\"eFHUB\"}],[\"$\",\"meta\",\"7\",{\"name\":\"apple-mobile-web-app-status-bar-style\",\"content\":\"black-translucent\"}],[\"$\",\"meta\",\"8\",{\"property\":\"og:title\",\"content\":\"Magical Dribblers 22 Oct '26 | eFHUB\"}],[\"$\",\"meta\",\"9\",{\"property\":\"og:description\",\"content\":\"Browse 11 players in the Magical Dribblers 22 Oct '26 pack.\"}],[\"$\",\"meta\",\"10\",{\"property\":\"og:image\",\"content\":\"https://efhub.com/efhub-logo.png\"}],[\"$\",\"meta\",\"11\",{\"name\":\"twitte | ],\"PlayerCard\"]\ne:[\"$\",\"div\",null,{\"className\":\"py-6 md:px-6\",\"children\":[[\"$\",\"div\",null,{\"className\":\"mb-6\",\"children\":[[\"$\",\"h1\",null,{\"className\":\"text-xl font-bold text-zinc-900 dark:text-white\",\"children\":\"Magical Dribblers 22 Oct '26\"}],[\"$\",\"p\",null,{\"className\":\"mt-1 text-sm text-zinc-500\",\"children\":[\"22 October 2026\",[\"$\",\"span\",null,{\"className\":\"mx-2 text-zinc-300 dark:text-zinc-700\",\"children\":\"·\"}],11,\" players\"]}]]}],[\"$\",\"div\",null,{\"className\":\"grid gap-3 grid-cols-3 md:grid-cols-[repeat(auto-fill,minmax(168px,1fr))]\",\"children\":[[\"$\",\"$L2e\",\"106800804418912\",{\"player\":{\"id\":\"106800804418912\",\"name\":\"Desire Doue\",\"nameJa\":\"デジレ ドゥエ\",\"nameZh\":\"德西雷·杜埃\",\"slug\":\"desire-doue\",\"nationality\":\"\",\"nationalityCode\":\"\",\"team\":\"Paris Saint-Germain\",\"position\":\"RWF\",\"overallRating\":86,\"playingStyle\":\"Prolific Winger\",\"playingStyleDefensive\":\"Press Back\",\"imageUrl\":\"https://efimg.com/efootballhub22/images/player_cards/106800804418912_l.png\",\"playerType\":8}}],[\"$\",\"$L2e\",\"106800804393500\",{\"player\":{\"id\":\"106800804393500\",\"name\":\"Jeremy Doku\",\"nameJa\":\"ジェレミ ドク\",\"nameZh\":\"杰雷米·多库\",\"slug\":\"jeremy-doku\",\"nationality\":\"\",\"nationalityCode\":\"\",\"team\":\"Manc",
+          "kind": "source_excerpt"
+        }
+      ],
+      "unknown_fields": [
+        "full_in_game_roster"
+      ],
+      "access_limitations": []
+    },
+    {
+      "id": "article_260910_3_image_1",
+      "url": "https://cdn.efhub.com/external-assets/amadeusz-panel/260910_3/260910_3_1.webp",
+      "requested_at": "2026-10-25T04:47:35.087846+00:00",
+      "observed_at": "2026-10-25T04:47:35.304877+00:00",
+      "status": 200,
+      "response_bytes": 29626,
+      "sha256": "4e091c32f82e6895341633185092c62f4959873acc820790b47a8f878d72447e",
+      "content_type": "image/webp",
+      "source": "efhub",
+      "source_ids": {
+        "article_id": "260910_3",
+        "image_slot": "1"
+      },
+      "verified_fields": {
+        "format": "WEBP",
+        "width": 532,
+        "height": 374,
+        "visual_observation": {
+          "named_player_list": "Summer Transfer vol.3",
+          "visible_player_names": [
+            "Ronald Araújo",
+            "John Stones",
+            "Nicolas Anelka"
+          ],
+          "included_manager_visible": false
+        }
+      },
+      "excerpts": [
+        {
+          "kind": "visual_transcription",
+          "text": "Summer Transfer vol.3; Ronald Araújo; John Stones; Nicolas Anelka"
+        }
+      ],
+      "unknown_fields": [
+        "explicit_manager_product_relation"
+      ],
+      "access_limitations": [
+        "Binary fetched only from an image URL explicitly present in the article body Flight. No image file persisted; temporary in-memory inspection preview."
+      ]
+    },
+    {
+      "id": "article_260910_3_image_2",
+      "url": "https://cdn.efhub.com/external-assets/amadeusz-panel/260910_3/260910_3_2.png",
+      "requested_at": "2026-10-25T04:47:35.088537+00:00",
+      "observed_at": "2026-10-25T04:47:35.498616+00:00",
+      "status": 200,
+      "response_bytes": 354331,
+      "sha256": "9ced35204fbe16042695f8ee7f7543d53d6d2aca61894a53e052b5a0b1ae3196",
+      "content_type": "image/png",
+      "source": "efhub",
+      "source_ids": {
+        "article_id": "260910_3",
+        "image_slot": "2",
+        "manager_evidence_key": "article:260910_3:image:2:manager:1"
+      },
+      "verified_fields": {
+        "format": "PNG",
+        "width": 1958,
+        "height": 1348,
+        "visual_observation": {
+          "manager_name": "José Mourinho",
+          "coaching_affinity": "Star Players",
+          "team_playstyle_proficiency": {
+            "possession_game": 62,
+            "long_ball_counter": 90,
+            "quick_counter": 82,
+            "long_ball": 75,
+            "out_wide": 67,
+            "overload": 59
+          },
+          "manager_boosters": [
+            "Finishing +1",
+            "Aggression +1"
+          ],
+          "linkups": [
+            "Shadow Link A",
+            "1-2 Cut-in C"
+          ]
+        }
+      },
+      "excerpts": [
+        {
+          "kind": "visual_transcription",
+          "text": "José Mourinho; Star Players; Long Ball Counter 90; Shadow Link A; 1-2 Cut-in C"
+        }
+      ],
+      "unknown_fields": [
+        "normal_coach_catalogue_id_for_this_exact_version",
+        "included_sale_product_id",
+        "included_sale_product_slug",
+        "price",
+        "currency",
+        "product_manager_inclusion_relationship"
+      ],
+      "access_limitations": [
+        "Binary fetched only from an image URL explicitly present in the article body Flight. No image file persisted; temporary in-memory inspection preview.",
+        "This is an independently identifiable article/image manager record. No name-only merge to an EFHub coach version or Summer Transfer list was made."
+      ]
+    },
+    {
+      "id": "article_260910_3_english_original",
+      "url": "https://efhub.com/articles/260910_3-it-s-here-the-first-manager-with-90-long-ball-counter-proficiency",
+      "requested_at": "2026-10-25T04:48:16.162355+00:00",
+      "observed_at": "2026-10-25T04:48:16.747831+00:00",
+      "status": 200,
+      "response_bytes": 157408,
+      "sha256": "cf284e1ae1dff6feef593a078663a570e439a8107298afad8fa12dc381dbb25f",
+      "source": "efhub",
+      "source_ids": {
+        "article_slug": "260910_3-it-s-here-the-first-manager-with-90-long-ball-counter-proficiency",
+        "locale": "en"
+      },
+      "verified_fields": {
+        "release_context": "Same-day arrival of Summer Transfer third wave and first90LBC manager",
+        "explicit_manager_inclusion_in_summer_transfer_pack": false
+      },
+      "excerpts": [
+        {
+          "kind": "visible_text",
+          "text": "Going live today with the global version's Thursday maintenance is the third wave of the Summer Transfer pack, featuring an Araújo card with three special skills (The Destroyer). Also arriving is the first manager in eFootball history with 90 Long Ball Counter proficiency."
+        }
+      ],
+      "unknown_fields": [
+        "explicit_manager_product_relation"
+      ],
+      "access_limitations": [
+        "Same-day arrival is not a direct statement that the manager is included in the Summer Transfer pack. This limitation follows the original English text, not a requirement for a hyperlink."
+      ]
+    },
+    {
+      "id": "article_probe_260907_3",
+      "url": "https://efhub.com/ko/articles/260907_3-the-real-madrid-pack-has-the-best-featured-midfielder",
+      "requested_at": "2026-10-25T04:48:46.502498+00:00",
+      "observed_at": "2026-10-25T04:48:48.469866+00:00",
+      "status": 200,
+      "response_bytes": 175460,
+      "sha256": "a6833ef28fdc002d42d6441729b06491c7b9c468b98ce5e6b64bba5c97ec85f3",
+      "source": "efhub",
+      "source_ids": {
+        "article_slug": "260907_3-the-real-madrid-pack-has-the-best-featured-midfielder"
+      },
+      "verified_fields": {
+        "article_body_media_urls": [
+          "https://cdn.efhub.com/external-assets/amadeusz-panel/260907_3/260907_3_1.png",
+          "https://cdn.efhub.com/external-assets/amadeusz-panel/260907_3/260907_3_2.png",
+          "https://cdn.efhub.com/external-assets/amadeusz-panel/260907_3/260907_3_3.png",
+          "https://cdn.efhub.com/external-assets/amadeusz-panel/260907_3/260907_3_4.png",
+          "https://cdn.efhub.com/external-assets/amadeusz-panel/260907_3/260907_3_5.png"
+        ]
+      },
+      "excerpts": [
+        {
+          "kind": "visible_text",
+          "text": " 레알 마드리드 팩에 최고의 미드필더가 포함되어 있습니다! — eFHUB | eFHUB eFHUB 선수들 관리자 커뮤니티 기사 eFHUB League 한국어 eFHUB 선수들 새로운 선수 팩 Compare 티어 리스트 관리자 커뮤니티 Feed 기사 eFHUB League Get Pro — Go Ad-Free ← 모든 기사 선수 리뷰 2026-09-07 레알 마드리드 팩에 최고의 미드필더가 포함되어 있습니다! Amadeusz @ amadeusz 영어에서 자동 번역되었습니다 이 팩에 포함된 선수 네 명은 피처드 랭킹에서 SS 티어 이상에 속하므로 가성비가 상당히 좋습니다. 벨링엄은 피처드 CMF 중 최고입니다! 하나씩 자세히 살펴보겠습니다. 1. 디오망드 그의 선수 모델은 호나우지뉴와 비슷합니다. 180cm가 넘는 드리블러인 만큼, 볼 컨트롤, 드리블, 타이트한 볼 소유 능력을 95까지 올려야 좋은 볼 컨트롤을 할 수 있습니다. 그의 속도와 드리블은 좋지만, 패스와 마무리는 아쉽습니다. SS 티어 윙어입니다. 2. 밀리탕 선수 모델은 쓸만하며, 속도와 가속도를 포함한 네 가지 수비 능력치는 특집 카드 기준으로 모두 우수합니다. 중앙 수비수 또는 측면 중앙 수비수로 활용 가능합니다. SS 등급의 수비수입니다. 3. 쿠르투아 | 능력치 | 신규 특집 쿠르투아 | 이번 주 최고의 쿠르투아 | ---|---:|---:| | 골키퍼 인식 | 93 | 93 | | 골키퍼 캐칭 | 90 | 91 | | 골키퍼 패링 | 92 | 95 | | 골키퍼 반사신경 | 95 | 94 | | 골키퍼 도달 거리 | 94 | 94 | 비교 설정: 감독 숙련도 89, 가속도 및 타이트한 점유율 부스트 적용. 이전에 별도의 기사에서 다룬 적이 있습니다. 그는 세 가지 핵심 골키퍼 능력치에서 POTW 카드보다 뛰어납니다. 최고의 피처드 수비형 골키퍼이며, SSS 등급의 골키퍼 두 명 중 한 명입니다(다른 한 명은 코벨). 4. 벨링엄 이 카드가 나오기 전까지 최고의 피처드 중앙 미드필더는 잉글랜드 팩에서 나온 만능형 벨링엄이었습니다. 새로운 레알 마드리드 피처드 벨링엄은 홀 플레이어 입니다. 이전 카드와 비교했을 때, 가속도 3 증가, 속도 2 감소, 수비 능력치 4개 모두 1 증가, 마무리 4 증가, 피지컬 컨택 4 증가 했습니다. 저는 항상 벨링엄에게 '홀 플레이어' 유형이 가장 잘 어울린다고 생각했습니다. 186cm의 키에 다리 길이 14 라는 높은 신체적 강점을 활용하여 전방으로 적극적으로 전진해야 하기 때문입니다. 이번 카드 업그레이드는 이러한 벨링엄의 역할에 완벽하게 부합합니다. 무엇보다 중요한 것은, 이번 카드를 통해 이전 벨링엄의 약점이었던 약한 가속력 문제가 마침내 해결되었다는 점입니다. 빌드 전략: 드리블에 크게 투자하기보다는 속도와 가속력을 우선시하세요. 새로운 e풋볼 2027 엔진은 볼 운반에 의존하는 미드필더의 능력을 약화시켰습니다. 벨링엄의 홀 플레이어/올액션 수비수 유형은 그가 경기장 전체를 누비며 공격과 수비에 모두 적극적으로 참여한다는 것을 의미합니다. 그가 가만히 서서 볼만 소유하며 제자리에 머무르는 상황은 거의 없을 것입니다. 더 넓게 보자면, 작고 빠르며 민첩한 미드필더들이 2027 엔진에서 점차 입지를 잃어가고 있습니다. 비티냐나 페드리 같은 선수들은 빛을 발할 공간이 줄어들고 있죠. 오늘 출시된 유료 카드인 마켈렐레조차도 이 엔진에서는 특유의 작은 체구에도 불구하고 방향 전환 능력이 전술적으로 빛을 발하지 못하고 있습니다. 앞으로는 벨링엄이나 라이스 처럼 체격이 큰 미드필더들이 대세가 될 것으로 보입니다. 선수 리뷰 기사 더 보기 1 선수 리뷰 시도르프: 최종 평가 2 선수 리뷰 야야 투레: 최종 평가 3 선수 리뷰 뉴 홀랜드: SSS 계층 센터 포워드! 4 선수 리뷰 뉴 시도르프: 게임플레이 리뷰 5 선수 리뷰 야야 투레: 게임플레이 리뷰 6 선수 리뷰 라피냐: 엘리트급 기술로 음바페를 상대하다 (신규 팩 분석) 7 선수 리뷰 쿠르투아: 최종 평가 8 선수 리뷰 새로운 시도르프/야야 투레: 분석 및 추천 빌드 Advertise on this site. © 2026 eFHUB. All rights reserved. Vacancies · Privacy Policy "
+        }
+      ],
+      "unknown_fields": [
+        "explicit_manager_product_relation"
+      ],
+      "access_limitations": []
+    },
+    {
+      "id": "article_probe_261006_1",
+      "url": "https://efhub.com/ko/articles/261006_1-the-link-up-with-the-coolest-name-shadow-link",
+      "requested_at": "2026-10-25T04:48:46.503060+00:00",
+      "observed_at": "2026-10-25T04:48:46.728402+00:00",
+      "status": 200,
+      "response_bytes": 167792,
+      "sha256": "9a80189012aad76fd1a174128efcdd8e1d09e22f624e0e8431d6f8e8fb6c7dd1",
+      "source": "efhub",
+      "source_ids": {
+        "article_slug": "261006_1-the-link-up-with-the-coolest-name-shadow-link"
+      },
+      "verified_fields": {
+        "article_body_media_urls": [
+          "https://cdn.efhub.com/external-assets/amadeusz-panel/261006_1/261006_1_1.mp4"
+        ]
+      },
+      "excerpts": [
+        {
+          "kind": "visible_text",
+          "text": " 가장 멋진 이름을 가진 링크: 섀도우 링크! — eFHUB | eFHUB eFHUB 선수들 관리자 커뮤니티 기사 eFHUB League 한국어 eFHUB 선수들 새로운 선수 팩 Compare 티어 리스트 관리자 커뮤니티 Feed 기사 eFHUB League Get Pro — Go Ad-Free ← 모든 기사 분석 2026-10-06 가장 멋진 이름을 가진 링크: 섀도우 링크! Amadeusz @ amadeusz 영어에서 자동 번역되었습니다 섀도우 링크 A에서 센터피스는 딥-라이잉 포워드이고 키맨은 클래식 10번 포지션 선수입니다. 이 조합은 두 선수 간의 원투 패스를 장려하여 패스와 움직임을 통해 상대 수비를 허물도록 돕습니다. 상대 진영에서 센터피스에게 패스가 연결되면 키맨은 센터피스 뒤로 이동하여 원투 패스나 다른 연계 플레이를 시도합니다. 이러한 패스 교환 동안 두 선수 모두 패스와 볼 컨트롤 능력이 향상됩니다. 이 연계 플레이는 롱볼 카운터 숙련도 90을 달성한 최초의 감독인 무리뉴 와 함께 사용되면서 주목을 받았습니다. 실제 경기에서 어떻게 활용되는지는 다음과 같습니다. 클래식 10번 포지션 선수와 딥-라이잉 포워드는 상대적으로 인기가 낮기 때문에 이 연계 플레이는 많이 사용되지 않았습니다. 최근 클래식 10번 카카 카드가 출시되면서 섀도우 링크가 활용될 기회가 더 많아졌습니다. 흥미로운 연계 플레이이긴 하지만, 카펠로 감독의 '오버 더 탑 패스 A'(일명 \"프리스비를 쫓는 강아지\")만큼 중요하진 않습니다. 😁 이 오버 더 탑 패스를 위한 움직임은 연계 플레이 없이는 나타나지 않는 특수 공격 AI에 의존합니다. 하지만 섀도우 링크의 원투 패스는 연계 플레이 유무와 상관없이 가능합니다. 섀도우 링크의 주된 가치는 패스 성공률을 높이는 데 있습니다. 분석 기사 더 보기 1 분석 모든 포지션에서 가장 쉽게 활용할 수 있는 선수들 2 분석 반 데 벤: 최종 평가 3 분석 전체 순위 포함 | CF 톱 10 순위 (10월 18일) 4 분석 스킬 슬롯 추가: 이 선수들에게는 스킬 슬롯이 절실히 필요합니다! 5 분석 작고 빠르며 민첩한 7가지 전략 요약 6 분석 T0 탑 3 선발 라인업을 유지하면서 얼마나 오랫동안 교체 없이 버틸 수 있을까요? 7 분석 AMF 톱 10 순위 (10월 11일) | 전체 순위 포함 8 분석 SS/CMF 상위 10위 순위 (10월 11일) Advertise on this site. © 2026 eFHUB. All rights reserved. Vacancies · Privacy Policy "
+        }
+      ],
+      "unknown_fields": [
+        "explicit_manager_product_relation"
+      ],
+      "access_limitations": []
+    },
+    {
+      "id": "article_260907_3_image_1",
+      "url": "https://cdn.efhub.com/external-assets/amadeusz-panel/260907_3/260907_3_1.png",
+      "requested_at": "2026-10-25T04:49:00.112180+00:00",
+      "observed_at": "2026-10-25T04:49:00.230189+00:00",
+      "status": 200,
+      "response_bytes": 1448528,
+      "sha256": "59bb2662ef5246864eb7d7d4cf21d8d6f3f96a4cfd46bf7e6c313e0ac004d0af",
+      "content_type": "image/png",
+      "source": "efhub",
+      "source_ids": {
+        "article_id": "260907_3",
+        "image_slot": "1"
+      },
+      "verified_fields": {
+        "format": "PNG",
+        "width": 1080,
+        "height": 825,
+        "visual_observation": {
+          "content": "Montage of eight Real Madrid featured player cards and editorial tier labels",
+          "visible_manager": false,
+          "visible_product_price": false
+        }
+      },
+      "excerpts": [
+        {
+          "kind": "visual_transcription",
+          "text": "Bernardo Silva; Jude Bellingham; Thibaut Courtois; Éder Militão; Yan Diomande; Marc Cucurella; T. Alexander-Arnold; Carlos Espí"
+        }
+      ],
+      "unknown_fields": [
+        "explicit_manager_product_relation"
+      ],
+      "access_limitations": [
+        "Article-body image URL, in-memory inspection; no image file persisted."
+      ]
+    },
+    {
+      "id": "article_260907_3_image_1_preview_retry",
+      "url": "https://cdn.efhub.com/external-assets/amadeusz-panel/260907_3/260907_3_1.png",
+      "requested_at": "2026-10-25T04:49:30.064506+00:00",
+      "observed_at": "2026-10-25T04:49:30.146306+00:00",
+      "status": 200,
+      "response_bytes": 1448528,
+      "sha256": "59bb2662ef5246864eb7d7d4cf21d8d6f3f96a4cfd46bf7e6c313e0ac004d0af",
+      "source": "efhub",
+      "source_ids": {
+        "article_id": "260907_3",
+        "image_slot": "1"
+      },
+      "verified_fields": {
+        "format": "PNG",
+        "width": 1080,
+        "height": 825,
+        "visual_observation": {
+          "content": "Montage of eight Real Madrid featured player cards and editorial tier labels",
+          "visible_manager": false,
+          "visible_product_price": false
+        }
+      },
+      "excerpts": [
+        {
+          "kind": "visual_transcription",
+          "text": "Bernardo Silva; Jude Bellingham; Thibaut Courtois; Éder Militão; Yan Diomande; Marc Cucurella; T. Alexander-Arnold; Carlos Espí"
+        }
+      ],
+      "unknown_fields": [
+        "explicit_manager_product_relation"
+      ],
+      "access_limitations": [
+        "The prior in-memory preview exceeded tool output budget; one bounded re-read generated a smaller preview. No auth or route change."
+      ]
+    },
+    {
+      "id": "delegated_packs_manager_search_denied",
+      "url": "https://efhub.com/api/public/packs?search=manager&page=1&limit=30",
+      "status": 403,
+      "observed_at": null,
+      "recorded_at": "2026-10-25T04:42:03Z",
+      "timestamp_precision": "Exact request/response timestamp not captured; recorded_at is a later clock reading after uncaught HTTPError.",
+      "source": "efhub",
+      "source_ids": {
+        "search_term": "manager"
+      },
+      "verified_fields": {},
+      "excerpts": [
+        {
+          "kind": "request_failure",
+          "text": "HTTP Error 403: Forbidden"
+        }
+      ],
+      "unknown_fields": [
+        "matching_pack_results",
+        "pack_to_manager_relationship"
+      ],
+      "access_limitations": [
+        "Normal request using actual source JS search parameter denied. No alternate route, credentials, cookie/token impersonation or retry attempted."
+      ],
+      "collector": "delegated_pack_probe"
+    },
+    {
+      "id": "delegated_packs_index_html",
+      "url": "https://efhub.com/ko/packs",
+      "requested_at": "2026-10-25T04:42:03.886379Z",
+      "observed_at": "2026-10-25T04:42:04.233771Z",
+      "status": 200,
+      "source": "efhub",
+      "source_ids": {
+        "locale": "ko"
+      },
+      "sha256_utf8_decoded_html": "175b2f8f56e44f6263752a6a9cbf3b26779e47de60d64e6c7449181b3074a16d",
+      "verified_fields": {
+        "initial_visible_state": "No packs found.",
+        "pack_detail_links": [],
+        "manager_detail_links": [],
+        "payload_key_counts": {
+          "coach": 0,
+          "coachId": 0,
+          "managerId": 0
+        }
+      },
+      "excerpts": [
+        {
+          "kind": "visible_text",
+          "text": "Player Packs No packs found. No packs found. Select a pack to see its players."
+        }
+      ],
+      "unknown_fields": [
+        "actual_matching_pack_list",
+        "pack_to_manager_relationship"
+      ],
+      "access_limitations": [
+        "Initial client shell is not evidence of an empty database; source-linked sidebar JS performs a separate normal API fetch."
+      ],
+      "collector": "delegated_pack_probe"
+    },
+    {
+      "id": "delegated_manager_pack_html",
+      "url": "https://efhub.com/ko/packs/manager-pack-15-oct-26",
+      "requested_at": "2026-10-25T04:42:03.888112Z",
+      "observed_at": "2026-10-25T04:42:04.203348Z",
+      "status": 200,
+      "source": "efhub",
+      "source_ids": {
+        "pack_slug": "manager-pack-15-oct-26"
+      },
+      "sha256_utf8_decoded_html": "6b3d36efb3b53e27d0a575e9f3917d9e0136aa6d4f24af8e4351e2b033497e04",
+      "verified_fields": {
+        "displayed_player_count": 2,
+        "displayed_names": [
+          "Alexis Mac Allister",
+          "Endo Wataru"
+        ],
+        "displayed_positions": [
+          "CMF",
+          "CMF"
+        ],
+        "displayed_overall_ratings": [
+          82,
+          80
+        ],
+        "manager_detail_links": [],
+        "payload_key_counts": {
+          "coach": 0,
+          "coachId": 0,
+          "managerId": 0
+        }
+      },
+      "excerpts": [
+        {
+          "kind": "visible_text",
+          "text": "Manager Pack 15 Oct '26 15 October 2026 · 2 players 82 CMF Alexis Mac Allister 80 CMF Endo Wataru"
+        },
+        {
+          "kind": "metadata",
+          "text": "Browse 2 players in the Manager Pack 15 Oct '26 pack."
+        }
+      ],
+      "unknown_fields": [
+        "included_manager_ids",
+        "full_sale_offering_composition"
+      ],
+      "access_limitations": [
+        "The two visible entries are player cards. The title Manager Pack is not evidence they are managers or proof of any included manager ID."
+      ],
+      "collector": "delegated_pack_probe"
+    },
+    {
+      "id": "delegated_pack_detail_playercard_js",
+      "url": "https://efhub.com/_next/static/chunks/24751943b275eb79.js?dpl=dpl_31Riks92A4aWRR56JjnttQdARhMg",
+      "requested_at": "2026-10-25T04:42:13.391036Z",
+      "observed_at": "2026-10-25T04:42:13.598234Z",
+      "status": 200,
+      "source": "efhub",
+      "source_ids": {
+        "asset_path": "/_next/static/chunks/24751943b275eb79.js"
+      },
+      "response_bytes": 2334,
+      "sha256": "3a892448f6385417b9d826a133b09bcdc306788cd38d2863328cd968447637eb",
+      "verified_fields": {
+        "export": "PlayerCard",
+        "detail_href_template": "/players/${e.id}",
+        "occurrence_counts": {
+          "fetch(": 0,
+          "/api/": 0,
+          "manager": 0,
+          "coach": 0
+        }
+      },
+      "excerpts": [
+        {
+          "kind": "javascript",
+          "text": "href:`/players/${e.id}`,prefetch:!1"
+        },
+        {
+          "kind": "javascript",
+          "text": "e.s([\"PlayerCard\",()=>n])"
+        }
+      ],
+      "unknown_fields": [
+        "pack_to_manager_relationship"
+      ],
+      "access_limitations": [
+        "Actual detail-linked chunk renders player cards and exposes no manager relation in the inspected source."
+      ],
+      "collector": "delegated_pack_probe"
+    },
+    {
+      "id": "delegated_pack_sidebar_js",
+      "url": "https://efhub.com/_next/static/chunks/85078b8cbc229ae6.js?dpl=dpl_31Riks92A4aWRR56JjnttQdARhMg",
+      "requested_at": "2026-10-25T04:42:13.391668Z",
+      "observed_at": "2026-10-25T04:42:13.558029Z",
+      "status": 200,
+      "source": "efhub",
+      "source_ids": {
+        "asset_path": "/_next/static/chunks/85078b8cbc229ae6.js"
+      },
+      "response_bytes": 4627,
+      "sha256": "74923945879ce8ce23c6d58fbd487f33522486e5557134c3891b7656716bbb13",
+      "verified_fields": {
+        "normal_request_path": "/api/public/packs",
+        "query_keys": [
+          "search",
+          "page",
+          "limit"
+        ],
+        "requested_limit": 30,
+        "response_keys_used": [
+          "packs",
+          "hasMore"
+        ],
+        "visible_entry_count_key": "playerCount",
+        "occurrence_counts": {
+          "manager": 0,
+          "coach": 0
+        }
+      },
+      "excerpts": [
+        {
+          "kind": "javascript",
+          "text": "fetch(`/api/public/packs?${n}`);if(!s.ok)return;let c=await s.json();l(e=>r?c.packs:[...e,...c.packs]),p(c.hasMore),x(t)"
+        },
+        {
+          "kind": "javascript",
+          "text": "search:e,page:String(t),limit:String(30)"
+        }
+      ],
+      "unknown_fields": [
+        "manager_fields_in_denied_search_response",
+        "pack_to_manager_relationship"
+      ],
+      "access_limitations": [
+        "Normal sidebar confirms search/page/limit; inspected UI references no coach or manager relation."
+      ],
+      "collector": "delegated_pack_probe"
+    }
+  ],
+  "distinct_url_count": 24,
+  "http_status_counts": {
+    "200": 25,
+    "403": 1
+  },
+  "method": {
+    "transport": "Public HTTPS GET through inherited proxy with TLS verification retained",
+    "user_agent": "Mozilla/5.0",
+    "scope": "Normal HTML, actual source-linked JS, JS-exposed coaches list endpoint, source-linked articles and their exact body image URLs. No unknown endpoint guesses or access-control bypass.",
+    "file_policy": "Only this new JSON and companion manager research document. Initial observations/follow-up observations/seed/code/management files unchanged by this investigation.",
+    "image_method": "Referenced article images fetched into memory, decoded for metadata and inspected through temporary in-memory previews. No image files rehosted or persisted.",
+    "timestamp_note": "25 observations have exact captured UTC response times. One delegated denied request lacks an exact response timestamp; observed_at is null and its subsequent clock recording is explicitly labelled."
+  },
+  "findings": {
+    "normal_manager_catalogue": {
+      "endpoint": "https://efhub.com/api/public/coaches",
+      "array_key": "coaches",
+      "reported_total": 2012,
+      "page": 1,
+      "limit": 24,
+      "total_pages": 84,
+      "verified_product_fields": []
+    },
+    "independent_manager_evidence": {
+      "source_key": "article:260910_3:image:2:manager:1",
+      "name": "José Mourinho",
+      "long_ball_counter": 90,
+      "linked_catalogue_coach_id": null,
+      "linked_sale_product": null,
+      "observation_ids": [
+        "article_original_media_inspection",
+        "article_260910_3_image_2",
+        "article_260910_3_english_original"
+      ]
+    },
+    "explicit_product_manager_relationship": {
+      "status": "unresolved",
+      "why": "Neither catalogue/pack structures nor inspected articles directly state a named manager is included in an identified sale product. The English article describes a separate same-day manager arrival alongside Summer Transfer vol.3.",
+      "same_day_article_not_merged": true
+    },
+    "product_roster_boundary": {
+      "observation_id": "magical_roster_boundary_inspection",
+      "purpose": "Shared with collector implementer to avoid recommendation/player identity contamination."
+    }
+  },
+  "next_actions": [
+    "Use the normal coaches root contract for a reproducible read-only catalogue collector while preserving decimal IDs as strings.",
+    "Search additional normal product-specific official/EFHub sources for an explicit inclusion statement or an actual product-content screenshot; link the relevant source-specific manager version without name-only merging.",
+    "An article/image-specific manager can be stored as a separate evidence identity, but its offering relation must stay unknown until directly established.",
+    "Do not mark the current product-manager requirement complete or attach José Mourinho to Summer Transfer vol.3 based only on co-release context."
+  ],
+  "usage": "inactive_reference_only",
+  "active_product_import_allowed": false
+}

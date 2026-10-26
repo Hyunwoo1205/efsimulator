@@ -1,0 +1,198 @@
+{
+  "schema_version": 1,
+  "run_id": "598a90c5-4392-4cb8-bda4-f677a6072f30",
+  "status": "blocked",
+  "complete": false,
+  "observed_range": {
+    "started_at": "2026-10-25T05:02:17.364Z",
+    "ended_at": "2026-10-25T05:02:17.771Z"
+  },
+  "source": {
+    "url": "https://efhub.com/api/public/players",
+    "reported_total": null,
+    "reported_total_pages": null,
+    "preferred_limit": 100,
+    "negotiated_limit": null,
+    "total_stable": null
+  },
+  "pages": {
+    "visited_count": 0,
+    "expected_count": 0,
+    "visited": [],
+    "missing": [],
+    "last_page": null,
+    "last_page_count": null,
+    "pagination_complete": false
+  },
+  "cards": {
+    "raw_count": 0,
+    "unique_ids_count": 0,
+    "ids_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "duplicates": [],
+    "missing_count": null,
+    "missing_identity_list": null,
+    "field_coverage": {
+      "name": {
+        "present": 0,
+        "missing": 0,
+        "total": 0,
+        "scope": "all_collected_card_rows"
+      },
+      "image_url": {
+        "present": 0,
+        "missing": 0,
+        "total": 0,
+        "scope": "all_collected_card_rows"
+      },
+      "overall_rating": {
+        "present": 0,
+        "missing": 0,
+        "total": 0,
+        "scope": "all_collected_card_rows"
+      },
+      "primary_type": {
+        "present": 0,
+        "missing": 0,
+        "total": 0,
+        "scope": "all_collected_card_rows"
+      },
+      "additional_types": {
+        "status": "not_verified_for_all_cards",
+        "observed_primary_format": "single playerType value",
+        "scope": "list_endpoint_only",
+        "note": "Single primary classification is not proof that cards have no simultaneous additional classification."
+      },
+      "background_asset": {
+        "status": "not_verified_for_all_cards",
+        "scope": "list_endpoint_only",
+        "observed_matching_keys": [],
+        "note": "imageUrl does not establish a separate background/player asset or visual composition."
+      },
+      "version_links": {
+        "status": "not_verified_for_all_cards",
+        "scope": "list_endpoint_only",
+        "observed_matching_keys": [],
+        "note": "No name/ID arithmetic is used to infer other card versions or real people."
+      }
+    },
+    "observed_field_keys": [],
+    "note": "Cards are released card versions, not a count of distinct real players. Listing fields are not the entire source/game detail schema."
+  },
+  "requests": {
+    "count": 1,
+    "budget": 2300,
+    "interval_ms": 350,
+    "concurrency": 1,
+    "log": [
+      {
+        "url": "https://efhub.com/api/public/players?page=1&limit=100",
+        "kind": "page",
+        "page": 1,
+        "attempt": 0,
+        "requested_at": "2026-10-25T05:02:17.364Z",
+        "observed_at": "2026-10-25T05:02:17.771Z",
+        "status": 403
+      }
+    ],
+    "supplemental_diagnostic_count": 2
+  },
+  "image_validation": {
+    "requested_samples": 30,
+    "checked_samples": 0,
+    "selected_samples": 0,
+    "complete": false,
+    "method": "Serial HTTPS GET of the actual imageUrl; MIME, magic bytes and response byte length checked. URLs checked for every collected row; real image fetches are sampled.",
+    "results": [],
+    "note": "No image sample was fetched because the initial page request was denied."
+  },
+  "errors": [
+    {
+      "code": "http_403",
+      "url": "https://efhub.com/api/public/players?page=1&limit=100",
+      "kind": "page",
+      "page": 1,
+      "attempt": 0,
+      "requested_at": "2026-10-25T05:02:17.364Z",
+      "observed_at": "2026-10-25T05:02:17.771Z",
+      "status": 403,
+      "recovered": false,
+      "retryable": false
+    },
+    {
+      "code": "http_403",
+      "message": "HTTP 403: 정상 경로 요청을 중단합니다.",
+      "observed_at": "2026-10-25T05:02:17.772Z",
+      "retryable": false,
+      "details": {
+        "url": "https://efhub.com/api/public/players?page=1&limit=100"
+      }
+    }
+  ],
+  "limitations": [
+    "Counts verify the observed list pagination, not an atomic upstream database snapshot or historical completeness beyond the source catalogue.",
+    "A source total deficit cannot identify the missing card IDs; IDs are never generated from numeric sequences.",
+    "Additional categories, OVR training/booster conditions, separate background assets and all version links require further field/detail research.",
+    "No production seed, application database or public deployment is changed."
+  ],
+  "artifacts": {
+    "state": "/workspace/efsimulator/artifacts/card-audit/state.json",
+    "raw_pages": "/workspace/efsimulator/artifacts/card-audit/pages",
+    "incomplete_summary": "/workspace/efsimulator/artifacts/card-audit/latest-summary.json"
+  },
+  "source_ui_recheck": {
+    "request_count": 2,
+    "scope": "Read-only normal page and its actually linked JS; no extra API attempts, auth-token call, cookie acquisition or credential/header changes.",
+    "observations": [
+      {
+        "id": "current_players_page_html",
+        "url": "https://efhub.com/ko/players",
+        "requested_at": "2026-10-25T05:06:22.331482+00:00",
+        "observed_at": "2026-10-25T05:06:22.646773+00:00",
+        "status": 200,
+        "response_bytes": 287734,
+        "sha256": "938dc1df9b4b7ad54236820c400a38bd1c87e27a2522aaba10d9cb3e232aaca9",
+        "excerpts": [
+          {
+            "pattern": "fetch('/api/auth/token'",
+            "text": "ipt><script>(function(){try{if(!document.cookie.split(';').some(function(c){return c.trim().startsWith('__hub_req=')})){fetch('/api/auth/token',{credentials:'include'}).catch(function(){})}}catch(e){}})()</script><script src=\"/_next/static/chunks/a6dad97d9634a72d.js?dpl=dpl_31Riks92A4aWRR56Jj"
+          },
+          {
+            "pattern": "__hub_req",
+            "text": "ch(e){}})()</script><script>(function(){try{if(!document.cookie.split(';').some(function(c){return c.trim().startsWith('__hub_req=')})){fetch('/api/auth/token',{credentials:'include'}).catch(function(){})}}catch(e){}})()</script><script src=\"/_next/static/chunks/a6dad97d9634a72d"
+          }
+        ],
+        "discovered_players_script": "/_next/static/chunks/8964e7af23583e8b.js?dpl=dpl_31Riks92A4aWRR56JjnttQdARhMg"
+      },
+      {
+        "id": "current_players_page_actual_js",
+        "url": "https://efhub.com/_next/static/chunks/8964e7af23583e8b.js?dpl=dpl_31Riks92A4aWRR56JjnttQdARhMg",
+        "requested_at": "2026-10-25T05:06:22.647838+00:00",
+        "observed_at": "2026-10-25T05:06:22.814554+00:00",
+        "status": 200,
+        "response_bytes": 61902,
+        "sha256": "241046ee60771205e8a331364dccb65b9e5cf39e7471e08bd75c2123152744bc",
+        "excerpts": [
+          {
+            "pattern": "fetch(`/api/public/players",
+            "text": "=(0,i.useState)(z),[d,u]=(0,i.useState)(!0);(0,i.useEffect)(()=>{let e=s.toString();u(!0),fetch(`/api/public/players${e?`?${e}`:\"\"}`).then(e=>e.json()).then(e=>{c(e),u(!1)}).catch(()=>u(!1))},[s]);let h={};return s.forEach((e,t)=>{h[t]=e}),(0,t.jsxs)(t.Fragment,{children:[(0,t.jsx)(\"div\",{className:\"sticky top-0 z-40 border-b border-zinc-200 bg-white/95 backdrop-blur-md dark:border-zinc-800 dark:bg-[#13151d]/95\",children:(0,t.jsx)(\"div\",{className:\"mx-auto max-w-7xl px-4 sm:px-6 lg:px-8\",children:(0,t.jsx)(y,{t"
+          },
+          {
+            "pattern": "let z={players:[]",
+            "text": "00 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-100\"),...l,children:i})}let z={players:[],total:0,page:1,limit:24,totalPages:0};function P({clubs:e,leagues:r,countries:a}){let s=(0,n.useSearchParams)(),[o,c]=(0,i.useState)(z),[d,u]=(0,i.useState)(!0);(0,i.useEffect)(()=>{let e=s.toString();u(!0),fetch(`/api/public/players${e?`?${e}`:\"\"}`).then(e=>e.json()).then(e=>{c(e),u(!1)}).catch(()=>u(!1))},[s]);let h={};return s.forEach((e,t)=>{h[t]=e}),(0,t.jsxs)(t.Fragment,{children:[(0,t.jsx)"
+          },
+          {
+            "pattern": "function j({page:",
+            "text": "arams:c,updateParams:f,clubs:r,leagues:l,countries:a})]})}var v=e.i(456904),S=e.i(806908);function j({page:e,totalPages:i,searchParams:n}){if(i<=1)return null;function r(e){let t=new URLSearchParams;for(let[e,i]of Object.entries(n))\"page\"!==e&&\"string\"==typeof i&&t.set(e,i);e>1&&t.set(\"page\",String(e));let i=t.toString();return`/players${i?`?${i}`:\"\"}`}let l=function(e,t){if(t<=7)return Array.from({length:t},(e,t)=>t+1);let i=[],n=Math.max(2,e-2),r=Math.min(t-1,e+2);i.push(1),n>2&&i.push(\"...\");for(let"
+          },
+          {
+            "pattern": "e>1&&t.set(\"page\"",
+            "text": "LSearchParams;for(let[e,i]of Object.entries(n))\"page\"!==e&&\"string\"==typeof i&&t.set(e,i);e>1&&t.set(\"page\",String(e));let i=t.toString();return`/players${i?`?${i}`:\"\"}`}let l=function(e,t){if(t<=7)return Array.from({length:t},(e,t)=>t+1);let i=[],n=Math.max(2,e-2),r=Math.min(t-1,e+2);i.push(1),n>2&&i.push(\"...\");for(let e=n;e<=r;e++)i.push(e);return r<t-1&&i.push(\"...\"),i.push(t),i}(e,i);return(0,t.jsxs)(\"nav\",{className:\"flex items-center justify-center gap-1\",\"aria-label\":\"Pagination\",children:[(0,t"
+          }
+        ],
+        "explicit_limit_query_in_fetch": false
+      }
+    ],
+    "difference": "Normal players client copies current URLSearchParams; initial /ko/players has no search parameters. Its initial local state uses limit24. The audit added page=1&limit=100;403 does not establish support/non-support of limit100 or block all default page requests.",
+    "auth_observation": "Page bootstrap refers to __hub_req cookie and a normal /api/auth/token fetch when absent. Only source code was read. The endpoint was not called, and no token/cookie was acquired, copied or replayed."
+  }
+}
