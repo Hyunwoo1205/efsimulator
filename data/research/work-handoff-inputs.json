@@ -2,7 +2,7 @@
   "schema_version": 1,
   "task": "T021",
   "observed_at": "2026-10-26T04:12:32Z",
-  "scope": "T020의 이관 입력·Git 관측 이력과 T021의 상위 환경 Library v1 검증 결과. 원래 페이지 완전성·현재성·상품 관계·이미지 로드를 증명하지 않음",
+  "scope": "T020의 Git·이관 이력과 T021의 players/packs 파일 내부 검사 결과. 원래 페이지 완전성·현재성·팩 구성 관계·이미지 로드를 증명하지 않음",
   "git": {
     "repository": "https://github.com/Hyunwoo1205/efsimulator",
     "local_branch": "work",
@@ -100,15 +100,89 @@
       "confirmed_current_file_duplicate_ids": 0,
       "treat_as_missing_data_blocker": false
     },
-    "original_ingest_precision_verified": false
+    "original_ingest_precision_verified": false,
+    "sha_reconfirmed_with_packs_validation": true
   },
   "packs_raw": {
-    "complete_raw_location": null,
-    "validation": "미확인",
-    "pack_detail_card_mapping": "미확인",
-    "existing_research": "연구 래퍼의 1/2쪽 각30행은 전수 raw가 아님",
-    "target_work_status": "최신 사용자 보고: 대상 Work 채팅에서 수집 준비 중. 수집 완료 아님",
-    "continuation": "기존 대상 Work 채팅의 출력·체크포인트·계획을 먼저 확인하고 이어받음. 중복 수집·새 채팅 생성 금지"
+    "evidence_level": "대상 Work의 제작 완료 보고와 상위 환경의 실제 Library materialize·오프라인 검사 결과를 전달받음",
+    "library_path": "/packs_raw.json",
+    "library_file_id": "libfile_467e20cb94a8819195dba5375e7e013a",
+    "file_id": "file_00000000be188206896993ce4d932193",
+    "version_id": null,
+    "current_version_number": 0,
+    "version_note": "검색 버전 메타는 null이었으며 materialize 결과 current_version_number는 0. v1으로 표기하지 않음",
+    "reported_created_at": "2026-10-26T04:40:21.527630Z",
+    "creation_time_is_collection_time": false,
+    "validated_size_bytes": 197874,
+    "sha256": "bfe4590cfa5acb18106a98206b9acad71616f2622cf0d44ae3257040a56b97d6",
+    "workspace_path": null,
+    "validation": "파일 내부 검사 완료. 빈 식별 필드와 placeholder 의심 항목은 보고·격리 검토 대상이며 원본 보존",
+    "validation_origin": "상위 환경에서 원본 변경 없이 오프라인 검사. 이 child는 원본을 재다운로드하지 않음",
+    "json_shape": "유효 JSON 최상위 배열, 모든 항목 객체",
+    "row_count": 1699,
+    "exact_fields_per_item": [
+      "name",
+      "slug",
+      "date",
+      "playerCount"
+    ],
+    "field_types": {
+      "name": "string",
+      "slug": "string",
+      "date": "string",
+      "playerCount": "integer"
+    },
+    "duplicate_json_keys": 0,
+    "unique_slugs_including_empty": 1699,
+    "nonempty_unique_slugs": 1698,
+    "empty_slug_count": 1,
+    "empty_name_count": 1,
+    "duplicate_slugs": 0,
+    "conflicting_duplicates": 0,
+    "date": {
+      "min": "2022-04-01",
+      "max": "2026-10-26",
+      "invalid_count": 0,
+      "is_collection_timestamp": false,
+      "meaning_verified": false
+    },
+    "playerCount": {
+      "type": "integer",
+      "min": 1,
+      "max": 48,
+      "sum": 12946,
+      "sum_scope": "원본 선언값의 합계. 실제 팩 구성 수·고유 선수 수·공식 전체 풀 크기가 아님"
+    },
+    "absent_data": [
+      "pack ID",
+      "card ID",
+      "선수 명단",
+      "중첩 배열",
+      "팩 이미지"
+    ],
+    "pack_detail_card_mapping": "두 raw만으로 조인 불가. 기존 Work의 상세·관계 자료를 먼저 확인하고 원본 ID 관계 근거 확보. 이름 추측으로 연결하지 않음",
+    "placeholder_review": [
+      {
+        "array_index_zero_based": 99,
+        "name": "dummy",
+        "slug": "dummy",
+        "date": "2026-07-23",
+        "playerCount": 33,
+        "status": "placeholder 의심. 원본 삭제 없이 정규화·공개 단계에서 격리 검토"
+      }
+    ],
+    "quarantine_policy": "빈 name/slug와 placeholder 의심 항목은 원본을 보존하고 검증 보고·정규화/공개 격리 검토. 배열 인덱스를 실제 팩 ID로 위조하지 않음",
+    "source_metadata_present": {
+      "page": false,
+      "cursor": false,
+      "collected_at": false,
+      "total": false
+    },
+    "source_page_completeness": "원래 페이지 완전성은 별도 미검증. 불필요한 전수 재수집이나 진행 차단으로 이어가지 않음",
+    "freshness_verified": false,
+    "image_requests": 0,
+    "efhub_requests": 0,
+    "continuation": "양쪽 raw를 재사용한다. 기존 대상 Work에 팩 상세·관계 자료가 이미 있는지 먼저 확인한 뒤 검증된 팩 회차→카드 ID manifest와 정규화 설계로 이동. 새 채팅·중복 수집 금지"
   },
   "sites": {
     "migration": "최신 사용자 지시로 별도 초기 페이지/소스/번들 의도적 제외",
@@ -129,5 +203,14 @@
     "sites_read": "get_site 1회",
     "push_merge_deploy": 0
   },
-  "validation_result_received_at": "2026-10-26T04:31:08Z"
+  "validation_result_received_at": "2026-10-26T04:31:08Z",
+  "current_state": {
+    "stage": "R2",
+    "previous": "T021",
+    "current": "T010",
+    "current_status": "예정",
+    "next": "T011",
+    "scope": "이번은 파일 검사 결과에 따른 문서·계획 갱신과 승인된 정상 work push·CI 확인만 수행. 실제 수집·DB/API 구축·배포·자동화 없음"
+  },
+  "packs_validation_result_recorded_at": "2026-10-26T07:20:43.774613+00:00"
 }

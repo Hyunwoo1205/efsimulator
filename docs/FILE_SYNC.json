@@ -86,7 +86,12 @@
     {
       "path": "library-file:libfile_cc5085f5c4788191b7c3707a66e0529a",
       "role": "대상 Work의 players_raw.json v1. 16,801,176 bytes, 카드 객체·고유 문자열 ID 47,397개, 중복 0개와 SHA를 상위 환경이 오프라인 검증",
-      "check": "같은 v1과 SHA를 확인한다. 차이 3,443개는 사용자 설명상 중복 제거 결과다. 원본 로그는 재검증하지 않았으며 페이지 완전성·현재성·팩 관계·이미지 실제 로드는 별도다. 전체 재수집 없이 기존 Work의 packs 준비를 이어간다."
+      "check": "같은 v1과 SHA를 확인한다. 카드 객체·고유 문자열 ID 47,397개와 중복 0개를 검사했고 팩 검사 때 SHA 동일함을 재확인했다. 차이 3,443개는 사용자 설명상 중복 제거 결과다. 원본 로그는 재검증하지 않았다. 양쪽 raw를 재수집하지 않고 기존 상세·관계 자료를 먼저 확인한다."
+    },
+    {
+      "path": "library-file:libfile_467e20cb94a8819195dba5375e7e013a",
+      "role": "대상 Work packs_raw.json. current_version_number 0, 197,874 bytes, 객체 1,699개. 파일 내부 검사 완료이나 빈 식별 필드·dummy 의심 항목 격리 검토 필요",
+      "check": "SHA bfe4590cfa5acb18106a98206b9acad71616f2622cf0d44ae3257040a56b97d6와 실제 파일을 대조한다. 비어 있지 않은 고유 slug는 1,698개이며 card ID·명단은 없어 두 raw 조인 불가. 원본 보존, 기존 Work 상세·관계 자료 우선 확인. 재수집부터 시작하지 않음."
     }
   ],
   "files": [
@@ -1371,7 +1376,7 @@
     },
     {
       "path": "data/research/work-handoff-inputs.json",
-      "role": "T020 Git·입력 관측 이력과 T021의 Library v1 오프라인 검증·중복 제거 설명·work 푸시 승인·packs 준비 상태",
+      "role": "T020 Git 관측 이력과 T021 양쪽 raw 파일 내부 검사·팩 빈 값/dummy 격리 검토·관계 한계·사용자 설명 및 R2 예정 상태",
       "priority": "P0",
       "related_paths": [
         "docs/CHATGPT_WORK_HANDOFF.md",
