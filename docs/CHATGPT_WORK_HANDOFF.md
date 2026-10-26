@@ -1,23 +1,26 @@
 # efsimulator — ChatGPT Work 인수인계
 
-작성 기준: **2026-10-26 13:12 KST(04:12 UTC), T020 문서 점검**. 이 문서와 GitHub, 함께 전달하는 이관 bundle을 읽고 이미 players raw를 만들고 packs 수집을 준비 중인 **기존 대상 Work 채팅**에서 프로젝트를 이어간다. 새 채팅이나 중복 수집 작업을 만들지 않는다. 문서의 과거 관측을 현재 사실이나 실행 승인으로 취급하지 않는다. 최신 사용자 지시가 우선이다.
+최신 갱신: **2026-10-26 13:31 KST(04:31 UTC), T021 부모 환경의 raw 검증 결과 반영**. T020 전수 점검은13:12KST 기준이다. 이 문서와 **GitHub의 최신 work 브랜치**를 읽고 이미 players raw를 만들고 packs 수집을 준비 중인 **기존 대상 Work 채팅**에서 프로젝트를 이어간다. 새 채팅이나 중복 수집 작업을 만들지 않는다. 문서의 과거 관측을 현재 사실이나 실행 승인으로 취급하지 않는다. 최신 사용자 지시가 우선이다.
 
 ## 1. 가장 먼저 알아야 할 상태
 
-**GitHub에 모든 최신 파일이 있지 않다.** 저장소는 https://github.com/Hyunwoo1205/efsimulator 이고 개발 브랜치는 `work`, 운영 브랜치는 `main`이다. 원격을 실제 읽어 확인했다.
+**이관의 기본 경로는 GitHub의 최신 `work` 브랜치다.** 저장소는 https://github.com/Hyunwoo1205/efsimulator 이고 `main`은 운영 브랜치다. 사용자는 로컬 미푸시 변경·최신 검증 문서를 work에 정상push하고 기존 CI/연결preview가 실행되는 범위를 승인했다. main병합/강제push/배포설정변경/새자동화는 승인 범위가 아니다.
 
-| 위치 | 정확한 커밋 / 상태 |
+| 위치·이력 | 정확한 커밋 / 상태 |
 | --- | --- |
-| 원격 main | `d8891f241e113632884445d60746d9e059a1583b` — Initial commit, README만 있음 |
-| 원격 work | `5d2cc0abe63f102084e226f9ee385487420aadb5` |
-| 이번 문서 작업 시작 로컬 work | `d7f30688b5bcf610f9b35b2d7f680485949f6c19` — 원격work보다3커밋, main보다17커밋 앞섬 |
-| 원격에 없는 이전 계획 | `77c5db3791401ae7a440715b91536098e7fa6427` |
-| 원격에 없는 실제 후보 검증 | `4e07d29f7578353c2ac3fd7d7d1ac99988f42107` |
-| 원격에 없는 오프라인 병합 도구 | `d7f30688b5bcf610f9b35b2d7f680485949f6c19` |
+| 원격 main 확인값 | `d8891f241e113632884445d60746d9e059a1583b` — Initial commit, 이번에 변경하지 않음 |
+| 푸시 전 원격 work | `5d2cc0abe63f102084e226f9ee385487420aadb5` |
+| 전체 계획 재정의 | `77c5db3791401ae7a440715b91536098e7fa6427` |
+| API 후보 실제 검증 | `4e07d29f7578353c2ac3fd7d7d1ac99988f42107` |
+| 오프라인 병합 도구 | `d7f30688b5bcf610f9b35b2d7f680485949f6c19` |
+| 두 계층 계획/전수 점검 | `a07b0f1ec8d0c30eba99795dd0fd422b86fac6f7` |
+| 최신 T021 검증/승인 반영 | 이 문서를 포함한 work의 후속커밋. 정확한 최종SHA는원격refs/커밋URL·최종보고/receipt로확인 |
 
-**T020의 이 인수인계/두 계층 문서도 로컬 후속 커밋이며 미푸시다.** 최종 완료 SHA는 함께 전달한 `MIGRATION_RECEIPT.json`과 `git bundle list-heads`로 확인한다. 위 d7f3068을 T020 완료 HEAD라고 오인하지 않는다. 본문에 자기 자신의 커밋 SHA를 고정할 수 없으므로 bundle의 실제 ref를 이관 기준으로 삼는다. PR #1은 초안/open/unmerged라는 부모 확인이 있으며 이번에 merge하지 않았다. 원격 확인 시각 이후 사용자의 변경이 있으면 다시 읽고 보존한다.
+이전에는 최신4개커밋이로컬에만있었지만이번승인범위로work에정상반영한다. 읽는환경에서`git ls-remote origin refs/heads/work`와현재HEAD를비교해실제로최신인지확인한다. 문서파일의자기커밋SHA를본문에고정하지않고GitHub커밋/ref와최종확인서를기준으로삼는다. PR #1은초안/open/unmerged이며main병합은하지않는다. 원격확인뒤다른사용자변경이있으면다시비교/보존한다.
 
-현재 상태는 R1, 이전 T020(문서/점검), 현재 T021(제공 raw 오프라인 검증 대기/차단), 다음 T010(검증된 전체 자료 수입 예정)이다. T009의 기존 공급 검증은 필수 조건 미통과로 남아 있다.
+**bundle은 선택 백업이며 필수 첨부가 아니다.** 현재executor에만준비됐고다른환경으로전달됐다는확인은없다. GitHub work가최신원격SHA를포함하면bundle없이이어갈수있다. Git비추적고유원문/Library파일은GitHub소스와별도다.
+
+현재 상태는 R1, 이전 T020(문서/점검), 현재 T021(부모의 raw 오프라인 검증 반영·선수raw 내부검증 반영·기존Work packs 준비/관계 확인 진행 중), 다음 T010(검증된 전체 자료 수입 예정)이다. T009의 기존 공급 검증은 필수 조건 미통과로 남아 있다.
 
 ## 2. 최신 사용자 목표 — 두 계층
 
@@ -42,28 +45,34 @@ EFHub에서 정상 확보 가능한 **모든 선수 카드와 선수팩**을 가
 
 ## 3. 다른 Work에서 만든 players raw — 재수집 전에 확인
 
-사용자는 다른 Work에서 선수 API raw JSON을 제작했다고 보고했다. 부모의 Library 조회에서 아래 메타를 전달받았다.
+대상 Work에서 만든 선수 API raw JSON **v1을 부모 환경에서 Library 지원 흐름으로 materialize하여 실제 오프라인 검증했다.** 이 child에서는 Library 도구가 없어 같은 파일을 다시 읽지 않았으며, 아래는 부모가 전달한 검증 결과다. 원본 변경·EFHub/이미지 네트워크 요청은 없었다.
 
-| 항목 | 값 |
+| 항목 | 검증 결과 |
 | --- | --- |
-| Library 경로 | `/players_raw.json` |
+| Library 경로 / version | `/players_raw.json` / `1` |
 | library_file_id | `libfile_cc5085f5c4788191b7c3707a66e0529a` |
 | File Service file_id | `file_000000002b808206a31e146aa54fdc3f` |
-| version_id | `1` |
-| 보고된 크기 | `16,801,176 bytes` |
-| 수정 시각 | `2026-10-26T01:23:42.466991Z` (10:23:42 KST) |
+| 실제 크기 | `16,801,176 bytes` |
+| SHA-256 | `16b5ac4919480bbbf8e5158946322fac1f406f0d66701c4d52c9274107dc94c4` |
+| Library 수정 시각 | `2026-10-26T01:23:42.466991Z` (10:23:42 KST). 원본 수집 시각을 뜻하지 않음 |
+| JSON 구조 | 유효 JSON, 최상위 배열, 객체47,397개 |
+| 카드 ID | decimal-string47,397개, 고유47,397개 |
+| 중복/충돌 | 중복ID0, 충돌중복0, 중복JSON키0 |
+| 최대 ID | `387113187158919`. 안전 정수 한계 이내지만 원본 문자열 유지 |
+| 필수 필드 | name/imageUrl/overallRating/playerType 모두 존재·nonnull·nonempty |
+| OVR | overallRating 정수40~102. 레벨/부스터 조건은 이 검사로 확정하지 않음 |
+| 타입 | playerType 정수1~8. 이름/의미 매핑은 미검증 |
+| 빈 문자열 | nationality/nationalityCode 각각47,397개 전부 빈 값. nameZh795개 빈 값 |
+| 미존재 선택 필드 | playingStyle7,927개, playingStyleDefensive42,561개 |
+| 원본 수집 메타 | 페이지/커서/출처/수집시각/total 메타 없음 |
 
-**이 작업에서는 실제 파일을 읽지 못했다.** 현재 도구 목록에 Library 검색·`prepare_materialize`·reference 다운로드/업로드가 없다. 다른 executor 경로를 추정하거나 이 File Service ID를 Sediment `download_file`에 넣지 않았다. 파일 존재/크기 메타와 본문 검증을 구분한다. 실제 SHA-256, 배열 여부, 행 수, 고유 카드 ID, 중복/충돌, 필수 필드 누락, 숫자 정밀도는 **미검증**이다. 이미지 다운로드는0건이다.
+**확인한 것은 이 배열의 구조·ID·필드와 해시다.** 47,397개는 카드 객체/출시 ID 수이며 실존 인물 수가 아니다. 전체 페이지 완전성·현재성·팩 포함 관계·이미지 실제 로드/디코드/저장·저장/재배포 권리·지속 API 접근은 미검증으로 유지한다. imageUrl이 모두 있다는 사실을 다운로드 성공으로 표시하지 않는다.
 
-T021에서 같은 resolved ID를 지원 Library materialize/reference 흐름으로 가져온 뒤 오프라인 검사한다. Library search로 다시 찾으면 전체 검색 결과를 해당 다운로드 helper에 전달한다. 원본을 수정하지 않는다.
+이전50,840과실제47,397의차이3,443개는 **사용자설명상중복제거결과**다. 현재파일의고유ID47,397·중복0은부모오프라인검증으로확인했다. 원본페이지/중복제거로그를이환경에서재검증한것은아니라는한계만유지한다. 누락의심을주요차단요인으로삼거나전체재수집하지않는다. 배열에페이지/total메타가없으므로원래2119페이지완주를이파일만으로증명한것은아니다.
 
-검사 항목:
+T021에서는이미확인된선수raw를사용하고 **기존대상Work의출력·체크포인트와packs수집준비를이어받는다.** 중복제거경위를다시입증하기위해전체를재수집하지않는다. 필요한원본로그는제공돼있을때참고하되누락의심으로전체진행을막지않는다. 같은 파일을 쓰는 경우 위 SHA/버전을 확인하고 원본을 수정하지 않는다. 다른 executor 경로를 추정하거나 File Service ID를 Sediment 다운로드 도구에 넣지 않는다.
 
-1. 실제 bytes/SHA-256/UTF-8/JSON 구조·원본 파일 버전을 기록한다.
-2. 항목 수, 필드 집합, 원본 ID 타입/고유 수/누락/중복/동일·충돌을 검사한다. 큰 정수는 JavaScript Number로 먼저 바꾸지 말고 원시 토큰/정확한 정수 파싱으로 확인한다. 선행0 문자열과 배열/null·알 수 없는 필드를 보존한다.
-3. 이름·이미지 URL·표시 OVR·원본 타입 및 복수 분류 등 실제 필드와 누락/조건을 보고한다. URL 존재는 실제 이미지 로드·디코딩·허용 저장 성공이 아니다. 이 점검에서 이미지 네트워크 다운로드는 하지 않는다.
-4. 페이지별 응답·total/page/limit/totalPages·수집 시각·마지막 페이지/체크포인트 증거가 있는지 확인한다. 배열의 항목 수가50840이어도 원본 페이지 완전성/현재성과 같지 않다. 50840/2119는 이전 사용자 관측 기대값이며 검증된 현재 전체 수가 아니다.
-5. 대상 Work의 **packs 수집은 준비 중**이라는 최신 사용자 보고가 있다. 그 채팅의 기존 계획/체크포인트/중간 출력부터 확인해 이어받고 새 수집기·새 채팅·중복 요청을 시작하지 않는다. 팩 raw 전체 수집 완료와 상세/특수 명단·card ID 매핑은 아직 별도 미확인이다. 기존 연구 래퍼의1/2쪽 각30팩은 전수 raw가 아니다.
+대상 Work의 **packs 수집은 준비 중**이다. 그 채팅의 기존 계획/체크포인트/중간 출력부터 확인해 이어받고 새 수집기·새 채팅·중복 요청을 시작하지 않는다. 팩 raw 전체 수집 완료와 상세/특수 명단·card ID 매핑은 별도 미확인이다. 기존 연구 래퍼의1/2쪽 각30팩은 전수 raw가 아니다.
 
 `scripts/merge-api-pages.mjs`는 **페이지 래퍼/메타가 있는 파일**을 받는 오프라인 도구다. 이미 합쳐진 배열에 가짜 페이지 메타를 넣어 입력하지 않는다. 실제 raw와 합성 테스트 fixture를 섞지 않는다. 도구68테스트 성공은 실제 자료 전수 성공이 아니다.
 
@@ -71,7 +80,7 @@ T021에서 같은 resolved ID를 지원 Library materialize/reference 흐름으�
 
 있음: 이전 범위의9상품83카드(상품 연결79+독립 다른버전4), 감독0, 단일 seed→SQLite→정적 JSON/한국어 검색·상세·양방향 탐색, 관측/개정·실패 보존, seed 누적 보존, 오프라인 페이지 병합 도구, 관리 검사와224개 Node 테스트.
 
-없음: 전체 EFHub raw를 검증한 새 누적 DB/API, 두 계층 저장/발행, 현재 판매 필터·공식 회차 매핑·N/S/A, 모든 팩 상세 관계, 이미지 전수 저장/권리 검증, 실제 자동 갱신/백업 운영, 시뮬레이터/3D. 기존9상품은 availability unknown/기간 null/구성 partial이다. 이를 현재 판매 DB나 새 완성본으로 쓰지 않는다.
+없음: raw의 원래 페이지 완전성/현재성 검증, 새 누적 DB/API, 두 계층 저장/발행, 현재 판매 필터·공식 회차 매핑·N/S/A, 모든 팩 상세 관계, 이미지 전수 저장/권리 검증, 실제 자동 갱신/백업 운영, 시뮬레이터/3D. 기존9상품은 availability unknown/기간 null/구성 partial이다. 이를 현재 판매 DB나 새 완성본으로 쓰지 않는다.
 
 기존 catalog의 전체 구성 complete 금지 규칙과 새 특수 집합 완전성/준비 상태를 구분해 후속 설계한다. 과거 코드를 즉석 예외로 바꿔 준비완료를 만들지 않는다. 새 DB는 staging에서 설계하고 원본/기존 ID·데이터를 먼저 지우지 않는다.
 
@@ -137,7 +146,7 @@ npm run project:check -- --base d7f30688b5bcf610f9b35b2d7f680485949f6c19
 
 `data:prepare`는 저장한 예전 표본 재현이며 네트워크 수집이 아니다. 빌드는 `dist/`에 만든다. `pages:check`는 루트 공개7파일과의 일치 검사이고 `pages:export`는 그것들을 변경하므로 이번 이관 점검에서 실행하지 않는다. UI 수정 시만 관련 브라우저 검사를 추가한다. 수집 명령 data:collect/data:audit-cards는 이번 문서 작업에서 실행하지 않았다.
 
-T020 검증은 전체224/224테스트·관리79파일/22작업/변경28경로·표본9/83준비/빌드·공개7파일비교·상대링크149개·diff 검사 통과다. UI 미변경으로 브라우저는 재실행하지 않았다. 최종 bundle/HEAD·해시는 receipt를 따른다. 이 성공을 새 두 계층 구현 성공으로 해석하지 않는다.
+T020 코드 검증은 전체224/224테스트·관리79파일/22작업/변경28경로·표본9/83준비/빌드·공개7파일비교·상대링크149개·diff 검사 통과다. UI 미변경으로 브라우저는 재실행하지 않았다. T021은 부모 검증 결과의 문서 반영이며 코드/원본은 변경하지 않는다. T021 관리/링크·diff와 최종 bundle/HEAD·해시는 receipt를 따른다. 이 성공을 새 두 계층 구현 성공으로 해석하지 않는다.
 
 ## 9. 배포와 의도적 이관 제외
 
@@ -147,36 +156,35 @@ T020 검증은 전체224/224테스트·관리79파일/22작업/변경28경로·�
 
 정적Pages의 초기 읽기JSON과 전체 누적 동적 API를 분리한다. 방문자 GET에서 외부 출처 수집을 실행하지 않는다. Workers/D1/무료 서버·보유 OCI A1 2OCPU/12GB ARM64는 실제 요구/권한/한도/비용·백업을 보고 선택한다. 3D 때문에 OCI로 즉시 옮기지 말고 파일수/25MiB단일파일·총전송/모바일GPU·압축/LOD/지연로딩/자산분리를 실측한다. R2 등은 초과요금이 있을 수 있어 서비스 활성화 전에 비용을 제시한다.
 
-## 10. 미푸시 자료의 안전한 이관
+## 10. GitHub work로 이어가기와 선택 백업
 
-GitHub work만 연결하면 77c5db3/4e07d29/d7f3068과 T020이 빠진다. 이번에는 **push하지 않고** 아래 로컬 파일을 준비한다.
-
-- `artifacts/migration/efsimulator-work.bundle`: 완료 시점의 work 전체 Git 이력/참조.
-- `artifacts/migration/MIGRATION_RECEIPT.json`: 각bundle ref/SHA-256/크기·최종 커밋과 검사 결과.
-- `artifacts/migration/IGNORED_ARTIFACTS.json`: Git에 없는 기존 산출물의 경로/크기/해시 목록. 실제 원문 파일을 포함하는 백업은 아니며, 필요한 고유 원문은 별도 지원 파일 전달이 필요하다. 환경/캐시/설치물은 소스 bundle에 없다.
-
-이 경로는 현재 executor의 경로다. 새 Work에서 같은 경로가 존재한다고 가정하지 말고 파일로 전달받아 실제 경로를 쓴다. 원본 JSON은 Library에서 별도로 가져온다. credential/env/쿠키를 이관 bundle에 넣지 않는다. 새 GitHub push는 preview/CI를 유발할 수 있어 이번에 하지 않는다.
-
-이미 수집을 준비 중인 **기존 대상 Work 체크아웃**에서 다음 순서로 비교한다. 사용자 변경/현재 수집 출력은 먼저 보존한다. 아래 fetch는 bundle을 별도 ref로 읽으며 현재 브랜치/작업 트리를 바꾸거나 GitHub에 push하지 않는다.
+기존대상Work에서GitHub work를우선읽는다. 현재수집출력/사용자변경을보존한상태로원격을fetch하여HEAD와비교한다. main만읽으면앱/최신계획이없다. 새채팅/대체저장소나중복수집은만들지않는다.
 
 ```bash
 cd /actual/path/to/existing/efsimulator
 git status --short
 git branch --show-current
 git rev-parse HEAD
-git bundle verify /actual/path/efsimulator-work.bundle
-git bundle list-heads /actual/path/efsimulator-work.bundle
-git fetch /actual/path/efsimulator-work.bundle refs/heads/work:refs/remotes/migration/work
-git log --oneline --left-right HEAD...refs/remotes/migration/work
-git diff --stat HEAD refs/remotes/migration/work
+git ls-remote origin refs/heads/main refs/heads/work
+git fetch origin work
+git log --oneline --left-right HEAD...FETCH_HEAD
+git diff --stat HEAD FETCH_HEAD
 ```
 
-bundle ref가 이미 있으면 덮어쓰지 말고 먼저 값을 비교한다. 기존 Work의 앞선 변경과 bundle 사이의 선조/충돌을 확인한 뒤 누락 커밋을 반영한다. 새 채팅/대체 저장소나 중복 수집은 만들지 않는다. reset/clean/강제checkout/강제push로 사용자 변경을 지우지 않는다. bundle 헤드가 receipt와 맞는지와 관리검사를 확인한다. Library의 새 MD 저장은 이 task에 업로드 도구가 없어 미실행이며 확인된 신규 library_file_id는 없다.
+현재변경과선조관계를확인한뒤누락된work커밋을반영한다. reset/clean/강제checkout/강제push로현재작업을덮지않는다. 이인수인계의push승인은이번work반영범위이며새기능/main병합·서비스설정·자동화활성화를포괄승인하지않는다.
+
+선택백업은현executor의다음경로에있다. 다른Work에자동전달된다고가정하지않고필요할때만별도파일로받는다.
+
+- `artifacts/migration/efsimulator-work.bundle`: 최종work Git이력/참조의선택백업. 필요시`git bundle verify`/`list-heads`로receipt와대조한다.
+- `artifacts/migration/MIGRATION_RECEIPT.json`: 최종로컬/실제원격SHA·검사/CI·bundle해시/크기.
+- `artifacts/migration/IGNORED_ARTIFACTS.json`: Git비추적기존산출물의경로/크기/해시목록. 실제원문백업이아니므로필요한고유자료는별도전달한다.
+
+원본players v1은필요한환경에서Library지원흐름으로읽고위SHA와대조한다. 같은파일을다시수집하지않는다. credential/env/쿠키와별도Sites초기소스는이관에포함하지않는다. 이child에는Library업로드도구가없고부모가별도지원환경에서MD저장을진행한다. 이child는새library_file_id를발급했다고주장하지않는다.
 
 ## 11. 다음 작업 순서와 첫 프롬프트
 
-1. 실제 GitHub/로컬/bundle의 정확한 SHA와 clean 여부부터 비교하고 미푸시 작업을 복원한다. 파일 목록/현재 상태를 읽는다.
-2. 제공된 players raw를 Library 지원 흐름으로 읽어 T021 오프라인 검증을 완료한다. 같은 대상 Work에서 준비 중인 packs 수집의 상태/체크포인트/기존 출력부터 이어받는다. 준비를 수집 완료라고 쓰지 않으며 새 채팅·중복 수집을 시작하지 않는다. 팩 상세 매핑은 별도다.
+1. 기존대상Work에서GitHub work의실제최신SHA와현재HEAD/사용자변경부터비교하고누락커밋을반영한다. bundle은필수아니다. 파일목록/현재상태를읽는다.
+2. 부모가검증한players v1의SHA/47,397객체·고유ID/중복0을사용한다. 3,443차이는사용자설명상중복제거결과로기록하고원본페이지/중복제거로그는재검증하지않았다는한계만유지한다. 누락의심으로차단하거나전체재수집하지않는다. 같은 대상 Work에서 준비 중인 packs 수집의 상태/체크포인트/기존 출력부터 이어받는다. 준비를 수집 완료라고 쓰지 않으며 새 채팅·중복 수집을 시작하지 않는다. 팩 상세 매핑은 별도다.
 3. 전체 누적 ID/개정/무삭제·원문 계약과 API scope를 확정하고 새 staging 표본을 만든다. 출처 지속 공급/저장·공개 권리의 미확인을 숨기지 않는다.
 4. 최신 정상 공식 표·종료/신선도·동일 회차로 사이트 스냅샷을 추출한다. 각 특수 카드·이미지·OVR조건·연결/N/S/A를 검증한다.
 5. 검토용 URL과 실제 배포 설정 변경 전후를 제시하고 사용자 검토·운영 승인 후 반영한다. 전체 누적 범위/현행 전체 완성은 별도 보고한다.
@@ -184,4 +192,4 @@ bundle ref가 이미 있으면 덮어쓰지 말고 먼저 값을 비교한다. �
 
 현재 packs 수집을 준비 중인 대상 Work 채팅에 추가할 첫 프롬프트:
 
-> 첨부한 CHATGPT_WORK_HANDOFF.md와 연결한 Hyunwoo1205/efsimulator를 읽고 기존 작업을 이어가줘. 먼저 원격 main/work와 전달한 bundle의 SHA를 비교해 미푸시 커밋이 빠지지 않았는지 확인하고 사용자 변경을 보존해줘. ROADMAP/WORKPLAN/FILE_SYNC의 현재 T021을 읽어줘. 전체 누적 EFHub players/packs DB/API는 엔티티 무삭제·변경 개정 보존, 사이트 DB는 공식 한국어 확률표의 현재 유효 팩과 해당 카드만 추출하는 두 계층이야. Library players_raw.json(libfile_cc5085f5c4788191b7c3707a66e0529a, version1)을 지원 materialize 흐름으로 가져와 원본 수정/네트워크 다운로드 없이 구조·SHA·ID/중복/필드/정밀도·페이지 완전성 근거부터 검증해줘. 너가 이미 players raw를 만들고 packs 수집을 준비 중인 기존 채팅이므로 지금 가진 출력/체크포인트를 먼저 확인해 이어받아줘. 팩 raw 완료와 구성 연결은 별도로 검증하고 새 채팅·중복 수집을 만들지 마. 별도 Sites 초기 페이지/소스는 이관에서 제외하고 기존 프로젝트를 수정·삭제·복원하지 마. 이번에는 상태와 검증 결과를 먼저 보고하고 새 DB 구축·자동화 활성화·push/merge/deploy·외부 연락은 하지 마. 파일별 영향 검토와 관리 문서를 함께 갱신해줘.
+> 첨부한 CHATGPT_WORK_HANDOFF.md와 연결한 Hyunwoo1205/efsimulator를 읽고 기존 작업을 이어가줘. 먼저GitHub의최신work와현재HEAD/사용자변경을비교해누락커밋을확인하고보존해줘. main만읽지말고bundle은필수로요구하지마. ROADMAP/WORKPLAN/FILE_SYNC의 현재 T021을 읽어줘. 전체 누적 EFHub players/packs DB/API는 엔티티 무삭제·변경 개정 보존, 사이트 DB는 공식 한국어 확률표의 현재 유효 팩과 해당 카드만 추출하는 두 계층이야. 부모가 실제 오프라인 검증한 Library players_raw.json(libfile_cc5085f5c4788191b7c3707a66e0529a, version1)은 SHA256 16b5ac4919480bbbf8e5158946322fac1f406f0d66701c4d52c9274107dc94c4, 47,397객체/고유문자열ID·중복0이야. 원본페이지/출처/수집시각/total메타는없고50,840과의3,443차이는내설명상중복제거결과야. 원본페이지/중복제거로그는이환경에서재검증하지않았다는한계만남기고누락의심으로막거나전체재수집하지마. 너가 이미 players raw를 만들고 packs 수집을 준비 중인 기존 채팅이므로 지금 가진 출력/체크포인트를 먼저 확인해 이어받아줘. 팩 raw 완료와 구성 연결은 별도로 검증하고 새 채팅·중복 수집을 만들지 마. 별도 Sites 초기 페이지/소스는 이관에서 제외하고 기존 프로젝트를 수정·삭제·복원하지 마. 이번에는 상태와 검증 결과를 먼저 보고하고 새 DB 구축·자동화 활성화·push/merge/deploy·외부 연락은 하지 마. 파일별 영향 검토와 관리 문서를 함께 갱신해줘.

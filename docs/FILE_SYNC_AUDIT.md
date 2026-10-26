@@ -1,4 +1,4 @@
-# T020 파일 최신화 전수 점검 보고
+# T020 전수 점검과 T021 검증 반영 보고
 
 2026-10-26 KST 작성. 기준 커밋 `d7f30688b5bcf610f9b35b2d7f680485949f6c19`. 이번 범위는 문서·계획·이관 준비다. 코드가 새 계획을 구현했다고 판정하지 않는다.
 
@@ -16,17 +16,25 @@
 
 원래76개 밖의 Sites 초기4파일은 의도적 이관 제외다. Git 비추적 artifacts/저장소밖 환경도구/Library파일도 GitHub에 없다. IGNORED_ARTIFACTS 목록은 원문 백업 자체가 아니므로 필요한 고유 원문은 별도 지원 파일 전달이 필요하다. credential/env/쿠키를 옮기지 않는다.
 
-## raw 입력과 차단
+## T020 당시 raw 입력과 도구 한계
 
 대상Work는 players raw 제작 완료 보고, packs 수집 준비 중이다. Library 메타로 players_raw.json/version1/16,801,176bytes/수정2026-10-26T01:23:42.466991Z 및 ID를 전달받았다. 현task에는Library materialize/upload도구가없어내용/SHA/행/ID/필수필드/정밀도/페이지근거는미검증이다. File Service ID를Sediment도구에넣지않고 재수집하지않았다. 이미지요청0. packs준비를완료로승격하지않고 기존대상채팅의출력/체크포인트를이어받는다. 팩구성관계는별도다.
 
 공식마지막관측은2026-10-25 15:21UTC이다. 그때7개중Midfielders종료는10월26일10:59:59KST로이번점검시각에이미지났다. 이번공식재요청은0이며 예전7개를현재목록으로쓰지않는다.
 
+## T021 후속 검증과 최신 사용자 승인
+
+부모환경이Library players_raw.json v1을실제로오프라인검증한결과를전달했다. 16,801,176bytes·SHA256 `16b5ac4919480bbbf8e5158946322fac1f406f0d66701c4d52c9274107dc94c4`·최상위배열47,397객체/고유decimal-string ID47,397,중복ID/충돌/중복키0이다. name/imageUrl/overallRating/playerType는모두존재·nonnull·nonempty, OVR정수40~102/타입정수1~8(명칭/OVR조건미검증). nationality/nationalityCode전빈/nameZh795빈; playingStyle7,927/playingStyleDefensive42,561미존재를구분한다.
+
+사용자설명상50,840→47,397의3,443차이는중복제거결과다. 현재파일고유ID검증과원래중복제거로그검증은별개이며후자는실행하지않았다. 페이지/커서/출처/수집시각/total메타가없어원래페이지완주/현재성·팩관계·이미지실로드는미검증이다. 누락의심을주요차단요인으로삼거나전체재수집하지않는다. 대상Work의packs수집준비를기존출력/체크포인트에서이어받는다.
+
+최신명시승인은기존미푸시커밋/최신검증문서를원격work에정상push하고기존CI/연결preview트리거를확인하는범위다. 원격5d2cc0a를재확인/fetch했고현재이력의선조임을확인했다. 강제push/main병합/배포설정변경/새자동화는금지한다. 이관은GitHub work우선이며bundle은선택백업이다. T021관리검사79파일/22작업/변경13경로·상대링크149개/diff검사통과. 실제원격SHA/CI와선택bundle최종해시는후속receipt/최종보고로확인한다. 별도Sites초기소스는계속이관제외다.
+
 ## 최종 검증
 
 전체 Node224/224, data:prepare(9상품83카드), build, Pages 공개7파일 비교, web/app.js 문법 검사를 통과했다. 코드/테스트/seed/공개7파일/워크플로/잠금과 기존 관측JSON은 기준커밋과 동일하다. UI 변경이 없어 브라우저 재검증은 하지 않았다. 최종 관리검사79파일/22작업/변경28경로, Markdown 상대링크149개와 diff 검사가 통과했다. bundle/최종HEAD·해시는 커밋 후 생성하는 MIGRATION_RECEIPT.json을 따른다.
 
-## 파일별 역할·우선순위·이번 결과
+## T020 전수 파일별 역할·우선순위·당시 결과
 
 최종 관리 79개: P0 43, P1 26, P2 10. 우선순위는 검토 순서이며 영향 파일을 제외하지 않는다.
 

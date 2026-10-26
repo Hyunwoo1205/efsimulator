@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "task": "T020",
+  "task": "T021",
   "observed_at": "2026-10-26T04:12:32Z",
-  "scope": "문서/이관 입력 상태. 원본 내용·전체 수집·이미지 성공을 증명하지 않음",
+  "scope": "T020 이관 입력 상태와 T021 부모 환경의 Library v1 오프라인 검증 결과 전달. 전체 페이지/현재성·상품관계·이미지 로드를 증명하지 않음",
   "git": {
     "repository": "https://github.com/Hyunwoo1205/efsimulator",
     "local_branch": "work",
@@ -12,10 +12,14 @@
     "verification": "git ls-remote origin refs/heads/main refs/heads/work 정상 읽기",
     "starting_commits_ahead_of_remote_work": 3,
     "starting_commits_ahead_of_remote_main": 17,
-    "push_performed": false
+    "push_performed": false,
+    "push_authorized": true,
+    "push_scope": "최신검증/문서및기존로컬변경을원격work에정상push; 기존CI/연결preview트리거허용. main/강제push/설정/새자동화제외",
+    "delivery_source": "GitHub work 우선. 최종실제원격SHA/CI결과는MIGRATION_RECEIPT및최종보고참조",
+    "bundle_required_for_handoff": false
   },
   "players_raw": {
-    "evidence_level": "사용자 제작 보고 + 부모 Library 조회 메타 전달; 이 task는 본문 미검증",
+    "evidence_level": "부모 환경에서 실제 Library v1 materialize 후 오프라인 검증 완료한 결과를 전달받음. 이 child는 같은 파일을 재다운로드하지 않음",
     "library_file_id": "libfile_cc5085f5c4788191b7c3707a66e0529a",
     "file_id": "file_000000002b808206a31e146aa54fdc3f",
     "version_id": 1,
@@ -24,20 +28,79 @@
     "reported_modified_at": "2026-10-26T01:23:42.466991Z",
     "executor_materialization": "차단: 현재 ALL_TOOLS에 Library 검색/prepare_materialize/reference 다운로드/업로드 도구 없음",
     "workspace_path": null,
-    "sha256": null,
-    "json_shape": null,
-    "row_count": null,
-    "unique_card_ids": null,
-    "duplicate_ids": null,
-    "conflicting_ids": null,
-    "missing_required_fields": null,
-    "numeric_precision_verified": false,
-    "source_page_completeness": "미확인: 파일/원래 페이지 메타를 아직 읽지 못함",
-    "image_url_presence": "미검증",
+    "sha256": "16b5ac4919480bbbf8e5158946322fac1f406f0d66701c4d52c9274107dc94c4",
+    "json_shape": "최상위 배열, 모든 항목 객체",
+    "row_count": 47397,
+    "unique_card_ids": 47397,
+    "duplicate_ids": 0,
+    "conflicting_ids": 0,
+    "missing_required_fields": {
+      "name": 0,
+      "imageUrl": 0,
+      "overallRating": 0,
+      "playerType": 0
+    },
+    "numeric_precision_verified": true,
+    "source_page_completeness": "미검증: 배열에 페이지/커서/출처/수집시각/total 메타 없음. 기존Work수집로그/체크포인트대조 필요",
+    "image_url_presence": "47,397개 모두 존재/nonnull/nonempty. 실제 로드/디코드/저장은 미검증",
     "image_downloads_performed": 0,
     "reported_historical_total": 50840,
     "reported_historical_pages": 2119,
-    "historical_counts_are_verified_current_completeness": false
+    "historical_counts_are_verified_current_completeness": false,
+    "validation_origin": "부모 환경 독립 오프라인 검증 결과. 원본 수정/EFHub·이미지 요청 없음",
+    "validated_size_bytes": 16801176,
+    "id_type": "decimal-string",
+    "duplicate_json_keys": 0,
+    "max_id_decimal_string": "387113187158919",
+    "numeric_precision_scope": "ID는 전부 문자열이며 최대값도 JS안전정수범위 이내. 원본 문자열 유지",
+    "required_field_null_or_empty_counts": {
+      "name": 0,
+      "imageUrl": 0,
+      "overallRating": 0,
+      "playerType": 0
+    },
+    "overallRating": {
+      "type": "integer",
+      "min": 40,
+      "max": 102,
+      "level_boost_condition_verified": false
+    },
+    "playerType": {
+      "type": "integer",
+      "min": 1,
+      "max": 8,
+      "name_mapping_verified": false
+    },
+    "optional_empty_string_counts": {
+      "nationality": 47397,
+      "nationalityCode": 47397,
+      "nameZh": 795
+    },
+    "optional_absent_field_counts": {
+      "playingStyle": 7927,
+      "playingStyleDefensive": 42561
+    },
+    "source_metadata_present": {
+      "page": false,
+      "cursor": false,
+      "source": false,
+      "collected_at": false,
+      "total": false
+    },
+    "difference_from_historical_expected_total": 3443,
+    "difference_means_confirmed_missing": false,
+    "historical_comparison_limit": "원본페이지/중복제거로그는이환경에서재검증하지않음. 사용자중복제거설명과현재파일내고유ID검증을분리. 누락의심으로차단/전체재수집하지않음",
+    "pack_membership_verified": false,
+    "freshness_verified": false,
+    "difference_explanation": {
+      "source": "사용자 직접 설명: 차이나는 이유는 중복 제외한 거기 때문이야",
+      "meaning": "50,840→47,397의3,443차이는중복제거결과라는사용자제공경위",
+      "original_pages_or_dedup_log_reverified": false,
+      "confirmed_current_file_unique_ids": 47397,
+      "confirmed_current_file_duplicate_ids": 0,
+      "treat_as_missing_data_blocker": false
+    },
+    "original_ingest_precision_verified": false
   },
   "packs_raw": {
     "complete_raw_location": null,
@@ -56,7 +119,7 @@
   "library_handoff_upload": {
     "available": false,
     "library_file_id": null,
-    "blocker": "이 task에 Library upload/save 도구가 없어 로컬 MD/본문과 bundle로 전달; 부모가 지원 흐름으로 저장 가능"
+    "blocker": "이 child에는 Library upload/save 도구 없음. 부모가 별도 지원 환경에서 MD 파일 저장 진행"
   },
   "network_in_T020": {
     "efhub_requests": 0,
@@ -65,5 +128,6 @@
     "github_read": "git ls-remote 1회",
     "sites_read": "get_site 1회",
     "push_merge_deploy": 0
-  }
+  },
+  "validation_result_received_at": "2026-10-26T04:31:08Z"
 }

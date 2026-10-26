@@ -85,8 +85,8 @@
     },
     {
       "path": "library-file:libfile_cc5085f5c4788191b7c3707a66e0529a",
-      "role": "대상 Work에서 제작된 players_raw.json; version1/16,801,176bytes 메타 전달·본문 미검증",
-      "check": "지원 Library materialize/reference 흐름으로 같은ID 수령 후 실제 bytes/SHA/배열/ID/필드/정밀도/페이지근거 확인. File Service ID를Sediment도구에사용X. 기존대상Work packs수집준비이어받기."
+      "role": "대상 Work players_raw.json v1/16,801,176bytes·47,397객체/고유문자열ID·중복0/SHA를부모환경이실제오프라인검증",
+      "check": "같은v1/SHA확인. 3,443차이는사용자설명상중복제거결과; 원래페이지/중복제거로그재검증안함. 페이지완주/현재성/팩관계/이미지실로드미검증. 전체재수집X/기존Work packs준비이어받기."
     }
   ],
   "files": [
@@ -184,7 +184,7 @@
       "update_when": [
         "사용자 요구·작업 절차·검증 명령·제품 및 운영 원칙 변경"
       ],
-      "reviewed_in": "T020"
+      "reviewed_in": "T021"
     },
     {
       "path": "_headers",
@@ -355,7 +355,7 @@
       "update_when": [
         "데이터 계약·파이프라인·라우팅·이력 영속화·운영 방식 변경"
       ],
-      "reviewed_in": "T020"
+      "reviewed_in": "T021"
     },
     {
       "path": "docs/COLLECTION.md",
@@ -380,7 +380,7 @@
       "update_when": [
         "해당 계약·지원 범위·실행/관측 결과 변경 시 관련 파일 검토; 비활성 참고는 현재 모델로 재채택하지 않음"
       ],
-      "reviewed_in": "T020"
+      "reviewed_in": "T021"
     },
     {
       "path": "docs/DEPLOYMENT.md",
@@ -419,7 +419,7 @@
       "update_when": [
         "파일 추가·삭제·이름 변경·역할/의존관계 변경·영향 검토"
       ],
-      "reviewed_in": "T020"
+      "reviewed_in": "T021"
     },
     {
       "path": "docs/ROADMAP.md",
@@ -442,7 +442,7 @@
       "update_when": [
         "단계 상태·현재/이전/다음 작업·완료 조건·추가 요구 변경"
       ],
-      "reviewed_in": "T020"
+      "reviewed_in": "T021"
     },
     {
       "path": "docs/WORKPLAN.md",
@@ -464,7 +464,7 @@
       "update_when": [
         "매 작업 착수·추가 요구·파일 변경·검증 결과·작업 종료"
       ],
-      "reviewed_in": "T020"
+      "reviewed_in": "T021"
     },
     {
       "path": "index.html",
@@ -721,7 +721,7 @@
       "update_when": [
         "설치·실행·검증·표본 범위·진입 문서·공개 상태 변경"
       ],
-      "reviewed_in": "T020"
+      "reviewed_in": "T021"
     },
     {
       "path": "docs/sources/CARD_API_AUDIT.md",
@@ -1159,7 +1159,7 @@
       "update_when": [
         "해당 범위/입력/완료조건·관계·권한/운영 근거 변경. reference의 과거 관측값은 덮어쓰지 않음"
       ],
-      "reviewed_in": "T020"
+      "reviewed_in": "T021"
     },
     {
       "path": "docs/DATA_LIFECYCLE.md",
@@ -1175,7 +1175,7 @@
       "update_when": [
         "해당 범위/입력/완료조건·관계·권한/운영 근거 변경. reference의 과거 관측값은 덮어쓰지 않음"
       ],
-      "reviewed_in": "T020"
+      "reviewed_in": "T021"
     },
     {
       "path": "docs/SIMULATOR_PLAN.md",
@@ -1334,7 +1334,7 @@
       "update_when": [
         "원본입력/병합보존·페이지/ID검증·report/CLI·발행/복구계약·중간요청범위 변경"
       ],
-      "reviewed_in": "T020"
+      "reviewed_in": "T021"
     },
     {
       "path": "docs/CHATGPT_WORK_HANDOFF.md",
@@ -1352,7 +1352,7 @@
       "update_when": [
         "사용자 범위/입력 상태·원격/로컬 반영·이관/검증 결과·지원 도구/작업 상태 변경"
       ],
-      "reviewed_in": "T020"
+      "reviewed_in": "T021"
     },
     {
       "path": "docs/FILE_SYNC_AUDIT.md",
@@ -1367,11 +1367,11 @@
       "update_when": [
         "사용자 범위/입력 상태·원격/로컬 반영·이관/검증 결과·지원 도구/작업 상태 변경"
       ],
-      "reviewed_in": "T020"
+      "reviewed_in": "T021"
     },
     {
       "path": "data/research/work-handoff-inputs.json",
-      "role": "T020 Git/Library 입력 메타·원문 검증 대기·대상 Work packs 수집 준비·Sites 의도적 이관 제외의 구조화 근거",
+      "role": "T020 원격/입력 이력과 T021 부모 환경의 실제Library v1 오프라인검증·사용자 중복제거설명/정상push승인·packs준비 상태",
       "priority": "P0",
       "related_paths": [
         "docs/CHATGPT_WORK_HANDOFF.md",
@@ -1382,7 +1382,7 @@
       "update_when": [
         "사용자 범위/입력 상태·원격/로컬 반영·이관/검증 결과·지원 도구/작업 상태 변경"
       ],
-      "reviewed_in": "T020"
+      "reviewed_in": "T021"
     }
   ]
 }
