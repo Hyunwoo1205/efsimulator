@@ -85,8 +85,8 @@
     },
     {
       "path": "library-file:libfile_cc5085f5c4788191b7c3707a66e0529a",
-      "role": "대상 Work players_raw.json v1/16,801,176bytes·47,397객체/고유문자열ID·중복0/SHA를부모환경이실제오프라인검증",
-      "check": "같은v1/SHA확인. 3,443차이는사용자설명상중복제거결과; 원래페이지/중복제거로그재검증안함. 페이지완주/현재성/팩관계/이미지실로드미검증. 전체재수집X/기존Work packs준비이어받기."
+      "role": "대상 Work의 players_raw.json v1. 16,801,176 bytes, 카드 객체·고유 문자열 ID 47,397개, 중복 0개와 SHA를 상위 환경이 오프라인 검증",
+      "check": "같은 v1과 SHA를 확인한다. 차이 3,443개는 사용자 설명상 중복 제거 결과다. 원본 로그는 재검증하지 않았으며 페이지 완전성·현재성·팩 관계·이미지 실제 로드는 별도다. 전체 재수집 없이 기존 Work의 packs 준비를 이어간다."
     }
   ],
   "files": [
@@ -402,7 +402,7 @@
       "update_when": [
         "빌드 명령·출력·라우팅·배포 설정·공개 검증 결과 변경"
       ],
-      "reviewed_in": "T020"
+      "reviewed_in": "T021"
     },
     {
       "path": "docs/FILE_SYNC.json",
@@ -1191,7 +1191,7 @@
       "update_when": [
         "해당 범위/입력/완료조건·관계·권한/운영 근거 변경. reference의 과거 관측값은 덮어쓰지 않음"
       ],
-      "reviewed_in": "T020"
+      "reviewed_in": "T021"
     },
     {
       "path": "data/research/probability-scope-baseline.json",
@@ -1371,7 +1371,7 @@
     },
     {
       "path": "data/research/work-handoff-inputs.json",
-      "role": "T020 원격/입력 이력과 T021 부모 환경의 실제Library v1 오프라인검증·사용자 중복제거설명/정상push승인·packs준비 상태",
+      "role": "T020 Git·입력 관측 이력과 T021의 Library v1 오프라인 검증·중복 제거 설명·work 푸시 승인·packs 준비 상태",
       "priority": "P0",
       "related_paths": [
         "docs/CHATGPT_WORK_HANDOFF.md",

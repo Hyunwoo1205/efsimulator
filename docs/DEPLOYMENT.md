@@ -1,8 +1,10 @@
 # 빌드·배포·무료 운영 계획
 
+> 최신 T021 승인: 문서와 기존 로컬 변경의 work 정상 푸시, 기존 CI·연결된 preview 확인은 허용됐다. main 병합, 배포 설정 변경, 새 자동화 활성화는 허용하지 않았다. 아래 T020의 미푸시 기록과 구분한다.
+
 이 문서는 [로드맵](ROADMAP.md)의 **R3/T012 검토용 미리보기 → 사용자 검토 → T013 운영 승인**, **R5/T016 자체 API 운영**, **R6/T018 3D**의 배포 기준이다. T020에서 **전체 누적 EFHub DB/API와 사이트용 현행 스냅샷을 분리하는 계획**을 반영했다. 기존 표본·이전 미리보기 성공을 새 두 계층 DB나 운영 배포 완료로 계승하지 않는다. 최신 상태·이전/현재/다음 작업은 [WORKPLAN](WORKPLAN.md)을 따른다.
 
-**이번 T020은 문서 점검·인수인계다.** T009의 비활성 API 선정 검증과 다른 Work의 raw 파일 존재는 배포 승인을 대신하지 않는다. 앱·활성 DB·설정·공개 생성물을 변경하거나 배포·서비스 활성화·Git push를 하지 않는다. 기존 코드의 로컬 비회귀 빌드와 읽기 전용 생성물 비교는 수행한다. Git push만으로 기존 Pages 미리보기가 자동 생성될 수 있으므로 계획 작성 중에는 원격 반영도 하지 않는다. 이전 배포 근거와 실패/수정 기록은 [원본 보존 문서](reference/DEPLOYMENT_BEFORE_PROBABILITY_SCOPE.md)에 남긴다.
+**이번 T020은 문서 점검·인수인계다.** T009의 비활성 API 선정 검증과 다른 Work의 raw 파일 존재는 배포 승인을 대신하지 않는다. 앱·활성 DB·설정·공개 생성물을 변경하거나 배포·서비스 활성화·당시에는 Git push를 하지 않았다. 기존 코드의 로컬 비회귀 빌드와 읽기 전용 생성물 비교는 수행한다. Git push만으로 기존 Pages 미리보기가 자동 생성될 수 있으므로 계획 작성 중에는 원격 반영도 하지 않는다. 이전 배포 근거와 실패/수정 기록은 [원본 보존 문서](reference/DEPLOYMENT_BEFORE_PROBABILITY_SCOPE.md)에 남긴다.
 
 ## 배포할 데이터의 두 계층
 
@@ -18,9 +20,9 @@
 | Node/npm | package·lock·.nvmrc·CI와 로컬 버전은 Node `24.19.0`·npm `11.9.0` | 버전 고정 유지. 실제 Pages 빌드 로그에서도 확인 |
 | 앱·빌드 | Node 내장 기능·정적 HTML/CSS/JS. `npm run build`는 seed 검증→SQLite staging→`dist`를 생성 | 새 대상 표본을 검증하는 같은 명령과 산출물 경계 유지. 3D 도구 추가 시 manifest·lock·빌드·테스트를 함께 갱신 |
 | Pages 설정 | 인수인계의 `exit 0`·출력 `/`는 과거 안내값. 현재 대시보드 build/output/root를 인증해 읽은 근거 없음 | 실제 설정을 먼저 기록하고 `dist` 직접 배포로 전환 |
-| 임시 호환 | `pages:export`가 `dist`의 고정 7파일을 루트의 추적 생성물로 내보냄. CI는 `pages:check`로 bytes만 검사 | 직접 `dist` 배포 검증 후 루트 사본·export 도구/테스트·CI·FILE_SYNC를 함께 정리 |
+| 임시 호환 | `pages:export`가 `dist`의 고정 7개 파일을 루트의 추적 생성물로 내보냄. CI는 `pages:check`로 bytes만 검사 | 직접 `dist` 배포 검증 후 루트 사본·export 도구/테스트·CI·FILE_SYNC를 함께 정리 |
 | 브랜치 | 로컬 `work`, 운영 의도는 `main`. 로컬 origin/main 기록은 앱 없는 초기 README 커밋. PR draft·운영 미병합 기록 | T012에서 검토용 SHA/URL 확인. 사용자 검토·운영 승인 후 T013에서 main 반영 |
-| 환경·비밀값 | 정적 앱용 secret·D1/R2 binding·Functions/Workers 선언 없음. Pages의 실제 환경변수 값은 미확인 | 전환 후보 `NODE_VERSION=24.19.0`, `SKIP_DEPENDENCY_INSTALL=1`을 실제 환경별 설정과 대조. 동적 서비스의 비밀값은 T016에서 서버에만 설정 |
+| 환경·비밀값 | 정적 앱용 secret·D1/R2 binding·Functions/Workers 선언 없음. Pages의 실제 환경 변수 값은 미확인 | 전환 후보 `NODE_VERSION=24.19.0`, `SKIP_DEPENDENCY_INSTALL=1`을 실제 환경별 설정과 대조. 동적 서비스의 비밀값은 T016에서 서버에만 설정 |
 | DB·API | SQLite는 로컬 빌드 검증/이력용. `serve.mjs`는 정적 미리보기. 상시 자체 API·새 2계층 DB 없음 | 전체 누적 DB/API와 현행 사이트 스냅샷의 저장·권한·버전/발행 경계를 나누고 R5/T016에서 갱신·지속 저장/복구를 운영 검증 |
 | 3D 자산 | 현재 3D 모델·압축·청크 빌드·성능 검증 없음 | R6/T018에서 자산 권리·최적화·모바일 실측을 통과한 정적 자산만 배포 |
 
@@ -47,12 +49,12 @@ npx --yes npm@11.9.0 ci --ignore-scripts --no-audit --no-fund && npx --yes npm@1
    ```
 
    `data:prepare` 전후 차이는 검토한다. 미리보기 실행 후 선택적 `npm run test:browser`를 사용한다. 기존 루트 호환 배포를 사용하는 동안에는 `npm run pages:export` 후 `npm run pages:check`까지 통과해야 한다. CI가 export로 차이를 자동 수정하게 만들지 않는다.
-3. **검토용 배포:** 구현 단계에서 허용된 브랜치의 기존 Git 연동 preview를 사용한다. 같은 SHA의 CI·실제 배포 커밋·runtime/output·공개 파일·필수 데이터·이미지·직접 주소/새로고침·모바일을 검증한다. 없는 JSON/자산은404여야 하며 상세 주소를 홈으로 redirect하지 않아야 한다.
+3. **검토용 배포:** 구현 단계에서 허용된 브랜치의 기존 Git 연동 preview를 사용한다. 같은 SHA의 CI·실제 배포 커밋·runtime/output·공개 파일·필수 데이터·이미지·직접 주소/새로고침·모바일을 검증한다. 없는 JSON/자산은 404여야 하며 상세 주소를 홈으로 redirect하지 않아야 한다.
 4. **사용자 검토:** URL, SHA, 화면/필요한 모션 캡처, 확보한 명단·카드와 미확인 필드, 설정 변경 전/후, 성능·비용 예상과 남은 제한을 제시한다. 사용자의 수정 의견을 반영하고 같은 절차로 검토판을 갱신한다.
 
-이전 Pages 미리보기에서는 `/index.html` 재작성으로 상세 주소가308/홈 이동하는 문제가 있었다. 실제 앱 경로를 `/ 200`으로 재작성하고 원격 상세200·Location없음·원래 URL 유지·새로고침·없는 자산404를 다시 검사한다. 로컬 서버 성공을 원격 라우팅 검증으로 대체하지 않는다.
+이전 Pages 미리보기에서는 `/index.html` 재작성으로 상세 주소가 308/홈 이동하는 문제가 있었다. 실제 앱 경로를 `/ 200`으로 재작성하고 원격 상세 200·Location 없음·원래 URL 유지·새로고침·없는 자산 404를 다시 검사한다. 로컬 서버 성공을 원격 라우팅 검증으로 대체하지 않는다.
 
-### `dist` 전환과 7파일 호환의 정리 순서
+### `dist` 전환과 7개 파일 호환의 정리 순서
 
 현재 main의 앱 준비와 Pages의 브랜치별 빌드 설정 격리는 확인이 필요하다. 프로젝트 전역을 먼저 npm build/dist로 바꾸면 manifest가 없는 이전 main 재빌드가 실패할 수 있다.
 
@@ -70,7 +72,7 @@ npx --yes npm@11.9.0 ci --ignore-scripts --no-audit --no-fund && npx --yes npm@1
 
 ## R5/T016 — 정적 사이트와 자체 API 운영
 
-Pages는 화면·정적 자산과 사이트용 현행 스냅샷을 전달한다. 전체 누적 자체 API는 허용된 범위의 카드/팩·revision·발행 상태를 제공하고, 사이트 빌드/동기화는 그 API 또는 검증된 export를 받아 현행 대상만 추출한다. 수집/갱신 writer는 허용된 출처의 관측→검증→누적 추가/개정 보존→사이트 추출→발행·복구를 맡는다. 사용자 요청마다 외부 사이트를 수집하거나 빌드용 SQLite를 그대로 공개하지 않는다. 누적 계층의 무삭제와 활성 API/검색/캐시 제외를 [데이터 수명주기](DATA_LIFECYCLE.md)에 따라 분리한다.
+Pages는 화면·정적 자산과 사이트용 현행 스냅샷을 전달한다. 전체 누적 자체 API는 허용된 범위의 카드/팩·revision·발행 상태를 제공하고, 사이트 빌드/동기화는 그 API 또는 검증된 export를 받아 현행 대상만 추출한다. 수집/갱신 writer는 허용된 출처의 관측→검증→누적 추가/개정 보존→사이트 추출→발행·복구를 맡는다. 사용자 요청마다 외부 사이트를 수집하거나 빌드용 SQLite를 그대로 공개하지 않는다. 누적 계층의 무삭제와 활성 API/검색/캐시 제외를 [데이터 수명 주기](DATA_LIFECYCLE.md)에 따라 분리한다.
 
 스케줄러·서비스 계정·API 서버·새 폴더 구조·주기·보관 비용은 후속 구현에서 확정한다. 신규 카드/팩과 수정 revision을 실제 반영한 증거, 멱등 재실행, 백업/롤백, 사이트의 판매 종료 제외와 누적 보존을 각각 검증하기 전에는 자동 갱신 운영 완료라고 기록하지 않는다.
 
@@ -82,12 +84,12 @@ Pages는 화면·정적 자산과 사이트용 현행 스냅샷을 전달한다.
 
 | 서비스 | 공식 무료 기준 | 계획에 반영할 조건 |
 | --- | --- | --- |
-| [Pages](https://developers.cloudflare.com/pages/platform/limits/) | 월500빌드·동시1·빌드20분·20,000파일·파일당25MiB, 정적 요청/대역폭 무료 | 빌드·preview/재시도 예산과 파일수/최대파일을 측정. 변경 없는 수집을 매번 배포하지 않음 |
-| [Functions](https://developers.cloudflare.com/pages/functions/pricing/) / [Workers](https://developers.cloudflare.com/workers/platform/limits/) | Workers Free 하루100,000요청·요청당CPU10ms·메모리128MB | 정적과 별도. 계정 내 공유량과 실제 CPU/메모리를 확인하며 무거운 시뮬레이션/3D 렌더를 API 처리로 전제하지 않음 |
-| [D1 한도](https://developers.cloudflare.com/d1/platform/limits/)·[요금](https://developers.cloudflare.com/d1/platform/pricing/) | Free DB당500MB·계정5GB, 일 읽기500만행·쓰기10만행 | 쿼리/인덱스·갱신·보존 정책의 실제 행 사용량과 DB 용량 검증 |
-| [R2 Standard](https://developers.cloudflare.com/r2/pricing/) | 월10GB-month·Class A100만·Class B1,000만, egress 무료 | 초과 시 비용 가능. r2.dev는 개발용이라는 부모 확인을 따르며, 운영 자산 제공 문서·경로·캐시/CORS를 활성화 전에 별도로 확인 |
-| [OCI Always Free A1](https://docs.oracle.com/en-us/iaas/Content/FreeTier/freetier_topic-Always_Free_Resources.htm) | 월1,500OCPU시간·9,000GB시간, 2OCPU·12GB RAM 규모 | ARM64·실제 저장/전송·운영/백업·idle 회수·가용 용량 부족 가능성 확인. 보유 사실과 현재 접속/운영 가능을 구분 |
+| [Pages](https://developers.cloudflare.com/pages/platform/limits/) | 월 500 빌드·동시 1·빌드 20분·20,000 파일·파일당 25MiB, 정적 요청/대역폭 무료 | 빌드·preview/재시도 예산과 파일 수/최대 파일을 측정. 변경 없는 수집을 매번 배포하지 않음 |
+| [Functions](https://developers.cloudflare.com/pages/functions/pricing/) / [Workers](https://developers.cloudflare.com/workers/platform/limits/) | Workers Free 하루 100,000 요청·요청당 CPU 10ms·메모리 128MB | 정적과 별도. 계정 내 공유량과 실제 CPU/메모리를 확인하며 무거운 시뮬레이션/3D 렌더를 API 처리로 전제하지 않음 |
+| [D1 한도](https://developers.cloudflare.com/d1/platform/limits/)·[요금](https://developers.cloudflare.com/d1/platform/pricing/) | Free DB당 500MB·계정 5GB, 일 읽기 500만 행·쓰기 10만 행 | 쿼리/인덱스·갱신·보존 정책의 실제 행 사용량과 DB 용량 검증 |
+| [R2 Standard](https://developers.cloudflare.com/r2/pricing/) | 월 10GB-month·Class A 100만·Class B 1,000만, egress 무료 | 초과 시 비용 가능. r2.dev는 개발용이라는 부모 확인을 따르며, 운영 자산 제공 문서·경로·캐시/CORS를 활성화 전에 별도로 확인 |
+| [OCI Always Free A1](https://docs.oracle.com/en-us/iaas/Content/FreeTier/freetier_topic-Always_Free_Resources.htm) | 월 1,500 OCPU 시간·9,000 GB 시간, 2 OCPU·12GB RAM 규모 | ARM64·실제 저장/전송·운영/백업·idle 회수·가용 용량 부족 가능성 확인. 보유 사실과 현재 접속/운영 가능을 구분 |
 
 3D는 브라우저에서 렌더하고 Pages에는 압축한 모델·텍스처·코드를 제공하는 구성을 우선한다. 사용 권리·mesh/texture 압축·scene/LOD 분할·필요 시점 지연 로딩·2D 대체 표시를 검증한다. 현재 빌드는 자산을 복사할 뿐 자동 모델 압축·번들 최적화는 구현하지 않았다.
 
-대표 데스크톱·모바일에서 최초 다운로드·상호작용 지연·프레임/메모리·파일수·최대파일·빌드 시간과 월 요청/저장 비용을 측정한다. 압축/분할 후에도 Pages 한도나 운영 특성에 맞지 않을 때 R2와 OCI를 비교한다. **3D 추가만으로 OCI 이전이나 R2 활성화를 확정하지 않는다.** 별도 서비스·추가 비용의 필요성이 생기면 검토할 구체적인 구성과 예상액을 제시한다.
+대표 데스크톱·모바일에서 최초 다운로드·상호작용 지연·프레임/메모리·파일 수·최대 파일·빌드 시간과 월 요청/저장 비용을 측정한다. 압축/분할 후에도 Pages 한도나 운영 특성에 맞지 않을 때 R2와 OCI를 비교한다. **3D 추가만으로 OCI 이전이나 R2 활성화를 확정하지 않는다.** 별도 서비스·추가 비용의 필요성이 생기면 검토할 구체적인 구성과 예상액을 제시한다.

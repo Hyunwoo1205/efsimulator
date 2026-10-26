@@ -4,35 +4,35 @@
 
 ## 점검 범위와 판정
 
-- 시작 Git 추적76개=FILE_SYNC76개(P0 42/P1 24/P2 10), 등록누락/중복/삭제경로잔존/잘못된연관경로0. 독립 읽기 감사의 관리검사76파일/20작업 통과.
-- 최종 신규3개: CHATGPT_WORK_HANDOFF, 이 보고서, work-handoff-inputs.json. 아래 모든 관리 경로를 T020에서 검토했다. 설치물/캐시/빌드 출력/artifacts는 관리 제외이며 GitHub에 있다는 뜻이 아니다.
-- 문서 정책 충돌을 정리했다. 과거 출처7개 상단의 ‘확률표만/Standard·전역제외’는 역사성 안내로 바꾸고 원래 관측 본문·JSON은 보존했다. reference로 옮긴4문서의 깨진 상대 링크17개는 타깃 경로만 정정했다. T009 실패/미통과를 성공으로 바꾸지 않았다.
-- 실제 전체 누적 DB/API·현행 projection·현재 판매/종료/신선도 필터는 미구현이다. 기존9상품83카드/감독0·모든availability unknown/기간null/구성partial. catalog의전체구성complete와새특수집합/data_ready/simulation_ready는후속에서분리해야한다.
-- 추적 공개7파일과 기존dist는 시작 시 바이트 일치. 이번에도 기존코드/seed/공개파일/잠금/워크플로·관측 JSON을 변경하지 않는다. 별도 Sites 초기소스와번들은 사용자 최신 지시로 이관 제외하며 실제앱index는보존한다.
+- 시작 Git 추적 76개=FILE_SYNC 76개(P0 42/P1 24/P2 10), 등록 누락/중복/삭제 경로 잔존/잘못된 연관 경로 0. 독립 읽기 감사의 관리 검사 76파일/20작업 통과.
+- 최종 신규 3개: CHATGPT_WORK_HANDOFF, 이 보고서, work-handoff-inputs.json. 아래 모든 관리 경로를 T020에서 검토했다. 설치물/캐시/빌드 출력/artifacts는 관리 제외이며 GitHub에 있다는 뜻이 아니다.
+- 문서 정책 충돌을 정리했다. 과거 출처 7개 상단의 ‘확률표만/Standard·전역 제외’는 역사성 안내로 바꾸고 원래 관측 본문·JSON은 보존했다. reference로 옮긴 4문서의 깨진 상대 링크 17개는 타깃 경로만 정정했다. T009 실패/미통과를 성공으로 바꾸지 않았다.
+- 실제 전체 누적 DB/API·현행 projection·현재 판매/종료/신선도 필터는 미구현이다. 기존 9상품 83카드/감독 0·모든 availability unknown/기간 null/구성 partial. catalog의 전체 구성 complete와 새 특수 집합/data_ready/simulation_ready는 후속에서 분리해야 한다.
+- 추적 공개 7파일과 기존 dist는 시작 시 바이트 일치. 이번에도 기존 코드/seed/공개 파일/잠금/워크플로·관측 JSON을 변경하지 않는다. 별도 Sites 초기 소스와 번들은 사용자 최신 지시로 이관 제외하며 실제 앱 index는 보존한다.
 
-## GitHub 반영과 이관 한계
+## T020 당시 GitHub 반영 상태와 이관 한계
 
-직접 `git ls-remote`로 원격 main=`d8891f241e113632884445d60746d9e059a1583b`, work=`5d2cc0abe63f102084e226f9ee385487420aadb5` 확인. 시작로컬d7f3068은 work보다3/main보다17커밋 앞섰다. T020도 미푸시다. 원격main은README하나뿐이고 원격work만 연결해도 최신계획/API검증/병합도구/이번문서가빠진다. 본저장소work bundle과receipt를준비하며 push/merge/deploy는하지않는다.
+직접 `git ls-remote`로 원격 main=`d8891f241e113632884445d60746d9e059a1583b`, work=`5d2cc0abe63f102084e226f9ee385487420aadb5` 확인. 시작 로컬 d7f3068은 work보다 3/main보다 17커밋 앞섰다. T020도 미푸시다. 원격 main은 README 하나뿐이고 원격 work만 연결해도 최신 계획/API 검증/병합 도구/이번 문서가 빠진다. 본 저장소 work bundle과 receipt를 준비하며 push/merge/deploy는 하지 않는다.
 
-원래76개 밖의 Sites 초기4파일은 의도적 이관 제외다. Git 비추적 artifacts/저장소밖 환경도구/Library파일도 GitHub에 없다. IGNORED_ARTIFACTS 목록은 원문 백업 자체가 아니므로 필요한 고유 원문은 별도 지원 파일 전달이 필요하다. credential/env/쿠키를 옮기지 않는다.
+원래 76개 밖의 Sites 초기 4파일은 의도적 이관 제외다. Git 비추적 artifacts/저장소 밖 환경도구/Library 파일도 GitHub에 없다. IGNORED_ARTIFACTS 목록은 원문 백업 자체가 아니므로 필요한 고유 원문은 별도 지원 파일 전달이 필요하다. credential/env/쿠키를 옮기지 않는다.
 
 ## T020 당시 raw 입력과 도구 한계
 
-대상Work는 players raw 제작 완료 보고, packs 수집 준비 중이다. Library 메타로 players_raw.json/version1/16,801,176bytes/수정2026-10-26T01:23:42.466991Z 및 ID를 전달받았다. 현task에는Library materialize/upload도구가없어내용/SHA/행/ID/필수필드/정밀도/페이지근거는미검증이다. File Service ID를Sediment도구에넣지않고 재수집하지않았다. 이미지요청0. packs준비를완료로승격하지않고 기존대상채팅의출력/체크포인트를이어받는다. 팩구성관계는별도다.
+대상 Work는 players raw 제작 완료 보고, packs 수집 준비 중이다. Library 메타로 players_raw.json/version 1/16,801,176 bytes/수정 2026-10-26T01:23:42.466991Z 및 ID를 전달받았다. 현 task에는 Library materialize/upload 도구가 없어 내용/SHA/행/ID/필수 필드/정밀도/페이지 근거는 미검증이다. File Service ID를 Sediment 도구에 넣지 않고 재수집하지 않았다. 이미지 요청 0. packs 준비를 완료로 승격하지 않고 기존 대상 채팅의 출력/체크포인트를 이어받는다. 팩 구성 관계는 별도다.
 
-공식마지막관측은2026-10-25 15:21UTC이다. 그때7개중Midfielders종료는10월26일10:59:59KST로이번점검시각에이미지났다. 이번공식재요청은0이며 예전7개를현재목록으로쓰지않는다.
+공식 마지막 관측은 2026-10-25 15:21 UTC이다. 그때 7개 중 Midfielders 종료는 10월 26일 10:59:59 KST로 이번 점검 시각에 이미 지났다. 이번 공식 재요청은 0이며 예전 7개를 현재 목록으로 쓰지 않는다.
 
 ## T021 후속 검증과 최신 사용자 승인
 
-부모환경이Library players_raw.json v1을실제로오프라인검증한결과를전달했다. 16,801,176bytes·SHA256 `16b5ac4919480bbbf8e5158946322fac1f406f0d66701c4d52c9274107dc94c4`·최상위배열47,397객체/고유decimal-string ID47,397,중복ID/충돌/중복키0이다. name/imageUrl/overallRating/playerType는모두존재·nonnull·nonempty, OVR정수40~102/타입정수1~8(명칭/OVR조건미검증). nationality/nationalityCode전빈/nameZh795빈; playingStyle7,927/playingStyleDefensive42,561미존재를구분한다.
+부모 환경이 Library players_raw.json v1을 실제로 오프라인 검증한 결과를 전달했다. 16,801,176 bytes·SHA256 `16b5ac4919480bbbf8e5158946322fac1f406f0d66701c4d52c9274107dc94c4`·최상위 배열 47,397 객체/고유 decimal-string ID 47,397, 중복 ID/충돌/중복 키 0이다. name/imageUrl/overallRating/playerType는 모두 존재·nonnull·nonempty, OVR 정수 40~102/타입 정수 1~8(명칭/OVR 조건 미검증). nationality/nationalityCode 전 빈/nameZh 795 빈; playingStyle 7,927/playingStyleDefensive 42,561 미존재를 구분한다.
 
-사용자설명상50,840→47,397의3,443차이는중복제거결과다. 현재파일고유ID검증과원래중복제거로그검증은별개이며후자는실행하지않았다. 페이지/커서/출처/수집시각/total메타가없어원래페이지완주/현재성·팩관계·이미지실로드는미검증이다. 누락의심을주요차단요인으로삼거나전체재수집하지않는다. 대상Work의packs수집준비를기존출력/체크포인트에서이어받는다.
+사용자 설명상 50,840→47,397의 3,443 차이는 중복 제거 결과다. 현재 파일 고유 ID 검증과 원래 중복 제거 로그 검증은 별개이며 후자는 실행하지 않았다. 페이지/커서/출처/수집 시각/total 메타가 없어 원래 페이지 완주/현재성·팩 관계·이미지 실로드는 미검증이다. 누락 의심을 주요 차단 요인으로 삼거나 전체 재수집하지 않는다. 대상 Work의 packs 수집 준비를 기존 출력/체크포인트에서 이어받는다.
 
-최신명시승인은기존미푸시커밋/최신검증문서를원격work에정상push하고기존CI/연결preview트리거를확인하는범위다. 원격5d2cc0a를재확인/fetch했고현재이력의선조임을확인했다. 강제push/main병합/배포설정변경/새자동화는금지한다. 이관은GitHub work우선이며bundle은선택백업이다. T021관리검사79파일/22작업/변경13경로·상대링크149개/diff검사통과. 실제원격SHA/CI와선택bundle최종해시는후속receipt/최종보고로확인한다. 별도Sites초기소스는계속이관제외다.
+최신 명시 승인은 기존 미푸시 커밋/최신 검증 문서를 원격 work에 정상 push하고 기존 CI/연결 preview 트리거를 확인하는 범위다. 원격 5d2cc0a를 재확인/fetch했고 현재 이력의 선조임을 확인했다. 강제 push/main 병합/배포 설정 변경/새 자동화는 금지한다. 이관은 GitHub work 우선이며 bundle은 선택 백업이다. T021 관리 검사 79파일/22작업/변경 13경로·상대 링크 149개/diff 검사 통과. 실제 원격 SHA/CI와 선택 bundle 최종 해시는 후속 receipt/최종 보고로 확인한다. 별도 Sites 초기 소스는 계속 이관 제외다.
 
 ## 최종 검증
 
-전체 Node224/224, data:prepare(9상품83카드), build, Pages 공개7파일 비교, web/app.js 문법 검사를 통과했다. 코드/테스트/seed/공개7파일/워크플로/잠금과 기존 관측JSON은 기준커밋과 동일하다. UI 변경이 없어 브라우저 재검증은 하지 않았다. 최종 관리검사79파일/22작업/변경28경로, Markdown 상대링크149개와 diff 검사가 통과했다. bundle/최종HEAD·해시는 커밋 후 생성하는 MIGRATION_RECEIPT.json을 따른다.
+전체 Node 224/224, data:prepare(9상품 83카드), build, Pages 공개 7파일 비교, web/app.js 문법 검사를 통과했다. 코드/테스트/seed/공개 7파일/워크플로/잠금과 기존 관측 JSON은 기준 커밋과 동일하다. UI 변경이 없어 브라우저 재검증은 하지 않았다. 최종 관리 검사 79파일/22작업/변경 28경로, Markdown 상대 링크 149개와 diff 검사가 통과했다. bundle/최종 HEAD·해시는 커밋 후 생성하는 MIGRATION_RECEIPT.json을 따른다.
 
 ## T020 전수 파일별 역할·우선순위·당시 결과
 
@@ -48,18 +48,18 @@
 | `_headers` | P0 | Pages root 배포용 추적 생성물; scripts/build.mjs를 기준으로 build/export하며 직접 수정 금지 | 검토 결과 변경 불필요: 기존 표본/공개 호환 생성물 바이트 보존. 별도 Sites 초기 페이지와 무관하며 삭제/재생성 안 함 |
 | `_redirects` | P0 | Pages root 배포용 추적 생성물; scripts/build.mjs를 기준으로 build/export하며 직접 수정 금지 | 검토 결과 변경 불필요: 기존 표본/공개 호환 생성물 바이트 보존. 별도 Sites 초기 페이지와 무관하며 삭제/재생성 안 함 |
 | `app.js` | P0 | Pages root 배포용 추적 생성물; web/app.js를 기준으로 build/export하며 직접 수정 금지 | 검토 결과 변경 불필요: 기존 표본/공개 호환 생성물 바이트 보존. 별도 Sites 초기 페이지와 무관하며 삭제/재생성 안 함 |
-| `data/catalog.json` | P0 | 이전 정적 표본 공개 JSON 생성 사본; 새 공식대상/가상슬롯 미반영 | 검토 결과 변경 불필요: 기존 표본/공개 호환 생성물 바이트 보존. 별도 Sites 초기 페이지와 무관하며 삭제/재생성 안 함 |
-| `data/catalog.seed.json` | P0 | 이전9상품83카드 누적 표본 원본; 새 공식대상/가상슬롯 미반영·원본 보존 | 검토 결과 변경 불필요: 기존 표본/공개 호환 생성물 바이트 보존. 별도 Sites 초기 페이지와 무관하며 삭제/재생성 안 함 |
+| `data/catalog.json` | P0 | 이전 정적 표본 공개 JSON 생성 사본; 새 공식 대상/가상 슬롯 미반영 | 검토 결과 변경 불필요: 기존 표본/공개 호환 생성물 바이트 보존. 별도 Sites 초기 페이지와 무관하며 삭제/재생성 안 함 |
+| `data/catalog.seed.json` | P0 | 이전 9상품 83카드 누적 표본 원본; 새 공식 대상/가상 슬롯 미반영·원본 보존 | 검토 결과 변경 불필요: 기존 표본/공개 호환 생성물 바이트 보존. 별도 Sites 초기 페이지와 무관하며 삭제/재생성 안 함 |
 | `data/research/card-api-audit.json` | P0 | 실제 전체 카드 감사의 403·0쪽·미완료와 정상 UI 형식 진단 결과 | 검토 결과 변경 불필요: 역사적 원관측/실패·필드 근거 그대로 보존. 새 정책은 문서/별도 입력 메타에 기록 |
 | `data/research/current-catalog-observations.json` | P0 | 정상 재수집한 9개 상품과 카드 payload·목록/상세 원문 근거 | 검토 결과 변경 불필요: 역사적 원관측/실패·필드 근거 그대로 보존. 새 정책은 문서/별도 입력 메타에 기록 |
 | `data/research/followup-observations.json` | P0 | 후속 10회 요청·원문·상품/지역/플랫폼 범위·미확인 근거 | 검토 결과 변경 불필요: 역사적 원관측/실패·필드 근거 그대로 보존. 새 정책은 문서/별도 입력 메타에 기록 |
 | `data/research/source-observations.json` | P0 | 실제 HTTP 관측·필드·원문 근거·미확인 범위의 조사 증거 | 검토 결과 변경 불필요: 역사적 원관측/실패·필드 근거 그대로 보존. 새 정책은 문서/별도 입력 메타에 기록 |
-| `docs/ARCHITECTURE.md` | P0 | 공급자 중립ID/원본매핑·공식회차/특수 완전성/가상Standard·staging DB 설계; 미구현 계획 | 수정: 두 계층 경계/전체 누적 무삭제·개정·현행 발행·raw 검증/준비 상태와 후속 게이트 반영 |
-| `docs/COLLECTION.md` | P0 | 공식 대상 API선정 검증용 수집→정식특수수집→개별/이미지저장 검증·실패 보호 계획 | 수정: 두 계층 경계/전체 누적 무삭제·개정·현행 발행·raw 검증/준비 상태와 후속 게이트 반영 |
-| `docs/DEPLOYMENT.md` | P0 | 현재 확인 빌드/설정 대 미확인값·검토/운영게이트·Pages/자체API/자산/OCI 비교 계획 | 수정: 두 계층 경계/전체 누적 무삭제·개정·현행 발행·raw 검증/준비 상태와 후속 게이트 반영 |
-| `docs/FILE_SYNC.json` | P0 | 관리 파일 역할·연관 경로·우선순위·갱신 조건·검토 작업의 단일 목록 | 수정: 신규3파일·관련 경로/역할·전수 T020 검토·외부 입력 메타 등록 |
-| `docs/ROADMAP.md` | P0 | 공식KR확률표 대상의 새 R0~R6·완료조건·이전단계 대응·현재/이전/다음 | 수정: 누적 무삭제/개정과 공식 유효 사이트 범위·단계/순서/이전 진척 대응 갱신 |
-| `docs/WORKPLAN.md` | P0 | 새 T008~T018 실행계획·조건/입출력/검증·이전 작업 매핑·매 작업 파일 최신화 | 수정: C042~C047·T020/T021과 후속 계획·전수 파일 판정·현재/이전/다음 갱신 |
+| `docs/ARCHITECTURE.md` | P0 | 공급자 중립 ID/원본 매핑·공식 회차/특수 완전성/가상 Standard·staging DB 설계; 미구현 계획 | 수정: 두 계층 경계/전체 누적 무삭제·개정·현행 발행·raw 검증/준비 상태와 후속 게이트 반영 |
+| `docs/COLLECTION.md` | P0 | 공식 대상 API 선정 검증용 수집→정식 특수 수집→개별/이미지 저장 검증·실패 보호 계획 | 수정: 두 계층 경계/전체 누적 무삭제·개정·현행 발행·raw 검증/준비 상태와 후속 게이트 반영 |
+| `docs/DEPLOYMENT.md` | P0 | 현재 확인 빌드/설정 대 미확인 값·검토/운영 게이트·Pages/자체 API/자산/OCI 비교 계획 | 수정: 두 계층 경계/전체 누적 무삭제·개정·현행 발행·raw 검증/준비 상태와 후속 게이트 반영 |
+| `docs/FILE_SYNC.json` | P0 | 관리 파일 역할·연관 경로·우선순위·갱신 조건·검토 작업의 단일 목록 | 수정: 신규 3파일·관련 경로/역할·전수 T020 검토·외부 입력 메타 등록 |
+| `docs/ROADMAP.md` | P0 | 공식 KR 확률표 대상의 새 R0~R6·완료 조건·이전 단계 대응·현재/이전/다음 | 수정: 누적 무삭제/개정과 공식 유효 사이트 범위·단계/순서/이전 진척 대응 갱신 |
+| `docs/WORKPLAN.md` | P0 | 새 T008~T018 실행 계획·조건/입출력/검증·이전 작업 매핑·매 작업 파일 최신화 | 수정: C042~C047·T020/T021과 후속 계획·전수 파일 판정·현재/이전/다음 갱신 |
 | `index.html` | P0 | Pages root 배포용 추적 생성물; web/index.html를 기준으로 build/export하며 직접 수정 금지 | 검토 결과 변경 불필요: 기존 표본/공개 호환 생성물 바이트 보존. 별도 Sites 초기 페이지와 무관하며 삭제/재생성 안 함 |
 | `package-lock.json` | P0 | npm 의존성·루트 런타임 선언의 재현 가능한 잠금 파일 | 검토 결과 변경 불필요: 실행/의존/CI/제외 규칙은 변경 요구 없음. 기존 검사로 확인하고 push/배포 설정 유지 |
 | `package.json` | P0 | 관리·도메인·데이터 표본·정적 사이트·미리보기·브라우저 명령과 도구 버전 선언 | 검토 결과 변경 불필요: 실행/의존/CI/제외 규칙은 변경 요구 없음. 기존 검사로 확인하고 push/배포 설정 유지 |
@@ -97,25 +97,25 @@
 | `docs/reference/retired-manager-product.test.mjs.txt` | P2 | 비활성 옛 수동 감독 사례의 테스트 코드 보존; 자동 테스트 대상 아님 | 검토 결과 변경 불필요: 과거 설계/작업·비활성 감독 자료 원문으로 보존. 최신 실행 지침은 현 문서가 우선 |
 | `docs/sources/MANAGER_PRODUCT_RESEARCH.md` | P2 | 비활성 감독 API/관계 조사 기록; 활성 데이터나 추가 개별 조사의 근거로 사용하지 않음 | 수정: 최신 누적층/사이트층 안내를 정정하고 과거 관측·수치·실패 본문은 보존 |
 | `docs/sources/MOURINHO_PRODUCT_RESEARCH.md` | P2 | 비활성 수동 상품·감독 관계 조사 원본과 한계 보존 | 수정: 최신 누적층/사이트층 안내를 정정하고 과거 관측·수치·실패 본문은 보존 |
-| `data/research/roster-source-observations.json` | P0 | T005의 403 원인/근거 한계·상품별 소개목록/타입·공식 초기풀·후보API 관측과 미확인 보존 | 검토 결과 변경 불필요: 역사적 원관측/실패·필드 근거 그대로 보존. 새 정책은 문서/별도 입력 메타에 기록 |
-| `docs/sources/FULL_ROSTER_RESEARCH.md` | P1 | Standard 포함 초기 전체 선수 풀과 소개목록을 구분한 후보 조사·403 결론·기존 단계별 실증 계획/완료조건 | 수정: 최신 누적층/사이트층 안내를 정정하고 과거 관측·수치·실패 본문은 보존 |
-| `data/research/data-supply-chain-observations.json` | P0 | 공급망/사이트API·실측PesLig행감사 이력과 후속10DB/커뮤니티·인용정정·현행우선 근거; raw전체응답미포함 | 검토 결과 변경 불필요: 역사적 원관측/실패·필드 근거 그대로 보존. 새 정책은 문서/별도 입력 메타에 기록 |
-| `docs/sources/DATA_SUPPLY_CHAIN.md` | P1 | 사이트별 원본→정규화/저장→사이트API→갱신 근거와 실제 확보 경로·제약·가상Standard 보류 조건 | 수정: 최신 누적층/사이트층 안내를 정정하고 과거 관측·수치·실패 본문은 보존 |
-| `data/research/current-shop-observations.json` | P0 | 이전 현행상점/EFHub60행·표적3건·PS부록의 원본 조사 이력; 새 기준은 별도 probability baseline | 검토 결과 변경 불필요: 역사적 원관측/실패·필드 근거 그대로 보존. 새 정책은 문서/별도 입력 메타에 기록 |
-| `docs/sources/CURRENT_SHOP_COVERAGE.md` | P1 | 유일 대상 KR확률표 최신7개 기준과 미기재필드·이전 EFHub/상점 범위 조사 이력 분리 | 수정: 최신 누적층/사이트층 안내를 정정하고 과거 관측·수치·실패 본문은 보존 |
+| `data/research/roster-source-observations.json` | P0 | T005의 403 원인/근거 한계·상품별 소개 목록/타입·공식 초기 풀·후보 API 관측과 미확인 보존 | 검토 결과 변경 불필요: 역사적 원관측/실패·필드 근거 그대로 보존. 새 정책은 문서/별도 입력 메타에 기록 |
+| `docs/sources/FULL_ROSTER_RESEARCH.md` | P1 | Standard 포함 초기 전체 선수 풀과 소개 목록을 구분한 후보 조사·403 결론·기존 단계별 실증 계획/완료 조건 | 수정: 최신 누적층/사이트층 안내를 정정하고 과거 관측·수치·실패 본문은 보존 |
+| `data/research/data-supply-chain-observations.json` | P0 | 공급망/사이트 API·실측 PesLig 행 감사 이력과 후속 10DB/커뮤니티·인용 정정·현행 우선 근거; raw 전체 응답 미포함 | 검토 결과 변경 불필요: 역사적 원관측/실패·필드 근거 그대로 보존. 새 정책은 문서/별도 입력 메타에 기록 |
+| `docs/sources/DATA_SUPPLY_CHAIN.md` | P1 | 사이트별 원본→정규화/저장→사이트 API→갱신 근거와 실제 확보 경로·제약·가상 Standard 보류 조건 | 수정: 최신 누적층/사이트층 안내를 정정하고 과거 관측·수치·실패 본문은 보존 |
+| `data/research/current-shop-observations.json` | P0 | 이전 현행 상점/EFHub 60행·표적 3건·PS 부록의 원본 조사 이력; 새 기준은 별도 probability baseline | 검토 결과 변경 불필요: 역사적 원관측/실패·필드 근거 그대로 보존. 새 정책은 문서/별도 입력 메타에 기록 |
+| `docs/sources/CURRENT_SHOP_COVERAGE.md` | P1 | 유일 대상 KR 확률표 최신 7개 기준과 미기재 필드·이전 EFHub/상점 범위 조사 이력 분리 | 수정: 최신 누적층/사이트층 안내를 정정하고 과거 관측·수치·실패 본문은 보존 |
 | `docs/API_SELECTION.md` | P0 | 공식 대상 특수 카드 API 후보·필수 선정 조건·검증 경로·미확인과 용도별 우선순위 | 수정: 두 계층 경계/전체 누적 무삭제·개정·현행 발행·raw 검증/준비 상태와 후속 게이트 반영 |
 | `docs/DATA_LIFECYCLE.md` | P0 | 공식 목록 diff·안전한 상태전이·얇은 아카이브·캐시·원자적 발행·자체 API/백업 운영 계획 | 수정: 두 계층 경계/전체 누적 무삭제·개정·현행 발행·raw 검증/준비 상태와 후속 게이트 반영 |
-| `docs/SIMULATOR_PLAN.md` | P1 | 기반 운영 검증 뒤 추첨/가상 Standard·카드연출·3D/모바일/접근성 단계별 계획 | 수정: 두 계층 경계/전체 누적 무삭제·개정·현행 발행·raw 검증/준비 상태와 후속 게이트 반영 |
+| `docs/SIMULATOR_PLAN.md` | P1 | 기반 운영 검증 뒤 추첨/가상 Standard·카드 연출·3D/모바일/접근성 단계별 계획 | 수정: 두 계층 경계/전체 누적 무삭제·개정·현행 발행·raw 검증/준비 상태와 후속 게이트 반영 |
 | `data/research/probability-scope-baseline.json` | P0 | 2026-10-25 공식 KR 확률표 새 직접 관측·7개 실제 행/초기수/종료/확률·미기재값과 새 범위 근거 | 검토 결과 변경 불필요: 역사적 원관측/실패·필드 근거 그대로 보존. 새 정책은 문서/별도 입력 메타에 기록 |
 | `docs/reference/WORKPLAN_BEFORE_PROBABILITY_SCOPE.md` | P2 | 범위 재정의 전 T000~T007·C001~C030·파일 검토/CI/공개 검증 원문 보존 | 수정: 과거 관측/설계 본문을 보존하고 reference 이동 뒤 깨진 상대 링크의 경로만 정정 |
-| `docs/reference/ARCHITECTURE_BEFORE_PROBABILITY_SCOPE.md` | P2 | 이전9상품83카드 SQLite/정적 구조와 실패 보존의 구현 계약 원문 | 수정: 과거 관측/설계 본문을 보존하고 reference 이동 뒤 깨진 상대 링크의 경로만 정정 |
+| `docs/reference/ARCHITECTURE_BEFORE_PROBABILITY_SCOPE.md` | P2 | 이전 9상품 83카드 SQLite/정적 구조와 실패 보존의 구현 계약 원문 | 수정: 과거 관측/설계 본문을 보존하고 reference 이동 뒤 깨진 상대 링크의 경로만 정정 |
 | `docs/reference/COLLECTION_BEFORE_PROBABILITY_SCOPE.md` | P2 | 이전 EFHub 표본 수집 명령/파서/누적 보존·접근 제약 원문 | 수정: 과거 관측/설계 본문을 보존하고 reference 이동 뒤 깨진 상대 링크의 경로만 정정 |
-| `docs/reference/DEPLOYMENT_BEFORE_PROBABILITY_SCOPE.md` | P2 | 이전 Pages 호환7파일·커밋/미리보기 검증·설정 이력 원문 | 수정: 과거 관측/설계 본문을 보존하고 reference 이동 뒤 깨진 상대 링크의 경로만 정정 |
-| `data/research/api-selection-validation.json` | P0 | T009 최신공식/현재접근/보존원문 전수대조·팩별 게이트·권리/조건·미선정·S/A null의 실행 근거 | 검토 결과 변경 불필요: 역사적 원관측/실패·필드 근거 그대로 보존. 새 정책은 문서/별도 입력 메타에 기록 |
-| `docs/sources/API_SELECTION_VALIDATION.md` | P1 | T009 팩별/공급자별 실제통과·차단·이미지/OVR/권리/1010 범위·최소재개자료 보고 | 수정: 최신 누적층/사이트층 안내를 정정하고 과거 관측·수치·실패 본문은 보존 |
-| `scripts/merge-api-pages.mjs` | P0 | 네트워크 없는 raw players/packs 페이지→원문항목 배열 병합·메타/ID/누락검증·실패보존/원자적발행 | 검토 결과 변경 불필요: 기존 네트워크 없는 raw players/packs 페이지→원문항목 배열 병합·메타/ID/누락검증·실패보존/원자적발행 계약 재사용/회귀 점검. 새 누적/API/projection 구현은 후속으로 분리 |
-| `tests/merge-api-pages.test.mjs` | P1 | 합성fixture CLI검증:lossless원문·페이지/ID/합계·partial거부·입력/last-good·발행실패복구 | 검토 결과 변경 불필요: 기존 계약/보존·실패 회귀를 실행. 새 두 계층 구현은 없어 테스트 수정/완료 주장 불필요 |
-| `docs/RAW_PAGE_MERGE.md` | P1 | 전체players/packs중간자료 오프라인 병합 입력/CLI/보존/완전성·실제원본미확보 경계 | 수정: 두 계층 경계/전체 누적 무삭제·개정·현행 발행·raw 검증/준비 상태와 후속 게이트 반영 |
+| `docs/reference/DEPLOYMENT_BEFORE_PROBABILITY_SCOPE.md` | P2 | 이전 Pages 호환 7파일·커밋/미리보기 검증·설정 이력 원문 | 수정: 과거 관측/설계 본문을 보존하고 reference 이동 뒤 깨진 상대 링크의 경로만 정정 |
+| `data/research/api-selection-validation.json` | P0 | T009 최신 공식/현재 접근/보존 원문 전수 대조·팩별 게이트·권리/조건·미선정·S/A null의 실행 근거 | 검토 결과 변경 불필요: 역사적 원관측/실패·필드 근거 그대로 보존. 새 정책은 문서/별도 입력 메타에 기록 |
+| `docs/sources/API_SELECTION_VALIDATION.md` | P1 | T009 팩별/공급자별 실제 통과·차단·이미지/OVR/권리/1010 범위·최소 재개 자료 보고 | 수정: 최신 누적층/사이트층 안내를 정정하고 과거 관측·수치·실패 본문은 보존 |
+| `scripts/merge-api-pages.mjs` | P0 | 네트워크 없는 raw players/packs 페이지→원문 항목 배열 병합·메타/ID/누락 검증·실패 보존/원자적 발행 | 검토 결과 변경 불필요: 기존 네트워크 없는 raw players/packs 페이지→원문 항목 배열 병합·메타/ID/누락 검증·실패 보존/원자적 발행 계약 재사용/회귀 점검. 새 누적/API/projection 구현은 후속으로 분리 |
+| `tests/merge-api-pages.test.mjs` | P1 | 합성 fixture CLI 검증:lossless 원문·페이지/ID/합계·partial 거부·입력/last-good·발행 실패 복구 | 검토 결과 변경 불필요: 기존 계약/보존·실패 회귀를 실행. 새 두 계층 구현은 없어 테스트 수정/완료 주장 불필요 |
+| `docs/RAW_PAGE_MERGE.md` | P1 | 전체 players/packs 중간 자료 오프라인 병합 입력/CLI/보존/완전성·실제 원본 미확보 경계 | 수정: 두 계층 경계/전체 누적 무삭제·개정·현행 발행·raw 검증/준비 상태와 후속 게이트 반영 |
 | `docs/CHATGPT_WORK_HANDOFF.md` | P1 | 한국어 자급적 Work 인수인계: 미푸시/원격 차이·두 계층·raw 검증·기존 대상 채팅 이어받기·Sites 초기 소스 이관 제외 | 수정: 이 파일과 GitHub/bundle만으로 기존 대상 Work를 이어갈 수 있게 범위/상태/명령/차단/첫 지시 정리 |
-| `docs/FILE_SYNC_AUDIT.md` | P1 | T020 전체 관리 파일의 등록/내용 영향 판정·GitHub 미반영·구현 공백·검증/이관 한계 보고 | 수정: 기존76/최종79 경로 전수 판정과 의미상 갱신/구현 공백·원격 차이 기록 |
+| `docs/FILE_SYNC_AUDIT.md` | P1 | T020 전체 관리 파일의 등록/내용 영향 판정·GitHub 미반영·구현 공백·검증/이관 한계 보고 | 수정: 기존 76/최종 79 경로 전수 판정과 의미상 갱신/구현 공백·원격 차이 기록 |
 | `data/research/work-handoff-inputs.json` | P0 | T020 Git/Library 입력 메타·원문 검증 대기·대상 Work packs 수집 준비·Sites 의도적 이관 제외의 구조화 근거 | 수정: 원격 읽기/Library 전달 메타·실제 본문 미검증·packs 준비·Sites 이관 제외 구분 |

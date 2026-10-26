@@ -2,20 +2,20 @@
   "schema_version": 1,
   "task": "T021",
   "observed_at": "2026-10-26T04:12:32Z",
-  "scope": "T020 이관 입력 상태와 T021 부모 환경의 Library v1 오프라인 검증 결과 전달. 전체 페이지/현재성·상품관계·이미지 로드를 증명하지 않음",
+  "scope": "T020의 이관 입력·Git 관측 이력과 T021의 상위 환경 Library v1 검증 결과. 원래 페이지 완전성·현재성·상품 관계·이미지 로드를 증명하지 않음",
   "git": {
     "repository": "https://github.com/Hyunwoo1205/efsimulator",
     "local_branch": "work",
     "starting_head": "d7f30688b5bcf610f9b35b2d7f680485949f6c19",
     "remote_main": "d8891f241e113632884445d60746d9e059a1583b",
     "remote_work": "5d2cc0abe63f102084e226f9ee385487420aadb5",
-    "verification": "git ls-remote origin refs/heads/main refs/heads/work 정상 읽기",
+    "verification": "T020 당시 git ls-remote로 main·work를 읽어 확인함. 아래 시작 커밋·원격 값과 push_performed는 당시 이력",
     "starting_commits_ahead_of_remote_work": 3,
     "starting_commits_ahead_of_remote_main": 17,
     "push_performed": false,
     "push_authorized": true,
-    "push_scope": "최신검증/문서및기존로컬변경을원격work에정상push; 기존CI/연결preview트리거허용. main/강제push/설정/새자동화제외",
-    "delivery_source": "GitHub work 우선. 최종실제원격SHA/CI결과는MIGRATION_RECEIPT및최종보고참조",
+    "push_scope": "최신 검증·문서와 기존 로컬 변경을 원격 work에 정상 푸시. 기존 CI·연결된 preview 허용. main 병합·강제 푸시·설정 변경·새 자동화 제외",
+    "delivery_source": "GitHub work 우선. 최종 원격 SHA와 CI는 MIGRATION_RECEIPT 및 최종 보고 참조",
     "bundle_required_for_handoff": false
   },
   "players_raw": {
@@ -41,7 +41,7 @@
       "playerType": 0
     },
     "numeric_precision_verified": true,
-    "source_page_completeness": "미검증: 배열에 페이지/커서/출처/수집시각/total 메타 없음. 기존Work수집로그/체크포인트대조 필요",
+    "source_page_completeness": "미검증. 배열에 페이지·커서·출처·수집 시각·total 메타가 없음",
     "image_url_presence": "47,397개 모두 존재/nonnull/nonempty. 실제 로드/디코드/저장은 미검증",
     "image_downloads_performed": 0,
     "reported_historical_total": 50840,
@@ -52,7 +52,7 @@
     "id_type": "decimal-string",
     "duplicate_json_keys": 0,
     "max_id_decimal_string": "387113187158919",
-    "numeric_precision_scope": "ID는 전부 문자열이며 최대값도 JS안전정수범위 이내. 원본 문자열 유지",
+    "numeric_precision_scope": "파일 내 ID는 모두 문자열이며 최대값은 JS 안전 정수 범위 이내. 문자열을 유지하며 원래 수집기의 변환 과정은 미검증",
     "required_field_null_or_empty_counts": {
       "name": 0,
       "imageUrl": 0,
@@ -89,12 +89,12 @@
     },
     "difference_from_historical_expected_total": 3443,
     "difference_means_confirmed_missing": false,
-    "historical_comparison_limit": "원본페이지/중복제거로그는이환경에서재검증하지않음. 사용자중복제거설명과현재파일내고유ID검증을분리. 누락의심으로차단/전체재수집하지않음",
+    "historical_comparison_limit": "3,443개 차이는 사용자 설명상 중복 제거 결과. 원래 페이지·중복 제거 로그는 이 환경에서 재검증하지 않음. 누락 의심으로 차단하거나 전체를 재수집하지 않음",
     "pack_membership_verified": false,
     "freshness_verified": false,
     "difference_explanation": {
       "source": "사용자 직접 설명: 차이나는 이유는 중복 제외한 거기 때문이야",
-      "meaning": "50,840→47,397의3,443차이는중복제거결과라는사용자제공경위",
+      "meaning": "50,840개에서 47,397개로 줄어든 3,443개는 중복 제거 결과라는 사용자 설명",
       "original_pages_or_dedup_log_reverified": false,
       "confirmed_current_file_unique_ids": 47397,
       "confirmed_current_file_duplicate_ids": 0,
@@ -108,7 +108,7 @@
     "pack_detail_card_mapping": "미확인",
     "existing_research": "연구 래퍼의 1/2쪽 각30행은 전수 raw가 아님",
     "target_work_status": "최신 사용자 보고: 대상 Work 채팅에서 수집 준비 중. 수집 완료 아님",
-    "continuation": "기존 대상 채팅의 출력/체크포인트/계획을 먼저 확인하고 이어받음. 중복 수집/새 채팅 생성 금지"
+    "continuation": "기존 대상 Work 채팅의 출력·체크포인트·계획을 먼저 확인하고 이어받음. 중복 수집·새 채팅 생성 금지"
   },
   "sites": {
     "migration": "최신 사용자 지시로 별도 초기 페이지/소스/번들 의도적 제외",
