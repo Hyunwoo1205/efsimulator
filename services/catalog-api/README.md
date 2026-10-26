@@ -1,5 +1,7 @@
 # efsimulator Catalog API
 
+T024 최신 계약: raw는 누적 입력 원본이고 HTTP 조회 대상이 아니다. 가공 DB는 공식 KR와 EFHub에서 동일 상품·회차가 확인된 팩과 선수만 누적한다. [데이터 계약](../../docs/CATALOG_DATA_CONTRACT.md)을 우선하며 아래 기존 ingest는 역사/검증용 staging으로 남긴다.
+
 기존 앱과 **별도의 Sites 프로젝트**에 배포할 누적 데이터 API다. GitHub `efsimulator` 저장소의 `services/catalog-api/`가 독립 소스 루트이고 `api-server-setup` 브랜치에서 준비한다. 기존 `work` 앱 소스와 Pages 파일은 유지한다. 현재는 **소스 업로드·DB 수입 준비 단계**이며 Site 등록/원격 배포/원격 DB 수입은 실행하지 않았다.
 
 ## 소스 구성
@@ -32,19 +34,28 @@ ChatGPT Work에서는 현재 Sites 스킬의 install/build helper를 사용한�
 
 | GET/HEAD | 내용 |
 | --- | --- |
-| `/api/v1/health` | DB 연결·수입 준비 상태·카드/팩 수 |
-| `/api/v1/manifest` | 안전하게 공개할 수 있는 데이터 버전·준비 시각·수 |
-| `/api/v1/cards` | 카드 목록. `q`, `limit=1..100`, `cursor` |
-| `/api/v1/cards/{source_card_id}` | 문자열 원본 카드 ID의 상세 |
-| `/api/v1/packs` | 팩 목록. `q`, `limit`, `cursor` |
-| `/api/v1/packs/{slug}` | 팩 상세·원본 표시 인원·보정 인원·구성 확인 상태 |
-| `/api/v1/packs/{slug}/cards` | 확보한 팩 연결 카드와 근거. `limit`, `cursor` |
+| `/api/v1/health`, `/manifest` | 가공 버전 발행 준비·발행 당시 수. 전체 공식 상품 완성/추첨 준비를 뜻하지 않음 |
+| `/api/v1/cards`, `/players` | 가공 누적 선수 목록. `q`, `limit=1..100`, `cursor` |
+| `/api/v1/cards/{id}`, `/players/{id}` | 정확히 지정된 8개 필드. 문자열 ID 유지 |
+| `/api/v1/packs` | 공식 게재 이력으로 채택한 누적 가공 팩 |
+| `/api/v1/packs/{saleId}` | 정확한 회차. slug 별칭은 회차가 유일할 때만 지원 |
+| `/api/v1/packs/{saleId}/cards` | 팩에 연결된 선수 8개 필드 |
+| `/api/v1/live`, `/archive` | 팩 정보 전체와 `players` 상세 전체를 중첩 |
 
-응답은 `{data, meta, pagination?}`, 오류는 `{error:{code,message}}` 형식이다. 수입 전 목록은 503, 없는 개체는 404, 잘못된 입력은 400이다. POST/PUT/PATCH/DELETE는 405이며 HTTP 관리 쓰기 endpoint는 만들지 않았다. GET에서 원출처 수집·이미지 다운로드·DB 수정을 하지 않는다. 조회 데이터는 전체 누적층이고 현재 판매/공식 회차/전체 특수/추첨 준비를 뜻하지 않는다. 아직 공식 현행 스냅샷 경로는 없다.
+응답은 `{data,meta,pagination?}`, 오류는 `{error:{code,message}}`다. GET은 발행 포인터를 한 번 읽고 해당 불변 버전만 조회한다. raw/기존 전체 카탈로그 테이블로 fallback하지 않는다. 미발행 목록 503, 없는 항목 404, 잘못된 입력 400, 변경 요청 405다. 만료 시점 사이의 정확성을 위해 live는 요청 UTC에서 종료된 팩을 제외하고 archive 뷰는 그 전체 내용을 포함한다. 파일 이동/로그는 다음 갱신에서 확정하며 GET은 쓰기를 하지 않는다. `manifest.counts`는 발행 당시 수다.
 
-`next_cursor`는 반환값 그대로 다음 요청에 사용한다. 페이지는 문자열 키 순서이며 정수 변환하지 않는다. 각 레코드의 `_meta`는 개체·개정·최초 근거 snapshot을 나타낸다. 최신 전체 상태는 여러 원문 시점의 누적값일 수 있으며 불변 과거 시점 API는 아직 없다.
+## HTML 수집·가공·파일 갱신
 
-## 데이터 수입 준비
+```sh
+node scripts/lifecycle/workspace.mjs init --root /absolute/private-data --players /absolute/players_raw.json --packs /absolute/packs_raw.json --player-update /absolute/players_update_20261026.json
+node scripts/lifecycle/run-cycle.mjs --root /absolute/private-data --mappings /absolute/catalog-sale-mappings.json --db /absolute/local-processed.sqlite
+```
+
+`run-cycle`은 공식 표와 new-players HTML을 한 번씩 확인하고 필요한 신규 상세 HTML만 수집한다. 원본 API는 사용하지 않는다. 명시적 회차 매핑과 전체 특수 명단을 확인해야 raw→가공 순서로 추가하며, 불확실한 신규 상품은 pending이다. 접근 거부 시 해당 실행의 EFHub 수집은 멈춘다. 실제 HTML 레이아웃이 바뀌면 기존 정상 자료를 보존한다.
+
+논리 파일은 raw 2개, raw 로그 2개, processed 2개, live/archive, API 로그다. 모든 파일을 해시 검증한 불변 세대에 기록한 후 CURRENT 포인터를 교체한다. 변경 없는 시간별 점검은 checks.jsonl만 쓴다. 서버 배포 데이터는 `publications/<version>/sql`과 activate.sql이며, 전량 적재 후 내용 해시·참조를 검증하고 활성 포인터를 단일 문장으로 전환한다. 명령의 `--db`는 로컬 SQLite 검증 옵션이며 원격 D1을 수정하지 않는다.
+
+## 이전 전체 원본 staging 수입 도구
 
 원본·JSONL·대량 SQL·SQLite는 **Git 소스와 공개 dist에 넣지 않는다.** root `artifacts/` 아래 별도 비공개 수입 묶음으로 생성한다. 첨부 원본 세 파일과 기존 팩 관계 파일의 정확한 경로를 인자로 넣는다.
 
@@ -71,7 +82,7 @@ node scripts/export-source.mjs /absolute/empty-catalog-api-source
 
 다음 배포 작업에서 이 source를 새 API Site의 준비 폴더로 사용하고, native `create_site`가 반환한 실제 project_id를 `.openai/hosting.json`에 저장한다. 이전에 제외한 초기 Site는 재사용하지 않는다. 공식 source helper로 Sites 저장소에 정확한 source commit을 전달하고, 해당 상태에서 build/package → version 저장 → private 배포를 진행한다. ID·URL·credential을 지어내거나 source에 token을 넣지 않는다. 상세 순서는 현재 Sites 스킬을 따른다.
 
-D1 schema migration은 배포 시 적용되며 데이터 수입은 별도다. 원격 데이터 수입은 계정 한도·비용·권한·백업·staging 대상을 확인한 뒤 순서대로 수행하고 읽어 검증한다. 이번 묶음은 수만 개의 쓰기 작업이 있으므로 실제 서비스의 할당량에 맞게 나눠 실행한다. 원문 저장/이미지 재배포 조건도 별도 확인한다. 이번 준비 작업에서는 R2 binding·새 계정·유료 서비스·자동화가 없다.
+D1 schema migration은 배포 시 적용되며 데이터 수입은 별도다. 원격 데이터 수입은 계정 한도·비용·권한·백업·staging 대상을 확인한 뒤 순서대로 수행하고 읽어 검증한다. 이번 묶음은 수만 개의 쓰기 작업이 있으므로 실제 서비스의 할당량에 맞게 나눠 실행한다. 원문 저장/이미지 재배포 조건도 별도 확인한다. T023 당시 R2 binding·새 계정·유료 서비스·자동화는 없었다. T024의 매시간 점검 예약은 별도 작업 기록을 따른다.
 
 ## 별도 앱과 연결
 

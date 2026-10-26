@@ -196,12 +196,13 @@
         "docs/sources/API_SELECTION_VALIDATION.md",
         "docs/RAW_PAGE_MERGE.md",
         "docs/MIGRATION_STATUS.md",
-        "docs/API_SERVER_PREPARATION.md"
+        "docs/API_SERVER_PREPARATION.md",
+        "docs/CATALOG_DATA_CONTRACT.md"
       ],
       "update_when": [
         "사용자 요구·작업 절차·검증 명령·제품 및 운영 원칙 변경"
       ],
-      "reviewed_in": "T023"
+      "reviewed_in": "T024"
     },
     {
       "path": "_headers",
@@ -353,7 +354,7 @@
     },
     {
       "path": "docs/ARCHITECTURE.md",
-      "role": "공급자 중립ID/원본매핑·공식회차/특수 완전성/가상Standard·staging DB 설계; 미구현 계획",
+      "role": "T024 원본 HTML 수집·가공 선수/팩·전체 live/archive·파일별 로그 계약과 검증",
       "priority": "P0",
       "related_paths": [
         "scripts/catalog.mjs",
@@ -369,16 +370,17 @@
         "docs/DATA_LIFECYCLE.md",
         "docs/reference/ARCHITECTURE_BEFORE_PROBABILITY_SCOPE.md",
         "docs/MIGRATION_STATUS.md",
-        "docs/API_SERVER_PREPARATION.md"
+        "docs/API_SERVER_PREPARATION.md",
+        "docs/CATALOG_DATA_CONTRACT.md"
       ],
       "update_when": [
         "데이터 계약·파이프라인·라우팅·이력 영속화·운영 방식 변경"
       ],
-      "reviewed_in": "T023"
+      "reviewed_in": "T024"
     },
     {
       "path": "docs/COLLECTION.md",
-      "role": "공식 대상 API선정 검증용 수집→정식특수수집→개별/이미지저장 검증·실패 보호 계획",
+      "role": "T024 원본 HTML 수집·가공 선수/팩·전체 live/archive·파일별 로그 계약과 검증",
       "priority": "P0",
       "related_paths": [
         "scripts/collect-efhub.mjs",
@@ -396,12 +398,13 @@
         "docs/sources/API_SELECTION_VALIDATION.md",
         "docs/RAW_PAGE_MERGE.md",
         "docs/MIGRATION_STATUS.md",
-        "docs/API_SERVER_PREPARATION.md"
+        "docs/API_SERVER_PREPARATION.md",
+        "docs/CATALOG_DATA_CONTRACT.md"
       ],
       "update_when": [
         "해당 계약·지원 범위·실행/관측 결과 변경 시 관련 파일 검토; 비활성 참고는 현재 모델로 재채택하지 않음"
       ],
-      "reviewed_in": "T023"
+      "reviewed_in": "T024"
     },
     {
       "path": "docs/DEPLOYMENT.md",
@@ -420,12 +423,13 @@
         "docs/reference/DEPLOYMENT_BEFORE_PROBABILITY_SCOPE.md",
         "docs/sources/API_SELECTION_VALIDATION.md",
         "docs/MIGRATION_STATUS.md",
-        "docs/API_SERVER_PREPARATION.md"
+        "docs/API_SERVER_PREPARATION.md",
+        "docs/CATALOG_DATA_CONTRACT.md"
       ],
       "update_when": [
         "빌드 명령·출력·라우팅·배포 설정·공개 검증 결과 변경"
       ],
-      "reviewed_in": "T023"
+      "reviewed_in": "T024"
     },
     {
       "path": "docs/FILE_SYNC.json",
@@ -438,12 +442,13 @@
         "docs/ROADMAP.md",
         "tests/project-check.test.mjs",
         "docs/RAW_PAGE_MERGE.md",
-        "docs/MIGRATION_STATUS.md"
+        "docs/MIGRATION_STATUS.md",
+        "docs/CATALOG_DATA_CONTRACT.md"
       ],
       "update_when": [
         "파일 추가·삭제·이름 변경·역할/의존관계 변경·영향 검토"
       ],
-      "reviewed_in": "T022"
+      "reviewed_in": "T024"
     },
     {
       "path": "docs/ROADMAP.md",
@@ -463,12 +468,13 @@
         "docs/sources/API_SELECTION_VALIDATION.md",
         "docs/RAW_PAGE_MERGE.md",
         "docs/MIGRATION_STATUS.md",
-        "docs/API_SERVER_PREPARATION.md"
+        "docs/API_SERVER_PREPARATION.md",
+        "docs/CATALOG_DATA_CONTRACT.md"
       ],
       "update_when": [
         "단계 상태·현재/이전/다음 작업·완료 조건·추가 요구 변경"
       ],
-      "reviewed_in": "T023"
+      "reviewed_in": "T024"
     },
     {
       "path": "docs/WORKPLAN.md",
@@ -487,12 +493,13 @@
         "docs/sources/API_SELECTION_VALIDATION.md",
         "docs/RAW_PAGE_MERGE.md",
         "docs/MIGRATION_STATUS.md",
-        "docs/API_SERVER_PREPARATION.md"
+        "docs/API_SERVER_PREPARATION.md",
+        "docs/CATALOG_DATA_CONTRACT.md"
       ],
       "update_when": [
         "매 작업 착수·추가 요구·파일 변경·검증 결과·작업 종료"
       ],
-      "reviewed_in": "T023"
+      "reviewed_in": "T024"
     },
     {
       "path": "index.html",
@@ -746,12 +753,13 @@
         "docs/sources/API_SELECTION_VALIDATION.md",
         "docs/RAW_PAGE_MERGE.md",
         "docs/MIGRATION_STATUS.md",
-        "docs/API_SERVER_PREPARATION.md"
+        "docs/API_SERVER_PREPARATION.md",
+        "docs/CATALOG_DATA_CONTRACT.md"
       ],
       "update_when": [
         "설치·실행·검증·표본 범위·진입 문서·공개 상태 변경"
       ],
-      "reviewed_in": "T023"
+      "reviewed_in": "T024"
     },
     {
       "path": "docs/sources/CARD_API_AUDIT.md",
@@ -1193,7 +1201,7 @@
     },
     {
       "path": "docs/DATA_LIFECYCLE.md",
-      "role": "공식 목록 diff·안전한 상태전이·얇은 아카이브·캐시·원자적 발행·자체 API/백업 운영 계획",
+      "role": "T024 원본 HTML 수집·가공 선수/팩·전체 live/archive·파일별 로그 계약과 검증",
       "priority": "P0",
       "related_paths": [
         "docs/WORKPLAN.md",
@@ -1201,12 +1209,13 @@
         "docs/COLLECTION.md",
         "docs/DEPLOYMENT.md",
         "docs/API_SELECTION.md",
-        "docs/MIGRATION_STATUS.md"
+        "docs/MIGRATION_STATUS.md",
+        "docs/CATALOG_DATA_CONTRACT.md"
       ],
       "update_when": [
         "해당 범위/입력/완료조건·관계·권한/운영 근거 변경. reference의 과거 관측값은 덮어쓰지 않음"
       ],
-      "reviewed_in": "T022"
+      "reviewed_in": "T024"
     },
     {
       "path": "docs/SIMULATOR_PLAN.md",
@@ -1487,12 +1496,13 @@
       "related_paths": [
         "services/catalog-api/README.md",
         "services/catalog-api/.openai/hosting.json",
-        "services/catalog-api/package.json"
+        "services/catalog-api/package.json",
+        "docs/CATALOG_DATA_CONTRACT.md"
       ],
       "update_when": [
         "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
       ],
-      "reviewed_in": "T023"
+      "reviewed_in": "T024"
     },
     {
       "path": "services/catalog-api/.env.example",
@@ -1555,17 +1565,18 @@
     },
     {
       "path": "services/catalog-api/README.md",
-      "role": "API 독립 Sites 프로젝트의 소스·설정·기본 상태 페이지",
+      "role": "T024 원본 HTML 수집·가공 선수/팩·전체 live/archive·파일별 로그 계약과 검증",
       "priority": "P0",
       "related_paths": [
         "services/catalog-api/.openai/hosting.json",
         "services/catalog-api/package.json",
-        "docs/API_SERVER_PREPARATION.md"
+        "docs/API_SERVER_PREPARATION.md",
+        "docs/CATALOG_DATA_CONTRACT.md"
       ],
       "update_when": [
         "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
       ],
-      "reviewed_in": "T023"
+      "reviewed_in": "T024"
     },
     {
       "path": "services/catalog-api/app/api/v1/[[...path]]/route.ts",
@@ -1629,33 +1640,35 @@
     },
     {
       "path": "services/catalog-api/app/page.tsx",
-      "role": "API 독립 Sites 프로젝트의 소스·설정·기본 상태 페이지",
+      "role": "T024 원본 HTML 수집·가공 선수/팩·전체 live/archive·파일별 로그 계약과 검증",
       "priority": "P0",
       "related_paths": [
         "services/catalog-api/README.md",
         "services/catalog-api/.openai/hosting.json",
         "services/catalog-api/package.json",
-        "docs/API_SERVER_PREPARATION.md"
+        "docs/API_SERVER_PREPARATION.md",
+        "docs/CATALOG_DATA_CONTRACT.md"
       ],
       "update_when": [
         "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
       ],
-      "reviewed_in": "T023"
+      "reviewed_in": "T024"
     },
     {
       "path": "services/catalog-api/client/catalog-api-client.mjs",
-      "role": "별도 앱의 API GET 연동 client; 브라우저 비밀값 제외",
+      "role": "T024 원본 HTML 수집·가공 선수/팩·전체 live/archive·파일별 로그 계약과 검증",
       "priority": "P0",
       "related_paths": [
         "services/catalog-api/README.md",
         "services/catalog-api/.openai/hosting.json",
         "services/catalog-api/package.json",
-        "docs/API_SERVER_PREPARATION.md"
+        "docs/API_SERVER_PREPARATION.md",
+        "docs/CATALOG_DATA_CONTRACT.md"
       ],
       "update_when": [
         "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
       ],
-      "reviewed_in": "T023"
+      "reviewed_in": "T024"
     },
     {
       "path": "services/catalog-api/cloudflare-env.d.ts",
@@ -2634,18 +2647,19 @@
     },
     {
       "path": "services/catalog-api/db/schema.ts",
-      "role": "API D1 schema/접근 선언; 원격 수입은 후속",
+      "role": "T024 원본 HTML 수집·가공 선수/팩·전체 live/archive·파일별 로그 계약과 검증",
       "priority": "P0",
       "related_paths": [
         "services/catalog-api/README.md",
         "services/catalog-api/.openai/hosting.json",
         "services/catalog-api/package.json",
-        "docs/API_SERVER_PREPARATION.md"
+        "docs/API_SERVER_PREPARATION.md",
+        "docs/CATALOG_DATA_CONTRACT.md"
       ],
       "update_when": [
         "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
       ],
-      "reviewed_in": "T023"
+      "reviewed_in": "T024"
     },
     {
       "path": "services/catalog-api/drizzle.config.ts",
@@ -2694,18 +2708,19 @@
     },
     {
       "path": "services/catalog-api/drizzle/meta/_journal.json",
-      "role": "API D1 schema-only migration·잠금 메타; 데이터 seed 제외",
+      "role": "가공 API 불변 버전/단일 활성 포인터 schema-only migration과 Drizzle 추적 메타",
       "priority": "P0",
       "related_paths": [
         "services/catalog-api/README.md",
         "services/catalog-api/.openai/hosting.json",
         "services/catalog-api/package.json",
-        "docs/API_SERVER_PREPARATION.md"
+        "docs/API_SERVER_PREPARATION.md",
+        "docs/CATALOG_DATA_CONTRACT.md"
       ],
       "update_when": [
         "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
       ],
-      "reviewed_in": "T023"
+      "reviewed_in": "T024"
     },
     {
       "path": "services/catalog-api/eslint.config.mjs",
@@ -2784,18 +2799,19 @@
     },
     {
       "path": "services/catalog-api/lib/catalog-api.mjs",
-      "role": "D1 읽기 API·문자열 페이지·CORS·미수입/오류 경계",
+      "role": "T024 원본 HTML 수집·가공 선수/팩·전체 live/archive·파일별 로그 계약과 검증",
       "priority": "P0",
       "related_paths": [
         "services/catalog-api/README.md",
         "services/catalog-api/.openai/hosting.json",
         "services/catalog-api/package.json",
-        "docs/API_SERVER_PREPARATION.md"
+        "docs/API_SERVER_PREPARATION.md",
+        "docs/CATALOG_DATA_CONTRACT.md"
       ],
       "update_when": [
         "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
       ],
-      "reviewed_in": "T023"
+      "reviewed_in": "T024"
     },
     {
       "path": "services/catalog-api/lib/connector-context.ts",
@@ -2904,17 +2920,18 @@
     },
     {
       "path": "services/catalog-api/package.json",
-      "role": "API 독립 Sites 프로젝트의 소스·설정·기본 상태 페이지",
+      "role": "T024 원본 HTML 수집·가공 선수/팩·전체 live/archive·파일별 로그 계약과 검증",
       "priority": "P0",
       "related_paths": [
         "services/catalog-api/README.md",
         "services/catalog-api/.openai/hosting.json",
-        "docs/API_SERVER_PREPARATION.md"
+        "docs/API_SERVER_PREPARATION.md",
+        "docs/CATALOG_DATA_CONTRACT.md"
       ],
       "update_when": [
         "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
       ],
-      "reviewed_in": "T023"
+      "reviewed_in": "T024"
     },
     {
       "path": "services/catalog-api/pnpm-lock.yaml",
@@ -3293,33 +3310,35 @@
     },
     {
       "path": "services/catalog-api/tests/catalog-api.test.mjs",
-      "role": "API·수입·연동 클라이언트의 오류/보존/경계 회귀",
+      "role": "T024 수집·가공·원자적 발행·장애/만료·HTTP 정합성 테스트",
       "priority": "P0",
       "related_paths": [
         "services/catalog-api/README.md",
         "services/catalog-api/.openai/hosting.json",
         "services/catalog-api/package.json",
-        "docs/API_SERVER_PREPARATION.md"
+        "docs/API_SERVER_PREPARATION.md",
+        "docs/CATALOG_DATA_CONTRACT.md"
       ],
       "update_when": [
         "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
       ],
-      "reviewed_in": "T023"
+      "reviewed_in": "T024"
     },
     {
       "path": "services/catalog-api/tests/client.test.mjs",
-      "role": "API·수입·연동 클라이언트의 오류/보존/경계 회귀",
+      "role": "T024 수집·가공·원자적 발행·장애/만료·HTTP 정합성 테스트",
       "priority": "P0",
       "related_paths": [
         "services/catalog-api/README.md",
         "services/catalog-api/.openai/hosting.json",
         "services/catalog-api/package.json",
-        "docs/API_SERVER_PREPARATION.md"
+        "docs/API_SERVER_PREPARATION.md",
+        "docs/CATALOG_DATA_CONTRACT.md"
       ],
       "update_when": [
         "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
       ],
-      "reviewed_in": "T023"
+      "reviewed_in": "T024"
     },
     {
       "path": "services/catalog-api/tests/ingest.test.mjs",
@@ -3410,6 +3429,258 @@
         "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
       ],
       "reviewed_in": "T023"
+    },
+    {
+      "path": "data/research/catalog-lifecycle-verification.json",
+      "role": "T024 실제 원본/가공 수·공식 관측·EFHub403·로컬 발행·API 검사 증거",
+      "priority": "P0",
+      "related_paths": [
+        "docs/CATALOG_DATA_CONTRACT.md",
+        "services/catalog-api/README.md",
+        "services/catalog-api/lib/catalog-lifecycle.mjs",
+        "services/catalog-api/scripts/lifecycle/workspace.mjs"
+      ],
+      "update_when": [
+        "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
+      ],
+      "reviewed_in": "T024"
+    },
+    {
+      "path": "data/research/catalog-sale-mappings.json",
+      "role": "공식 상품 회차와 EFHub 팩·정확한 문자열 카드 ID의 명시적 매핑 및 미확정 목록",
+      "priority": "P0",
+      "related_paths": [
+        "docs/CATALOG_DATA_CONTRACT.md",
+        "services/catalog-api/README.md",
+        "services/catalog-api/lib/catalog-lifecycle.mjs",
+        "services/catalog-api/scripts/lifecycle/workspace.mjs"
+      ],
+      "update_when": [
+        "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
+      ],
+      "reviewed_in": "T024"
+    },
+    {
+      "path": "docs/CATALOG_DATA_CONTRACT.md",
+      "role": "T024 원본 HTML 수집·가공 선수/팩·전체 live/archive·파일별 로그 계약과 검증",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/lib/catalog-lifecycle.mjs",
+        "services/catalog-api/scripts/lifecycle/workspace.mjs"
+      ],
+      "update_when": [
+        "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
+      ],
+      "reviewed_in": "T024"
+    },
+    {
+      "path": "services/catalog-api/drizzle/0001_api_publications.sql",
+      "role": "가공 API 불변 버전/단일 활성 포인터 schema-only migration과 Drizzle 추적 메타",
+      "priority": "P0",
+      "related_paths": [
+        "docs/CATALOG_DATA_CONTRACT.md",
+        "services/catalog-api/README.md",
+        "services/catalog-api/lib/catalog-lifecycle.mjs",
+        "services/catalog-api/scripts/lifecycle/workspace.mjs"
+      ],
+      "update_when": [
+        "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
+      ],
+      "reviewed_in": "T024"
+    },
+    {
+      "path": "services/catalog-api/drizzle/meta/0001_snapshot.json",
+      "role": "가공 API 불변 버전/단일 활성 포인터 schema-only migration과 Drizzle 추적 메타",
+      "priority": "P0",
+      "related_paths": [
+        "docs/CATALOG_DATA_CONTRACT.md",
+        "services/catalog-api/README.md",
+        "services/catalog-api/lib/catalog-lifecycle.mjs",
+        "services/catalog-api/scripts/lifecycle/workspace.mjs"
+      ],
+      "update_when": [
+        "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
+      ],
+      "reviewed_in": "T024"
+    },
+    {
+      "path": "services/catalog-api/lib/catalog-lifecycle.mjs",
+      "role": "T024 원본 HTML 수집·가공 선수/팩·전체 live/archive·파일별 로그 계약과 검증",
+      "priority": "P0",
+      "related_paths": [
+        "docs/CATALOG_DATA_CONTRACT.md",
+        "services/catalog-api/README.md",
+        "services/catalog-api/scripts/lifecycle/workspace.mjs"
+      ],
+      "update_when": [
+        "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
+      ],
+      "reviewed_in": "T024"
+    },
+    {
+      "path": "services/catalog-api/scripts/lifecycle/collect-cycle.mjs",
+      "role": "T024 원본 HTML 수집·가공 선수/팩·전체 live/archive·파일별 로그 계약과 검증",
+      "priority": "P0",
+      "related_paths": [
+        "docs/CATALOG_DATA_CONTRACT.md",
+        "services/catalog-api/README.md",
+        "services/catalog-api/lib/catalog-lifecycle.mjs",
+        "services/catalog-api/scripts/lifecycle/workspace.mjs"
+      ],
+      "update_when": [
+        "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
+      ],
+      "reviewed_in": "T024"
+    },
+    {
+      "path": "services/catalog-api/scripts/lifecycle/html-sources.mjs",
+      "role": "T024 원본 HTML 수집·가공 선수/팩·전체 live/archive·파일별 로그 계약과 검증",
+      "priority": "P0",
+      "related_paths": [
+        "docs/CATALOG_DATA_CONTRACT.md",
+        "services/catalog-api/README.md",
+        "services/catalog-api/lib/catalog-lifecycle.mjs",
+        "services/catalog-api/scripts/lifecycle/workspace.mjs"
+      ],
+      "update_when": [
+        "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
+      ],
+      "reviewed_in": "T024"
+    },
+    {
+      "path": "services/catalog-api/scripts/lifecycle/publication.mjs",
+      "role": "T024 원본 HTML 수집·가공 선수/팩·전체 live/archive·파일별 로그 계약과 검증",
+      "priority": "P0",
+      "related_paths": [
+        "docs/CATALOG_DATA_CONTRACT.md",
+        "services/catalog-api/README.md",
+        "services/catalog-api/lib/catalog-lifecycle.mjs",
+        "services/catalog-api/scripts/lifecycle/workspace.mjs"
+      ],
+      "update_when": [
+        "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
+      ],
+      "reviewed_in": "T024"
+    },
+    {
+      "path": "services/catalog-api/scripts/lifecycle/run-cycle.mjs",
+      "role": "T024 원본 HTML 수집·가공 선수/팩·전체 live/archive·파일별 로그 계약과 검증",
+      "priority": "P0",
+      "related_paths": [
+        "docs/CATALOG_DATA_CONTRACT.md",
+        "services/catalog-api/README.md",
+        "services/catalog-api/lib/catalog-lifecycle.mjs",
+        "services/catalog-api/scripts/lifecycle/workspace.mjs"
+      ],
+      "update_when": [
+        "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
+      ],
+      "reviewed_in": "T024"
+    },
+    {
+      "path": "services/catalog-api/scripts/lifecycle/workspace.mjs",
+      "role": "T024 원본 HTML 수집·가공 선수/팩·전체 live/archive·파일별 로그 계약과 검증",
+      "priority": "P0",
+      "related_paths": [
+        "docs/CATALOG_DATA_CONTRACT.md",
+        "services/catalog-api/README.md",
+        "services/catalog-api/lib/catalog-lifecycle.mjs"
+      ],
+      "update_when": [
+        "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
+      ],
+      "reviewed_in": "T024"
+    },
+    {
+      "path": "services/catalog-api/tests/catalog-lifecycle.test.mjs",
+      "role": "T024 수집·가공·원자적 발행·장애/만료·HTTP 정합성 테스트",
+      "priority": "P0",
+      "related_paths": [
+        "docs/CATALOG_DATA_CONTRACT.md",
+        "services/catalog-api/README.md",
+        "services/catalog-api/lib/catalog-lifecycle.mjs",
+        "services/catalog-api/scripts/lifecycle/workspace.mjs"
+      ],
+      "update_when": [
+        "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
+      ],
+      "reviewed_in": "T024"
+    },
+    {
+      "path": "services/catalog-api/tests/collect-cycle.test.mjs",
+      "role": "T024 수집·가공·원자적 발행·장애/만료·HTTP 정합성 테스트",
+      "priority": "P0",
+      "related_paths": [
+        "docs/CATALOG_DATA_CONTRACT.md",
+        "services/catalog-api/README.md",
+        "services/catalog-api/lib/catalog-lifecycle.mjs",
+        "services/catalog-api/scripts/lifecycle/workspace.mjs"
+      ],
+      "update_when": [
+        "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
+      ],
+      "reviewed_in": "T024"
+    },
+    {
+      "path": "services/catalog-api/tests/html-sources.test.mjs",
+      "role": "T024 수집·가공·원자적 발행·장애/만료·HTTP 정합성 테스트",
+      "priority": "P0",
+      "related_paths": [
+        "docs/CATALOG_DATA_CONTRACT.md",
+        "services/catalog-api/README.md",
+        "services/catalog-api/lib/catalog-lifecycle.mjs",
+        "services/catalog-api/scripts/lifecycle/workspace.mjs"
+      ],
+      "update_when": [
+        "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
+      ],
+      "reviewed_in": "T024"
+    },
+    {
+      "path": "services/catalog-api/tests/lifecycle-workspace.test.mjs",
+      "role": "T024 수집·가공·원자적 발행·장애/만료·HTTP 정합성 테스트",
+      "priority": "P0",
+      "related_paths": [
+        "docs/CATALOG_DATA_CONTRACT.md",
+        "services/catalog-api/README.md",
+        "services/catalog-api/lib/catalog-lifecycle.mjs",
+        "services/catalog-api/scripts/lifecycle/workspace.mjs"
+      ],
+      "update_when": [
+        "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
+      ],
+      "reviewed_in": "T024"
+    },
+    {
+      "path": "services/catalog-api/tests/publication.test.mjs",
+      "role": "T024 수집·가공·원자적 발행·장애/만료·HTTP 정합성 테스트",
+      "priority": "P0",
+      "related_paths": [
+        "docs/CATALOG_DATA_CONTRACT.md",
+        "services/catalog-api/README.md",
+        "services/catalog-api/lib/catalog-lifecycle.mjs",
+        "services/catalog-api/scripts/lifecycle/workspace.mjs"
+      ],
+      "update_when": [
+        "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
+      ],
+      "reviewed_in": "T024"
+    },
+    {
+      "path": "services/catalog-api/tests/run-cycle.test.mjs",
+      "role": "T024 수집·가공·원자적 발행·장애/만료·HTTP 정합성 테스트",
+      "priority": "P0",
+      "related_paths": [
+        "docs/CATALOG_DATA_CONTRACT.md",
+        "services/catalog-api/README.md",
+        "services/catalog-api/lib/catalog-lifecycle.mjs",
+        "services/catalog-api/scripts/lifecycle/workspace.mjs"
+      ],
+      "update_when": [
+        "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
+      ],
+      "reviewed_in": "T024"
     }
   ]
 }

@@ -29,3 +29,20 @@ export const quarantine = sqliteTable("quarantine", {
   reason: text("reason").notNull(),
   payloadJson: text("payload_json").notNull(),
 });
+
+// Public API versions contain only the processed catalog and its live/archive views.
+// Load a complete immutable version first, then change the single active pointer.
+export const apiVersions = sqliteTable("api_versions", {
+  versionId: text("version_id").primaryKey(),
+  manifestJson: text("manifest_json").notNull(),
+});
+export const apiRecords = sqliteTable("api_records", {
+  versionId: text("version_id").notNull(),
+  kind: text("kind", { enum: ["player", "pack", "live", "archive"] }).notNull(),
+  recordKey: text("record_key").notNull(),
+  payloadJson: text("payload_json").notNull(),
+}, (t) => [primaryKey({ columns: [t.versionId, t.kind, t.recordKey] })]);
+export const apiCurrent = sqliteTable("api_current", {
+  singleton: text("singleton").primaryKey(),
+  versionId: text("version_id").notNull(),
+});

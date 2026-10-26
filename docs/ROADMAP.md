@@ -1,8 +1,10 @@
-<!-- project-state: {"stage":"R2","previous":"T023","current":"T010","next":"T011"} -->
+<!-- project-state: {"stage":"R2","previous":"T023","current":"T024","next":"T025"} -->
 
 # efsimulator 개발 로드맵
 
 최신 사용자 결정은 **전체 누적 DB/API**와 **현재 판매 선수팩을 위한 사이트 DB/배포 스냅샷**을 분리한다. 이전의 “확률표 대상만 수집”은 사이트층에 한정되며, 전체 누적층은 EFHub에서 정상 확보 가능한 모든 players/packs로 확대한다. 기존 엔티티는 삭제하지 않고 변경을 개정 이력으로 보존한다. T023에서 API 독립 소스와 로컬 staging 수입을 준비했다. 공식 현행 projection과 hosted DB/API 운영은 아직 미완료다.
+
+> T024가 이전 두 계층 설명을 구체화/변경한다. raw 전체 보존과 가공 API의 공식 상품 한정을 구분하며 [현재 계약](CATALOG_DATA_CONTRACT.md)을 우선한다.
 
 ## 현재 위치
 
@@ -10,9 +12,9 @@
 | --- | --- |
 | 현재 단계 | R2 — 독립 API 업로드 준비 후 팩 관계·공식 범위 검증 진행 |
 | 이전 작업 | T023 — 독립 API Sites 소스·D1 스키마·수입/연동 파일과 API 브랜치 업로드 준비 완료 |
-| 현재 작업 | T010 — 진행 중. T023의 10팩·90관계와 최신 원본을 재사용하며 기존 Work의 팩 상세·관계 자료를 먼저 확인하고 검증된 팩 회차→카드 ID manifest와 수입 준비를 계획 |
-| 다음 작업 | T011 — 실제 원본 필드로 스키마·원본 ID·개정·무삭제 계약을 확정한 뒤 staging 수입과 현행 한 팩 표본 검증 |
-| 현재 조건 | EFHub는 우선 원출처 목표. 지속 접근/권리·구성·이미지·갱신 검증은 미완료. 기존 9상품 83카드는 이전 표본. 이번에 원격 work 8ece934·CI 2개 성공을 확인. 이후 배포는 Sites. 최신 API 소스는 api-server-setup에 준비/정상 push하며 main·실제 Sites 배포는 이번 범위 밖 |
+| 현재 작업 | T024 — HTML 수집·가공 DB·중첩 live/archive·업데이트 로그·매시간 점검 구현/검증 |
+| 다음 작업 | T025 — EFHub 정상 HTML 접근·미확정 3상품 관계·실제 API Site/D1 검토 배포 검증 |
+| 현재 조건 | raw 전체 보존, 공식 상품만 가공. 4팩44카드/live4/archive0 로컬 검증. 공식 미확정3상품과 EFHub HTML403 대기. 매시간 점검 예약 활성, hosted Site/D1 미실행 |
 
 이번 이관 결과는 [MIGRATION_STATUS](MIGRATION_STATUS.md)이며, 원래 인수인계는 [CHATGPT_WORK_HANDOFF](CHATGPT_WORK_HANDOFF.md), 이전 전수 점검은 [FILE_SYNC_AUDIT](FILE_SYNC_AUDIT.md), 작업 순서와 추가 조건은 [WORKPLAN](WORKPLAN.md), 관리 경로/우선순위는 [FILE_SYNC](FILE_SYNC.json)를 따른다.
 

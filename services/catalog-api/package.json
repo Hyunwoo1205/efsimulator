@@ -15,7 +15,9 @@
     "test": "node --test tests/*.test.mjs",
     "data:prepare": "node scripts/ingest/prepare-import.mjs",
     "data:verify": "node scripts/ingest/apply-local.mjs",
-    "source:export": "node scripts/export-source.mjs"
+    "source:export": "node scripts/export-source.mjs",
+    "data:init": "node scripts/lifecycle/workspace.mjs init",
+    "data:cycle": "node scripts/lifecycle/run-cycle.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",

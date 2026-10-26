@@ -1,5 +1,8 @@
 # 전체 누적 DB/API와 사이트용 DB의 2계층 구조 계획
 
+> T024 최신 지시(2026-10-27): raw는 기존 형식을 유지하는 누적 원본이며 HTTP 조회에 사용하지 않는다. 가공 선수/팩은 공식 KR와 EFHub에서 같은 상품·회차가 확인된 대상만 누적한다. 선수 8개 필드, 팩의 선수 연결, 전체 중첩 live/archive와 파일별 로그를 구현한다. 과거의 모든 raw 항목 공개 API·얇은 아카이브·24시간 이관 대기는 이 결정으로 대체한다. [현재 데이터 계약](CATALOG_DATA_CONTRACT.md)을 우선한다.
+
+
 > T023 최신 결정: 앱과 API는 별도 Sites 프로젝트로 배포한다. API 독립 소스·초기 D1 schema·로컬 수입 도구를 services/catalog-api에 준비했다. 최신 입력은 카드 47,408개이며 이전 T021/T022 수치는 이력이다. [API 준비 결과](API_SERVER_PREPARATION.md)를 우선한다. 실제 hosted 배포·현재 판매 projection·live 원자적 발행은 아직 미구현이다.
 
 > T022 이관 확인: 기존 raw 두 파일을 이 Work로 가져와 해시·행 수를 확인했고 기존 9팩·79관계의 ID가 raw에 모두 존재함을 확인했다. 제품 위치는 R2/T010 예정이다. 이후 배포는 Sites를 기본으로 하며 실제 DB·서버·배포는 아직 미구현이다. [이관 결과](MIGRATION_STATUS.md)와 [배포 계획](DEPLOYMENT.md)을 최신 기준으로 읽는다.

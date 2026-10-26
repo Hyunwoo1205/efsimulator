@@ -22,7 +22,10 @@ export function createCatalogClient({ baseUrl, fetch: fetcher = globalThis.fetch
   return Object.freeze({
     health: () => read('health'), manifest: () => read('manifest'),
     cards: (query) => read('cards', query), card: (id) => read(`cards/${segment(id)}`),
-    packs: (query) => read('packs', query), pack: (slug) => read(`packs/${segment(slug)}`),
-    packCards: (slug, query) => read(`packs/${segment(slug)}/cards`, query),
+    players: (query) => read('players', query), player: (id) => read(`players/${segment(id)}`),
+    packs: (query) => read('packs', query), pack: (saleId) => read(`packs/${segment(saleId)}`),
+    packCards: (saleId, query) => read(`packs/${segment(saleId)}/cards`, query),
+    live: (query) => read('live', query), livePack: (saleId) => read(`live/${segment(saleId)}`),
+    archive: (query) => read('archive', query), archivedPack: (saleId) => read(`archive/${segment(saleId)}`),
   });
 }

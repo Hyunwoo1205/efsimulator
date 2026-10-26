@@ -1,5 +1,8 @@
 # Sites 배포·DB API 운영 계획
 
+> T024 최신 지시(2026-10-27): raw는 기존 형식을 유지하는 누적 원본이며 HTTP 조회에 사용하지 않는다. 가공 선수/팩은 공식 KR와 EFHub에서 같은 상품·회차가 확인된 대상만 누적한다. 선수 8개 필드, 팩의 선수 연결, 전체 중첩 live/archive와 파일별 로그를 구현한다. 과거의 모든 raw 항목 공개 API·얇은 아카이브·24시간 이관 대기는 이 결정으로 대체한다. [현재 데이터 계약](CATALOG_DATA_CONTRACT.md)을 우선한다.
+
+
 > T023 최신 사용자 결정: API 전용 Site를 앱과 분리한다. GitHub api-server-setup의 services/catalog-api가 독립 소스 root이며 source export 후 새 Sites에 등록·전달한다. 이번 작업은 source/데이터 업로드 준비까지이며 실제 서비스 등록·배포·원격 DB 수입은 후속이다. [API 준비 확인서](API_SERVER_PREPARATION.md)를 따른다.
 
 2026-10-26 T022: 사용자의 최신 결정에 따라 이후 배포는 **Sites**를 기본으로 한다. GitHub `Hyunwoo1205/efsimulator`의 `work`가 개발 기준이며 `main`은 운영 반영용이다. 이번에는 이관·호환성 확인과 문서를 갱신했고 서비스를 생성하거나 배포하지 않았다. [이관 확인서](MIGRATION_STATUS.md), [작업 계획](WORKPLAN.md), [전환 전 Pages 계획](https://github.com/Hyunwoo1205/efsimulator/blob/8ece93492608f4644e15f0952446e808b30c8f6c/docs/DEPLOYMENT.md)을 함께 참조한다.

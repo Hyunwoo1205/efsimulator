@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "saleId": "potw-22-oct-26::2026-10",
+      "packSlug": "potw-22-oct-26",
+      "officialTitle": "POTW: Worldwide 22 Oct '26",
+      "newPlayersSection": "POTW 22 Oct '26",
+      "expectedTotalPlayerCount": 11,
+      "expectedEndsAt": "2026-10-29T01:59:59.000Z",
+      "expectedSpecialCount": 11,
+      "memberIds": [
+        "52904333543847",
+        "52904333576000",
+        "52904333551882",
+        "52904333527391",
+        "52904333571536",
+        "52904333457355",
+        "52904333584293",
+        "52904333532168",
+        "52904333532623",
+        "52904333545669",
+        "52904333546402"
+      ],
+      "matchEvidence": {
+        "status": "explicit_cross_source_round_mapping",
+        "officialTitle": "POTW: Worldwide 22 Oct '26",
+        "efhubSection": "POTW 22 Oct '26",
+        "relationSource": "data/research/current-catalog-observations.json",
+        "relationMethod": "Previously saved exact string card IDs; current readable new-players section checked for corresponding release. No ID derived from player name.",
+        "liveRawHtmlCollectorStatus": "HTTP403; no new EFHub raw payload downloaded in this task",
+        "newPlayersReadableCheckedOnKst": "2026-10-27",
+        "newPlayersReadableExactObservedAt": null
+      }
+    },
+    {
+      "saleId": "potw-european-club-championship-22-oct-26::2026-10",
+      "packSlug": "potw-european-club-championship-22-oct-26",
+      "officialTitle": "POTW: European Club Championship",
+      "newPlayersSection": "POTW European Club Championship 22 Oct '26",
+      "expectedTotalPlayerCount": 11,
+      "expectedEndsAt": "2026-10-29T01:59:59.000Z",
+      "expectedSpecialCount": 11,
+      "memberIds": [
+        "52912655044507",
+        "52912655024346",
+        "52912655014117",
+        "52912655053878",
+        "52912655057395",
+        "52912655062348",
+        "52912655050310",
+        "52912655086762",
+        "52912655061235",
+        "52912655073911",
+        "52912655074031"
+      ],
+      "matchEvidence": {
+        "status": "explicit_cross_source_round_mapping",
+        "officialTitle": "POTW: European Club Championship",
+        "efhubSection": "POTW European Club Championship 22 Oct '26",
+        "relationSource": "data/research/current-catalog-observations.json",
+        "relationMethod": "Previously saved exact string card IDs; current readable new-players section checked for corresponding release. No ID derived from player name.",
+        "liveRawHtmlCollectorStatus": "HTTP403; no new EFHub raw payload downloaded in this task",
+        "newPlayersReadableCheckedOnKst": "2026-10-27",
+        "newPlayersReadableExactObservedAt": null
+      }
+    },
+    {
+      "saleId": "magical-dribblers-22-oct-26::2026-10",
+      "packSlug": "magical-dribblers-22-oct-26",
+      "officialTitle": "Show Time: Magical Dribblers",
+      "newPlayersSection": "Magical Dribblers 22 Oct '26",
+      "expectedTotalPlayerCount": 150,
+      "expectedEndsAt": "2026-10-29T01:59:59.000Z",
+      "expectedSpecialCount": 11,
+      "memberIds": [
+        "106800804418912",
+        "106800804393500",
+        "106800804376628",
+        "105896176917926",
+        "105896176904634",
+        "105896176839655",
+        "105896176957170",
+        "105896176893674",
+        "105896176886332",
+        "105896176881795",
+        "105896176926765"
+      ],
+      "matchEvidence": {
+        "status": "explicit_cross_source_round_mapping",
+        "officialTitle": "Show Time: Magical Dribblers",
+        "efhubSection": "Magical Dribblers 22 Oct '26",
+        "relationSource": "data/research/current-catalog-observations.json",
+        "relationMethod": "Previously saved exact string card IDs; current readable new-players section checked for corresponding release. No ID derived from player name.",
+        "liveRawHtmlCollectorStatus": "HTTP403; no new EFHub raw payload downloaded in this task",
+        "newPlayersReadableCheckedOnKst": "2026-10-27",
+        "newPlayersReadableExactObservedAt": null
+      }
+    },
+    {
+      "saleId": "italian-league-selection-attackers-26-oct-26::2026-10",
+      "packSlug": "italian-league-selection-attackers-26-oct-26",
+      "officialTitle": "Epic: Italian League Attackers",
+      "newPlayersSection": "Italian League Attackers",
+      "expectedTotalPlayerCount": 150,
+      "expectedEndsAt": "2026-11-02T01:59:59.000Z",
+      "expectedSpecialCount": 11,
+      "memberIds": [
+        "88046292831684",
+        "88046292831719",
+        "88046292831703",
+        "105896445274201",
+        "105896445333214",
+        "105896445333407",
+        "105896445335642",
+        "105896445345749",
+        "105896445386742",
+        "105896445387173",
+        "105896445356935"
+      ],
+      "matchEvidence": {
+        "status": "explicit_cross_source_round_mapping",
+        "officialTitle": "Epic: Italian League Attackers",
+        "efhubSection": "Italian League Attackers",
+        "relationSource": "players_update_20261026.json",
+        "relationMethod": "Previously saved exact string card IDs; current readable new-players section checked for corresponding release. No ID derived from player name.",
+        "liveRawHtmlCollectorStatus": "HTTP403; no new EFHub raw payload downloaded in this task",
+        "newPlayersReadableCheckedOnKst": "2026-10-27",
+        "newPlayersReadableExactObservedAt": null
+      },
+      "countCorrection": {
+        "status": "user_confirmed",
+        "reason": "User confirmed all eleven cards; original raw playerCount8 omits three type5 cards. Preserve source8; process special11.",
+        "effectiveCount": 11
+      }
+    }
+  ],
+  "pendingOfficialTitles": [
+    {
+      "title": "National Team Selection: Worldwide Sep '26",
+      "reason": "Exact pack-round card-ID relation not yet verified"
+    },
+    {
+      "title": "League Selection: Italian Oct '26",
+      "reason": "Exact pack-round card-ID relation not yet verified"
+    },
+    {
+      "title": "Epic: Ricardo Quaresma",
+      "reason": "Exact pack-round card-ID relation not yet verified"
+    }
+  ],
+  "policy": "Only explicit round mappings with complete HTML ID membership may append raw/process. Unknown mappings stay pending. IDs in retained relation evidence can bootstrap existing raw without direct upstream API calls."
+}

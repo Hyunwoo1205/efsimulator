@@ -1,5 +1,7 @@
 # efsimulator
 
+현재 데이터 계약은 [수집·가공·live·archive](docs/CATALOG_DATA_CONTRACT.md)다. raw는 HTML 수집 원본으로 누적하고, 자체 API는 공식 KR와 EFHub에서 함께 확인한 상품의 가공 자료만 조회한다. 판매 종료 상품은 선수 상세 전체와 함께 보존한다. 아래 이전 ‘전체 누적 DB/API’ 설명은 T023까지의 이력이며 T024가 우선한다.
+
 **API 전용 업로드 준비:** `api-server-setup` 브랜치의 [services/catalog-api](services/catalog-api/README.md)는 앱과 별도의 Sites 프로젝트로 배포할 독립 소스입니다. [준비 확인서](docs/API_SERVER_PREPARATION.md)를 참조하세요. 이후 등록·배포·원격 수입·실제 앱 연동은 별도 단계입니다.
 
 **이관·현재 작업:** [MIGRATION_STATUS](docs/MIGRATION_STATUS.md)를 먼저 확인합니다. GitHub `work`를 개발 기준으로 사용하며 이후 배포는 **Sites**입니다. 기존 정적 앱의 빌드 준비는 통과했고 자체 API는 Sites Worker + D1/R2를 우선 검토합니다. 실제 배포·DB 운영은 후속 단계입니다.

@@ -1,4 +1,4 @@
-<!-- project-state: {"stage":"R2","previous":"T023","current":"T010","next":"T011"} -->
+<!-- project-state: {"stage":"R2","previous":"T023","current":"T024","next":"T025"} -->
 
 # efsimulator 작업 계획과 이력
 
@@ -7,15 +7,15 @@
 ## 현재 작업과 매 작업 갱신
 
 - 이전 작업: T023 — 독립 API Site용 소스·schema·수입/클라이언트와 업로드 준비 완료.
-- 현재 작업: T010 — 진행 중. T023의 10팩·90관계와 최신 입력을 재사용하며 기존 대상 Work의 팩 상세·관계 자료부터 확인하고 검증된 회차·카드 ID manifest와 수입 준비를 계획한다. 공식 회차·특수 완전성은 별도 검증한다.
-- 다음 작업: T011 — 실제 필드에 따른 중립 스키마·개정·무삭제 계약 설계, 이후 staging 수입과 현행 한 팩 표본 검증.
-- 현재 조건: 전체 누적층은 모든 확보 가능한 EFHub players/packs를 삭제하지 않고 개정으로 보존한다. 사이트층만 최신 공식 KR·종료 UTC·신선도로 제한한다. EFHub 우선 사용과 지속 공급·권리·이미지·구성 검증 완료는 별개다. 최신 원격 work는 8ece934이고 CI 2개 성공을 확인했다. 이후 배포는 Sites이며 이번은 로컬 문서 변경이다. 별도 Sites 초기 페이지·소스는 이관에서 제외한다.
+- 현재 작업: T024 — 진행 중. HTML 수집·가공·live/archive·로그·매시간 점검 구현·로컬 검증 완료, 원출처 정상 HTML 및 미확정 3상품 관계 대기.
+- 다음 작업: T025 — EFHub 정상 HTML 접근·미확정 3상품 관계와 실제 Sites/D1 검토 배포.
+- 현재 조건: raw 47,408선수/1,699팩 보존. 공식7상품 관측 중4팩44카드 가공·live4/archive0 검증, 나머지3 관계 대기. EFHub HTML403으로 신규 원본 수집0건. 매시간 점검 예약 활성, 실제 Sites/원격D1 배포 미실행. 작업 기준은 api-server-setup 브랜치와 services/catalog-api.
 
 매 작업 시작 시 Git 상태·이전 결과·이번/다음 작업·선행 조건을 확인한다. FILE_SYNC의 P0→P1→P2로 관련 파일을 검토하되 필요한 파일은 등급과 무관하게 함께 수정한다. 추가 요구는 ID·영향 단계·선행 조건·순서·상태를 기록한다. 파일별 수정/변경불필요/미해결과 근거, 경로 추가/삭제/이름 변경·참조를 같은 작업에서 갱신한다. 검증과 이전/현재/다음 포인터를 맞추며 구현/수집/발행 완료는 실제 근거가 있을 때만 표시한다.
 
 ## 최신 추가 조건과 이전 조건의 적용
 
-C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_BEFORE_PROBABILITY_SCOPE.md)에 보존한다. 관리 최신화·ID/근거·실패 보존·접근 거부 우회 금지·무료 우선·운영 승인 분리 원칙은 계속 적용한다. 범위 결정은 날짜별 이력이며 최신 C042~C055가 우선한다. 전체 수집과 사이트 범위를 혼동하지 않는다.
+C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_BEFORE_PROBABILITY_SCOPE.md)에 보존한다. 관리 최신화·ID/근거·실패 보존·접근 거부 우회 금지·무료 우선·운영 승인 분리 원칙은 계속 적용한다. 범위 결정은 날짜별 이력이며 최신 C056~C059가 우선한다. 전체 수집과 사이트 범위를 혼동하지 않는다.
 
 | 조건 ID | 최신 결정 | 영향 단계 / 선행 조건 / 처리 순서 | 상태 |
 | --- | --- | --- | --- |
@@ -44,6 +44,10 @@ C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_B
 | C053 | 이후 배포는 Cloudflare Pages 대신 Sites를 사용하며 자체 DB API와 기존 GitHub 파일의 배포 가능성을 확인 | T022 검토 → T011 계약 → T012/T013 배포 → T015/T016 운영. 과거 초기 Site 제외는 유지 | 정적 구조 검사·공식 서버/D1/R2 기능·Git 경로 확인. 실제 배포·DB·비용·운영 미검증 |
 | C054 | API 전용 서버를 앱과 별도 Site로 제작하고 GitHub의 새 repo/branch/folder 중 적절한 경계에 업로드 준비 | T023. api-server-setup + services/catalog-api, source/schema/수입/연동·테스트·정상 push. 실제 Sites 등록·배포·원격 수입은 후속 | 독립 소스와 staging/빌드·연동 준비. 기존 같은 Site 권장 대체 |
 | C055 | 최신 첨부 players 47,408개·packs 1,699개·11명 업데이트 기록 사용 | T023/T010/T011. 이전 47,397개 prefix와 추가 11명, 8/11 보정 근거·원본 보존 | 신규 중복/삭제 없음 확인. 공식 회차·전체 특수·판매 상태는 별도 |
+| C056 | raw는 누적 원본 문서이며 API 조회에 사용하지 않는다. 신규 상품은 공식 KR와 EFHub에서 동시에 검증한 경우에만 HTML로 수집 | T024/R2/R5. new-players → 필요한 상세 HTML → 기존 형식 append → 선수/팩 raw 로그. 원본 API 금지·충돌 보류 | 구현/검증 중 |
+| C057 | 가공 선수는 지정 8필드만, 가공 팩은 공식 전체 인원·종료 UTC·특수 선수 ID/이름 연결을 추가. 두 가공 DB는 공식 게재 이력 대상만 누적 | T024. 기존 전체 raw-normalized API를 별도 processed publication으로 대체 | 구현/검증 중 |
+| C058 | live/archive에 팩과 선수의 가공 필드 전체를 중첩. 종료 항목 즉시 이동. 합집합 정합성·변경 파일별 API 로그 필수 | T024. archive thin/24h 대기 이전 제안 대체; 공유 선수는 ID 합집합 중복 제거 | 구현/검증 중 |
+| C059 | 매시간 두 사이트를 확인하고 정상 신규 raw→가공→종료/신규 live→로그 순서로 갱신 | T024. 원출처 장애는 정상 DB 보존; 접근 우회 금지; 예약 작업과 hosted API 운영 구분 | 매시간 예약 활성 확인·EFHub HTML403 기록 |
 
 
 ## 이전 작업의 현재 해석
@@ -1103,3 +1107,76 @@ GitHub c849b032의 API21개·Node24.19 빌드는 통과했으나 setup-node의 p
 | `package-lock.json` | 검토 결과 변경 불필요 | 기존 앱 의존 변경 없음 |
 | `data/catalog.seed.json` | 검토 결과 변경 불필요 | 기존 앱 9/83 표본 보존 |
 | `web/app.js` | 검토 결과 변경 불필요 | API 원격 연결은 후속이며 기존 UI 변경 없음 |
+
+
+## T024 — HTML 누적 수집·가공 DB·전체 live/archive·갱신 로그
+
+- 단계: R2
+- 상태: 진행 중
+- 이전: T023
+- 다음: T025
+
+최신 사용자 C056~C059를 구현한다. 새 관계가 검증된 공식 상품만 가공하며 기존 raw를 보존한다. 상세 계약은 [CATALOG_DATA_CONTRACT](CATALOG_DATA_CONTRACT.md). EFHub 수집기 HTML403은 실패 보호로 처리하고 신규 수입 성공으로 보고하지 않는다. 기존 자료와 현재 공식 관측으로 검증 가능한 4팩·44카드 표본을 사용하며 미확정 3상품은 대기한다. 실제 Site 배포·원격 D1 적재는 미실행. 로컬 가공 발행 44선수/4팩/live4/archive0과 실제 API 7경로200을 확인했다. 전체 Node 테스트312개·TypeScript·공식 Sites Worker 빌드 통과. 이후 run-cycle 통합3개를 마지막 정리 후 다시 통과했다. 공식 상품7 중3은 관계 미확정이며 HTML403으로 신규 raw 추가0건이다.
+
+검증 데이터 묶음은 catalog-api-lifecycle-data.tar.gz로 저장했다. 매시간 조건 점검 예약을 Asia/Seoul 기준으로 활성화했으며 첫 예약 실행의 수집·수정 성공은 아직 관측하지 않았다. 현재의 수집기403과 미확정3상품을 예약 등록으로 해결했다고 표시하지 않는다. 원본 API 호출0회, 새 원본 수집0건이며 제공된 raw와 기존 관계를 재사용했다.
+
+### 파일 최신화 검토
+
+| 파일 | 결과 | 근거 |
+| --- | --- | --- |
+
+| `AGENTS.md` | 수정 | 매 작업의 확인·변경 영향 검토·검증·상태 갱신 규칙 |
+| `README.md` | 수정 | 공식확률표 선수팩 목표·현재 구현 경계·계획/검사 진입 문서 |
+| `data/research/catalog-lifecycle-verification.json` | 수정 | T024 실제 원본/가공 수·공식 관측·EFHub403·로컬 발행·API 검사 증거 |
+| `data/research/catalog-sale-mappings.json` | 수정 | 공식 상품 회차와 EFHub 팩·정확한 문자열 카드 ID의 명시적 매핑 및 미확정 목록 |
+| `docs/API_SERVER_PREPARATION.md` | 수정 | 별도 API Site·브랜치/소스·데이터 업로드·검증·운영 경계 확인서 |
+| `docs/ARCHITECTURE.md` | 수정 | T024 원본 HTML 수집·가공 선수/팩·전체 live/archive·파일별 로그 계약과 검증 |
+| `docs/CATALOG_DATA_CONTRACT.md` | 수정 | T024 원본 HTML 수집·가공 선수/팩·전체 live/archive·파일별 로그 계약과 검증 |
+| `docs/COLLECTION.md` | 수정 | T024 원본 HTML 수집·가공 선수/팩·전체 live/archive·파일별 로그 계약과 검증 |
+| `docs/DATA_LIFECYCLE.md` | 수정 | T024 원본 HTML 수집·가공 선수/팩·전체 live/archive·파일별 로그 계약과 검증 |
+| `docs/DEPLOYMENT.md` | 수정 | Sites static/Worker·Git source 전달·D1/R2·검토/운영·인증/비용/백업 계획과 검증 한계 |
+| `docs/FILE_SYNC.json` | 수정 | 관리 파일 역할·연관 경로·우선순위·갱신 조건·검토 작업의 단일 목록 |
+| `docs/ROADMAP.md` | 수정 | 전체 누적/공식 현행의 R0~R6·Sites 배포·완료 조건·현재/이전/다음 |
+| `docs/WORKPLAN.md` | 수정 | T 작업과 C 추가 조건·입출력/검증·현재 상태·매 작업 영향 파일 검토 |
+| `services/catalog-api/README.md` | 수정 | T024 원본 HTML 수집·가공 선수/팩·전체 live/archive·파일별 로그 계약과 검증 |
+| `services/catalog-api/app/page.tsx` | 수정 | T024 원본 HTML 수집·가공 선수/팩·전체 live/archive·파일별 로그 계약과 검증 |
+| `services/catalog-api/client/catalog-api-client.mjs` | 수정 | T024 원본 HTML 수집·가공 선수/팩·전체 live/archive·파일별 로그 계약과 검증 |
+| `services/catalog-api/db/schema.ts` | 수정 | T024 원본 HTML 수집·가공 선수/팩·전체 live/archive·파일별 로그 계약과 검증 |
+| `services/catalog-api/drizzle/0001_api_publications.sql` | 수정 | 가공 API 불변 버전/단일 활성 포인터 schema-only migration과 Drizzle 추적 메타 |
+| `services/catalog-api/drizzle/meta/0001_snapshot.json` | 수정 | 가공 API 불변 버전/단일 활성 포인터 schema-only migration과 Drizzle 추적 메타 |
+| `services/catalog-api/drizzle/meta/_journal.json` | 수정 | 가공 API 불변 버전/단일 활성 포인터 schema-only migration과 Drizzle 추적 메타 |
+| `services/catalog-api/lib/catalog-api.mjs` | 수정 | T024 원본 HTML 수집·가공 선수/팩·전체 live/archive·파일별 로그 계약과 검증 |
+| `services/catalog-api/lib/catalog-lifecycle.mjs` | 수정 | T024 원본 HTML 수집·가공 선수/팩·전체 live/archive·파일별 로그 계약과 검증 |
+| `services/catalog-api/package.json` | 수정 | T024 원본 HTML 수집·가공 선수/팩·전체 live/archive·파일별 로그 계약과 검증 |
+| `services/catalog-api/scripts/lifecycle/collect-cycle.mjs` | 수정 | T024 원본 HTML 수집·가공 선수/팩·전체 live/archive·파일별 로그 계약과 검증 |
+| `services/catalog-api/scripts/lifecycle/html-sources.mjs` | 수정 | T024 원본 HTML 수집·가공 선수/팩·전체 live/archive·파일별 로그 계약과 검증 |
+| `services/catalog-api/scripts/lifecycle/publication.mjs` | 수정 | T024 원본 HTML 수집·가공 선수/팩·전체 live/archive·파일별 로그 계약과 검증 |
+| `services/catalog-api/scripts/lifecycle/run-cycle.mjs` | 수정 | T024 원본 HTML 수집·가공 선수/팩·전체 live/archive·파일별 로그 계약과 검증 |
+| `services/catalog-api/scripts/lifecycle/workspace.mjs` | 수정 | T024 원본 HTML 수집·가공 선수/팩·전체 live/archive·파일별 로그 계약과 검증 |
+| `services/catalog-api/tests/catalog-api.test.mjs` | 수정 | T024 수집·가공·원자적 발행·장애/만료·HTTP 정합성 테스트 |
+| `services/catalog-api/tests/catalog-lifecycle.test.mjs` | 수정 | T024 수집·가공·원자적 발행·장애/만료·HTTP 정합성 테스트 |
+| `services/catalog-api/tests/client.test.mjs` | 수정 | T024 수집·가공·원자적 발행·장애/만료·HTTP 정합성 테스트 |
+| `services/catalog-api/tests/collect-cycle.test.mjs` | 수정 | T024 수집·가공·원자적 발행·장애/만료·HTTP 정합성 테스트 |
+| `services/catalog-api/tests/html-sources.test.mjs` | 수정 | T024 수집·가공·원자적 발행·장애/만료·HTTP 정합성 테스트 |
+| `services/catalog-api/tests/lifecycle-workspace.test.mjs` | 수정 | T024 수집·가공·원자적 발행·장애/만료·HTTP 정합성 테스트 |
+| `services/catalog-api/tests/publication.test.mjs` | 수정 | T024 수집·가공·원자적 발행·장애/만료·HTTP 정합성 테스트 |
+| `services/catalog-api/tests/run-cycle.test.mjs` | 수정 | T024 수집·가공·원자적 발행·장애/만료·HTTP 정합성 테스트 |
+| `web/app.js` | 검토 결과 변경 불필요 | 현재 요청은 데이터/API; 기존 앱 연결/화면은 후속 |
+| `data/catalog.seed.json` | 검토 결과 변경 불필요 | 기존 정적 표본을 신규 가공 전체로 덮어쓰지 않음 |
+| `package.json` | 검토 결과 변경 불필요 | 루트 Node24.19/npm11.9와 기존앱 명령 유지 |
+| `services/catalog-api/.openai/hosting.json` | 검토 결과 변경 불필요 | 별도API Worker+D1 binding 유지, 실제 Site 등록 전 가짜ID 추가 없음 |
+| `services/catalog-api/scripts/ingest/prepare-import.mjs` | 검토 결과 변경 불필요 | T023 원본/staging 이력 도구 보존, 새 공개 API fallback 금지 |
+
+## T025 — 정상 HTML 공급·남은 관계와 검토 배포
+
+- 단계: R2
+- 상태: 예정
+- 이전: T024
+- 다음: T011
+
+EFHub 정상 HTML 공급을 확인하고 미확정 공식 상품의 정확한 회차/카드 ID 관계를 보완한다. 준비한 API의 새 Sites 등록·D1 원격 수입·서비스 간 인증·비용/백업과 비공개 검토 URL은 실제 실행 근거를 남긴다. 과거 수집 거부를 우회하거나 단일 정상 응답을 상시 공급 보장으로 승격하지 않는다.
+
+### 파일 최신화 검토
+
+| 파일 | 결과 | 근거 |
+| --- | --- | --- |
