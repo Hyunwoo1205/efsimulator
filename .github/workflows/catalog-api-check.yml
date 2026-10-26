@@ -20,8 +20,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 24.19.0
-          cache: pnpm
-          cache-dependency-path: services/catalog-api/pnpm-lock.yaml
       - run: pnpm install --frozen-lockfile --prefer-offline
       - run: node --test tests/*.test.mjs
       - run: pnpm run build

@@ -764,7 +764,17 @@
       "checked": 179,
       "broken": 0
     },
-    "sites_artifact_prepare": "worker"
+    "sites_artifact_prepare": "worker",
+    "github_first_ci": {
+      "run_id": 40334556153,
+      "node": "24.19.0",
+      "tests": 21,
+      "tests_result": "passed",
+      "build_result": "passed",
+      "overall": "failure",
+      "reason": "Optional setup-node pnpm cache post-save path does not exist",
+      "repair": "Remove optional cache settings"
+    }
   },
   "runtime": {
     "actual_node": "24.22.1",
@@ -780,7 +790,11 @@
   ],
   "source_data_committed": false,
   "source_upload_preparation": "Standalone source export script; not a deployment archive",
-  "github_push": "Pending source validation; subsequent observed result recorded in final handoff",
+  "github_push": {
+    "verified_source_commit": "c849b03222f31c3e869e703d7b5efbe426580ceb",
+    "verified_tree": "39b86cb0c5a4e67863cdddba0241f7ebf2dba5c2",
+    "method": "Native GitHub tree/commit/ref; local git push lacks credentials"
+  },
   "bundles": [
     {
       "path": "artifacts/catalog-api-source-upload.tar.gz",

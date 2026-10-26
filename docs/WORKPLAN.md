@@ -952,6 +952,8 @@ services/catalog-api의 신규 source/lock/migration/client/수입 스크립트�
 
 API 전용 source/5테이블 schema·generated SQL/메타·GET client·정규화/초기 수입·export를 준비했다. 실제 입력은 카드 47,408·유효팩 1,697·quarantine 2·10팩/90관계다. staging 수입/replay·고아 참조 0과 실제6개 경로 응답을 확인했다. 테스트 245개(신규 API 21개), TypeScript·공식 Sites build, 기존 앱 build/Pages7 비교를 통과했다. live 원자적 갱신·현재 공식 projection·hosted DB·계정 비용/백업·실제 사이트 연결은 미완료로 범위를 분리한다. 새 브랜치의 정상 push는 이 사용자 요청 범위에 포함하고 main/work·기존 앱·실제 Sites 배포는 변경하지 않는다.
 
+GitHub c849b032의 API21개·Node24.19 빌드는 통과했으나 setup-node의 post cache가 존재하지 않는 pnpm 경로를 저장하려다 실패했다. 기능과 무관한 선택 캐시 설정을 제거하고 후속 전체 CI를 확인한다. 일반 git push 인증 부재로 native GitHub Git 객체/branch 연결을 사용했으며 파일 tree SHA가 로컬 검증본과 일치함을 확인했다.
+
 ### 파일 최신화 검토
 
 | 파일 | 결과 | 근거 |
