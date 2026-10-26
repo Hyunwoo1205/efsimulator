@@ -1,21 +1,21 @@
-<!-- project-state: {"stage":"R2","previous":"T021","current":"T010","next":"T011"} -->
+<!-- project-state: {"stage":"R2","previous":"T023","current":"T010","next":"T011"} -->
 
 # efsimulator 작업 계획과 이력
 
-최신 사용자 결정에 따라 전체 누적 EFHub DB/API와 공식 KR 현재 판매 사이트 DB를 분리한다. 이번 T020은 전수 점검·계획/인수인계 갱신과 미푸시 자료 이관 준비만 수행한다. 과거 관측·완료 이력은 보존하며 새 구현 완료로 승격하지 않는다.
+최신 사용자 결정에 따라 전체 누적 EFHub DB/API와 공식 KR 현재 판매 사이트 DB를 분리한다. T022 이관 뒤 T023에서 별도 API Sites 소스·schema·로컬 수입/연동 준비를 완료했다. 과거 관측·완료 이력은 보존하며 새 구현 완료로 승격하지 않는다.
 
 ## 현재 작업과 매 작업 갱신
 
-- 이전 작업: T021 — 양쪽 raw 파일의 내부 검사와 한계·격리 검토 사항 반영 완료.
-- 현재 작업: T010 — 예정. 기존 대상 Work의 팩 상세·관계 자료부터 확인하고 검증된 회차·카드 ID manifest와 수입 준비를 계획한다. 이번에는 구현하지 않는다.
+- 이전 작업: T023 — 독립 API Site용 소스·schema·수입/클라이언트와 업로드 준비 완료.
+- 현재 작업: T010 — 진행 중. T023의 10팩·90관계와 최신 입력을 재사용하며 기존 대상 Work의 팩 상세·관계 자료부터 확인하고 검증된 회차·카드 ID manifest와 수입 준비를 계획한다. 공식 회차·특수 완전성은 별도 검증한다.
 - 다음 작업: T011 — 실제 필드에 따른 중립 스키마·개정·무삭제 계약 설계, 이후 staging 수입과 현행 한 팩 표본 검증.
-- 현재 조건: 전체 누적층은 모든 확보 가능한 EFHub players/packs를 삭제하지 않고 개정으로 보존한다. 사이트층만 최신 공식 KR·종료 UTC·신선도로 제한한다. EFHub 우선 사용과 지속 공급·권리·이미지·구성 검증 완료는 별개다. 최신 사용자 승인에 따라 work를 정상 푸시하며 최종 원격 SHA·CI를 확인한다. 별도 Sites 초기 페이지·소스는 이관에서 제외한다.
+- 현재 조건: 전체 누적층은 모든 확보 가능한 EFHub players/packs를 삭제하지 않고 개정으로 보존한다. 사이트층만 최신 공식 KR·종료 UTC·신선도로 제한한다. EFHub 우선 사용과 지속 공급·권리·이미지·구성 검증 완료는 별개다. 최신 원격 work는 8ece934이고 CI 2개 성공을 확인했다. 이후 배포는 Sites이며 이번은 로컬 문서 변경이다. 별도 Sites 초기 페이지·소스는 이관에서 제외한다.
 
 매 작업 시작 시 Git 상태·이전 결과·이번/다음 작업·선행 조건을 확인한다. FILE_SYNC의 P0→P1→P2로 관련 파일을 검토하되 필요한 파일은 등급과 무관하게 함께 수정한다. 추가 요구는 ID·영향 단계·선행 조건·순서·상태를 기록한다. 파일별 수정/변경불필요/미해결과 근거, 경로 추가/삭제/이름 변경·참조를 같은 작업에서 갱신한다. 검증과 이전/현재/다음 포인터를 맞추며 구현/수집/발행 완료는 실제 근거가 있을 때만 표시한다.
 
 ## 최신 추가 조건과 이전 조건의 적용
 
-C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_BEFORE_PROBABILITY_SCOPE.md)에 보존한다. 관리 최신화·ID/근거·실패 보존·접근 거부 우회 금지·무료 우선·운영 승인 분리 원칙은 계속 적용한다. 범위 결정은 날짜별 이력이며 최신 C042~C051이 우선한다. 전체 수집과 사이트 범위를 혼동하지 않는다.
+C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_BEFORE_PROBABILITY_SCOPE.md)에 보존한다. 관리 최신화·ID/근거·실패 보존·접근 거부 우회 금지·무료 우선·운영 승인 분리 원칙은 계속 적용한다. 범위 결정은 날짜별 이력이며 최신 C042~C055가 우선한다. 전체 수집과 사이트 범위를 혼동하지 않는다.
 
 | 조건 ID | 최신 결정 | 영향 단계 / 선행 조건 / 처리 순서 | 상태 |
 | --- | --- | --- | --- |
@@ -40,6 +40,11 @@ C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_B
 | C049 | 50,840개와 47,397개의 차이 3,443개는 중복 제거 때문이라는 사용자 설명 | T021. 사용자 제공 경위와 현재 파일의 고유 ID 검사를 구분. 원본 페이지·중복 제거 로그는 재검증하지 않음 | 누락 의심을 주요 차단 요인으로 삼거나 전체를 재수집하지 않음 |
 | C050 | 최신 검증·문서와 로컬 변경을 원격 work에 정상 푸시하도록 승인함. 기존 CI·연결된 preview 실행 허용 | T021. 원격·선조 확인 → 검증 → 정상 푸시 → 정확한 SHA·CI 보고. 강제 푸시·main 병합·설정 변경·새 자동화 금지 | GitHub work 우선 이관. bundle은 선택 백업 |
 | C051 | 사용자가 packs_raw.json 제작 완료를 보고했고 상위 환경이 실제 파일 내부 검사를 수행함 | T021 완료 → R2/T010 예정 → T011. 팩에는 카드 ID·명단이 없어 기존 상세·관계 자료부터 확인. 빈 name/slug·dummy 의심 항목은 원본 보존·격리 검토 | 이번에는 문서·정상 work 푸시·CI만 수행. 새 수집·DB/API·배포·자동화 착수 없음 |
+| C052 | GitHub efsimulator와 첨부 인수인계로 ChatGPT Work에 이관하고 저장소를 작업 폴더로 사용 | T022 → T010. 원격·사용자 변경 보호, raw/기존 관계 재사용, 규칙·로드맵·계획·현재 위치 정리 | 이관·오프라인 재현 완료. 원격 추가 push·main 병합·기능 구축 없음 |
+| C053 | 이후 배포는 Cloudflare Pages 대신 Sites를 사용하며 자체 DB API와 기존 GitHub 파일의 배포 가능성을 확인 | T022 검토 → T011 계약 → T012/T013 배포 → T015/T016 운영. 과거 초기 Site 제외는 유지 | 정적 구조 검사·공식 서버/D1/R2 기능·Git 경로 확인. 실제 배포·DB·비용·운영 미검증 |
+| C054 | API 전용 서버를 앱과 별도 Site로 제작하고 GitHub의 새 repo/branch/folder 중 적절한 경계에 업로드 준비 | T023. api-server-setup + services/catalog-api, source/schema/수입/연동·테스트·정상 push. 실제 Sites 등록·배포·원격 수입은 후속 | 독립 소스와 staging/빌드·연동 준비. 기존 같은 Site 권장 대체 |
+| C055 | 최신 첨부 players 47,408개·packs 1,699개·11명 업데이트 기록 사용 | T023/T010/T011. 이전 47,397개 prefix와 추가 11명, 8/11 보정 근거·원본 보존 | 신규 중복/삭제 없음 확인. 공식 회차·전체 특수·판매 상태는 별도 |
+
 
 ## 이전 작업의 현재 해석
 
@@ -341,13 +346,13 @@ docs/API_SELECTION.md, 공식 기준표/선정 검증 기록, ROADMAP/WORKPLAN/F
 ## T010 — 보유 raw 재사용·팩 상세와 카드 관계 검증·수입 준비
 
 - 단계: R2
-- 상태: 예정
-- 이전: T021
+- 상태: 진행 중
+- 이전: T023
 - 다음: T011
 
 ### 목표·입력·순서
 
-입력은 검사한 players/packs 원본과 해시, 빈 필드·의심 항목 보고, 기존 Work의 상세·관계 자료다. 두 raw를 다시 수집하는 것으로 시작하지 않는다.
+입력은 검사한 players/packs 원본과 해시, 빈 필드·의심 항목 보고, 기존 Work의 상세·관계 자료와 T022 이관 확인서다. T022에서 기존 9팩·79관계의 모든 slug/card ID가 양쪽 raw에 존재함을 확인했으며 공식 회차·특수 집합 완전성은 별도 검증한다. 두 raw를 다시 수집하는 것으로 시작하지 않는다.
 
 1. 기존 대상 Work에 팩 상세·카드 명단·원본 ID 관계 자료가 이미 있는지 먼저 확인한다. 팩 목록의 네 필드만으로 관계를 추측하거나 playerCount 합계를 실제 구성 수로 사용하지 않는다.
 2. 없는 관계는 허용된 정상 상세 API·HTML 등의 출처에서 정확한 팩 회차와 카드 ID 근거를 확보할 계획을 세운다. 기존 접근 제한 우회·거부 요청 반복·이름만으로 연결은 금지한다. 실제 요청은 해당 작업 착수 범위에서 수행한다.
@@ -360,7 +365,7 @@ docs/API_SELECTION.md, 공식 기준표/선정 검증 기록, ROADMAP/WORKPLAN/F
 
 ### 선행 조건·보류 사항
 
-T021의 파일 내부 검사와 한계 보고는 완료됐다. 정상 제공·이용 조건은 해당 처리별로 확인하며 누적 원본 보존과 공개 권리를 구분한다. 이번 문서 갱신은 T010의 구현 착수나 새로운 수집 승인이 아니다.
+T021의 파일 내부 검사와 한계 보고는 완료됐다. 정상 제공·이용 조건은 해당 처리별로 확인하며 누적 원본 보존과 공개 권리를 구분한다. T023에서 최신 raw 검증·10팩/90관계·독립 API/staging 준비를 재사용한다. 원출처 새 요청·공식 회차/전체 특수 검증과 전체 T010 완료는 별도다.
 
 ### 예상 영향 파일
 
@@ -380,7 +385,7 @@ T021의 파일 내부 검사와 한계 보고는 완료됐다. 정상 제공·�
 
 ### 목표·입력·순서
 
-입력: 검사한 양쪽 raw, T010의 실제 필드·관계 manifest·격리 검토 목록, 최신 공식 KR 정상 관측과 ARCHITECTURE 설계.
+입력: T023의 독립 API schema·수입 준비/로컬 검증 결과, 검사한 최신 양쪽 raw, T010의 실제 필드·관계 manifest·격리 검토 목록, 최신 공식 KR 정상 관측과 ARCHITECTURE 설계.
 
 1. 실제 원본 필드와 확인한 관계를 바탕으로 전체 누적 개체·관측·원본 ID·개정·무삭제·격리 계약과 별도 사이트 projection을 확정한다. 기존 DB·근거를 백업한 뒤 새 staging DB에 수입하고 멱등성·개정 보존·잘못된 입력 격리를 검증한다.
 2. 공식 게재·종료 UTC·시계/신선도와 정확한 회차/특수 명단을 검증해 누적층에서 현행 한 팩만 추출한다. 전체 누적층의 실명Standard/과거카드와 사이트 지원 범위를 혼동하지 않는다.
@@ -404,7 +409,7 @@ T010과 해당 사이트 발행 조건이 선행. 스키마 변경은 staging에
 | 파일 | 결과 | 근거 |
 | --- | --- | --- |
 
-## T012 — 검토용 정적 배포와 사용자 검토
+## T012 — Sites 비공개 검토 배포와 사용자 검토
 
 - 단계: R3
 - 상태: 예정
@@ -413,10 +418,10 @@ T010과 해당 사이트 발행 조건이 선행. 스키마 변경은 staging에
 
 ### 목표·입력·순서
 
-입력: 검증된 한 팩 DB 표본, 부분 범위 표시, 실제 Pages 설정과 배포 계획.
+입력: 검증된 한 팩 DB 표본, 부분 범위 표시, Sites 소스 전달·manifest·private audience와 배포 계획.
 
-1. 현재 설정을 읽어 변경 전/후 표를 확정한다. 초기 main과 preview 설정의 격리 여부를 확인한다.
-2. 로컬 검증 후 격리된 검토 URL에 배포하고 정확한 SHA·CI·빌드 산출물/직접 주소/새로고침/모바일/이미지·오류 fallback을 확인한다.
+1. 본 앱의 신규 Sites 등록/ID·정적 또는 Worker manifest·GitHub/Sites source SHA·현재 audience와 변경 전/후 표를 확정한다. 기존 초기 Site는 재사용하지 않는다.
+2. 로컬 검증 후 Sites 비공개 검토 URL에 배포하고 정확한 SHA·CI·빌드 산출물/직접 주소/새로고침/모바일/이미지·오류 fallback을 확인한다.
 3. 확보 범위·미확인·설정 전환안을 사용자에게 보여주고 검토 내용을 반영한다.
 
 ### 산출물·검증·완료 조건
@@ -425,7 +430,7 @@ T010과 해당 사이트 발행 조건이 선행. 스키마 변경은 staging에
 
 ### 선행 조건·보류 사항
 
-후속 구현이 준비된 뒤 검토용 배포를 수행한다. 지금은 배포하지 않는다. main이 초기 커밋인 동안 전역 빌드 설정을 먼저 바꾸지 않는다.
+후속 구현이 준비된 뒤 검토용 배포를 수행한다. T022에서는 배포하지 않았다. Sites private URL도 실제 배포이며 원격 깊은 주소/404/캐시를 확인한다. 기존 Pages 설정은 자동 변경하지 않는다.
 
 ### 예상 영향 파일
 
@@ -436,7 +441,7 @@ web/*, 표본 DB/정적 JSON, docs/DEPLOYMENT.md, build/export/배포 규칙·CI
 | 파일 | 결과 | 근거 |
 | --- | --- | --- |
 
-## T013 — 사용자 승인 뒤 Cloudflare 운영 반영
+## T013 — 사용자 검토 뒤 Sites 운영 반영
 
 - 단계: R3
 - 상태: 예정
@@ -445,10 +450,10 @@ web/*, 표본 DB/정적 JSON, docs/DEPLOYMENT.md, build/export/배포 규칙·CI
 
 ### 목표·입력·순서
 
-입력: 검토/수정이 끝난 구체적인 preview와 SHA, 설정 전환안, 직전 정상 배포/롤백 자료.
+입력: 검토/수정이 끝난 구체적인 Sites 검토판과 source SHA·저장 version, 설정 전환안, 직전 정상 배포/롤백 자료.
 
-1. 사용자의 운영 반영 승인을 확인한 뒤 해당 SHA의 main 반영·운영 설정 전환을 수행한다.
-2. 필요하면 dist 직접 배포로 전환하고 기존 root 호환 산출물/도구/CI/FILE_SYNC 정리를 함께 검증한다.
+1. 사용자의 운영 반영 승인을 확인한 뒤 해당 소스의 main 반영과 Sites version·audience/운영 전환을 수행한다.
+2. Sites의 해당 정적/Worker 버전을 배포하고 실제 접근 정책·공개 동작을 확인한다. 기존 Pages 해제·호환 파일 정리는 설정·복구 경로 확인 후 별도 영향 검토한다.
 3. 운영 배포 commit/runtime/build/output과 실제 JSON/이미지/직접 주소/모바일/404를 확인한다. 실패 시 직전 정상 배포로 복구한다.
 
 ### 산출물·검증·완료 조건
@@ -461,7 +466,7 @@ web/*, 표본 DB/정적 JSON, docs/DEPLOYMENT.md, build/export/배포 규칙·CI
 
 ### 예상 영향 파일
 
-docs/DEPLOYMENT.md, 실제 Pages 설정, 배포/CI·루트 호환 산출물 정리 관련 파일과 FILE_SYNC. 비밀값은 문서/저장소에 넣지 않는다. 신규 파일의 경로/역할·연관 파일은 착수 때 확정하고 추가와 동시에 FILE_SYNC에 등록한다.
+docs/DEPLOYMENT.md, Sites manifest·소스/버전·audience와 기존 Pages 전환 범위, 배포/CI·루트 호환 산출물 정리 관련 파일과 FILE_SYNC. 비밀값은 문서/저장소에 넣지 않는다. 신규 파일의 경로/역할·연관 파일은 착수 때 확정하고 추가와 동시에 FILE_SYNC에 등록한다.
 
 ### 파일 최신화 검토
 
@@ -514,7 +519,7 @@ docs/DEPLOYMENT.md, 실제 Pages 설정, 배포/CI·루트 호환 산출물 정�
 1. 허용 주기·예산·영속 저장·single-writer·스케줄을 준비한다. 새 인증/지속 접근·비용은 먼저 확인한다.
 2. 누적층에는 새ID 추가/기존ID 수정revision만 기록한다. 누락/실패로 엔티티를 삭제하지 않는다. 사이트층은 공식 신규/수정/종료/재등장과 신선도를 별도 검증하고 last-good/불확실 상태/원자적 manifest로 발행한다.
 3. 실제 변경 전후로 반영을 확인하고 재실행/재시작·빈/403/5xx/파서 실패/급감/동시 쓰기/발행 실패의 정상 자료 보존을 시험한다.
-4. 얇은 아카이브와 캐시 정리 dry-run·보존 기간·요청/저장 예산을 검증한다. 의미상 변경 없음은 Pages 빌드를 생략한다.
+4. 얇은 아카이브와 캐시 정리 dry-run·보존 기간·요청/저장 예산을 검증한다. 의미상 변경 없음은 빌드/발행을 생략한다. Sites DB 데이터 갱신은 앱 재배포와 분리하고 새 unattended writer의 인증·읽기 확인을 검증한다.
 
 ### 산출물·검증·완료 조건
 
@@ -542,10 +547,10 @@ R4 전체 대상 DB와 운영 진입 조건이 선행한다. 변화가 관측되
 
 ### 목표·입력·순서
 
-입력: 검증된 전체 누적 API와 현행 snapshot/manifest 계약, 실제 조회/권리·사용량과 Pages/Workers+D1/OCI 비교.
+입력: 검증된 전체 누적 API와 현행 snapshot/manifest 계약, 실제 조회/권리·사용량과 Sites Worker + D1/R2의 적합성·계정 한도/비용·필요 시 대안 비교.
 
 1. 전체 누적(scope=all)과 현행 사이트(scope=current)의 버전/목록/팩 상세·아카이브·health 읽기 계약을 분리한다. 공개 재배포 권리 미확인 원문을 API로 공개하지 않는다. 정적 JSON과 동적 쿼리/쓰기 API를 구분한다.
-2. 동적 검색/서버 조회 등 확인된 요구가 있으면 별도 서비스를 선택한다. 방문자 GET에서 원출처 수집을 실행하지 않는다.
+2. 동적 검색/서버 조회는 Sites 서버를 우선 구현 후보로 삼는다. 앱/API의 동일 Site·분리 Site 배치는 권한·부하·배포 주기로 결정하고 로컬 SQLite 코드는 D1 binding으로 이식한다. 방문자 GET에서 원출처 수집을 실행하지 않는다.
 3. 실제 응답/캐시·버전 정합·오류·요청/DB 한도·독립 백업/복원·경고·예산과 권한을 검증한다.
 
 ### 산출물·검증·완료 조건
@@ -554,7 +559,7 @@ R4 전체 대상 DB와 운영 진입 조건이 선행한다. 변화가 관측되
 
 ### 선행 조건·보류 사항
 
-무료 한도·영속 저장·실제 인증·백업 미준비이면 운영 완료 금지다. 정적 JSON부터 시작할 수 있으며 OCI는 ARM64/가용성/운영 부담 실측 후 차선으로 검토한다.
+Sites 계정의 실제 한도·비용·영속 저장·실제 인증·백업 미준비이면 운영 완료 금지다. 정적 JSON부터 시작할 수 있으며 OCI는 ARM64/가용성/운영 부담 실측 후 차선으로 검토한다.
 
 ### 예상 영향 파일
 
@@ -612,7 +617,7 @@ T015/T016 실제 운영 검증 전 구현 금지다. 미확인 규칙이 필요�
 1. 작은 모델/공간부터 제작하고 리깅/모션을 추첨 로직과 분리한다.
 2. 압축·LOD·지연 로딩·공유 자산·해제 정책과 2D fallback을 구현한다.
 3. 대표 저사양 모바일/데스크톱의 다운로드·첫 결과 시간·프레임·메모리/발열과 파일 수/개별·전체 크기를 측정한다.
-4. Cloudflare 한도와 실측을 대조해 자산 분리/R2/OCI를 비교한다. 사용자 시안 검토와 운영 승인을 거쳐 공개 확인한다.
+4. Sites 계정/런타임 한도와 실측을 대조해 자산 분리/R2/OCI를 비교한다. 사용자 시안 검토와 운영 승인을 거쳐 공개 확인한다.
 
 ### 산출물·검증·완료 조건
 
@@ -801,7 +806,7 @@ T015/T016 실제 운영 검증 전 구현 금지다. 미확인 규칙이 필요�
 - 단계: R1
 - 상태: 완료
 - 이전: T020
-- 다음: T010
+- 다음: T022
 
 ### 입력과 실제 결과
 
@@ -859,3 +864,240 @@ T015/T016 실제 운영 검증 전 구현 금지다. 미확인 규칙이 필요�
 | `docs/ROADMAP.md` | 수정 | 양쪽 raw 내부 검사·팩 빈 값/dummy 보존과 격리 검토·직접 조인 불가·T021 완료 및 R2/T010 예정 순서·기존 자료 우선 재사용을 반영 |
 | `docs/SIMULATOR_PLAN.md` | 검토 결과 변경 불필요 | 직전 T021 교정·배포/시뮬레이터 게이트를 재검토했다. 이번 팩 파일 상태 변경으로 실행·배포·규칙 수정은 필요하지 않음 |
 | `docs/WORKPLAN.md` | 수정 | 양쪽 raw 내부 검사·팩 빈 값/dummy 보존과 격리 검토·직접 조인 불가·T021 완료 및 R2/T010 예정 순서·기존 자료 우선 재사용을 반영 |
+
+## T022 — ChatGPT Work 이관·Sites 배포 호환성 및 문서 정리
+
+- 단계: R0
+- 상태: 완료
+- 이전: T021
+- 다음: T023
+
+### 목표·입력·순서
+
+입력: 사용자 첨부 인수인계, GitHub 최신 work, 제작·검사된 양쪽 raw, 기존 코드/관계 근거, 최신 Sites 스킬과 helper. C052/C053에 따라 작업 저장소를 설정하고 기존 목표·파일 규칙·로드맵·현재 작업을 이어받는다. 서비스 변경은 호환성·계획 검토 범위다.
+
+1. 원격 work/main/PR/CI와 로컬 변경을 확인하고 최신 work를 깨끗한 대상 폴더로 clone한다. 첨부와 저장소 인수인계의 시작 바이트 일치를 확인한다.
+2. 이미 지정된 Library raw 버전을 가져와 해시·크기·행 수·필드·중복을 확인한다. 기존 저장 관계의 raw ID 참조를 확인하며 원본·과거 관측은 보존한다.
+3. 기존 검사·표본 재현·build·공개 사본 비교로 코드가 이 환경에서 동작하는지 확인한다. 도구 버전 차이는 별도 기록한다.
+4. Sites의 정적/Worker·D1/R2·인증·source 전달 기능을 공식 스킬/코드로 확인하고 실제 dist의 로컬 구조 검사를 수행한다. 사이트 등록·source push·배포는 수행하지 않는다.
+5. 파일 규칙·로드맵·상세 계획·인수인계·Sites 운영 선택과 한계를 동기화하고 모든 영향 파일을 등록·검토한다.
+
+### 실제 결과·검증·완료 범위
+
+- 원격 work 8ece93492608f4644e15f0952446e808b30c8f6c, main d8891f2, PR #1 Draft/open/unmerged, 해당 SHA의 push/PR CI 2개 성공 확인.
+- players 47,397개와 packs 1,699개의 SHA/크기/버전 일치. 기존 9팩·79관계의 모든 팩 slug·카드 ID가 raw에 존재. 빈 pack 식별자 인덱스 505와 dummy 인덱스 99는 격리 검토 대상으로 보존.
+- npm ci, Node 테스트 224/224, data:prepare, build, pages:check 7파일 통과. 실행 Node는 24.22.1, 저장소 기준 24.19.0과 차이 있음. npm은 11.9.0으로 일치. 앱·seed·공개 생성물 변경 없음.
+- Sites 목록 조회 성공. 공식 정적 build preparer가 7파일·215,973 bytes를 바이트 동일하게 처리. ID 없는 로컬 진단이며 실제 source 저장·배포·라우팅·DB·비용 검증과 구분.
+- 전체 이관 결과는 MIGRATION_STATUS, 근거/범위/한계는 work-migration-verification에 기록. 관리 81파일·23작업·13변경 경로, 상대 링크 168개와 diff 검사 통과를 같은 JSON에 기록했다.
+- 원격 추가 push·main 병합·기존 Pages 변경·Sites 등록/배포·새 DB/API·자동화·EFHub/공식/이미지 요청 없음. 제품 R2/T010은 예정으로 남기며 T010의 공식 회차·특수 완전성·manifest 작업을 완료 처리하지 않음.
+
+### 파일 최신화 검토
+
+| 파일 | 결과 | 근거 |
+| --- | --- | --- |
+| `AGENTS.md` | 수정 | 최신 이관 범위·Sites 우선·Git 원본/배포 저장소·기존 초기 Site 제외·운영 경계 반영 |
+| `README.md` | 수정 | 새 이관 확인서와 작업 기준·현재 지원 도구/환경 차이·Sites 흐름 안내 |
+| `docs/ARCHITECTURE.md` | 수정 | T022 raw/관계 확인과 Sites Worker/D1/R2 물리 배치 후보·미구현 경계 반영 |
+| `docs/CHATGPT_WORK_HANDOFF.md` | 수정 | T021 원문 보존 위에 최신 T022 결과와 Sites 지시 우선순위 추가 |
+| `docs/COLLECTION.md` | 수정 | 이번 raw 복원/관계 ID 확인을 과거 수집 이력과 구분해 연결 |
+| `docs/DATA_LIFECYCLE.md` | 수정 | Sites 데이터 갱신/배포 분리·writer 인증·실제 한도/비용 검증으로 갱신 |
+| `docs/DEPLOYMENT.md` | 수정 | Pages 우선 계획을 Sites static/Worker·D1/R2·Git 동기화·검토/운영 계획으로 갱신, 이전 본문은 Git 이력 보존 |
+| `docs/FILE_SYNC_AUDIT.md` | 수정 | 과거 전수 점검과 이번 영향 검토/새 확인서의 범위 구분 |
+| `docs/ROADMAP.md` | 수정 | 이관 T022와 제품 R2/T010 예정 포인터·Sites 후속 흐름 반영 |
+| `docs/WORKPLAN.md` | 수정 | C052/C053, T022·T010 선행·T012/T013/T015/T016/T018과 파일 검토 기록 갱신 |
+| `docs/FILE_SYNC.json` | 수정 | 신규 두 경로·연관 경로·외부 의존·최근 검토 작업 등록 |
+| `docs/MIGRATION_STATUS.md` | 수정 | 새 이관 전체 요약·작업 폴더·실제 SHA/CI·raw/관계·로드맵·Sites 검증과 한계 작성 |
+| `data/research/work-migration-verification.json` | 수정 | 원본 해시/버전·관계 ID·도구 버전·Sites 구조 검사·실행/미실행 근거 작성 |
+| `.github/workflows/project-check.yml` | 검토 결과 변경 불필요 | 원격 기준 SHA의 push/PR 성공 확인. Sites 배포 workflow는 아직 추가하지 않음 |
+| `.gitignore` | 검토 결과 변경 불필요 | 입력 raw와 로컬 빌드/검증은 기존 artifacts/dist 제외에 해당 |
+| `.nvmrc` | 검토 결과 변경 불필요 | 24.19.0 유지. 현재 24.22.1 실행 차이를 기록하고 임의 상향하지 않음 |
+| `package.json` | 검토 결과 변경 불필요 | 24.19.0/11.9.0·기존 build 명령 확인. 새 서버 의존성 없음 |
+| `package-lock.json` | 검토 결과 변경 불필요 | 외부 의존성 없는 기존 npm ci 재현, lock 수정 없음 |
+| `data/catalog.seed.json` | 검토 결과 변경 불필요 | 기존 9상품/83카드·판매 unknown/구성 partial 보존. data:prepare 전후 동일 |
+| `data/catalog.json` | 검토 결과 변경 불필요 | 기존 공개 표본 유지·pages:check 일치. 새 raw 미편입 |
+| `data/research/current-catalog-observations.json` | 검토 결과 변경 불필요 | 저장된 9팩·79관계와 모든 raw 참조를 대조. 원문/관측 내용 보존 |
+| `data/research/work-handoff-inputs.json` | 검토 결과 변경 불필요 | T020/T021 당시 기록 보존. 새 환경 사실은 별도 verification JSON 기록 |
+| `docs/API_SELECTION.md` | 검토 결과 변경 불필요 | 기존 T009 공급/권리 게이트는 Sites 호스팅 변경으로 해결되지 않음 |
+| `docs/SIMULATOR_PLAN.md` | 검토 결과 변경 불필요 | 데이터·운영 후 추첨/3D와 자산 권리/모바일 검증 순서 유지 |
+| `scripts/build.mjs` | 검토 결과 변경 불필요 | 기존 dist 생성·SQLite staging·원자적 발행 확인. 실제 build/정적 입력 검사 통과 |
+| `scripts/serve.mjs` | 검토 결과 변경 불필요 | node:http 정적 preview이며 운영 DB API가 아님을 확인 |
+| `scripts/prepare-seed.mjs` | 검토 결과 변경 불필요 | 기존 저장 근거 재현만 실행. 외부 수집 없음 |
+| `scripts/project-check.mjs` | 검토 결과 변경 불필요 | 새 task/파일 등록·상태/영향 검사를 그대로 재사용 |
+| `scripts/export-pages.mjs` | 검토 결과 변경 불필요 | 기존 호환 7파일 check만 실행, 새 전환 검증 전 제거하지 않음 |
+| `web/app.js` | 검토 결과 변경 불필요 | UI 구현 변경 없음. 기존 전체 회귀와 빌드로 비회귀 확인 |
+| `web/index.html` | 검토 결과 변경 불필요 | 기존 실제 앱 보존. 별도 Sites 초기 페이지와 혼동하지 않음 |
+| `web/styles.css` | 검토 결과 변경 불필요 | 기존 스타일 보존. 화면 변경 작업 아님 |
+
+## T023 — 독립 API Sites 소스·DB 수입·연동 업로드 준비
+
+- 단계: R2
+- 상태: 완료
+- 이전: T022
+- 다음: T010
+
+### 목표·입력·순서
+
+최신 사용자 지시는 API 전용 서버를 위한 별도 Git 경계를 만들고 업로드할 파일 준비를 완료하는 것이다. 기존 저장소에서 api-server-setup 브랜치와 services/catalog-api 폴더를 사용한다. 공식 Sites Vinext starter, 최신 첨부 players 47,408개·packs 1,699개·11카드 업데이트 근거와 기존 9팩·79관계를 입력으로 한다.
+
+1. 앱과 별도로 배포할 API 소스·D1 schema와 migration, API 계약·클라이언트를 준비한다.
+2. 원본은 Git/공개 번들에 넣지 않고 데이터 수입·격리·개정·관계 근거를 별도 업로드 묶음으로 만든다. 스키마 migration과 데이터 수입을 분리한다.
+3. 빈 DB/수입/재실행·누락 보존·8/11 보정·오류/권한/API 경계를 검증한다.
+4. 독립 소스 export·빌드와 GitHub 정상 push를 준비/실행한다. Sites 등록·배포·D1 원격 수입·새 자동화는 이번 업로드 준비 범위에서 실행하지 않는다.
+
+### 예상 영향과 검증
+
+services/catalog-api의 신규 source/lock/migration/client/수입 스크립트·테스트·README, 관리·아키텍처·배포 문서를 함께 등록한다. node 테스트·기존 앱 회귀·project:check·원격 SHA를 검증하고 상세 파일 판정은 종료 시 작성한다. 단순 입력 총계나 로컬 성공을 현재 판매/공식 회차·전체 특수 검증이나 hosted API 운영 성공으로 표시하지 않는다.
+
+### 실제 결과·검증·완료 범위
+
+API 전용 source/5테이블 schema·generated SQL/메타·GET client·정규화/초기 수입·export를 준비했다. 실제 입력은 카드 47,408·유효팩 1,697·quarantine 2·10팩/90관계다. staging 수입/replay·고아 참조 0과 실제6개 경로 응답을 확인했다. 테스트 245개(신규 API 21개), TypeScript·공식 Sites build, 기존 앱 build/Pages7 비교를 통과했다. live 원자적 갱신·현재 공식 projection·hosted DB·계정 비용/백업·실제 사이트 연결은 미완료로 범위를 분리한다. 새 브랜치의 정상 push는 이 사용자 요청 범위에 포함하고 main/work·기존 앱·실제 Sites 배포는 변경하지 않는다.
+
+### 파일 최신화 검토
+
+| 파일 | 결과 | 근거 |
+| --- | --- | --- |
+| `.github/workflows/catalog-api-check.yml` | 수정 | API 브랜치의 독립 dependency 설치·API 회귀·Worker build CI |
+| `AGENTS.md` | 수정 | 최신 API 분리 결정·입력/검증/업로드 준비와 작업 상태·연관 파일 동기화 |
+| `README.md` | 수정 | 최신 API 분리 결정·입력/검증/업로드 준비와 작업 상태·연관 파일 동기화 |
+| `data/research/api-server-preparation.json` | 수정 | T023 원본·schema·로컬 수입/replay·API·빌드·업로드 준비 검증 근거 |
+| `docs/API_SERVER_PREPARATION.md` | 수정 | 별도 API Site·브랜치/소스·데이터 업로드·검증·운영 경계 확인서 |
+| `docs/ARCHITECTURE.md` | 수정 | 최신 API 분리 결정·입력/검증/업로드 준비와 작업 상태·연관 파일 동기화 |
+| `docs/CHATGPT_WORK_HANDOFF.md` | 수정 | 최신 API 분리 결정·입력/검증/업로드 준비와 작업 상태·연관 파일 동기화 |
+| `docs/COLLECTION.md` | 수정 | 최신 API 분리 결정·입력/검증/업로드 준비와 작업 상태·연관 파일 동기화 |
+| `docs/DEPLOYMENT.md` | 수정 | 최신 API 분리 결정·입력/검증/업로드 준비와 작업 상태·연관 파일 동기화 |
+| `docs/FILE_SYNC.json` | 수정 | 최신 API 분리 결정·입력/검증/업로드 준비와 작업 상태·연관 파일 동기화 |
+| `docs/MIGRATION_STATUS.md` | 수정 | 최신 API 분리 결정·입력/검증/업로드 준비와 작업 상태·연관 파일 동기화 |
+| `docs/ROADMAP.md` | 수정 | 최신 API 분리 결정·입력/검증/업로드 준비와 작업 상태·연관 파일 동기화 |
+| `docs/WORKPLAN.md` | 수정 | 최신 API 분리 결정·입력/검증/업로드 준비와 작업 상태·연관 파일 동기화 |
+| `services/catalog-api/.env.example` | 수정 | API 독립 Sites 프로젝트의 소스·설정·기본 상태 페이지 |
+| `services/catalog-api/.gitignore` | 수정 | API 독립 Sites 프로젝트의 소스·설정·기본 상태 페이지 |
+| `services/catalog-api/.npmrc` | 수정 | API 독립 Sites 프로젝트의 소스·설정·기본 상태 페이지 |
+| `services/catalog-api/.openai/hosting.json` | 수정 | API Worker D1 logical binding; 아직 미등록 project ID 없음 |
+| `services/catalog-api/README.md` | 수정 | API 독립 Sites 프로젝트의 소스·설정·기본 상태 페이지 |
+| `services/catalog-api/app/api/v1/[[...path]]/route.ts` | 수정 | API 독립 Sites 프로젝트의 소스·설정·기본 상태 페이지 |
+| `services/catalog-api/app/chatgpt-auth.ts` | 수정 | API 독립 Sites 프로젝트의 소스·설정·기본 상태 페이지 |
+| `services/catalog-api/app/globals.css` | 수정 | API 독립 Sites 프로젝트의 소스·설정·기본 상태 페이지 |
+| `services/catalog-api/app/layout.tsx` | 수정 | API 독립 Sites 프로젝트의 소스·설정·기본 상태 페이지 |
+| `services/catalog-api/app/page.tsx` | 수정 | API 독립 Sites 프로젝트의 소스·설정·기본 상태 페이지 |
+| `services/catalog-api/client/catalog-api-client.mjs` | 수정 | 별도 앱의 API GET 연동 client; 브라우저 비밀값 제외 |
+| `services/catalog-api/cloudflare-env.d.ts` | 수정 | API 독립 Sites 프로젝트의 소스·설정·기본 상태 페이지 |
+| `services/catalog-api/components.json` | 수정 | API 독립 Sites 프로젝트의 소스·설정·기본 상태 페이지 |
+| `services/catalog-api/components/connector-error.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/accordion.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/alert-dialog.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/alert.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/aspect-ratio.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/attachment.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/avatar.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/badge.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/breadcrumb.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/bubble.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/button-group.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/button.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/calendar.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/card.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/carousel.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/chart.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/checkbox.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/collapsible.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/combobox.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/command.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/context-menu.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/dialog.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/direction.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/drawer.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/dropdown-menu.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/empty.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/field.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/form.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/hover-card.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/input-group.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/input-otp.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/input.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/item.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/kbd.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/label.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/marker.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/menubar.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/message-scroller.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/message.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/native-select.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/navigation-menu.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/pagination.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/popover.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/progress.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/radio-group.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/resizable.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/scroll-area.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/select.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/separator.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/sheet.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/sidebar.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/skeleton.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/slider.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/sonner.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/spinner.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/switch.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/table.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/tabs.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/textarea.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/toggle-group.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/toggle.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/components/ui/tooltip.tsx` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/db/index.ts` | 수정 | API D1 schema/접근 선언; 원격 수입은 후속 |
+| `services/catalog-api/db/schema.ts` | 수정 | API D1 schema/접근 선언; 원격 수입은 후속 |
+| `services/catalog-api/drizzle.config.ts` | 수정 | API 독립 Sites 프로젝트의 소스·설정·기본 상태 페이지 |
+| `services/catalog-api/drizzle/0000_productive_khan.sql` | 수정 | API D1 schema-only migration·잠금 메타; 데이터 seed 제외 |
+| `services/catalog-api/drizzle/meta/0000_snapshot.json` | 수정 | API D1 schema-only migration·잠금 메타; 데이터 seed 제외 |
+| `services/catalog-api/drizzle/meta/_journal.json` | 수정 | API D1 schema-only migration·잠금 메타; 데이터 seed 제외 |
+| `services/catalog-api/eslint.config.mjs` | 수정 | API 독립 Sites 프로젝트의 소스·설정·기본 상태 페이지 |
+| `services/catalog-api/examples/d1/app/api/notes/route.ts` | 수정 | API 독립 Sites 프로젝트의 소스·설정·기본 상태 페이지 |
+| `services/catalog-api/examples/d1/db/schema.ts` | 수정 | API D1 schema/접근 선언; 원격 수입은 후속 |
+| `services/catalog-api/hooks/use-mobile.ts` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/inputs.manifest.json` | 수정 | 최신 첨부 입력 식별자·크기/해시·수입 기대값; raw 데이터 미포함 |
+| `services/catalog-api/lib/catalog-api.mjs` | 수정 | D1 읽기 API·문자열 페이지·CORS·미수입/오류 경계 |
+| `services/catalog-api/lib/connector-context.ts` | 수정 | Sites 공식 Vinext 설치/빌드·실행/connector 통합 지원 원본; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/lib/connector-contract.mts` | 수정 | Sites 공식 Vinext 설치/빌드·실행/connector 통합 지원 원본; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/lib/connector-errors.mts` | 수정 | Sites 공식 Vinext 설치/빌드·실행/connector 통합 지원 원본; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/lib/connector-preview.d.ts` | 수정 | Sites 공식 Vinext 설치/빌드·실행/connector 통합 지원 원본; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/lib/connectors.ts` | 수정 | Sites 공식 Vinext 설치/빌드·실행/connector 통합 지원 원본; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/lib/utils.ts` | 수정 | API 독립 Sites 프로젝트의 소스·설정·기본 상태 페이지 |
+| `services/catalog-api/next.config.ts` | 수정 | API 독립 Sites 프로젝트의 소스·설정·기본 상태 페이지 |
+| `services/catalog-api/package.json` | 수정 | API 독립 Sites 프로젝트의 소스·설정·기본 상태 페이지 |
+| `services/catalog-api/pnpm-lock.yaml` | 수정 | API 독립 pnpm 의존 잠금 |
+| `services/catalog-api/pnpm-workspace.yaml` | 수정 | API 독립 Sites 프로젝트의 소스·설정·기본 상태 페이지 |
+| `services/catalog-api/postcss.config.mjs` | 수정 | API 독립 Sites 프로젝트의 소스·설정·기본 상태 페이지 |
+| `services/catalog-api/public/favicon.svg` | 수정 | API 독립 Sites 프로젝트의 소스·설정·기본 상태 페이지 |
+| `services/catalog-api/scripts/build-verified.sh` | 수정 | Sites 공식 Vinext 설치/빌드·실행/connector 통합 지원 원본 |
+| `services/catalog-api/scripts/connector-preview/connector-preview-session.mjs` | 수정 | Sites 공식 Vinext 설치/빌드·실행/connector 통합 지원 원본 |
+| `services/catalog-api/scripts/connector-preview/host-binding.mjs` | 수정 | Sites 공식 Vinext 설치/빌드·실행/connector 통합 지원 원본 |
+| `services/catalog-api/scripts/connector-preview/protocol.mjs` | 수정 | Sites 공식 Vinext 설치/빌드·실행/connector 통합 지원 원본 |
+| `services/catalog-api/scripts/connector-preview/worker.mjs` | 수정 | Sites 공식 Vinext 설치/빌드·실행/connector 통합 지원 원본 |
+| `services/catalog-api/scripts/execution-profile.mjs` | 수정 | Sites 공식 Vinext 설치/빌드·실행/connector 통합 지원 원본 |
+| `services/catalog-api/scripts/export-source.mjs` | 수정 | monorepo API 하위 소스만 독립 Sites root로 export |
+| `services/catalog-api/scripts/ingest/apply-local.mjs` | 수정 | 원본 보존·정규화/개정·관계·격리·초기 수입·replay 검사 도구 |
+| `services/catalog-api/scripts/ingest/prepare-import.mjs` | 수정 | 원본 보존·정규화/개정·관계·격리·초기 수입·replay 검사 도구 |
+| `services/catalog-api/scripts/install-ci.mjs` | 수정 | Sites 공식 Vinext 설치/빌드·실행/connector 통합 지원 원본 |
+| `services/catalog-api/scripts/install-ci.sh` | 수정 | Sites 공식 Vinext 설치/빌드·실행/connector 통합 지원 원본 |
+| `services/catalog-api/scripts/install-pnpm.sh` | 수정 | Sites 공식 Vinext 설치/빌드·실행/connector 통합 지원 원본 |
+| `services/catalog-api/scripts/npm-install.mjs` | 수정 | Sites 공식 Vinext 설치/빌드·실행/connector 통합 지원 원본 |
+| `services/catalog-api/scripts/pnpm-install.mjs` | 수정 | Sites 공식 Vinext 설치/빌드·실행/connector 통합 지원 원본 |
+| `services/catalog-api/scripts/run-framework.mjs` | 수정 | Sites 공식 Vinext 설치/빌드·실행/connector 통합 지원 원본 |
+| `services/catalog-api/scripts/sites-env.mjs` | 수정 | Sites 공식 Vinext 설치/빌드·실행/connector 통합 지원 원본 |
+| `services/catalog-api/scripts/sites-env.sh` | 수정 | Sites 공식 Vinext 설치/빌드·실행/connector 통합 지원 원본 |
+| `services/catalog-api/scripts/tool-environment.mjs` | 수정 | Sites 공식 Vinext 설치/빌드·실행/connector 통합 지원 원본 |
+| `services/catalog-api/scripts/vite/connector-preview-plugin.mjs` | 수정 | Sites 공식 Vinext 설치/빌드·실행/connector 통합 지원 원본; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/scripts/vite/sites-vite-plugin.LICENSE` | 수정 | Sites 공식 Vinext 설치/빌드·실행/connector 통합 지원 원본; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/scripts/vite/sites-vite-plugin.ts` | 수정 | Sites 공식 Vinext 설치/빌드·실행/connector 통합 지원 원본; starter 원본을 유지하고 타입/Worker 빌드로 호환 검증 |
+| `services/catalog-api/tests/catalog-api.test.mjs` | 수정 | API·수입·연동 클라이언트의 오류/보존/경계 회귀 |
+| `services/catalog-api/tests/client.test.mjs` | 수정 | API·수입·연동 클라이언트의 오류/보존/경계 회귀 |
+| `services/catalog-api/tests/ingest.test.mjs` | 수정 | API·수입·연동 클라이언트의 오류/보존/경계 회귀 |
+| `services/catalog-api/tsconfig.json` | 수정 | API 독립 Sites 프로젝트의 소스·설정·기본 상태 페이지 |
+| `services/catalog-api/vendor/shadcn-tailwind-4.13.0.LICENSE.md` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리 |
+| `services/catalog-api/vendor/shadcn-tailwind-4.13.0.css` | 수정 | 공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리 |
+| `services/catalog-api/vite.config.ts` | 수정 | API 독립 Sites 프로젝트의 소스·설정·기본 상태 페이지 |
+| `services/catalog-api/worker/index.ts` | 수정 | API 독립 Sites 프로젝트의 소스·설정·기본 상태 페이지 |
+| `package.json` | 검토 결과 변경 불필요 | 기존 npm 명령·pin 유지; 독립 API pnpm과 분리 |
+| `package-lock.json` | 검토 결과 변경 불필요 | 기존 앱 의존 변경 없음 |
+| `data/catalog.seed.json` | 검토 결과 변경 불필요 | 기존 앱 9/83 표본 보존 |
+| `web/app.js` | 검토 결과 변경 불필요 | API 원격 연결은 후속이며 기존 UI 변경 없음 |

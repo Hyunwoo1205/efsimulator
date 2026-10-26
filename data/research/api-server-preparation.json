@@ -1,0 +1,798 @@
+{
+  "schema_version": 1,
+  "task": "T023",
+  "branch": "api-server-setup",
+  "base_sha": "a2bb40d7aa4027f1ead0e5aa4ad486ffb6720634",
+  "source_directory": "services/catalog-api",
+  "deployment_topology": "Separate API Sites project",
+  "hosting_project_registered": false,
+  "sites_deployed": false,
+  "remote_db_imported": false,
+  "schema": "services/catalog-api/drizzle/0000_productive_khan.sql",
+  "inputs": {
+    "schema_version": 1,
+    "input_files": [
+      {
+        "file_name": "players_raw.json",
+        "library_file_id": "libfile_03e137f8e450819192fc3d17049c2bed",
+        "sha256": "c8d141864401ae4eff8abae4fab3aa059ebeb15b74e821e016942e3bb3f823d8",
+        "bytes": 16805444,
+        "rows": 47408,
+        "source_collected_at": null
+      },
+      {
+        "file_name": "packs_raw.json",
+        "library_file_id": "libfile_48ddeeb1cac88191bd5cadbf31bda6d3",
+        "sha256": "bfe4590cfa5acb18106a98206b9acad71616f2622cf0d44ae3257040a56b97d6",
+        "bytes": 197874,
+        "rows": 1699,
+        "source_collected_at": null
+      },
+      {
+        "file_name": "players_update_20261026.json",
+        "library_file_id": "libfile_e0a65a4fb7c881919d3fc05a03d2f498",
+        "sha256": "12aa704138fc36719e376e7660b58d5d1bfb021819d491c26cf5216494786df9",
+        "bytes": 10243,
+        "rows": null,
+        "source_collected_at": null
+      }
+    ],
+    "date_label": "2026-10-26",
+    "date_label_is_collection_time": false,
+    "player_cards": 47408,
+    "raw_packs": 1699,
+    "expected_valid_packs": 1697,
+    "expected_quarantine": 2,
+    "expected_relation_packs": 10,
+    "expected_memberships": 90,
+    "source_counts_are_not_official_pool_sizes": true,
+    "raw_payloads_in_git": false
+  },
+  "import": {
+    "schema_version": 1,
+    "snapshot_id": "60198197c381e4e45c825d3558541424f976fdb152fff6717ada1f208b796f2a",
+    "prepared_at": "2026-10-26T13:34:52.785Z",
+    "source_collected_at": null,
+    "input_hashes": {
+      "players": "c8d141864401ae4eff8abae4fab3aa059ebeb15b74e821e016942e3bb3f823d8",
+      "packs": "bfe4590cfa5acb18106a98206b9acad71616f2622cf0d44ae3257040a56b97d6",
+      "update": "12aa704138fc36719e376e7660b58d5d1bfb021819d491c26cf5216494786df9",
+      "relations": "8c0afd9f90b139d9454c382343fd4a9241513492a40cf2366173b7d5cdab3ddf"
+    },
+    "counts": {
+      "raw_cards": 47408,
+      "cards": 47408,
+      "raw_packs": 1699,
+      "packs": 1697,
+      "quarantined": 2,
+      "relation_packs": 10,
+      "memberships": 90
+    },
+    "update_verification": {
+      "added_count": 11,
+      "previous_count": 47397,
+      "after_count": 47408,
+      "added_records_match": true,
+      "original_prefix_reverified": false,
+      "original_prefix_note": "No prior file supplied to this CLI; prefix count/order and update payload checked, prior bytes/hash must be checked separately.",
+      "reported_previous_sha256": "16b5ac4919480bbbf8e5158946322fac1f406f0d66701c4d52c9274107dc94c4"
+    },
+    "source_scope": "user_supplied_efhub_exports",
+    "official_current_scope_verified": false,
+    "simulation_ready": false,
+    "files": {
+      "records": {
+        "path": "records.jsonl",
+        "sha256": "b7ddc9091dcbfd1ac12d10f4ec6d9fe51080e7a6d4dee652e88be5eb8d20f07d",
+        "bytes": 45819201
+      },
+      "sql_chunks": [
+        {
+          "path": "sql/0001.sql",
+          "statements": 1000,
+          "sha256": "bfda74c8475607a266283571cca0f720706f2b7fe7fafc3a5e9092a27cc98e8b",
+          "bytes": 850785
+        },
+        {
+          "path": "sql/0002.sql",
+          "statements": 1000,
+          "sha256": "fc3bd692d1e323457ee727bbcf9e652e0e49025cdbabfaa06d9cbf547e7b713a",
+          "bytes": 850142
+        },
+        {
+          "path": "sql/0003.sql",
+          "statements": 1000,
+          "sha256": "0bef7fe8ae3a86e8e7dc1d7932634902bc399fd24f4a548fd52b4e17b34f0f28",
+          "bytes": 851055
+        },
+        {
+          "path": "sql/0004.sql",
+          "statements": 1000,
+          "sha256": "5f6bdd08551dca9efff2e2c33fdf358534d754cb0980bcb2cb5d392e83d35c00",
+          "bytes": 850957
+        },
+        {
+          "path": "sql/0005.sql",
+          "statements": 1000,
+          "sha256": "4d73aeff4b6e16c84bf411f4c9011671f545a5fe2abece956629e509499888c9",
+          "bytes": 850348
+        },
+        {
+          "path": "sql/0006.sql",
+          "statements": 1000,
+          "sha256": "67281f772820e666f8d734ad009a5f508e1afa9541df5724e35b449a3ce5bf1c",
+          "bytes": 849500
+        },
+        {
+          "path": "sql/0007.sql",
+          "statements": 1000,
+          "sha256": "4a4356c3d8d358fddb2c6644fdf22b0be38c17a025753e89d03bb665252ec073",
+          "bytes": 849153
+        },
+        {
+          "path": "sql/0008.sql",
+          "statements": 1000,
+          "sha256": "38dfb6c29d6c166259af197c3ebd1fea93ea2481cde4ff42ad8af84df5bfa19c",
+          "bytes": 848335
+        },
+        {
+          "path": "sql/0009.sql",
+          "statements": 1000,
+          "sha256": "810c55164a4b04005dde9f4f544829dc3f22d5f93faca3ac1a6661ec0a65dda0",
+          "bytes": 849901
+        },
+        {
+          "path": "sql/0010.sql",
+          "statements": 1000,
+          "sha256": "0ec3fac250e1ea7953d6266b4a7fce4931d976d77d331a09dc867fef3056d813",
+          "bytes": 851062
+        },
+        {
+          "path": "sql/0011.sql",
+          "statements": 1000,
+          "sha256": "47dccb16c31fc57ee20b6b057d78d1b595aad69bccbda863f034eb50ce6d1f30",
+          "bytes": 851866
+        },
+        {
+          "path": "sql/0012.sql",
+          "statements": 1000,
+          "sha256": "ce7e67c2be7965c2d9121dba799b4d13f36add8a9161eb6f76df20fed3bcae35",
+          "bytes": 852191
+        },
+        {
+          "path": "sql/0013.sql",
+          "statements": 1000,
+          "sha256": "ff6d013aee9702193c4c31a9a4d98731bd4cd281d96541cb5a5e2019e7fe4bd7",
+          "bytes": 852337
+        },
+        {
+          "path": "sql/0014.sql",
+          "statements": 1000,
+          "sha256": "4208f67805892f1cac98c26931e7dead8675cb688a9fa75fc683be4590c272ad",
+          "bytes": 851582
+        },
+        {
+          "path": "sql/0015.sql",
+          "statements": 1000,
+          "sha256": "014936f14a1354bed0732ca0a9817a855914f96a19e0f52f7e3f8f2baf58712e",
+          "bytes": 851573
+        },
+        {
+          "path": "sql/0016.sql",
+          "statements": 1000,
+          "sha256": "2e203e8558b1c48e85dd747d2dae1f99d7c04a52c2c97a9e567211d9e3f2d7a1",
+          "bytes": 851292
+        },
+        {
+          "path": "sql/0017.sql",
+          "statements": 1000,
+          "sha256": "d5d2d8c4dad13db67d759fe2de8f705e68ad9b9d550f7b7085a6a33dc5b3dc50",
+          "bytes": 852374
+        },
+        {
+          "path": "sql/0018.sql",
+          "statements": 1000,
+          "sha256": "281ba82f9061e1c90dba1ff2437479f19c1488fe70565d43b627f952aa5e29ac",
+          "bytes": 852516
+        },
+        {
+          "path": "sql/0019.sql",
+          "statements": 1000,
+          "sha256": "d3b420fd200d5b8660ad3cb50bf12746cae9a356b62fb6d2f6a2ddcdf7de5446",
+          "bytes": 852737
+        },
+        {
+          "path": "sql/0020.sql",
+          "statements": 1000,
+          "sha256": "169abae8e215079b97a352f5b8429d7125e895fceafe2af5fdf5fe3d617cf390",
+          "bytes": 852519
+        },
+        {
+          "path": "sql/0021.sql",
+          "statements": 1000,
+          "sha256": "2fc906ad68f3fb266911e7003fc35878068336c43b1a9055e02366ff1f700190",
+          "bytes": 853167
+        },
+        {
+          "path": "sql/0022.sql",
+          "statements": 1000,
+          "sha256": "b8311e2189dd21efc1dc5044497d9d151c0b60587ea79e42eea25bf7b411355c",
+          "bytes": 852493
+        },
+        {
+          "path": "sql/0023.sql",
+          "statements": 1000,
+          "sha256": "ee43435e9145246e1d83667330ac1f9da0e1f12c683a50ef8fcf3c446f07aeb9",
+          "bytes": 850485
+        },
+        {
+          "path": "sql/0024.sql",
+          "statements": 1000,
+          "sha256": "31b232ba2c959f750d1db14a861dae87d76414cd56df9a887bdf86ae031f5a28",
+          "bytes": 851211
+        },
+        {
+          "path": "sql/0025.sql",
+          "statements": 1000,
+          "sha256": "0fbf0e38ee5acc80db1749c6b3a2af18a961be46dbf1ac495db2f68ae17b4fc3",
+          "bytes": 844619
+        },
+        {
+          "path": "sql/0026.sql",
+          "statements": 1000,
+          "sha256": "52b6bce7a4a332d096d8930dc4bc4dc1caee5159d8df27210c3ef9b4fc8a74ed",
+          "bytes": 846433
+        },
+        {
+          "path": "sql/0027.sql",
+          "statements": 1000,
+          "sha256": "d281535dde01d68926c637eba0a77e2bdfdb46f380ac354b75bdf3f91c1eaa6d",
+          "bytes": 841324
+        },
+        {
+          "path": "sql/0028.sql",
+          "statements": 1000,
+          "sha256": "4582f75616a7346063d9863b8f2534929d0c92ae2d57c604bac30b87cd921b7a",
+          "bytes": 838538
+        },
+        {
+          "path": "sql/0029.sql",
+          "statements": 1000,
+          "sha256": "0c576b6dca72cab9e174bc479cd258564849fe7539dd6bd6725af044fd2f9572",
+          "bytes": 841553
+        },
+        {
+          "path": "sql/0030.sql",
+          "statements": 1000,
+          "sha256": "d735f255d9eeeee40657773a5b25d2b1e152495c0d8b3fd714e8547b2c1a0456",
+          "bytes": 833858
+        },
+        {
+          "path": "sql/0031.sql",
+          "statements": 1000,
+          "sha256": "3d409ef200c0d5e88fa49ba51d23c1a9ccf665493655234f4d71bc77c075f583",
+          "bytes": 835239
+        },
+        {
+          "path": "sql/0032.sql",
+          "statements": 1000,
+          "sha256": "a4f318a8d013ad0fcbd0c7e3464f2b6183a7d85957a464ae485939f1447bd04c",
+          "bytes": 832423
+        },
+        {
+          "path": "sql/0033.sql",
+          "statements": 1000,
+          "sha256": "f7980a9ef2d30fb7c8ee078754a7fd9a4995eba708d484f93c7c83a0f50f4958",
+          "bytes": 832749
+        },
+        {
+          "path": "sql/0034.sql",
+          "statements": 1000,
+          "sha256": "c8bc1d5e456fc162059b1527a525691419c7e5e26a4d423227fbe7a78b9138a3",
+          "bytes": 830910
+        },
+        {
+          "path": "sql/0035.sql",
+          "statements": 1000,
+          "sha256": "ad2fd94ced623292d93301344bc45219cba3cbacddebf2b03034763d4c9c29b2",
+          "bytes": 830141
+        },
+        {
+          "path": "sql/0036.sql",
+          "statements": 1000,
+          "sha256": "e5f986381a942556c907ad409822cb385eb2552654fb3a5d185238d099a19db1",
+          "bytes": 830569
+        },
+        {
+          "path": "sql/0037.sql",
+          "statements": 1000,
+          "sha256": "77aa2f221661bf7ddec00880d67da132394357c659748cd53ecf3245d1c4f7a0",
+          "bytes": 830464
+        },
+        {
+          "path": "sql/0038.sql",
+          "statements": 1000,
+          "sha256": "d7ace21b6ce1ce83baa8a2a757ce46154e09cc8da7c444c014b79798b319baf9",
+          "bytes": 829865
+        },
+        {
+          "path": "sql/0039.sql",
+          "statements": 1000,
+          "sha256": "46b834da219f8a2b9f97278ed62bf436b75d3fe4826ee6e09e56d641d99e1651",
+          "bytes": 828595
+        },
+        {
+          "path": "sql/0040.sql",
+          "statements": 1000,
+          "sha256": "b6da7ca10e134ddb6ec029f34c8bfb976cba0390c955c5c4d5becf0a74e95414",
+          "bytes": 830136
+        },
+        {
+          "path": "sql/0041.sql",
+          "statements": 1000,
+          "sha256": "9abfec1e0cba7a55fe9259ac7858aa9cc5596b8cba9c4aeff0a7a1dc0dea8b0b",
+          "bytes": 829101
+        },
+        {
+          "path": "sql/0042.sql",
+          "statements": 1000,
+          "sha256": "c233581ee5aa65e5b7a5a49fd7621a95c799328959ee4d917b0dc459060a3dc3",
+          "bytes": 829771
+        },
+        {
+          "path": "sql/0043.sql",
+          "statements": 1000,
+          "sha256": "e85692467fddffdc6c8fa623eafbfc8a20478aac51c8374978eae017c7610c88",
+          "bytes": 828765
+        },
+        {
+          "path": "sql/0044.sql",
+          "statements": 1000,
+          "sha256": "65acb006b91bdf75a0828c72250162122c851acd1e0b1ed56bd43461b66c2f88",
+          "bytes": 829133
+        },
+        {
+          "path": "sql/0045.sql",
+          "statements": 1000,
+          "sha256": "93869ced8cd02c13e36cd8e2ef076535fc10bf59f647431d5181e52f0827cac5",
+          "bytes": 828816
+        },
+        {
+          "path": "sql/0046.sql",
+          "statements": 1000,
+          "sha256": "dba719194cc703f2528ea1a4bd0b98b95abbe7c08f74d6abea08b0f60dd0565d",
+          "bytes": 830190
+        },
+        {
+          "path": "sql/0047.sql",
+          "statements": 1000,
+          "sha256": "373a6620f464d01045a0d82f0893aa028647ae9b91f0c7971b1be74498da5aba",
+          "bytes": 829607
+        },
+        {
+          "path": "sql/0048.sql",
+          "statements": 1000,
+          "sha256": "1249ee7a02914a0a8da20ba50ca023772ba2b2e334fb61814063589bd9a6dcf3",
+          "bytes": 828397
+        },
+        {
+          "path": "sql/0049.sql",
+          "statements": 1000,
+          "sha256": "703158f92f7371486c13310e5eb2078aee155459c6533c66752cdcaec97d312f",
+          "bytes": 830363
+        },
+        {
+          "path": "sql/0050.sql",
+          "statements": 1000,
+          "sha256": "d95770f37d1be0363a4ec8ce3735a0e618c9bcdf4f87698bfbaecdd41db90db9",
+          "bytes": 828888
+        },
+        {
+          "path": "sql/0051.sql",
+          "statements": 1000,
+          "sha256": "7e220a202a70a9b67dcb42fdadbeec22e6fa517f406a8d44dcc76207f87711ca",
+          "bytes": 829149
+        },
+        {
+          "path": "sql/0052.sql",
+          "statements": 1000,
+          "sha256": "7871e17d52b95a09026f0e5179ee0dbbcc3635b2a2dcc1b9fa3da523b1407941",
+          "bytes": 829053
+        },
+        {
+          "path": "sql/0053.sql",
+          "statements": 1000,
+          "sha256": "f4c656e9b2175b645fc370c82143dfb7573a1c23d9907983f4d3276cd40316f8",
+          "bytes": 830078
+        },
+        {
+          "path": "sql/0054.sql",
+          "statements": 1000,
+          "sha256": "d5f989d5e752461f0187cefc602159b4d111a3f83065f19f216cabd4e6ed090d",
+          "bytes": 830490
+        },
+        {
+          "path": "sql/0055.sql",
+          "statements": 1000,
+          "sha256": "6bccf3db2fd35d53ec288ef7aa0c339fd4740900f5005a70cc1baa9da8013a75",
+          "bytes": 830252
+        },
+        {
+          "path": "sql/0056.sql",
+          "statements": 1000,
+          "sha256": "caea9744bd9e18c6a1eb20131b56ebf303dda584a6807b560c44590271807b2b",
+          "bytes": 828540
+        },
+        {
+          "path": "sql/0057.sql",
+          "statements": 1000,
+          "sha256": "ca25eee82f66c670eefd88b3856f489e4282fda385f65c61073fcdc1d9094182",
+          "bytes": 828278
+        },
+        {
+          "path": "sql/0058.sql",
+          "statements": 1000,
+          "sha256": "81fee0d7cdc75eab1112e3795e7e45c22797ef51b4bc0fdbfc1452dd898cb735",
+          "bytes": 829070
+        },
+        {
+          "path": "sql/0059.sql",
+          "statements": 1000,
+          "sha256": "6d755f42c2863bd2320769b67669ec7954fba763d1dcda80edc9271b699341a8",
+          "bytes": 831527
+        },
+        {
+          "path": "sql/0060.sql",
+          "statements": 1000,
+          "sha256": "e55911fd82c32647a5e5ce8c103b8d72c2fcfac124678bab12b189263c115118",
+          "bytes": 829461
+        },
+        {
+          "path": "sql/0061.sql",
+          "statements": 1000,
+          "sha256": "dea34a8dbd066804701eb9f5a57f842a83851e4035c8a3864c80ee2094f3bcaf",
+          "bytes": 828988
+        },
+        {
+          "path": "sql/0062.sql",
+          "statements": 1000,
+          "sha256": "c4377c8d4d833a3fe84d8b5264042aa2bbd54975eb9ec42e678115789812847a",
+          "bytes": 828056
+        },
+        {
+          "path": "sql/0063.sql",
+          "statements": 1000,
+          "sha256": "f6d09e29adadc7d49179e7e12d58fb51afad29bac9adcb8637d114fbb9ce2217",
+          "bytes": 828028
+        },
+        {
+          "path": "sql/0064.sql",
+          "statements": 1000,
+          "sha256": "a2baa0c6490c6073c380e7903a131320107de79ae9610055eb6eb04af4606510",
+          "bytes": 830596
+        },
+        {
+          "path": "sql/0065.sql",
+          "statements": 1000,
+          "sha256": "60f2fdde34c3e4fca719d5319ad02c0c937c4ee218c53183f6e1bebda8ee39b5",
+          "bytes": 829867
+        },
+        {
+          "path": "sql/0066.sql",
+          "statements": 1000,
+          "sha256": "6c1ca67706a91ffb0f73858251fb051fcbd8158d4d790f346df733c42d56c91b",
+          "bytes": 829557
+        },
+        {
+          "path": "sql/0067.sql",
+          "statements": 1000,
+          "sha256": "d61eec5724e54ce02feb43bf1bff3d19131ab41416ffba476524af69c781622d",
+          "bytes": 827803
+        },
+        {
+          "path": "sql/0068.sql",
+          "statements": 1000,
+          "sha256": "e3c5438bb9f010fcea9fc6c37a4424617a7c45543227f088d205f5107f6ccc32",
+          "bytes": 827557
+        },
+        {
+          "path": "sql/0069.sql",
+          "statements": 1000,
+          "sha256": "8f0c95cec970415886bd9a615cf5be0273ab2be575ede614dbc44dacf57fadc5",
+          "bytes": 831469
+        },
+        {
+          "path": "sql/0070.sql",
+          "statements": 1000,
+          "sha256": "17e2631beffcbf6ce1f73ac12d81019c8dd3f9233d99da1b25a6c3856cda06e2",
+          "bytes": 830201
+        },
+        {
+          "path": "sql/0071.sql",
+          "statements": 1000,
+          "sha256": "0f6c152f986a05d86c227ce315e7d7a34d4ed33f4b59440d34e04e30298ceb9c",
+          "bytes": 828682
+        },
+        {
+          "path": "sql/0072.sql",
+          "statements": 1000,
+          "sha256": "e4334dbda430f1426abfcacba80b95568bb79426e9c7639aba6735b94640be5f",
+          "bytes": 828996
+        },
+        {
+          "path": "sql/0073.sql",
+          "statements": 1000,
+          "sha256": "9711c9643f987a16c466e135aee80c7c6b25ef7a0ab78a6b0e2c1fc0ecc030c9",
+          "bytes": 832504
+        },
+        {
+          "path": "sql/0074.sql",
+          "statements": 1000,
+          "sha256": "41594135fefccf153cef6dda61afc7128841c2a362ce2e0a80386e57a37a0c23",
+          "bytes": 829722
+        },
+        {
+          "path": "sql/0075.sql",
+          "statements": 1000,
+          "sha256": "db460b8c58469f8bf4674550a10e95db809276d45e202b70933bcfbe5a12df4a",
+          "bytes": 829247
+        },
+        {
+          "path": "sql/0076.sql",
+          "statements": 1000,
+          "sha256": "55b8bd385515fbc463b5198d959282a54dcdc25be94465a64f32b1715d5fd54f",
+          "bytes": 828800
+        },
+        {
+          "path": "sql/0077.sql",
+          "statements": 1000,
+          "sha256": "159161d309954dda36dbec48d45e0d14fa023c2da8d7c81de0f8e19926aebf90",
+          "bytes": 831356
+        },
+        {
+          "path": "sql/0078.sql",
+          "statements": 1000,
+          "sha256": "5c52af73dfa5ca65ccbd5b3daead8d87ced347a6701602a40432aec9b6f0b9eb",
+          "bytes": 829829
+        },
+        {
+          "path": "sql/0079.sql",
+          "statements": 1000,
+          "sha256": "541c7db0c9acc43c0f0c021abdbb6929140ce04dadded516f47a963f288c74db",
+          "bytes": 828010
+        },
+        {
+          "path": "sql/0080.sql",
+          "statements": 1000,
+          "sha256": "39ae5aca4f3bb1d0ed43b3edae5c1682c57422ab0915cfb050c3f98b9b6dea72",
+          "bytes": 830948
+        },
+        {
+          "path": "sql/0081.sql",
+          "statements": 1000,
+          "sha256": "5fecaef285ae2e8af5d18bfc41412c012cbe8d3ad993d68e399c7ae919df76b0",
+          "bytes": 830008
+        },
+        {
+          "path": "sql/0082.sql",
+          "statements": 1000,
+          "sha256": "aa3a0e61415d8fca7378f4d9e80db75cc26a2776d3bdfc611768c48a6904c60f",
+          "bytes": 829163
+        },
+        {
+          "path": "sql/0083.sql",
+          "statements": 1000,
+          "sha256": "24ebcd4be578ed256cd51916d10341d34d5cffc6de102c6ee8dc913ed57b5b87",
+          "bytes": 829906
+        },
+        {
+          "path": "sql/0084.sql",
+          "statements": 1000,
+          "sha256": "c8ae7dc609240a1e195c5d6b73461b09bb20d0b7994315ada988d820622b651b",
+          "bytes": 829274
+        },
+        {
+          "path": "sql/0085.sql",
+          "statements": 1000,
+          "sha256": "6fd503da0c1c8b6707ff6e98a23eb60a69a7a3b9a54a04ecc131548f8e24a5a7",
+          "bytes": 828025
+        },
+        {
+          "path": "sql/0086.sql",
+          "statements": 1000,
+          "sha256": "5f0b771c3fbc09b6fcb0d96e15f41d76ccd65f68445e3d67e7035dc639790e48",
+          "bytes": 829374
+        },
+        {
+          "path": "sql/0087.sql",
+          "statements": 1000,
+          "sha256": "bf9dc2fd341e39bfa6c3f1b1850d11d4931b5922e4c0f708e05c48b50251b164",
+          "bytes": 827718
+        },
+        {
+          "path": "sql/0088.sql",
+          "statements": 1000,
+          "sha256": "62f8aa887a88a5234ec5f44e6e7d5721749f5b539249de7f601eead22cea75cc",
+          "bytes": 827520
+        },
+        {
+          "path": "sql/0089.sql",
+          "statements": 1000,
+          "sha256": "2118ae5f1a0c0e33011e806af1503da3b83161203b5d4aa0fa38a37a16fde114",
+          "bytes": 832618
+        },
+        {
+          "path": "sql/0090.sql",
+          "statements": 1000,
+          "sha256": "09070e3e8743f0a7327fcecb1d4d89b538eb70fa8825ec9a2665b2d08c4d087f",
+          "bytes": 828255
+        },
+        {
+          "path": "sql/0091.sql",
+          "statements": 1000,
+          "sha256": "28094e1104e11fe025a9cb36224ddd4717d3e376f81fa9273d70a0873b2503e5",
+          "bytes": 833216
+        },
+        {
+          "path": "sql/0092.sql",
+          "statements": 1000,
+          "sha256": "28fdd95331f6e06e1a1c6a866de063ee7fef332ed42d00fe001e5736c1985cf4",
+          "bytes": 835795
+        },
+        {
+          "path": "sql/0093.sql",
+          "statements": 1000,
+          "sha256": "324d41608886e36ac8f8b9502d185ad8b1e7402d17b2bd43da9e731812a89bbd",
+          "bytes": 833683
+        },
+        {
+          "path": "sql/0094.sql",
+          "statements": 1000,
+          "sha256": "51a9e9d56bc5b1fe8f69328941888aaca202827f4a5781b9d3b2541b1513a8b7",
+          "bytes": 834381
+        },
+        {
+          "path": "sql/0095.sql",
+          "statements": 1000,
+          "sha256": "8c2e3f50ea24aca4e713ba002b88595b8e2d7ea951675987a815b0f89d0acfe1",
+          "bytes": 825713
+        },
+        {
+          "path": "sql/0096.sql",
+          "statements": 1000,
+          "sha256": "cbc141d8098b6acece0f3783be9055588706401ed5b7d83771946ed94f03ac62",
+          "bytes": 784734
+        },
+        {
+          "path": "sql/0097.sql",
+          "statements": 1000,
+          "sha256": "6ed7fc303de33a691d03fbadac100595c2bf2dc91019427ca9c743e89efc72f0",
+          "bytes": 788784
+        },
+        {
+          "path": "sql/0098.sql",
+          "statements": 1000,
+          "sha256": "22b719202bca49036aee6526687cf984d05ee2260492db2aca63c4a9e9954390",
+          "bytes": 773204
+        },
+        {
+          "path": "sql/0099.sql",
+          "statements": 303,
+          "sha256": "202dde942444144a7c418dba469ae46d0f714e4fcbd6519585e784e343c370f5",
+          "bytes": 222493
+        }
+      ]
+    },
+    "operating_limit": "Initial/staging import only. For existing hosted data use maintenance or implement atomic activation before live updates."
+  },
+  "local_staging": {
+    "database": "artifacts/catalog-api-staging.sqlite",
+    "snapshot_id": "60198197c381e4e45c825d3558541424f976fdb152fff6717ada1f208b796f2a",
+    "before": {
+      "source_snapshots": 0,
+      "catalog_entities": 0,
+      "entity_revisions": 0,
+      "pack_memberships": 0,
+      "quarantine": 0
+    },
+    "after": {
+      "source_snapshots": 1,
+      "catalog_entities": 49105,
+      "entity_revisions": 49105,
+      "pack_memberships": 90,
+      "quarantine": 2
+    },
+    "replay_verified": true,
+    "orphan_references": 0,
+    "hosted_database_touched": false
+  },
+  "read_api_verification": {
+    "checks": [
+      {
+        "path": "/api/v1/health",
+        "status": 200,
+        "returned_rows": null
+      },
+      {
+        "path": "/api/v1/manifest",
+        "status": 200,
+        "returned_rows": null
+      },
+      {
+        "path": "/api/v1/cards?limit=2",
+        "status": 200,
+        "returned_rows": 2
+      },
+      {
+        "path": "/api/v1/cards/88046292831684",
+        "status": 200,
+        "returned_rows": null
+      },
+      {
+        "path": "/api/v1/packs/italian-league-selection-attackers-26-oct-26",
+        "status": 200,
+        "returned_rows": null
+      },
+      {
+        "path": "/api/v1/packs/italian-league-selection-attackers-26-oct-26/cards",
+        "status": 200,
+        "returned_rows": 11
+      }
+    ],
+    "hosted": false
+  },
+  "checks": {
+    "root_and_api_tests": {
+      "passed": 245,
+      "failed": 0
+    },
+    "api_tests": {
+      "passed": 21,
+      "failed": 0
+    },
+    "api_sites_build": "passed",
+    "typecheck": "passed",
+    "existing_app_build": "passed",
+    "existing_pages_comparison": 7,
+    "project_management": {
+      "files": 212,
+      "tasks": 24,
+      "changed_paths": 141,
+      "passed": true
+    },
+    "relative_links": {
+      "checked": 179,
+      "broken": 0
+    },
+    "sites_artifact_prepare": "worker"
+  },
+  "runtime": {
+    "actual_node": "24.22.1",
+    "root_and_ci_node": "24.19.0",
+    "api_package_manager": "pnpm@11.25.0"
+  },
+  "limits": [
+    "Initial/staging import only; no atomic live update activation yet",
+    "Current official scope/N/S/imagery/reuse rights not certified by raw import",
+    "Unknown incoming fields preserve prior current revision, candidate revision retained for review",
+    "Private Sites service authentication and cross-origin integration require hosted verification",
+    "Remote D1 provisioning, quota/cost and backup/restore not tested"
+  ],
+  "source_data_committed": false,
+  "source_upload_preparation": "Standalone source export script; not a deployment archive",
+  "github_push": "Pending source validation; subsequent observed result recorded in final handoff",
+  "bundles": [
+    {
+      "path": "artifacts/catalog-api-source-upload.tar.gz",
+      "bytes": 199662,
+      "sha256": "315623ae6acb851929606a3dadc261bce01565dbd5ed3ce0b4d2206acc7e77e1",
+      "deployment_archive": false
+    },
+    {
+      "path": "artifacts/catalog-api-data-import.tar.gz",
+      "bytes": 20044277,
+      "sha256": "136821fe5e68daebec996db398cbef914639cd1fb186885419948ac848808cc3",
+      "deployment_archive": false
+    }
+  ]
+}

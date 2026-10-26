@@ -1,3 +1,5 @@
+> T022 최신 이관·Sites 검토 결과는 [MIGRATION_STATUS](MIGRATION_STATUS.md)와 [검증 JSON](../data/research/work-migration-verification.json)을 따른다. 아래는 T020/T021의 전수 점검·검사 이력이다. 이번 T022의 영향 파일 검토는 WORKPLAN에 별도 기록하며 과거 전수 판정을 재실행했다고 주장하지 않는다.
+
 # T020 전수 점검과 T021 검증 반영 보고
 
 2026-10-26 KST 작성. 기준 커밋 `d7f30688b5bcf610f9b35b2d7f680485949f6c19`. 이번 범위는 문서·계획·이관 준비다. 코드가 새 계획을 구현했다고 판정하지 않는다.

@@ -1,0 +1,525 @@
+{
+  "schema_version": 1,
+  "task": "T022",
+  "observed_at": "2026-10-26T08:43:15.645320+00:00",
+  "scope": "Work migration, offline integrity/reference checks, documentation and Sites feasibility; no new collection or deployment",
+  "git": {
+    "repository": "https://github.com/Hyunwoo1205/efsimulator",
+    "checkout": "/workspace/scratch/b199bf7d046f/efsimulator",
+    "branch": "work",
+    "baseline_work": "8ece93492608f4644e15f0952446e808b30c8f6c",
+    "main": "d8891f241e113632884445d60746d9e059a1583b",
+    "initial_worktree_clean": true,
+    "attached_handoff_matches_baseline_repo_file": true,
+    "attached_handoff_sha256": "cc0bf40c5abf2b100c51aaf34a9bb9b5b029edd57f8ef1e0bad64a44635208c2",
+    "pull_request": {
+      "number": 1,
+      "state": "open",
+      "draft": true,
+      "merged": false
+    },
+    "baseline_ci": [
+      {
+        "run_id": 40285253805,
+        "event": "push",
+        "conclusion": "success"
+      },
+      {
+        "run_id": 40285260952,
+        "event": "pull_request",
+        "conclusion": "success"
+      }
+    ],
+    "additional_push_performed": false,
+    "main_merge_performed": false
+  },
+  "inputs": {
+    "players_raw.json": {
+      "path": "artifacts/inputs/players_raw.json",
+      "library_file_id": "libfile_cc5085f5c4788191b7c3707a66e0529a",
+      "current_version_number": 1,
+      "size_bytes": 16801176,
+      "sha256": "16b5ac4919480bbbf8e5158946322fac1f406f0d66701c4d52c9274107dc94c4",
+      "expected_sha_matches": true,
+      "row_count": 47397,
+      "duplicate_json_keys": 0,
+      "original_modified": false,
+      "identity_xattr_matches": true,
+      "unique_ids": 47397,
+      "duplicate_ids": 0,
+      "all_ids_decimal_strings": true,
+      "required_missing_or_null_or_empty": {
+        "name": 0,
+        "imageUrl": 0,
+        "overallRating": 0,
+        "playerType": 0
+      },
+      "overallRating_range": [
+        40,
+        102
+      ],
+      "playerType_range": [
+        1,
+        8
+      ],
+      "empty_fields": {
+        "nationality": 47397,
+        "nationalityCode": 47397,
+        "nameZh": 795
+      },
+      "absent_fields": {
+        "playingStyle": 7927,
+        "playingStyleDefensive": 42561
+      }
+    },
+    "packs_raw.json": {
+      "path": "artifacts/inputs/packs_raw.json",
+      "library_file_id": "libfile_467e20cb94a8819195dba5375e7e013a",
+      "current_version_number": 0,
+      "size_bytes": 197874,
+      "sha256": "bfe4590cfa5acb18106a98206b9acad71616f2622cf0d44ae3257040a56b97d6",
+      "expected_sha_matches": true,
+      "row_count": 1699,
+      "duplicate_json_keys": 0,
+      "original_modified": false,
+      "identity_xattr_matches": true,
+      "unique_slugs_including_empty": 1699,
+      "nonempty_unique_slugs": 1698,
+      "duplicate_slugs": 0,
+      "exact_fields_per_item": true,
+      "empty_names": 1,
+      "empty_slugs": 1,
+      "date_range": [
+        "2022-04-01",
+        "2026-10-26"
+      ],
+      "playerCount_range": [
+        1,
+        48
+      ],
+      "playerCount_sum": 12946,
+      "quarantine_review": [
+        {
+          "zero_based_index": 99,
+          "raw": {
+            "name": "dummy",
+            "slug": "dummy",
+            "date": "2026-07-23",
+            "playerCount": 33
+          }
+        },
+        {
+          "zero_based_index": 505,
+          "raw": {
+            "name": "",
+            "slug": "",
+            "date": "2025-08-14",
+            "playerCount": 12
+          }
+        }
+      ]
+    }
+  },
+  "reused_relationships": {
+    "source_file": "data/research/current-catalog-observations.json",
+    "source_file_sha256": "8c0afd9f90b139d9454c382343fd4a9241513492a40cf2366173b7d5cdab3ddf",
+    "pack_count": 9,
+    "card_memberships": 79,
+    "unique_card_ids": 79,
+    "all_pack_slugs_in_raw": true,
+    "all_card_ids_in_raw": true,
+    "records": [
+      {
+        "pack_slug": "ranking-event-rewards-2027",
+        "source_name": "Ranking Event Rewards 2027",
+        "source_date": "2026-10-22",
+        "card_count": 12,
+        "duplicate_card_ids": 0,
+        "pack_present_in_raw": true,
+        "missing_raw_card_ids": [],
+        "card_ids": [
+          "106798388457476",
+          "106796241006650",
+          "106798388494170",
+          "106798388454829",
+          "106798388478166",
+          "106798388461815",
+          "106798388407327",
+          "106795972530896",
+          "106798656890465",
+          "106798656929345",
+          "106798925278449",
+          "106798925332853"
+        ],
+        "observation_id": "efhub_obs_4da7faaf6cb715e80baa5bee",
+        "source_url": "https://efhub.com/ko/packs/ranking-event-rewards-2027",
+        "observed_at": "2026-10-25T04:58:52.985Z",
+        "source_response_sha256": "8183e45608d99915eee1a026f56f7d72ae64ddb82ff829c995c0cb0f44dee276",
+        "composition_scope": "source_displayed_subset",
+        "official_round_verified": false,
+        "all_special_members_verified": false
+      },
+      {
+        "pack_slug": "halloween-campaign-22-oct-26",
+        "source_name": "Halloween Campaign 22 Oct '26",
+        "source_date": "2026-10-22",
+        "card_count": 5,
+        "duplicate_card_ids": 0,
+        "pack_present_in_raw": true,
+        "missing_raw_card_ids": [],
+        "card_ids": [
+          "105892687165161",
+          "105892687220862",
+          "105892687234354",
+          "105892687251310",
+          "105892687260495"
+        ],
+        "observation_id": "efhub_obs_801f548f8258290840714976",
+        "source_url": "https://efhub.com/ko/packs/halloween-campaign-22-oct-26",
+        "observed_at": "2026-10-25T04:58:54.681Z",
+        "source_response_sha256": "e46a5864b970d4329c59828c4feeb3ebea9cc5c43ae0f7534940c0b624850ee0",
+        "composition_scope": "source_displayed_subset",
+        "official_round_verified": false,
+        "all_special_members_verified": false
+      },
+      {
+        "pack_slug": "borussia-dortmund-pack-26-27",
+        "source_name": "Borussia Dortmund Pack 26-27",
+        "source_date": "2026-10-22",
+        "card_count": 11,
+        "duplicate_card_ids": 0,
+        "pack_present_in_raw": true,
+        "missing_raw_card_ids": [],
+        "card_ids": [
+          "106802146570881",
+          "105891076607840",
+          "105891076647837",
+          "105891076647661",
+          "105891076647836",
+          "105891076664168",
+          "105891076665540",
+          "105891076652937",
+          "105891076647663",
+          "105891076673336",
+          "105891076644042"
+        ],
+        "observation_id": "efhub_obs_a5d608a3ff672a919dcaec12",
+        "source_url": "https://efhub.com/ko/packs/borussia-dortmund-pack-26-27",
+        "observed_at": "2026-10-25T04:58:55.218Z",
+        "source_response_sha256": "e855a287ff7519916d507fd0dade30b058e1680c3ff0cd41ca67767a32f1a4c6",
+        "composition_scope": "source_displayed_subset",
+        "official_round_verified": false,
+        "all_special_members_verified": false
+      },
+      {
+        "pack_slug": "potm-j1-league-22-oct-26",
+        "source_name": "POTM J1 LEAGUE 22 Oct '26",
+        "source_date": "2026-10-22",
+        "card_count": 6,
+        "duplicate_card_ids": 0,
+        "pack_present_in_raw": true,
+        "missing_raw_card_ids": [],
+        "card_ids": [
+          "53985859981027",
+          "53985859923942",
+          "53985859977501",
+          "53985859984212",
+          "53985859992654",
+          "53985859992727"
+        ],
+        "observation_id": "efhub_obs_f319c78a714c1a4c3ef09533",
+        "source_url": "https://efhub.com/ko/packs/potm-j1-league-22-oct-26",
+        "observed_at": "2026-10-25T04:58:56.825Z",
+        "source_response_sha256": "92b5979c5001287b8f82e1c06b0e10db7280430723a45f6640c8c7b95d57b573",
+        "composition_scope": "source_displayed_subset",
+        "official_round_verified": false,
+        "all_special_members_verified": false
+      },
+      {
+        "pack_slug": "potw-22-oct-26",
+        "source_name": "POTW 22 Oct '26",
+        "source_date": "2026-10-22",
+        "card_count": 11,
+        "duplicate_card_ids": 0,
+        "pack_present_in_raw": true,
+        "missing_raw_card_ids": [],
+        "card_ids": [
+          "52904333543847",
+          "52904333576000",
+          "52904333551882",
+          "52904333527391",
+          "52904333571536",
+          "52904333457355",
+          "52904333584293",
+          "52904333532168",
+          "52904333532623",
+          "52904333545669",
+          "52904333546402"
+        ],
+        "observation_id": "efhub_obs_d4cf3d8e862b6829ccc3be1a",
+        "source_url": "https://efhub.com/ko/packs/potw-22-oct-26",
+        "observed_at": "2026-10-25T04:58:58.391Z",
+        "source_response_sha256": "68d7605c9558d8ad8e7778ee39a178233aaa571e74d338c1f3577c01c34fc232",
+        "composition_scope": "source_displayed_subset",
+        "official_round_verified": false,
+        "all_special_members_verified": false
+      },
+      {
+        "pack_slug": "potm-trendyol-s-per-lig-22-oct-26",
+        "source_name": "POTM Trendyol Süper Lig 22 Oct '26",
+        "source_date": "2026-10-22",
+        "card_count": 6,
+        "duplicate_card_ids": 0,
+        "pack_present_in_raw": true,
+        "missing_raw_card_ids": [],
+        "card_ids": [
+          "53988275902638",
+          "53988275907363",
+          "53988275941823",
+          "53988275905208",
+          "53988275928737",
+          "53988275961077"
+        ],
+        "observation_id": "efhub_obs_8abf50f3dc013d58d5974a10",
+        "source_url": "https://efhub.com/ko/packs/potm-trendyol-s-per-lig-22-oct-26",
+        "observed_at": "2026-10-25T04:58:59.804Z",
+        "source_response_sha256": "da7f0ca79006f019753bb2f50fe4212aba0ee60e158f1781a7ad1d448f2ded78",
+        "composition_scope": "source_displayed_subset",
+        "official_round_verified": false,
+        "all_special_members_verified": false
+      },
+      {
+        "pack_slug": "potm-brasileir-o-22-oct-26",
+        "source_name": "POTM Brasileirão 22 Oct '26",
+        "source_date": "2026-10-22",
+        "card_count": 6,
+        "duplicate_card_ids": 0,
+        "pack_present_in_raw": true,
+        "missing_raw_card_ids": [],
+        "card_ids": [
+          "53991228723165",
+          "53991228575687",
+          "53991228698710",
+          "53991228619568",
+          "53991228688058",
+          "53991228739881"
+        ],
+        "observation_id": "efhub_obs_c3d96d0edb219b919bc709e5",
+        "source_url": "https://efhub.com/ko/packs/potm-brasileir-o-22-oct-26",
+        "observed_at": "2026-10-25T04:59:01.175Z",
+        "source_response_sha256": "31371dd7979ed28dabc533f77a25135c5dc7e4ce46436c3d2a7110149afa47d6",
+        "composition_scope": "source_displayed_subset",
+        "official_round_verified": false,
+        "all_special_members_verified": false
+      },
+      {
+        "pack_slug": "potw-european-club-championship-22-oct-26",
+        "source_name": "POTW European Club Championship 22 Oct '26",
+        "source_date": "2026-10-22",
+        "card_count": 11,
+        "duplicate_card_ids": 0,
+        "pack_present_in_raw": true,
+        "missing_raw_card_ids": [],
+        "card_ids": [
+          "52912655044507",
+          "52912655024346",
+          "52912655014117",
+          "52912655053878",
+          "52912655057395",
+          "52912655062348",
+          "52912655050310",
+          "52912655086762",
+          "52912655061235",
+          "52912655073911",
+          "52912655074031"
+        ],
+        "observation_id": "efhub_obs_ad28201cee515d523ef7f5c3",
+        "source_url": "https://efhub.com/ko/packs/potw-european-club-championship-22-oct-26",
+        "observed_at": "2026-10-25T04:59:02.734Z",
+        "source_response_sha256": "38b209afa7eb7d796f8b7e281f8643bd1e5da205004cd56290f837d286acf5e0",
+        "composition_scope": "source_displayed_subset",
+        "official_round_verified": false,
+        "all_special_members_verified": false
+      },
+      {
+        "pack_slug": "magical-dribblers-22-oct-26",
+        "source_name": "Magical Dribblers 22 Oct '26",
+        "source_date": "2026-10-22",
+        "card_count": 11,
+        "duplicate_card_ids": 0,
+        "pack_present_in_raw": true,
+        "missing_raw_card_ids": [],
+        "card_ids": [
+          "106800804418912",
+          "106800804393500",
+          "106800804376628",
+          "105896176917926",
+          "105896176904634",
+          "105896176839655",
+          "105896176957170",
+          "105896176893674",
+          "105896176886332",
+          "105896176881795",
+          "105896176926765"
+        ],
+        "observation_id": "efhub_obs_e83416aead9946a907dc083d",
+        "source_url": "https://efhub.com/ko/packs/magical-dribblers-22-oct-26",
+        "observed_at": "2026-10-25T04:59:03.273Z",
+        "source_response_sha256": "9c58a4d89515f09ca8401794e2d39b2bde4faa0aa7e154689659b41674c1f598",
+        "composition_scope": "source_displayed_subset",
+        "official_round_verified": false,
+        "all_special_members_verified": false
+      }
+    ],
+    "limit": "Historical source-listed rosters only. Official round, current sale, complete special set and image rights/loads not verified."
+  },
+  "existing_sample": {
+    "products": 9,
+    "cards": 83,
+    "managers": 0,
+    "linked_cards": 79,
+    "unlinked_cards": 4,
+    "orphan_references": [],
+    "all_availability_unknown": true,
+    "all_composition_partial": true,
+    "new_cumulative_database_created": false
+  },
+  "runtime": {
+    "required_node": "24.19.0",
+    "actual_node": "24.22.1",
+    "required_npm": "11.9.0",
+    "actual_npm": "11.9.0",
+    "exact_node_reproduced_locally": false,
+    "pinned_node_acquisition": "One npm exec attempt did not complete and was interrupted. Repository runtime pin unchanged."
+  },
+  "sites": {
+    "tool_list_read_succeeded": true,
+    "repository_hosting_manifest_exists": false,
+    "new_site_created": false,
+    "credential_requested": false,
+    "source_push_performed": false,
+    "version_saved": false,
+    "deployment_performed": false,
+    "static_offline_prepare": "passed",
+    "static_preflight_project_id": null,
+    "static_preflight_limit": "Only local official build preparer; no project registration, archive publication or hosted routing validation",
+    "static_files": [
+      {
+        "path": "404.html",
+        "bytes": 339,
+        "sha256": "d762a1971e909b995551d6806d0d6f53c295f0dea01faf62995e2c07235cc4c6",
+        "preserved": true
+      },
+      {
+        "path": "_headers",
+        "bytes": 148,
+        "sha256": "67875eb32b87bcf37069bffcfd6885d7b416df9879162305d917c7f044c5dc56",
+        "preserved": true
+      },
+      {
+        "path": "_redirects",
+        "bytes": 8172,
+        "sha256": "522204c95912f9b107844b1f39d79bf451486db8935b53ab6c919c2bf75fd823",
+        "preserved": true
+      },
+      {
+        "path": "app.js",
+        "bytes": 27931,
+        "sha256": "5917e6e31cc2c9003e7475516e530ade98a85051403997fe9da4f99ac309483e",
+        "preserved": true
+      },
+      {
+        "path": "data/catalog.json",
+        "bytes": 149343,
+        "sha256": "571381d807ced176eb7e4f7b2bf76e8ff3d00adfedbd85b45b28f94b63045b04",
+        "preserved": true
+      },
+      {
+        "path": "index.html",
+        "bytes": 2511,
+        "sha256": "2cb960769db80405d2bb42f5b5ed106988971987ac8ac7f415748e6efcdd5a80",
+        "preserved": true
+      },
+      {
+        "path": "styles.css",
+        "bytes": 27529,
+        "sha256": "f1e45380d7b347c6df52884fc08ebdd949abb5ded05eab8f900649222fde2a37",
+        "preserved": true
+      }
+    ],
+    "static_total_bytes": 215973,
+    "server_candidate": "Sites Vinext Worker with D1; R2 if needed",
+    "same_site_preferred_for_app_and_api": true,
+    "physical_topology_final": false,
+    "source_helper_keeps_origin": true,
+    "static_runtime_bindings_forbidden": true,
+    "runtime_memory_mb_from_skill": 128,
+    "runtime_raw_tcp_from_skill": false,
+    "actual_quotas_costs_d1_r2_backups_unverified": true,
+    "evidence_skill_package": "c9/sites",
+    "evidence_references": [
+      "SKILL.md",
+      "references/storage.md",
+      "references/identity-and-secrets.md",
+      "references/recurring-updates.md",
+      "templates/vinext-starter/README.md"
+    ],
+    "evidence_local_plugin_version": "1.1.2",
+    "helper_sources": [
+      "scripts/site-workflow.mjs",
+      "scripts/build-site.mjs",
+      "skills/sites/scripts/prepare-site-build.cjs"
+    ]
+  },
+  "checks": {
+    "npm_ci": "passed with Node engine warning",
+    "node_tests": {
+      "passed": 224,
+      "failed": 0
+    },
+    "data_prepare": "passed",
+    "build": "passed",
+    "pages_check": {
+      "passed_files": 7
+    },
+    "app_seed_public_changes": false,
+    "final_project_check": {
+      "passed": true,
+      "managed_files": 81,
+      "tasks": 23,
+      "changed_paths": 13,
+      "base_sha": "8ece93492608f4644e15f0952446e808b30c8f6c"
+    },
+    "relative_links": {
+      "checked": 168,
+      "broken": 0
+    },
+    "git_diff_check": "passed",
+    "new_browser_qa": "not run; UI unchanged"
+  },
+  "network_scope": {
+    "efhub_requests": 0,
+    "official_probability_requests": 0,
+    "image_requests": 0,
+    "github": "read refs/CI/PR and clone",
+    "sites": "list only",
+    "library": "materialize two previously identified raw files"
+  },
+  "state": {
+    "stage": "R2",
+    "previous": "T022",
+    "current": "T010",
+    "current_status": "예정",
+    "next": "T011"
+  },
+  "remaining": [
+    "T010 formal relation manifest and quarantine decisions",
+    "T011 actual schema, revision, nondeletion, staging import and one current pack",
+    "fresh official KR observation and exact round mapping",
+    "source supply and storage/redistribution conditions",
+    "Sites real private deployment, routes, 404, cache, authentication",
+    "D1/R2 provisioning, quotas/costs, batch import, independent backup/restore",
+    "T015/T016 real unattended updates and API operations",
+    "T017/T018 simulator and 3D after data/operations gates"
+  ]
+}

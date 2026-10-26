@@ -1,3 +1,17 @@
+> T023 이후 최신 입력은 players 47,408개이며 별도 API Site용 독립 소스와 수입 준비는 [API_SERVER_PREPARATION](API_SERVER_PREPARATION.md)을 따른다. 아래 이전 검증·이관 수치와 실행 범위는 당시 이력으로 보존한다.
+
+# T022 추가 인수인계 — 2026-10-26 KST
+
+이 파일의 아래 T021 원문은 당시 이력으로 보존한다. 현재 사용자 결정·실행 결과는 [MIGRATION_STATUS](MIGRATION_STATUS.md), 현재 작업 포인터는 [ROADMAP](ROADMAP.md)·[WORKPLAN](WORKPLAN.md), 이후 배포 방식은 [DEPLOYMENT](DEPLOYMENT.md)를 우선한다.
+
+- GitHub work `8ece93492608f4644e15f0952446e808b30c8f6c`를 새 Work의 저장소 체크아웃으로 이관했다. 기준 SHA의 CI 2개 성공, main 초기 커밋, PR #1 Draft/open/unmerged를 확인했다.
+- 기존 raw 두 파일을 이 Work로 가져와 기록된 SHA·행 수와 일치함을 확인했다. 과거 9팩·79카드 관계의 모든 raw ID 참조를 확인했으며 공식 회차·완전성은 미검증이다.
+- 이후 배포는 Pages 대신 Sites다. 기존 앱 dist의 정적 빌드 준비를 통과했고 자체 API는 Sites Worker + D1, 필요 시 R2를 우선 검토한다. 실제 서비스 생성·배포·DB 운영·스케줄은 수행하지 않았다. 기존 별도 Sites 초기 페이지는 계속 이관 제외다.
+- T022 관리 이관 뒤 제품 위치는 R2/T010 예정, 다음은 T011이다. T021 내부 검사는 완료 상태를 유지한다. 이번 추가 원격 push·main 병합은 수행하지 않았다.
+- 이번 환경은 Node 24.22.1/npm 11.9.0으로 테스트 224개·표본 재현·빌드·7파일 비교를 통과했다. 저장소 기준 Node 24.19.0과의 차이는 명시하며 정확 버전 재현이라 부르지 않는다.
+
+## T021 원문 — 당시 관측과 실행 범위
+
 # efsimulator — ChatGPT Work 인수인계
 
 갱신일: **2026-10-26 KST**. T020의 전수 파일 점검과 T021의 players/packs raw 검사 완료, 격리 검토 사항, 사용자의 중복 제거 설명 및 `work` 푸시 승인을 반영했다. 현재는 R2/T010의 상세·관계 확인과 수입 준비를 계획하는 단계다.

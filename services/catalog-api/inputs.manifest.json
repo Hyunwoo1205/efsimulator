@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "input_files": [
+    {
+      "file_name": "players_raw.json",
+      "library_file_id": "libfile_03e137f8e450819192fc3d17049c2bed",
+      "sha256": "c8d141864401ae4eff8abae4fab3aa059ebeb15b74e821e016942e3bb3f823d8",
+      "bytes": 16805444,
+      "rows": 47408,
+      "source_collected_at": null
+    },
+    {
+      "file_name": "packs_raw.json",
+      "library_file_id": "libfile_48ddeeb1cac88191bd5cadbf31bda6d3",
+      "sha256": "bfe4590cfa5acb18106a98206b9acad71616f2622cf0d44ae3257040a56b97d6",
+      "bytes": 197874,
+      "rows": 1699,
+      "source_collected_at": null
+    },
+    {
+      "file_name": "players_update_20261026.json",
+      "library_file_id": "libfile_e0a65a4fb7c881919d3fc05a03d2f498",
+      "sha256": "12aa704138fc36719e376e7660b58d5d1bfb021819d491c26cf5216494786df9",
+      "bytes": 10243,
+      "rows": null,
+      "source_collected_at": null
+    }
+  ],
+  "date_label": "2026-10-26",
+  "date_label_is_collection_time": false,
+  "player_cards": 47408,
+  "raw_packs": 1699,
+  "expected_valid_packs": 1697,
+  "expected_quarantine": 2,
+  "expected_relation_packs": 10,
+  "expected_memberships": 90,
+  "source_counts_are_not_official_pool_sizes": true,
+  "raw_payloads_in_git": false
+}

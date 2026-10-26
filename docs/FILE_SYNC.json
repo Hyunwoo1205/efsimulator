@@ -25,8 +25,8 @@
   "external_dependencies": [
     {
       "path": "/workspace/efsimulator-environment/activate.sh",
-      "role": "저장소 밖의 개발 도구 활성화와 npm 캐시 설정",
-      "check": "새 셸에서 source 후 node --version=v24.19.0, npm --version=11.9.0 확인"
+      "role": "이전 환경의 도구 활성화 스크립트; 이번 Work에는 없음",
+      "check": "존재할 때만 사용. .nvmrc/package 기준과 실제 node/npm 차이는 기록하고 자동 상향하지 않음"
     },
     {
       "path": "/workspace/efsimulator-environment/efsimulator 새 환경 인수인계.md",
@@ -40,8 +40,8 @@
     },
     {
       "path": "https://efsimulator.pages.dev",
-      "role": "기존 Cloudflare Pages 공개 배포",
-      "check": "실제 배포 후 페이지·데이터·이미지·직접 주소 확인; 응답 일치와 배포 SHA 검증 구별"
+      "role": "기존 Cloudflare Pages 배포 이력; 이후 배포 기본은 Sites",
+      "check": "이번 실제 연결 상태 미조회. Sites 전환 검증·사용자 운영 범위 확인 전 삭제/해제하지 않음"
     },
     {
       "path": "OCI Ampere A1 Flex (2 OCPU, 12GB RAM)",
@@ -85,13 +85,23 @@
     },
     {
       "path": "library-file:libfile_cc5085f5c4788191b7c3707a66e0529a",
-      "role": "대상 Work의 players_raw.json v1. 16,801,176 bytes, 카드 객체·고유 문자열 ID 47,397개, 중복 0개와 SHA를 상위 환경이 오프라인 검증",
+      "role": "players_raw.json v1. T022 Work artifacts/inputs에 복원, SHA/47,397개 재확인",
       "check": "같은 v1과 SHA를 확인한다. 카드 객체·고유 문자열 ID 47,397개와 중복 0개를 검사했고 팩 검사 때 SHA 동일함을 재확인했다. 차이 3,443개는 사용자 설명상 중복 제거 결과다. 원본 로그는 재검증하지 않았다. 양쪽 raw를 재수집하지 않고 기존 상세·관계 자료를 먼저 확인한다."
     },
     {
       "path": "library-file:libfile_467e20cb94a8819195dba5375e7e013a",
-      "role": "대상 Work packs_raw.json. current_version_number 0, 197,874 bytes, 객체 1,699개. 파일 내부 검사 완료이나 빈 식별 필드·dummy 의심 항목 격리 검토 필요",
+      "role": "packs_raw.json version 0. T022 Work artifacts/inputs에 복원, SHA/1,699개·격리 검토 항목 재확인",
       "check": "SHA bfe4590cfa5acb18106a98206b9acad71616f2622cf0d44ae3257040a56b97d6와 실제 파일을 대조한다. 비어 있지 않은 고유 slug는 1,698개이며 card ID·명단은 없어 두 raw 조인 불가. 원본 보존, 기존 Work 상세·관계 자료 우선 확인. 재수집부터 시작하지 않음."
+    },
+    {
+      "path": "Sites skill / native Sites connector",
+      "role": "이후 기본 정적·Worker 배포, 지원 D1/R2와 source 저장소",
+      "check": "반환 project_id·audience·source SHA·저장 version·배포 URL 확인. 계정별 비용/한도·라우팅·인증·백업은 실측; GitHub push와 Sites 배포 구분"
+    },
+    {
+      "path": "efsimulator/api-server-setup + services/catalog-api",
+      "role": "앱과 별도로 배포할 API Site source 및 pnpm 잠금",
+      "check": "GitHub source branch·Sites source root/version·DB 수입 묶음 분리. 실제 Site 등록·원격 DB 수입·앱 인증/CORS는 후속"
     }
   ],
   "files": [
@@ -121,7 +131,7 @@
       "update_when": [
         "검사 명령·Node/npm 버전·브랜치 정책 변경"
       ],
-      "reviewed_in": "T020"
+      "reviewed_in": "T022"
     },
     {
       "path": ".gitignore",
@@ -134,7 +144,7 @@
       "update_when": [
         "생성물 경로·외부 서비스의 로컬 설정 추가"
       ],
-      "reviewed_in": "T020"
+      "reviewed_in": "T022"
     },
     {
       "path": ".nvmrc",
@@ -152,7 +162,7 @@
       "update_when": [
         "프로젝트 런타임 버전 변경"
       ],
-      "reviewed_in": "T020"
+      "reviewed_in": "T022"
     },
     {
       "path": "404.html",
@@ -184,12 +194,14 @@
         "docs/DATA_LIFECYCLE.md",
         "docs/SIMULATOR_PLAN.md",
         "docs/sources/API_SELECTION_VALIDATION.md",
-        "docs/RAW_PAGE_MERGE.md"
+        "docs/RAW_PAGE_MERGE.md",
+        "docs/MIGRATION_STATUS.md",
+        "docs/API_SERVER_PREPARATION.md"
       ],
       "update_when": [
         "사용자 요구·작업 절차·검증 명령·제품 및 운영 원칙 변경"
       ],
-      "reviewed_in": "T021"
+      "reviewed_in": "T023"
     },
     {
       "path": "_headers",
@@ -253,7 +265,7 @@
       "update_when": [
         "원본 변경 후 build→pages:export→pages:check; dist 직접 배포 전환 검증 후 사본과 참조를 함께 삭제"
       ],
-      "reviewed_in": "T020"
+      "reviewed_in": "T022"
     },
     {
       "path": "data/catalog.seed.json",
@@ -278,7 +290,7 @@
       "update_when": [
         "출처 증거·정규화·표본 범위·필드/관계 계약 변경; data:prepare로 재생성"
       ],
-      "reviewed_in": "T020"
+      "reviewed_in": "T022"
     },
     {
       "path": "data/research/card-api-audit.json",
@@ -308,7 +320,7 @@
       "update_when": [
         "해당 계약·지원 범위·실행/관측 결과 변경 시 관련 파일 검토; 비활성 참고는 현재 모델로 재채택하지 않음"
       ],
-      "reviewed_in": "T020"
+      "reviewed_in": "T022"
     },
     {
       "path": "data/research/followup-observations.json",
@@ -355,12 +367,14 @@
         "docs/sources/CURRENT_SHOP_COVERAGE.md",
         "docs/API_SELECTION.md",
         "docs/DATA_LIFECYCLE.md",
-        "docs/reference/ARCHITECTURE_BEFORE_PROBABILITY_SCOPE.md"
+        "docs/reference/ARCHITECTURE_BEFORE_PROBABILITY_SCOPE.md",
+        "docs/MIGRATION_STATUS.md",
+        "docs/API_SERVER_PREPARATION.md"
       ],
       "update_when": [
         "데이터 계약·파이프라인·라우팅·이력 영속화·운영 방식 변경"
       ],
-      "reviewed_in": "T021"
+      "reviewed_in": "T023"
     },
     {
       "path": "docs/COLLECTION.md",
@@ -380,16 +394,18 @@
         "docs/DATA_LIFECYCLE.md",
         "docs/reference/COLLECTION_BEFORE_PROBABILITY_SCOPE.md",
         "docs/sources/API_SELECTION_VALIDATION.md",
-        "docs/RAW_PAGE_MERGE.md"
+        "docs/RAW_PAGE_MERGE.md",
+        "docs/MIGRATION_STATUS.md",
+        "docs/API_SERVER_PREPARATION.md"
       ],
       "update_when": [
         "해당 계약·지원 범위·실행/관측 결과 변경 시 관련 파일 검토; 비활성 참고는 현재 모델로 재채택하지 않음"
       ],
-      "reviewed_in": "T021"
+      "reviewed_in": "T023"
     },
     {
       "path": "docs/DEPLOYMENT.md",
-      "role": "현재 확인 빌드/설정 대 미확인값·검토/운영게이트·Pages/자체API/자산/OCI 비교 계획",
+      "role": "Sites static/Worker·Git source 전달·D1/R2·검토/운영·인증/비용/백업 계획과 검증 한계",
       "priority": "P0",
       "related_paths": [
         "package.json",
@@ -402,12 +418,14 @@
         "docs/sources/CURRENT_SHOP_COVERAGE.md",
         "docs/DATA_LIFECYCLE.md",
         "docs/reference/DEPLOYMENT_BEFORE_PROBABILITY_SCOPE.md",
-        "docs/sources/API_SELECTION_VALIDATION.md"
+        "docs/sources/API_SELECTION_VALIDATION.md",
+        "docs/MIGRATION_STATUS.md",
+        "docs/API_SERVER_PREPARATION.md"
       ],
       "update_when": [
         "빌드 명령·출력·라우팅·배포 설정·공개 검증 결과 변경"
       ],
-      "reviewed_in": "T021"
+      "reviewed_in": "T023"
     },
     {
       "path": "docs/FILE_SYNC.json",
@@ -419,16 +437,17 @@
         "scripts/project-check.mjs",
         "docs/ROADMAP.md",
         "tests/project-check.test.mjs",
-        "docs/RAW_PAGE_MERGE.md"
+        "docs/RAW_PAGE_MERGE.md",
+        "docs/MIGRATION_STATUS.md"
       ],
       "update_when": [
         "파일 추가·삭제·이름 변경·역할/의존관계 변경·영향 검토"
       ],
-      "reviewed_in": "T021"
+      "reviewed_in": "T022"
     },
     {
       "path": "docs/ROADMAP.md",
-      "role": "공식KR확률표 대상의 새 R0~R6·완료조건·이전단계 대응·현재/이전/다음",
+      "role": "전체 누적/공식 현행의 R0~R6·Sites 배포·완료 조건·현재/이전/다음",
       "priority": "P0",
       "related_paths": [
         "docs/WORKPLAN.md",
@@ -442,16 +461,18 @@
         "docs/DATA_LIFECYCLE.md",
         "docs/SIMULATOR_PLAN.md",
         "docs/sources/API_SELECTION_VALIDATION.md",
-        "docs/RAW_PAGE_MERGE.md"
+        "docs/RAW_PAGE_MERGE.md",
+        "docs/MIGRATION_STATUS.md",
+        "docs/API_SERVER_PREPARATION.md"
       ],
       "update_when": [
         "단계 상태·현재/이전/다음 작업·완료 조건·추가 요구 변경"
       ],
-      "reviewed_in": "T021"
+      "reviewed_in": "T023"
     },
     {
       "path": "docs/WORKPLAN.md",
-      "role": "새 T008~T018 실행계획·조건/입출력/검증·이전 작업 매핑·매 작업 파일 최신화",
+      "role": "T 작업과 C 추가 조건·입출력/검증·현재 상태·매 작업 영향 파일 검토",
       "priority": "P0",
       "related_paths": [
         "docs/ROADMAP.md",
@@ -464,12 +485,14 @@
         "docs/DATA_LIFECYCLE.md",
         "docs/SIMULATOR_PLAN.md",
         "docs/sources/API_SELECTION_VALIDATION.md",
-        "docs/RAW_PAGE_MERGE.md"
+        "docs/RAW_PAGE_MERGE.md",
+        "docs/MIGRATION_STATUS.md",
+        "docs/API_SERVER_PREPARATION.md"
       ],
       "update_when": [
         "매 작업 착수·추가 요구·파일 변경·검증 결과·작업 종료"
       ],
-      "reviewed_in": "T021"
+      "reviewed_in": "T023"
     },
     {
       "path": "index.html",
@@ -498,7 +521,7 @@
       "update_when": [
         "package.json의 의존성·패키지 메타데이터 변경"
       ],
-      "reviewed_in": "T020"
+      "reviewed_in": "T022"
     },
     {
       "path": "package.json",
@@ -523,7 +546,7 @@
       "update_when": [
         "의존성·npm 명령·Node/npm 버전·앱 구성 추가"
       ],
-      "reviewed_in": "T020"
+      "reviewed_in": "T022"
     },
     {
       "path": "scripts/audit-cards.mjs",
@@ -556,7 +579,7 @@
       "update_when": [
         "빌드 출력·데이터 계약·라우팅·실패 복구·Pages 한도 변경"
       ],
-      "reviewed_in": "T020"
+      "reviewed_in": "T022"
     },
     {
       "path": "scripts/catalog-history.mjs",
@@ -634,7 +657,7 @@
       "update_when": [
         "해당 계약·지원 범위·실행/관측 결과 변경 시 관련 파일 검토; 비활성 참고는 현재 모델로 재채택하지 않음"
       ],
-      "reviewed_in": "T020"
+      "reviewed_in": "T022"
     },
     {
       "path": "scripts/prepare-seed.mjs",
@@ -655,7 +678,7 @@
       "update_when": [
         "조사 증거 구조·카드/상품 표본·ID·정규화 규칙 변경"
       ],
-      "reviewed_in": "T020"
+      "reviewed_in": "T022"
     },
     {
       "path": "scripts/project-check.mjs",
@@ -671,7 +694,7 @@
       "update_when": [
         "관리 스키마·작업 기록 형식·검사 정책·파일 수집 방식 변경"
       ],
-      "reviewed_in": "T020"
+      "reviewed_in": "T022"
     },
     {
       "path": "scripts/serve.mjs",
@@ -686,7 +709,7 @@
       "update_when": [
         "정적 출력·라우팅·헤더·미리보기 명령 변경"
       ],
-      "reviewed_in": "T020"
+      "reviewed_in": "T022"
     },
     {
       "path": "styles.css",
@@ -721,12 +744,14 @@
         "docs/DATA_LIFECYCLE.md",
         "docs/SIMULATOR_PLAN.md",
         "docs/sources/API_SELECTION_VALIDATION.md",
-        "docs/RAW_PAGE_MERGE.md"
+        "docs/RAW_PAGE_MERGE.md",
+        "docs/MIGRATION_STATUS.md",
+        "docs/API_SERVER_PREPARATION.md"
       ],
       "update_when": [
         "설치·실행·검증·표본 범위·진입 문서·공개 상태 변경"
       ],
-      "reviewed_in": "T021"
+      "reviewed_in": "T023"
     },
     {
       "path": "docs/sources/CARD_API_AUDIT.md",
@@ -923,7 +948,7 @@
       "update_when": [
         "공개 데이터 계약·검색·필터·관계·라우팅·표시 조건 변경"
       ],
-      "reviewed_in": "T020"
+      "reviewed_in": "T022"
     },
     {
       "path": "web/index.html",
@@ -938,7 +963,7 @@
       "update_when": [
         "문서 구조·주요 탐색·정적 자산·접근성·기본 메타 변경"
       ],
-      "reviewed_in": "T020"
+      "reviewed_in": "T022"
     },
     {
       "path": "web/styles.css",
@@ -952,7 +977,7 @@
       "update_when": [
         "화면 구조·이미지·레이아웃·포커스·반응형 요구 변경"
       ],
-      "reviewed_in": "T020"
+      "reviewed_in": "T022"
     },
     {
       "path": "data/research/manager-product-observations.json",
@@ -1164,7 +1189,7 @@
       "update_when": [
         "해당 범위/입력/완료조건·관계·권한/운영 근거 변경. reference의 과거 관측값은 덮어쓰지 않음"
       ],
-      "reviewed_in": "T021"
+      "reviewed_in": "T022"
     },
     {
       "path": "docs/DATA_LIFECYCLE.md",
@@ -1175,12 +1200,13 @@
         "docs/ARCHITECTURE.md",
         "docs/COLLECTION.md",
         "docs/DEPLOYMENT.md",
-        "docs/API_SELECTION.md"
+        "docs/API_SELECTION.md",
+        "docs/MIGRATION_STATUS.md"
       ],
       "update_when": [
         "해당 범위/입력/완료조건·관계·권한/운영 근거 변경. reference의 과거 관측값은 덮어쓰지 않음"
       ],
-      "reviewed_in": "T021"
+      "reviewed_in": "T022"
     },
     {
       "path": "docs/SIMULATOR_PLAN.md",
@@ -1196,7 +1222,7 @@
       "update_when": [
         "해당 범위/입력/완료조건·관계·권한/운영 근거 변경. reference의 과거 관측값은 덮어쓰지 않음"
       ],
-      "reviewed_in": "T021"
+      "reviewed_in": "T022"
     },
     {
       "path": "data/research/probability-scope-baseline.json",
@@ -1343,7 +1369,7 @@
     },
     {
       "path": "docs/CHATGPT_WORK_HANDOFF.md",
-      "role": "한국어 자급적 Work 인수인계: 미푸시/원격 차이·두 계층·raw 검증·기존 대상 채팅 이어받기·Sites 초기 소스 이관 제외",
+      "role": "T021 원문과 T022 Work 이관·Sites 전환 최신 지시·검증 결과의 연결",
       "priority": "P1",
       "related_paths": [
         "docs/ROADMAP.md",
@@ -1352,12 +1378,14 @@
         "docs/ARCHITECTURE.md",
         "docs/COLLECTION.md",
         "docs/DEPLOYMENT.md",
-        "data/research/work-handoff-inputs.json"
+        "data/research/work-handoff-inputs.json",
+        "docs/MIGRATION_STATUS.md",
+        "docs/API_SERVER_PREPARATION.md"
       ],
       "update_when": [
         "사용자 범위/입력 상태·원격/로컬 반영·이관/검증 결과·지원 도구/작업 상태 변경"
       ],
-      "reviewed_in": "T021"
+      "reviewed_in": "T023"
     },
     {
       "path": "docs/FILE_SYNC_AUDIT.md",
@@ -1367,12 +1395,13 @@
         "docs/FILE_SYNC.json",
         "docs/WORKPLAN.md",
         "docs/CHATGPT_WORK_HANDOFF.md",
-        "data/research/work-handoff-inputs.json"
+        "data/research/work-handoff-inputs.json",
+        "docs/MIGRATION_STATUS.md"
       ],
       "update_when": [
         "사용자 범위/입력 상태·원격/로컬 반영·이관/검증 결과·지원 도구/작업 상태 변경"
       ],
-      "reviewed_in": "T021"
+      "reviewed_in": "T022"
     },
     {
       "path": "data/research/work-handoff-inputs.json",
@@ -1387,7 +1416,2000 @@
       "update_when": [
         "사용자 범위/입력 상태·원격/로컬 반영·이관/검증 결과·지원 도구/작업 상태 변경"
       ],
-      "reviewed_in": "T021"
+      "reviewed_in": "T022"
+    },
+    {
+      "path": "data/research/work-migration-verification.json",
+      "role": "T022 raw/관계·원격/CI·도구 버전·Sites 정적 구조 및 실행 범위의 구조화 근거",
+      "priority": "P0",
+      "related_paths": [
+        "docs/MIGRATION_STATUS.md",
+        "docs/DEPLOYMENT.md",
+        "data/research/work-handoff-inputs.json",
+        "data/research/current-catalog-observations.json"
+      ],
+      "update_when": [
+        "새 이관·검증·실제 실행 결과와 한계 변경"
+      ],
+      "reviewed_in": "T022"
+    },
+    {
+      "path": "docs/MIGRATION_STATUS.md",
+      "role": "T022 이관 전체 요약·실제 원격/입력·파일 규칙·로드맵·Sites 호환성/검증 한계",
+      "priority": "P0",
+      "related_paths": [
+        "docs/ROADMAP.md",
+        "docs/WORKPLAN.md",
+        "docs/DEPLOYMENT.md",
+        "docs/CHATGPT_WORK_HANDOFF.md",
+        "data/research/work-migration-verification.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "새 이관·검증·실제 실행 결과와 한계 변경"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": ".github/workflows/catalog-api-check.yml",
+      "role": "API 브랜치의 독립 dependency 설치·API 회귀·Worker build CI",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "data/research/api-server-preparation.json",
+      "role": "T023 원본·schema·로컬 수입/replay·API·빌드·업로드 준비 검증 근거",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "docs/API_SERVER_PREPARATION.md",
+      "role": "별도 API Site·브랜치/소스·데이터 업로드·검증·운영 경계 확인서",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/.env.example",
+      "role": "API 독립 Sites 프로젝트의 소스·설정·기본 상태 페이지",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/.gitignore",
+      "role": "API 독립 Sites 프로젝트의 소스·설정·기본 상태 페이지",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/.npmrc",
+      "role": "API 독립 Sites 프로젝트의 소스·설정·기본 상태 페이지",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/.openai/hosting.json",
+      "role": "API Worker D1 logical binding; 아직 미등록 project ID 없음",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/README.md",
+      "role": "API 독립 Sites 프로젝트의 소스·설정·기본 상태 페이지",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/app/api/v1/[[...path]]/route.ts",
+      "role": "API 독립 Sites 프로젝트의 소스·설정·기본 상태 페이지",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/app/chatgpt-auth.ts",
+      "role": "API 독립 Sites 프로젝트의 소스·설정·기본 상태 페이지",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/app/globals.css",
+      "role": "API 독립 Sites 프로젝트의 소스·설정·기본 상태 페이지",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/app/layout.tsx",
+      "role": "API 독립 Sites 프로젝트의 소스·설정·기본 상태 페이지",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/app/page.tsx",
+      "role": "API 독립 Sites 프로젝트의 소스·설정·기본 상태 페이지",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/client/catalog-api-client.mjs",
+      "role": "별도 앱의 API GET 연동 client; 브라우저 비밀값 제외",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/cloudflare-env.d.ts",
+      "role": "API 독립 Sites 프로젝트의 소스·설정·기본 상태 페이지",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components.json",
+      "role": "API 독립 Sites 프로젝트의 소스·설정·기본 상태 페이지",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/connector-error.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/accordion.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/alert-dialog.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/alert.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/aspect-ratio.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/attachment.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/avatar.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/badge.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/breadcrumb.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/bubble.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/button-group.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/button.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/calendar.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/card.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/carousel.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/chart.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/checkbox.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/collapsible.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/combobox.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/command.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/context-menu.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/dialog.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/direction.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/drawer.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/dropdown-menu.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/empty.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/field.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/form.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/hover-card.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/input-group.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/input-otp.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/input.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/item.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/kbd.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/label.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/marker.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/menubar.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/message-scroller.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/message.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/native-select.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/navigation-menu.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/pagination.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/popover.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/progress.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/radio-group.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/resizable.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/scroll-area.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/select.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/separator.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/sheet.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/sidebar.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/skeleton.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/slider.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/sonner.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/spinner.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/switch.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/table.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/tabs.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/textarea.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/toggle-group.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/toggle.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/components/ui/tooltip.tsx",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/db/index.ts",
+      "role": "API D1 schema/접근 선언; 원격 수입은 후속",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/db/schema.ts",
+      "role": "API D1 schema/접근 선언; 원격 수입은 후속",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/drizzle.config.ts",
+      "role": "API 독립 Sites 프로젝트의 소스·설정·기본 상태 페이지",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/drizzle/0000_productive_khan.sql",
+      "role": "API D1 schema-only migration·잠금 메타; 데이터 seed 제외",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/drizzle/meta/0000_snapshot.json",
+      "role": "API D1 schema-only migration·잠금 메타; 데이터 seed 제외",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/drizzle/meta/_journal.json",
+      "role": "API D1 schema-only migration·잠금 메타; 데이터 seed 제외",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/eslint.config.mjs",
+      "role": "API 독립 Sites 프로젝트의 소스·설정·기본 상태 페이지",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/examples/d1/app/api/notes/route.ts",
+      "role": "API 독립 Sites 프로젝트의 소스·설정·기본 상태 페이지",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/examples/d1/db/schema.ts",
+      "role": "API D1 schema/접근 선언; 원격 수입은 후속",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/hooks/use-mobile.ts",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/inputs.manifest.json",
+      "role": "최신 첨부 입력 식별자·크기/해시·수입 기대값; raw 데이터 미포함",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/lib/catalog-api.mjs",
+      "role": "D1 읽기 API·문자열 페이지·CORS·미수입/오류 경계",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/lib/connector-context.ts",
+      "role": "Sites 공식 Vinext 설치/빌드·실행/connector 통합 지원 원본",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/lib/connector-contract.mts",
+      "role": "Sites 공식 Vinext 설치/빌드·실행/connector 통합 지원 원본",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/lib/connector-errors.mts",
+      "role": "Sites 공식 Vinext 설치/빌드·실행/connector 통합 지원 원본",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/lib/connector-preview.d.ts",
+      "role": "Sites 공식 Vinext 설치/빌드·실행/connector 통합 지원 원본",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/lib/connectors.ts",
+      "role": "Sites 공식 Vinext 설치/빌드·실행/connector 통합 지원 원본",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/lib/utils.ts",
+      "role": "API 독립 Sites 프로젝트의 소스·설정·기본 상태 페이지",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/next.config.ts",
+      "role": "API 독립 Sites 프로젝트의 소스·설정·기본 상태 페이지",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/package.json",
+      "role": "API 독립 Sites 프로젝트의 소스·설정·기본 상태 페이지",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/pnpm-lock.yaml",
+      "role": "API 독립 pnpm 의존 잠금",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/pnpm-workspace.yaml",
+      "role": "API 독립 Sites 프로젝트의 소스·설정·기본 상태 페이지",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/postcss.config.mjs",
+      "role": "API 독립 Sites 프로젝트의 소스·설정·기본 상태 페이지",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/public/favicon.svg",
+      "role": "API 독립 Sites 프로젝트의 소스·설정·기본 상태 페이지",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/scripts/build-verified.sh",
+      "role": "Sites 공식 Vinext 설치/빌드·실행/connector 통합 지원 원본",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/scripts/connector-preview/connector-preview-session.mjs",
+      "role": "Sites 공식 Vinext 설치/빌드·실행/connector 통합 지원 원본",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/scripts/connector-preview/host-binding.mjs",
+      "role": "Sites 공식 Vinext 설치/빌드·실행/connector 통합 지원 원본",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/scripts/connector-preview/protocol.mjs",
+      "role": "Sites 공식 Vinext 설치/빌드·실행/connector 통합 지원 원본",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/scripts/connector-preview/worker.mjs",
+      "role": "Sites 공식 Vinext 설치/빌드·실행/connector 통합 지원 원본",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/scripts/execution-profile.mjs",
+      "role": "Sites 공식 Vinext 설치/빌드·실행/connector 통합 지원 원본",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/scripts/export-source.mjs",
+      "role": "monorepo API 하위 소스만 독립 Sites root로 export",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/scripts/ingest/apply-local.mjs",
+      "role": "원본 보존·정규화/개정·관계·격리·초기 수입·replay 검사 도구",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/scripts/ingest/prepare-import.mjs",
+      "role": "원본 보존·정규화/개정·관계·격리·초기 수입·replay 검사 도구",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/scripts/install-ci.mjs",
+      "role": "Sites 공식 Vinext 설치/빌드·실행/connector 통합 지원 원본",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/scripts/install-ci.sh",
+      "role": "Sites 공식 Vinext 설치/빌드·실행/connector 통합 지원 원본",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/scripts/install-pnpm.sh",
+      "role": "Sites 공식 Vinext 설치/빌드·실행/connector 통합 지원 원본",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/scripts/npm-install.mjs",
+      "role": "Sites 공식 Vinext 설치/빌드·실행/connector 통합 지원 원본",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/scripts/pnpm-install.mjs",
+      "role": "Sites 공식 Vinext 설치/빌드·실행/connector 통합 지원 원본",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/scripts/run-framework.mjs",
+      "role": "Sites 공식 Vinext 설치/빌드·실행/connector 통합 지원 원본",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/scripts/sites-env.mjs",
+      "role": "Sites 공식 Vinext 설치/빌드·실행/connector 통합 지원 원본",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/scripts/sites-env.sh",
+      "role": "Sites 공식 Vinext 설치/빌드·실행/connector 통합 지원 원본",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/scripts/tool-environment.mjs",
+      "role": "Sites 공식 Vinext 설치/빌드·실행/connector 통합 지원 원본",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/scripts/vite/connector-preview-plugin.mjs",
+      "role": "Sites 공식 Vinext 설치/빌드·실행/connector 통합 지원 원본",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/scripts/vite/sites-vite-plugin.LICENSE",
+      "role": "Sites 공식 Vinext 설치/빌드·실행/connector 통합 지원 원본",
+      "priority": "P2",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/scripts/vite/sites-vite-plugin.ts",
+      "role": "Sites 공식 Vinext 설치/빌드·실행/connector 통합 지원 원본",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/tests/catalog-api.test.mjs",
+      "role": "API·수입·연동 클라이언트의 오류/보존/경계 회귀",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/tests/client.test.mjs",
+      "role": "API·수입·연동 클라이언트의 오류/보존/경계 회귀",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/tests/ingest.test.mjs",
+      "role": "API·수입·연동 클라이언트의 오류/보존/경계 회귀",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/tsconfig.json",
+      "role": "API 독립 Sites 프로젝트의 소스·설정·기본 상태 페이지",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/vendor/shadcn-tailwind-4.13.0.LICENSE.md",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P2",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/vendor/shadcn-tailwind-4.13.0.css",
+      "role": "공식 starter의 유지된 UI/라이선스 지원 원본; API 기능과 분리",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/vite.config.ts",
+      "role": "API 독립 Sites 프로젝트의 소스·설정·기본 상태 페이지",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
+    },
+    {
+      "path": "services/catalog-api/worker/index.ts",
+      "role": "API 독립 Sites 프로젝트의 소스·설정·기본 상태 페이지",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/README.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-api/package.json",
+        "docs/API_SERVER_PREPARATION.md"
+      ],
+      "update_when": [
+        "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
+      ],
+      "reviewed_in": "T023"
     }
   ]
 }

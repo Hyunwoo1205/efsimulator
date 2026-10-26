@@ -1,95 +1,93 @@
-# 빌드·배포·무료 운영 계획
+# Sites 배포·DB API 운영 계획
 
-> 최신 T021 승인: 문서와 기존 로컬 변경의 work 정상 푸시, 기존 CI·연결된 preview 확인은 허용됐다. main 병합, 배포 설정 변경, 새 자동화 활성화는 허용하지 않았다. 아래 T020의 미푸시 기록과 구분한다.
+> T023 최신 사용자 결정: API 전용 Site를 앱과 분리한다. GitHub api-server-setup의 services/catalog-api가 독립 소스 root이며 source export 후 새 Sites에 등록·전달한다. 이번 작업은 source/데이터 업로드 준비까지이며 실제 서비스 등록·배포·원격 DB 수입은 후속이다. [API 준비 확인서](API_SERVER_PREPARATION.md)를 따른다.
 
-이 문서는 [로드맵](ROADMAP.md)의 **R3/T012 검토용 미리보기 → 사용자 검토 → T013 운영 승인**, **R5/T016 자체 API 운영**, **R6/T018 3D**의 배포 기준이다. T020에서 **전체 누적 EFHub DB/API와 사이트용 현행 스냅샷을 분리하는 계획**을 반영했다. 기존 표본·이전 미리보기 성공을 새 두 계층 DB나 운영 배포 완료로 계승하지 않는다. 최신 상태·이전/현재/다음 작업은 [WORKPLAN](WORKPLAN.md)을 따른다.
+2026-10-26 T022: 사용자의 최신 결정에 따라 이후 배포는 **Sites**를 기본으로 한다. GitHub `Hyunwoo1205/efsimulator`의 `work`가 개발 기준이며 `main`은 운영 반영용이다. 이번에는 이관·호환성 확인과 문서를 갱신했고 서비스를 생성하거나 배포하지 않았다. [이관 확인서](MIGRATION_STATUS.md), [작업 계획](WORKPLAN.md), [전환 전 Pages 계획](https://github.com/Hyunwoo1205/efsimulator/blob/8ece93492608f4644e15f0952446e808b30c8f6c/docs/DEPLOYMENT.md)을 함께 참조한다.
 
-**이번 T020은 문서 점검·인수인계다.** T009의 비활성 API 선정 검증과 다른 Work의 raw 파일 존재는 배포 승인을 대신하지 않는다. 앱·활성 DB·설정·공개 생성물을 변경하거나 배포·서비스 활성화·당시에는 Git push를 하지 않았다. 기존 코드의 로컬 비회귀 빌드와 읽기 전용 생성물 비교는 수행한다. Git push만으로 기존 Pages 미리보기가 자동 생성될 수 있으므로 계획 작성 중에는 원격 반영도 하지 않는다. 이전 배포 근거와 실패/수정 기록은 [원본 보존 문서](reference/DEPLOYMENT_BEFORE_PROBABILITY_SCOPE.md)에 남긴다.
+## 1. 확인한 기능과 선택
 
-## 배포할 데이터의 두 계층
-
-- **전체 누적 DB/API:** 정상적으로 확보 가능한 EFHub 전체 players/packs 원문과 정규화 자료를 별도 저장 경계에서 관리한다. 신규 원본 ID는 추가하고 기존 엔티티는 삭제하지 않는다. 변경 내용은 revision/이력으로 보존하며 실패·목록 누락으로 정상 자료를 지우지 않는다. 자체 API의 공개 범위는 데이터·이미지 권리와 접근 정책을 확인한 뒤 정하고, 원본 raw 전체를 정적 사이트에 자동 복제하지 않는다.
-- **사이트용 DB/배포 스냅샷:** 누적 계층의 검증된 revision에서 최신 정상 한국 공식 확률표의 유효 판매 팩과 해당 카드만 추출한다. 공식 목록 존재·종료 시각·관측 신선도·회차/구성 검증이 모두 필요하다. 판매 변동에 따라 활성 스냅샷은 추가·수정·제외되지만 전체 누적 엔티티/이력은 보존한다. 종료·누락·확률표 읽기 실패를 구분하며 신규 스냅샷 실패 시 마지막 정상 산출물과 그 관측 시각을 유지한다.
-
-두 계층은 저장 폴더·DB·API 서비스 중 어떤 형태로 분리할지 구현 단계에서 결정한다. 지금 새 API 서버나 저장소를 만들지 않는다. 전체 raw가 있더라도 팩 구성 연결·이미지 다운로드/허용 저장·현재 판매 반영이 완료된 것은 아니다. 사이트에 공개할 자료는 별도 검증·발행 manifest와 정확한 누적 revision 참조를 가져야 한다.
-
-## 확인한 구성과 변경 제안
-
-| 항목 | 현재 확인 수준 | 구현 후 목표 |
+| 항목 | 확인 결과 | 후속 실행 |
 | --- | --- | --- |
-| Node/npm | package·lock·.nvmrc·CI와 로컬 버전은 Node `24.19.0`·npm `11.9.0` | 버전 고정 유지. 실제 Pages 빌드 로그에서도 확인 |
-| 앱·빌드 | Node 내장 기능·정적 HTML/CSS/JS. `npm run build`는 seed 검증→SQLite staging→`dist`를 생성 | 새 대상 표본을 검증하는 같은 명령과 산출물 경계 유지. 3D 도구 추가 시 manifest·lock·빌드·테스트를 함께 갱신 |
-| Pages 설정 | 인수인계의 `exit 0`·출력 `/`는 과거 안내값. 현재 대시보드 build/output/root를 인증해 읽은 근거 없음 | 실제 설정을 먼저 기록하고 `dist` 직접 배포로 전환 |
-| 임시 호환 | `pages:export`가 `dist`의 고정 7개 파일을 루트의 추적 생성물로 내보냄. CI는 `pages:check`로 bytes만 검사 | 직접 `dist` 배포 검증 후 루트 사본·export 도구/테스트·CI·FILE_SYNC를 함께 정리 |
-| 브랜치 | 로컬 `work`, 운영 의도는 `main`. 로컬 origin/main 기록은 앱 없는 초기 README 커밋. PR draft·운영 미병합 기록 | T012에서 검토용 SHA/URL 확인. 사용자 검토·운영 승인 후 T013에서 main 반영 |
-| 환경·비밀값 | 정적 앱용 secret·D1/R2 binding·Functions/Workers 선언 없음. Pages의 실제 환경 변수 값은 미확인 | 전환 후보 `NODE_VERSION=24.19.0`, `SKIP_DEPENDENCY_INSTALL=1`을 실제 환경별 설정과 대조. 동적 서비스의 비밀값은 T016에서 서버에만 설정 |
-| DB·API | SQLite는 로컬 빌드 검증/이력용. `serve.mjs`는 정적 미리보기. 상시 자체 API·새 2계층 DB 없음 | 전체 누적 DB/API와 현행 사이트 스냅샷의 저장·권한·버전/발행 경계를 나누고 R5/T016에서 갱신·지속 저장/복구를 운영 검증 |
-| 3D 자산 | 현재 3D 모델·압축·청크 빌드·성능 검증 없음 | R6/T018에서 자산 권리·최적화·모바일 실측을 통과한 정적 자산만 배포 |
+| GitHub 소스 | `work` 기준 SHA 8ece934, 앱은 `web/*`, build는 `dist/` 출력 | GitHub를 기준으로 유지하고 Sites 소스 저장소와 SHA 대응 기록 |
+| 정적 배포 | Sites는 `.openai/hosting.json`의 `static.directory=dist`를 지원 | T012에서 새 본 앱 Site를 등록하고 실제 반환 ID를 저장 |
+| 정적 구조 검사 | 공식 `prepare-site-build.cjs`가 실제 산출물을 static으로 수락. 7파일 215,973 bytes 바이트 동일 | 프로젝트 ID 없는 로컬 구조 검사이며 실제 등록·배포 성공과 구분 |
+| 서버/API | Sites 공식 Vinext starter는 Worker 서버 코드와 API 경로 지원 | T011에서 계약·이식 범위 확정, T016에서 실제 운영 검증 |
+| DB/파일 | Sites는 D1 구조화 데이터와 R2 파일 binding을 제공·연결 | 실제 용량·쿼리·권한·비용·백업 확인 후 필요한 binding 선언 |
+| 계정 연결 | 이번 대화에서 Sites 소유 목록 조회 성공 | 특정 Site 생성·쓰기 credential·배포·D1/R2 provisioning은 별도 미검증 |
+| Node/npm | 저장소 24.19.0/11.9.0. 이번 실행 24.22.1/11.9.0 | 버전 기준은 변경하지 않음. 새 실행 환경의 차이와 CI 근거를 분리 |
+| 기존 Pages | 실제 대시보드·현재 연결 상태·환경 설정은 이번 미조회 | 기존 설정을 자동 해제하거나 삭제하지 않음. 종료 전환은 별도 운영 작업 |
 
-Pages 전환 후보는 **빌드 루트: 저장소 루트, 출력: `dist`**이며 실제 구현된 명령을 사용한다.
+첫 검토판은 기존 정적 앱의 `dist`를 재사용한다. 최종 자체 API는 Sites의 Worker 서버 + D1을 우선 후보로 하고, 원문·이미지·불변 버전은 필요성과 권리를 확인해 R2를 사용한다. 앱과 API는 별도 Site에 두고 데이터 두 계층의 논리 경계를 유지한다. 서비스 간 인증·CORS·독립 배포·비용을 검증하고 GitHub 하위 API 소스만 export한다.
 
-```sh
-npx --yes npm@11.9.0 ci --ignore-scripts --no-audit --no-fund && npx --yes npm@11.9.0 run build
-```
+이는 기술적 가능성과 구현 방향이다. 실제 배포·데이터 수입·응답·운영 비용을 이미 검증한 결과가 아니다. Sites의 계정별 요금/쿼터는 현재 미확인이며 Cloudflare Free의 수치를 Sites 무료 보장으로 사용하지 않는다.
 
-`data:prepare`는 기존 표본의 저장 근거와 누적 입력을 재현·병합하며 인터넷 수집이나 새 2계층 자동 갱신 시작이 아니다. 기존 명령은 T021 원본 검증 뒤 T010/T011에서 전체 누적 입력과 사이트용 현행 추출 계약에 맞게 검증한 후 재사용한다. 이전 표본의 재생성을 새 대상 DB 완료로 간주하지 않는다. `artifacts/catalog.sqlite`·연구 raw는 공개 산출물에 포함하지 않는다. 새 의존성이 install script를 요구한다면 해당 구현 작업에서 현재 `--ignore-scripts` 정책을 검토한다.
+## 2. 소스와 공개 산출물
 
-## R3/T012 — 검토용 미리보기
+GitHub 저장소를 Sites가 자동 감시한다고 가정하지 않는다. 지원 흐름은 **검증된 소스 → Sites 제공 소스 저장소로 push → 같은 소스의 빌드 산출물 저장 → 저장 버전 배포**다. GitHub push와 Sites 배포는 별개다.
 
-1. **사전 확인:** T011의 검증된 DB 표본과 명시적 부분 범위를 입력으로 삼는다. Pages의 실제 build command/output/root, production branch, preview 동작, 환경별 변수 이름을 비밀값 없이 기록한다. 과거 안내값을 현재 확인값으로 복사하지 않는다.
-2. **로컬 검증:** 아래 명령과 관련 기능 검증을 실행하고 SHA·데이터 범위·결과를 기록한다. 새 범위에 맞춘 검사와 기존 보존/실패 보호 회귀를 포함한다.
+공식 `site-workflow.mjs`는 credential의 `remote_url`로 직접 push하며 영구 origin 설정을 교체하지 않는다. 따라서 기존 `work` 체크아웃과 GitHub origin을 유지할 수 있는 경로가 있다. 이미 Sites 원격 소스가 있다면 먼저 열고 선조 관계를 확인한다. 이력이 갈라졌거나 로컬 변경이 충돌하면 보존·조정 후 진행하며 강제 push하지 않는다. 실제 반환된 checkout 경로와 credential의 branch를 따르고 branch 이름이나 프로젝트 ID를 추측하지 않는다.
 
-   ```sh
-   npm ci --ignore-scripts --no-audit --no-fund
-   npm run project:check -- --base <변경 전 커밋>
-   npm test
-   npm run data:prepare
-   npm run build
-   npm run preview -- --port 4173
-   ```
+현재 저장소에는 `.openai/hosting.json`이 없다. 새 등록 시 반환된 진짜 `project_id`를 helper로 저장하고 FILE_SYNC에 등록한다. 등록 전 가짜 ID를 만들지 않는다. 로컬 진단 복사본의 ID 없는 manifest는 등록용 설정이 아니다. 기존 별도 Sites 초기 페이지와 소스는 이관에서 제외한 결정을 유지한다.
 
-   `data:prepare` 전후 차이는 검토한다. 미리보기 실행 후 선택적 `npm run test:browser`를 사용한다. 기존 루트 호환 배포를 사용하는 동안에는 `npm run pages:export` 후 `npm run pages:check`까지 통과해야 한다. CI가 export로 차이를 자동 수정하게 만들지 않는다.
-3. **검토용 배포:** 구현 단계에서 허용된 브랜치의 기존 Git 연동 preview를 사용한다. 같은 SHA의 CI·실제 배포 커밋·runtime/output·공개 파일·필수 데이터·이미지·직접 주소/새로고침·모바일을 검증한다. 없는 JSON/자산은 404여야 하며 상세 주소를 홈으로 redirect하지 않아야 한다.
-4. **사용자 검토:** URL, SHA, 화면/필요한 모션 캡처, 확보한 명단·카드와 미확인 필드, 설정 변경 전/후, 성능·비용 예상과 남은 제한을 제시한다. 사용자의 수정 의견을 반영하고 같은 절차로 검토판을 갱신한다.
+공개 정적 경계는 `dist/`다. raw 입력, `artifacts/catalog.sqlite`, 연구 자료, `.env`, 인증정보, 문서나 Git 이력을 공개 산출물에 넣지 않는다. 현재 루트의 7개 Pages 호환 파일은 생성물이며 계속 원본 `web/*`/seed에서 build/export한다. Sites 검증과 이전 Pages 전환 범위를 확인하기 전 호환 파일·도구·CI를 제거하지 않는다.
 
-이전 Pages 미리보기에서는 `/index.html` 재작성으로 상세 주소가 308/홈 이동하는 문제가 있었다. 실제 앱 경로를 `/ 200`으로 재작성하고 원격 상세 200·Location 없음·원래 URL 유지·새로고침·없는 자산 404를 다시 검사한다. 로컬 서버 성공을 원격 라우팅 검증으로 대체하지 않는다.
+Sites source helper가 관리하는 소스 commit과 공개 archive는 구분한다. source helper가 반환한 `project_id`, `commit_sha`, `archive`를 그대로 사용하며 소스 push 뒤 archive 내용이 바뀌면 새로 검증·저장한다. GitHub SHA, Sites source SHA, 데이터 버전, 저장 version ID, 배포 ID, URL 대응을 배포 기록에 남긴다.
 
-### `dist` 전환과 7개 파일 호환의 정리 순서
+## 3. 정적 앱과 Worker API의 경계
 
-현재 main의 앱 준비와 Pages의 브랜치별 빌드 설정 격리는 확인이 필요하다. 프로젝트 전역을 먼저 npm build/dist로 바꾸면 manifest가 없는 이전 main 재빌드가 실패할 수 있다.
+정적 manifest는 `static.directory`로 공개 파일을 지정한다. **정적 빌드와 D1/R2 runtime binding·DB migration을 함께 사용할 수 없다.** 정적 JSON 제공에서 동적 DB API로 확장할 때 Worker 빌드로 전환하고 static 설정을 제거한다. 공식 starter와 `sites()` 빌드 통합을 유지하며 기존 앱 전체를 무조건 재작성하지 않는다.
 
-기본 순서는 **기존 호환 경로의 검토판 → 사용자 검토 → T013의 운영 승인 → 앱 커밋을 main에 준비/반영 → 실제 dist 배포 전환·원격 검증 → 임시 사본 정리**다. 실제 Pages에서 운영과 격리된 preview build/output 설정이 확인되면 그 preview에서 dist 전환을 먼저 검증할 수 있다. 확인 전에 root 사본을 삭제하지 않는다.
+Sites 서버는 Cloudflare Workers에서 실행된다. 스킬 문서 기준 isolate 메모리는 128MB이며 외부 연결은 HTTP 기반, raw TCP는 사용할 수 없다. 장시간 상주하는 일반 Node 서버나 로컬 디스크 DB를 그대로 올리는 방식으로 설계하지 않는다. 현재 `scripts/serve.mjs`는 `node:http` 정적 미리보기이며 운영 API가 아니다. 현재 `node:sqlite`는 오프라인 검증·staging에 재사용할 수 있지만 hosted 영속 저장은 D1 접근 코드로 구현한다.
 
-현재 export 대상은 `index.html`, `app.js`, `styles.css`, `404.html`, `_headers`, `_redirects`, `data/catalog.json`뿐이다. **모델·텍스처·추가 JS 청크는 자동 포함되지 않는다.** 호환 경로로 새 자산을 제공해야 한다면 export 명세·회귀 검사·FILE_SYNC에 자산과 생성 원본을 함께 추가한다. dist 직접 배포에서는 실제 산출물 목록을 검사해 필요한 자산만 공개하고 문서·원본 DB·연구 자료를 제외한다.
+D1 schema는 실제 raw·관계·개정 계약을 확정한 뒤 설계한다. 스키마 migration은 작은 schema-only 변경으로 유지하고, 대량 seed·backfill은 별도 인증 배치 수입으로 처리한다. 적용된 migration SQL·snapshot·journal은 불변이며 후속 변경은 새 migration으로 추가한다. 배포 실패에도 migration이 적용됐을 수 있으므로 상태를 확인한 뒤 복구한다. 한 prepare 호출에는 SQL 한 문장을 사용하고 여러 문장은 batch로 처리한다. 요청 처리 중 테이블 생성·변경을 하지 않는다.
 
-## R3/T013 — 운영 승인과 반영
+전체 누적 API와 사이트 API는 범위·권한·버전을 분리한다. 기존 제안인 `/catalog-api/v1/`와 `/site-api/v1/`는 아직 미구현 경로다. 원문 공개 권리와 이미지 저장·재배포 조건을 확인한 필드만 노출한다. 공개 Site의 관리 쓰기는 별도 서버 인증·권한 확인을 요구한다. private Site의 서비스 접근은 지원되는 서버 credential로만 수행하며 브라우저 코드나 Git에 넣지 않는다. 로그인 여부와 관리자 권한은 별도로 검사한다.
 
-사용자가 구체적인 미리보기와 범위를 검토한 뒤 **운영 반영을 명시적으로 승인한 경우에만** main 병합과 운영 설정 전환을 실행한다. 미리보기 생성·CI 성공·설정 제안은 운영 승인이 아니다.
+## 4. T012 — Sites 비공개 검토 배포
 
-- 승인한 코드·데이터·자산의 SHA와 적용 설정을 고정하고 이전 정상 배포/스냅샷을 보존한다.
-- 운영 배포의 commit·Node/npm·build output과 실제 페이지/JSON·이미지·직접 주소·부분 범위/가상 자료 표시를 검증한다. 파일 내용 일치와 배포 SHA 확인을 구분한다.
-- 실패하면 이전 정상 배포와 데이터로 복구하고 결과·원인·다음 작업을 WORKPLAN에 기록한다. 신규/수정/종료의 실제 운영 갱신은 R5의 별도 완료 조건이다.
+입력은 T011에서 검증한 현행 한 팩 표본, 부분 범위 표시, 로컬 검사 결과다.
 
-## R5/T016 — 정적 사이트와 자체 API 운영
+1. 실제 앱을 기준으로 새 Site를 한 번 등록하고 기본 private 상태·반환 ID를 보존한다. 이관 제외한 예전 초기 Site를 재사용하지 않는다. 등록·credential 작업은 배포 구현 단계에 수행한다.
+2. 정적형 또는 Worker형 manifest, source 전달 경로, 데이터·공개 범위·직전 정상본을 확정한다. 실제 source helper가 반환한 checkout을 사용한다.
+3. 저장소 관리 검사·관련 테스트·표본 재현·build와 필요한 브라우저 검사를 수행한다. 고정 도구 버전과 환경 차이를 기록한다. 기존 Pages 사본을 유지하는 동안 `pages:check`도 통과해야 한다.
+4. 공식 Sites build helper는 저장소 `package.json`의 build script를 실행할 수 있다. source helper로 검증 소스를 commit/push하고 같은 상태에서 archive를 만든다. 이미 성공한 검사를 입력 변경 없이 반복하지 않는다.
+5. owner-private audience를 확인한 뒤 지원되는 private 저장·배포 도구를 사용한다. Sites의 URL은 private이더라도 실제 hosted 배포 URL이며 별도 테스트 인프라로 단정하지 않는다.
+6. 정확한 SHA·version·배포 ID·URL과 관측 시간을 기록한다. 깊은 상품/카드 주소, 새로고침, JSON/이미지, 없는 자산의 404, 모바일, 접근성, 실패 fallback을 확인한다.
+7. 사용자에게 범위·미확인·동작·비용/용량 확인 결과를 보여주고 검토 내용을 반영한다.
 
-Pages는 화면·정적 자산과 사이트용 현행 스냅샷을 전달한다. 전체 누적 자체 API는 허용된 범위의 카드/팩·revision·발행 상태를 제공하고, 사이트 빌드/동기화는 그 API 또는 검증된 export를 받아 현행 대상만 추출한다. 수집/갱신 writer는 허용된 출처의 관측→검증→누적 추가/개정 보존→사이트 추출→발행·복구를 맡는다. 사용자 요청마다 외부 사이트를 수집하거나 빌드용 SQLite를 그대로 공개하지 않는다. 누적 계층의 무삭제와 활성 API/검색/캐시 제외를 [데이터 수명 주기](DATA_LIFECYCLE.md)에 따라 분리한다.
+기존 `_redirects`와 `_headers`는 파일로 보존됐을 뿐 Sites에서의 적용 의미는 이번에 검증하지 않았다. 실제 라우팅에서 상세 주소가 홈으로 redirect되지 않고 없는 JSON을 HTML 200으로 돌려주지 않아야 한다. 맞지 않으면 제한된 정적 경로 생성 또는 Worker 라우팅을 구현하고 같은 동작을 다시 검사한다. 전역 SPA fallback으로 없는 데이터·자산을 숨기지 않는다.
 
-스케줄러·서비스 계정·API 서버·새 폴더 구조·주기·보관 비용은 후속 구현에서 확정한다. 신규 카드/팩과 수정 revision을 실제 반영한 증거, 멱등 재실행, 백업/롤백, 사이트의 판매 종료 제외와 누적 보존을 각각 검증하기 전에는 자동 갱신 운영 완료라고 기록하지 않는다.
+## 5. T013 — 검토 후 운영 반영
 
-동적 호스팅은 Cloudflare Workers/Pages Functions·D1 등 무료 웹/API 구성을 우선 실측하고, 적합하지 않으면 보유 OCI A1을 차선으로 평가한다. Workers의 CPU/메모리·D1의 **실제 읽은/쓴 행 수**·API 요청/캐시·백업/복구를 측정한다. 정적 Pages의 무료 트래픽을 동적 요청 무제한으로 해석하지 않는다. 서비스 활성화·계정/권한/비용 변경은 이번 계획에 포함하지 않는다.
+기존 프로젝트의 검토→운영 승인 구분을 유지한다. 구체적인 검토판·동작·데이터 범위·공개 대상·전환 설정을 확인한 뒤 해당 범위의 운영 반영을 수행한다. 이번 인수인계 요청은 실제 배포나 main 병합 단계까지 실행한 것이 아니다.
 
-## 공식 무료 한도와 R6/T018 자산 기준
+- 검토한 source SHA·데이터 버전·직전 정상본을 고정하고 GitHub main 반영과 Sites audience/운영 반영을 구분해 기록한다.
+- Sites 공개 배포·사용자 접근 변경은 지원 도구로 수행하고 현재 audience를 임의 변경하지 않는다.
+- 실패 시 소스/앱 버전 복구와 DB migration·데이터 포인터 복구를 별도로 검증한다. 앱 rollback이 D1 schema/data rollback을 자동 수행한다고 가정하지 않는다.
+- 기존 Pages 연결의 해제·도메인 전환·루트 호환 생성물 제거는 실제 설정과 복구 경로를 확인한 뒤 별도 영향 검토를 거친다. Sites 사용 결정만으로 기존 서비스를 삭제하지 않는다.
 
-아래는 이번 계획에서 부모가 공식 문서로 확인한 기준이다. 기존 계정 사용량과 초과 과금 조건은 서비스 선택 시 다시 확인한다.
+## 6. T015/T016 — 자동 갱신·자체 API 운영
 
-| 서비스 | 공식 무료 기준 | 계획에 반영할 조건 |
-| --- | --- | --- |
-| [Pages](https://developers.cloudflare.com/pages/platform/limits/) | 월 500 빌드·동시 1·빌드 20분·20,000 파일·파일당 25MiB, 정적 요청/대역폭 무료 | 빌드·preview/재시도 예산과 파일 수/최대 파일을 측정. 변경 없는 수집을 매번 배포하지 않음 |
-| [Functions](https://developers.cloudflare.com/pages/functions/pricing/) / [Workers](https://developers.cloudflare.com/workers/platform/limits/) | Workers Free 하루 100,000 요청·요청당 CPU 10ms·메모리 128MB | 정적과 별도. 계정 내 공유량과 실제 CPU/메모리를 확인하며 무거운 시뮬레이션/3D 렌더를 API 처리로 전제하지 않음 |
-| [D1 한도](https://developers.cloudflare.com/d1/platform/limits/)·[요금](https://developers.cloudflare.com/d1/platform/pricing/) | Free DB당 500MB·계정 5GB, 일 읽기 500만 행·쓰기 10만 행 | 쿼리/인덱스·갱신·보존 정책의 실제 행 사용량과 DB 용량 검증 |
-| [R2 Standard](https://developers.cloudflare.com/r2/pricing/) | 월 10GB-month·Class A 100만·Class B 1,000만, egress 무료 | 초과 시 비용 가능. r2.dev는 개발용이라는 부모 확인을 따르며, 운영 자산 제공 문서·경로·캐시/CORS를 활성화 전에 별도로 확인 |
-| [OCI Always Free A1](https://docs.oracle.com/en-us/iaas/Content/FreeTier/freetier_topic-Always_Free_Resources.htm) | 월 1,500 OCPU 시간·9,000 GB 시간, 2 OCPU·12GB RAM 규모 | ARM64·실제 저장/전송·운영/백업·idle 회수·가용 용량 부족 가능성 확인. 보유 사실과 현재 접속/운영 가능을 구분 |
+사이트 방문 GET은 이미 검증·저장된 버전만 읽는다. 갱신 writer는 정상 허용 출처 관측→검증→누적 신규/개정 보존→현행 projection→원자적 발행을 수행한다. 누락·오류·빈 응답으로 누적 엔티티나 마지막 정상본을 지우지 않는다. 실제 종료 시각을 지난 팩을 오래된 정상본만으로 판매 중이라 표시하지 않는다.
 
-3D는 브라우저에서 렌더하고 Pages에는 압축한 모델·텍스처·코드를 제공하는 구성을 우선한다. 사용 권리·mesh/texture 압축·scene/LOD 분할·필요 시점 지연 로딩·2D 대체 표시를 검증한다. 현재 빌드는 자산을 복사할 뿐 자동 모델 압축·번들 최적화는 구현하지 않았다.
+Sites 연계 자동화와 지원되는 외부 작업 실행 경로를 비교하되, source 접근과 Site 쓰기 권한을 각각 검증한다. 서비스 인증, single-writer, 중복 실행, 재시작, 오류/급감, 게시 실패, 독립 백업·복원, 비용을 검증한 뒤 스케줄을 설정한다. fresh unattended 실행에서 데이터를 쓰고 다시 읽어 확인해야 한다. 이번에는 자동화를 만들거나 활성화하지 않았다.
 
-대표 데스크톱·모바일에서 최초 다운로드·상호작용 지연·프레임/메모리·파일 수·최대 파일·빌드 시간과 월 요청/저장 비용을 측정한다. 압축/분할 후에도 Pages 한도나 운영 특성에 맞지 않을 때 R2와 OCI를 비교한다. **3D 추가만으로 OCI 이전이나 R2 활성화를 확정하지 않는다.** 별도 서비스·추가 비용의 필요성이 생기면 검토할 구체적인 구성과 예상액을 제시한다.
+일상적인 DB 데이터 갱신은 앱 전체 배포와 분리한다. 정적 snapshot을 사용하는 동안은 의미 있는 변화가 있을 때 필요한 버전만 발행하고 변경 없음 실행은 건너뛴다. 과거 Pages의 월 빌드 수를 Sites의 한도로 복사하지 않는다. RTO/RPO·보존 기간은 DATA_LIFECYCLE의 제안값을 실제 복구 시험으로 확정한다.
+
+Sites의 실제 DB·요청·저장·파일 한도, 비용, 백업과 안정 공급을 충족하지 못할 때 대안을 비교한다. 보유 OCI는 ARM64·접속·운영·비용·백업을 실측할 차선 후보이며 현재 사용 가능하다고 확정하지 않는다.
+
+## 7. 3D 자산과 검증 근거
+
+3D 렌더링은 브라우저에서 수행하고 서버는 검증된 데이터·정적 자산을 제공한다. 압축·LOD·지연 로딩·해제·2D fallback·저사양 모바일 성능과 파일 크기·요청·저장비를 측정한다. 현재 3D 모델·파이프라인은 미구현이다. R2나 별도 서버는 실제 크기·권리·요금이 확인됐을 때만 채택한다.
+
+이번 기능 판단의 근거는 현재 제공된 Sites 스킬과 배포 helper 코드다.
+
+- Sites SKILL.md: 정적/Worker 빌드, source helper, private 저장·배포, Workers 실행 제약.
+- `references/storage.md`: D1/R2 binding, schema-only migration, 데이터 수입 분리.
+- `references/identity-and-secrets.md`: private service access, 공개 쓰기 인증, secret 보관.
+- `references/recurring-updates.md`: 독립 source/writer 권한·unattended 읽기 확인·데이터와 재배포 분리.
+- `templates/vinext-starter/README.md`: 서버 entrypoint·D1·local/hosted 분리·공식 빌드 통합.
+- `scripts/site-workflow.mjs`: 기존 Git 체크아웃 검증, direct URL push, 원격 이력 충돌 보호.
+- `scripts/build-site.mjs`와 `skills/sites/scripts/prepare-site-build.cjs`: package build 재사용, static 디렉터리와 entrypoint 검사, static의 binding/migration 금지.
+
+로컬 검사 위치와 해시·검증 범위는 [구조화 확인서](../data/research/work-migration-verification.json)에 보존한다. 실제 Sites 배포·API·DB·캐시·라우팅·계정별 비용 검증은 후속 작업이다.

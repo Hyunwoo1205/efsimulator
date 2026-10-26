@@ -1,0 +1,27 @@
+name: Catalog API checks
+on:
+  push:
+    branches: [api-server-setup]
+  pull_request:
+    paths: ['services/catalog-api/**', '.github/workflows/catalog-api-check.yml']
+permissions:
+  contents: read
+jobs:
+  api:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: services/catalog-api
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.25.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.19.0
+          cache: pnpm
+          cache-dependency-path: services/catalog-api/pnpm-lock.yaml
+      - run: pnpm install --frozen-lockfile --prefer-offline
+      - run: node --test tests/*.test.mjs
+      - run: pnpm run build
