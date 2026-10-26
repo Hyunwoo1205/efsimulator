@@ -215,6 +215,8 @@ export function parseNewPlayersHtml(html, options = {}) {
   const h1s = descendants(dom, node => node.tag === 'h1' && nodeText(node).trim() === 'New Players');
   requireThat(h1s.length === 1, 'New Players heading is absent or ambiguous.');
   const sections = [];
+  const parents = new Map();
+  domWalk(dom, parent => { for (const child of elements(parent)) parents.set(child, parent); });
   domWalk(dom, parent => {
     const children = elements(parent);
     const headings = children.filter(node => node.tag === 'h2');
@@ -223,8 +225,22 @@ export function parseNewPlayersHtml(html, options = {}) {
       const start = children.indexOf(heading);
       const nextHeading = children.findIndex((node, index) => index > start && /^h[12]$/.test(node.tag));
       const boundary = children.slice(start + 1, nextHeading === -1 ? undefined : nextHeading);
-      const linkedNodes = boundary.flatMap(node => descendants(node, child => child.tag === 'a'));
-      const players = linkedNodes.map(node => playerLink(node, options.sourceUrl ?? `${EFHUB}/new-players`)).filter(Boolean);
+      const sourceUrl = options.sourceUrl ?? `${EFHUB}/new-players`;
+      const linksIn = nodes => nodes.flatMap(node => descendants(node, child => child.tag === 'a'))
+        .map(node => playerLink(node, sourceUrl)).filter(Boolean);
+      let players = linksIn(boundary);
+      // The live layout nests h2 in a header beside the card strip. Ascend
+      // only within a single-heading container; never borrow another pack's cards.
+      if (!players.length) {
+        let container = parents.get(heading);
+        while (container) {
+          const titles = descendants(container, node => /^h[12]$/.test(node.tag));
+          if (titles.length !== 1 || titles[0] !== heading) break;
+          players = linksIn([container]);
+          if (players.length) break;
+          container = parents.get(container);
+        }
+      }
       requireThat(players.length > 0, 'A new-player section is empty or its membership links changed.');
       requireThat(new Set(players.map(player => player.id)).size === players.length, 'A new-player section repeats a card ID.');
       const packLinks = descendants(heading, node => node.tag === 'a').map(node => new URL(node.attrs.href, EFHUB)).filter(url => url.origin === EFHUB && /^\/(?:[a-z]{2}\/)?packs\/[a-z\d-]+\/?$/.test(url.pathname));
@@ -236,7 +252,10 @@ export function parseNewPlayersHtml(html, options = {}) {
   });
   requireThat(sections.length > 0, 'No complete new-player section was found.');
   const sectionIds = new Set(sections.flatMap(section => section.players.map(player => player.id)));
-  const rawPlayers = uniqueObjects(embeddedObjects(html, 'player').filter(value => sectionIds.has(value.id)).map(rawPlayer), 'id');
+  const rawPlayers = uniqueObjects(embeddedObjects(html, 'player').filter(value => sectionIds.has(value.id))
+    // Listing cards may embed only display fields; fetch missing raw records
+    // from their normal detail HTML instead of treating summaries as raw exports.
+    .filter(value => ['name', 'slug', 'position', 'imageUrl'].every(key => nonempty(value[key])) && Number.isFinite(value.overallRating) && Number.isSafeInteger(value.playerType)).map(rawPlayer), 'id');
   const rawPacks = uniqueObjects(embeddedObjects(html, 'pack').map(rawPack), 'slug');
   return { ...envelope(html, options, `${EFHUB}/new-players`), sections, rawPlayers, rawPacks };
 }

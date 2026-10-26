@@ -448,7 +448,7 @@
       "update_when": [
         "파일 추가·삭제·이름 변경·역할/의존관계 변경·영향 검토"
       ],
-      "reviewed_in": "T024"
+      "reviewed_in": "T026"
     },
     {
       "path": "docs/ROADMAP.md",
@@ -474,7 +474,7 @@
       "update_when": [
         "단계 상태·현재/이전/다음 작업·완료 조건·추가 요구 변경"
       ],
-      "reviewed_in": "T024"
+      "reviewed_in": "T026"
     },
     {
       "path": "docs/WORKPLAN.md",
@@ -499,7 +499,7 @@
       "update_when": [
         "매 작업 착수·추가 요구·파일 변경·검증 결과·작업 종료"
       ],
-      "reviewed_in": "T024"
+      "reviewed_in": "T026"
     },
     {
       "path": "index.html",
@@ -3472,7 +3472,7 @@
       "update_when": [
         "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
       ],
-      "reviewed_in": "T024"
+      "reviewed_in": "T026"
     },
     {
       "path": "services/catalog-api/drizzle/0001_api_publications.sql",
@@ -3546,7 +3546,7 @@
       "update_when": [
         "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
       ],
-      "reviewed_in": "T024"
+      "reviewed_in": "T026"
     },
     {
       "path": "services/catalog-api/scripts/lifecycle/publication.mjs",
@@ -3635,7 +3635,7 @@
       "update_when": [
         "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
       ],
-      "reviewed_in": "T024"
+      "reviewed_in": "T026"
     },
     {
       "path": "services/catalog-api/tests/lifecycle-workspace.test.mjs",

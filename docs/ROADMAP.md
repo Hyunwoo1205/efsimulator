@@ -14,7 +14,7 @@
 | 이전 작업 | T023 — 독립 API Sites 소스·D1 스키마·수입/연동 파일과 API 브랜치 업로드 준비 완료 |
 | 현재 작업 | T024 — HTML 수집·가공 DB·중첩 live/archive·업데이트 로그·매시간 점검 구현/검증 |
 | 다음 작업 | T025 — EFHub 정상 HTML 접근·미확정 3상품 관계·실제 API Site/D1 검토 배포 검증 |
-| 현재 조건 | raw 전체 보존, 공식 상품만 가공. 4팩44카드/live4/archive0 로컬 검증. 공식 미확정3상품과 EFHub HTML403 대기. 매시간 점검 예약 활성, hosted Site/D1 미실행 |
+| 현재 조건 | raw 전체 보존, 공식 상품만 가공. 4팩44카드/live4/archive0 로컬 검증. 공식 미확정3상품 대기. T026에서 EFHub HTML200·중첩 파서 보완·기존44카드 관계 재검증. 매시간 점검 예약 활성, hosted Site/D1 미실행 |
 
 이번 이관 결과는 [MIGRATION_STATUS](MIGRATION_STATUS.md)이며, 원래 인수인계는 [CHATGPT_WORK_HANDOFF](CHATGPT_WORK_HANDOFF.md), 이전 전수 점검은 [FILE_SYNC_AUDIT](FILE_SYNC_AUDIT.md), 작업 순서와 추가 조건은 [WORKPLAN](WORKPLAN.md), 관리 경로/우선순위는 [FILE_SYNC](FILE_SYNC.json)를 따른다.
 

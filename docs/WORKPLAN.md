@@ -9,7 +9,7 @@
 - 이전 작업: T023 — 독립 API Site용 소스·schema·수입/클라이언트와 업로드 준비 완료.
 - 현재 작업: T024 — 진행 중. HTML 수집·가공·live/archive·로그·매시간 점검 구현·로컬 검증 완료, 원출처 정상 HTML 및 미확정 3상품 관계 대기.
 - 다음 작업: T025 — EFHub 정상 HTML 접근·미확정 3상품 관계와 실제 Sites/D1 검토 배포.
-- 현재 조건: raw 47,408선수/1,699팩 보존. 공식7상품 관측 중4팩44카드 가공·live4/archive0 검증, 나머지3 관계 대기. EFHub HTML403으로 신규 원본 수집0건. 매시간 점검 예약 활성, 실제 Sites/원격D1 배포 미실행. 작업 기준은 api-server-setup 브랜치와 services/catalog-api.
+- 현재 조건: raw 47,408선수/1,699팩 보존. 공식7상품 관측 중4팩44카드 가공·live4/archive0 검증, 나머지3 관계 대기. 과거 EFHub HTML403 이후 T026에서 정상HTML200과 기존44카드 관계 재검증, 신규 원본 추가0건. 매시간 점검 예약 활성, 실제 Sites/원격D1 배포 미실행. 작업 기준은 api-server-setup 브랜치와 services/catalog-api.
 
 매 작업 시작 시 Git 상태·이전 결과·이번/다음 작업·선행 조건을 확인한다. FILE_SYNC의 P0→P1→P2로 관련 파일을 검토하되 필요한 파일은 등급과 무관하게 함께 수정한다. 추가 요구는 ID·영향 단계·선행 조건·순서·상태를 기록한다. 파일별 수정/변경불필요/미해결과 근거, 경로 추가/삭제/이름 변경·참조를 같은 작업에서 갱신한다. 검증과 이전/현재/다음 포인터를 맞추며 구현/수집/발행 완료는 실제 근거가 있을 때만 표시한다.
 
@@ -1180,3 +1180,30 @@ EFHub 정상 HTML 공급을 확인하고 미확정 공식 상품의 정확한 �
 
 | 파일 | 결과 | 근거 |
 | --- | --- | --- |
+
+## T026 — 예약 점검 HTML 중첩 섹션 파서 보완
+
+- 단계: R2
+- 상태: 완료
+- 이전: T024
+- 다음: T025
+
+선행 조건: api-server-setup 6e89eba와 사용자 변경 없음 확인, 최신 데이터 묶음 version0 및 CURRENT/전체 파일 해시 검증. EFHub 정상 HTML200에서 h2가 카드 목록의 형제 대신 중첩 헤더에 있어 파서가 거부함. 단일 제목의 가장 가까운 조상 범위만 허용하고 여러 제목/빈 구성은 계속 거부한다. 정상 HTML 보존 → 파서 보완/회귀 → 같은 관측으로 run-cycle → 합집합/참조/해시/멱등성/SQL 검증 → 동일 데이터 묶음 버전 보호 저장 순서. 새 매핑은 회차와 전체 특수 ID 근거가 확보된 경우만 추가한다.
+
+### 파일 최신화 검토
+
+| 파일 | 결과 | 근거 |
+| --- | --- | --- |
+| `services/catalog-api/scripts/lifecycle/html-sources.mjs` | 수정 | 중첩 제목의 단일 섹션 경계를 안전하게 판별 |
+| `services/catalog-api/tests/html-sources.test.mjs` | 수정 | 중첩 헤더와 섹션 간 카드 혼합 거부 회귀 |
+| `docs/WORKPLAN.md` | 수정 | 작업 조건·검증·제한 기록 |
+| `docs/FILE_SYNC.json` | 수정 | 변경 파일 reviewed_in 갱신 |
+| `docs/ROADMAP.md` | 수정 | R2 단계 유지, 정상 HTML200과 관계 재검증 관측 반영 |
+| `data/research/catalog-sale-mappings.json` | 검토 결과 변경 불필요 | 신규 상품 회차 관계 불명확, 기존 명시적 매핑 보존 |
+| `docs/CATALOG_DATA_CONTRACT.md` | 수정 | 계약 유지, T026 정상 수집/재검증과 미확정 제한 명시 |
+
+### 실제 결과와 검증
+
+2026-10-27 02:28 KST 정상 HTML을 읽어 기존4팩·44카드 전체 문자열ID 관계를 재검증했다. 공식7상품 중3은 여전히 매핑 대기다. raw 47,408/1,699 보존, 신규추가0·판매종료0·live4/archive0. processed/packs.json·live.json의 관측 근거와 targetFile 로그만 갱신했다. 이전 세대를 보존하고 CURRENT를 3608fa927ce27566895251ec18ef6d1f30e7daf9e527ef7c9aa9778a3146805b로 전환했다. 해시·참조·8필드·합집합과 같은 관측 재실행 changed=false를 검증했다. 새 발행 SQL은 빈 로컬 SQLite에서 수입·활성 검증했고 hosted에는 적용하지 않았다.
+
+동일 데이터 묶음 libfile_c2f287178cd08191ba0888019e56ee5d를 expected_current_version=0 보호로 version1에 교체했다. API테스트72/72와 project:check(기준6e89eba·변경6경로), API Worker 빌드 통과. 전체 npm test는385통과·시간초과로 자식/부모2실패; 해당 merge-api-pages 사례를 별도 재실행하여12/12통과했다. 전수 실행 전체가 무실패였다고 보고하지 않는다. 실제 Site/D1·main/work 변경 없음.

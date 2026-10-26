@@ -124,3 +124,22 @@ test('one-pass source check preserves successful official observation while repo
   assert.equal(result.sources.efhub.previousDataAction, 'preserve');
   assert.deepEqual(calls, ['https://efootball-web.konami.net/probability_kr.php', 'https://efhub.com/new-players']);
 });
+
+
+test('nested section headers keep membership within the nearest single-heading ancestor', () => {
+  const section = (title, id) => `<section><div><div><h2>${title}</h2></div></div><div>${anchor(player(id))}</div></section>`;
+  const parsed = parseNewPlayersHtml(document(`<h1>New Players</h1>${section('A', '001')}${section('B', '002')}`));
+  assert.deepEqual(parsed.sections.map(s => [s.title, s.players.map(p => p.id)]), [['A', ['001']], ['B', ['002']]]);
+  assert.throws(() => parseNewPlayersHtml(document(`<h1>New Players</h1><section><div><h2>Empty</h2></div></section>${section('B', '002')}`)));
+  assert.throws(() => parseNewPlayersHtml(document(`<h1>New Players</h1><section><div><h2>A</h2></div><div><h2>B</h2></div><div>${anchor(player('002'))}</div></section>`)));
+});
+
+
+test('listing summaries keep exact membership but defer incomplete raw fields to detail HTML', () => {
+  const card = player('001');
+  const html = document(`<h1>New Players</h1><section><h2>A</h2><div>${anchor(card)}</div></section>${flight({player: {id: card.id, name: card.name, overallRating: 85}})}`);
+  const parsed = parseNewPlayersHtml(html);
+  assert.equal(parsed.sections[0].players[0].id, card.id);
+  assert.deepEqual(parsed.rawPlayers, []);
+  assert.throws(() => parsePlayerHtml(document(`<h1>${card.name}</h1>${flight({player: {id: card.id, name: card.name}})}`), {expectedId: card.id}));
+});
