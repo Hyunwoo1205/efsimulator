@@ -1,4 +1,4 @@
-<!-- project-state: {"stage":"R3","previous":"T028","current":"T025","next":"T011"} -->
+<!-- project-state: {"stage":"R3","previous":"T029","current":"T025","next":"T011"} -->
 
 # efsimulator 개발 로드맵
 
@@ -11,10 +11,10 @@
 | 항목 | 내용 |
 | --- | --- |
 | 현재 단계 | R3 — API·D1 비공개 검토 배포와 원격 발행·조회 앱 연동 |
-| 이전 작업 | T028 — 미확정 세 상품의 전체 ID 검증·7팩70카드 로컬 API 반영 완료 |
+| 이전 작업 | T029 — 검토 앱 Epic/ShowTime 대표 카드 표시 개선·private 재배포 완료 |
 | 현재 작업 | T025 — 비공개 검토 배포 완료·공개 운영 사용자 검토 대기 |
 | 다음 작업 | T011 — 검토된 관계·스키마·수입 범위 보완 |
-| 현재 조건 | T028 가공7팩·70카드와 raw 보존. 새 API Site owner-private 배포와 원격7팩70카드 적재/전체 해시/데이터 복구 검증 완료; 별도 조회 앱5경로 실호출·기존 자동화 연결과 fresh 접근/재실행 검증 완료. 공개 운영 사용자 검토 대기·브라우저 상호작용 QA와 새 예약 실행은 미관측. 상품 수는 고정 상수가 아니며 종료 UTC는 배포 시점에 적용 |
+| 현재 조건 | T025 비공개 API/D1·조회 앱 배포 검증과 공개 운영 검토 대기를 유지. T029의 Epic/ShowTime 해당 등급 최대3장·단일Epic1장·미확인 기존 순서 표시를 같은 private 조회 앱에 배포하고 실제 relay/selector 결과 검증. 전체374테스트·TypeScript·Worker 빌드 통과. API8필드·raw·규칙·자동화는 변경하지 않음; 브라우저 상호작용 QA는 미완료 |
 
 이번 이관 결과는 [MIGRATION_STATUS](MIGRATION_STATUS.md)이며, 원래 인수인계는 [CHATGPT_WORK_HANDOFF](CHATGPT_WORK_HANDOFF.md), 이전 전수 점검은 [FILE_SYNC_AUDIT](FILE_SYNC_AUDIT.md), 작업 순서와 추가 조건은 [WORKPLAN](WORKPLAN.md), 관리 경로/우선순위는 [FILE_SYNC](FILE_SYNC.json)를 따른다.
 

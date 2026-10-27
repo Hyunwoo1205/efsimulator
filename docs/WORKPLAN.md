@@ -1,4 +1,4 @@
-<!-- project-state: {"stage":"R3","previous":"T028","current":"T025","next":"T011"} -->
+<!-- project-state: {"stage":"R3","previous":"T029","current":"T025","next":"T011"} -->
 
 # efsimulator 작업 계획과 이력
 
@@ -6,10 +6,10 @@
 
 ## 현재 작업과 매 작업 갱신
 
-- 이전 작업: T028 — 미확정 세 상품 전체 카드 ID 검증·7팩70카드 로컬 API 반영 완료.
+- 이전 작업: T029 — 검토 앱 Epic/ShowTime 대표 카드 선택 개선·기존 private Site 배포 완료.
 - 현재 작업: T025 — 비공개 검토 배포 완료·공개 운영 사용자 검토 대기.
 - 다음 작업: T011 — 검토된 관계·스키마·수입 범위 보완.
-- 현재 조건: T028의 raw 47,408선수/1,699팩과 검증 가공7팩·70카드 보존. 최신 사용자 지시에 따라 T025 배포 순서를 실행한다. 새 API Site의 owner-private 배포·D1 가공7팩70카드 전량 적재/원격 대조·이전 버전 복귀와 최신 복원은 검증됐다. 별도 조회 앱의 실제 서버 중계와 기존 자동화 원격 발행 지침 연결·fresh 접근/재실행 검증도 완료했다. 공개 운영은 사용자 검토 대기이며 새 예약 실행 결과는 아직 관측하지 않았다. 작업 기준은 api-server-setup 브랜치와 services/catalog-api이며 별도 조회 앱은 services/catalog-view에 둔다.
+- 현재 조건: T025 비공개 API/D1·별도 조회 앱의 원격 데이터·복구·서버 중계 검증 결과를 보존한다. T029는 같은 private 조회 앱의 Epic/ShowTime 대표 카드 선택만 개선해 배포·실제 relay 및 selector 결과를 검증했다. 해당 등급만 최대3장·단일Epic은1장·미확인 등급은 기존 순서로 표시하며 API8필드·raw·규칙·매핑·자동화는 변경하지 않았다. 공개 운영은 기존 사용자 검토 대기 상태이고 브라우저 상호작용 QA는 미완료다.
 
 매 작업 시작 시 Git 상태·이전 결과·이번/다음 작업·선행 조건을 확인한다. FILE_SYNC의 P0→P1→P2로 관련 파일을 검토하되 필요한 파일은 등급과 무관하게 함께 수정한다. 추가 요구는 ID·영향 단계·선행 조건·순서·상태를 기록한다. 파일별 수정/변경불필요/미해결과 근거, 경로 추가/삭제/이름 변경·참조를 같은 작업에서 갱신한다. 검증과 이전/현재/다음 포인터를 맞추며 구현/수집/발행 완료는 실제 근거가 있을 때만 표시한다.
 
@@ -50,6 +50,7 @@ C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_B
 | C059 | 매시간 두 사이트를 확인하고 정상 신규 raw→가공→종료/신규 live→로그 순서로 갱신 | T024. 원출처 장애는 정상 DB 보존; 접근 우회 금지; 예약 작업과 hosted API 운영 구분 | 매시간 예약 활성 확인·EFHub HTML403 기록 |
 | C060 | AI의 임의 판단·형식 변경을 줄이고 동일 입력/규칙/UTC의 반복 결과를 고정 | T027/R2/R5. 공통 엄격 검사→HTML 재실행→검토 매핑 해시/규칙 바인딩→회귀·기존 자료 채택→정기 수정 금지 | 구현·로컬 검증 완료; T025 원격 발행의 전체 계약/내용 해시 검사 적용 |
 | C061 | 제시한 배포 순서대로 API 원격 발행 보완·새 비공개 Site/D1 배포·데이터 적재·원격 복구·별도 앱 연동·기존 자동 갱신 연결 실행 | T025/R3→R5. 소스/데이터 고정→인증된 원격 발행→private 배포→전체 readback/해시→CAS 활성화→조회/복구→앱→fresh unattended 검증 | 비공개 배포·원격 적재/복구·조회 앱 실호출·기존 자동화 연결 검증 완료. 공개 운영 사용자 검토 대기 |
+| C062 | 검토 앱의 Epic/ShowTime 팩 미리보기는 해당 등급을 최대3장 우선 표시하고1장이면1장만 표시; Highlight로 보충하지 않음; 등급 미확인 시 기존 순서 유지 | T029/R3. 보존 raw의 정확한 카드ID와 efhub_types_js의5/6/8 코드 의미 검증→표시 전용 metadata/selector→회귀/빌드→기존 private 조회 Site만 재배포 | 표시 개선·7회귀·전체374테스트·TypeScript/Worker 빌드·동일 private 조회 Site 재배포/실제 relay 검증 완료. API/raw/규칙/자동화 불변; 신규 등급 자동 확보 보장 없음 |
 
 
 ## 이전 작업의 현재 해석
@@ -1173,7 +1174,7 @@ GitHub c849b032의 API21개·Node24.19 빌드는 통과했으나 setup-node의 p
 
 - 단계: R3
 - 상태: 진행 중
-- 이전: T028
+- 이전: T029
 - 다음: T011
 
 최신 사용자가 제시한 배포 순서 전체 실행을 지시했다. 선행 T028의 공식7상품·70카드 검증 자료와 Library 데이터 묶음 최신본을 사용하며 raw를 다시 수집하거나 공개하지 않는다. 원격 GitHub `2d6f9adf5c63e47d8eeaf304c5e4456a27a779fc`와 로컬 `735c625d8c28ded18587e36942e8e59b9f2377cf`는 소스 트리 `8bff8c45c78da78aac906bc36a1a166c4b169edc`가 같음을 확인했다. 사용자 변경을 보존하고 api-server-setup 소스와 Sites 제공 소스 저장소의 SHA 대응을 기록한다.
@@ -1371,3 +1372,44 @@ API116/116, 전체npm test340/340, TypeScript, APIWorker빌드, 정적빌드와 
 | `services/catalog-api/lib/catalog-contract.mjs` | 검토 결과 변경 불필요 | 8필드·raw·팩·로그 엄격 계약 유지 |
 | `services/catalog-api/.openai/hosting.json` | 검토 결과 변경 불필요 | 실제 배포 전이며 가짜프로젝트ID 추가 없음 |
 | `web/app.js` | 검토 결과 변경 불필요 | 이번 요청은 자체API 데이터 완성; 기존 앱 화면과 연결은 후속 |
+
+
+## T029 — 검토 앱의 Epic·ShowTime 팩 대표 카드 선택
+
+- 단계: R3
+- 상태: 완료
+- 이전: T028
+- 다음: T011
+
+사용자가 현재 비공개 검토 앱의 Epic/ShowTime 팩에서 해당 등급 카드를 우선 표시하도록 요청했다. Magical Dribblers의 Raphinha·Doku·Doué처럼 해당 등급을 최대3장 표시하고, 해당 Epic이1명이면1명만 표시하며 Highlight로 빈자리를 채우지 않는다. 등급을 확인할 수 없는 경우에는 기존 배열 순서를 유지한다. 이는 정식 eFsimulator 구축이 아닌 기존 별도 조회 검토 앱의 표시 개선이다.
+
+선행 조건: T025 private 조회 Site `appgprj_6ae0d64b624c8191b6266b96d48111f3`와 현재 배포/소스·데이터 버전 근거를 재사용하고 기존 로컬 변경을 보존한다. T025의 실제 비공개 배포 완료·공개 운영 검토 대기 상태와 근거를 유지한다. 현재 작업 포인터는 이 표시 변경 T029를 가리키며 공개 전환을 수행하지 않는다.
+
+구현 범위는 `services/catalog-view/`의 표시 전용 카드 등급 metadata, 준비 도구, 순수 selector와 회귀 테스트·호출 화면이다. 보존 raw의 정확한 문자열 카드ID를 사용하고 보존된 `efhub_types_js`의5/6/8 코드 의미와 대조한다. 선수 이름이나 다른 카드 버전으로 등급을 추정하지 않는다. 현재 검증한70카드의 표시 metadata는 API8필드 계약이나 raw에 필드를 추가하지 않는다. 향후 미확인 카드가 추가되면 기존 순서 fallback을 사용하며 자동 등급 보완이나 원출처 접근 성공을 보장하지 않는다.
+
+검증 방법: 대상 등급 우선·최대3장·1장만 존재·Highlight 보충 금지·미확인 등급 fallback·입력 순서/무변경을 selector 회귀로 확인하고 TypeScript·조회 앱 Worker 빌드·root 회귀·관리 검사를 실행한다. 기존 owner-private Site에 같은 검증 소스를 저장/배포한 실제 결과를 기록한다. API Site·D1 publication·8필드·raw·규칙 잠금·매핑과 기존 자동화는 검토 결과 변경 불필요 범위다.
+
+### 실행 결과
+
+구현·표시 metadata 준비와 selector7테스트·TypeScript 검사가 통과했다. 생성 시 고정 loadWorkspace로 CURRENT `595156ff762627b398e1e521b9dae011818e4cab63778e232c9ae5771991711b`와 파일/규칙 바인딩을 검사했다. raw 선수 SHA256 `c8d141864401ae4eff8abae4fab3aa059ebeb15b74e821e016942e3bb3f823d8`, 가공 publication `c8cbaa7783d2889870347cf1509d3dc3141c41f76db81245c8aadf236e3dd854`, 보존 등급표 `efhub_types_js` SHA256 `241046ee60771205e8a331364dccb65b9e5cf39e7471e08bd75c2123152744bc`를 표시 metadata에 기록했다. 등급표의5=epic·6=highlight·8=showtime을 실제 보존 관측과 대조했다. 생성 명령은 개발 monorepo의 `node services/catalog-view/scripts/prepare-preview-types.mjs --root ABSOLUTE_CATALOG_RUNTIME`이며 배포 앱이 이 도구를 실행하거나 자동으로 등급을 다시 수집하지 않는다.
+
+현재 검증 표본에서 Magical Dribblers는 Raphinha·Doku·Doué, Italian League Attackers는 Inzaghi·Nakata·Baggio를 선택하고 Quaresma 팩은 Epic1장만 선택한다. 표시 selector는 입력 카드 객체·순서와 팩 전체 명단을 변경하지 않는다. selector7테스트·root 전체374테스트·조회 앱 TypeScript·공식 Worker 빌드가 통과했다.
+
+기존 조회 Site `appgprj_6ae0d64b624c8191b6266b96d48111f3`의 owner-private audience를 유지해 배포했다. Sites source SHA `363b1cc02721132d88c32313e864fb85c3f839b3`, 저장 version `appgprj_6ae0d64b624c8191b6266b96d48111f3~appgver_27a66ddfe1d48191afbeb8a6613010ba`, 배포 `appgdep_6ae0e10069f081919560390eddba4587`, 환경 revision1, native 성공 시각 `2026-10-27T17:36:16.107500Z`, 실제 URL `https://efsimulator-catalog.hyunw09.chatgpt.site`다. 배포 후 실제 서버 relay가 HTTP200과 기존 publication `c8cbaa7783d2889870347cf1509d3dc3141c41f76db81245c8aadf236e3dd854`를 반환하고 배포 소스의 selector가 위3팩의 예상 대표 카드를 반환함을 확인했다. 브라우저 클릭·시각 QA는 앞선 로그인 장벽 때문에 실행하지 않았으며 실제 화면 상호작용 검증으로 주장하지 않는다.
+
+T029의 표시 개선과 비공개 재배포는 완료했다. 현재 작업 포인터는 T025 공개 운영 사용자 검토 대기로 복귀하며 T025의 기존 pending 상태와 검증 이력을 보존한다. API Site·D1 publication·8필드·raw·규칙·매핑·자동화와 기존 Pages/이관 제외 초기 Site는 변경하지 않았다.
+
+### 파일 최신화 검토
+
+| 파일 | 결과 | 근거 |
+| --- | --- | --- |
+| `docs/WORKPLAN.md` | 수정 | C062와 표시 전용 T029 범위·선행 조건·검증·결과 기록 |
+| `docs/ROADMAP.md` | 수정 | 현재 R3/T029 표시 개선과 T025 공개 검토 대기 구분 |
+| `docs/FILE_SYNC.json` | 수정 | 표시 selector·metadata·준비 도구·회귀와 관련 파일 검토 등록 |
+| `services/catalog-view/app/page.tsx` | 수정 | 팩 대표 이미지에서 표시 전용 등급 selector 사용; 전체 명단·API 응답은 유지 |
+| `services/catalog-view/README.md` | 수정 | 대표 카드의 등급 우선·fallback과 개발용 metadata 준비 범위 안내 |
+| `services/catalog-view/lib/pack-preview.mjs` | 수정 | 정확한 카드ID의 Epic5·ShowTime8 최대3장 선택과 기존 순서 fallback |
+| `services/catalog-view/lib/preview-player-types.json` | 수정 | 현재 승인 가공70카드의 표시 전용 ID→playerType 및 raw/publication/등급표 근거 해시 |
+| `services/catalog-view/scripts/prepare-preview-types.mjs` | 수정 | 기존 고정 loadWorkspace 검증 후 표시 metadata를 만드는 개발용 monorepo 도구 |
+| `services/catalog-view/tests/pack-preview.test.mjs` | 수정 | 등급 우선·최대3장·단일Epic·Highlight 보충 금지·fallback·입력 불변 회귀 |
+| `data/research/source-observations.json` | 검토 결과 변경 불필요 | 보존 efhub_types_js SHA의5epic·6highlight·8showtime 의미 대조; 원 관측 무변경 |
