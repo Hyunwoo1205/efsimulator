@@ -1,5 +1,37 @@
 # Sites 배포·DB API 운영 계획
 
+## T025 최신 실행 범위 — 2026-10-28 KST
+
+사용자의 “위 순서에 맞게 배포 진행” 지시에 따라 아래 과거 준비 계획을 실제 비공개 배포 단계로 진행한다. API 소스 기준은 GitHub `api-server-setup`의 `services/catalog-api/`, 최신 가공 조회 앱은 별도 `services/catalog-view/`다. 기존 Pages 앱과 이관 제외 초기 Site를 그대로 보존한다. 소스 고정·원격 writer 보완·새 owner-private API Site/D1·publication 적재·원격 검증/복구·앱 중계·기존 시간별 갱신 연결이 이번 범위다. 공개 audience 전환은 구체적인 검토판에 대한 기존 검토·운영 절차를 따른다.
+
+| 항목 | 현재 실행 기준 |
+| --- | --- |
+| API Site | `appgprj_6ae0d51638b481918f7767684a3cf38b`; owner-private 배포 성공; 저장/배포/source SHA·검증은 WORKPLAN T025 기록 |
+| API origin | `https://efsimulator-catalog-api.hyunw09.chatgpt.site`; 실제 API private 배포 URL; 서비스 인증 후 ready와 현재 publication 검증 |
+| API 저장 | D1 logical binding `DB`; raw 대신 `api_versions`, `api_records`, `api_current`의 가공 publication만 조회/적재 |
+| 데이터 기준 | Library 최신 묶음의 CURRENT/RULES와 엄격 계약·전체 해시 검증. T028의7팩70카드는 시작 기준이며 현재 판매 개수 상수 아님 |
+| 조회 앱 | `appgprj_6ae0d64b624c8191b6266b96d48111f3`, `https://efsimulator-catalog.hyunw09.chatgpt.site`; relay503 진단 중이며 연동 완료 아님. 서비스 인증값은 서버에만 보관 |
+| 최신 상태/검증 | [WORKPLAN T025](WORKPLAN.md#t025--apid1-비공개-배포와-원격-발행앱-연동)의 실제 배포·데이터·복구·앱·자동 실행 결과를 기준으로 판단 |
+
+### 원격 publication 발행과 복구
+
+1. 기본 read API와 분리된 `/api/admin/` 경로는 정해진 manifest·가공 record JSON만 받는다. SQL·raw·테이블 이름을 입력받지 않는다. 미설정 기본 모드는 서버 secret `ADMIN_PUBLISH_TOKEN`을 요구한다. owner-private이 실제 확인된 배포에서만 `PUBLISH_ACCESS_MODE=owner-private`을 설정해 Sites 플랫폼 접근 경계를 사용할 수 있다. 이 모드의 client는 `X-Catalog-Publisher: 1`을 보내고 Origin을 보내지 않는다. 공개 Site에서 이 모드를 사용하지 않는다.
+2. private 플랫폼 접근은 `get_site`에서 받은 서비스 credential을 해당 Site의 `OAI-Sites-Authorization` 헤더로만 전달한다. 매 unattended 실행은 현재 Site가 여전히 소유자 전용인지 확인한다. audience가 달라졌거나 credential을 얻을 수 없으면 발행하지 않고 기존 정상본을 보존한다. CORS나 로그인 표시를 관리자 권한으로 대체하지 않는다.
+3. `POST /api/admin/publications`로 불변 manifest를 등록하고 `PUT /api/admin/publications/{versionId}/records`로 최대50개씩 적재한다. 버전·키가 같은 record의 내용 변경, 선언 인원 초과, 잘못된 계약은 거부한다. 각 요청은2MiB, readback 페이지는100행, 전량 검증은20,000행/16MiB로 제한한다.
+4. 전량 원격 rows를 읽어 schema·참조·live/archive 분할·카드 합집합·내용 해시를 대조한다. 개수 일치만으로 검증하지 않는다. 검증된 version만 `POST .../{versionId}/activate`의 expectedVersionId 비교 후 단일 current 포인터 전환으로 제공한다. 다른 writer가 먼저 바꾸면 거부한다.
+5. 부분 적재·검증 실패·응답 중단은 이전 current를 유지한다. 완료한 동일 버전 재실행은 GET readback으로 확인하고 upload/activate를 생략한다. 이전 불변 버전은 삭제하지 않는다.
+6. 데이터 복귀는 `POST .../{retainedVersionId}/rollback`에서 이전 내용을 다시 검증하고 expected-current 보호로 수행한다. 코드 저장 version 재배포와 별도이며 코드 복귀가 D1 migration/data를 자동 되돌린다고 가정하지 않는다. fresh 원격 실행과 재조회로 복구를 확인한다.
+
+CLI는 `node scripts/lifecycle/publish-remote.mjs --root ABSOLUTE_WORKSPACE`를 API 소스 root에서 실행하며 stdin으로만 `{origin, serviceToken, expectedVersionId?}`를 제공한다. secret 모드를 사용할 때만 adminToken도 stdin에 넣는다. expectedVersionId 생략 시 현재 원격 버전을 먼저 읽은 값을 CAS 기준으로 고정한다. rollback은 `--root` 없이 `{operation:"rollback", origin, serviceToken, versionId, expectedVersionId?}`를 stdin으로 제공한다. credential은 인수·파일·환경 덤프·로그에 남기지 않는다. HTTPS의 정확한 Site origin만 허용하고 redirect를 따르지 않는다.
+
+### 앱 연동과 반복 실행
+
+별도 조회 앱은 서버에서만 `CATALOG_API_ORIGIN`, secret `CATALOG_API_SERVICE_TOKEN`을 사용해 지정한 API origin으로 GET을 전달한다. 브라우저는 조회 앱과 같은 origin의 경로만 호출한다. 관리 경로·다른 origin·redirect 중계는 거부하며 원격 오류를 화면에 표시한다. 기존 구형 정적 앱의 스키마를 신규 데이터로 덮어쓰지 않는다.
+
+기존 시간별 작업에 검증된 원격 발행 단계를 연결하며 새 중복 예약을 만들지 않는다. 실제 가공 데이터 또는 판매 종료 전이가 있을 때만 갱신 결과를 발행하고 읽어 확인한다. HTML과 종료 상태가 같으면 기존 무변경 무응답 조기 종료를 유지한다. 403/429 대기·마지막 정상본 보존·예약 공통 규칙과 상품별 상태 분리도 유지한다. routine 데이터 갱신은 소스 재배포를 하지 않으며 source와 쓰기 권한을 각각 fresh unattended 실행에서 확인한다. 설정 저장만으로 자동 실행 검증을 통과 처리하지 않는다.
+
+아래 T022/T023 설명과 검증 수치는 당시 이력이며 이번 실행 범위 제한으로 다시 적용하지 않는다.
+
 > T024 최신 지시(2026-10-27): raw는 기존 형식을 유지하는 누적 원본이며 HTTP 조회에 사용하지 않는다. 가공 선수/팩은 공식 KR와 EFHub에서 같은 상품·회차가 확인된 대상만 누적한다. 선수 8개 필드, 팩의 선수 연결, 전체 중첩 live/archive와 파일별 로그를 구현한다. 과거의 모든 raw 항목 공개 API·얇은 아카이브·24시간 이관 대기는 이 결정으로 대체한다. [현재 데이터 계약](CATALOG_DATA_CONTRACT.md)을 우선한다.
 
 

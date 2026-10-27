@@ -1,4 +1,4 @@
-<!-- project-state: {"stage":"R2","previous":"T028","current":"T025","next":"T011"} -->
+<!-- project-state: {"stage":"R3","previous":"T028","current":"T025","next":"T011"} -->
 
 # efsimulator 작업 계획과 이력
 
@@ -7,9 +7,9 @@
 ## 현재 작업과 매 작업 갱신
 
 - 이전 작업: T028 — 미확정 세 상품 전체 카드 ID 검증·7팩70카드 로컬 API 반영 완료.
-- 현재 작업: T025 — 예정. 실제 API Site/D1 검토 배포 검증.
+- 현재 작업: T025 — 진행 중. 원격 발행 기능 보완·API/D1 비공개 검토 배포·별도 조회 앱 연동·기존 갱신 연결.
 - 다음 작업: T011 — 검토된 관계·스키마·수입 범위 보완.
-- 현재 조건: raw 47,408선수/1,699팩 보존. 공식7상품 전부 연결·가공70카드/live7/archive0·대기0. T028의 근거는 보존된 HTML 추출 전체 링크와 신선한 공식 HTML이며 EFHub origin 재요청/대기 해제 없음. 실제 Sites/원격D1 배포 미실행. 작업 기준은 api-server-setup 브랜치와 services/catalog-api.
+- 현재 조건: T028의 raw 47,408선수/1,699팩과 검증 가공7팩·70카드 보존. 최신 사용자 지시에 따라 T025 배포 순서를 실행한다. 새 API Site의 owner-private 배포·D1 가공7팩70카드 전량 적재/원격 대조·이전 버전 복귀와 최신 복원은 검증됐다. 별도 조회 앱 relay와 자동 발행 연결은 검증 중이며 완료로 표시하지 않는다. 작업 기준은 api-server-setup 브랜치와 services/catalog-api이며 별도 조회 앱은 services/catalog-view에 둔다.
 
 매 작업 시작 시 Git 상태·이전 결과·이번/다음 작업·선행 조건을 확인한다. FILE_SYNC의 P0→P1→P2로 관련 파일을 검토하되 필요한 파일은 등급과 무관하게 함께 수정한다. 추가 요구는 ID·영향 단계·선행 조건·순서·상태를 기록한다. 파일별 수정/변경불필요/미해결과 근거, 경로 추가/삭제/이름 변경·참조를 같은 작업에서 갱신한다. 검증과 이전/현재/다음 포인터를 맞추며 구현/수집/발행 완료는 실제 근거가 있을 때만 표시한다.
 
@@ -49,6 +49,7 @@ C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_B
 | C058 | live/archive에 팩과 선수의 가공 필드 전체를 중첩. 종료 항목 즉시 이동. 합집합 정합성·변경 파일별 API 로그 필수 | T024. archive thin/24h 대기 이전 제안 대체; 공유 선수는 ID 합집합 중복 제거 | 구현/검증 중 |
 | C059 | 매시간 두 사이트를 확인하고 정상 신규 raw→가공→종료/신규 live→로그 순서로 갱신 | T024. 원출처 장애는 정상 DB 보존; 접근 우회 금지; 예약 작업과 hosted API 운영 구분 | 매시간 예약 활성 확인·EFHub HTML403 기록 |
 | C060 | AI의 임의 판단·형식 변경을 줄이고 동일 입력/규칙/UTC의 반복 결과를 고정 | T027/R2/R5. 공통 엄격 검사→HTML 재실행→검토 매핑 해시/규칙 바인딩→회귀·기존 자료 채택→정기 수정 금지 | 구현·로컬 검증 완료; hosted 미배포 |
+| C061 | 제시한 배포 순서대로 API 원격 발행 보완·새 비공개 Site/D1 배포·데이터 적재·원격 복구·별도 앱 연동·기존 자동 갱신 연결 실행 | T025/R3→R5. 소스/데이터 고정→인증된 원격 발행→private 배포→전체 readback/해시→CAS 활성화→조회/복구→앱→fresh unattended 검증 | 진행 중. T023/T024 당시 준비 제한을 대체; 공개 audience 전환·기존 Pages 교체는 별도 검토 |
 
 
 ## 이전 작업의 현재 해석
@@ -1168,19 +1169,81 @@ GitHub c849b032의 API21개·Node24.19 빌드는 통과했으나 setup-node의 p
 | `services/catalog-api/.openai/hosting.json` | 검토 결과 변경 불필요 | 별도API Worker+D1 binding 유지, 실제 Site 등록 전 가짜ID 추가 없음 |
 | `services/catalog-api/scripts/ingest/prepare-import.mjs` | 검토 결과 변경 불필요 | T023 원본/staging 이력 도구 보존, 새 공개 API fallback 금지 |
 
-## T025 — 정상 HTML 공급·남은 관계와 검토 배포
+## T025 — API·D1 비공개 배포와 원격 발행·앱 연동
 
-- 단계: R2
-- 상태: 예정
+- 단계: R3
+- 상태: 진행 중
 - 이전: T028
 - 다음: T011
 
-T028에서 당시 미확정 3상품 관계와 전체 카드 ID 반영을 완료했다. 지속적인 정상 HTML 공급과 실제 신규 갱신은 별도 운영 검증이다. 준비한 API의 새 Sites 등록·D1 원격 수입·서비스 간 인증·비용/백업과 비공개 검토 URL은 실제 실행 근거를 남긴다. 과거 수집 거부를 우회하거나 단일 정상 응답을 상시 공급 보장으로 승격하지 않는다.
+최신 사용자가 제시한 배포 순서 전체 실행을 지시했다. 선행 T028의 공식7상품·70카드 검증 자료와 Library 데이터 묶음 최신본을 사용하며 raw를 다시 수집하거나 공개하지 않는다. 원격 GitHub `2d6f9adf5c63e47d8eeaf304c5e4456a27a779fc`와 로컬 `735c625d8c28ded18587e36942e8e59b9f2377cf`는 소스 트리 `8bff8c45c78da78aac906bc36a1a166c4b169edc`가 같음을 확인했다. 사용자 변경을 보존하고 api-server-setup 소스와 Sites 제공 소스 저장소의 SHA 대응을 기록한다.
+
+실행 순서: 고정 기준/규칙 검증 → 정해진 JSON publication만 받는 원격 적재·전체 검증·expected-current 활성화/복귀 기능 → 새 API Site owner-private 배포와 D1 스키마 → 가공 publication 전량 적재/원격 해시 대조 → 실제 조회·실패 보존·복구 → 별도 조회 앱의 서버 중계 → 기존 시간별 작업의 원격 발행 연결과 독립 실행 검증이다. 원격 writer는 SQL·raw·임의 테이블을 입력받지 않는다. 첫 데이터 버전도 검증 전에는 활성화하지 않으며 이전 불변 버전은 보존한다.
+
+API Site 등록: `appgprj_6ae0d51638b481918f7767684a3cf38b`, 예상 origin `https://efsimulator-catalog-api.hyunw09.chatgpt.site`. 등록 응답과 get_site에서 소유자만 허용된 audience를 확인했으며 ID를 hosting manifest에 저장했다. 이는 배포 성공·원격 데이터 적재의 증거가 아니다. 실제 코드/데이터/배포 버전과 시험 결과는 아래 실행 결과에 이어 기록한다.
+
+별도 조회 앱은 최신 가공 API 스키마를 사용하고 서버만 서비스 인증값을 보유한다. 기존 web 앱의 구형 스키마·Pages 공개본과 이관 제외 초기 Site를 변경하지 않는다. 이번 비공개 배포 후 검토 URL을 제시하며 공개 운영 전환은 구체적인 검토 결과와 기존 승인 절차를 따른다. API 데이터 갱신은 소스 배포와 분리하고 기존 무변경 무응답·403/429 대기·개별 상태와 예약 공통 지침 분리 규칙을 유지한다.
+
+검증 방법: API/관리 writer/원격 발행 client/조회 relay의 기능·인증·입력 제한·멱등·충돌·부분 적재·해시 불일치 회귀, TypeScript, 공식 Sites Worker 빌드, npm run project:check와 npm test, 원격 전체 readback, current 포인터/manifest/health ready 일치, 경로별 조회와 종료시각 적용, 이전 버전 복귀 후 재활성화, 별도 앱 실호출과 fresh unattended 읽기·쓰기 확인. 실행하지 않은 검사·배포·자동화를 통과나 가동으로 표시하지 않는다. 지속적인 정상 HTML 공급·계정 비용/쿼터와 공개 권한 검증은 실제 근거 범위로만 보고한다.
+
+### 실행 결과
+
+2026-10-28 KST 실제 API private 배포 성공: Site `appgprj_6ae0d51638b481918f7767684a3cf38b`, Sites source SHA `6aabc41ac9e484ba6bd8575c47ec13a0c4b6ba3d`, 저장 version `appgprj_6ae0d51638b481918f7767684a3cf38b~appgver_6f5e71ac0ae88191a7da77f0d3b9638e`, 배포 `appgdep_6ae0d68b4ed48191bb022a9c25805582`, 환경 revision1, URL `https://efsimulator-catalog-api.hyunw09.chatgpt.site`. 실제 D1 스키마8테이블 적용을 확인했고 raw staging 데이터는 적재하지 않았다.
+
+활성 publication `c8cbaa7783d2889870347cf1509d3dc3141c41f76db81245c8aadf236e3dd854`는 원격 전체 rows와 내용 해시를 대조했고 health ready·가공7팩70카드·live7/archive0·선수/팩 조회를 확인했다. 2026-10-27T16:58:00.531Z 시험에서 부분 적재 활성화 거부, 이전 검증4팩44카드 버전 `9ef9cbe3580c192aa259fe1535c90d6072c470b8c0d74593291e9cc7a747bb5c`로 실제 복귀, 최신7팩70카드로 재복원, stale expected-current 활성화409 거부, 동일 버전 재발행 changed=false를 확인했다. 최종 활성 버전은 최신70카드다. `/live`, `/archive`, 이탈리아 회차11명 명단 응답도 같은 snapshot을 반환했다.
+
+API TypeScript·129테스트와 루트359테스트 통과를 관측했다. 이후 추가한 조회 앱 진단 회귀를 포함한 최종 전체 실행은 대기 중이므로 최종 총수로 고정하지 않는다. 코드 version 재배포와 DB 데이터 포인터 복귀는 별도 결과로 기록하며 위 복구 성공은 데이터 포인터 시험이다.
+
+별도 조회 앱 Site `appgprj_6ae0d64b624c8191b6266b96d48111f3`, URL `https://efsimulator-catalog.hyunw09.chatgpt.site`를 owner-private으로 등록·배포했다. 초기 배포 version `appgprj_6ae0d64b624c8191b6266b96d48111f3~appgver_4d3a3cd91bc08191aadaaf080e139a8e`에서 relay503을 확인하여 원인을 진단 중이며 앱 연동 성공으로 표시하지 않는다. 브라우저 시각 검사는 ChatGPT 로그인 화면에 막혀 수행하지 못했고 서버 HTTP 검증을 계속한다. 자동 갱신의 실제 원격 발행 연결·fresh unattended 시험도 아직 완료로 표시하지 않는다.
 
 ### 파일 최신화 검토
 
 | 파일 | 결과 | 근거 |
 | --- | --- | --- |
+| `AGENTS.md` | 수정 | 최신 배포 실행 승인 범위를 과거 준비 제한과 구분 |
+| `docs/ROADMAP.md` | 수정 | 현재 R3/T025 실행과 후속 단계를 일치 |
+| `docs/WORKPLAN.md` | 수정 | C061·선행 기준·영향 범위·검증·실제 결과 기록 |
+| `docs/FILE_SYNC.json` | 수정 | 원격 writer·client·조회 앱 소스와 기존 연관 파일 등록 |
+| `docs/DEPLOYMENT.md` | 수정 | 인증된 원격 발행·비공개 배포·앱 중계·자동화·복구 절차 |
+| `docs/API_SERVER_PREPARATION.md` | 수정 | T023 역사 수입과 최신 가공 publication 배포 범위 구분 |
+| `services/catalog-api/.openai/hosting.json` | 수정 | 새로 반환된 실제 API project_id 저장; DB binding 유지 |
+| `services/catalog-api/app/api/admin/[[...path]]/route.ts` | 수정 | Sites D1 원격 publication 관리 요청 어댑터 |
+| `services/catalog-api/lib/publication-admin.mjs` | 수정 | 인증된 고정 JSON 적재·전체 계약/해시 검증·CAS 활성화와 복귀 |
+| `services/catalog-api/scripts/lifecycle/publish-remote.mjs` | 수정 | stdin 서비스 인증으로 원격 가공 버전 적재·전체 readback·활성화/복귀 |
+| `services/catalog-api/tests/publication-admin.test.mjs` | 수정 | 관리 writer 인증·계약·불변 적재·부분 실패·CAS 회귀 |
+| `services/catalog-api/tests/publish-remote.test.mjs` | 수정 | 원격 client의 인증/목적지 제한·전량 대조·재실행/복귀 회귀 |
+| `services/catalog-view/.env.example` | 수정 | 서버 전용 API origin과 서비스 인증 환경변수 이름 예시 |
+| `services/catalog-view/.gitignore` | 수정 | 조회 앱 비추적 빌드·의존성·로컬 인증 설정 제외 |
+| `services/catalog-view/.npmrc` | 수정 | 조회 앱 패키지 설치 설정 |
+| `services/catalog-view/.openai/hosting.json` | 수정 | 별도 owner-private 조회 앱 Sites identity와 Worker hosting 설정 |
+| `services/catalog-view/README.md` | 수정 | 별도 조회 앱의 서버 중계·설정·검증·배포 경계 |
+| `services/catalog-view/app/api/v1/[[...path]]/route.ts` | 수정 | 조회 앱 same-origin GET 요청의 서버 중계 어댑터 |
+| `services/catalog-view/app/globals.css` | 수정 | 조회 앱 반응형 레이아웃과 상태/선수팩 표시 스타일 |
+| `services/catalog-view/app/layout.tsx` | 수정 | 조회 앱 최상위 한국어 레이아웃과 metadata |
+| `services/catalog-view/app/page.tsx` | 수정 | 가공 live/archive/선수 조회·검색·명단·오류/로딩 화면 |
+| `services/catalog-view/cloudflare-env.d.ts` | 수정 | 조회 앱 Worker 서버 환경변수 타입 |
+| `services/catalog-view/lib/catalog-relay.mjs` | 수정 | 고정 API origin의 인증 GET 중계·크기/시간 제한·관리/redirect 차단 |
+| `services/catalog-view/next.config.ts` | 수정 | 공식 Vinext 호환 설정 |
+| `services/catalog-view/package.json` | 수정 | 별도 조회 앱 명령·버전·의존성 계약 |
+| `services/catalog-view/pnpm-lock.yaml` | 수정 | 별도 조회 앱 고정 의존 잠금 |
+| `services/catalog-view/pnpm-workspace.yaml` | 수정 | 별도 조회 앱 패키지 작업공간 설정 |
+| `services/catalog-view/scripts/build-verified.sh` | 수정 | 조회 앱 공식 Sites 설치·실행·빌드 통합 helper: scripts/build-verified.sh |
+| `services/catalog-view/scripts/execution-profile.mjs` | 수정 | 조회 앱 공식 Sites 설치·실행·빌드 통합 helper: scripts/execution-profile.mjs |
+| `services/catalog-view/scripts/install-ci.mjs` | 수정 | 조회 앱 공식 Sites 설치·실행·빌드 통합 helper: scripts/install-ci.mjs |
+| `services/catalog-view/scripts/install-ci.sh` | 수정 | 조회 앱 공식 Sites 설치·실행·빌드 통합 helper: scripts/install-ci.sh |
+| `services/catalog-view/scripts/install-pnpm.sh` | 수정 | 조회 앱 공식 Sites 설치·실행·빌드 통합 helper: scripts/install-pnpm.sh |
+| `services/catalog-view/scripts/npm-install.mjs` | 수정 | 조회 앱 공식 Sites 설치·실행·빌드 통합 helper: scripts/npm-install.mjs |
+| `services/catalog-view/scripts/pnpm-install.mjs` | 수정 | 조회 앱 공식 Sites 설치·실행·빌드 통합 helper: scripts/pnpm-install.mjs |
+| `services/catalog-view/scripts/run-framework.mjs` | 수정 | 조회 앱 공식 Sites 설치·실행·빌드 통합 helper: scripts/run-framework.mjs |
+| `services/catalog-view/scripts/sites-env.mjs` | 수정 | 조회 앱 공식 Sites 설치·실행·빌드 통합 helper: scripts/sites-env.mjs |
+| `services/catalog-view/scripts/sites-env.sh` | 수정 | 조회 앱 공식 Sites 설치·실행·빌드 통합 helper: scripts/sites-env.sh |
+| `services/catalog-view/scripts/tool-environment.mjs` | 수정 | 조회 앱 공식 Sites 설치·실행·빌드 통합 helper: scripts/tool-environment.mjs |
+| `services/catalog-view/scripts/vite/sites-vite-plugin.LICENSE` | 수정 | 조회 앱 공식 Sites 설치·실행·빌드 통합 helper: scripts/vite/sites-vite-plugin.LICENSE |
+| `services/catalog-view/scripts/vite/sites-vite-plugin.ts` | 수정 | 조회 앱 공식 Sites 설치·실행·빌드 통합 helper: scripts/vite/sites-vite-plugin.ts |
+| `services/catalog-view/tests/catalog-relay.test.mjs` | 수정 | 중계 경로·인증 보호·목적지/redirect·응답 제한 회귀 |
+| `services/catalog-view/tsconfig.json` | 수정 | 조회 앱 TypeScript 검사 설정 |
+| `services/catalog-view/vite.config.ts` | 수정 | 공식 Sites/Vinext Worker 빌드 통합 |
+| `services/catalog-view/worker/index.ts` | 수정 | 공식 Sites Worker 실행 진입점 |
 
 ## T026 — 예약 점검 HTML 중첩 섹션 파서 보완
 

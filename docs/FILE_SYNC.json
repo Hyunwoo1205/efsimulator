@@ -202,7 +202,7 @@
       "update_when": [
         "사용자 요구·작업 절차·검증 명령·제품 및 운영 원칙 변경"
       ],
-      "reviewed_in": "T027"
+      "reviewed_in": "T025"
     },
     {
       "path": "_headers",
@@ -429,7 +429,7 @@
       "update_when": [
         "빌드 명령·출력·라우팅·배포 설정·공개 검증 결과 변경"
       ],
-      "reviewed_in": "T024"
+      "reviewed_in": "T025"
     },
     {
       "path": "docs/FILE_SYNC.json",
@@ -448,7 +448,7 @@
       "update_when": [
         "파일 추가·삭제·이름 변경·역할/의존관계 변경·영향 검토"
       ],
-      "reviewed_in": "T028"
+      "reviewed_in": "T025"
     },
     {
       "path": "docs/ROADMAP.md",
@@ -474,7 +474,7 @@
       "update_when": [
         "단계 상태·현재/이전/다음 작업·완료 조건·추가 요구 변경"
       ],
-      "reviewed_in": "T028"
+      "reviewed_in": "T025"
     },
     {
       "path": "docs/WORKPLAN.md",
@@ -499,7 +499,7 @@
       "update_when": [
         "매 작업 착수·추가 요구·파일 변경·검증 결과·작업 종료"
       ],
-      "reviewed_in": "T028"
+      "reviewed_in": "T025"
     },
     {
       "path": "index.html",
@@ -1502,7 +1502,7 @@
       "update_when": [
         "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
       ],
-      "reviewed_in": "T024"
+      "reviewed_in": "T025"
     },
     {
       "path": "services/catalog-api/.env.example",
@@ -1561,7 +1561,7 @@
       "update_when": [
         "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
       ],
-      "reviewed_in": "T023"
+      "reviewed_in": "T025"
     },
     {
       "path": "services/catalog-api/README.md",
@@ -3848,6 +3848,522 @@
         "수집 근거·형식·전체 명단·규칙 또는 API 발행 경로 변경"
       ],
       "reviewed_in": "T028"
+    },
+    {
+      "path": "services/catalog-api/app/api/admin/[[...path]]/route.ts",
+      "role": "Sites D1 원격 publication 관리 요청 어댑터",
+      "priority": "P1",
+      "related_paths": [
+        "docs/DEPLOYMENT.md",
+        "services/catalog-api/README.md",
+        "services/catalog-api/scripts/lifecycle/publication.mjs"
+      ],
+      "update_when": [
+        "원격 publication·인증·조회 앱 동작 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T025"
+    },
+    {
+      "path": "services/catalog-api/lib/publication-admin.mjs",
+      "role": "인증된 고정 JSON 적재·전체 계약/해시 검증·CAS 활성화와 복귀",
+      "priority": "P1",
+      "related_paths": [
+        "docs/DEPLOYMENT.md",
+        "services/catalog-api/README.md",
+        "services/catalog-api/scripts/lifecycle/publication.mjs"
+      ],
+      "update_when": [
+        "원격 publication·인증·조회 앱 동작 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T025"
+    },
+    {
+      "path": "services/catalog-api/scripts/lifecycle/publish-remote.mjs",
+      "role": "stdin 서비스 인증으로 원격 가공 버전 적재·전체 readback·활성화/복귀",
+      "priority": "P1",
+      "related_paths": [
+        "docs/DEPLOYMENT.md",
+        "services/catalog-api/README.md",
+        "services/catalog-api/scripts/lifecycle/publication.mjs"
+      ],
+      "update_when": [
+        "원격 publication·인증·조회 앱 동작 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T025"
+    },
+    {
+      "path": "services/catalog-api/tests/publication-admin.test.mjs",
+      "role": "관리 writer 인증·계약·불변 적재·부분 실패·CAS 회귀",
+      "priority": "P1",
+      "related_paths": [
+        "docs/DEPLOYMENT.md",
+        "services/catalog-api/README.md",
+        "services/catalog-api/scripts/lifecycle/publication.mjs"
+      ],
+      "update_when": [
+        "원격 publication·인증·조회 앱 동작 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T025"
+    },
+    {
+      "path": "services/catalog-api/tests/publish-remote.test.mjs",
+      "role": "원격 client의 인증/목적지 제한·전량 대조·재실행/복귀 회귀",
+      "priority": "P1",
+      "related_paths": [
+        "docs/DEPLOYMENT.md",
+        "services/catalog-api/README.md",
+        "services/catalog-api/scripts/lifecycle/publication.mjs"
+      ],
+      "update_when": [
+        "원격 publication·인증·조회 앱 동작 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T025"
+    },
+    {
+      "path": "services/catalog-view/.env.example",
+      "role": "서버 전용 API origin과 서비스 인증 환경변수 이름 예시",
+      "priority": "P1",
+      "related_paths": [
+        "docs/DEPLOYMENT.md",
+        "services/catalog-view/README.md",
+        "services/catalog-view/package.json"
+      ],
+      "update_when": [
+        "원격 publication·인증·조회 앱 동작 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T025"
+    },
+    {
+      "path": "services/catalog-view/.gitignore",
+      "role": "조회 앱 비추적 빌드·의존성·로컬 인증 설정 제외",
+      "priority": "P1",
+      "related_paths": [
+        "docs/DEPLOYMENT.md",
+        "services/catalog-view/README.md",
+        "services/catalog-view/package.json"
+      ],
+      "update_when": [
+        "원격 publication·인증·조회 앱 동작 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T025"
+    },
+    {
+      "path": "services/catalog-view/.npmrc",
+      "role": "조회 앱 패키지 설치 설정",
+      "priority": "P1",
+      "related_paths": [
+        "docs/DEPLOYMENT.md",
+        "services/catalog-view/README.md",
+        "services/catalog-view/package.json"
+      ],
+      "update_when": [
+        "원격 publication·인증·조회 앱 동작 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T025"
+    },
+    {
+      "path": "services/catalog-view/.openai/hosting.json",
+      "role": "별도 owner-private 조회 앱 Sites identity와 Worker hosting 설정",
+      "priority": "P0",
+      "related_paths": [
+        "docs/DEPLOYMENT.md",
+        "services/catalog-view/README.md",
+        "services/catalog-view/package.json"
+      ],
+      "update_when": [
+        "원격 publication·인증·조회 앱 동작 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T025"
+    },
+    {
+      "path": "services/catalog-view/README.md",
+      "role": "별도 조회 앱의 서버 중계·설정·검증·배포 경계",
+      "priority": "P1",
+      "related_paths": [
+        "docs/DEPLOYMENT.md",
+        "services/catalog-view/package.json"
+      ],
+      "update_when": [
+        "원격 publication·인증·조회 앱 동작 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T025"
+    },
+    {
+      "path": "services/catalog-view/app/api/v1/[[...path]]/route.ts",
+      "role": "조회 앱 same-origin GET 요청의 서버 중계 어댑터",
+      "priority": "P1",
+      "related_paths": [
+        "docs/DEPLOYMENT.md",
+        "services/catalog-view/README.md",
+        "services/catalog-view/package.json"
+      ],
+      "update_when": [
+        "원격 publication·인증·조회 앱 동작 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T025"
+    },
+    {
+      "path": "services/catalog-view/app/globals.css",
+      "role": "조회 앱 반응형 레이아웃과 상태/선수팩 표시 스타일",
+      "priority": "P1",
+      "related_paths": [
+        "docs/DEPLOYMENT.md",
+        "services/catalog-view/README.md",
+        "services/catalog-view/package.json"
+      ],
+      "update_when": [
+        "원격 publication·인증·조회 앱 동작 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T025"
+    },
+    {
+      "path": "services/catalog-view/app/layout.tsx",
+      "role": "조회 앱 최상위 한국어 레이아웃과 metadata",
+      "priority": "P1",
+      "related_paths": [
+        "docs/DEPLOYMENT.md",
+        "services/catalog-view/README.md",
+        "services/catalog-view/package.json"
+      ],
+      "update_when": [
+        "원격 publication·인증·조회 앱 동작 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T025"
+    },
+    {
+      "path": "services/catalog-view/app/page.tsx",
+      "role": "가공 live/archive/선수 조회·검색·명단·오류/로딩 화면",
+      "priority": "P1",
+      "related_paths": [
+        "docs/DEPLOYMENT.md",
+        "services/catalog-view/README.md",
+        "services/catalog-view/package.json"
+      ],
+      "update_when": [
+        "원격 publication·인증·조회 앱 동작 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T025"
+    },
+    {
+      "path": "services/catalog-view/cloudflare-env.d.ts",
+      "role": "조회 앱 Worker 서버 환경변수 타입",
+      "priority": "P1",
+      "related_paths": [
+        "docs/DEPLOYMENT.md",
+        "services/catalog-view/README.md",
+        "services/catalog-view/package.json"
+      ],
+      "update_when": [
+        "원격 publication·인증·조회 앱 동작 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T025"
+    },
+    {
+      "path": "services/catalog-view/lib/catalog-relay.mjs",
+      "role": "고정 API origin의 인증 GET 중계·크기/시간 제한·관리/redirect 차단",
+      "priority": "P1",
+      "related_paths": [
+        "docs/DEPLOYMENT.md",
+        "services/catalog-view/README.md",
+        "services/catalog-view/package.json"
+      ],
+      "update_when": [
+        "원격 publication·인증·조회 앱 동작 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T025"
+    },
+    {
+      "path": "services/catalog-view/next.config.ts",
+      "role": "공식 Vinext 호환 설정",
+      "priority": "P1",
+      "related_paths": [
+        "docs/DEPLOYMENT.md",
+        "services/catalog-view/README.md",
+        "services/catalog-view/package.json"
+      ],
+      "update_when": [
+        "원격 publication·인증·조회 앱 동작 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T025"
+    },
+    {
+      "path": "services/catalog-view/package.json",
+      "role": "별도 조회 앱 명령·버전·의존성 계약",
+      "priority": "P0",
+      "related_paths": [
+        "docs/DEPLOYMENT.md",
+        "services/catalog-view/README.md"
+      ],
+      "update_when": [
+        "원격 publication·인증·조회 앱 동작 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T025"
+    },
+    {
+      "path": "services/catalog-view/pnpm-lock.yaml",
+      "role": "별도 조회 앱 고정 의존 잠금",
+      "priority": "P0",
+      "related_paths": [
+        "docs/DEPLOYMENT.md",
+        "services/catalog-view/README.md",
+        "services/catalog-view/package.json"
+      ],
+      "update_when": [
+        "원격 publication·인증·조회 앱 동작 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T025"
+    },
+    {
+      "path": "services/catalog-view/pnpm-workspace.yaml",
+      "role": "별도 조회 앱 패키지 작업공간 설정",
+      "priority": "P1",
+      "related_paths": [
+        "docs/DEPLOYMENT.md",
+        "services/catalog-view/README.md",
+        "services/catalog-view/package.json"
+      ],
+      "update_when": [
+        "원격 publication·인증·조회 앱 동작 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T025"
+    },
+    {
+      "path": "services/catalog-view/scripts/build-verified.sh",
+      "role": "조회 앱 공식 Sites 설치·실행·빌드 통합 helper: scripts/build-verified.sh",
+      "priority": "P1",
+      "related_paths": [
+        "docs/DEPLOYMENT.md",
+        "services/catalog-view/README.md",
+        "services/catalog-view/package.json"
+      ],
+      "update_when": [
+        "원격 publication·인증·조회 앱 동작 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T025"
+    },
+    {
+      "path": "services/catalog-view/scripts/execution-profile.mjs",
+      "role": "조회 앱 공식 Sites 설치·실행·빌드 통합 helper: scripts/execution-profile.mjs",
+      "priority": "P1",
+      "related_paths": [
+        "docs/DEPLOYMENT.md",
+        "services/catalog-view/README.md",
+        "services/catalog-view/package.json"
+      ],
+      "update_when": [
+        "원격 publication·인증·조회 앱 동작 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T025"
+    },
+    {
+      "path": "services/catalog-view/scripts/install-ci.mjs",
+      "role": "조회 앱 공식 Sites 설치·실행·빌드 통합 helper: scripts/install-ci.mjs",
+      "priority": "P1",
+      "related_paths": [
+        "docs/DEPLOYMENT.md",
+        "services/catalog-view/README.md",
+        "services/catalog-view/package.json"
+      ],
+      "update_when": [
+        "원격 publication·인증·조회 앱 동작 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T025"
+    },
+    {
+      "path": "services/catalog-view/scripts/install-ci.sh",
+      "role": "조회 앱 공식 Sites 설치·실행·빌드 통합 helper: scripts/install-ci.sh",
+      "priority": "P1",
+      "related_paths": [
+        "docs/DEPLOYMENT.md",
+        "services/catalog-view/README.md",
+        "services/catalog-view/package.json"
+      ],
+      "update_when": [
+        "원격 publication·인증·조회 앱 동작 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T025"
+    },
+    {
+      "path": "services/catalog-view/scripts/install-pnpm.sh",
+      "role": "조회 앱 공식 Sites 설치·실행·빌드 통합 helper: scripts/install-pnpm.sh",
+      "priority": "P1",
+      "related_paths": [
+        "docs/DEPLOYMENT.md",
+        "services/catalog-view/README.md",
+        "services/catalog-view/package.json"
+      ],
+      "update_when": [
+        "원격 publication·인증·조회 앱 동작 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T025"
+    },
+    {
+      "path": "services/catalog-view/scripts/npm-install.mjs",
+      "role": "조회 앱 공식 Sites 설치·실행·빌드 통합 helper: scripts/npm-install.mjs",
+      "priority": "P1",
+      "related_paths": [
+        "docs/DEPLOYMENT.md",
+        "services/catalog-view/README.md",
+        "services/catalog-view/package.json"
+      ],
+      "update_when": [
+        "원격 publication·인증·조회 앱 동작 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T025"
+    },
+    {
+      "path": "services/catalog-view/scripts/pnpm-install.mjs",
+      "role": "조회 앱 공식 Sites 설치·실행·빌드 통합 helper: scripts/pnpm-install.mjs",
+      "priority": "P1",
+      "related_paths": [
+        "docs/DEPLOYMENT.md",
+        "services/catalog-view/README.md",
+        "services/catalog-view/package.json"
+      ],
+      "update_when": [
+        "원격 publication·인증·조회 앱 동작 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T025"
+    },
+    {
+      "path": "services/catalog-view/scripts/run-framework.mjs",
+      "role": "조회 앱 공식 Sites 설치·실행·빌드 통합 helper: scripts/run-framework.mjs",
+      "priority": "P1",
+      "related_paths": [
+        "docs/DEPLOYMENT.md",
+        "services/catalog-view/README.md",
+        "services/catalog-view/package.json"
+      ],
+      "update_when": [
+        "원격 publication·인증·조회 앱 동작 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T025"
+    },
+    {
+      "path": "services/catalog-view/scripts/sites-env.mjs",
+      "role": "조회 앱 공식 Sites 설치·실행·빌드 통합 helper: scripts/sites-env.mjs",
+      "priority": "P1",
+      "related_paths": [
+        "docs/DEPLOYMENT.md",
+        "services/catalog-view/README.md",
+        "services/catalog-view/package.json"
+      ],
+      "update_when": [
+        "원격 publication·인증·조회 앱 동작 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T025"
+    },
+    {
+      "path": "services/catalog-view/scripts/sites-env.sh",
+      "role": "조회 앱 공식 Sites 설치·실행·빌드 통합 helper: scripts/sites-env.sh",
+      "priority": "P1",
+      "related_paths": [
+        "docs/DEPLOYMENT.md",
+        "services/catalog-view/README.md",
+        "services/catalog-view/package.json"
+      ],
+      "update_when": [
+        "원격 publication·인증·조회 앱 동작 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T025"
+    },
+    {
+      "path": "services/catalog-view/scripts/tool-environment.mjs",
+      "role": "조회 앱 공식 Sites 설치·실행·빌드 통합 helper: scripts/tool-environment.mjs",
+      "priority": "P1",
+      "related_paths": [
+        "docs/DEPLOYMENT.md",
+        "services/catalog-view/README.md",
+        "services/catalog-view/package.json"
+      ],
+      "update_when": [
+        "원격 publication·인증·조회 앱 동작 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T025"
+    },
+    {
+      "path": "services/catalog-view/scripts/vite/sites-vite-plugin.LICENSE",
+      "role": "조회 앱 공식 Sites 설치·실행·빌드 통합 helper: scripts/vite/sites-vite-plugin.LICENSE",
+      "priority": "P1",
+      "related_paths": [
+        "docs/DEPLOYMENT.md",
+        "services/catalog-view/README.md",
+        "services/catalog-view/package.json"
+      ],
+      "update_when": [
+        "원격 publication·인증·조회 앱 동작 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T025"
+    },
+    {
+      "path": "services/catalog-view/scripts/vite/sites-vite-plugin.ts",
+      "role": "조회 앱 공식 Sites 설치·실행·빌드 통합 helper: scripts/vite/sites-vite-plugin.ts",
+      "priority": "P1",
+      "related_paths": [
+        "docs/DEPLOYMENT.md",
+        "services/catalog-view/README.md",
+        "services/catalog-view/package.json"
+      ],
+      "update_when": [
+        "원격 publication·인증·조회 앱 동작 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T025"
+    },
+    {
+      "path": "services/catalog-view/tests/catalog-relay.test.mjs",
+      "role": "중계 경로·인증 보호·목적지/redirect·응답 제한 회귀",
+      "priority": "P1",
+      "related_paths": [
+        "docs/DEPLOYMENT.md",
+        "services/catalog-view/README.md",
+        "services/catalog-view/package.json"
+      ],
+      "update_when": [
+        "원격 publication·인증·조회 앱 동작 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T025"
+    },
+    {
+      "path": "services/catalog-view/tsconfig.json",
+      "role": "조회 앱 TypeScript 검사 설정",
+      "priority": "P1",
+      "related_paths": [
+        "docs/DEPLOYMENT.md",
+        "services/catalog-view/README.md",
+        "services/catalog-view/package.json"
+      ],
+      "update_when": [
+        "원격 publication·인증·조회 앱 동작 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T025"
+    },
+    {
+      "path": "services/catalog-view/vite.config.ts",
+      "role": "공식 Sites/Vinext Worker 빌드 통합",
+      "priority": "P0",
+      "related_paths": [
+        "docs/DEPLOYMENT.md",
+        "services/catalog-view/README.md",
+        "services/catalog-view/package.json"
+      ],
+      "update_when": [
+        "원격 publication·인증·조회 앱 동작 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T025"
+    },
+    {
+      "path": "services/catalog-view/worker/index.ts",
+      "role": "공식 Sites Worker 실행 진입점",
+      "priority": "P0",
+      "related_paths": [
+        "docs/DEPLOYMENT.md",
+        "services/catalog-view/README.md",
+        "services/catalog-view/package.json"
+      ],
+      "update_when": [
+        "원격 publication·인증·조회 앱 동작 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T025"
     }
   ]
 }

@@ -1,5 +1,9 @@
 # API 전용 Sites 업로드 준비 — T023
 
+> T025 최신 실행(2026-10-28 KST): 사용자가 배포 순서 실행을 지시했다. `services/catalog-api/`의 새 owner-private Site와 D1에 검증된 **가공 publication**을 적재·검증하고 별도 `services/catalog-view/` 조회 앱과 기존 자동 갱신의 원격 발행을 연결한다. API Site ID는 `appgprj_6ae0d51638b481918f7767684a3cf38b`이며 API private 배포·가공7팩70카드 적재·전량 원격 검증·데이터 복귀/최신 복원은 확인됐고, 조회 앱 relay와 자동 발행은 검증 중이다. 상세 배포·데이터·복구·앱 결과는 [WORKPLAN T025](WORKPLAN.md#t025--apid1-비공개-배포와-원격-발행앱-연동)에서 확인한다. 아래 T023의 raw 전량 staging 수입·5테이블·미등록·실행 제외 설명은 당시 이력이다. 최신 read API는 `api_versions/api_records/api_current`의 검증된 가공 버전만 사용하며 raw 47,408개를 운영 API에 적재하지 않는다.
+
+T025 배포는 공식 source helper로 각 하위 소스를 별도 Sites 저장소에 전달하고 해당 SHA의 Worker archive를 owner-private으로 저장·배포한다. 인증된 고정 JSON writer가 전량 원격 내용·해시를 검증한 후 expected-current 활성화를 수행한다. `health`의 HTTP200만으로 준비 완료라 하지 않고 ready·버전·manifest·실제 조회를 확인한다. 코드 저장 버전과 데이터 current 복귀는 별도로 시험한다. 새 private 서비스의 인증은 Sites service access를 서버에서만 사용하고 CORS와 구분한다. 상세 현재 절차는 [DEPLOYMENT](DEPLOYMENT.md)를 따른다.
+
 > T024 최신 지시(2026-10-27): raw는 기존 형식을 유지하는 누적 원본이며 HTTP 조회에 사용하지 않는다. 가공 선수/팩은 공식 KR와 EFHub에서 같은 상품·회차가 확인된 대상만 누적한다. 선수 8개 필드, 팩의 선수 연결, 전체 중첩 live/archive와 파일별 로그를 구현한다. 과거의 모든 raw 항목 공개 API·얇은 아카이브·24시간 이관 대기는 이 결정으로 대체한다. [현재 데이터 계약](CATALOG_DATA_CONTRACT.md)을 우선한다.
 
 

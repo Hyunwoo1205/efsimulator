@@ -20,7 +20,13 @@
 
 파일의 의미상 최신성은 영향 검토와 기능 검증으로 판단한다. 자동 검사 통과만으로 최신성을 보장한다고 표현하지 않는다. 관리 규칙과 파일 스키마는 WORKPLAN과 FILE_SYNC를 기준으로 하고 이곳에 진행 상태를 복사하지 않는다.
 
-## T027 반복 실행과 규칙 동결
+## T025 배포 실행 범위
+
+최신 사용자의 “위 순서에 맞게 배포 진행” 지시는 준비된 API의 원격 발행 기능 보완, 새 API 전용 Sites 비공개 배포, D1 가공 데이터 적재·조회·복구 검증, 별도 조회 앱 연동과 기존 매시간 갱신의 원격 발행 연결을 포함한다. T023/T024의 당시 준비 범위 밖이라는 문구는 이번 배포 실행을 막지 않는다. GitHub `api-server-setup`과 `services/catalog-api/`를 기준으로 검증한 소스를 보존하고 Sites 소스 저장소에 전달한다. 기존 `work`/`main`, Pages 앱 및 이관 제외 초기 Site는 별도 요청 없이 변경하지 않는다. 새 조회 앱은 `services/catalog-view/`에 분리한다.
+
+새 Site는 owner-private 상태로 배포하고 실제 audience·버전·배포 ID·URL과 원격 데이터 검증을 확인한다. 검토판을 구체화한 뒤 기존 사용자 검토·운영 반영 절차를 따른다. 비공개 배포 승인으로 공개 audience 전환을 추정하지 않는다. 데이터 적재는 raw 전체 대신 검증된 가공 publication을 사용하고, 전체 원격 내용 검증 뒤 expected-current가 일치하는 단일 활성 포인터만 전환한다. 원격 쓰기·이전 데이터 버전 복귀·코드 버전 복구·지원되는 서비스 인증을 각각 검증한다. 일상 갱신에 소스 재배포를 요구하지 않는다.
+
+## T027 반복 실행과 규칙 동결 — 실행 규칙
 
 정기 실행은 `services/catalog-api/scripts/lifecycle/run-cycle.mjs`만 진입점으로 사용한다. 먼저 `data:rules-check`와 작업 공간 RULES/CURRENT 해시를 검사한다. 원본·가공 JSON을 AI가 직접 작성하거나 수동 candidates/observation의 verified 표시로 반영하지 않는다. 저장 HTML/오류 receipt를 재실행해 검토 매핑·원본 기준·UTC·규칙 버전을 대조한 뒤 반영한다. 같은 입력과 기준 시각은 같은 가공 데이터·버전/SQL을 생성해야 하며 달라진 시각에 따른 종료는 정상 전이다.
 
@@ -28,7 +34,7 @@
 
 ## T024 최신 데이터 계약
 
-사용자는 raw 누적 원본 / 공식 상품에 한정한 가공 선수·팩 누적 / 전체 중첩 live / 전체 중첩 archive를 요청했다. raw는 HTTP 조회에 쓰지 않는다. 가공 선수는 지정 8개 필드만, 관계는 팩의 members에 둔다. 원본 playerCount는 특수 인원이며 공식 totalPlayerCount·UTC endsAt를 추가한다. 새 후보는 두 사이트의 동일 상품·회차와 전체 특수 ID 관계를 검증해야 한다. 수집은 new-players 및 필요한 상세 HTML만 사용하며 원본 API를 호출하지 않는다. 매시간 확인은 이번 사용자 지시로 승인되었고 T023의 준비 범위 밖이라는 과거 문구를 새 금지로 적용하지 않는다. 기존 API Site 배포·원격 D1 적재는 수행하지 않는다. 전체 계약은 [CATALOG_DATA_CONTRACT](docs/CATALOG_DATA_CONTRACT.md)를 우선한다.
+사용자는 raw 누적 원본 / 공식 상품에 한정한 가공 선수·팩 누적 / 전체 중첩 live / 전체 중첩 archive를 요청했다. raw는 HTTP 조회에 쓰지 않는다. 가공 선수는 지정 8개 필드만, 관계는 팩의 members에 둔다. 원본 playerCount는 특수 인원이며 공식 totalPlayerCount·UTC endsAt를 추가한다. 새 후보는 두 사이트의 동일 상품·회차와 전체 특수 ID 관계를 검증해야 한다. 수집은 new-players 및 필요한 상세 HTML만 사용하며 원본 API를 호출하지 않는다. 매시간 확인은 사용자 지시로 승인되었고 T023의 준비 범위 밖이라는 과거 문구를 새 금지로 적용하지 않는다. 실제 배포·원격 적재의 최신 범위는 위 T025를 따른다. 전체 계약은 [CATALOG_DATA_CONTRACT](docs/CATALOG_DATA_CONTRACT.md)를 우선한다.
 
 ## 최신 제품 범위 — 두 계층
 
@@ -42,7 +48,7 @@
 
 ## 최신 API 전용 준비 범위
 
-T023의 최신 사용자 지시는 별도 API Sites 프로젝트를 위한 소스와 업로드 파일 준비다. GitHub efsimulator의 api-server-setup 브랜치·services/catalog-api 폴더를 사용하고 검증 후 이 신규 브랜치에 정상 push한다. 기존 work/main과 앱 파일은 보존한다. 실제 Sites 등록·배포·원격 DB 수입·자동화는 이번 준비 범위 밖이다. 이전 T022의 추가 push/구현 제한을 현재 요청에 확대 적용하지 않는다.
+T023 당시 사용자 지시는 별도 API Sites 프로젝트를 위한 소스와 업로드 파일 준비였으며 실제 등록·배포·원격 수입은 제외했다. 최신 배포 실행 범위는 위 T025로 확장됐다. GitHub efsimulator의 api-server-setup 브랜치·services/catalog-api 폴더를 사용하고 검증 후 같은 브랜치에 정상 push한다. 기존 work/main과 앱 파일은 보존한다. 이전 T022/T023의 당시 실행 경계를 현재 요청에 확대 적용하지 않는다.
 
 기본 배치는 앱과 API의 별도 Site다. API 소스 root는 monorepo 하위 폴더이며 source export로 root를 분리한다. 새 반환 ID는 후속 등록 시 저장하고 이전에 제외한 초기 Site를 재사용하지 않는다. 최신 입력·검증·제한은 API_SERVER_PREPARATION과 WORKPLAN을 따른다.
 
