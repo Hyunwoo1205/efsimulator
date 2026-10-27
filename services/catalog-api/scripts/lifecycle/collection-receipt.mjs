@@ -28,6 +28,10 @@ export function makeCollectionReceipt({ checkedAt, rulesIdentity, mappingsDocume
  * Approval and rules identities come from the workspace's separately pinned policy.
  */
 export async function replayCollectionReceipt({ receipt, rawPlayers, rawPacks, now, approval, rulesIdentity: expectedRules } = {}) {
+  if (receipt?.schemaVersion === 2) {
+    const { replayReviewedCacheReceipt } = await import('./reviewed-cache.mjs');
+    return replayReviewedCacheReceipt({ receipt, rawPlayers, rawPacks, now, approval, rulesIdentity: expectedRules });
+  }
   assert(exact(receipt, ['schemaVersion', 'checkedAt', 'rulesIdentity', 'mappingsDocument', 'baselineSha256', 'maxRequests', 'requests', 'resultSha256']) && receipt.schemaVersion === 1, 'unsupported schema');
   assert(iso(receipt.checkedAt) && typeof now === 'string' && Number.isFinite(Date.parse(now)) && new Date(now).toISOString() === receipt.checkedAt, 'execution clock differs');
   const rules = await activeRules();

@@ -133,21 +133,106 @@
         "reason": "User confirmed all eleven cards; original raw playerCount8 omits three type5 cards. Preserve source8; process special11.",
         "effectiveCount": 11
       }
-    }
-  ],
-  "pendingOfficialTitles": [
-    {
-      "title": "National Team Selection: Worldwide Sep '26",
-      "reason": "Exact pack-round card-ID relation not yet verified"
     },
     {
-      "title": "League Selection: Italian Oct '26",
-      "reason": "Exact pack-round card-ID relation not yet verified"
+      "saleId": "italian-league-selection-8-oct-26::2026-10",
+      "packSlug": "italian-league-selection-8-oct-26",
+      "officialTitle": "League Selection: Italian Oct '26",
+      "newPlayersSection": "Italian League Selection 8 Oct '26",
+      "expectedTotalPlayerCount": 11,
+      "expectedEndsAt": "2026-12-03T01:59:59.000Z",
+      "expectedSpecialCount": 11,
+      "memberIds": [
+        "105874433612080",
+        "105874433617200",
+        "105874433622163",
+        "105874433622582",
+        "105874433631452",
+        "105874433635349",
+        "105874433635666",
+        "105874433645929",
+        "105874433654900",
+        "105874433662542",
+        "105874433675325"
+      ],
+      "matchEvidence": {
+        "status": "user_confirmed_product_identity_and_replayed_cached_html_links",
+        "authority": "direct_user_confirmation_then_complete_card_link_verification",
+        "identityConfirmation": "User confirmed all three product-to-pack identities and requested immediate verification and API completion.",
+        "cachedEvidenceSha256": "93398eca3212cafb4d3057775fdc43206eec286f1fc551bd2c8aee8bf3446671",
+        "efhubUrl": "https://efhub.com/packs/italian-league-selection-8-oct-26",
+        "efhubReleaseDate": "2026-10-08",
+        "efhubOriginalCrawlLabel": "today",
+        "originObservedAt": null,
+        "sourceKind": "reviewed_cached_html_extraction",
+        "evidenceFile": "catalog-runtime/reviewed-evidence/T028/reviewed-evidence.json",
+        "retainedRawOnly": true
+      }
     },
     {
-      "title": "Epic: Ricardo Quaresma",
-      "reason": "Exact pack-round card-ID relation not yet verified"
+      "saleId": "national-teams-selection-10-sep-26::2026-09",
+      "packSlug": "national-teams-selection-10-sep-26",
+      "officialTitle": "National Team Selection: Worldwide Sep '26",
+      "newPlayersSection": "National Teams Selection 10 Sep '26",
+      "expectedTotalPlayerCount": 11,
+      "expectedEndsAt": "2026-11-05T01:59:59.000Z",
+      "expectedSpecialCount": 11,
+      "memberIds": [
+        "105874165112743",
+        "105874165182687",
+        "105874165183676",
+        "105874165184248",
+        "105874165188527",
+        "105874165191335",
+        "105874165191683",
+        "105874165198697",
+        "105874165198910",
+        "105874165213340",
+        "105874165214108"
+      ],
+      "matchEvidence": {
+        "status": "user_confirmed_product_identity_and_replayed_cached_html_links",
+        "authority": "direct_user_confirmation_then_complete_card_link_verification",
+        "identityConfirmation": "User confirmed all three product-to-pack identities and requested immediate verification and API completion.",
+        "cachedEvidenceSha256": "93398eca3212cafb4d3057775fdc43206eec286f1fc551bd2c8aee8bf3446671",
+        "efhubUrl": "https://efhub.com/packs/national-teams-selection-10-sep-26",
+        "efhubReleaseDate": "2026-09-10",
+        "efhubOriginalCrawlLabel": "today",
+        "originObservedAt": null,
+        "sourceKind": "reviewed_cached_html_extraction",
+        "evidenceFile": "catalog-runtime/reviewed-evidence/T028/reviewed-evidence.json",
+        "retainedRawOnly": true
+      }
+    },
+    {
+      "saleId": "trendyol-s-per-lig-selection-15-oct-26::2026-10",
+      "packSlug": "trendyol-s-per-lig-selection-15-oct-26",
+      "officialTitle": "Epic: Ricardo Quaresma",
+      "newPlayersSection": "Trendyol Süper Lig Selection 15 Oct '26",
+      "expectedTotalPlayerCount": 50,
+      "expectedEndsAt": "2026-10-29T01:59:59.000Z",
+      "expectedSpecialCount": 4,
+      "memberIds": [
+        "105899934993248",
+        "105899934997085",
+        "105899935007795",
+        "88045487395246"
+      ],
+      "matchEvidence": {
+        "status": "user_confirmed_product_identity_and_replayed_cached_html_links",
+        "authority": "direct_user_confirmation_then_complete_card_link_verification",
+        "identityConfirmation": "User confirmed all three product-to-pack identities and requested immediate verification and API completion.",
+        "cachedEvidenceSha256": "e671e76edbac19debd6e58e947dbcfa1ecd3b4986b3cbf060454a90de8f51bf9",
+        "efhubUrl": "https://efhub.com/packs/trendyol-s-per-lig-selection-15-oct-26",
+        "efhubReleaseDate": "2026-10-15",
+        "efhubOriginalCrawlLabel": "today",
+        "originObservedAt": null,
+        "sourceKind": "reviewed_cached_html_extraction",
+        "evidenceFile": "catalog-runtime/reviewed-evidence/T028/reviewed-evidence.json",
+        "retainedRawOnly": true
+      }
     }
   ],
+  "pendingOfficialTitles": [],
   "policy": "Only explicit round mappings with complete HTML ID membership may append raw/process. Unknown mappings stay pending. IDs in retained relation evidence can bootstrap existing raw without direct upstream API calls."
 }

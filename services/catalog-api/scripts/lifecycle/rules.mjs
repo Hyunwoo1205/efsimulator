@@ -6,7 +6,7 @@ import { canonical, compareText } from '../../lib/catalog-contract.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 export const RULE_LOCK_PATH = resolve(ROOT, 'policy/rules.lock.json');
-export const RULE_FILES = Object.freeze(['lib/catalog-contract.mjs', 'lib/catalog-lifecycle.mjs', 'lib/catalog-api.mjs', 'scripts/lifecycle/rules.mjs', 'scripts/lifecycle/collect-cycle.mjs', 'scripts/lifecycle/collection-receipt.mjs', 'scripts/lifecycle/html-sources.mjs', 'scripts/lifecycle/workspace.mjs', 'scripts/lifecycle/run-cycle.mjs', 'scripts/lifecycle/publication.mjs', 'policy/approved-mappings.json']);
+export const RULE_FILES = Object.freeze(['lib/catalog-contract.mjs', 'lib/catalog-lifecycle.mjs', 'lib/catalog-api.mjs', 'scripts/lifecycle/rules.mjs', 'scripts/lifecycle/collect-cycle.mjs', 'scripts/lifecycle/collection-receipt.mjs', 'scripts/lifecycle/html-sources.mjs', 'scripts/lifecycle/workspace.mjs', 'scripts/lifecycle/run-cycle.mjs', 'scripts/lifecycle/publication.mjs', 'scripts/lifecycle/reviewed-cache.mjs', 'policy/approved-mappings.json']);
 const APPROVALS_PATH = resolve(ROOT, 'policy/approved-mappings.json');
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 const nonempty = value => typeof value === 'string' && value.trim().length > 0;

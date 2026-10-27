@@ -272,33 +272,78 @@ export function parsePlayerHtml(html, options = {}) {
   return { ...source, player: players[0] };
 }
 
-export function parsePackHtml(html, options = {}) {
+/**
+ * Read an explicitly selected pack's visible roster. Retained original metadata
+ * may supply its fields; display-only cards never become new raw records.
+ */
+export function parsePackMembershipHtml(html, options = {}) {
   htmlDocument(html);
   const source = envelope(html, options, options.sourceUrl ?? `${EFHUB}/new-players`);
-  const slug = options.expectedSlug ?? new URL(source.source_url).pathname.match(/\/packs\/([^/]+)\/?$/)?.[1];
-  requireThat(nonempty(slug), 'A detail pack slug is required.');
+  const sourceSlug = new URL(source.source_url).pathname.match(/\/packs\/([^/]+)\/?$/)?.[1];
+  const slug = options.expectedSlug ?? sourceSlug;
+  requireThat(nonempty(slug) && sourceSlug === slug, 'The detail URL must identify the explicit pack slug.');
   const packs = uniqueObjects(embeddedObjects(html, 'pack').filter(value => value.slug === slug).map(rawPack), 'slug');
-  requireThat(packs.length === 1, 'Pack HTML must explicitly include its original four-field pack metadata.');
+  const retainedPack = options.retainedPack ? rawPack(options.retainedPack) : null;
+  requireThat(!retainedPack || retainedPack.slug === slug, 'Retained pack metadata belongs to a different slug.');
+  requireThat(packs.length === 1 || retainedPack, 'Pack HTML must explicitly include its original four-field pack metadata.');
+  requireThat(!retainedPack || !packs.length || JSON.stringify(retainedPack) === JSON.stringify(packs[0]), 'Retained and embedded pack metadata disagree.');
+  const pack = retainedPack ?? packs[0];
   const dom = tree(html);
-  const headings = descendants(dom, node => node.tag === 'h1' && nodeText(node).trim() === packs[0].name);
+  const headings = descendants(dom, node => node.tag === 'h1' && nodeText(node).trim() === pack.name);
   requireThat(headings.length === 1, 'Pack heading and embedded pack metadata disagree.');
   // Accept only a bounded section/product container holding the matching heading and its grid.
   const candidates = [];
   domWalk(dom, node => {
-    if (!['section', 'article', 'div'].includes(node.tag)) return;
+    if (!['section', 'article', 'main', 'div'].includes(node.tag)) return;
     const localHeadings = descendants(node, child => child.tag === 'h1');
     if (localHeadings.length !== 1 || localHeadings[0] !== headings[0]) return;
     const grids = descendants(node, child => hasClass(child, 'grid') && descendants(child, leaf => leaf.tag === 'a').some(anchor => playerLink(anchor, source.source_url)));
     if (grids.length === 1) candidates.push({ node, grid: grids[0] });
   });
   requireThat(candidates.length > 0, 'Pack membership grid is absent.');
-  const grid = candidates.at(-1).grid;
+  const { node: container, grid } = candidates.at(-1);
+  if (!packs.length) {
+    // A retained record supplies original fields, but is not proof that the
+    // current page is the same release. Require independent visible date and
+    // reported-count metadata inside this pack's own bounded container.
+    const separatedText = node => node.children.map(child => typeof child === 'string' ? child : separatedText(child)).join(' ');
+    const visible = separatedText(container).replace(/\s+/g, ' ');
+    const dates = new Set([...visible.matchAll(/\b(20\d{2}-\d{2}-\d{2})\b/g)].map(match => match[1]));
+    for (const time of descendants(container, node => node.tag === 'time' && typeof node.attrs.datetime === 'string')) {
+      const date = /^(20\d{2}-\d{2}-\d{2})(?:$|T)/.exec(time.attrs.datetime);
+      if (date) dates.add(date[1]);
+    }
+    const months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
+    const datePatterns = [
+      /\b(\d{1,2})\s+(Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+(20\d{2})\b/gi,
+      /\b(Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+(\d{1,2}),?\s+(20\d{2})\b/gi,
+    ];
+    datePatterns.forEach((pattern, index) => {
+      for (const match of visible.matchAll(pattern)) {
+        const day = match[index ? 2 : 1]; const month = match[index ? 1 : 2];
+        const value = `${match[3]}-${String(months.indexOf(month.slice(0, 3).toLowerCase()) + 1).padStart(2, '0')}-${day.padStart(2, '0')}`;
+        if (Number.isFinite(Date.parse(value)) && new Date(value).toISOString().slice(0, 10) === value) dates.add(value);
+      }
+    });
+    requireThat(dates.size === 1 && dates.has(pack.date), 'Visible pack release date is absent, ambiguous or conflicts with retained metadata.');
+    const counts = new Set();
+    for (const match of visible.matchAll(/\b(?:players?|player count|number of players)\s*[:(]?\s*(\d+)\b/gi)) counts.add(Number(match[1]));
+    for (const match of visible.matchAll(/\b(\d+)\s+players?\b/gi)) counts.add(Number(match[1]));
+    requireThat(counts.size === 1 && counts.has(pack.playerCount), 'Visible pack reported count is absent, ambiguous or conflicts with retained metadata.');
+  }
   const links = descendants(grid, node => node.tag === 'a').map(node => playerLink(node, source.source_url)).filter(Boolean);
-  requireThat(links.length === packs[0].playerCount && new Set(links.map(player => player.id)).size === links.length, 'Pack reported count and direct membership links differ.');
+  const expectedMemberCount = options.expectedMemberCount ?? pack.playerCount;
+  requireThat(Number.isSafeInteger(expectedMemberCount) && expectedMemberCount > 0 && links.length === expectedMemberCount && new Set(links.map(player => player.id)).size === links.length, 'Pack reported count and direct membership links differ.');
   const allowed = new Set(links.map(player => player.id));
-  const players = uniqueObjects(embeddedObjects(html, 'player').filter(value => allowed.has(value.id)).map(rawPlayer), 'id');
-  requireThat(players.length === links.length, 'Some membership cards lack their embedded original fields.');
-  return { ...source, pack: packs[0], players, playerIds: links.map(player => player.id), membershipComplete: true };
+  const players = uniqueObjects(embeddedObjects(html, 'player').filter(value => allowed.has(value.id))
+    .filter(value => ['name', 'slug', 'position', 'imageUrl'].every(key => nonempty(value[key])) && Number.isFinite(value.overallRating) && Number.isSafeInteger(value.playerType)).map(rawPlayer), 'id');
+  return { ...source, pack, members: links, players, playerIds: links.map(player => player.id), membershipComplete: true };
+}
+
+export function parsePackHtml(html, options = {}) {
+  const detail = parsePackMembershipHtml(html, { ...options, retainedPack: undefined, expectedMemberCount: undefined });
+  requireThat(detail.players.length === detail.playerIds.length, 'Some membership cards lack their embedded original fields.');
+  return Object.fromEntries(Object.entries(detail).filter(([key]) => key !== 'members'));
 }
 
 /** One ordinary HTML GET, no API, retry, cookie, authentication or header rotation. */

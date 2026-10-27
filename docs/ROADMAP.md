@@ -1,4 +1,4 @@
-<!-- project-state: {"stage":"R2","previous":"T027","current":"T025","next":"T011"} -->
+<!-- project-state: {"stage":"R2","previous":"T028","current":"T025","next":"T011"} -->
 
 # efsimulator 개발 로드맵
 
@@ -11,10 +11,10 @@
 | 항목 | 내용 |
 | --- | --- |
 | 현재 단계 | R2 — 독립 API 업로드 준비 후 팩 관계·공식 범위 검증 진행 |
-| 이전 작업 | T027 — 엄격 검사·증거 재실행·결정적 갱신·규칙 변경 통제 완료 |
-| 현재 작업 | T025 — 미확정 관계·실제 API Site/D1 검토 배포 검증 예정 |
+| 이전 작업 | T028 — 미확정 세 상품의 전체 ID 검증·7팩70카드 로컬 API 반영 완료 |
+| 현재 작업 | T025 — 실제 API Site/D1 검토 배포 검증 예정 |
 | 다음 작업 | T011 — 검토된 관계·스키마·수입 범위 보완 |
-| 현재 조건 | raw 전체 보존, 공식 상품만 가공. 4팩44카드/live4/archive0 로컬 검증. 공식 미확정3상품 대기. T026에서 EFHub HTML200·중첩 파서 보완·기존44카드 관계 재검증. 매시간 점검 예약 활성, hosted Site/D1 미실행 |
+| 현재 조건 | raw 47,408/1,699 보존. 공식7상품 모두 연결 완료·70카드/live7/archive0 로컬 검증. T028은 보존된 HTML 추출 명단과 최신 공식 HTML 사용, origin 403 대기 유지. 실제 Site/D1 미실행 |
 
 이번 이관 결과는 [MIGRATION_STATUS](MIGRATION_STATUS.md)이며, 원래 인수인계는 [CHATGPT_WORK_HANDOFF](CHATGPT_WORK_HANDOFF.md), 이전 전수 점검은 [FILE_SYNC_AUDIT](FILE_SYNC_AUDIT.md), 작업 순서와 추가 조건은 [WORKPLAN](WORKPLAN.md), 관리 경로/우선순위는 [FILE_SYNC](FILE_SYNC.json)를 따른다.
 

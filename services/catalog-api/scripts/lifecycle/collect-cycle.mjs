@@ -1,5 +1,5 @@
 import { createHash } from 'node:crypto';
-import { fetchHtmlSnapshot, parseNewPlayersHtml, parseOfficialHtml, parsePackHtml, parsePlayerHtml, validateHtmlSourceUrl } from './html-sources.mjs';
+import { fetchHtmlSnapshot, parseNewPlayersHtml, parseOfficialHtml, parsePackHtml, parsePackMembershipHtml, parsePlayerHtml, validateHtmlSourceUrl } from './html-sources.mjs';
 import { assertRawPlayer, assertRawPack, canonical, compareText } from '../../lib/catalog-contract.mjs';
 import { makeCollectionReceipt, receiptResultHash } from './collection-receipt.mjs';
 import { activeRules } from './rules.mjs';
@@ -124,16 +124,30 @@ export async function collectCycle({ mappings, rawPlayers, rawPacks, fetchHtml =
       ensure(text(expectedEnd) && Number.isSafeInteger(expectedTotal), 'missing_official_round_guards');
       ensure(Date.parse(expectedEnd) === Date.parse(official.endsAt) && expectedTotal === official.totalPlayerCount, 'official_round_guard_mismatch');
       const sections = efhub.sections.filter(section => section.title === mapping.newPlayersSection);
-      ensure(sections.length === 1 && sections[0].complete === true, 'efhub_section_missing_or_ambiguous');
-      const section = sections[0];
-      ensure(!section.packSlug || section.packSlug === mapping.packSlug, 'efhub_section_pack_mismatch');
-
+      ensure(sections.length <= 1 && (sections.length === 0 || sections[0].complete === true), 'efhub_section_missing_or_ambiguous');
+      let section = sections[0];
+      if (section) ensure(!section.packSlug || section.packSlug === mapping.packSlug, 'efhub_section_pack_mismatch');
       const retainedPack = existingPacks.get(mapping.packSlug);
       const observedPack = efhub.rawPacks.find(pack => pack.slug === mapping.packSlug);
       if (retainedPack && observedPack) ensure(canonical(retainedPack) === canonical(observedPack), 'raw_pack_conflict');
       let pack = retainedPack ?? observedPack;
       let detailPlayers = [];
-      if (!pack) {
+      let membershipSource = efhub;
+      // The newest-release listing is not a historical catalogue. Only when
+      // that complete listing has no section for an explicit reviewed mapping,
+      // read the mapping's exact detail URL. A denial or ambiguous section must
+      // never be bypassed by trying a different page.
+      if (!section) {
+        const url = `https://efhub.com/packs/${mapping.packSlug}`;
+        const snapshot = await get(url);
+        const detail = parsePackMembershipHtml(snapshot.html, { sourceUrl: url, observedAt: snapshot.observed_at ?? startedAt,
+          expectedSlug: mapping.packSlug, retainedPack: pack, expectedMemberCount: pack ? expectedSpecialCount(mapping, pack) : undefined });
+        if (pack) ensure(canonical(pack) === canonical(detail.pack), 'raw_pack_conflict');
+        pack = detail.pack;
+        detailPlayers = detail.players;
+        section = { title: pack.name, packSlug: pack.slug, packUrl: url, players: detail.members, complete: detail.membershipComplete };
+        membershipSource = detail;
+      } else if (!pack) {
         const url = section.packUrl ?? `https://efhub.com/packs/${mapping.packSlug}`;
         const snapshot = await get(url);
         const detail = parsePackHtml(snapshot.html, { sourceUrl: url, observedAt: snapshot.observed_at ?? startedAt, expectedSlug: mapping.packSlug });
@@ -167,7 +181,7 @@ export async function collectCycle({ mappings, rawPlayers, rawPacks, fetchHtml =
         if (member.name) ensure(player.name === member.name, 'member_detail_name_mismatch');
         newPlayers.push(player);
       }
-      result.candidates.push({ saleId: mapping.saleId, officialTitle: official.title, packSlug: pack.slug, endsAt: official.endsAt, totalPlayerCount: official.totalPlayerCount, specialCount, expectedSpecialCount: specialCount, memberIds, rawPlayers: newPlayers, rawPack: pack, matchVerified: true, membershipComplete: true, countCorrection: mapping.countCorrection ?? null, evidence: { match: mapping.matchEvidence, official: { sourceUrl: result.officialObservation.sourceUrl, observedAt: result.officialObservation.observedAt, sha256: result.officialObservation.sha256 }, efhub: { sourceUrl: efhub.source_url, observedAt: efhub.observed_at, sha256: efhub.sha256, section: section.title }, memberIds } });
+      result.candidates.push({ saleId: mapping.saleId, officialTitle: official.title, packSlug: pack.slug, endsAt: official.endsAt, totalPlayerCount: official.totalPlayerCount, specialCount, expectedSpecialCount: specialCount, memberIds, rawPlayers: newPlayers, rawPack: pack, matchVerified: true, membershipComplete: true, countCorrection: mapping.countCorrection ?? null, evidence: { match: mapping.matchEvidence, official: { sourceUrl: result.officialObservation.sourceUrl, observedAt: result.officialObservation.observedAt, sha256: result.officialObservation.sha256 }, efhub: { sourceUrl: membershipSource.source_url, observedAt: membershipSource.observed_at, sha256: membershipSource.sha256, section: section.title }, memberIds } });
     } catch (error) {
       if (error.code === 'source_denied' || error.status === 403 || error.status === 429) deniedEfhub = true;
       result.pending.push({ saleId: mapping.saleId, packSlug: mapping.packSlug, reason: error.code ?? 'collection_candidate_invalid', message: error.message });

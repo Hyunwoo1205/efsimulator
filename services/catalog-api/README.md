@@ -51,9 +51,9 @@ node scripts/lifecycle/workspace.mjs init --root /absolute/private-data --player
 node scripts/lifecycle/run-cycle.mjs --root /absolute/private-data --mappings /absolute/catalog-sale-mappings.json --db /absolute/local-processed.sqlite
 ```
 
-`run-cycle`은 공식 표와 new-players HTML을 한 번씩 확인하고 필요한 신규 상세 HTML만 수집한다. 원본 API는 사용하지 않는다. 명시적 회차 매핑과 전체 특수 명단을 확인해야 raw→가공 순서로 추가하며, 불확실한 신규 상품은 pending이다. 접근 거부 시 해당 실행의 EFHub 수집은 멈춘다. 실제 HTML 레이아웃이 바뀌면 기존 정상 자료를 보존한다.
+`run-cycle`은 공식 표와 new-players HTML을 한 번씩 확인하고 필요한 신규 상세 HTML과 목록에서 사라진 검토 과거 팩의 상세 HTML만 수집한다. 원본 API는 사용하지 않는다. 명시적 회차 매핑과 전체 특수 명단을 확인해야 raw→가공 순서로 추가하며, 불확실한 신규 상품은 pending이다. 접근 거부 시 해당 실행의 EFHub 수집은 멈춘다. 실제 HTML 레이아웃이 바뀌면 기존 정상 자료를 보존한다.
 
-논리 파일은 raw 2개, raw 로그 2개, processed 2개, live/archive, API 로그다. 모든 파일을 해시 검증한 불변 세대에 기록한 후 CURRENT 포인터를 교체한다. 변경 없는 시간별 점검은 checks.jsonl만 쓴다. 서버 배포 데이터는 `publications/<version>/sql`과 activate.sql이며, 전량 적재 후 내용 해시·참조를 검증하고 활성 포인터를 단일 문장으로 전환한다. 명령의 `--db`는 로컬 SQLite 검증 옵션이며 원격 D1을 수정하지 않는다.
+논리 파일은 raw 2개, raw 로그 2개, processed 2개, live/archive, API 로그다. 모든 파일을 해시 검증한 불변 세대에 기록한 후 CURRENT 포인터를 교체한다. 시간별 점검의 외부 사전검사는 양쪽 정상 HTML 해시가 같고 종료가 도래하지 않으면 가공·checks·receipt·SQL·압축·저장·응답 없이 종료한다. run-cycle을 직접 실행해 재검증한 횟수는 checks.jsonl에 남는다. 서버 배포 데이터는 `publications/<version>/sql`과 activate.sql이며, 전량 적재 후 내용 해시·참조를 검증하고 활성 포인터를 단일 문장으로 전환한다. 명령의 `--db`는 로컬 SQLite 검증 옵션이며 원격 D1을 수정하지 않는다.
 
 ## 이전 전체 원본 staging 수입 도구
 
@@ -113,3 +113,14 @@ npm run data:adopt-rules -- --root /absolute/catalog-runtime --expected-version 
 ```
 
 채택은 raw/가공/로그 바이트를 보존하고 검토 정책에 바인딩한 세대와 감사 기록을 만든다. 전체 계약과 예외 처리는 저장소 docs/CATALOG_DATA_CONTRACT.md를 따른다.
+
+
+## 검토된 과거 명단의 즉시 반영
+
+현재 가공 데이터는 7팩·70카드(live7/archive0)이며, T028에서 대기 세 상품의 26카드 연결을 완성했다. 사용자 확인은 상품과 팩의 대응에 한정하고, 전체 카드 링크는 보존된 검색 HTML 추출 응답을 코드로 재검증했다. 세 상품의 원출처를 신규 수집한 것으로 표시하지 않는다.
+
+```sh
+node scripts/lifecycle/run-cycle.mjs --root /absolute/private-data --mappings /absolute/catalog-sale-mappings.json --reviewed-cache /absolute/reviewed-evidence.json --db /absolute/local-processed.sqlite --now VERIFIED_UTC
+```
+
+검토 파일은 `cachedEvidence`(추출 응답 및 retrieval UTC)와 `officialSnapshot`(최근 정상 공식 HTML)만 제공한다. raw·매핑·승인·규칙은 작업 공간의 고정 정책에서 읽는다. 전체 근거 해시가 매핑 검토와 일치해야 하며 영수증을 재실행한 후보만 반영한다. 기존 raw에 없는 카드는 이 경로에서 거부한다. 일반 정기 갱신은 기존 HTML 경로를 사용하고, 상품별 상태는 monitor/매핑 파일로 관리한다.

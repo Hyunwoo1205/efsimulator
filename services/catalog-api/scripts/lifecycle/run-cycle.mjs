@@ -9,6 +9,7 @@ import { loadWorkspace, applyCycle } from './workspace.mjs';
 import { generatePublication, assertPublicationRows } from './publication.mjs';
 import { canonical } from '../../lib/catalog-contract.mjs';
 import { assertApprovedMappings } from './rules.mjs';
+import { collectReviewedCache } from './reviewed-cache.mjs';
 
 async function writeImmutable(path, bytes) {
   try { await writeFile(path, bytes, { flag: 'wx' }); }
@@ -80,13 +81,16 @@ export async function preparePublication({ state, out, dbPath, now = new Date().
   } finally { db?.close(); }
 }
 
-export async function runCycle({ root, mappingsPath, publicationOut = join(root, 'publications'), dbPath, fetchHtml, now = new Date().toISOString() }) {
+export async function runCycle({ root, mappingsPath, publicationOut = join(root, 'publications'), dbPath, fetchHtml, reviewedCachePath, now = new Date().toISOString() }) {
   const before = await loadWorkspace(root);
   const mappingFile = JSON.parse(await readFile(mappingsPath, 'utf8'));
   if (!before.policy?.approval || !before.policy?.rulesIdentity) throw new Error('Workspace has no pinned rules/mapping policy; explicitly adopt the reviewed policy before a cycle');
   assertApprovedMappings(mappingFile, before.policy.approval);
   const mappings = mappingFile.mappings;
-  const source = await collectCycle({ mappings, mappingsDocument: mappingFile, rulesIdentity: before.policy.rulesIdentity, rawPlayers: before.rawPlayers, rawPacks: before.rawPacks, fetchHtml, now: () => new Date(now) });
+  const source = reviewedCachePath
+    ? await collectReviewedCache({ ...JSON.parse(await readFile(reviewedCachePath, 'utf8')), mappingsDocument: mappingFile,
+      rulesIdentity: before.policy.rulesIdentity, approval: before.policy.approval, rawPlayers: before.rawPlayers, rawPacks: before.rawPacks, checkedAt: now })
+    : await collectCycle({ mappings, mappingsDocument: mappingFile, rulesIdentity: before.policy.rulesIdentity, rawPlayers: before.rawPlayers, rawPacks: before.rawPacks, fetchHtml, now: () => new Date(now) });
   const applied = await applyCycle({ root, candidates: source.candidates, officialObservation: source.officialObservation,
     pending: source.pending, sources: source.sources, receipt: source.receipt, now, expectedVersion: before.current.version });
   const publication = await preparePublication({ state: applied.state, out: publicationOut, dbPath, now });
@@ -98,12 +102,12 @@ async function main() {
   const args = process.argv.slice(2);
   const options = {};
   for (let index = 0; index < args.length; index += 2) {
-    if (!['--root', '--mappings', '--publication-out', '--db', '--now'].includes(args[index]) || !args[index + 1]) throw new Error('Use --root DIR --mappings FILE [--publication-out DIR] [--db LOCAL_SQLITE] [--now ISO]');
+    if (!['--root', '--mappings', '--publication-out', '--db', '--now', '--reviewed-cache'].includes(args[index]) || !args[index + 1]) throw new Error('Use --root DIR --mappings FILE [--publication-out DIR] [--db LOCAL_SQLITE] [--now ISO] [--reviewed-cache FILE]');
     options[args[index]] = args[index + 1];
   }
   if (!options['--root'] || !options['--mappings']) throw new Error('--root and --mappings are required');
   const result = await runCycle({ root: resolve(options['--root']), mappingsPath: resolve(options['--mappings']),
-    publicationOut: options['--publication-out'] && resolve(options['--publication-out']), dbPath: options['--db'] && resolve(options['--db']), now: options['--now'] });
+    publicationOut: options['--publication-out'] && resolve(options['--publication-out']), dbPath: options['--db'] && resolve(options['--db']), now: options['--now'], reviewedCachePath: options['--reviewed-cache'] && resolve(options['--reviewed-cache']) });
   console.log(JSON.stringify(result, null, 2));
 }
 if (process.argv[1] && pathToFileURL(resolve(process.argv[1])).href === import.meta.url) main().catch(error => { console.error(error.message); process.exitCode = 1; });

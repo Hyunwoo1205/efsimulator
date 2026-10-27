@@ -10,7 +10,8 @@ const approval = value => ({ schemaVersion: 1, reviews: [{ saleId: value.saleId,
 test('rule lock covers all mutation logic and fails closed for changed or missing rule files', async () => {
   const lock = JSON.parse(readFileSync(RULE_LOCK_PATH));
   const identity = await activeRules();
-  assert.equal(identity.version, 'catalog-rules-1.1.0');
+  assert.equal(identity.version, lock.version);
+  assert.match(identity.version, /^catalog-rules-\d+\.\d+\.\d+$/);
   assert.match(identity.sha256, /^[a-f0-9]{64}$/);
   const read = path => readFileSync(new URL(path, root));
   assert.deepEqual(verifyRuleLock(lock, read), identity);
@@ -36,7 +37,9 @@ test('only exact reviewed round/roster data passes; cosmetic key/roster order do
 
 test('the retained review registry authorizes the current source mapping without inventing new relationships', () => {
   const registry = loadMappingApprovals();
-  assert.equal(registry.reviews.length, 4);
+  const document = JSON.parse(readFileSync(new URL('../../../data/research/catalog-sale-mappings.json', import.meta.url)));
+  assertApprovedMappings(document, registry);
+  assert.equal(registry.reviews.length, document.mappings.length);
   assert.equal(approvalDigest(registry), approvalDigest({ ...registry, reviews: [...registry.reviews].reverse() }));
   assert.throws(() => assertApprovedMappings({ schemaVersion: 1, mappings: [{ ...mapping, saleId: 'unreviewed-sale' }] }), /Unreviewed/);
 });

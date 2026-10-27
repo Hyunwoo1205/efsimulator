@@ -40,6 +40,39 @@
         "data/research/catalog-sale-mappings.json",
         "docs/WORKPLAN.md#t026--예약-점검-html-중첩-섹션-파서-보완"
       ]
+    },
+    {
+      "saleId": "italian-league-selection-8-oct-26::2026-10",
+      "mappingSha256": "1b96793de4c97fbfe42604e5facd337e12cdd0a376e79cc669f741899bf98d87",
+      "reviewId": "T028-user-request-immediate-mapping-completion",
+      "authority": "user_identity_confirmation_and_complete_cached_html_link_review",
+      "evidenceRefs": [
+        "data/research/catalog-sale-mappings.json",
+        "docs/WORKPLAN.md#t028--사용자-요청에-따른-미확정-세-상품-즉시-확인api-반영",
+        "private catalog-runtime/reviewed-evidence/T028/reviewed-evidence.json SHA256 93398eca3212cafb4d3057775fdc43206eec286f1fc551bd2c8aee8bf3446671"
+      ]
+    },
+    {
+      "saleId": "national-teams-selection-10-sep-26::2026-09",
+      "mappingSha256": "b70ddaae769c8e60f794567d621ffaa64a3a3192eb74c81d4a3d25e7f695f50b",
+      "reviewId": "T028-user-request-immediate-mapping-completion",
+      "authority": "user_identity_confirmation_and_complete_cached_html_link_review",
+      "evidenceRefs": [
+        "data/research/catalog-sale-mappings.json",
+        "docs/WORKPLAN.md#t028--사용자-요청에-따른-미확정-세-상품-즉시-확인api-반영",
+        "private catalog-runtime/reviewed-evidence/T028/reviewed-evidence.json SHA256 93398eca3212cafb4d3057775fdc43206eec286f1fc551bd2c8aee8bf3446671"
+      ]
+    },
+    {
+      "saleId": "trendyol-s-per-lig-selection-15-oct-26::2026-10",
+      "mappingSha256": "96a2e826526c4938a872a9e3d5932d626479e587fcd639bcf3fed92fc786981a",
+      "reviewId": "T028-user-request-immediate-mapping-completion",
+      "authority": "user_identity_confirmation_and_complete_cached_html_link_review",
+      "evidenceRefs": [
+        "data/research/catalog-sale-mappings.json",
+        "docs/WORKPLAN.md#t028--사용자-요청에-따른-미확정-세-상품-즉시-확인api-반영",
+        "private catalog-runtime/reviewed-evidence/T028/reviewed-evidence.json SHA256 e671e76edbac19debd6e58e947dbcfa1ecd3b4986b3cbf060454a90de8f51bf9"
+      ]
     }
   ]
 }

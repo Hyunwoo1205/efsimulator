@@ -1,4 +1,4 @@
-<!-- project-state: {"stage":"R2","previous":"T027","current":"T025","next":"T011"} -->
+<!-- project-state: {"stage":"R2","previous":"T028","current":"T025","next":"T011"} -->
 
 # efsimulator 작업 계획과 이력
 
@@ -6,10 +6,10 @@
 
 ## 현재 작업과 매 작업 갱신
 
-- 이전 작업: T027 — 엄격 검사·증거 재실행·결정적 갱신·규칙 변경 통제 완료.
-- 현재 작업: T025 — 예정. 미확정 3상품 관계와 실제 API Site/D1 검토 배포 검증.
+- 이전 작업: T028 — 미확정 세 상품 전체 카드 ID 검증·7팩70카드 로컬 API 반영 완료.
+- 현재 작업: T025 — 예정. 실제 API Site/D1 검토 배포 검증.
 - 다음 작업: T011 — 검토된 관계·스키마·수입 범위 보완.
-- 현재 조건: raw 47,408선수/1,699팩 보존. 공식7상품 관측 중4팩44카드 가공·live4/archive0 검증, 나머지3 관계 대기. 과거 EFHub HTML403 이후 T026에서 정상HTML200과 기존44카드 관계 재검증, 신규 원본 추가0건. 매시간 점검 예약 활성, 실제 Sites/원격D1 배포 미실행. 작업 기준은 api-server-setup 브랜치와 services/catalog-api.
+- 현재 조건: raw 47,408선수/1,699팩 보존. 공식7상품 전부 연결·가공70카드/live7/archive0·대기0. T028의 근거는 보존된 HTML 추출 전체 링크와 신선한 공식 HTML이며 EFHub origin 재요청/대기 해제 없음. 실제 Sites/원격D1 배포 미실행. 작업 기준은 api-server-setup 브랜치와 services/catalog-api.
 
 매 작업 시작 시 Git 상태·이전 결과·이번/다음 작업·선행 조건을 확인한다. FILE_SYNC의 P0→P1→P2로 관련 파일을 검토하되 필요한 파일은 등급과 무관하게 함께 수정한다. 추가 요구는 ID·영향 단계·선행 조건·순서·상태를 기록한다. 파일별 수정/변경불필요/미해결과 근거, 경로 추가/삭제/이름 변경·참조를 같은 작업에서 갱신한다. 검증과 이전/현재/다음 포인터를 맞추며 구현/수집/발행 완료는 실제 근거가 있을 때만 표시한다.
 
@@ -1172,10 +1172,10 @@ GitHub c849b032의 API21개·Node24.19 빌드는 통과했으나 setup-node의 p
 
 - 단계: R2
 - 상태: 예정
-- 이전: T027
+- 이전: T028
 - 다음: T011
 
-EFHub 정상 HTML 공급을 확인하고 미확정 공식 상품의 정확한 회차/카드 ID 관계를 보완한다. 준비한 API의 새 Sites 등록·D1 원격 수입·서비스 간 인증·비용/백업과 비공개 검토 URL은 실제 실행 근거를 남긴다. 과거 수집 거부를 우회하거나 단일 정상 응답을 상시 공급 보장으로 승격하지 않는다.
+T028에서 당시 미확정 3상품 관계와 전체 카드 ID 반영을 완료했다. 지속적인 정상 HTML 공급과 실제 신규 갱신은 별도 운영 검증이다. 준비한 API의 새 Sites 등록·D1 원격 수입·서비스 간 인증·비용/백업과 비공개 검토 URL은 실제 실행 근거를 남긴다. 과거 수집 거부를 우회하거나 단일 정상 응답을 상시 공급 보장으로 승격하지 않는다.
 
 ### 파일 최신화 검토
 
@@ -1255,3 +1255,49 @@ EFHub 정상 HTML 공급을 확인하고 미확정 공식 상품의 정확한 �
 ### 실제 결과와 한계
 
 API 테스트94/94·전체 npm test409/409·정적 빌드·공개 사본7개 검사·API Sites Worker 빌드 통과. 도구는 Node24.22.1/npm11.9.0으로 저장소 Node24.19.0과 차이가 있으며 원격 CI는 지정 버전으로 검사한다. 실제 새 HTML 수집과 Sites/D1 배포는 수행하지 않았다. 보존 데이터 묶음 version8을 읽고 CURRENT3608fa9의 전체 파일 해시·엄격 형식 검사를 통과했다. 사용자 요청에 따른 최초 규칙 채택으로 원본/가공/로그의 모든 파일 바이트를 유지한 d5dbc688 세대를 만들었고 같은 정책 재채택 changed=false를 확인했다. raw47408/1699·가공44/4·live4/archive0·미확정3상품 상태를 유지한다. 규칙 catalog-rules-1.1.0과 검토 레지스트리는 CURRENT 해시에 결합하며 직접 수정·변조·충돌·누락·다른 UTC/원본 receipt를 거부한다. 무변경 점검은 checks에만 기록하며 기존 manifest/SQL을 덮어쓰지 않는다. 동일 데이터 묶음은 expected_current_version=8 보호로 version9에 저장했다. 매시간 작업의 프롬프트도 고정 run-cycle 실행·증거 재실행·정기 코드/파서/매핑/잠금 수정 금지·미검토 항목 pending으로 갱신했으며 기존 일정/활성 상태를 유지했다. project:check는 관리238파일·28작업·변경28경로를 통과했고 TypeScript 검사도 통과했다. 원격 반영과 CI 결과는 최종 응답에 기록한다.
+
+
+## T028 — 사용자 요청에 따른 미확정 세 상품 즉시 확인·API 반영
+
+- 단계: R2
+- 상태: 완료
+- 이전: T027
+- 다음: T025
+
+사용자의 세 상품 대응 확인 및 “예약 말고 지금 확인 후 API 완성” 지시에 따른 개별 작업이다. 예약 메시지에는 상품명·일회성 상태를 추가하지 않았다. 원격 api-server-setup 6a50df8178db523b6a2e5600ec58d053a6047993과 복원 소스·묶음v13·별도 monitorv3를 확인했다. EFHub origin cooldown 2026-10-27T19:21:46.899884Z는 유지했다.
+
+보존된 HTML 추출 응답에서 Quaresma 4명/Italian 11명/National 11명 모든 링크를 역참조했고, 정확한 26개 문자열 ID·이름·OVR·포지션이 기존 raw와 일치했다. 전체 원본이 있는 카드를 재수집하거나 raw를 수정하지 않았다. 공식 HTML은 2026-10-27T16:14:57.350Z에 정상200·전체7상품을 확인했다. 캐시 응답을 raw HTML/신규origin200으로 표시하지 않았다.
+
+근거 보존→팩/링크/전체 명단 재파싱→승인·근거 해시 바인딩→catalog-rules-1.2.0 검토·채택→같은 receipt 재실행→로컬 발행·반복 검사 순서로 수행했다. 모든 반영 경로에 raw/가공/로그 검사를 유지했다. 정상 new-players에 과거 팩이 없을 경우의 상세 HTML fallback은 제목·날짜·표시 인원·grid 경계를 검증하며 거부/중복 섹션을 우회하지 않는다. 해당 구조 검증은 합성 HTML 회귀이며 이번 origin 실페이지 QA는 하지 않았다.
+
+### 실제 결과와 검증
+
+7팩·70카드/live7/archive0·pending0. raw47,408/1,699와 이전 세대 보존. 새26카드는 모두 기존 raw에 있어 raw 추가0. Quaresma N50/S4/A46, Italian N11/S11/A0, National N11/S11/A0. 실제 발행 SQLite에서 목록/상세/팩별 선수/중첩live/archive HTTP 처리기를 호출해 전부 정상 응답·8필드·연결 인원을 확인했다. 같은 입력·UTC로 재실행하여 changed=false·동일CURRENT·동일발행SQL버전 확인.
+
+API116/116, 전체npm test340/340, TypeScript, APIWorker빌드, 정적빌드와 공개사본7개 검사 통과. 실행환경Node24.22.1/npm11.9.0이며 저장소 기준Node24.19.0과 차이를 기록한다. 실제 Sites/원격D1 배포는 남은 T025이며 이번 완료로 표현하지 않는다.
+
+### 파일 최신화 검토
+
+| 파일 | 결과 | 근거 |
+| --- | --- | --- |
+| `data/research/catalog-sale-mappings.json` | 수정 | T028 전체 명단 검증·캐시 근거 재실행·과거 팩 처리 및 현재 상태 일치 |
+| `docs/CATALOG_DATA_CONTRACT.md` | 수정 | T028 전체 명단 검증·캐시 근거 재실행·과거 팩 처리 및 현재 상태 일치 |
+| `docs/FILE_SYNC.json` | 수정 | T028 전체 명단 검증·캐시 근거 재실행·과거 팩 처리 및 현재 상태 일치 |
+| `docs/ROADMAP.md` | 수정 | T028 전체 명단 검증·캐시 근거 재실행·과거 팩 처리 및 현재 상태 일치 |
+| `docs/WORKPLAN.md` | 수정 | T028 전체 명단 검증·캐시 근거 재실행·과거 팩 처리 및 현재 상태 일치 |
+| `services/catalog-api/README.md` | 수정 | T028 전체 명단 검증·캐시 근거 재실행·과거 팩 처리 및 현재 상태 일치 |
+| `services/catalog-api/policy/approved-mappings.json` | 수정 | T028 전체 명단 검증·캐시 근거 재실행·과거 팩 처리 및 현재 상태 일치 |
+| `services/catalog-api/policy/rules.lock.json` | 수정 | T028 전체 명단 검증·캐시 근거 재실행·과거 팩 처리 및 현재 상태 일치 |
+| `services/catalog-api/scripts/lifecycle/collect-cycle.mjs` | 수정 | T028 전체 명단 검증·캐시 근거 재실행·과거 팩 처리 및 현재 상태 일치 |
+| `services/catalog-api/scripts/lifecycle/collection-receipt.mjs` | 수정 | T028 전체 명단 검증·캐시 근거 재실행·과거 팩 처리 및 현재 상태 일치 |
+| `services/catalog-api/scripts/lifecycle/html-sources.mjs` | 수정 | T028 전체 명단 검증·캐시 근거 재실행·과거 팩 처리 및 현재 상태 일치 |
+| `services/catalog-api/scripts/lifecycle/reviewed-cache.mjs` | 수정 | T028 전체 명단 검증·캐시 근거 재실행·과거 팩 처리 및 현재 상태 일치 |
+| `services/catalog-api/scripts/lifecycle/rules.mjs` | 수정 | T028 전체 명단 검증·캐시 근거 재실행·과거 팩 처리 및 현재 상태 일치 |
+| `services/catalog-api/scripts/lifecycle/run-cycle.mjs` | 수정 | T028 전체 명단 검증·캐시 근거 재실행·과거 팩 처리 및 현재 상태 일치 |
+| `services/catalog-api/tests/pack-detail-fallback.test.mjs` | 수정 | T028 전체 명단 검증·캐시 근거 재실행·과거 팩 처리 및 현재 상태 일치 |
+| `services/catalog-api/tests/reviewed-cache.test.mjs` | 수정 | T028 전체 명단 검증·캐시 근거 재실행·과거 팩 처리 및 현재 상태 일치 |
+| `services/catalog-api/tests/rules.test.mjs` | 수정 | T028 전체 명단 검증·캐시 근거 재실행·과거 팩 처리 및 현재 상태 일치 |
+| `services/catalog-api/lib/catalog-api.mjs` | 검토 결과 변경 불필요 | 기존 조회 계약으로 새7팩70카드 전부 정상응답 |
+| `services/catalog-api/lib/catalog-contract.mjs` | 검토 결과 변경 불필요 | 8필드·raw·팩·로그 엄격 계약 유지 |
+| `services/catalog-api/.openai/hosting.json` | 검토 결과 변경 불필요 | 실제 배포 전이며 가짜프로젝트ID 추가 없음 |
+| `web/app.js` | 검토 결과 변경 불필요 | 이번 요청은 자체API 데이터 완성; 기존 앱 화면과 연결은 후속 |
