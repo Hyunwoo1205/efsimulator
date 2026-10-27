@@ -3,6 +3,9 @@ import { open, readFile, appendFile, mkdir, rename, rm, lstat } from 'node:fs/pr
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createLifecycleState, planRawAppend, reconcileCatalog, validateLifecycleState } from '../../lib/catalog-lifecycle.mjs';
+import { canonical, compareText } from '../../lib/catalog-contract.mjs';
+import { activeRules, loadMappingApprovals, approvalDigest } from './rules.mjs';
+import { replayCollectionReceipt } from './collection-receipt.mjs';
 
 const hash = data => createHash('sha256').update(data).digest('hex');
 const jsonBytes = data => Buffer.from(`${JSON.stringify(data, null, 2)}\n`);
@@ -43,10 +46,23 @@ function validateRaw(players, packs) {
   }
 }
 function entries(files) {
-  return [...files.entries()].sort(([a], [b]) => a.localeCompare(b)).map(([path, bytes]) => ({ path, bytes: bytes.length, sha256: hash(bytes) }));
+  return [...files.entries()].sort(([a], [b]) => compareText(a, b)).map(([path, bytes]) => ({ path, bytes: bytes.length, sha256: hash(bytes) }));
 }
-function versionHash(fileEntries) {
-  return hash(Buffer.from(JSON.stringify(fileEntries)));
+function versionHash(fileEntries, ruleBindings = null) {
+  return hash(Buffer.from(ruleBindings ? canonical({ files: fileEntries, ruleBindings }) : JSON.stringify(fileEntries)));
+}
+const bindingOf = policy => policy ? { rulesIdentity: policy.rulesIdentity, approvalSha256: policy.approvalSha256 } : null;
+async function readPolicy(root, required = false) {
+  if (!await has(join(root, 'RULES.json'))) {
+    if (required) fail('Workspace rules are not pinned; use data:adopt-rules with the expected CURRENT version first');
+    return null;
+  }
+  const policy = JSON.parse(await readFile(join(root, 'RULES.json'), 'utf8'));
+  if (policy.schemaVersion !== 1 || canonical(policy.rulesIdentity) !== canonical(await activeRules()) || policy.approvalSha256 !== approvalDigest(policy.approval)) fail('Workspace rules/review policy changed; explicit reviewed adoption is required');
+  return policy;
+}
+async function makePolicy(approval = loadMappingApprovals()) {
+  return { schemaVersion: 1, rulesIdentity: await activeRules(), approvalSha256: approvalDigest(approval), approval: structuredClone(approval) };
 }
 async function syncedWrite(path, bytes) {
   await mkdir(dirname(path), { recursive: true });
@@ -80,12 +96,14 @@ function generationFiles({ rawPlayerBytes, rawPackBytes, state, sourcePlayerUpda
   if (sourcePlayerUpdateBytes) files.set(SOURCE_PLAYER_UPDATE, sourcePlayerUpdateBytes);
   return files;
 }
-async function publishGeneration({ root, files, state, now, previousVersion = null }) {
+async function publishGeneration({ root, files, state, now, previousVersion = null, policy }) {
   validateLifecycleState(state);
   const fileEntries = entries(files);
-  const version = versionHash(fileEntries);
+  const ruleBindings = bindingOf(policy);
+  const version = versionHash(fileEntries, ruleBindings);
   const manifest = {
     schemaVersion: 1, version, createdAt: now, previousVersion,
+    ...(ruleBindings ? { ruleBindings } : {}),
     files: fileEntries,
     counts: { rawPlayers: readArray(files.get('raw/players_raw.json'), 'raw players').length,
       rawPacks: readArray(files.get('raw/packs_raw.json'), 'raw packs').length,
@@ -146,12 +164,21 @@ async function readGeneration(versionPath, current) {
     files.set(entry.path, bytes);
   }
   if (VERSION_FILES.some(path => !files.has(path))) fail('Incomplete generation file set');
-  if (versionHash(entries(files)) !== current.version) fail('Generation version hash mismatch');
+  if (versionHash(entries(files), manifest.ruleBindings ?? null) !== current.version) fail('Generation version hash mismatch');
   const rawPlayers = readArray(files.get('raw/players_raw.json'), 'raw players');
   const rawPacks = readArray(files.get('raw/packs_raw.json'), 'raw packs');
   validateRaw(rawPlayers, rawPacks);
   const state = JSON.parse(files.get('state.json'));
   validateLifecycleState(state);
+  for (const [kind, records] of [['players', rawPlayers], ['packs', rawPacks]]) {
+    const history = state.rawUpdates[kind];
+    if (!history.length || history[0].action !== 'baseline_import') fail(`Missing ${kind} baseline history`);
+    for (let index = 1; index < history.length; index++) {
+      if (history[index].action !== 'append' || history[index].beforeCount !== history[index - 1].afterCount || history[index].beforeSha256 !== history[index - 1].afterSha256) fail(`Broken ${kind} raw history chain`);
+    }
+    const terminal = history.at(-1);
+    if (terminal.afterCount !== records.length || terminal.afterSha256 !== hash(files.get(`raw/${kind}_raw.json`))) fail(`Raw ${kind} history does not match the preserved file`);
+  }
   const expectedFiles = generationFiles({ rawPlayerBytes: files.get('raw/players_raw.json'), rawPackBytes: files.get('raw/packs_raw.json'), state, sourcePlayerUpdateBytes: files.get(SOURCE_PLAYER_UPDATE) });
   for (const [path, bytes] of expectedFiles) if (!files.get(path).equals(bytes)) fail(`State/materialized file mismatch: ${path}`);
   return { rawPlayers, rawPacks, state, current, versionPath, manifest, files };
@@ -161,7 +188,11 @@ async function loadInternal(root) {
   if ((await lstat(pointerPath)).isSymbolicLink()) fail('CURRENT may not be a symlink');
   const current = JSON.parse(await readFile(pointerPath, 'utf8'));
   if (!/^[a-f0-9]{64}$/.test(current?.version)) fail('Invalid CURRENT version');
-  return await readGeneration(join(root, 'versions', current.version), current);
+  const loaded = await readGeneration(join(root, 'versions', current.version), current);
+  const policy = await readPolicy(root);
+  if (!policy && loaded.manifest.ruleBindings) fail('Workspace rules are not pinned; explicit reviewed adoption is required');
+  if (policy && canonical(bindingOf(policy)) !== canonical(loaded.manifest.ruleBindings ?? null)) fail('Workspace rule policy differs from the CURRENT generation; explicit reviewed adoption is required');
+  return { ...loaded, policy };
 }
 export async function loadWorkspace(root) {
   const { files, ...loaded } = await loadInternal(resolve(root));
@@ -176,7 +207,7 @@ function rawImportRecord(targetFile, bytes, count, now, sourceUpdate) {
   };
 }
 
-export async function initializeWorkspace({ root, playersPath, packsPath, now = new Date().toISOString(), playerUpdatePath = null }) {
+export async function initializeWorkspace({ root, playersPath, packsPath, now = new Date().toISOString(), playerUpdatePath = null, approval }) {
   root = resolve(root);
   if (!validTime(now)) fail('Invalid initialization time');
   now = new Date(now).toISOString();
@@ -189,11 +220,14 @@ export async function initializeWorkspace({ root, playersPath, packsPath, now = 
     validateRaw(rawPlayers, rawPacks);
     if (sourcePlayerUpdateBytes) JSON.parse(sourcePlayerUpdateBytes.toString('utf8'));
     const state = createLifecycleState();
+    const policy = await makePolicy(approval);
     const sourceUpdate = sourcePlayerUpdateBytes ? { targetFile: SOURCE_PLAYER_UPDATE, sha256: hash(sourcePlayerUpdateBytes) } : null;
     state.rawUpdates.players.push(rawImportRecord('raw/players_raw.json', rawPlayerBytes, rawPlayers.length, now, sourceUpdate));
     state.rawUpdates.packs.push(rawImportRecord('raw/packs_raw.json', rawPackBytes, rawPacks.length, now));
     const files = generationFiles({ rawPlayerBytes, rawPackBytes, sourcePlayerUpdateBytes, state });
-    await publishGeneration({ root, files, state, now });
+    if (await has(join(root, 'RULES.json'))) fail('Workspace already has a rule policy; existing data was preserved');
+    await syncedWrite(join(root, 'RULES.json'), jsonBytes(policy));
+    await publishGeneration({ root, files, state, now, policy });
     return await loadWorkspace(root);
   });
 }
@@ -211,16 +245,33 @@ async function appendCheck(root, check) {
 }
 
 /** One locked read -> append -> reconcile -> validated immutable generation. */
-export async function applyCycle({ root, officialObservation = null, candidates = [], pending = [], sources = null, now = new Date().toISOString(), expectedVersion = null }) {
+export async function applyCycle({ root, officialObservation, candidates, pending = [], sources = null, receipt = null, now = new Date().toISOString(), expectedVersion = null }) {
   root = resolve(root);
   if (!validTime(now)) fail('Invalid cycle time');
   now = new Date(now).toISOString();
-  if (!Array.isArray(candidates) || !Array.isArray(pending)) fail('Candidates/pending must be arrays');
+  if (candidates !== undefined && !Array.isArray(candidates) || !Array.isArray(pending)) fail('Candidates/pending must be arrays');
   return await withLock(root, async () => {
     let loaded;
     try {
       loaded = await loadInternal(root);
+      const policy = await readPolicy(root, true);
       if (expectedVersion !== null && expectedVersion !== loaded.current.version) fail('Workspace revision changed; expectedVersion does not match CURRENT');
+      let receiptSha256 = null;
+      if (receipt) {
+        const verified = await replayCollectionReceipt({ receipt, rawPlayers: loaded.rawPlayers, rawPacks: loaded.rawPacks, now, approval: policy.approval, rulesIdentity: policy.rulesIdentity });
+        if (candidates !== undefined && canonical(candidates) !== canonical(verified.candidates)) fail('Caller candidates differ from replayed HTML');
+        if (officialObservation !== undefined && canonical(officialObservation) !== canonical(verified.officialObservation)) fail('Caller official observation differs from replayed HTML');
+        candidates = verified.candidates; officialObservation = verified.officialObservation;
+        pending = verified.pending; sources = verified.sources;
+        const receiptBytes = Buffer.from(canonical(receipt) + '\n'); receiptSha256 = hash(receiptBytes);
+        const receiptPath = join(root, 'receipts', `${receiptSha256}.json`);
+        if (await has(receiptPath)) {
+          if (!(await readFile(receiptPath)).equals(receiptBytes)) fail('Preserved receipt content differs');
+        } else await syncedWrite(receiptPath, receiptBytes);
+      } else if ((candidates?.length ?? 0) > 0 || officialObservation?.status === 'ok') {
+        fail('Verified HTML receipt is required; caller verification flags are not evidence');
+      }
+      candidates ??= []; officialObservation ??= null;
       const knownPacks = new Map(loaded.rawPacks.filter(pack => pack.slug).map(pack => [pack.slug, pack]));
       const enriched = candidates.map(candidate => ({ ...candidate, rawPack: candidate.rawPack ?? knownPacks.get(candidate.packSlug), rawPlayers: candidate.rawPlayers ?? [] }));
       const rawPlan = planRawAppend({ rawPlayers: loaded.rawPlayers, rawPacks: loaded.rawPacks, candidates: enriched, officialObservation, now });
@@ -237,10 +288,11 @@ export async function applyCycle({ root, officialObservation = null, candidates 
         if (rawPlan.addedPlayers.length) result.state.rawUpdates.players.push(appendRawRecord('players', loaded.rawPlayers, rawPlan.rawPlayers, rawPlan.addedPlayers, oldPlayers, newPlayers, now, officialObservation, sources));
         if (rawPlan.addedPacks.length) result.state.rawUpdates.packs.push(appendRawRecord('packs', loaded.rawPacks, rawPlan.rawPacks, rawPlan.addedPacks, oldPacks, newPacks, now, officialObservation, sources));
         const files = generationFiles({ rawPlayerBytes: newPlayers, rawPackBytes: newPacks, state: result.state, sourcePlayerUpdateBytes: loaded.files.get(SOURCE_PLAYER_UPDATE) });
-        current = await publishGeneration({ root, files, state: result.state, now, previousVersion: loaded.current.version });
+        current = await publishGeneration({ root, files, state: result.state, now, previousVersion: loaded.current.version, policy });
       }
       const check = {
         schemaVersion: 1, checkedAt: now, status: changed ? 'changed' : 'no_change',
+        rulesIdentity: policy.rulesIdentity, receiptSha256,
         previousVersion: loaded.current.version, currentVersion: current.version,
         official: { status: officialObservation?.status ?? 'unavailable', complete: officialObservation?.complete ?? false, observedAt: officialObservation?.observedAt ?? null, sha256: officialObservation?.sha256 ?? null, usable: result.officialUsable },
         sources, pending: allPending, transitions: result.transitions,
@@ -257,6 +309,28 @@ export async function applyCycle({ root, officialObservation = null, candidates 
   });
 }
 
+/** An explicit migration of the local rule binding; normal cycles never call it. */
+export async function adoptRules({ root, expectedVersion, reviewId, reason, now = new Date().toISOString() }) {
+  if (!validTime(now) || !/^[a-f0-9]{64}$/.test(expectedVersion ?? '') || !reviewId?.trim() || !reason?.trim()) fail('Rule adoption requires expected version, review ID, reason and valid UTC time');
+  root = resolve(root);
+  return await withLock(root, async () => {
+    const current = JSON.parse(await readFile(join(root, 'CURRENT.json'), 'utf8'));
+    if (current.version !== expectedVersion) fail('Rule adoption CURRENT revision changed');
+    const loaded = await readGeneration(join(root, 'versions', current.version), current);
+    const previous = await has(join(root, 'RULES.json')) ? JSON.parse(await readFile(join(root, 'RULES.json'), 'utf8')) : null;
+    const policy = await makePolicy();
+    if (previous && canonical(previous) === canonical(policy) && canonical(loaded.manifest.ruleBindings ?? null) === canonical(bindingOf(policy))) return { policy, changed: false, current };
+    const temporary = join(root, `.RULES-${randomUUID()}.json`);
+    try {
+      await syncedWrite(temporary, jsonBytes(policy));
+      await appendFile(join(root, 'rule-adoptions.jsonl'), lineBytes([{ at: new Date(now).toISOString(), reviewId, reason, expectedVersion, previous: bindingOf(previous), next: bindingOf(policy) }]), { mode: 0o600 });
+      await rename(temporary, join(root, 'RULES.json')); await syncDirectory(root);
+      const adopted = await publishGeneration({ root, files: loaded.files, state: loaded.state, now: new Date(now).toISOString(), previousVersion: current.version, policy });
+      return { policy, changed: true, current: adopted };
+    } finally { await rm(temporary, { force: true }); }
+  });
+}
+
 async function cli() {
   const [command, ...args] = process.argv.slice(2);
   const values = {};
@@ -265,7 +339,7 @@ async function cli() {
     if (!key.startsWith('--') || !args[index + 1] || own(values, key)) fail('Expected unique --key value options');
     values[key] = args[index + 1];
   }
-  const allowed = command === 'init' ? ['--root', '--players', '--packs', '--now', '--player-update'] : ['--root', '--observation', '--candidates', '--pending', '--sources', '--now', '--expected-version'];
+  const allowed = command === 'init' ? ['--root', '--players', '--packs', '--now', '--player-update'] : command === 'adopt-rules' ? ['--root', '--expected-version', '--review-id', '--reason', '--now'] : ['--root', '--receipt', '--now', '--expected-version'];
   if (Object.keys(values).some(key => !allowed.includes(key))) fail('Unknown option');
   if (!values['--root']) fail('Missing --root');
   let result;
@@ -274,7 +348,10 @@ async function cli() {
     result = await initializeWorkspace({ root: values['--root'], playersPath: values['--players'], packsPath: values['--packs'], playerUpdatePath: values['--player-update'], now: values['--now'] });
   } else if (command === 'apply') {
     const input = async key => values[key] ? JSON.parse(await readFile(resolve(values[key]), 'utf8')) : undefined;
-    result = await applyCycle({ root: values['--root'], officialObservation: await input('--observation'), candidates: await input('--candidates'), pending: await input('--pending'), sources: await input('--sources'), now: values['--now'], expectedVersion: values['--expected-version'] });
+    result = await applyCycle({ root: values['--root'], receipt: await input('--receipt'), now: values['--now'], expectedVersion: values['--expected-version'] });
+  } else if (command === 'adopt-rules') {
+    result = await adoptRules({ root: values['--root'], expectedVersion: values['--expected-version'], reviewId: values['--review-id'], reason: values['--reason'], now: values['--now'] });
+    process.stdout.write(`${JSON.stringify(result)}\n`); return;
   } else fail('Usage: workspace.mjs init|apply --root DIR ...');
   process.stdout.write(`${JSON.stringify({ version: result.current.version, versionPath: result.versionPath, counts: result.manifest.counts, changed: result.changed ?? true, pending: result.pending ?? [] }, null, 2)}\n`);
 }

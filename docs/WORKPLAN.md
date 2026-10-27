@@ -1,4 +1,4 @@
-<!-- project-state: {"stage":"R2","previous":"T023","current":"T024","next":"T025"} -->
+<!-- project-state: {"stage":"R2","previous":"T027","current":"T025","next":"T011"} -->
 
 # efsimulator 작업 계획과 이력
 
@@ -6,9 +6,9 @@
 
 ## 현재 작업과 매 작업 갱신
 
-- 이전 작업: T023 — 독립 API Site용 소스·schema·수입/클라이언트와 업로드 준비 완료.
-- 현재 작업: T024 — 진행 중. HTML 수집·가공·live/archive·로그·매시간 점검 구현·로컬 검증 완료, 원출처 정상 HTML 및 미확정 3상품 관계 대기.
-- 다음 작업: T025 — EFHub 정상 HTML 접근·미확정 3상품 관계와 실제 Sites/D1 검토 배포.
+- 이전 작업: T027 — 엄격 검사·증거 재실행·결정적 갱신·규칙 변경 통제 완료.
+- 현재 작업: T025 — 예정. 미확정 3상품 관계와 실제 API Site/D1 검토 배포 검증.
+- 다음 작업: T011 — 검토된 관계·스키마·수입 범위 보완.
 - 현재 조건: raw 47,408선수/1,699팩 보존. 공식7상품 관측 중4팩44카드 가공·live4/archive0 검증, 나머지3 관계 대기. 과거 EFHub HTML403 이후 T026에서 정상HTML200과 기존44카드 관계 재검증, 신규 원본 추가0건. 매시간 점검 예약 활성, 실제 Sites/원격D1 배포 미실행. 작업 기준은 api-server-setup 브랜치와 services/catalog-api.
 
 매 작업 시작 시 Git 상태·이전 결과·이번/다음 작업·선행 조건을 확인한다. FILE_SYNC의 P0→P1→P2로 관련 파일을 검토하되 필요한 파일은 등급과 무관하게 함께 수정한다. 추가 요구는 ID·영향 단계·선행 조건·순서·상태를 기록한다. 파일별 수정/변경불필요/미해결과 근거, 경로 추가/삭제/이름 변경·참조를 같은 작업에서 갱신한다. 검증과 이전/현재/다음 포인터를 맞추며 구현/수집/발행 완료는 실제 근거가 있을 때만 표시한다.
@@ -48,6 +48,7 @@ C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_B
 | C057 | 가공 선수는 지정 8필드만, 가공 팩은 공식 전체 인원·종료 UTC·특수 선수 ID/이름 연결을 추가. 두 가공 DB는 공식 게재 이력 대상만 누적 | T024. 기존 전체 raw-normalized API를 별도 processed publication으로 대체 | 구현/검증 중 |
 | C058 | live/archive에 팩과 선수의 가공 필드 전체를 중첩. 종료 항목 즉시 이동. 합집합 정합성·변경 파일별 API 로그 필수 | T024. archive thin/24h 대기 이전 제안 대체; 공유 선수는 ID 합집합 중복 제거 | 구현/검증 중 |
 | C059 | 매시간 두 사이트를 확인하고 정상 신규 raw→가공→종료/신규 live→로그 순서로 갱신 | T024. 원출처 장애는 정상 DB 보존; 접근 우회 금지; 예약 작업과 hosted API 운영 구분 | 매시간 예약 활성 확인·EFHub HTML403 기록 |
+| C060 | AI의 임의 판단·형식 변경을 줄이고 동일 입력/규칙/UTC의 반복 결과를 고정 | T027/R2/R5. 공통 엄격 검사→HTML 재실행→검토 매핑 해시/규칙 바인딩→회귀·기존 자료 채택→정기 수정 금지 | 구현·로컬 검증 완료; hosted 미배포 |
 
 
 ## 이전 작업의 현재 해석
@@ -1171,7 +1172,7 @@ GitHub c849b032의 API21개·Node24.19 빌드는 통과했으나 setup-node의 p
 
 - 단계: R2
 - 상태: 예정
-- 이전: T024
+- 이전: T027
 - 다음: T011
 
 EFHub 정상 HTML 공급을 확인하고 미확정 공식 상품의 정확한 회차/카드 ID 관계를 보완한다. 준비한 API의 새 Sites 등록·D1 원격 수입·서비스 간 인증·비용/백업과 비공개 검토 URL은 실제 실행 근거를 남긴다. 과거 수집 거부를 우회하거나 단일 정상 응답을 상시 공급 보장으로 승격하지 않는다.
@@ -1207,3 +1208,50 @@ EFHub 정상 HTML 공급을 확인하고 미확정 공식 상품의 정확한 �
 2026-10-27 02:28 KST 정상 HTML을 읽어 기존4팩·44카드 전체 문자열ID 관계를 재검증했다. 공식7상품 중3은 여전히 매핑 대기다. raw 47,408/1,699 보존, 신규추가0·판매종료0·live4/archive0. processed/packs.json·live.json의 관측 근거와 targetFile 로그만 갱신했다. 이전 세대를 보존하고 CURRENT를 3608fa927ce27566895251ec18ef6d1f30e7daf9e527ef7c9aa9778a3146805b로 전환했다. 해시·참조·8필드·합집합과 같은 관측 재실행 changed=false를 검증했다. 새 발행 SQL은 빈 로컬 SQLite에서 수입·활성 검증했고 hosted에는 적용하지 않았다.
 
 동일 데이터 묶음 libfile_c2f287178cd08191ba0888019e56ee5d를 expected_current_version=0 보호로 version1에 교체했다. API테스트72/72와 project:check(기준6e89eba·변경6경로), API Worker 빌드 통과. 전체 npm test는385통과·시간초과로 자식/부모2실패; 해당 merge-api-pages 사례를 별도 재실행하여12/12통과했다. 전수 실행 전체가 무실패였다고 보고하지 않는다. 실제 Site/D1·main/work 변경 없음.
+
+
+## T027 — 결정적 데이터 계약·HTML 증거 재실행·규칙 변경 통제
+
+- 단계: R2
+- 상태: 완료
+- 이전: T026
+- 다음: T025
+
+선행 조건: 사용자 요청에 따라 반복 실행의 결과 일치와 T026 후 검토에서 확인한 검사·매핑·규칙 변경 경계를 보완한다. 로컬 api-server-setup 476e147과 원격 1829c74의 파일 트리가 동일하고 사용자 변경이 없음을 확인했다. 기존 raw/가공 데이터는 보존하고 새 수집·실제 배포·원격 D1 적재는 수행하지 않는다. 구현 순서는 공통 엄격 검증 → 저장 HTML과 검토 매핑으로 재실행 검증 → 규칙/매핑 해시 고정 및 기존 작업 공간 명시적 채택 → 순서 독립·충돌·변조·재실행 회귀 → 전체 검사·빌드 → API 준비 브랜치 반영이다. 같은 결과의 조건은 동일 기준 DB·HTML/관측 시각·검토 매핑·규칙 버전·기준 UTC이며, 실제 시각 변화에 따른 종료 전이는 정상 변경이다.
+
+### 파일 최신화 검토
+
+| 파일 | 결과 | 근거 |
+| --- | --- | --- |
+| `docs/WORKPLAN.md` | 수정 | T027 범위·선행 조건·검증·진척 기록 |
+| `.github/workflows/catalog-api-check.yml` | 수정 | T027 고정 데이터 계약·증거 재실행·규칙 변경 통제 및 검증 반영 |
+| `AGENTS.md` | 수정 | T027 고정 데이터 계약·증거 재실행·규칙 변경 통제 및 검증 반영 |
+| `docs/CATALOG_DATA_CONTRACT.md` | 수정 | T027 고정 데이터 계약·증거 재실행·규칙 변경 통제 및 검증 반영 |
+| `docs/FILE_SYNC.json` | 수정 | T027 고정 데이터 계약·증거 재실행·규칙 변경 통제 및 검증 반영 |
+| `docs/ROADMAP.md` | 수정 | T027 고정 데이터 계약·증거 재실행·규칙 변경 통제 및 검증 반영 |
+| `package.json` | 수정 | T027 고정 데이터 계약·증거 재실행·규칙 변경 통제 및 검증 반영 |
+| `services/catalog-api/README.md` | 수정 | T027 고정 데이터 계약·증거 재실행·규칙 변경 통제 및 검증 반영 |
+| `services/catalog-api/lib/catalog-contract.mjs` | 수정 | T027 고정 데이터 계약·증거 재실행·규칙 변경 통제 및 검증 반영 |
+| `services/catalog-api/lib/catalog-lifecycle.mjs` | 수정 | T027 고정 데이터 계약·증거 재실행·규칙 변경 통제 및 검증 반영 |
+| `services/catalog-api/package.json` | 수정 | T027 고정 데이터 계약·증거 재실행·규칙 변경 통제 및 검증 반영 |
+| `services/catalog-api/policy/approved-mappings.json` | 수정 | T027 고정 데이터 계약·증거 재실행·규칙 변경 통제 및 검증 반영 |
+| `services/catalog-api/policy/rules.lock.json` | 수정 | T027 고정 데이터 계약·증거 재실행·규칙 변경 통제 및 검증 반영 |
+| `services/catalog-api/scripts/lifecycle/collect-cycle.mjs` | 수정 | T027 고정 데이터 계약·증거 재실행·규칙 변경 통제 및 검증 반영 |
+| `services/catalog-api/scripts/lifecycle/collection-receipt.mjs` | 수정 | T027 고정 데이터 계약·증거 재실행·규칙 변경 통제 및 검증 반영 |
+| `services/catalog-api/scripts/lifecycle/publication.mjs` | 수정 | T027 고정 데이터 계약·증거 재실행·규칙 변경 통제 및 검증 반영 |
+| `services/catalog-api/scripts/lifecycle/rules.mjs` | 수정 | T027 고정 데이터 계약·증거 재실행·규칙 변경 통제 및 검증 반영 |
+| `services/catalog-api/scripts/lifecycle/run-cycle.mjs` | 수정 | T027 고정 데이터 계약·증거 재실행·규칙 변경 통제 및 검증 반영 |
+| `services/catalog-api/scripts/lifecycle/workspace.mjs` | 수정 | T027 고정 데이터 계약·증거 재실행·규칙 변경 통제 및 검증 반영 |
+| `services/catalog-api/tests/catalog-api.test.mjs` | 수정 | T027 고정 데이터 계약·증거 재실행·규칙 변경 통제 및 검증 반영 |
+| `services/catalog-api/tests/catalog-contract.test.mjs` | 수정 | T027 고정 데이터 계약·증거 재실행·규칙 변경 통제 및 검증 반영 |
+| `services/catalog-api/tests/catalog-lifecycle.test.mjs` | 수정 | T027 고정 데이터 계약·증거 재실행·규칙 변경 통제 및 검증 반영 |
+| `services/catalog-api/tests/collect-cycle.test.mjs` | 수정 | T027 고정 데이터 계약·증거 재실행·규칙 변경 통제 및 검증 반영 |
+| `services/catalog-api/tests/collection-receipt.test.mjs` | 수정 | T027 고정 데이터 계약·증거 재실행·규칙 변경 통제 및 검증 반영 |
+| `services/catalog-api/tests/helpers/source-fixture.mjs` | 수정 | T027 고정 데이터 계약·증거 재실행·규칙 변경 통제 및 검증 반영 |
+| `services/catalog-api/tests/lifecycle-workspace.test.mjs` | 수정 | T027 고정 데이터 계약·증거 재실행·규칙 변경 통제 및 검증 반영 |
+| `services/catalog-api/tests/rules.test.mjs` | 수정 | T027 고정 데이터 계약·증거 재실행·규칙 변경 통제 및 검증 반영 |
+| `services/catalog-api/tests/run-cycle.test.mjs` | 수정 | T027 고정 데이터 계약·증거 재실행·규칙 변경 통제 및 검증 반영 |
+
+### 실제 결과와 한계
+
+API 테스트94/94·전체 npm test409/409·정적 빌드·공개 사본7개 검사·API Sites Worker 빌드 통과. 도구는 Node24.22.1/npm11.9.0으로 저장소 Node24.19.0과 차이가 있으며 원격 CI는 지정 버전으로 검사한다. 실제 새 HTML 수집과 Sites/D1 배포는 수행하지 않았다. 보존 데이터 묶음 version8을 읽고 CURRENT3608fa9의 전체 파일 해시·엄격 형식 검사를 통과했다. 사용자 요청에 따른 최초 규칙 채택으로 원본/가공/로그의 모든 파일 바이트를 유지한 d5dbc688 세대를 만들었고 같은 정책 재채택 changed=false를 확인했다. raw47408/1699·가공44/4·live4/archive0·미확정3상품 상태를 유지한다. 규칙 catalog-rules-1.1.0과 검토 레지스트리는 CURRENT 해시에 결합하며 직접 수정·변조·충돌·누락·다른 UTC/원본 receipt를 거부한다. 무변경 점검은 checks에만 기록하며 기존 manifest/SQL을 덮어쓰지 않는다. 동일 데이터 묶음은 expected_current_version=8 보호로 version9에 저장했다. 매시간 작업의 프롬프트도 고정 run-cycle 실행·증거 재실행·정기 코드/파서/매핑/잠금 수정 금지·미검토 항목 pending으로 갱신했으며 기존 일정/활성 상태를 유지했다. project:check는 관리238파일·28작업·변경28경로를 통과했고 TypeScript 검사도 통과했다. 원격 반영과 CI 결과는 최종 응답에 기록한다.

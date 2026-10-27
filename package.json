@@ -21,6 +21,7 @@
     "pages:check": "node scripts/export-pages.mjs --check",
     "dev": "node scripts/build.mjs && node scripts/serve.mjs --dir dist",
     "preview": "node scripts/serve.mjs --dir dist",
-    "data:merge-pages": "node scripts/merge-api-pages.mjs"
+    "data:merge-pages": "node scripts/merge-api-pages.mjs",
+    "catalog:rules-check": "node services/catalog-api/scripts/lifecycle/rules.mjs check"
   }
 }

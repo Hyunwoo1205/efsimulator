@@ -17,7 +17,9 @@
     "data:verify": "node scripts/ingest/apply-local.mjs",
     "source:export": "node scripts/export-source.mjs",
     "data:init": "node scripts/lifecycle/workspace.mjs init",
-    "data:cycle": "node scripts/lifecycle/run-cycle.mjs"
+    "data:cycle": "node scripts/lifecycle/run-cycle.mjs",
+    "data:rules-check": "node scripts/lifecycle/rules.mjs check",
+    "data:adopt-rules": "node scripts/lifecycle/workspace.mjs adopt-rules"
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",

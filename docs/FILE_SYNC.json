@@ -202,7 +202,7 @@
       "update_when": [
         "사용자 요구·작업 절차·검증 명령·제품 및 운영 원칙 변경"
       ],
-      "reviewed_in": "T024"
+      "reviewed_in": "T027"
     },
     {
       "path": "_headers",
@@ -448,7 +448,7 @@
       "update_when": [
         "파일 추가·삭제·이름 변경·역할/의존관계 변경·영향 검토"
       ],
-      "reviewed_in": "T026"
+      "reviewed_in": "T027"
     },
     {
       "path": "docs/ROADMAP.md",
@@ -474,7 +474,7 @@
       "update_when": [
         "단계 상태·현재/이전/다음 작업·완료 조건·추가 요구 변경"
       ],
-      "reviewed_in": "T026"
+      "reviewed_in": "T027"
     },
     {
       "path": "docs/WORKPLAN.md",
@@ -499,7 +499,7 @@
       "update_when": [
         "매 작업 착수·추가 요구·파일 변경·검증 결과·작업 종료"
       ],
-      "reviewed_in": "T026"
+      "reviewed_in": "T027"
     },
     {
       "path": "index.html",
@@ -553,7 +553,7 @@
       "update_when": [
         "의존성·npm 명령·Node/npm 버전·앱 구성 추가"
       ],
-      "reviewed_in": "T022"
+      "reviewed_in": "T027"
     },
     {
       "path": "scripts/audit-cards.mjs",
@@ -1472,7 +1472,7 @@
       "update_when": [
         "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
       ],
-      "reviewed_in": "T023"
+      "reviewed_in": "T027"
     },
     {
       "path": "data/research/api-server-preparation.json",
@@ -1576,7 +1576,7 @@
       "update_when": [
         "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
       ],
-      "reviewed_in": "T024"
+      "reviewed_in": "T027"
     },
     {
       "path": "services/catalog-api/app/api/v1/[[...path]]/route.ts",
@@ -2931,7 +2931,7 @@
       "update_when": [
         "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
       ],
-      "reviewed_in": "T024"
+      "reviewed_in": "T027"
     },
     {
       "path": "services/catalog-api/pnpm-lock.yaml",
@@ -3322,7 +3322,7 @@
       "update_when": [
         "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
       ],
-      "reviewed_in": "T024"
+      "reviewed_in": "T027"
     },
     {
       "path": "services/catalog-api/tests/client.test.mjs",
@@ -3472,7 +3472,7 @@
       "update_when": [
         "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
       ],
-      "reviewed_in": "T026"
+      "reviewed_in": "T027"
     },
     {
       "path": "services/catalog-api/drizzle/0001_api_publications.sql",
@@ -3516,7 +3516,7 @@
       "update_when": [
         "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
       ],
-      "reviewed_in": "T024"
+      "reviewed_in": "T027"
     },
     {
       "path": "services/catalog-api/scripts/lifecycle/collect-cycle.mjs",
@@ -3531,7 +3531,7 @@
       "update_when": [
         "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
       ],
-      "reviewed_in": "T024"
+      "reviewed_in": "T027"
     },
     {
       "path": "services/catalog-api/scripts/lifecycle/html-sources.mjs",
@@ -3561,7 +3561,7 @@
       "update_when": [
         "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
       ],
-      "reviewed_in": "T024"
+      "reviewed_in": "T027"
     },
     {
       "path": "services/catalog-api/scripts/lifecycle/run-cycle.mjs",
@@ -3576,7 +3576,7 @@
       "update_when": [
         "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
       ],
-      "reviewed_in": "T024"
+      "reviewed_in": "T027"
     },
     {
       "path": "services/catalog-api/scripts/lifecycle/workspace.mjs",
@@ -3590,7 +3590,7 @@
       "update_when": [
         "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
       ],
-      "reviewed_in": "T024"
+      "reviewed_in": "T027"
     },
     {
       "path": "services/catalog-api/tests/catalog-lifecycle.test.mjs",
@@ -3605,7 +3605,7 @@
       "update_when": [
         "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
       ],
-      "reviewed_in": "T024"
+      "reviewed_in": "T027"
     },
     {
       "path": "services/catalog-api/tests/collect-cycle.test.mjs",
@@ -3620,7 +3620,7 @@
       "update_when": [
         "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
       ],
-      "reviewed_in": "T024"
+      "reviewed_in": "T027"
     },
     {
       "path": "services/catalog-api/tests/html-sources.test.mjs",
@@ -3650,7 +3650,7 @@
       "update_when": [
         "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
       ],
-      "reviewed_in": "T024"
+      "reviewed_in": "T027"
     },
     {
       "path": "services/catalog-api/tests/publication.test.mjs",
@@ -3680,7 +3680,132 @@
       "update_when": [
         "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
       ],
-      "reviewed_in": "T024"
+      "reviewed_in": "T027"
+    },
+    {
+      "path": "services/catalog-api/lib/catalog-contract.mjs",
+      "role": "T027 결정적 데이터 계약·수집 증거 재실행·규칙/검토 정책 검증",
+      "priority": "P0",
+      "related_paths": [
+        "docs/CATALOG_DATA_CONTRACT.md",
+        "services/catalog-api/scripts/lifecycle/workspace.mjs",
+        "services/catalog-api/policy/rules.lock.json"
+      ],
+      "update_when": [
+        "데이터 형식·가공 규칙·HTML 증거·매핑 검토·반복 실행 계약 변경"
+      ],
+      "reviewed_in": "T027"
+    },
+    {
+      "path": "services/catalog-api/policy/approved-mappings.json",
+      "role": "T027 결정적 데이터 계약·수집 증거 재실행·규칙/검토 정책 검증",
+      "priority": "P0",
+      "related_paths": [
+        "docs/CATALOG_DATA_CONTRACT.md",
+        "services/catalog-api/scripts/lifecycle/workspace.mjs",
+        "services/catalog-api/policy/rules.lock.json"
+      ],
+      "update_when": [
+        "데이터 형식·가공 규칙·HTML 증거·매핑 검토·반복 실행 계약 변경"
+      ],
+      "reviewed_in": "T027"
+    },
+    {
+      "path": "services/catalog-api/policy/rules.lock.json",
+      "role": "T027 결정적 데이터 계약·수집 증거 재실행·규칙/검토 정책 검증",
+      "priority": "P0",
+      "related_paths": [
+        "docs/CATALOG_DATA_CONTRACT.md",
+        "services/catalog-api/scripts/lifecycle/workspace.mjs"
+      ],
+      "update_when": [
+        "데이터 형식·가공 규칙·HTML 증거·매핑 검토·반복 실행 계약 변경"
+      ],
+      "reviewed_in": "T027"
+    },
+    {
+      "path": "services/catalog-api/scripts/lifecycle/collection-receipt.mjs",
+      "role": "T027 결정적 데이터 계약·수집 증거 재실행·규칙/검토 정책 검증",
+      "priority": "P0",
+      "related_paths": [
+        "docs/CATALOG_DATA_CONTRACT.md",
+        "services/catalog-api/scripts/lifecycle/workspace.mjs",
+        "services/catalog-api/policy/rules.lock.json"
+      ],
+      "update_when": [
+        "데이터 형식·가공 규칙·HTML 증거·매핑 검토·반복 실행 계약 변경"
+      ],
+      "reviewed_in": "T027"
+    },
+    {
+      "path": "services/catalog-api/scripts/lifecycle/rules.mjs",
+      "role": "T027 결정적 데이터 계약·수집 증거 재실행·규칙/검토 정책 검증",
+      "priority": "P0",
+      "related_paths": [
+        "docs/CATALOG_DATA_CONTRACT.md",
+        "services/catalog-api/scripts/lifecycle/workspace.mjs",
+        "services/catalog-api/policy/rules.lock.json"
+      ],
+      "update_when": [
+        "데이터 형식·가공 규칙·HTML 증거·매핑 검토·반복 실행 계약 변경"
+      ],
+      "reviewed_in": "T027"
+    },
+    {
+      "path": "services/catalog-api/tests/catalog-contract.test.mjs",
+      "role": "T027 결정적 데이터 계약·수집 증거 재실행·규칙/검토 정책 검증 회귀 테스트",
+      "priority": "P0",
+      "related_paths": [
+        "docs/CATALOG_DATA_CONTRACT.md",
+        "services/catalog-api/scripts/lifecycle/workspace.mjs",
+        "services/catalog-api/policy/rules.lock.json"
+      ],
+      "update_when": [
+        "데이터 형식·가공 규칙·HTML 증거·매핑 검토·반복 실행 계약 변경"
+      ],
+      "reviewed_in": "T027"
+    },
+    {
+      "path": "services/catalog-api/tests/collection-receipt.test.mjs",
+      "role": "T027 결정적 데이터 계약·수집 증거 재실행·규칙/검토 정책 검증 회귀 테스트",
+      "priority": "P0",
+      "related_paths": [
+        "docs/CATALOG_DATA_CONTRACT.md",
+        "services/catalog-api/scripts/lifecycle/workspace.mjs",
+        "services/catalog-api/policy/rules.lock.json"
+      ],
+      "update_when": [
+        "데이터 형식·가공 규칙·HTML 증거·매핑 검토·반복 실행 계약 변경"
+      ],
+      "reviewed_in": "T027"
+    },
+    {
+      "path": "services/catalog-api/tests/helpers/source-fixture.mjs",
+      "role": "T027 결정적 데이터 계약·수집 증거 재실행·규칙/검토 정책 검증 회귀 테스트",
+      "priority": "P0",
+      "related_paths": [
+        "docs/CATALOG_DATA_CONTRACT.md",
+        "services/catalog-api/scripts/lifecycle/workspace.mjs",
+        "services/catalog-api/policy/rules.lock.json"
+      ],
+      "update_when": [
+        "데이터 형식·가공 규칙·HTML 증거·매핑 검토·반복 실행 계약 변경"
+      ],
+      "reviewed_in": "T027"
+    },
+    {
+      "path": "services/catalog-api/tests/rules.test.mjs",
+      "role": "T027 결정적 데이터 계약·수집 증거 재실행·규칙/검토 정책 검증 회귀 테스트",
+      "priority": "P0",
+      "related_paths": [
+        "docs/CATALOG_DATA_CONTRACT.md",
+        "services/catalog-api/scripts/lifecycle/workspace.mjs",
+        "services/catalog-api/policy/rules.lock.json"
+      ],
+      "update_when": [
+        "데이터 형식·가공 규칙·HTML 증거·매핑 검토·반복 실행 계약 변경"
+      ],
+      "reviewed_in": "T027"
     }
   ]
 }

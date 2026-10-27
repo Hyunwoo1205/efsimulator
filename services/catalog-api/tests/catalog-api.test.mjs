@@ -10,7 +10,7 @@ const player = (id, name) => ({ id, name, slug: `player-${id}`, position: 'CF', 
 function state() {
   const players = [player('1', '100% Player'), player('2', "O'Brien"), player('999999999999999999999999999', 'Huge ID Player')];
   const packs = [
-    { saleId: 'sale-1', name: 'Known pack', slug: 'known-pack', date: '2026-10-26', playerCount: 2, sourceReportedPlayerCount: 1, totalPlayerCount: 150, standardPlayerCount: 148, endsAt: '2026-10-29T01:59:59.000Z', officialTitle: 'Official known', members: players.slice(0, 2).map(({ id, name }) => ({ id, name })), countCorrection: { source: 1, effective: 2, status: 'user_confirmed' }, provenance: { official: 'hash1', efhub: 'hash2' } },
+    { saleId: 'sale-1', name: 'Known pack', slug: 'known-pack', date: '2026-10-26', playerCount: 2, sourceReportedPlayerCount: 1, totalPlayerCount: 150, standardPlayerCount: 148, endsAt: '2026-10-29T01:59:59.000Z', officialTitle: 'Official known', members: players.slice(0, 2).map(({ id, name }) => ({ id, name })), countCorrection: { source: 1, effective: 2, status: 'user_confirmed', reason: 'Synthetic reviewed source count discrepancy' }, provenance: { official: 'hash1', efhub: 'hash2' } },
     { saleId: 'sale-2', name: 'Expired pack', slug: 'expired-pack', date: '2026-10-22', playerCount: 1, sourceReportedPlayerCount: 1, totalPlayerCount: 11, standardPlayerCount: 10, endsAt: '2026-10-26T01:59:59.000Z', officialTitle: 'Official expired', members: players.slice(2).map(({ id, name }) => ({ id, name })), countCorrection: null, provenance: { official: 'hash3', efhub: 'hash4' } },
   ];
   return { players, packs, active: packs.map(pack => ({ ...pack, players: pack.members.map(member => players.find(item => item.id === member.id)) })), archive: [] };

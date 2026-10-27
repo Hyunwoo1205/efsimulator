@@ -7,6 +7,16 @@ import { createHash } from 'node:crypto';
 import { collectCycle } from './collect-cycle.mjs';
 import { loadWorkspace, applyCycle } from './workspace.mjs';
 import { generatePublication, assertPublicationRows } from './publication.mjs';
+import { canonical } from '../../lib/catalog-contract.mjs';
+import { assertApprovedMappings } from './rules.mjs';
+
+async function writeImmutable(path, bytes) {
+  try { await writeFile(path, bytes, { flag: 'wx' }); }
+  catch (error) {
+    if (error.code !== 'EEXIST') throw error;
+    if (!(await readFile(path)).equals(Buffer.from(bytes))) throw new Error(`Immutable publication file differs: ${path}`);
+  }
+}
 
 /** Offline/local only. Hosted D1 imports require the authenticated Sites path. */
 export async function preparePublication({ state, out, dbPath, now = new Date().toISOString() }) {
@@ -26,16 +36,32 @@ export async function preparePublication({ state, out, dbPath, now = new Date().
     expectedVersionId = db.prepare("SELECT version_id FROM api_current WHERE singleton='current'").get()?.version_id ?? null;
   }
   try {
-    const bundle = generatePublication({ state, createdAt: now, expectedVersionId });
+    let bundle = generatePublication({ state, createdAt: now, expectedVersionId });
     const folder = join(out, bundle.versionId);
+    let existingManifest;
+    try { existingManifest = JSON.parse(await readFile(join(folder, 'manifest.json'), 'utf8')); }
+    catch (error) { if (error.code !== 'ENOENT') throw error; }
+    if (existingManifest) {
+      if (existingManifest.version_id !== bundle.versionId || canonical(existingManifest.counts) !== canonical(bundle.manifest.counts) || existingManifest.scope !== bundle.manifest.scope) throw new Error('Existing publication manifest differs from verified content');
+      // Observation-only replays retain the first export timestamp and bytes.
+      bundle = generatePublication({ state, createdAt: existingManifest.created_at, expectedVersionId });
+    }
     await mkdir(join(folder, 'sql'), { recursive: true });
     for (const chunk of bundle.sqlChunks) {
       if (createHash('sha256').update(chunk.sql).digest('hex') !== chunk.sha256) throw new Error('Publication chunk checksum mismatch');
-      await writeFile(join(folder, 'sql', chunk.name), chunk.sql);
+      await writeImmutable(join(folder, 'sql', chunk.name), chunk.sql);
     }
-    await writeFile(join(folder, 'activate.sql'), bundle.activateSql);
-    await writeFile(join(folder, 'manifest.json'), JSON.stringify({ ...bundle.manifest, expected_version_id: expectedVersionId,
-      chunks: bundle.sqlChunks.map(({ sql: _sql, ...metadata }) => metadata) }, null, 2) + '\n');
+    const manifest = { ...bundle.manifest, expected_version_id: existingManifest ? existingManifest.expected_version_id : expectedVersionId,
+      chunks: bundle.sqlChunks.map(({ sql: _sql, ...metadata }) => metadata) };
+    if (existingManifest && canonical(existingManifest) !== canonical(manifest)) throw new Error('Immutable publication manifest differs');
+    await writeImmutable(join(folder, 'manifest.json'), JSON.stringify(manifest, null, 2) + '\n');
+    const firstActivation = generatePublication({ state, createdAt: manifest.created_at, expectedVersionId: manifest.expected_version_id });
+    await writeImmutable(join(folder, 'activate.sql'), firstActivation.activateSql);
+    // Activation leases can differ while content is identical; keep each lease
+    // separately instead of overwriting the immutable version's first export.
+    await mkdir(join(folder, 'activations'), { recursive: true });
+    const activationFile = join(folder, 'activations', `${createHash('sha256').update(bundle.activateSql).digest('hex')}.sql`);
+    await writeImmutable(activationFile, bundle.activateSql);
     if (db) {
       for (const chunk of bundle.sqlChunks) {
         db.exec('BEGIN IMMEDIATE');
@@ -50,17 +76,19 @@ export async function preparePublication({ state, out, dbPath, now = new Date().
         db.exec('COMMIT');
       } catch (error) { db.exec('ROLLBACK'); throw error; }
     }
-    return { versionId: bundle.versionId, counts: bundle.manifest.counts, folder, locallyActivated: Boolean(db), hostedActivated: false };
+    return { versionId: bundle.versionId, counts: bundle.manifest.counts, folder, activationFile, locallyActivated: Boolean(db), hostedActivated: false };
   } finally { db?.close(); }
 }
 
 export async function runCycle({ root, mappingsPath, publicationOut = join(root, 'publications'), dbPath, fetchHtml, now = new Date().toISOString() }) {
   const before = await loadWorkspace(root);
   const mappingFile = JSON.parse(await readFile(mappingsPath, 'utf8'));
-  const mappings = Array.isArray(mappingFile) ? mappingFile : mappingFile.mappings;
-  const source = await collectCycle({ mappings, rawPlayers: before.rawPlayers, rawPacks: before.rawPacks, fetchHtml, now: () => new Date(now) });
+  if (!before.policy?.approval || !before.policy?.rulesIdentity) throw new Error('Workspace has no pinned rules/mapping policy; explicitly adopt the reviewed policy before a cycle');
+  assertApprovedMappings(mappingFile, before.policy.approval);
+  const mappings = mappingFile.mappings;
+  const source = await collectCycle({ mappings, mappingsDocument: mappingFile, rulesIdentity: before.policy.rulesIdentity, rawPlayers: before.rawPlayers, rawPacks: before.rawPacks, fetchHtml, now: () => new Date(now) });
   const applied = await applyCycle({ root, candidates: source.candidates, officialObservation: source.officialObservation,
-    pending: source.pending, sources: source.sources, now, expectedVersion: before.current.version });
+    pending: source.pending, sources: source.sources, receipt: source.receipt, now, expectedVersion: before.current.version });
   const publication = await preparePublication({ state: applied.state, out: publicationOut, dbPath, now });
   return { checkedAt: now, changed: applied.changed, pending: applied.pending, sources: source.sources,
     requestCount: source.requestCount, publication, runtimeVersion: applied.current.version };

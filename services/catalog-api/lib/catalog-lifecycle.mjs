@@ -2,16 +2,13 @@
  * Pure application catalogue reconciliation. Raw JSON is never queried by the
  * HTTP API: it is input to this materialization step only.
  */
-export const PLAYER_FIELDS = Object.freeze(['id', 'name', 'slug', 'position', 'overallRating', 'playingStyle', 'playingStyleDefensive', 'imageUrl']);
+import { PLAYER_FIELDS, PROCESSED_PACK_FIELDS, assertRawPlayer, assertRawPack, assertProcessedPack, assertApiUpdateLog, assertRawUpdateLog, canonical as canonicalJson, compareText } from './catalog-contract.mjs';
+export { PLAYER_FIELDS } from './catalog-contract.mjs';
 export const CATALOG_FILES = Object.freeze({ players: 'processed/players.json', packs: 'processed/packs.json', active: 'live.json', archive: 'archive.json' });
 const own = (value, key) => Object.prototype.hasOwnProperty.call(value, key);
 const object = value => value !== null && typeof value === 'object' && !Array.isArray(value);
 const copy = value => structuredClone(value);
-const canonical = value => JSON.stringify(sorted(value));
-function sorted(value) {
-  if (Array.isArray(value)) return value.map(sorted);
-  return object(value) ? Object.fromEntries(Object.keys(value).sort().map(key => [key, sorted(value[key])])) : value;
-}
+const canonical = canonicalJson;
 const same = (left, right) => canonical(left) === canonical(right);
 const nonempty = value => typeof value === 'string' && value.trim() !== '';
 const integer = value => Number.isSafeInteger(value) && value >= 0;
@@ -98,9 +95,9 @@ function processedPack(candidate, raw, observation) {
     standardPlayerCount: candidate.totalPlayerCount - candidate.expectedSpecialCount,
     endsAt: new Date(candidate.endsAt).toISOString(), officialTitle: candidate.officialTitle,
     members: [],
-    countCorrection: raw.playerCount === candidate.expectedSpecialCount ? null : copy(candidate.countCorrection),
+    countCorrection: raw.playerCount === candidate.expectedSpecialCount ? null : JSON.parse(canonical(candidate.countCorrection)),
     provenance: {
-      ...copy(candidate.evidence),
+      ...JSON.parse(canonical(candidate.evidence)),
       official: {
         url: observation.url ?? 'https://efootball-web.konami.net/probability_kr.php',
         observedAt: observation.observedAt, sha256: observation.sha256 ?? null,
@@ -129,6 +126,7 @@ export function validateLifecycleState(state) {
     if (!same(projectPlayer(player), player)) fail(`Invalid processed player: ${id}`);
   }
   for (const [id, pack] of packs) {
+    assertProcessedPack(pack);
     if (!timestamp(pack.endsAt) || !integer(pack.totalPlayerCount) || !integer(pack.playerCount) || pack.playerCount > pack.totalPlayerCount || pack.standardPlayerCount !== pack.totalPlayerCount - pack.playerCount || !Array.isArray(pack.members) || pack.members.length !== pack.playerCount) fail(`Invalid processed pack: ${id}`);
     const ids = new Set();
     for (const member of pack.members) {
@@ -137,23 +135,27 @@ export function validateLifecycleState(state) {
     }
     if (active.has(id) === archive.has(id)) fail(`Pack must occur in exactly one of live/archive: ${id}`);
     const embedded = active.get(id) ?? archive.get(id);
+    const nestedKeys = [...PROCESSED_PACK_FIELDS, 'players', ...(archive.has(id) ? ['archivedAt', 'archiveReason'] : [])].sort(compareText);
+    if (!same(Object.keys(embedded).sort(compareText), nestedKeys)) fail(`Unexpected embedded pack fields: ${id}`);
     const { players: nestedPlayers, archivedAt, archiveReason, ...embeddedPack } = embedded;
     if (!same(embeddedPack, pack) || !same(nestedPlayers, pack.members.map(member => players.get(member.id)))) fail(`Incomplete embedded pack: ${id}`);
-    if (archive.has(id) && (!timestamp(archivedAt) || !nonempty(archiveReason))) fail(`Missing archive transition: ${id}`);
+    if (archive.has(id) && (!timestamp(archivedAt) || !['ended', 'official_removed'].includes(archiveReason))) fail(`Missing archive transition: ${id}`);
   }
   if (active.size + archive.size !== packs.size || [...active.keys(), ...archive.keys()].some(id => !packs.has(id))) fail('Unknown live/archive pack');
   if (referenced.size !== players.size) fail('Processed players include orphan records');
   for (const key of ['updates', 'observations']) if (!Array.isArray(state[key])) fail(`Invalid ${key}`);
   if (!object(state.rawUpdates) || !Array.isArray(state.rawUpdates.players) || !Array.isArray(state.rawUpdates.packs)) fail('Invalid raw update history');
+  state.updates.forEach(assertApiUpdateLog);
+  for (const kind of ['players', 'packs']) state.rawUpdates[kind].forEach(record => assertRawUpdateLog(record, kind));
   return { packs: packs.size, players: players.size, active: active.size, archive: archive.size, orphanPlayers: 0 };
 }
 
 function fileChange(before, after, key, targetFile, at, observation, transitions) {
   const oldMap = indexUnique(before, key, targetFile);
   const newMap = indexUnique(after, key, targetFile);
-  const added = [...newMap.keys()].filter(id => !oldMap.has(id));
-  const updated = [...newMap.keys()].filter(id => oldMap.has(id) && !same(oldMap.get(id), newMap.get(id)));
-  const removed = [...oldMap.keys()].filter(id => !newMap.has(id));
+  const added = [...newMap.keys()].filter(id => !oldMap.has(id)).sort(compareText);
+  const updated = [...newMap.keys()].filter(id => oldMap.has(id) && !same(oldMap.get(id), newMap.get(id))).sort(compareText);
+  const removed = [...oldMap.keys()].filter(id => !newMap.has(id)).sort(compareText);
   if (!added.length && !updated.length && !removed.length) return null;
   const event = {
     at, targetFile, action: 'reconcile', added, updated, removed,
@@ -186,10 +188,9 @@ export function reconcileCatalog({ state = createLifecycleState(), rawPlayers, r
   const health = officialHealth(officialObservation, clock, maxAgeMs);
   const pending = [];
   const accepted = [];
-  const candidateCounts = new Map();
-  for (const candidate of candidates) if (object(candidate) && nonempty(candidate.saleId)) candidateCounts.set(candidate.saleId, (candidateCounts.get(candidate.saleId) ?? 0) + 1);
-  for (const candidate of candidates) {
-    const reason = candidateCounts.get(candidate?.saleId) > 1 ? 'duplicate_sale_candidates' : candidateProblem(candidate, officialObservation, health, playerRaw, packRaw);
+  const conflicts = candidateConflicts(candidates);
+  for (const candidate of orderedCandidates(candidates)) {
+    const reason = conflicts.get(candidate) ?? candidateProblem(candidate, officialObservation, health, playerRaw, packRaw);
     if (reason) { pending.push({ saleId: candidate?.saleId ?? null, packSlug: candidate?.packSlug ?? null, reason }); continue; }
     if (Date.parse(candidate.endsAt) <= clock && !packMap.has(candidate.saleId)) {
       pending.push({ saleId: candidate.saleId, packSlug: candidate.packSlug, reason: 'new_product_already_ended' }); continue;
@@ -202,7 +203,7 @@ export function reconcileCatalog({ state = createLifecycleState(), rawPlayers, r
       pending.push({ saleId: candidate.saleId, packSlug: candidate.packSlug, reason: 'cumulative_membership_removal_requires_review' }); continue;
     }
     const pack = processedPack(candidate, packRaw.get(candidate.packSlug), officialObservation);
-    for (const id of candidate.memberIds) {
+    for (const id of [...candidate.memberIds].sort(compareText)) {
       const player = projectPlayer(playerRaw.get(id));
       playerMap.set(id, player);
       pack.members.push({ id, name: player.name });
@@ -219,8 +220,8 @@ export function reconcileCatalog({ state = createLifecycleState(), rawPlayers, r
     if (!same(pack.members, members)) packMap.set(id, { ...pack, members });
   }
   const ownedPlayerIds = new Set([...packMap.values()].flatMap(pack => pack.members.map(member => member.id)));
-  next.players = [...playerMap.values()].filter(player => ownedPlayerIds.has(player.id));
-  next.packs = [...packMap.values()];
+  next.players = [...playerMap.values()].filter(player => ownedPlayerIds.has(player.id)).sort((a, b) => compareText(a.id, b.id));
+  next.packs = [...packMap.values()].sort((a, b) => compareText(a.saleId, b.saleId));
   next.active = []; next.archive = [];
   const transitions = [];
   const officialRows = health.usable ? officialObservation.rows : [];
@@ -260,14 +261,47 @@ export function reconcileCatalog({ state = createLifecycleState(), rawPlayers, r
   return { state: next, changes, pending, accepted, transitions, invariants, officialUsable: health.usable, sourceStatus: health.reason };
 }
 
-/** Plan append-only raw growth; existing raw entries are never overwritten. */
+/** Duplicate identities and conflicting source payloads reject every involved
+ * candidate, independent of input iteration order. */
+function candidateConflicts(candidates) {
+  const bad = new Map();
+  const groups = key => {
+    const map = new Map();
+    for (const candidate of candidates) if (object(candidate) && nonempty(candidate[key])) {
+      const list = map.get(candidate[key]) ?? []; list.push(candidate); map.set(candidate[key], list);
+    }
+    return map;
+  };
+  for (const [key, reason] of [['saleId', 'duplicate_sale_candidates'], ['packSlug', 'duplicate_pack_candidates']]) {
+    for (const group of groups(key).values()) if (group.length > 1) for (const candidate of group) bad.set(candidate, reason);
+  }
+  const payloads = new Map();
+  for (const candidate of candidates) if (Array.isArray(candidate?.rawPlayers)) for (const player of candidate.rawPlayers) {
+    if (!object(player) || typeof player.id !== 'string') continue;
+    const group = payloads.get(player.id) ?? []; group.push({ candidate, player }); payloads.set(player.id, group);
+  }
+  for (const [id, group] of [...payloads].sort(([a], [b]) => compareText(a, b))) {
+    try { if (new Set(group.map(item => canonical(item.player))).size > 1) for (const item of group) bad.set(item.candidate, `raw_player_conflict:${id}`); }
+    catch { for (const item of group) bad.set(item.candidate, `invalid_raw_player:${id}`); }
+  }
+  return bad;
+}
+function orderedCandidates(candidates) {
+  return [...candidates].sort((a, b) => compareText(a?.saleId ?? '', b?.saleId ?? '') || compareText(a?.packSlug ?? '', b?.packSlug ?? ''));
+}
+
+/** Plan append-only raw growth; existing raw entries and order are preserved. */
 export function planRawAppend({ rawPlayers, rawPacks, candidates = [], officialObservation, now = new Date().toISOString(), maxAgeMs = 2 * 60 * 60 * 1000 }) {
+  if (!Array.isArray(candidates) || !timestamp(now) || !integer(maxAgeMs)) fail('Invalid raw append inputs');
   const players = copy(rawPlayers); const packs = copy(rawPacks);
   const playerMap = indexUnique(players, 'id', 'raw players');
   const packMap = indexUnique(packs.filter(pack => nonempty(pack?.slug) && pack.slug !== 'dummy'), 'slug', 'raw packs');
   const health = officialHealth(officialObservation, Date.parse(now), maxAgeMs);
   const pending = []; const addedPlayers = []; const addedPacks = [];
-  for (const candidate of candidates) {
+  const conflicts = candidateConflicts(candidates);
+  for (const candidate of orderedCandidates(candidates)) {
+    const identityProblem = conflicts.get(candidate);
+    if (identityProblem) { pending.push({ packSlug: candidate?.packSlug ?? null, reason: identityProblem }); continue; }
     if (!health.usable || candidate?.matchVerified !== true || matchingOfficial(candidate, officialObservation).length !== 1) {
       pending.push({ packSlug: candidate?.packSlug ?? null, reason: health.reason ?? 'cross_source_match_unverified' }); continue;
     }
@@ -277,17 +311,24 @@ export function planRawAppend({ rawPlayers, rawPacks, candidates = [], officialO
     }
     const testPlayers = new Map(playerMap); const testPacks = new Map(packMap);
     let problem = null;
+    const suppliedIds = new Set();
     for (const player of suppliedPlayers) {
-      try { projectPlayer(player); } catch (error) { problem = error.message; break; }
+      try { assertRawPlayer(player); } catch (error) { problem = error.message; break; }
+      if (suppliedIds.has(player.id)) { problem = 'duplicate_raw_player_payload'; break; }
+      if (!candidate.memberIds?.includes(player.id)) { problem = 'unlinked_raw_player_payload'; break; }
+      suppliedIds.add(player.id);
       if (testPlayers.has(player.id) && !same(testPlayers.get(player.id), player)) { problem = `raw_player_conflict:${player.id}`; break; }
       testPlayers.set(player.id, player);
     }
+    try { assertRawPack(candidate.rawPack); } catch (error) { problem ??= error.message; }
     if (testPacks.has(candidate.packSlug) && !same(testPacks.get(candidate.packSlug), candidate.rawPack)) problem = 'raw_pack_conflict';
     testPacks.set(candidate.packSlug, candidate.rawPack);
     problem ??= candidateProblem(candidate, officialObservation, health, testPlayers, testPacks);
     if (problem) { pending.push({ packSlug: candidate.packSlug, reason: problem }); continue; }
-    for (const player of suppliedPlayers) if (!playerMap.has(player.id)) { const record = copy(player); players.push(record); playerMap.set(player.id, record); addedPlayers.push(record); }
-    if (!packMap.has(candidate.packSlug)) { const pack = copy(candidate.rawPack); packs.push(pack); packMap.set(pack.slug, pack); addedPacks.push(pack); }
+    for (const player of suppliedPlayers) if (!playerMap.has(player.id)) { const record = JSON.parse(canonical(player)); playerMap.set(player.id, record); addedPlayers.push(record); }
+    if (!packMap.has(candidate.packSlug)) { const pack = JSON.parse(canonical(candidate.rawPack)); packMap.set(pack.slug, pack); addedPacks.push(pack); }
   }
+  addedPlayers.sort((a, b) => compareText(a.id, b.id)); addedPacks.sort((a, b) => compareText(a.slug, b.slug));
+  players.push(...addedPlayers); packs.push(...addedPacks);
   return { rawPlayers: players, rawPacks: packs, addedPlayers, addedPacks, pending };
 }

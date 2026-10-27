@@ -5,7 +5,7 @@ import { CATALOG_FILES, PLAYER_FIELDS, createLifecycleState, planRawAppend, proj
 const NOW = '2026-10-27T01:00:00.000Z';
 const END = '2026-11-02T01:59:59.000Z';
 const card = (id, values = {}) => ({
-  id, name: `Player ${id}`, nameJa: 'unneeded', nameZh: 'unneeded', slug: `player-${id}`, position: 'CF',
+  id, name: `Player ${id}`, nameJa: 'unneeded', nameZh: 'unneeded', nationality: '', nationalityCode: '', team: '', slug: `player-${id}`, position: 'CF',
   overallRating: 85, imageUrl: `https://example.com/card/${id}.png`, playerType: 5,
   ...values,
 });

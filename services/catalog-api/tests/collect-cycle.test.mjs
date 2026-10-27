@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { collectCycle } from '../scripts/lifecycle/collect-cycle.mjs';
 
+const RULES = { version: 'synthetic-collector-test', sha256: 'a'.repeat(64) };
 const NOW = new Date('2026-10-27T00:00:00Z');
 const document = body => `<html><head></head><body>${body}</body></html>`;
 const flight = value => `<script>self.__next_f.push(${JSON.stringify([1, `a:${JSON.stringify(value)}\n`])})</script>`;
@@ -27,7 +28,7 @@ const pages = (efhub, titles = ['Official A']) => ({ 'https://efootball-web.kona
 
 test('collector preserves fresh official rows but produces no candidates after one EFHub denial', async () => {
   const f = fetcher(pages(Object.assign(new Error('Forbidden'), { code: 'source_denied', status: 403 })));
-  const result = await collectCycle({ mappings: [mapping()], rawPlayers: [], rawPacks: [], fetchHtml: f.fetchHtml, now: () => NOW });
+  const result = await collectCycle({ rulesIdentity: RULES, mappings: [mapping()], rawPlayers: [], rawPacks: [], fetchHtml: f.fetchHtml, now: () => NOW });
   assert.equal(result.officialObservation.status, 'ok');
   assert.equal(result.officialObservation.rows.length, 1);
   assert.deepEqual(result.candidates, []);
@@ -38,7 +39,7 @@ test('collector preserves fresh official rows but produces no candidates after o
 
 test('reviewed existing raw membership needs only the two HTML checks and appends no raw objects', async () => {
   const f = fetcher(pages(newPlayers([['Section A', ['001']]])));
-  const result = await collectCycle({ mappings: [mapping({ memberIds: ['001'] })], rawPlayers: [player('001')], rawPacks: [pack()], fetchHtml: f.fetchHtml, now: () => NOW });
+  const result = await collectCycle({ rulesIdentity: RULES, mappings: [mapping({ memberIds: ['001'] })], rawPlayers: [player('001')], rawPacks: [pack()], fetchHtml: f.fetchHtml, now: () => NOW });
   assert.equal(result.candidates.length, 1);
   assert.deepEqual(result.candidates[0].memberIds, ['001']);
   assert.deepEqual(result.candidates[0].rawPlayers, []);
@@ -52,7 +53,7 @@ test('reviewed existing raw membership needs only the two HTML checks and append
 test('new-player original fields can come from section HTML without API or detail requests', async () => {
   const original = player('12345678901234567890');
   const f = fetcher(pages(newPlayers([['Section A', [original.id]]], [{ player: original }])));
-  const result = await collectCycle({ mappings: [mapping()], rawPlayers: [], rawPacks: [pack()], fetchHtml: f.fetchHtml, now: () => NOW });
+  const result = await collectCycle({ rulesIdentity: RULES, mappings: [mapping()], rawPlayers: [], rawPacks: [pack()], fetchHtml: f.fetchHtml, now: () => NOW });
   assert.deepEqual(result.candidates[0].rawPlayers, [original]);
   assert.equal(f.calls.length, 2);
 });
@@ -60,7 +61,7 @@ test('new-player original fields can come from section HTML without API or detai
 test('missing card fields are collected only from its linked ordinary detail HTML', async () => {
   const original = player('001');
   const f = fetcher({ ...pages(newPlayers([['Section A', ['001']]])), 'https://efhub.com/players/001': document(`<h1>Player 001</h1>${flight({ player: original })}`) });
-  const result = await collectCycle({ mappings: [mapping()], rawPlayers: [], rawPacks: [pack()], fetchHtml: f.fetchHtml, now: () => NOW });
+  const result = await collectCycle({ rulesIdentity: RULES, mappings: [mapping()], rawPlayers: [], rawPacks: [pack()], fetchHtml: f.fetchHtml, now: () => NOW });
   assert.deepEqual(result.candidates[0].rawPlayers, [original]);
   assert.equal(f.calls.length, 3);
   assert.equal(f.calls.at(-1), 'https://efhub.com/players/001');
@@ -70,7 +71,7 @@ test('new pack requires canonical four-field metadata and explicit section membe
   const original = player('001');
   const sourcePack = pack();
   const f = fetcher({ ...pages(newPlayers([['Section A', ['001']]])), 'https://efhub.com/packs/pack-a': document(`<section><h1>Pack A</h1><div class="grid">${anchor('001')}</div></section>${flight([{ pack: sourcePack }, { player: original }])}`) });
-  const result = await collectCycle({ mappings: [mapping()], rawPlayers: [], rawPacks: [], fetchHtml: f.fetchHtml, now: () => NOW });
+  const result = await collectCycle({ rulesIdentity: RULES, mappings: [mapping()], rawPlayers: [], rawPacks: [], fetchHtml: f.fetchHtml, now: () => NOW });
   assert.deepEqual(result.candidates[0].rawPack, sourcePack);
   assert.deepEqual(result.candidates[0].rawPlayers, [original]);
   assert.equal(f.calls.length, 3);
@@ -79,27 +80,28 @@ test('new pack requires canonical four-field metadata and explicit section membe
 test('partial raw fields and new unreviewed membership never become append candidates', async () => {
   const { nameJa: _nameJa, ...incomplete } = player('001');
   const f = fetcher(pages(newPlayers([['Section A', ['001']]], [{ player: incomplete }])));
-  const result = await collectCycle({ mappings: [mapping()], rawPlayers: [], rawPacks: [pack()], fetchHtml: f.fetchHtml, now: () => NOW });
+  const result = await collectCycle({ rulesIdentity: RULES, mappings: [mapping()], rawPlayers: [], rawPacks: [pack()], fetchHtml: f.fetchHtml, now: () => NOW });
   assert.deepEqual(result.candidates, []);
-  assert.equal(result.pending.at(-1).reason, 'incomplete_raw_player_shape');
+  assert.equal(result.pending.at(-1).reason, 'collection_candidate_invalid');
+  assert.match(result.pending.at(-1).message, /raw player|nameJa|fields|Raw player/i);
   const f2 = fetcher(pages(newPlayers([['Section A', ['001']]])));
-  const changed = await collectCycle({ mappings: [mapping({ memberIds: ['002'] })], rawPlayers: [player('001')], rawPacks: [pack()], fetchHtml: f2.fetchHtml, now: () => NOW });
+  const changed = await collectCycle({ rulesIdentity: RULES, mappings: [mapping({ memberIds: ['002'] })], rawPlayers: [player('001')], rawPacks: [pack()], fetchHtml: f2.fetchHtml, now: () => NOW });
   assert.equal(changed.pending.at(-1).reason, 'reviewed_membership_changed');
 });
 
 test('reported special-count corrections require explicit user confirmation and preserve the raw count', async () => {
   const f = fetcher(pages(newPlayers([['Section A', ['001', '002']]])));
-  const result = await collectCycle({ mappings: [mapping({ countCorrection: { effectiveCount: 2, userConfirmed: true } })], rawPlayers: [player('001'), player('002')], rawPacks: [pack()], fetchHtml: f.fetchHtml, now: () => NOW });
+  const result = await collectCycle({ rulesIdentity: RULES, mappings: [mapping({ countCorrection: { effectiveCount: 2, userConfirmed: true } })], rawPlayers: [player('001'), player('002')], rawPacks: [pack()], fetchHtml: f.fetchHtml, now: () => NOW });
   assert.equal(result.candidates[0].specialCount, 2);
   const f2 = fetcher(pages(newPlayers([['Section A', ['001', '002']]])));
-  const rejected = await collectCycle({ mappings: [mapping({ countCorrection: { effectiveCount: 2 } })], rawPlayers: [player('001'), player('002')], rawPacks: [pack()], fetchHtml: f2.fetchHtml, now: () => NOW });
+  const rejected = await collectCycle({ rulesIdentity: RULES, mappings: [mapping({ countCorrection: { effectiveCount: 2 } })], rawPlayers: [player('001'), player('002')], rawPacks: [pack()], fetchHtml: f2.fetchHtml, now: () => NOW });
   assert.equal(rejected.candidates.length, 0);
   assert.equal(rejected.pending.at(-1).reason, 'unconfirmed_count_correction');
 });
 
 test('unmapped official products and changed rounds stay pending rather than fuzzy matching', async () => {
   const f = fetcher(pages(newPlayers([['Section A', ['001']]]), ['Official A', 'Unreviewed B']));
-  const result = await collectCycle({ mappings: [mapping({ expectedEndsAt: '2026-11-03T01:59:59Z' })], rawPlayers: [player('001')], rawPacks: [pack()], fetchHtml: f.fetchHtml, now: () => NOW });
+  const result = await collectCycle({ rulesIdentity: RULES, mappings: [mapping({ expectedEndsAt: '2026-11-03T01:59:59Z' })], rawPlayers: [player('001')], rawPacks: [pack()], fetchHtml: f.fetchHtml, now: () => NOW });
   assert.equal(result.candidates.length, 0);
   assert.ok(result.pending.some(item => item.reason === 'unmapped_official_product'));
   assert.ok(result.pending.some(item => item.reason === 'official_round_guard_mismatch'));
@@ -107,7 +109,7 @@ test('unmapped official products and changed rounds stay pending rather than fuz
 
 test('request budget is enforced before fetching another detail', async () => {
   const f = fetcher({ ...pages(newPlayers([['Section A', ['001', '002']]])), 'https://efhub.com/players/001': document(`<h1>Player 001</h1>${flight({ player: player('001') })}`) });
-  const result = await collectCycle({ mappings: [mapping()], rawPlayers: [], rawPacks: [pack('pack-a', 2)], fetchHtml: f.fetchHtml, now: () => NOW, maxRequests: 3 });
+  const result = await collectCycle({ rulesIdentity: RULES, mappings: [mapping()], rawPlayers: [], rawPacks: [pack('pack-a', 2)], fetchHtml: f.fetchHtml, now: () => NOW, maxRequests: 3 });
   assert.equal(result.candidates.length, 0);
   assert.equal(result.pending.at(-1).reason, 'request_budget_exhausted');
   assert.equal(f.calls.length, 3);
@@ -115,9 +117,50 @@ test('request budget is enforced before fetching another detail', async () => {
 
 test('a denied detail stops all further EFHub requests and withholds earlier candidates', async () => {
   const f = fetcher({ ...pages(newPlayers([['Section A', ['001']], ['Section B', ['002']]]), ['Official A', 'Official B']), 'https://efhub.com/players/002': Object.assign(new Error('Forbidden'), { code: 'source_denied', status: 403 }) });
-  const result = await collectCycle({ mappings: [mapping(), mapping({ saleId: 'sale-b', officialTitle: 'Official B', packSlug: 'pack-b', newPlayersSection: 'Section B' }), mapping({ saleId: 'sale-c', officialTitle: 'Official B', packSlug: 'pack-c', newPlayersSection: 'Section B' })], rawPlayers: [player('001')], rawPacks: [pack(), pack('pack-b'), pack('pack-c')], fetchHtml: f.fetchHtml, now: () => NOW });
+  const result = await collectCycle({ rulesIdentity: RULES, mappings: [mapping(), mapping({ saleId: 'sale-b', officialTitle: 'Official B', packSlug: 'pack-b', newPlayersSection: 'Section B' }), mapping({ saleId: 'sale-c', officialTitle: 'Official B', packSlug: 'pack-c', newPlayersSection: 'Section B' })], rawPlayers: [player('001')], rawPacks: [pack(), pack('pack-b'), pack('pack-c')], fetchHtml: f.fetchHtml, now: () => NOW });
   assert.equal(result.candidates.length, 0);
   assert.equal(f.calls.length, 3);
   assert.ok(result.pending.some(item => item.saleId === 'sale-a' && item.reason === 'efhub_cycle_blocked'));
   assert.ok(result.pending.some(item => item.saleId === 'sale-c' && item.reason === 'efhub_cycle_blocked'));
+});
+
+test('mapping and roster permutation produce identical request order and append candidates', async () => {
+  const player1 = player('001'); const player2 = player('002');
+  const html = newPlayers([['Section A', ['002', '001']], ['Section B', ['003']]], [{ player: player1 }, { player: player2 }, { player: player('003') }]);
+  const mapA = mapping({ memberIds: ['002', '001'] });
+  const mapB = mapping({ saleId: 'sale-b', officialTitle: 'Official B', packSlug: 'pack-b', newPlayersSection: 'Section B', memberIds: ['003'] });
+  const one = fetcher(pages(html, ['Official A', 'Official B']));
+  const two = fetcher(pages(html, ['Official A', 'Official B']));
+  const args = { rulesIdentity: RULES, rawPlayers: [], rawPacks: [pack('pack-a', 2), pack('pack-b')], now: () => NOW };
+  const a = await collectCycle({ ...args, mappings: [mapB, mapA], fetchHtml: one.fetchHtml });
+  const b = await collectCycle({ ...args, mappings: [mapA, { ...mapB, memberIds: [...mapB.memberIds].reverse() }], fetchHtml: two.fetchHtml });
+  assert.deepEqual(a.candidates, b.candidates);
+  assert.deepEqual(one.calls, two.calls);
+  assert.deepEqual(a.candidates[0].memberIds, ['001', '002']);
+});
+
+test('existing card names or observed complete source fields cannot silently conflict with preserved raw', async () => {
+  const changed = { ...player('001'), overallRating: 99 };
+  const f = fetcher(pages(newPlayers([['Section A', ['001']]], [{ player: changed }])));
+  const result = await collectCycle({ rulesIdentity: RULES, mappings: [mapping()], rawPlayers: [player('001')], rawPacks: [pack()], fetchHtml: f.fetchHtml, now: () => NOW });
+  assert.deepEqual(result.candidates, []);
+  assert.equal(result.pending.at(-1).reason, 'existing_raw_player_conflict');
+});
+
+test('one failed detail URL is requested once even when multiple approved products share the card', async () => {
+  const failure = Object.assign(new Error('Temporary source failure'), { code: 'source_http_error', status: 500, observed_at: '2026-10-27T09:00:00+09:00' });
+  const f = fetcher({ ...pages(newPlayers([['Section A', ['001']], ['Section B', ['001']]]), ['Official A', 'Official B']), 'https://efhub.com/players/001': failure });
+  const result = await collectCycle({ rulesIdentity: RULES, mappings: [mapping(), mapping({ saleId: 'sale-b', officialTitle: 'Official B', packSlug: 'pack-b', newPlayersSection: 'Section B' })], rawPlayers: [], rawPacks: [pack(), pack('pack-b')], fetchHtml: f.fetchHtml, now: () => NOW });
+  assert.equal(f.calls.filter(url => url.endsWith('/players/001')).length, 1);
+  assert.equal(result.requestCount, 3);
+  assert.deepEqual(result.candidates, []);
+  assert.equal(result.receipt.requests.at(-1).error.observed_at, NOW.toISOString());
+  assert.equal(result.sources.at(-1).observed_at, NOW.toISOString());
+});
+
+test('complete newly observed pack metadata cannot silently conflict with an existing raw pack', async () => {
+  const f = fetcher(pages(newPlayers([['Section A', ['001']]], [{ pack: { ...pack(), date: '2026-10-27' } }])));
+  const result = await collectCycle({ rulesIdentity: RULES, mappings: [mapping()], rawPlayers: [player('001')], rawPacks: [pack()], fetchHtml: f.fetchHtml, now: () => NOW });
+  assert.deepEqual(result.candidates, []);
+  assert.equal(result.pending.at(-1).reason, 'raw_pack_conflict');
 });

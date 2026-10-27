@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "version": "catalog-rules-1.1.0",
+  "reviewId": "T027-user-request-deterministic-processing",
+  "files": [
+    {
+      "path": "lib/catalog-contract.mjs",
+      "sha256": "925f379adcf067b972ac83fa3f272b4ede53e6e58a3e27e031d5754c89640dd1"
+    },
+    {
+      "path": "lib/catalog-lifecycle.mjs",
+      "sha256": "c89590e2ef94eefc363fac2efd2f391e4284302be16cb4859e799f5a760c0936"
+    },
+    {
+      "path": "lib/catalog-api.mjs",
+      "sha256": "73667828cc74d1114c686885a858b97a611948a26cd98b1e24d37040009744e1"
+    },
+    {
+      "path": "scripts/lifecycle/rules.mjs",
+      "sha256": "23cc9a73ebd0f743c24d0bfb9a50641b3dc5232d277758f931bbd747bb8357a9"
+    },
+    {
+      "path": "scripts/lifecycle/collect-cycle.mjs",
+      "sha256": "93798c0b0c9e57ce7af5fbb7859a7e972c19922ae1815f61f3486f8e8ec69394"
+    },
+    {
+      "path": "scripts/lifecycle/collection-receipt.mjs",
+      "sha256": "a04fe33541a3403b0fdc536fd0f7ce43b7d67fd6cd140fb526d5ce789663cd0f"
+    },
+    {
+      "path": "scripts/lifecycle/html-sources.mjs",
+      "sha256": "720ff9590c568f722696ebee0680f53d6255e5e193a1d8c1520fa8c21a5545dc"
+    },
+    {
+      "path": "scripts/lifecycle/workspace.mjs",
+      "sha256": "3ffb5010cd27bc4c7522fe688c8dcf58d39be95f7691f227fb01b25f99655c9b"
+    },
+    {
+      "path": "scripts/lifecycle/run-cycle.mjs",
+      "sha256": "3ff824c687b180e26b056f282ed95dc4883b95a4a48a813081de08f9b14a9cad"
+    },
+    {
+      "path": "scripts/lifecycle/publication.mjs",
+      "sha256": "a4bd1974d886e343270fcdbdb6edc5a97c7cf4ba95dfbcc6bef53cd3f3e67c26"
+    },
+    {
+      "path": "policy/approved-mappings.json",
+      "sha256": "f386eb2e755a3193ad3b5e7bb71a1dafe3a60b1e6b098a9d9b948f7718453a73"
+    }
+  ]
+}

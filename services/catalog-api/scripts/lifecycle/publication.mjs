@@ -1,14 +1,10 @@
 import { createHash } from 'node:crypto';
+import { assertProcessedPack, assertProcessedPlayer, PROCESSED_PACK_FIELDS, canonical, compareText } from '../../lib/catalog-contract.mjs';
+export { canonical } from '../../lib/catalog-contract.mjs';
 
 export const PLAYER_FIELDS = ['id', 'name', 'slug', 'position', 'overallRating', 'playingStyle', 'playingStyleDefensive', 'imageUrl'];
 const KINDS = ['player', 'pack', 'live', 'archive'];
 const hash = value => createHash('sha256').update(value).digest('hex');
-export function canonical(value) {
-  if (Array.isArray(value)) return `[${value.map(canonical).join(',')}]`;
-  if (value && typeof value === 'object') return `{${Object.keys(value).sort().map(key => `${JSON.stringify(key)}:${canonical(value[key])}`).join(',')}}`;
-  if (value === undefined) throw new Error('Undefined values are not valid publication data');
-  return JSON.stringify(value);
-}
 const literal = value => `'${String(value).replaceAll("'", "''")}'`;
 const requireValue = (value, message) => { if (!value) throw new Error(message); };
 const uniqueMap = (values, key, label) => {
@@ -32,14 +28,18 @@ export function assertPublicationState(state) {
   for (const player of players.values()) {
     requireValue(/^\d+$/.test(player.id), 'Player IDs must remain decimal strings');
     requireValue(Object.keys(player).sort().join(',') === [...PLAYER_FIELDS].sort().join(','), 'Processed players must contain exactly the eight public fields');
-    requireValue(typeof player.name === 'string' && player.name, 'Player name is required');
+    assertProcessedPlayer(player);
   }
   requireValue(live.size + archive.size === packs.size, 'Live and archive must partition processed packs');
   const linked = new Set();
   for (const [saleId, pack] of packs) {
+    assertProcessedPack(pack);
     requireValue(!(live.has(saleId) && archive.has(saleId)), 'A sale cannot occur in both live and archive');
     const entry = live.get(saleId) ?? archive.get(saleId);
     requireValue(entry, 'A processed pack is missing from live/archive');
+    const expectedFields = [...PROCESSED_PACK_FIELDS, 'players', ...(archive.has(saleId) ? ['archivedAt', 'archiveReason'] : [])].sort(compareText);
+    requireValue(canonical(Object.keys(entry).sort(compareText)) === canonical(expectedFields), 'Nested pack fields differ from expected contract');
+    if (archive.has(saleId)) requireValue(typeof entry.archivedAt === 'string' && /(?:Z|[+-]\d{2}:\d{2})$/.test(entry.archivedAt) && Number.isFinite(Date.parse(entry.archivedAt)) && ['ended', 'official_removed'].includes(entry.archiveReason), 'Invalid archive transition metadata');
     requireValue(Number.isFinite(Date.parse(pack.endsAt)) && /(?:Z|\+00:00)$/.test(pack.endsAt), 'Pack endsAt must be explicit UTC');
     requireValue(Number.isSafeInteger(pack.totalPlayerCount) && pack.totalPlayerCount >= 0, 'Invalid total player count');
     requireValue(Array.isArray(pack.members), 'Pack members must be an array');
@@ -69,7 +69,7 @@ export function generatePublication({ state, createdAt = new Date().toISOString(
   const maps = assertPublicationState(state);
   const records = [];
   for (const [kind, map] of [['player', maps.players], ['pack', maps.packs], ['live', maps.live], ['archive', maps.archive]]) {
-    for (const [key, payload] of [...map].sort(([a], [b]) => a.localeCompare(b))) records.push({ kind, key, payload });
+    for (const [key, payload] of [...map].sort(([a], [b]) => compareText(a, b))) records.push({ kind, key, payload });
   }
   const versionId = hash(canonical({ schemaVersion: 2, records }));
   const counts = Object.fromEntries(KINDS.map(kind => [kind, records.filter(row => row.kind === kind).length]));
@@ -102,7 +102,7 @@ export function generatePublication({ state, createdAt = new Date().toISOString(
 /** Call after uploading SQL chunks and before activation, using rows read from the DB. */
 export function assertPublicationRows(rows, bundle) {
   const actual = rows.map(row => ({ kind: row.kind, key: row.record_key, payload: JSON.parse(row.payload_json) }))
-    .sort((a, b) => KINDS.indexOf(a.kind) - KINDS.indexOf(b.kind) || a.key.localeCompare(b.key));
+    .sort((a, b) => KINDS.indexOf(a.kind) - KINDS.indexOf(b.kind) || compareText(a.key, b.key));
   requireValue(canonical(actual) === canonical(bundle.records), 'Uploaded publication rows do not match the verified bundle');
   requireValue(hash(canonical({ schemaVersion: 2, records: actual })) === bundle.versionId, 'Publication version checksum mismatch');
 }

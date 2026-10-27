@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "reviews": [
+    {
+      "saleId": "potw-22-oct-26::2026-10",
+      "mappingSha256": "a717106933897dec101f6f2037185418e1ef40428ad454573ff27a67437bd600",
+      "reviewId": "T027-retained-T024-T026-evidence",
+      "authority": "existing_verified_mapping_and_user_count_correction",
+      "evidenceRefs": [
+        "data/research/catalog-sale-mappings.json",
+        "docs/WORKPLAN.md#t026--예약-점검-html-중첩-섹션-파서-보완"
+      ]
+    },
+    {
+      "saleId": "potw-european-club-championship-22-oct-26::2026-10",
+      "mappingSha256": "409adcaa0ce91c1adfc056e4f1f0ae535555d105f364758d1722821ba367ebd2",
+      "reviewId": "T027-retained-T024-T026-evidence",
+      "authority": "existing_verified_mapping_and_user_count_correction",
+      "evidenceRefs": [
+        "data/research/catalog-sale-mappings.json",
+        "docs/WORKPLAN.md#t026--예약-점검-html-중첩-섹션-파서-보완"
+      ]
+    },
+    {
+      "saleId": "magical-dribblers-22-oct-26::2026-10",
+      "mappingSha256": "6d6f7cc41a534f34e4bd4bd628cb97973399ed908d371dc285021b038c68254e",
+      "reviewId": "T027-retained-T024-T026-evidence",
+      "authority": "existing_verified_mapping_and_user_count_correction",
+      "evidenceRefs": [
+        "data/research/catalog-sale-mappings.json",
+        "docs/WORKPLAN.md#t026--예약-점검-html-중첩-섹션-파서-보완"
+      ]
+    },
+    {
+      "saleId": "italian-league-selection-attackers-26-oct-26::2026-10",
+      "mappingSha256": "94a67f5cbb4674db174f60936ee737f52aa24ad0ce83a84fd54a204046d52333",
+      "reviewId": "T027-retained-T024-T026-evidence",
+      "authority": "existing_verified_mapping_and_user_count_correction",
+      "evidenceRefs": [
+        "data/research/catalog-sale-mappings.json",
+        "docs/WORKPLAN.md#t026--예약-점검-html-중첩-섹션-파서-보완"
+      ]
+    }
+  ]
+}

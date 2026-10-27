@@ -7,6 +7,7 @@ import { DatabaseSync } from 'node:sqlite';
 import { initializeWorkspace, loadWorkspace } from '../scripts/lifecycle/workspace.mjs';
 import { runCycle } from '../scripts/lifecycle/run-cycle.mjs';
 import { handleCatalogRequest } from '../lib/catalog-api.mjs';
+import { fixtureApproval } from './helpers/source-fixture.mjs';
 
 const NOW = '2026-10-27T00:00:00.000Z';
 const END = '2026-11-02T01:59:59.000Z';
@@ -32,8 +33,9 @@ async function fixture(t) {
   const mappingsPath = join(temporary, 'mappings.json'); const dbPath = join(temporary, 'api.sqlite');
   await writeFile(playersPath, JSON.stringify([baselinePlayer]) + '\n');
   await writeFile(packsPath, JSON.stringify([baselinePack]) + '\n');
-  await writeFile(mappingsPath, JSON.stringify({ mappings: [{ saleId: 'new-pack-round-20261026', officialTitle: 'Official New Pack', packSlug: 'new-pack', newPlayersSection: 'New Section', expectedEndsAt: END, expectedTotalPlayerCount: 150, expectedSpecialCount: 1, matchEvidence: { reviewed: 'same round and explicit source IDs' } }] }));
-  const initial = await initializeWorkspace({ root, playersPath, packsPath, now: NOW });
+  const mappingsDocument = { schemaVersion: 1, mappings: [{ saleId: 'new-pack-round-20261026', officialTitle: 'Official New Pack', packSlug: 'new-pack', newPlayersSection: 'New Section', expectedEndsAt: END, expectedTotalPlayerCount: 150, expectedSpecialCount: 1, memberIds: [ID], matchEvidence: { reviewed: 'same round and explicit source IDs' } }] };
+  await writeFile(mappingsPath, JSON.stringify(mappingsDocument));
+  const initial = await initializeWorkspace({ root, playersPath, packsPath, now: NOW, approval: fixtureApproval(mappingsDocument.mappings) });
   return { temporary, root, mappingsPath, dbPath, baselinePlayer, baselinePack, initial };
 }
 
@@ -121,12 +123,19 @@ test('unchanged hourly HTML checks replay without duplicate raw records, logs or
   const f = await fixture(t);
   const first = await runCycle({ ...f, fetchHtml: htmlFetch(NOW).fetchHtml, now: NOW });
   const afterFirst = await loadWorkspace(f.root);
+  const manifestBefore = await readFile(join(first.publication.folder, 'manifest.json'));
+  const sqlBefore = await readFile(join(first.publication.folder, 'sql', '0000.sql'));
+  const activationBefore = await readFile(join(first.publication.folder, 'activate.sql'));
   const later = '2026-10-27T01:00:00.000Z'; const source = htmlFetch(later);
   const replay = await runCycle({ ...f, fetchHtml: source.fetchHtml, now: later });
   const afterReplay = await loadWorkspace(f.root);
   assert.equal(replay.changed, false); assert.equal(replay.runtimeVersion, first.runtimeVersion);
   assert.equal(replay.publication.versionId, first.publication.versionId);
   assert.equal(afterReplay.state.updates.length, afterFirst.state.updates.length);
+  assert.deepEqual(await readFile(join(replay.publication.folder, 'manifest.json')), manifestBefore);
+  assert.deepEqual(await readFile(join(replay.publication.folder, 'sql', '0000.sql')), sqlBefore);
+  assert.deepEqual(await readFile(join(replay.publication.folder, 'activate.sql')), activationBefore);
+  assert.equal(typeof replay.publication.activationFile, 'string');
   assert.equal(afterReplay.state.rawUpdates.players.length, 2); assert.equal(afterReplay.state.rawUpdates.packs.length, 2);
   assert.deepEqual(afterReplay.rawPlayers, afterFirst.rawPlayers);
   assert.deepEqual(afterReplay.rawPacks, afterFirst.rawPacks);

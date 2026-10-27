@@ -98,3 +98,18 @@ const pack = await api.pack('italian-league-selection-attackers-26-oct-26');
 별도 앱 origin을 `CORS_ALLOWED_ORIGINS`에 정확히 등록한다. wildcard를 허용하지 않는다. CORS는 Sites의 private 접근 인증을 대체하지 않는다. private API와 앱을 연결할 때는 앱 서버에서 지원되는 Site service credential로 호출하고 그 credential을 브라우저·Git에 노출하지 않는다. 클라이언트의 기본 fetch는 credential을 보내지 않으므로 서버 호출 adapter 또는 검증된 공개 읽기 정책이 필요하다. 로그인 HTML이 돌아오면 API JSON으로 오인하지 않고 오류로 처리한다.
 
 상위 프로젝트의 현재 작업·검증 결과는 [API_SERVER_PREPARATION](https://github.com/Hyunwoo1205/efsimulator/blob/api-server-setup/docs/API_SERVER_PREPARATION.md)을 따른다.
+
+
+## 반복 실행 규칙 (T027)
+
+`npm run data:rules-check`로 검토 규칙과 해시를 확인한 다음 `data:cycle`을 실행한다. 같은 기준 세대·저장 HTML·매핑·규칙·UTC에는 같은 가공 결과와 콘텐츠 버전이 나온다. 원본의 모든 필드와 가공 팩/로그도 공통 엄격 검증을 적용하며 불명확한 입력은 기존 정상 데이터를 유지한다.
+
+정기 작업은 파서/스키마/코드/테스트/매핑/검토 레지스트리/규칙 잠금을 수정하지 않는다. 신규 상품은 등록된 정확한 회차·전체 ID 근거가 없으면 pending이다. 데이터는 AI가 직접 편집하지 않고 HTML receipt의 오프라인 재실행을 통과한 결과만 반영한다.
+
+기존 묶음 최초 채택 또는 별도 승인된 규칙 변경 후에는 현재 CURRENT 해시를 읽고 다음 명령을 사용한다. 일반 실행은 자동 채택하거나 잠금을 다시 만들지 않는다.
+
+```bash
+npm run data:adopt-rules -- --root /absolute/catalog-runtime --expected-version CURRENT_SHA256 --review-id REVIEW_ID --reason REVIEW_REASON --now UTC_ISO
+```
+
+채택은 raw/가공/로그 바이트를 보존하고 검토 정책에 바인딩한 세대와 감사 기록을 만든다. 전체 계약과 예외 처리는 저장소 docs/CATALOG_DATA_CONTRACT.md를 따른다.
