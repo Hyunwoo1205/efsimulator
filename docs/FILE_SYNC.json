@@ -4364,6 +4364,21 @@
         "원격 publication·인증·조회 앱 동작 또는 공식 Sites 빌드/배포 계약 변경"
       ],
       "reviewed_in": "T025"
+    },
+    {
+      "path": "data/research/sites-deployment-T025.json",
+      "role": "T025 실제 비공개 Site·소스/배포/가공 데이터 버전·원격 복구·앱 relay·자동화 경로의 비밀값 없는 검증 근거",
+      "priority": "P1",
+      "related_paths": [
+        "docs/WORKPLAN.md",
+        "docs/DEPLOYMENT.md",
+        "services/catalog-api/.openai/hosting.json",
+        "services/catalog-view/.openai/hosting.json"
+      ],
+      "update_when": [
+        "실제 API/조회 앱 배포·원격 데이터 버전·복구·자동 실행 검증 결과 변경"
+      ],
+      "reviewed_in": "T025"
     }
   ]
 }

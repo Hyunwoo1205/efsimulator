@@ -1,0 +1,201 @@
+{
+  "schemaVersion": 1,
+  "taskId": "T025",
+  "status": "private_review_deployment_verified_public_review_pending",
+  "observedAt": "2026-10-27T17:12:24.648Z",
+  "source": {
+    "repository": "Hyunwoo1205/efsimulator",
+    "branch": "api-server-setup",
+    "apiSourceRoot": "services/catalog-api",
+    "viewSourceRoot": "services/catalog-view",
+    "initialRemoteCommit": "2d6f9adf5c63e47d8eeaf304c5e4456a27a779fc",
+    "initialLocalCommit": "735c625d8c28ded18587e36942e8e59b9f2377cf",
+    "initialMatchingTree": "8bff8c45c78da78aac906bc36a1a166c4b169edc",
+    "initialDeploymentCodeUploadCommit": "a59695233ba720b8278a711b2b3f4adf17cc96a2"
+  },
+  "api": {
+    "projectId": "appgprj_6ae0d51638b481918f7767684a3cf38b",
+    "url": "https://efsimulator-catalog-api.hyunw09.chatgpt.site",
+    "audience": "owner_private",
+    "sourceCommit": "6aabc41ac9e484ba6bd8575c47ec13a0c4b6ba3d",
+    "versionId": "appgprj_6ae0d51638b481918f7767684a3cf38b~appgver_6f5e71ac0ae88191a7da77f0d3b9638e",
+    "deploymentId": "appgdep_6ae0d68b4ed48191bb022a9c25805582",
+    "deploymentStatus": "succeeded",
+    "environmentRevision": 1,
+    "d1SchemaTableCount": 8,
+    "rawDataImported": false,
+    "publicationVersion": "c8cbaa7783d2889870347cf1509d3dc3141c41f76db81245c8aadf236e3dd854",
+    "counts": {
+      "player": 70,
+      "pack": 7,
+      "live": 7,
+      "archive": 0
+    },
+    "fullRemoteRowsAndHashMatched": true,
+    "ready": true
+  },
+  "publicationVerification": {
+    "at": "2026-10-27T16:58:00.531Z",
+    "initialVersion": "c8cbaa7783d2889870347cf1509d3dc3141c41f76db81245c8aadf236e3dd854",
+    "partialActivationRejected": true,
+    "rollbackToRetained": {
+      "operation": "rollback",
+      "versionId": "9ef9cbe3580c192aa259fe1535c90d6072c470b8c0d74593291e9cc7a747bb5c",
+      "previousVersionId": "c8cbaa7783d2889870347cf1509d3dc3141c41f76db81245c8aadf236e3dd854",
+      "changed": true,
+      "counts": {
+        "player": 44,
+        "pack": 4,
+        "live": 4,
+        "archive": 0
+      },
+      "verified": true
+    },
+    "restoreLatest": {
+      "operation": "rollback",
+      "versionId": "c8cbaa7783d2889870347cf1509d3dc3141c41f76db81245c8aadf236e3dd854",
+      "previousVersionId": "9ef9cbe3580c192aa259fe1535c90d6072c470b8c0d74593291e9cc7a747bb5c",
+      "changed": true,
+      "counts": {
+        "player": 70,
+        "pack": 7,
+        "live": 7,
+        "archive": 0
+      },
+      "verified": true
+    },
+    "staleActivationRejected": true,
+    "replay": {
+      "operation": "publish",
+      "versionId": "c8cbaa7783d2889870347cf1509d3dc3141c41f76db81245c8aadf236e3dd854",
+      "previousVersionId": "c8cbaa7783d2889870347cf1509d3dc3141c41f76db81245c8aadf236e3dd854",
+      "changed": false,
+      "counts": {
+        "player": 70,
+        "pack": 7,
+        "live": 7,
+        "archive": 0
+      },
+      "verified": true
+    },
+    "apiRead": {
+      "live": {
+        "count": 7,
+        "snapshot": "c8cbaa7783d2889870347cf1509d3dc3141c41f76db81245c8aadf236e3dd854"
+      },
+      "archive": {
+        "count": 0,
+        "snapshot": "c8cbaa7783d2889870347cf1509d3dc3141c41f76db81245c8aadf236e3dd854"
+      },
+      "packs/italian-league-selection-8-oct-26%3A%3A2026-10/cards": {
+        "count": 11,
+        "snapshot": "c8cbaa7783d2889870347cf1509d3dc3141c41f76db81245c8aadf236e3dd854"
+      }
+    }
+  },
+  "view": {
+    "projectId": "appgprj_6ae0d64b624c8191b6266b96d48111f3",
+    "url": "https://efsimulator-catalog.hyunw09.chatgpt.site",
+    "audience": "owner_private",
+    "sourceCommit": "0301c0fe037972d5c0d4b5071fa2965876205aea",
+    "versionId": "appgprj_6ae0d64b624c8191b6266b96d48111f3~appgver_2095eae35a3c8191bcf0cf4997c70a4d",
+    "deploymentId": "appgdep_6ae0db6702648191b2c4373b7daffe17",
+    "deploymentStatus": "succeeded",
+    "environmentRevision": 1,
+    "relayVerification": {
+      "at": "2026-10-27T17:12:24.648Z",
+      "reads": [
+        {
+          "path": "/api/v1/health",
+          "status": 200,
+          "count": null,
+          "version": "c8cbaa7783d2889870347cf1509d3dc3141c41f76db81245c8aadf236e3dd854"
+        },
+        {
+          "path": "/api/v1/manifest",
+          "status": 200,
+          "count": null,
+          "version": "c8cbaa7783d2889870347cf1509d3dc3141c41f76db81245c8aadf236e3dd854"
+        },
+        {
+          "path": "/api/v1/live?limit=100",
+          "status": 200,
+          "count": 7,
+          "version": "c8cbaa7783d2889870347cf1509d3dc3141c41f76db81245c8aadf236e3dd854"
+        },
+        {
+          "path": "/api/v1/archive?limit=100",
+          "status": 200,
+          "count": 0,
+          "version": "c8cbaa7783d2889870347cf1509d3dc3141c41f76db81245c8aadf236e3dd854"
+        },
+        {
+          "path": "/api/v1/players?limit=100",
+          "status": 200,
+          "count": 70,
+          "version": "c8cbaa7783d2889870347cf1509d3dc3141c41f76db81245c8aadf236e3dd854"
+        }
+      ],
+      "html": true,
+      "noCredentialExposure": true
+    },
+    "workerRedirectHandling": "manual_with_all_3xx_rejected",
+    "browserInteractiveQa": {
+      "completed": false,
+      "blocker": "ChatGPT sign-in wall"
+    },
+    "serverHtmlAndApiRelayVerified": true
+  },
+  "automation": {
+    "id": "6adf7e14fa6481918b556a418f94098d",
+    "existingAutomationUpdated": true,
+    "schedulePreserved": true,
+    "enabledStatePreserved": true,
+    "instructions": "generic remote publication procedure; individual product state and secrets remain outside the prompt",
+    "freshSourceAndServiceAccessVerification": {
+      "sourceCommit": "6aabc41ac9e484ba6bd8575c47ec13a0c4b6ba3d",
+      "newEmptyCheckout": true,
+      "renewedSupportedSourceCredential": true,
+      "freshOwnerPrivateSiteServiceAccess": true,
+      "newCliProcess": true,
+      "replayVerified": true,
+      "changed": false,
+      "counts": {
+        "player": 70,
+        "pack": 7,
+        "live": 7,
+        "archive": 0
+      }
+    },
+    "newScheduledRunObserved": false
+  },
+  "localValidation": {
+    "rootTestsPassed": 367,
+    "apiTestsPassed": 129,
+    "viewRelayTestsPassed": 14,
+    "apiTypecheckPassed": true,
+    "viewTypecheckPassed": true,
+    "apiWorkerBuildPassed": true,
+    "viewWorkerBuildPassed": true
+  },
+  "boundaries": {
+    "publicAudienceTransitionPerformed": false,
+    "legacyPagesChanged": false,
+    "excludedInitialSiteChanged": false,
+    "rawPublished": false,
+    "credentialsIncluded": false,
+    "uiInteractiveBrowserQaCompleted": false,
+    "continuousEfhubAvailabilityProven": false
+  },
+  "operationalStateCheckpoint": {
+    "monitorLibraryFileId": "libfile_e698576906b48191a8d8c0a3c2e631ae",
+    "monitorPreviousVersion": 4,
+    "monitorVersion": 5,
+    "hostingStateAdded": true,
+    "transportStateAndNormalSourceHashesPreserved": true,
+    "runtimeAndRawCountsPreserved": true,
+    "datasetLibraryFileId": "libfile_c2f287178cd08191ba0888019e56ee5d",
+    "datasetArchiveVersion": 14,
+    "datasetArchiveUnchanged": true
+  }
+}

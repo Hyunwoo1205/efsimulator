@@ -10,7 +10,7 @@
 | API origin | `https://efsimulator-catalog-api.hyunw09.chatgpt.site`; 실제 API private 배포 URL; 서비스 인증 후 ready와 현재 publication 검증 |
 | API 저장 | D1 logical binding `DB`; raw 대신 `api_versions`, `api_records`, `api_current`의 가공 publication만 조회/적재 |
 | 데이터 기준 | Library 최신 묶음의 CURRENT/RULES와 엄격 계약·전체 해시 검증. T028의7팩70카드는 시작 기준이며 현재 판매 개수 상수 아님 |
-| 조회 앱 | `appgprj_6ae0d64b624c8191b6266b96d48111f3`, `https://efsimulator-catalog.hyunw09.chatgpt.site`; relay503 진단 중이며 연동 완료 아님. 서비스 인증값은 서버에만 보관 |
+| 조회 앱 | `appgprj_6ae0d64b624c8191b6266b96d48111f3`, `https://efsimulator-catalog.hyunw09.chatgpt.site`; 실제5경로 HTTP200·동일 snapshot의7팩70카드와 한국어 HTML을 검증. 서비스 인증값은 서버에만 보관 |
 | 최신 상태/검증 | [WORKPLAN T025](WORKPLAN.md#t025--apid1-비공개-배포와-원격-발행앱-연동)의 실제 배포·데이터·복구·앱·자동 실행 결과를 기준으로 판단 |
 
 ### 원격 publication 발행과 복구
@@ -28,7 +28,9 @@ CLI는 `node scripts/lifecycle/publish-remote.mjs --root ABSOLUTE_WORKSPACE`를 
 
 별도 조회 앱은 서버에서만 `CATALOG_API_ORIGIN`, secret `CATALOG_API_SERVICE_TOKEN`을 사용해 지정한 API origin으로 GET을 전달한다. 브라우저는 조회 앱과 같은 origin의 경로만 호출한다. 관리 경로·다른 origin·redirect 중계는 거부하며 원격 오류를 화면에 표시한다. 기존 구형 정적 앱의 스키마를 신규 데이터로 덮어쓰지 않는다.
 
-기존 시간별 작업에 검증된 원격 발행 단계를 연결하며 새 중복 예약을 만들지 않는다. 실제 가공 데이터 또는 판매 종료 전이가 있을 때만 갱신 결과를 발행하고 읽어 확인한다. HTML과 종료 상태가 같으면 기존 무변경 무응답 조기 종료를 유지한다. 403/429 대기·마지막 정상본 보존·예약 공통 규칙과 상품별 상태 분리도 유지한다. routine 데이터 갱신은 소스 재배포를 하지 않으며 source와 쓰기 권한을 각각 fresh unattended 실행에서 확인한다. 설정 저장만으로 자동 실행 검증을 통과 처리하지 않는다.
+기존 시간별 작업에 검증된 원격 발행 단계를 연결하며 새 중복 예약을 만들지 않는다. 실제 가공 데이터 또는 판매 종료 전이가 있을 때만 갱신 결과를 발행하고 읽어 확인한다. HTML과 종료 상태가 같으면 기존 무변경 무응답 조기 종료를 유지한다. 403/429 대기·마지막 정상본 보존·예약 공통 규칙과 상품별 상태 분리도 유지한다. routine 데이터 갱신은 소스 재배포를 하지 않으며 source와 쓰기 권한을 각각 fresh unattended 실행에서 확인한다. 설정 저장만으로 자동 실행 검증을 통과 처리하지 않는다. T025에서는 새 빈 checkout·갱신된 지원 credential·fresh 서비스 접근·새 CLI replay를 검증했으며 다음 예약 실행의 결과는 아직 관측하지 않았다.
+
+T025의 비공개 API/D1 적재·복구·별도 조회 앱 연동 검증은 완료했고 공개 운영은 사용자 검토 대기다. 전체367테스트·API129·relay14, 두 TypeScript 검사와 Worker 빌드가 통과했다. 실제 배포·데이터·앱·자동화 근거는 [구조화 결과](../data/research/sites-deployment-T025.json)에 보존한다. 브라우저 상호작용 QA는 로그인 화면에 막혀 미완료이며 HTTP/HTML 검증과 구분한다.
 
 아래 T022/T023 설명과 검증 수치는 당시 이력이며 이번 실행 범위 제한으로 다시 적용하지 않는다.
 

@@ -7,9 +7,9 @@
 ## 현재 작업과 매 작업 갱신
 
 - 이전 작업: T028 — 미확정 세 상품 전체 카드 ID 검증·7팩70카드 로컬 API 반영 완료.
-- 현재 작업: T025 — 진행 중. 원격 발행 기능 보완·API/D1 비공개 검토 배포·별도 조회 앱 연동·기존 갱신 연결.
+- 현재 작업: T025 — 비공개 검토 배포 완료·공개 운영 사용자 검토 대기.
 - 다음 작업: T011 — 검토된 관계·스키마·수입 범위 보완.
-- 현재 조건: T028의 raw 47,408선수/1,699팩과 검증 가공7팩·70카드 보존. 최신 사용자 지시에 따라 T025 배포 순서를 실행한다. 새 API Site의 owner-private 배포·D1 가공7팩70카드 전량 적재/원격 대조·이전 버전 복귀와 최신 복원은 검증됐다. 별도 조회 앱 relay와 자동 발행 연결은 검증 중이며 완료로 표시하지 않는다. 작업 기준은 api-server-setup 브랜치와 services/catalog-api이며 별도 조회 앱은 services/catalog-view에 둔다.
+- 현재 조건: T028의 raw 47,408선수/1,699팩과 검증 가공7팩·70카드 보존. 최신 사용자 지시에 따라 T025 배포 순서를 실행한다. 새 API Site의 owner-private 배포·D1 가공7팩70카드 전량 적재/원격 대조·이전 버전 복귀와 최신 복원은 검증됐다. 별도 조회 앱의 실제 서버 중계와 기존 자동화 원격 발행 지침 연결·fresh 접근/재실행 검증도 완료했다. 공개 운영은 사용자 검토 대기이며 새 예약 실행 결과는 아직 관측하지 않았다. 작업 기준은 api-server-setup 브랜치와 services/catalog-api이며 별도 조회 앱은 services/catalog-view에 둔다.
 
 매 작업 시작 시 Git 상태·이전 결과·이번/다음 작업·선행 조건을 확인한다. FILE_SYNC의 P0→P1→P2로 관련 파일을 검토하되 필요한 파일은 등급과 무관하게 함께 수정한다. 추가 요구는 ID·영향 단계·선행 조건·순서·상태를 기록한다. 파일별 수정/변경불필요/미해결과 근거, 경로 추가/삭제/이름 변경·참조를 같은 작업에서 갱신한다. 검증과 이전/현재/다음 포인터를 맞추며 구현/수집/발행 완료는 실제 근거가 있을 때만 표시한다.
 
@@ -48,8 +48,8 @@ C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_B
 | C057 | 가공 선수는 지정 8필드만, 가공 팩은 공식 전체 인원·종료 UTC·특수 선수 ID/이름 연결을 추가. 두 가공 DB는 공식 게재 이력 대상만 누적 | T024. 기존 전체 raw-normalized API를 별도 processed publication으로 대체 | 구현/검증 중 |
 | C058 | live/archive에 팩과 선수의 가공 필드 전체를 중첩. 종료 항목 즉시 이동. 합집합 정합성·변경 파일별 API 로그 필수 | T024. archive thin/24h 대기 이전 제안 대체; 공유 선수는 ID 합집합 중복 제거 | 구현/검증 중 |
 | C059 | 매시간 두 사이트를 확인하고 정상 신규 raw→가공→종료/신규 live→로그 순서로 갱신 | T024. 원출처 장애는 정상 DB 보존; 접근 우회 금지; 예약 작업과 hosted API 운영 구분 | 매시간 예약 활성 확인·EFHub HTML403 기록 |
-| C060 | AI의 임의 판단·형식 변경을 줄이고 동일 입력/규칙/UTC의 반복 결과를 고정 | T027/R2/R5. 공통 엄격 검사→HTML 재실행→검토 매핑 해시/규칙 바인딩→회귀·기존 자료 채택→정기 수정 금지 | 구현·로컬 검증 완료; hosted 미배포 |
-| C061 | 제시한 배포 순서대로 API 원격 발행 보완·새 비공개 Site/D1 배포·데이터 적재·원격 복구·별도 앱 연동·기존 자동 갱신 연결 실행 | T025/R3→R5. 소스/데이터 고정→인증된 원격 발행→private 배포→전체 readback/해시→CAS 활성화→조회/복구→앱→fresh unattended 검증 | 진행 중. T023/T024 당시 준비 제한을 대체; 공개 audience 전환·기존 Pages 교체는 별도 검토 |
+| C060 | AI의 임의 판단·형식 변경을 줄이고 동일 입력/규칙/UTC의 반복 결과를 고정 | T027/R2/R5. 공통 엄격 검사→HTML 재실행→검토 매핑 해시/규칙 바인딩→회귀·기존 자료 채택→정기 수정 금지 | 구현·로컬 검증 완료; T025 원격 발행의 전체 계약/내용 해시 검사 적용 |
+| C061 | 제시한 배포 순서대로 API 원격 발행 보완·새 비공개 Site/D1 배포·데이터 적재·원격 복구·별도 앱 연동·기존 자동 갱신 연결 실행 | T025/R3→R5. 소스/데이터 고정→인증된 원격 발행→private 배포→전체 readback/해시→CAS 활성화→조회/복구→앱→fresh unattended 검증 | 비공개 배포·원격 적재/복구·조회 앱 실호출·기존 자동화 연결 검증 완료. 공개 운영 사용자 검토 대기 |
 
 
 ## 이전 작업의 현재 해석
@@ -1192,9 +1192,15 @@ API Site 등록: `appgprj_6ae0d51638b481918f7767684a3cf38b`, 예상 origin `http
 
 활성 publication `c8cbaa7783d2889870347cf1509d3dc3141c41f76db81245c8aadf236e3dd854`는 원격 전체 rows와 내용 해시를 대조했고 health ready·가공7팩70카드·live7/archive0·선수/팩 조회를 확인했다. 2026-10-27T16:58:00.531Z 시험에서 부분 적재 활성화 거부, 이전 검증4팩44카드 버전 `9ef9cbe3580c192aa259fe1535c90d6072c470b8c0d74593291e9cc7a747bb5c`로 실제 복귀, 최신7팩70카드로 재복원, stale expected-current 활성화409 거부, 동일 버전 재발행 changed=false를 확인했다. 최종 활성 버전은 최신70카드다. `/live`, `/archive`, 이탈리아 회차11명 명단 응답도 같은 snapshot을 반환했다.
 
-API TypeScript·129테스트와 루트359테스트 통과를 관측했다. 이후 추가한 조회 앱 진단 회귀를 포함한 최종 전체 실행은 대기 중이므로 최종 총수로 고정하지 않는다. 코드 version 재배포와 DB 데이터 포인터 복귀는 별도 결과로 기록하며 위 복구 성공은 데이터 포인터 시험이다.
+API129테스트·조회 앱 relay14테스트·루트 전체367테스트, 두 서비스 TypeScript 검사와 공식 Worker 빌드가 통과했다. 코드 version 재배포와 DB 데이터 포인터 복귀는 별도 결과로 기록하며 위 복구 성공은 데이터 포인터 시험이다.
 
-별도 조회 앱 Site `appgprj_6ae0d64b624c8191b6266b96d48111f3`, URL `https://efsimulator-catalog.hyunw09.chatgpt.site`를 owner-private으로 등록·배포했다. 초기 배포 version `appgprj_6ae0d64b624c8191b6266b96d48111f3~appgver_4d3a3cd91bc08191aadaaf080e139a8e`에서 relay503을 확인하여 원인을 진단 중이며 앱 연동 성공으로 표시하지 않는다. 브라우저 시각 검사는 ChatGPT 로그인 화면에 막혀 수행하지 못했고 서버 HTTP 검증을 계속한다. 자동 갱신의 실제 원격 발행 연결·fresh unattended 시험도 아직 완료로 표시하지 않는다.
+별도 조회 앱 Site `appgprj_6ae0d64b624c8191b6266b96d48111f3`, URL `https://efsimulator-catalog.hyunw09.chatgpt.site`를 owner-private으로 배포했다. 최종 Sites source SHA `0301c0fe037972d5c0d4b5071fa2965876205aea`, 저장 version `appgprj_6ae0d64b624c8191b6266b96d48111f3~appgver_2095eae35a3c8191bcf0cf4997c70a4d`, 배포 `appgdep_6ae0db6702648191b2c4373b7daffe17`, 환경 revision1이다. Workers에서 지원되지 않는 redirect:error 때문에 요청 전 TypeError가 발생하던 경로는 manual과 모든3xx 거부로 보완했다. 서버는 여전히 redirect를 따르지 않으며 Node CLI의 error 모드는 유지한다. 2026-10-27T17:12:24.648Z 실제 앱 origin에서 health ready·manifest·live7·archive0·players70의5경로가 HTTP200과 같은 최신 snapshot을 반환했다. 한국어 HTML200과 응답에 API/조회 앱 인증값이 없는 것도 확인했다. 브라우저 상호작용 검사는 ChatGPT 로그인 화면에 막혀 수행하지 못했으므로 시각·클릭 QA 통과로 표시하지 않는다.
+
+기존 자동화 `6adf7e14fa6481918b556a418f94098d`의 공통 원격 발행 절차를 갱신했고 저장 성공을 확인했다. 주기·활성 상태와 무변경 무응답·403/429 대기·상품별 상태 분리 규칙을 유지했으며 상품명·당시 수량·credential을 예약 지침에 추가하지 않았다. 별도 새 빈 checkout에서 지원 소스 credential을 갱신해 API source SHA `6aabc41ac9e484ba6bd8575c47ec13a0c4b6ba3d`를 열고, fresh get_site의 owner-private 서비스 접근으로 새 CLI 프로세스를 실행했다. 최신7팩70카드 replay verified=true·changed=false를 확인했다. 이는 새 세션의 source/서비스 접근·발행 경로 검증이며 다음 시간별 예약이 실제 실행됐다는 증거는 아니다. 운영 checkpoint는 기존 monitor Library ID `libfile_e698576906b48191a8d8c0a3c2e631ae`를 expected version4 보호로 version5에 저장했다. hosting의 API/앱 version·활성 publication·복구/replay·자동화 상태만 추가했고 정상 HTML 해시·transport 상태·runtime/raw 수치와 데이터 묶음 version14는 보존했다.
+
+GitHub api-server-setup에 배포 소스 초기 commit `a59695233ba720b8278a711b2b3f4adf17cc96a2`를 정상 CAS로 반영했다. 최종 문서·Worker 호환 수정의 후속 commit은 별도 확인한다. credential·raw 없이 소스/배포/데이터 버전과 실제 검증 결과를 [구조화 배포 근거](../data/research/sites-deployment-T025.json)에 보존한다.
+
+**비공개 검토 배포 완료·공개 운영 사용자 검토 대기.** T025의 현재 작업 상태는 진행 중으로 유지하며 공개 audience 전환·기존 Pages 교체·사용자 브라우저 상호작용 QA·다음 예약 실행 관측을 완료로 승격하지 않는다. 지속적인 EFHub 정상 접근과 계정 비용/쿼터도 이번 배포 성공만으로 보장하지 않는다.
 
 ### 파일 최신화 검토
 
@@ -1244,6 +1250,7 @@ API TypeScript·129테스트와 루트359테스트 통과를 관측했다. 이�
 | `services/catalog-view/tsconfig.json` | 수정 | 조회 앱 TypeScript 검사 설정 |
 | `services/catalog-view/vite.config.ts` | 수정 | 공식 Sites/Vinext Worker 빌드 통합 |
 | `services/catalog-view/worker/index.ts` | 수정 | 공식 Sites Worker 실행 진입점 |
+| `data/research/sites-deployment-T025.json` | 수정 | 인증값·raw 없이 실제 Site/소스/배포/데이터 버전과 원격 복구·조회·자동화 경로 검증 근거 보존 |
 
 ## T026 — 예약 점검 HTML 중첩 섹션 파서 보완
 

@@ -14,10 +14,68 @@ test('relay reads the configured exact origin and forwards only its own service 
   assert.equal(response.status, 200);
   assert.equal(captured.url, 'https://private-api.example.test/api/v1/players?q=Rodri&limit=10');
   assert.deepEqual(captured.options.headers, { Accept: 'application/json', 'OAI-Sites-Authorization': 'Bearer test-service-token' });
-  assert.equal(captured.options.redirect, 'error');
+  assert.equal(captured.options.redirect, 'manual');
   assert.equal(captured.options.method, 'GET');
   assert.equal(response.headers.get('cache-control'), 'no-store');
   assert.equal((await response.json()).data[0].name, 'Rodri');
+});
+
+test('relay passes a URL string compatible with Worker fetch WebIDL resource arguments', async () => {
+  const response = await handleCatalogRelay(request('/api/v1/health'), env, {
+    fetch: async (resource) => {
+      if (typeof resource !== 'string') throw new TypeError('Resource is not of type string');
+      assert.equal(resource, 'https://private-api.example.test/api/v1/health');
+      return apiJson({ data: { ready: true } });
+    },
+  });
+  assert.equal(response.status, 200);
+});
+
+test('Worker-supported manual mode rejects redirects without following Location or forwarding credentials', async () => {
+  for (const status of [301, 302, 303, 307, 308]) {
+    let calls = 0;
+    const response = await handleCatalogRelay(request('/api/v1/health'), env, {
+      logger: () => {},
+      fetch: async (resource, options) => {
+        calls++;
+        if (options.redirect === 'error') throw new TypeError('Workers does not support error redirect mode');
+        assert.equal(options.redirect, 'manual');
+        assert.equal(resource, 'https://private-api.example.test/api/v1/health');
+        return new Response(null, { status, headers: { Location: 'https://untrusted.example.test/collect', 'Content-Type': 'application/json' } });
+      },
+    });
+    assert.equal(response.status, 503, String(status));
+    assert.equal(calls, 1, String(status));
+    assert.equal(response.headers.has('location'), false);
+    assert.doesNotMatch(await response.text(), /test-service-token|untrusted\.example/);
+  }
+});
+
+test('portable timeout aborts stalled upstream fetch without AbortSignal.timeout', async () => {
+  let aborted = false;
+  const logs = [];
+  const response = await handleCatalogRelay(request('/api/v1/health'), env, {
+    timeoutMs: 5,
+    logger: value => logs.push(JSON.parse(value)),
+    fetch: async (_resource, options) => new Promise((_resolve, reject) => {
+      options.signal.addEventListener('abort', () => { aborted = true; reject(new DOMException('Aborted', 'AbortError')); }, { once: true });
+    }),
+  });
+  assert.equal(aborted, true);
+  assert.equal(response.status, 503);
+  assert.equal(logs[0].event, 'catalog_relay_fetch_failed');
+  assert.equal(logs[0].errorName, 'AbortError');
+});
+
+test('successful fetch clears portable timeout instead of aborting completed request', async () => {
+  let signal;
+  const response = await handleCatalogRelay(request('/api/v1/health'), env, {
+    timeoutMs: 5,
+    fetch: async (_resource, options) => { signal = options.signal; return apiJson({ data: { ready: true } }); },
+  });
+  assert.equal(response.status, 200);
+  await new Promise(resolve => setTimeout(resolve, 10));
+  assert.equal(signal.aborted, false);
 });
 
 test('relay calls fetch with the global receiver required by Worker native bindings', async () => {
@@ -102,9 +160,20 @@ test('diagnostics reveal only fixed events, status, MIME classification and safe
 
 test('fetch diagnostics classify known Worker failures without logging their messages', async () => {
   const logs = [];
-  for (const message of ['Illegal invocation: private-test-service-token', 'Error 1042: cannot fetch same worker private-test-service-token', 'Some other error private-test-service-token']) {
+  for (const message of ['Illegal invocation: private-test-service-token', 'Error 1042: cannot fetch same worker private-test-service-token', 'Some other error private-test-service-token', 'AbortSignal.timeout is not a function private-test-service-token', 'Resource is not of type string private-test-service-token', 'Network connection reset private-test-service-token']) {
     await handleCatalogRelay(request('/api/v1/health'), env, { logger: value => logs.push(JSON.parse(value)), fetch: async () => { throw new TypeError(message); } });
   }
-  assert.deepEqual(logs.map(log => log.errorClass), ['illegal_invocation', 'worker_same_zone', 'other']);
+  assert.deepEqual(logs.map(log => log.errorClass), ['illegal_invocation', 'worker_same_zone', 'other', 'timeout_not_supported', 'invalid_fetch_resource', 'fetch_network']);
   assert.doesNotMatch(JSON.stringify(logs), /private-test-service-token|Illegal invocation|cannot fetch same worker|Some other error/);
+});
+
+test('body stream failures are distinguished from fetching without leaking details', async () => {
+  const logs = [];
+  const response = await handleCatalogRelay(request('/api/v1/health'), env, {
+    logger: value => logs.push(JSON.parse(value)),
+    fetch: async () => new Response(new ReadableStream({ start(controller) { controller.error(new TypeError('private-body-secret')); } }), { headers: { 'Content-Type': 'application/json' } }),
+  });
+  assert.equal(response.status, 503);
+  assert.equal(logs[0].event, 'catalog_relay_body_read_failed');
+  assert.doesNotMatch(JSON.stringify(logs), /private-body-secret/);
 });
