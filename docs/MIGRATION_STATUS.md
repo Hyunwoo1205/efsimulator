@@ -1,3 +1,5 @@
+> T030 현재 기준: 이 파일은 T020~T023 당시 이관/점검 이력이다. API 전달은 T025로 완료됐고 현재 작업은 실제 제품 설계를 준비하는 단계다. 최신 브랜치·실제 상태·완료 절차는 [현재 인수인계](CHATGPT_WORK_HANDOFF.md)·[ROADMAP](ROADMAP.md)·[WORKPLAN](WORKPLAN.md)을 우선하며 아래의 미배포/이전 work 지시를 현재 금지나 다음 작업으로 재적용하지 않는다.
+
 > T023 이후 최신 입력은 players 47,408개이며 별도 API Site용 독립 소스와 수입 준비는 [API_SERVER_PREPARATION](API_SERVER_PREPARATION.md)을 따른다. 아래 이전 검증·이관 수치와 실행 범위는 당시 이력으로 보존한다.
 
 # ChatGPT Work 이관 확인서 — T022

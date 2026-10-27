@@ -1,3 +1,5 @@
+> T030 현재 기준: 이 파일은 T020~T023 당시 이관/점검 이력이다. API 전달은 T025로 완료됐고 현재 작업은 실제 제품 설계를 준비하는 단계다. 최신 브랜치·실제 상태·완료 절차는 [현재 인수인계](CHATGPT_WORK_HANDOFF.md)·[ROADMAP](ROADMAP.md)·[WORKPLAN](WORKPLAN.md)을 우선하며 아래의 미배포/이전 work 지시를 현재 금지나 다음 작업으로 재적용하지 않는다.
+
 > T022 최신 이관·Sites 검토 결과는 [MIGRATION_STATUS](MIGRATION_STATUS.md)와 [검증 JSON](../data/research/work-migration-verification.json)을 따른다. 아래는 T020/T021의 전수 점검·검사 이력이다. 이번 T022의 영향 파일 검토는 WORKPLAN에 별도 기록하며 과거 전수 판정을 재실행했다고 주장하지 않는다.
 
 # T020 전수 점검과 T021 검증 반영 보고

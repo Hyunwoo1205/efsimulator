@@ -1,4 +1,6 @@
 # API 전용 Sites 업로드 준비 — T023
+> T030 최신 결정: T025의 검증된 private API 전달 범위로 API 개발은 완료한다. 아래 공개 운영 검토 대기 문구는 당시 이력이며 API 공개 전환은 private 서버 relay를 사용할 다음 실제 앱 설계의 필수 조건이 아니다. catalog-view는 별도 데이터 검토 도구다. 오류/운영 관찰은 유지보수로 분리하고 다음 제품 요구·UX·API 연동·추첨 규칙 설계는 T031을 따른다. 이번 문서 정리로 Site/데이터/자동화를 변경하지 않는다.
+
 
 > T025 최신 실행(2026-10-28 KST): 사용자가 배포 순서 실행을 지시했다. `services/catalog-api/`의 새 owner-private Site와 D1에 검증된 **가공 publication**을 적재·검증하고 별도 `services/catalog-view/` 조회 앱과 기존 자동 갱신의 원격 발행을 연결한다. API Site ID는 `appgprj_6ae0d51638b481918f7767684a3cf38b`이며 API private 배포·가공7팩70카드 적재·전량 원격 검증·데이터 복귀/최신 복원은 확인됐고, 별도 조회 앱의 실제5경로/HTML 응답과 기존 자동화 공통 발행 절차 연결·fresh 소스/서비스 접근 replay도 검증했다. 다음 예약 실행과 사용자 브라우저 상호작용 검사는 아직 관측하지 않았고 공개 운영 사용자 검토 대기다. 상세 배포·데이터·복구·앱 결과는 [WORKPLAN T025](WORKPLAN.md#t025--apid1-비공개-배포와-원격-발행앱-연동)에서 확인한다. 아래 T023의 raw 전량 staging 수입·5테이블·미등록·실행 제외 설명은 당시 이력이다. 최신 read API는 `api_versions/api_records/api_current`의 검증된 가공 버전만 사용하며 raw 47,408개를 운영 API에 적재하지 않는다.
 

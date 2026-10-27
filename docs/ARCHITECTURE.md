@@ -1,17 +1,36 @@
-# 전체 누적 DB/API와 사이트용 DB의 2계층 구조 계획
+# 누적 원본·가공 API·실제 앱의 구조와 설계 이력
+
+## T030 현재 구현과 다음 제품 설계
+
+최신 사용자는 API 개발을 완료로 두고 향후 오류만 유지보수하기로 했다. 현재 구현은 [데이터 계약](CATALOG_DATA_CONTRACT.md)의 누적 raw·공식 상품 한정 가공 publication·전체 중첩 live/archive다. T023/T024/T027/T028의 계약·수집/검증과 T025의 실제 private Worker/D1 배포·원격 적재/전체 해시·조회·포인터 복구·인증을 재사용한다. 아래 T020~T023의 전체 raw API·미구현 스키마 설명은 당시 설계 이력이며 새로운 API 재구축 지시가 아니다.
+
+| 구성 | 실제 책임/상태 |
+| --- | --- |
+| 비공개 누적 raw/세대/증거 | 기존 원본 형식·문자열ID·파일 해시·관측·로그를 보존. Git/HTTP API에 원본 전체를 넣지 않음 |
+| `services/catalog-api` | 별도 owner-private Worker와 D1. `api_versions/api_records/api_current`의 검증된 가공 버전만 조회. 전체 rows/해시 검증 후 expected-current 전환 |
+| `services/catalog-view` | 별도 데이터 검토 viewer와 서버 전용 private API GET relay. 실제 eFsimulator 제품 아님 |
+| 실제 eFsimulator 앱 | 다음 T031에서 요구·UX·소스/브랜치/Site 경계·API/세션·추첨 규칙을 설계. 아직 구현하지 않음 |
+
+API ready는 해당 가공 publication의 조회 준비다. 계획 용어 simulation_ready에는 같은 회차의 공식 초기N·완전한 특수S·현재성/신선도·필요한 추첨 규칙 근거가 추가로 필요하다. 이 구분을 지금 API 필드나 코드 계약에 추가하는 작업은 아니다. 초기 표시 확률을 추첨 방식·복원/리셋·가격 규칙 전체의 검증으로 확대하지 않는다. viewer의 Epic/ShowTime 대표 이미지용 등급 sidecar는 표시 metadata이며 추첨 규칙이나 확률 근거가 아니다.
+
+실제 앱은 API를 공개 audience로 바꾸지 않고 서버 relay로 사용할 수 있다. credential은 서버에만 보관하고 GET에서 원출처 수집/쓰기를 수행하지 않는다. 확정되지 않은 가격은 비용 표시를 보류하고, 미확인 추첨 규칙이 필요한 모드만 비활성화하는 설계를 먼저 만든다. API 연속 가용성·다음 예약 실행·브라우저 QA·계정 한도/비용의 남은 관찰은 유지보수로 분리하며 앱 설계의 전역 API 재개발 게이트로 사용하지 않는다.
+
+## T020~T023 설계·이관 이력
+
+아래의 현재 위치·미구현·실행 범위 표현은 해당 작성 당시를 뜻한다. 최신 작업 상태는 위 현재 구현과 ROADMAP/WORKPLAN을 따른다.
 
 > T024 최신 지시(2026-10-27): raw는 기존 형식을 유지하는 누적 원본이며 HTTP 조회에 사용하지 않는다. 가공 선수/팩은 공식 KR와 EFHub에서 같은 상품·회차가 확인된 대상만 누적한다. 선수 8개 필드, 팩의 선수 연결, 전체 중첩 live/archive와 파일별 로그를 구현한다. 과거의 모든 raw 항목 공개 API·얇은 아카이브·24시간 이관 대기는 이 결정으로 대체한다. [현재 데이터 계약](CATALOG_DATA_CONTRACT.md)을 우선한다.
 
 
-> T023 최신 결정: 앱과 API는 별도 Sites 프로젝트로 배포한다. API 독립 소스·초기 D1 schema·로컬 수입 도구를 services/catalog-api에 준비했다. 최신 입력은 카드 47,408개이며 이전 T021/T022 수치는 이력이다. [API 준비 결과](API_SERVER_PREPARATION.md)를 우선한다. 실제 hosted 배포·현재 판매 projection·live 원자적 발행은 아직 미구현이다.
+> T023 당시 결정: 앱과 API는 별도 Sites 프로젝트로 배포한다. API 독립 소스·초기 D1 schema·로컬 수입 도구를 services/catalog-api에 준비했다. 최신 입력은 카드 47,408개이며 이전 T021/T022 수치는 이력이다. [API 준비 결과](API_SERVER_PREPARATION.md)를 우선한다. 실제 hosted 배포·현재 판매 projection·live 원자적 발행은 아직 미구현이다.
 
 > T022 이관 확인: 기존 raw 두 파일을 이 Work로 가져와 해시·행 수를 확인했고 기존 9팩·79관계의 ID가 raw에 모두 존재함을 확인했다. 제품 위치는 R2/T010 예정이다. 이후 배포는 Sites를 기본으로 하며 실제 DB·서버·배포는 아직 미구현이다. [이관 결과](MIGRATION_STATUS.md)와 [배포 계획](DEPLOYMENT.md)을 최신 기준으로 읽는다.
 
 > T021 파일 내 검증 완료: 선수 raw는 카드 객체와 고유 문자열 ID가 각각 47,397개이고 중복은 0건이다. 기존 SHA256도 다시 확인했다. 팩 raw는 유효한 배열의 1,699개 객체를 확인했다. 팩의 빈 이름·빈 slug와 placeholder 의심 항목은 원본을 보존하고 정규화·공개 대상에서 격리 검토한다. 두 파일 모두 전체 페이지 확보 여부와 현재성은 별도 미검증이며, 팩↔카드 관계와 이미지 로드도 확인되지 않았다. 원본 변경이나 EFHub·이미지 요청은 하지 않았다.
 
-> 현재 위치: R2. 데이터 검사 T021과 관리 이관 T022를 마쳤으며 현재 T010은 기존 Work의 상세·관계 자료를 먼저 확인하고 검증된 팩 회차의 카드 ID manifest를 확보·수입할 준비 단계다. 다음 T011에서 실제 필드를 바탕으로 스키마·ID·개정·무삭제 정책을 확정하고 staging 수입과 현행 표본을 검증한다. 새 채팅이나 중복 수집을 만들지 않으며, 모든 역사 팩의 관계를 최초 DB 설계의 선행 조건으로 요구하지 않는다.
+> T022 당시 위치: R2. 데이터 검사 T021과 관리 이관 T022를 마쳤으며 현재 T010은 기존 Work의 상세·관계 자료를 먼저 확인하고 검증된 팩 회차의 카드 ID manifest를 확보·수입할 준비 단계다. 다음 T011에서 실제 필드를 바탕으로 스키마·ID·개정·무삭제 정책을 확정하고 staging 수입과 현행 표본을 검증한다. 새 채팅이나 중복 수집을 만들지 않으며, 모든 역사 팩의 관계를 최초 DB 설계의 선행 조건으로 요구하지 않는다.
 
-T020의 최신 사용자 결정에 따른 설계 문서다. **이번에는 문서만 수정하며 스키마·DB·수집기·활성 seed·공개 JSON·서버를 구현하거나 교체하지 않는다.** 기존 Node/SQLite/정적 사이트는 재사용 후보이며 [기존 구현 계약](reference/ARCHITECTURE_BEFORE_PROBABILITY_SCOPE.md)을 보존한다. 기존 9개 상품·83개 카드는 이전 표본이고 새 2계층 모델의 완료 수가 아니다. 실제 작업 상태와 다음 순서는 [WORKPLAN](WORKPLAN.md)을 따른다.
+T020 당시 사용자 결정에 따른 설계 이력이다. **이번에는 문서만 수정하며 스키마·DB·수집기·활성 seed·공개 JSON·서버를 구현하거나 교체하지 않는다.** 기존 Node/SQLite/정적 사이트는 재사용 후보이며 [기존 구현 계약](reference/ARCHITECTURE_BEFORE_PROBABILITY_SCOPE.md)을 보존한다. 기존 9개 상품·83개 카드는 이전 표본이고 새 2계층 모델의 완료 수가 아니다. 실제 작업 상태와 다음 순서는 [WORKPLAN](WORKPLAN.md)을 따른다.
 
 ## 1. 두 데이터 계층과 책임
 
@@ -83,4 +102,4 @@ T021 양쪽 raw 수령·파일 내 검사 완료 → T010 기존 Work의 상세�
 
 ## 6. Sites 물리 배치 검토
 
-두 데이터 계층의 논리 경계는 유지하고 앱·API는 별도의 Sites 프로젝트로 배포한다. 구조화 누적/개정/관계는 D1, raw·허용 이미지·불변 스냅샷은 필요 시 R2 후보로 둔다. 실제 조회·쓰기·용량·권한·백업·비용 측정 후 배치를 확정한다. 정적 snapshot 검토판은 현행 dist로 시작할 수 있지만 runtime DB binding은 Worker 빌드에서만 사용한다. 로컬 node:sqlite는 오프라인 검증/수입 준비에 재사용하고 hosted 쿼리는 D1 접근으로 구현한다. schema-only migration과 대량 수입을 분리한다. 아직 해당 schema/API/hosting manifest를 생성하지 않았다.
+두 데이터 계층의 논리 경계는 유지하고 앱·API는 별도의 Sites 프로젝트로 배포한다. 구조화 누적/개정/관계는 D1, raw·허용 이미지·불변 스냅샷은 필요 시 R2 후보로 둔다. 실제 조회·쓰기·용량·권한·백업·비용 측정 후 배치를 확정한다. 정적 snapshot 검토판은 현행 dist로 시작할 수 있지만 runtime DB binding은 Worker 빌드에서만 사용한다. 로컬 node:sqlite는 오프라인 검증/수입 준비에 재사용하고 hosted 쿼리는 D1 접근으로 구현한다. schema-only migration과 대량 수입을 분리한다. T020 당시에는 해당 schema/API/hosting manifest를 생성하지 않았으며, 이후 실제 구현/배포는 위 T025 기반으로 전달됐다.

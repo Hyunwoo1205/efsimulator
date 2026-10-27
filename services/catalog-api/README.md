@@ -1,5 +1,8 @@
 # efsimulator Catalog API
 
+> T030 현재 상태: 이 API는 T025에서 owner-private Sites Worker+D1으로 실제 배포·가공 publication 적재/전체 원격 해시·조회·데이터 복구/재실행·서비스 인증을 검증했고 개발 완료 기준으로 고정한다. 아래 준비 단계 설명은 T023 당시 이력이다. 향후 오류는 유지보수하며 현재8필드/공식 상품 한정 가공 계약을 실제 앱 설계 때문에 임의로 확장하지 않는다. private API의 앱 서버 연동을 재사용할 수 있고 공개 audience 전환은 그 필수 조건이 아니다. 최신 상태는 [WORKPLAN](../../docs/WORKPLAN.md)과 [인수인계](../../docs/CHATGPT_WORK_HANDOFF.md)를 따른다.
+
+
 T024 최신 계약: raw는 누적 입력 원본이고 HTTP 조회 대상이 아니다. 가공 DB는 공식 KR와 EFHub에서 동일 상품·회차가 확인된 팩과 선수만 누적한다. [데이터 계약](../../docs/CATALOG_DATA_CONTRACT.md)을 우선하며 아래 기존 ingest는 역사/검증용 staging으로 남긴다.
 
 기존 앱과 **별도의 Sites 프로젝트**에 배포할 누적 데이터 API다. GitHub `efsimulator` 저장소의 `services/catalog-api/`가 독립 소스 루트이고 `api-server-setup` 브랜치에서 준비한다. 기존 `work` 앱 소스와 Pages 파일은 유지한다. 현재는 **소스 업로드·DB 수입 준비 단계**이며 Site 등록/원격 배포/원격 DB 수입은 실행하지 않았다.

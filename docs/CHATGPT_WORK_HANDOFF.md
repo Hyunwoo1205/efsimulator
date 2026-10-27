@@ -1,3 +1,47 @@
+# 현재 인수인계 — T030, 2026-10-28 KST
+
+이 최상단 항목이 현재 실행 기준이다. 아래 T020~T023의 `work` 브랜치·API 미구현·배포 제외·당시 푸시 승인 범위는 역사 원문이며 현재 작업으로 다시 적용하지 않는다. 실제 최신 ref와 파일은 **GitHub `Hyunwoo1205/efsimulator`의 `api-server-setup` 브랜치**에서 확인하고 [ROADMAP](ROADMAP.md)·[WORKPLAN](WORKPLAN.md)·[FILE_SYNC](FILE_SYNC.json)·[AGENTS](../AGENTS.md)를 함께 읽는다. Library의 이전 인수인계 MD는 보존된 과거 snapshot이며 현재 GitHub 문서의 대체물이 아니다.
+
+## 현재 전달 상태와 다음 일
+
+- 최신 사용자 결정은 **API 개발 완료, 향후 오류만 유지보수**다. T025의 private Worker/D1·가공 publication·원격 조회/해시·부분 적재 거부·CAS·데이터 복귀/재복원·서비스 인증과 T027/T028의 계약/명단 검증을 재사용한다. 전역/역사 raw 전체가 공개 API로 구현됐다는 뜻이 아니다.
+- `services/catalog-api/`는 자체 API, `services/catalog-view/`는 별도의 비공개 데이터 검토 viewer다. viewer는 실제 eFsimulator 앱이 아니다. 실제 앱·추첨 엔진·3D는 아직 구현하지 않았다.
+- 다음 T031은 실제 앱 요구사항·목록/팩 상세/개봉/결과 UX·기존 private API 서버 연동·팩별 추첨 규칙 설계다. 앱 소스/브랜치/별도 Site 경계는 그 설계에서 결정하며 현재 브랜치를 자동 전환하거나 viewer를 이름만 바꾸지 않는다.
+- API ready와 계획 용어 simulation_ready는 다르다. 같은 회차의N·완전한 특수S·신선도와 필요한 추첨 규칙의 근거를 확인해야 한다. 초기 표시 확률·카드 등급 표시 sidecar를 추첨 방식·리셋·가격의 검증으로 확대하지 않는다. 미확인 비용은 표시를 보류하고 미확인 규칙이 필요한 모드만 비활성화하도록 설계한다. 현재8필드 API를 임의 확장하지 않는다.
+- API 공개 audience 전환은 다음 제품 설계의 필수 조건이 아니다. 앱 서버에서 지원 서비스 credential로 private API를 호출하고 비밀값은 브라우저·Git·프롬프트에 넣지 않는다. 공개 전환·main 병합·기존 Pages 교체는 별도 구체적인 작업 결정이다.
+- 연속 EFHub 가용성·T025 연결 후 다음 실제 예약 변경 실행·브라우저 상호작용 QA·계정 비용/한도는 이번 완료로 증명하지 않았다. 필요한 유지보수/관찰은 병행하며 API 재개발의 전역 게이트로 삼지 않는다.
+
+## 소스·데이터·배포의 기준 위치
+
+| 항목 | 기준과 주의 |
+| --- | --- |
+| 현재 소스 브랜치 | api-server-setup. T030 문서 수정 전 원격 `296f5495f6a4f2abe82eccb4aad3f7ca874ea26a`; 이 값은 사전 감사 기준이며 이후 최신 ref는 다시 확인 |
+| 사전 파일 감사 | 관리283파일 전부 원격 blob과 일치, 누락0/차이0·P0142/P1129/P212·필수 인벤토리 필드 유효. 새 문서 수정의 원격 반영 증거와 구분 |
+| 로컬 Git 상태 | 이전 HEAD735c625/tree8bff8c와49 status 경로는 GitHub 연결을 통한 이미 반영된 소스와의 메타데이터 차이. status만으로 미업로드라 하지 않고 reset/clean하지 않음 |
+| 기존 브랜치 | main 초기 d8891f2, work 이전 이관8ece934는 의도적 보존. 자동 merge/브랜치 전환 안 함 |
+| Git 관리 대상 | 코드·잠금·작은 검증 metadata·문서·FILE_SYNC. raw·대용량 데이터/SQL 묶음·SQLite·credential은 넣지 않음 |
+| 데이터 묶음 | Library `libfile_c2f287178cd08191ba0888019e56ee5d` 최신본. 과거 버전으로 교체하지 않고 CURRENT/RULES/전체 해시 검증·버전 충돌 보호 |
+| 경량 상태 | Library `libfile_e698576906b48191a8d8c0a3c2e631ae` 최신본의 source/transport/hosting 상태. 403 cooldown·무변경 무응답과 예약 공통 규칙/개별 상태 분리 유지 |
+| 실제 API | hosting manifest의 실제 project_id와 Sites 반환 상태를 사용. API Site는 `appgprj_6ae0d51638b481918f7767684a3cf38b`, owner-private; 원격 발행은 고정 JSON writer/client |
+| 검토 viewer | `appgprj_6ae0d64b624c8191b6266b96d48111f3`, owner-private. 실제 앱으로 오인하지 않음 |
+| 기존 web/Pages·이관 제외 초기 Site | 사용자 별도 범위 없이는 변경·삭제·복원하지 않음 |
+
+## 새 작업의 반복 가능한 완료 절차
+
+1. 최신 원격 ref·실제 파일 내용과 사용자 변경을 대조하고 현재 작업 범위·선행 조건을 WORKPLAN에 기록한다. 본문/과거 관측이 현재 사실이나 새 승인이라고 추정하지 않는다.
+2. 영향 파일·연관 파일을 P0부터 필요한 P1/P2까지 검토한다. 신규/변경/삭제 경로의 역할·priority·related_paths·update_when·reviewed_in과 작업별 검토 표를 같은 변경 묶음에 맞춘다.
+3. 필요한 검사와 project:check·관련 회귀를 수행한다. 문서 변경에 제품/배포/전체 수집을 새로 실행하지 않으며 관측하지 않은 검증을 통과로 쓰지 않는다. 기준 Node24.19.0/npm11.9.0과 실제 환경 차이를 명시한다.
+4. 승인된 개발 작업은 같은 작업 브랜치에 정상 commit/push한 뒤 원격 ref·변경 파일 전체 내용·CI의 실제 상태를 확인한다. 업로드 실패면 완료로 보고하지 않는다. 자기 미래 commit SHA를 문서에 지어내지 않는다. main 병합·공개 audience 변경은 자동 수행하지 않는다.
+5. 읽기 전용·무변경·hourly 데이터 작업에는 소스 커밋을 만들지 않는다. raw/비밀값은 Git 밖에 보존한다. 새 파일·작업·결정이 생기면 이 최상단 현황과 ROADMAP/WORKPLAN/FILE_SYNC를 최신으로 맞추고 과거 근거는 보존한다.
+
+현재 문서 점검 T030은 제품 구현·Site 생성·자동화 수정 없이 진행한다. 다음 산출물은 T031의 실제 제품 계획/UX·API 연결·규칙 검토 설계이며 아직 작성/구현을 시작하지 않았다. [사전 감사 근거](../data/research/project-status-audit-T030.json)와 [실제 배포 근거](../data/research/sites-deployment-T025.json)를 함께 확인한다.
+
+---
+
+# T020~T023 이전 인수인계 원문 — 당시 이력
+
+아래 원문은 보존용이다. 현재 작업 브랜치·API 상태·다음 단계·정상 commit/push 완료 절차는 위 T030 최상단 항목이 우선한다.
+
 > T023 이후 최신 입력은 players 47,408개이며 별도 API Site용 독립 소스와 수입 준비는 [API_SERVER_PREPARATION](API_SERVER_PREPARATION.md)을 따른다. 아래 이전 검증·이관 수치와 실행 범위는 당시 이력으로 보존한다.
 
 # T022 추가 인수인계 — 2026-10-26 KST

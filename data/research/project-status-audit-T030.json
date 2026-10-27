@@ -1,0 +1,190 @@
+{
+  "schemaVersion": 1,
+  "taskId": "T030",
+  "recordedAt": "2026-10-27T17:45:01.772029Z",
+  "scope": "documentation_and_handoff_reconciliation_only",
+  "beforeDocumentationSync": {
+    "repository": "Hyunwoo1205/efsimulator",
+    "workingBranch": "api-server-setup",
+    "remoteCommit": "296f5495f6a4f2abe82eccb4aad3f7ca874ea26a",
+    "managedFiles": 283,
+    "remoteMissing": 0,
+    "remoteBlobContentDifferences": 0,
+    "priorityCounts": {
+      "P0": 142,
+      "P1": 129,
+      "P2": 12
+    },
+    "requiredInventoryFieldsValid": true,
+    "requiredInventoryFields": [
+      "role",
+      "priority",
+      "related_paths",
+      "update_when",
+      "reviewed_in"
+    ],
+    "evidence": "Root compared all 283 managed file contents with the remote branch before documentation edits.",
+    "localHead": "735c625d8c28ded18587e36942e8e59b9f2377cf",
+    "localTree": "8bff8c45c78da78aac906bc36a1a166c4b169edc",
+    "localStatusPathsAlreadyReflectedRemotely": 49,
+    "localGitMetadataMatchesRemote": false,
+    "localStatusInterpretation": "GitHub connector commits updated the remote branch; these existing local status paths were not unpublished content. No reset, clean or branch switch performed.",
+    "otherBranches": {
+      "main": {
+        "commit": "d8891f241e113632884445d60746d9e059a1583b",
+        "changed": false,
+        "note": "Initial branch preserved intentionally."
+      },
+      "work": {
+        "commit": "8ece93492608f4644e15f0952446e808b30c8f6c",
+        "changed": false,
+        "note": "Earlier migration branch preserved intentionally."
+      }
+    }
+  },
+  "acceptedBaseline": {
+    "apiDevelopment": "complete_except_maintenance",
+    "apiDeliveryTask": "T025",
+    "reviewViewerTask": "T029",
+    "reviewViewerIsActualSimulator": false,
+    "rawQueriedByPublicApi": false,
+    "playerApiFieldCount": 8,
+    "apiAudience": "owner_private",
+    "apiPublicAudienceRequiredForAppDevelopment": false
+  },
+  "nextWork": {
+    "taskId": "T031",
+    "status": "planned",
+    "scope": [
+      "actual eFsimulator requirements",
+      "UI flows",
+      "existing private API integration design",
+      "per-product draw rules evidence and unknown-mode handling"
+    ],
+    "implementationStarted": false,
+    "newSiteCreated": false,
+    "automationChanged": false,
+    "sourceBranchSwitchPerformed": false
+  },
+  "maintenanceObservationsNotPromotedToProof": [
+    "continuous EFHub availability",
+    "next scheduled remote publication occurrence",
+    "interactive browser QA",
+    "account quotas and costs"
+  ],
+  "documentationIssuesFound": [
+    "old next-T011 schema rebuild gate",
+    "root README API-unimplemented status",
+    "ARCHITECTURE old no-schema/no-hosting statements",
+    "DATA_LIFECYCLE pre-deployment state",
+    "old local handoff work-branch and scope instructions",
+    "SIMULATOR_PLAN global API rebuild gate",
+    "legacy T010/T011/T014-T016 full raw API and thin archive assumptions"
+  ],
+  "preservation": {
+    "existingRawAndDataArchiveUnchanged": true,
+    "existingPrivateSitesUnchanged": true,
+    "existingHourlyAutomationUnchanged": true,
+    "credentialsIncluded": false,
+    "historicalObservationRecordsRetained": true,
+    "existingApiImplementationAndRulesUnchanged": true
+  },
+  "completionPolicy": {
+    "affectedAndRelatedFileReview": true,
+    "priorityOrder": [
+      "P0",
+      "P1",
+      "P2"
+    ],
+    "inventoryAndTaskReviewUpdated": true,
+    "appropriateChecksRequired": true,
+    "normalCommitAndPushSameWorkingBranchRequiredForAuthorizedDevelopment": true,
+    "verifyRemoteRefFullChangedFileContentsAndCiState": true,
+    "exceptions": [
+      "read-only work",
+      "no-op checks",
+      "hourly data jobs"
+    ],
+    "rawAndCredentialsExcludedFromGit": true,
+    "mainMergeAndAudienceChangesAreNotAutomatic": true
+  },
+  "validation": {
+    "projectCheck": {
+      "passed": true,
+      "managedFiles": 284,
+      "tasks": 32,
+      "localBaseCommit": "735c625d8c28ded18587e36942e8e59b9f2377cf",
+      "localBaseChangedPaths": 61,
+      "note": "The 61 local-base paths include already remote-reflected earlier work; they are not the new T030 remote delta."
+    },
+    "rootRegression": {
+      "passed": 374,
+      "failed": 0,
+      "observedByRoot": true
+    },
+    "runtime": {
+      "actualNode": "24.22.1",
+      "actualNpm": "11.9.0",
+      "specifiedNode": "24.19.0",
+      "specifiedNodeActivationAvailable": false
+    },
+    "productBuildAndTypecheckRepeated": false,
+    "reason": "Documentation and inventory changes only; product implementation unchanged.",
+    "remoteReflectionOfThisDocumentationSync": "not_claimed_before_push",
+    "relativeMarkdownLinks": {
+      "checked": 205,
+      "missing": 0
+    }
+  },
+  "freshRuntimeCheck": {
+    "reportedByRoot": true,
+    "healthStatus": 200,
+    "manifestStatus": 200,
+    "ready": true,
+    "database": "connected",
+    "counts": {
+      "pack": 7,
+      "player": 70,
+      "live": 7,
+      "archive": 0
+    },
+    "publicationVersion": "c8cbaa7783d2889870347cf1509d3dc3141c41f76db81245c8aadf236e3dd854",
+    "continuousAvailabilityProven": false
+  },
+  "afterDocumentationSyncInventory": {
+    "managedFiles": 284,
+    "addedFiles": [
+      "data/research/project-status-audit-T030.json"
+    ],
+    "priorityCounts": {
+      "P0": 142,
+      "P1": 130,
+      "P2": 12
+    },
+    "originalFileOrderPreserved": true,
+    "reviewedInT030": [
+      "AGENTS.md",
+      "README.md",
+      "docs/ROADMAP.md",
+      "docs/WORKPLAN.md",
+      "docs/FILE_SYNC.json",
+      "docs/ARCHITECTURE.md",
+      "docs/DATA_LIFECYCLE.md",
+      "docs/SIMULATOR_PLAN.md",
+      "docs/CHATGPT_WORK_HANDOFF.md",
+      "docs/MIGRATION_STATUS.md",
+      "docs/FILE_SYNC_AUDIT.md",
+      "docs/COLLECTION.md",
+      "docs/API_SELECTION.md",
+      "docs/CATALOG_DATA_CONTRACT.md",
+      "docs/DEPLOYMENT.md",
+      "docs/API_SERVER_PREPARATION.md",
+      "services/catalog-api/README.md",
+      "data/research/project-status-audit-T030.json",
+      "services/catalog-view/README.md",
+      "scripts/project-check.mjs",
+      "data/research/sites-deployment-T025.json"
+    ],
+    "productImplementationChanged": false
+  }
+}
