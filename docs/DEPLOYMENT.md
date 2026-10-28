@@ -1,5 +1,11 @@
 # Sites 배포·DB API 운영 계획
 
+## T035 목록 정렬 — 전달 완료
+
+같은 실제 앱과 private audience를 유지해 팩/선수의 Epic·Show Time 우선 및 최신 출시순을 공통 적용한다. API/원본/발행규칙/예약은 변경하지 않는다. 402전체/28앱·타입/Worker build·production 목록/필터/명단 순서를 검증했다. Site source e53b63a075c4a37eb8e4087ad14149634e9c3cc7, 저장version appgprj_6ae13ac0e9d88191978e6953f7286966~appgver_6baba892a1208191b4b07e0ec758a438, 배포 appgdep_6ae1a25e59708191992acf0be5f49546, 환경revision1·native succeeded·배포갱신2026-10-28T07:21:21.075057+00:00·기존 URL을 확인했다. GitHub 원격/CI 결과는 별도로 확인한다.
+
+2026-10-28T07:22:13.771Z의 fresh hosted 조회에서 정렬 클라이언트 catalog-pages-BPISMwYT.js가HTTP200·로컬production과byte일치(SHA-256 3f76ddb1e45e31e6347ad3bf1857d4a07db570a96c1cb9c91b7974ba6b39d15a)했다. health/packs/players도HTTP200·같은publication의7팩70선수/8필드를 반환했다. Site51추적파일과 저장소서비스51파일은byte차이0이고 QA입력은배포archive에없다. 최종production화면의첫3팩/날짜26·22·15와기존카드오버레이도확인했다. hosted로그인UI직접클릭QA로확대하지않는다.
+
 ## T034 공통 카드 표시 — 전달 완료
 
 기존 실제 앱 Site와 owner-private audience를 유지한 채 공통 Portrait의 OVR·포지션·영문 이름·겹침/크롭 표시를 수정한다. API/데이터/비밀값/자동화는 변경하지 않는다. 첨부 카드와 반응형 화면을 비교하고 공식 Worker build의 검증한 소스를 같은 Site에 저장/배포한다. 로컬 실제API snapshot production에서 미리보기/펼친명단/상세/모바일390/긴이름/시뮬레이터14portrait의 공통표시와clip/stacking을 확인했다.397전체/23앱회귀·TypeScript·공식Worker빌드가 통과했다. source8359d38a78c180b388732d15f2604881b742fc34, 저장version appgprj_6ae13ac0e9d88191978e6953f7286966~appgver_c1b81ab56f348191ba9a927bd8cca591, 배포 appgdep_6ae1975e3ccc8191887d09d17f32119c, 환경revision1·native succeeded2026-10-28T06:34:22.594305+00:00·기존URL을 확인했다. hosted 로그인UI 직접클릭 QA와 로컬production QA를 구분하며 GitHub/CI는 최종 원격 확인 결과를 따른다.

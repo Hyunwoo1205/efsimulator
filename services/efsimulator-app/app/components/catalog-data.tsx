@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { orderCatalog, sortPacks } from "../../lib/catalog-order.mjs";
 
 export type Player = { id: string; name: string; slug: string; position: string | null; overallRating: number | null; playingStyle: string | null; playingStyleDefensive: string | null; imageUrl: string | null };
 export type Pack = { saleId: string; name: string; officialTitle: string; playerCount: number; totalPlayerCount: number; standardPlayerCount: number; date: string | null; endsAt: string; players: Player[] };
@@ -64,13 +65,13 @@ export function CatalogProvider({ children }: { children: React.ReactNode }) {
         collection<Pack>("live", manifest.version_id, controller.signal), collection<Pack>("archive", manifest.version_id, controller.signal), collection<Player>("players", manifest.version_id, controller.signal),
       ]);
       const next = { manifest, live, archive, players }; validateCatalog(next);
-      if (!controller.signal.aborted) { setCatalog(next); setNow(Date.now()); }
+      if (!controller.signal.aborted) { setCatalog(orderCatalog(next)); setNow(Date.now()); }
     })().catch(reason => { if (!controller.signal.aborted) setError(reason instanceof Error ? reason.message : "자료를 불러오지 못했습니다."); }).finally(() => { if (!controller.signal.aborted) setLoading(false); });
     return () => controller.abort();
   }, [attempt]);
   const live = useMemo(() => catalog?.live.filter(pack => Date.parse(pack.endsAt) > now) ?? [], [catalog, now]);
-  const archive = useMemo(() => catalog ? [...catalog.archive, ...catalog.live.filter(pack => Date.parse(pack.endsAt) <= now)] : [], [catalog, now]);
-  const allPacks = useMemo(() => [...live, ...archive], [live, archive]);
+  const archive = useMemo(() => catalog ? sortPacks([...catalog.archive, ...catalog.live.filter(pack => Date.parse(pack.endsAt) <= now)]) : [], [catalog, now]);
+  const allPacks = useMemo(() => sortPacks([...live, ...archive]), [live, archive]);
   return <CatalogContext.Provider value={{ catalog, live, archive, allPacks, error, loading, now, refresh: () => setAttempt(value => value + 1) }}>{children}</CatalogContext.Provider>;
 }
 

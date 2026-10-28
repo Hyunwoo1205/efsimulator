@@ -1,8 +1,10 @@
-<!-- project-state: {"stage":"R6","previous":"T034","current":"T017","next":"T018"} -->
+<!-- project-state: {"stage":"R6","previous":"T035","current":"T017","next":"T018"} -->
 
 # efsimulator 개발 로드맵
 
-최신 전달(T034): 첨부 EFHub 카드에 맞춰 실제 앱 전체 선수 이미지에 OVR·포지션·영문 이름을 원본 글꼴/좌표로 공통 표시하고, 겹침/크롭·모바일/긴 이름·시뮬레이터를 production 화면에서 검증해 같은 private Site에 재배포했다. 다음은 T017 추첨 규칙·엔진/2D, T018 3D다.
+최신 전달(T035): 실제 앱의 모든 팩·선수 목록을 Epic/Show Time 한 우선 그룹과 팩 날짜 최신순으로 통일했다. 선수는 최초 확인 연결팩 날짜를 쓰고 Highlight를 승격하지 않는다.402전체/28앱·타입/Worker build·production 정렬 QA·같은 private 재배포를 확인했다. 다음은T017 엔진/2D와T018 3D다.
+
+이전 전달(T034): 첨부 EFHub 카드에 맞춰 실제 앱 전체 선수 이미지에 OVR·포지션·영문 이름을 원본 글꼴/좌표로 공통 표시하고, 겹침/크롭·모바일/긴 이름·시뮬레이터를 production 화면에서 검증해 같은 private Site에 재배포했다. 다음은 T017 추첨 규칙·엔진/2D, T018 3D다.
 
 이전 전달(T033): **production 선수/팩 navigation·명단 펼침·encoded ID 상세 연결을 수정하고 같은 production 빌드의 snapshot 브라우저 흐름과 private 재배포/fresh hosted API를 검증했다.** 다음은 T017 추첨 규칙/엔진·2D, T018 3D다. T032 당시 UI QA 한계와 이번 검증 환경은 구분한다. 공식 상품 한정 가공 API와 누적 raw의 분리는 [데이터 계약](CATALOG_DATA_CONTRACT.md)을 유지한다. 과거 전체 raw 공개 API·얇은 아카이브·스키마 재구축 계획을 다음 개발의 전역 선행 조건으로 다시 적용하지 않는다.
 
@@ -11,10 +13,10 @@
 | 항목 | 내용 |
 | --- | --- |
 | 현재 단계 | R6 — 추첨 모드/규칙·최소 엔진/2D 세부 작업 예정 |
-| 이전 작업 | T034 — 공통 카드 OVR·포지션·영문명·가림/시각 비교와 private 재배포 검증 완료 |
-| 현재 작업 | T017 — 추첨 모드별 규칙·잔여 풀·익명 Standard·최소 엔진/2D 세부 작업 예정 |
+| 이전 작업 | T035 — 팩·선수 공통 등급/날짜 정렬과 private 재배포 검증 완료 |
+| 현재 작업 | T017 — 추첨 규칙·잔여 풀·익명 Standard·최소 엔진/2D 세부 작업 예정 |
 | 다음 작업 | T018 — 검증된 엔진/연출 뒤3D·모바일 성능·실패 fallback |
-| 현재 조건 | 실제 앱의 모든 선수 이미지가 공통240×340 카드/원본 글꼴·같은 paint/clip 경계를 사용. 실제 API snapshot production 시각 QA와 private 재배포 확인. hosted 로그인 UI 직접클릭 QA와 구분. 핵심 API/데이터/자동화/audience 불변 |
+| 현재 조건 | T035의 모든 실제 앱 목록은 Epic/Show Time 우선·그룹 안 유효 팩 날짜 최신순이다. 선수는 최초 확인 연결팩 날짜를 쓰며 실제 최초 출시일로 주장하지 않는다. production 정렬/필터/명단·private 재배포를 확인하고 T034 공통 카드·API/원본/자동화/audience는 보존했다. |
 
 ## 전달된 기반과 남은 범위
 

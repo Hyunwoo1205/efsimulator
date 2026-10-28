@@ -429,7 +429,7 @@
       "update_when": [
         "빌드 명령·출력·라우팅·배포 설정·공개 검증 결과 변경"
       ],
-      "reviewed_in": "T034"
+      "reviewed_in": "T035"
     },
     {
       "path": "docs/FILE_SYNC.json",
@@ -448,7 +448,7 @@
       "update_when": [
         "파일 추가·삭제·이름 변경·역할/의존관계 변경·영향 검토"
       ],
-      "reviewed_in": "T034"
+      "reviewed_in": "T035"
     },
     {
       "path": "docs/ROADMAP.md",
@@ -474,7 +474,7 @@
       "update_when": [
         "단계 상태·현재/이전/다음 작업·완료 조건·추가 요구 변경"
       ],
-      "reviewed_in": "T034"
+      "reviewed_in": "T035"
     },
     {
       "path": "docs/WORKPLAN.md",
@@ -499,7 +499,7 @@
       "update_when": [
         "매 작업 착수·추가 요구·파일 변경·검증 결과·작업 종료"
       ],
-      "reviewed_in": "T034"
+      "reviewed_in": "T035"
     },
     {
       "path": "index.html",
@@ -759,7 +759,7 @@
       "update_when": [
         "설치·실행·검증·표본 범위·진입 문서·공개 상태 변경"
       ],
-      "reviewed_in": "T034"
+      "reviewed_in": "T035"
     },
     {
       "path": "docs/sources/CARD_API_AUDIT.md",
@@ -1394,7 +1394,7 @@
       "update_when": [
         "사용자 범위/입력 상태·원격/로컬 반영·이관/검증 결과·지원 도구/작업 상태 변경"
       ],
-      "reviewed_in": "T034"
+      "reviewed_in": "T035"
     },
     {
       "path": "docs/FILE_SYNC_AUDIT.md",
@@ -4544,12 +4544,14 @@
         "services/efsimulator-app/package.json",
         "docs/DEPLOYMENT.md",
         "services/efsimulator-app/public/fonts/README.md",
-        "data/research/card-artwork-T034.json"
+        "data/research/card-artwork-T034.json",
+        "services/efsimulator-app/lib/catalog-order.mjs",
+        "services/efsimulator-app/tests/catalog-order.test.mjs"
       ],
       "update_when": [
         "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
       ],
-      "reviewed_in": "T034"
+      "reviewed_in": "T035"
     },
     {
       "path": "services/efsimulator-app/app/api/v1/[[...path]]/route.ts",
@@ -4575,12 +4577,14 @@
         "services/efsimulator-app/README.md",
         "services/efsimulator-app/package.json",
         "docs/DEPLOYMENT.md",
-        "services/efsimulator-app/lib/catalog-relay.mjs"
+        "services/efsimulator-app/lib/catalog-relay.mjs",
+        "services/efsimulator-app/lib/catalog-order.mjs",
+        "services/efsimulator-app/tests/catalog-order.test.mjs"
       ],
       "update_when": [
         "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
       ],
-      "reviewed_in": "T032"
+      "reviewed_in": "T035"
     },
     {
       "path": "services/efsimulator-app/app/components/catalog-pages.tsx",
@@ -4591,12 +4595,14 @@
         "services/efsimulator-app/package.json",
         "docs/DEPLOYMENT.md",
         "services/efsimulator-app/lib/catalog-relay.mjs",
-        "services/efsimulator-app/app/components/catalog-data.tsx"
+        "services/efsimulator-app/app/components/catalog-data.tsx",
+        "services/efsimulator-app/lib/catalog-order.mjs",
+        "services/efsimulator-app/tests/catalog-order.test.mjs"
       ],
       "update_when": [
         "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
       ],
-      "reviewed_in": "T033"
+      "reviewed_in": "T035"
     },
     {
       "path": "services/efsimulator-app/app/components/catalog-ui.tsx",
@@ -5263,6 +5269,58 @@
         "카드 글꼴 파일·출처·메타데이터·서체 선택 또는 원본 제공 경로 변경"
       ],
       "reviewed_in": "T034"
+    },
+    {
+      "path": "data/research/catalog-order-T035.json",
+      "role": "T035 공통 팩/선수 정렬 의미·원격 기준·회귀/화면/배포 검증의 비밀값 없는 근거",
+      "priority": "P1",
+      "related_paths": [
+        "docs/WORKPLAN.md",
+        "docs/DEPLOYMENT.md",
+        "services/efsimulator-app/README.md",
+        "services/efsimulator-app/app/components/catalog-data.tsx",
+        "services/efsimulator-app/app/components/catalog-pages.tsx",
+        "services/efsimulator-app/lib/catalog-order.mjs",
+        "services/efsimulator-app/tests/catalog-order.test.mjs"
+      ],
+      "update_when": [
+        "표시 순서·타입/출시일 근거·정렬 회귀/화면/배포 결과 변경"
+      ],
+      "reviewed_in": "T035"
+    },
+    {
+      "path": "services/efsimulator-app/lib/catalog-order.mjs",
+      "role": "팩·선수 Epic/Show Time 우선과 최초 연결팩 날짜·문자열ID 동률을 적용하는 무변형 공통 정렬",
+      "priority": "P1",
+      "related_paths": [
+        "services/efsimulator-app/app/components/catalog-data.tsx",
+        "services/efsimulator-app/app/components/catalog-pages.tsx",
+        "services/efsimulator-app/lib/preview-player-types.json",
+        "services/efsimulator-app/README.md",
+        "data/research/catalog-order-T035.json",
+        "services/efsimulator-app/tests/catalog-order.test.mjs"
+      ],
+      "update_when": [
+        "팩/선수 표시 정렬·타입/날짜 근거·누락/동률/재수록·원본 무변형 정책 변경"
+      ],
+      "reviewed_in": "T035"
+    },
+    {
+      "path": "services/efsimulator-app/tests/catalog-order.test.mjs",
+      "role": "혼합그룹/동률·누락/잘못된 날짜·미등록 등급·재수록·입력 무변형 및 실제 목록 순서 회귀",
+      "priority": "P1",
+      "related_paths": [
+        "services/efsimulator-app/app/components/catalog-data.tsx",
+        "services/efsimulator-app/app/components/catalog-pages.tsx",
+        "services/efsimulator-app/lib/preview-player-types.json",
+        "services/efsimulator-app/README.md",
+        "data/research/catalog-order-T035.json",
+        "services/efsimulator-app/lib/catalog-order.mjs"
+      ],
+      "update_when": [
+        "팩/선수 표시 정렬·타입/날짜 근거·누락/동률/재수록·원본 무변형 정책 변경"
+      ],
+      "reviewed_in": "T035"
     }
   ]
 }

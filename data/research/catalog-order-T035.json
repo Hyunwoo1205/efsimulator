@@ -1,0 +1,158 @@
+{
+  "task": "T035",
+  "status": "completed",
+  "baseline": {
+    "branch": "api-server-setup",
+    "commit": "feec25e456344e349921c008da614b224abd0705",
+    "tree": "6c51cdfeeb1ad39bb24793b5b47ec49afec01956",
+    "localFiles": 337,
+    "remoteBlobs": 337,
+    "mismatches": 0,
+    "remoteOnly": 0,
+    "truncated": false
+  },
+  "semantics": {
+    "priorityGroup": "Epic and Show Time together",
+    "withinGroups": "newest release first",
+    "playerType": "exact card ID metadata types5/8; never inherited from pack membership",
+    "releaseDateSource": "EFHub pack.date; raw has no per-card release date field; not asserted as verified launch/sale start",
+    "packPriority": "Epic/Show Time title prefixes, combined in one group; no Epic-over-Show-Time subpriority",
+    "playerDateBasis": "Earliest known valid YYYY-MM-DD among linked packs for the exact card ID; a later reissue does not make the same card newly released",
+    "invalidOrUnknownDate": "Last within its own priority group",
+    "unknownType": "Ordinary group; no guessing from names, OVR or Epic pack membership",
+    "ties": "Exact string saleId/card ID; no conversion to Number",
+    "mutatesInput": false,
+    "uiNotes": [
+      "Epic·Show Time 우선 · 팩 날짜 최신순",
+      "연결 팩 날짜 최신순"
+    ],
+    "surfaces": [
+      "live/archive pack lists",
+      "player list",
+      "nested pack rosters",
+      "related packs",
+      "simulator pack picker and roster"
+    ],
+    "currentMetadataCoverage": {
+      "players": 70,
+      "EpicType5": 4,
+      "ShowTimeType8": 3,
+      "HighlightType6": 41,
+      "TrendingType3": 22
+    }
+  },
+  "checks": {
+    "appTests": {
+      "passed": 28,
+      "failed": 0,
+      "newSortTests": 5
+    },
+    "fullTests": {
+      "passed": 402,
+      "failed": 0
+    },
+    "typeScript": "passed",
+    "officialWorkerBuild": "passed",
+    "projectCheck": {
+      "files": 340,
+      "tasks": 36,
+      "baselineLocalCommit": "735c625",
+      "changedPathsIncludingPriorPushedWork": 117,
+      "result": "passed"
+    },
+    "gitDiffCheck": "passed",
+    "actualSnapshotNonMutationAudit": {
+      "result": "passed",
+      "playerIds": 70,
+      "playerFields": 8,
+      "inputArraysAndObjects": "unchanged"
+    },
+    "actualToolVersions": {
+      "node": "24.22.1",
+      "configuredNode": "24.19.0",
+      "npm": "11.9.0"
+    },
+    "changedMarkdownRelativeLinks": {
+      "checked": 70,
+      "missing": 0
+    }
+  },
+  "deployment": {
+    "projectId": "appgprj_6ae13ac0e9d88191978e6953f7286966",
+    "sourceCommit": "e53b63a075c4a37eb8e4087ad14149634e9c3cc7",
+    "savedVersionId": "appgprj_6ae13ac0e9d88191978e6953f7286966~appgver_6baba892a1208191b4b07e0ec758a438",
+    "deploymentId": "appgdep_6ae1a25e59708191992acf0be5f49546",
+    "environmentRevision": 1,
+    "status": "succeeded",
+    "url": "https://efsimulator.hyunw09.chatgpt.site",
+    "audience": "owner-private",
+    "hostedReadback": {
+      "status": "passed",
+      "observedAt": "2026-10-28T07:22:13.771Z",
+      "clientAsset": "catalog-pages-BPISMwYT.js",
+      "clientAssetStatus": 200,
+      "clientAssetMatchesLocalProduction": true,
+      "clientAssetSha256": "3f76ddb1e45e31e6347ad3bf1857d4a07db570a96c1cb9c91b7974ba6b39d15a",
+      "apiRoutes": [
+        "health",
+        "packs",
+        "players"
+      ],
+      "apiStatus": 200,
+      "samePublication": "c8cbaa7783d2889870347cf1509d3dc3141c41f76db81245c8aadf236e3dd854",
+      "packs": 7,
+      "players": 70,
+      "playerFields": 8,
+      "authenticatedHostedBrowserClicks": "not claimed; browser QA used the matching local production build"
+    },
+    "updatedAt": "2026-10-28T07:21:21.075057+00:00"
+  },
+  "preserved": [
+    "API eight-field player contract",
+    "raw and publication data",
+    "collection/publishing rules",
+    "hourly automation",
+    "viewer and Pages",
+    "private audience"
+  ],
+  "examples": {
+    "packOrder": [
+      "Italian League Selection Attackers",
+      "Magical Dribblers",
+      "Ricardo Quaresma / Trendyol Süper Lig Selection",
+      "POTW (two same-day packs ordered by string saleId)",
+      "Italian League Selection",
+      "National Teams Selection"
+    ],
+    "priorityPlayerOrder": [
+      "Filippo Inzaghi",
+      "Hidetoshi Nakata",
+      "Roberto Baggio",
+      "Raphinha",
+      "Jérémy Doku",
+      "Désiré Doué",
+      "Ricardo Quaresma"
+    ],
+    "ordinaryPlayers": "Highlight/Trending follow in newest pack-date groups"
+  },
+  "visualQa": {
+    "snapshotObservedAt": "2026-10-28T07:16:52.017Z",
+    "mode": "Fresh actual API snapshot in local production Worker/client browser QA; not authenticated hosted UI clicks",
+    "verified": [
+      "Simulator dropdown has all seven packs in the expected combined-priority/date order",
+      "Italian nested roster places its three Epic cards before Berardi/Highlight",
+      "Global seventy-player list starts Inzaghi, Nakata, Baggio, Raphinha, Doku, Doue, Quaresma",
+      "AMF filter retains six cards in existing sort order: Nakata, Baggio, Nikola, Lazar, Nico, Lucas",
+      "Pack list has all seven packs in expected order",
+      "Epic search returns Italian Attackers then Quaresma",
+      "Expanded inline eleven-player roster starts with its three Epic cards",
+      "Final production screenshot shows Italian Attackers, Magical Dribblers, Quaresma with pack dates 26/22/15 October and existing card overlays intact"
+    ]
+  },
+  "sourceCopy": {
+    "siteTrackedFiles": 51,
+    "repoServiceFiles": 51,
+    "byteMismatches": 0,
+    "archiveExcludesAllQaInputs": true
+  }
+}

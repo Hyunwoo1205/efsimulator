@@ -1,4 +1,4 @@
-<!-- project-state: {"stage":"R6","previous":"T034","current":"T017","next":"T018"} -->
+<!-- project-state: {"stage":"R6","previous":"T035","current":"T017","next":"T018"} -->
 
 # efsimulator 작업 계획과 이력
 
@@ -6,16 +6,16 @@
 
 ## 현재 작업과 매 작업 갱신
 
-- 이전 작업: T034 — 공통 선수 카드 OVR·포지션·영문 이름·겹침/크롭과 참고 이미지 비교·private 재배포 검증 완료.
+- 이전 작업: T035 — 팩·선수 Epic/Show Time 우선과 팩 날짜 최신순 공통 정렬·회귀/화면/private 재배포 검증 완료.
 - 현재 작업: T017 — 추첨 모드별 규칙·잔여 풀·익명 Standard·최소 엔진/2D 결과 세부 작업 예정.
 - 다음 작업: T018 — 검증된 엔진/연출 뒤3D·모바일 성능·실패 fallback.
-- 현재 조건: T034 공통 Portrait를240×340 원본 좌표와 원본 eFootball 글꼴로 보정했다. 실제 API snapshot을 사용하는 production 화면에서 미리보기·명단·상세·모바일·시뮬레이터·긴 이름과 가림 경계를 검증하고 같은 private Site에 재배포했다. 이는 로그인된 hosted UI 직접클릭 QA와 구분한다. API8필드·raw/규칙·자동화·audience·viewer/Pages 보존, 추첨 엔진/3D는 미구현이다.
+- 현재 조건: T035의 모든 실제 앱 목록은 Epic/Show Time 한 우선 그룹과 유효 팩 날짜 내림차순을 공유한다. 선수는 최초 확인 연결팩 날짜를 표시용으로 사용하며 실제 최초 출시일로 주장하지 않는다.402전체/28앱 회귀·타입/Worker build·실제 snapshot production 정렬/필터/명단·같은 private 배포를 확인했다. API8필드·raw/규칙/자동화·기존viewer/Pages·audience와 T034 카드 표시는 보존했다.
 
 매 작업 시작 시 Git 상태·이전 결과·이번/다음 작업·선행 조건을 확인한다. FILE_SYNC의 P0→P1→P2로 관련 파일을 검토하되 필요한 파일은 등급과 무관하게 함께 수정한다. 추가 요구는 ID·영향 단계·선행 조건·순서·상태를 기록한다. 파일별 수정/변경불필요/미해결과 근거, 경로 추가/삭제/이름 변경·참조를 같은 작업에서 갱신한다. 검증과 이전/현재/다음 포인터를 맞추며 구현/수집/발행 완료는 실제 근거가 있을 때만 표시한다.
 
 ## 최신 추가 조건과 이전 조건의 적용
 
-C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_BEFORE_PROBABILITY_SCOPE.md)에 보존한다. 관리 최신화·ID/근거·실패 보존·접근 거부 우회 금지·무료 우선·운영 승인 분리 원칙은 계속 적용한다. 범위 결정은 날짜별 이력이며 현재 범위·완료 정책은 최신 C067과 아래 T034를 우선하고 API 완료/정상 반영 정책 C063~C064를 유지한다. 전체 수집과 사이트 범위를 혼동하지 않는다.
+C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_BEFORE_PROBABILITY_SCOPE.md)에 보존한다. 관리 최신화·ID/근거·실패 보존·접근 거부 우회 금지·무료 우선·운영 승인 분리 원칙은 계속 적용한다. 범위 결정은 날짜별 이력이며 현재 범위·완료 정책은 최신 C068과 아래 T035를 우선하고 API 완료/정상 반영 정책 C063~C064를 유지한다. 전체 수집과 사이트 범위를 혼동하지 않는다.
 
 | 조건 ID | 최신 결정 | 영향 단계 / 선행 조건 / 처리 순서 | 상태 |
 | --- | --- | --- | --- |
@@ -56,6 +56,7 @@ C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_B
 | C065 | 실제 eFsimulator 앱 서버를 별도 제작하고 기존 private API에 서버 전용으로 연결; 선수/팩 목록/상세와 별도 시뮬레이터 진입 페이지 제공 | T032/R3. 실제 앱 소스/등록ID→서버 relay·조회 화면→검증·private 배포→원격 실조회→정상 소스 반영. API8필드/원본/규칙/자동화·기존 viewer/Pages 보존 | 실제 앱 private 배포·API 목록/상세/직접 페이지·보안/검사 검증 완료. 엔진/3D·추첨 규칙 확정은 후속; hosted 실데이터 브라우저 상호작용 QA는 미수행 |
 | C066 | 기존 선수/팩 조회 기능이 실제로 동작하도록 production navigation·명단 펼침·ID 상세 연결 수정 | T033/R3. production 재현→표준a/full navigation·인라인 명단·safe1회decode→회귀/production QA→동일 private Site 재배포/실조회 | production snapshot 상호작용·ID3회귀/앱23/전체397·타입/빌드·동일 private 재배포/fresh hosted API 검증 완료. T032 한계 이력과 hosted UI 직접 QA 구분·핵심 계약 보존 |
 | C067 | 실제 앱의 모든 선수 카드 이미지에 왼쪽 위 OVR·그 아래 작은 포지션·아래쪽 영문 이름을 공통 적용; 겹침/크롭 시 카드와 글자를 함께 가림 | T034/R3. 첨부 EFHub 카드 좌표/글꼴 비교→공통 Portrait 적용→목록/미리보기/명단/상세/시뮬레이터 반응형 QA→동일 private Site 배포·GitHub/문서 정합성 | 공통 표시·397/23회귀·타입/공식빌드·production 시각 QA·동일 private 재배포 검증 완료; API8필드·원본/규칙·자동화·audience 유지 |
+| C068 | 실제 앱의 모든 팩/선수 목록에서 Epic·Show Time을 같은 우선 그룹으로 묶고 각 그룹 안은 최신 출시순; 나머지도 최신순 | T035/R3. 정확한 카드 타입5/8과 출시 근거 확인→공통 정렬→모든 목록 적용/회귀→같은 private 배포·GitHub 확인 | 공통 정렬·402/28회귀·타입/Worker build·production QA·같은 private 재배포 완료; Highlight/미등록 등급 추정 없음 |
 
 
 ## 이전 작업의 현재 해석
@@ -600,7 +601,7 @@ Sites 계정의 실제 한도·비용·영속 저장·실제 인증·백업 미�
 
 - 단계: R6
 - 상태: 예정
-- 이전: T034
+- 이전: T035
 - 다음: T018
 
 ### 목표·입력·순서
@@ -1689,3 +1690,48 @@ root 전체 회귀394/394·실패0, 앱20회귀·TypeScript·공식 Worker 빌�
 | `services/efsimulator-app/public/fonts/eFootballStencil-Regular.woff` | 수정 | 원본 eFootball stencil OVR 글꼴과 원본 저작권 메타데이터를 그대로 보존 |
 | `services/efsimulator-app/public/fonts/eFootballSans-Bold.woff` | 수정 | 참고 카드의 포지션/영문명 원본 eFootball Sans Bold 글꼴 |
 | `services/efsimulator-app/public/fonts/README.md` | 수정 | 공식 글꼴 URL·원본 저작권·메타데이터 보존과 라이선스 비주장 기록 |
+
+
+## T035 — 팩·선수 Epic/Show Time 우선과 최신 출시순 정렬
+
+- 단계: R3
+- 상태: 완료
+- 이전: T034
+- 다음: T017
+
+실제 앱의 모든 팩·선수 목록에서 Epic/Show Time을 하나의 우선 그룹으로 표시하고 그룹 안은 최신 출시순으로 정렬한다. 나머지 유형도 출시일 최신순으로 정렬한다. 선수 유형은 기존 정확한 카드ID의 타입5/8로 판단하며 Epic팩에 들어 있다는 이유로 Highlight를 승격하지 않는다. 현재 raw에는 선수별 출시일이 없으므로 확인 가능한 EFHub 팩 날짜를 사용한다. 정확한 카드ID가 연결된 유효한 YYYY-MM-DD 중 가장 이른 날짜를 선수의 정렬 기준으로 삼아 재수록이 새 출시로 승격되지 않게 한다. 이는 검증된 실제 출시/판매 시작일이라는 뜻이 아니다. 미확인/잘못된 날짜는 해당 우선 그룹의 마지막, 날짜 동률은 정확한 문자열 카드ID/회차saleId로 고정하고 입력 배열/객체를 수정하지 않는다. API/raw/규칙/자동화·기존 viewer/Pages·private audience는 유지한다.
+
+작업 시작 시 GitHub api-server-setup의feec25e456344e349921c008da614b224abd0705와 실제 로컬337파일/원격337blob이 모두 일치했다. 기존 dirty Git메타데이터를 되돌리지 않는다. 공통 orderCatalog/sortPacks·최초 확인 연결팩 날짜·혼합유형/동률/누락/재수록/무변형 회귀와 live/archive·중첩명단·관련팩·시뮬레이터의 모든 목록 호출 지점, 앱/전체 테스트·TypeScript·Worker build·같은 private 배포·원격 내용/CI를 검증한다.
+
+### 실행 결과
+
+표시 전용 orderCatalog/sortPacks를 provider·live/archive·중첩명단·관련팩·시뮬레이터에 공통 적용했다. 타입5/8은 한 우선 그룹, 각 그룹 안은 유효 팩 날짜 내림차순이며 선수는 가장 이른 확인 연결팩 날짜를 쓴다. 누락 날짜는 그룹 끝, 동률은 정확한 문자열ID다. 원본/API에 필드나 정렬을 쓰지 않는다.
+
+신규5회귀를 포함해 앱28/전체402테스트·TypeScript·공식 Worker build가 통과했다. 실제 snapshot의 입력 배열/객체·70카드ID/8필드 무변형도 별도 대조했다. 관리340파일/36작업·로컬735c625기준117경로와 diff 공백 검사가 통과했다.117경로는 기존 원격 반영 이력을 포함한다.
+
+2026-10-28T07:16:52.017Z 실제API snapshot의 production 브라우저에서 팩7개·시뮬레이터 선택 순서, 전체70선수 첫7명 Inzaghi/Nakata/Baggio/Raphinha/Doku/Doue/Quaresma, AMF6명 필터·Epic검색2팩·펼친11명/중첩명단의Epic3명 우선 순서를 확인했다. 이는 로그인된 hosted UI 직접클릭 QA와 구분한다. 같은 private 앱 배포는 native succeeded로 확인했다. Site source e53b63a075c4a37eb8e4087ad14149634e9c3cc7, 저장 version appgprj_6ae13ac0e9d88191978e6953f7286966~appgver_6baba892a1208191b4b07e0ec758a438, 배포 appgdep_6ae1a25e59708191992acf0be5f49546, 환경revision1, 배포갱신시각2026-10-28T07:21:21.075057+00:00이며 URL은 https://efsimulator.hyunw09.chatgpt.site 그대로다. 최신 GitHub/CI는 최종 원격 확인 결과로 보고하고 자기 자신을 포함할 미래 commit SHA를 문서에 쓰지 않는다.
+
+2026-10-28T07:22:13.771Z의 fresh hosted 조회에서 정렬 클라이언트 catalog-pages-BPISMwYT.js가HTTP200·로컬production과byte일치(SHA-256 3f76ddb1e45e31e6347ad3bf1857d4a07db570a96c1cb9c91b7974ba6b39d15a)했다. health/packs/players도HTTP200·같은publication의7팩70선수/8필드를 반환했다. Site51추적파일과 저장소서비스51파일은byte차이0이고 QA입력은배포archive에없다. 최종production화면의첫3팩/날짜26·22·15와기존카드오버레이도확인했다. hosted로그인UI직접클릭QA로확대하지않는다.
+
+### 파일 최신화 검토
+
+| 파일 | 결과 | 근거 |
+| --- | --- | --- |
+| `README.md` | 수정 | 실제 앱 목록 정렬 개선 안내 |
+| `docs/WORKPLAN.md` | 수정 | C068·T035 정렬 범위/선행·검증·파일 검토 |
+| `docs/ROADMAP.md` | 수정 | 현재T035와 후속T017/T018 순서 |
+| `docs/FILE_SYNC.json` | 수정 | 정렬 소스/회귀/근거의 역할·우선순위·연관/갱신 조건 |
+| `docs/CHATGPT_WORK_HANDOFF.md` | 수정 | 실제 앱 표시용 정렬과 기존 계약 보존 |
+| `docs/DEPLOYMENT.md` | 수정 | 같은 private 앱 재배포·정렬 검증 범위 |
+| `data/research/catalog-order-T035.json` | 수정 | 원격 기준·정렬 의미·회귀/화면/배포의 비밀값 없는 근거 |
+| `services/efsimulator-app/app/components/catalog-data.tsx` | 수정 | 팩/선수·팩 내부명단 공통 정렬 적용 |
+| `services/efsimulator-app/app/components/catalog-pages.tsx` | 수정 | 페이지의 중복/기존 정렬 대신 공통 순서 일관성 유지 |
+| `services/efsimulator-app/README.md` | 수정 | 타입5/8 우선·날짜/동률·적용 목록 설명 |
+| `services/efsimulator-app/lib/preview-player-types.json` | 검토 결과 변경 불필요 | 검증된 카드ID 타입 metadata를 표시용으로 재사용 |
+| `services/efsimulator-app/lib/pack-preview.mjs` | 검토 결과 변경 불필요 | Epic/ShowTime 대표선수만 표시하는 기존 선택 계약 유지 |
+| `services/efsimulator-app/app/components/catalog-ui.tsx` | 검토 결과 변경 불필요 | 카드 타이포그래피·겹침/크롭과 표준 navigation 보존 |
+| `AGENTS.md` | 검토 결과 변경 불필요 | 작업별 파일 검토·GitHub/CI 완료 조건 유지 |
+| `docs/CATALOG_DATA_CONTRACT.md` | 검토 결과 변경 불필요 | API8필드·raw/발행순서·데이터 계약 변경 없음 |
+| `.github/workflows/efsimulator-app-check.yml` | 검토 결과 변경 불필요 | 기존 tests/*.test.mjs·타입/Worker build가 정렬 회귀를 포함 |
+| `services/efsimulator-app/lib/catalog-order.mjs` | 수정 | 정확한 타입5/8·팩 제목 우선 그룹과 유효 날짜/최초 연결팩/문자열ID 동률의 순수 공통 정렬 |
+| `services/efsimulator-app/tests/catalog-order.test.mjs` | 수정 | 혼합그룹·날짜/ID 동률·누락/미등록 타입·재수록·무변형과 실제 명단 회귀 |

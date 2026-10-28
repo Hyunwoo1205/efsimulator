@@ -1,3 +1,9 @@
+# 현재 인수인계 — T035 팩·선수 정렬, 2026-10-28 KST
+
+실제 앱의 모든 팩·선수 목록은 Epic/Show Time을 같은 우선 그룹으로 묶고 그룹 안 최신 출시순, 나머지도 최신순으로 정렬한다. 선수는 정확한 타입5/8 기준이며 Epic팩의 Highlight를 승격하지 않는다. raw에 선수별 출시일이 없어 정확한 카드ID에 연결된 유효한 팩 날짜 중 가장 이른 값을 사용한다. 재수록으로 날짜를 새로 승격하지 않으며 실제 최초 출시일로 주장하지 않는다. 날짜 미확인은 그룹 끝, 동률은 문자열ID로 고정하고 원본을 수정하지 않는다. T035 공통 정렬·402전체/28앱·타입/Worker build·production 정렬/검색/필터/명단·같은 private 재배포가 완료됐다. 이전T035→현재T017 엔진/2D 예정→다음T018 3D 순서다. API/raw/규칙/예약·기존viewer/Pages·비공개 접근은 보존한다. 시작 원격feec25e와 로컬337파일/원격337blob이 모두 일치했다. 실행 결과는 WORKPLAN T035·catalog-order-T035.json을 따른다.
+
+2026-10-28T07:22:13.771Z의 fresh hosted 조회에서 정렬 클라이언트 catalog-pages-BPISMwYT.js가HTTP200·로컬production과byte일치(SHA-256 3f76ddb1e45e31e6347ad3bf1857d4a07db570a96c1cb9c91b7974ba6b39d15a)했다. health/packs/players도HTTP200·같은publication의7팩70선수/8필드를 반환했다. Site51추적파일과 저장소서비스51파일은byte차이0이고 QA입력은배포archive에없다. 최종production화면의첫3팩/날짜26·22·15와기존카드오버레이도확인했다. hosted로그인UI직접클릭QA로확대하지않는다.
+
 # 현재 인수인계 — T034 공통 카드 표시, 2026-10-28 KST
 
 최신 사용자 요청은 실제 앱의 모든 선수 카드 이미지에 첨부 EFHub처럼 OVR·그 아래 작은 포지션·아래쪽 영문 이름을 표시하고, 겹침/크롭에 따라 글자도 카드와 함께 가리도록 하는 것이다. 공통 Portrait를 중심으로 구현하며 실제 이미지/글꼴/좌표와 반응형을 비교한다. T034 공통 카드·397전체/23앱 회귀·타입/공식빌드·production 시각 QA·동일 private 배포가 완료됐다. 이전 T034→현재 T017 추첨 규칙·엔진/2D 예정→다음 T018 3D다. 원본240×340좌표·원본eFootball stencil/SansBold글꼴을 사용하고 긴 이름만 실제 측정해227단위로 축소한다. 시뮬레이터도14portrait/3labeltext·같은clip/stacking을 확인했다. 이는 로그인된hosted UI 직접클릭 QA와 구분한다. source8359d38a78c180b388732d15f2604881b742fc34의 private 배포 succeeded를 확인했으며 최신 GitHub/CI는 최종 원격 확인 결과를 따른다.

@@ -1,5 +1,7 @@
 # efsimulator
 
+> T035 완료: 실제 앱의 팩·선수 목록은 Epic/Show Time 우선과 그룹 안 팩 날짜 최신순이다. 선수는 최초 확인 연결팩 날짜 기준이며 실제 최초 출시일을 뜻하지 않는다. 표시 전용 공통 정렬을 회귀/production 화면에서 검증해 같은 private 앱에 배포했고 API/원본 계약은 유지했다.
+
 > T034 완료: 실제 앱의 모든 선수 이미지에 원본 글꼴/좌표의 OVR·포지션·영문 이름을 공통 표시한다. 카드 겹침/잘림과 첨부 EFHub 참고 이미지의 유사도·모바일/긴 이름·시뮬레이터 production 화면을 검증하고 같은 private Site에 재배포했다. [작업 계획](docs/WORKPLAN.md#t034--공통-선수-카드-ovr포지션영문-이름과-가림-표시)을 따른다.
 
 > T033 수정 완료: production 선수/팩 navigation·명단 펼침·encoded 회차ID 상세 연결을 보완해 같은 production 빌드에서 실제 API snapshot 기반 검색/명단/상세/필터·탭·새로고침 흐름을 확인했고 동일 private Site에 재배포했다. 별도 fresh hosted API/직접 페이지·보안 검증도 통과했다. 로그인한 hosted UI 세션 직접 QA와는 구분하며 [실행 근거](data/research/app-interactions-T033.json)를 따른다. API/raw/규칙/자동화와 private 접근은 유지했다.
