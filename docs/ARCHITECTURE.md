@@ -1,19 +1,19 @@
 # 누적 원본·가공 API·실제 앱의 구조와 설계 이력
 
-## T030 현재 구현과 다음 제품 설계
+## T030 API 전달 기준과 T032 실제 앱 구현
 
-최신 사용자는 API 개발을 완료로 두고 향후 오류만 유지보수하기로 했다. 현재 구현은 [데이터 계약](CATALOG_DATA_CONTRACT.md)의 누적 raw·공식 상품 한정 가공 publication·전체 중첩 live/archive다. T023/T024/T027/T028의 계약·수집/검증과 T025의 실제 private Worker/D1 배포·원격 적재/전체 해시·조회·포인터 복구·인증을 재사용한다. 아래 T020~T023의 전체 raw API·미구현 스키마 설명은 당시 설계 이력이며 새로운 API 재구축 지시가 아니다.
+API 개발은 완료 기준과 향후 오류 유지보수를 유지하며 최신 T032 지시는 실제 앱 서버·API relay·조회 화면 제작이다. 현재 구현은 [데이터 계약](CATALOG_DATA_CONTRACT.md)의 누적 raw·공식 상품 한정 가공 publication·전체 중첩 live/archive다. T023/T024/T027/T028의 계약·수집/검증과 T025의 실제 private Worker/D1 배포·원격 적재/전체 해시·조회·포인터 복구·인증을 재사용한다. 아래 T020~T023의 전체 raw API·미구현 스키마 설명은 당시 설계 이력이며 새로운 API 재구축 지시가 아니다.
 
 | 구성 | 실제 책임/상태 |
 | --- | --- |
 | 비공개 누적 raw/세대/증거 | 기존 원본 형식·문자열ID·파일 해시·관측·로그를 보존. Git/HTTP API에 원본 전체를 넣지 않음 |
 | `services/catalog-api` | 별도 owner-private Worker와 D1. `api_versions/api_records/api_current`의 검증된 가공 버전만 조회. 전체 rows/해시 검증 후 expected-current 전환 |
 | `services/catalog-view` | 별도 데이터 검토 viewer와 서버 전용 private API GET relay. 실제 eFsimulator 제품 아님 |
-| 실제 eFsimulator 앱 | 다음 T031에서 요구·UX·소스/브랜치/Site 경계·API/세션·추첨 규칙을 설계. 아직 구현하지 않음 |
+| 실제 eFsimulator 앱 | T032의 services/efsimulator-app·별도 private Site에서 서버 relay·선수/팩 목록/상세·시뮬레이터 진입 페이지 배포/실조회 전달 완료. 엔진/3D와 hosted 실데이터 브라우저 상호작용 QA는 미완료 |
 
 API ready는 해당 가공 publication의 조회 준비다. 계획 용어 simulation_ready에는 같은 회차의 공식 초기N·완전한 특수S·현재성/신선도·필요한 추첨 규칙 근거가 추가로 필요하다. 이 구분을 지금 API 필드나 코드 계약에 추가하는 작업은 아니다. 초기 표시 확률을 추첨 방식·복원/리셋·가격 규칙 전체의 검증으로 확대하지 않는다. viewer의 Epic/ShowTime 대표 이미지용 등급 sidecar는 표시 metadata이며 추첨 규칙이나 확률 근거가 아니다.
 
-실제 앱은 API를 공개 audience로 바꾸지 않고 서버 relay로 사용할 수 있다. credential은 서버에만 보관하고 GET에서 원출처 수집/쓰기를 수행하지 않는다. 확정되지 않은 가격은 비용 표시를 보류하고, 미확인 추첨 규칙이 필요한 모드만 비활성화하는 설계를 먼저 만든다. API 연속 가용성·다음 예약 실행·브라우저 QA·계정 한도/비용의 남은 관찰은 유지보수로 분리하며 앱 설계의 전역 API 재개발 게이트로 사용하지 않는다.
+실제 앱은 API를 공개 audience로 바꾸지 않고 서버 relay로 연결한다. 새 등록 Site는 `appgprj_6ae13ac0e9d88191978e6953f7286966`, 최종 소스 경계는 `services/efsimulator-app/`이며 기존 viewer·API 서버와 분리한다. T032에서 실제 source 저장/배포와 API/직접 페이지 조회를 확인했고 [실행 근거](../data/research/sites-app-T032.json)에 기록했다. 등록만으로 성공을 추정한 것은 아니다. credential은 서버에만 보관하고 GET에서 원출처 수집/쓰기를 수행하지 않는다. 확정되지 않은 가격은 비용 표시를 보류하고, 미확인 추첨 규칙이 필요한 모드만 비활성화하는 설계를 먼저 만든다. API 연속 가용성·다음 예약 실행·브라우저 QA·계정 한도/비용의 남은 관찰은 유지보수로 분리하며 앱 설계의 전역 API 재개발 게이트로 사용하지 않는다.
 
 ## T020~T023 설계·이관 이력
 

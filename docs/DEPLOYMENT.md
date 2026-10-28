@@ -1,4 +1,15 @@
 # Sites 배포·DB API 운영 계획
+
+## T032 실제 앱 서버/API 연동 배포 — 전달 완료
+
+최신 사용자 지시에 따라 실제 eFsimulator 서버를 기존 API·검토 viewer와 분리해 제작한다. 새 Site `appgprj_6ae13ac0e9d88191978e6953f7286966`를 기본 owner-private으로 등록하고 project_id를 저장했다. 예상 origin은 `https://efsimulator.hyunw09.chatgpt.site`다. 이후 검증한 동일 source의 private 저장/배포와 실제 API/직접 페이지 조회를 확인했다. 실제 URL은 위 origin이며 등록만으로 성공을 추정하지 않았다.
+
+구현 폴더는 `/workspace/sites/efsimulator`, 최종 관리 소스는 검증 후 `services/efsimulator-app/`에 복사한다. 기존 api-server-setup 브랜치와 API/viewer/Pages를 유지한다. 앱 서버는 private API의 정확한 origin과 서비스 credential을 서버 런타임에만 보유하고 조회를 중계한다. API8필드와 publication/회차/문자열ID를 재사용하며 root 원본/규칙/DB/일반 예약 설정을 이번 앱 개발에 맞춰 변경하지 않는다.
+
+이번 앱은 선수/팩 목록·상세와 별도 시뮬레이터 진입 화면까지다. 실제 개봉 엔진·잔여 수 상태 변경·가격/리셋 규칙 확정·3D는 후속이다. source/의존 잠금·타입/테스트·공식 Worker 빌드를 검증하고 동일 소스를 Sites 저장소에 전달한 SHA로 private 저장/배포한다. 반환 배포 결과, 실제 서비스 인증으로 얻은 목록/상세와 버전 일치, credential 비노출, 가능한 직접 주소/브라우저 상호작용을 각각 확인한다. 최종 소스 복사 후 파일 역할/우선순위/연관/검토를 등록하고 GitHub 정상 반영·원격 내용·CI 상태를 확인한다.
+
+실제 실행 결과는 WORKPLAN T032와 [구조화 근거](../data/research/sites-app-T032.json)에 기록했다. source `fd8b85fff6aabab4dd37aacf3398cfabbbc814d2`, 저장 version `appgprj_6ae13ac0e9d88191978e6953f7286966~appgver_5c621c014dcc8191a06b21c296d1b3a8`, 배포 `appgdep_6ae13cb4f0c8819180a8be1db7efc2fd`, 환경 revision1·native succeeded다. 실제 앱 origin의9개 정상 API 경로가 같은 publication을 반환했고 직접6페이지HTTP200·관리 중계400/쓰기405·클라이언트 bundle secret 비포함을 확인했다. 전체394테스트/앱20테스트·TypeScript·공식 Worker 빌드 통과와 실제Node24.22.1/npm11.9.0을 기록했다. local preview navigation/secret미설정 오류 UI만 브라우저로 확인했으며 hosted 실데이터 상호작용 QA는 로그인 장벽으로 미수행이다. 다음 추첨 규칙/엔진/2D와3D는 후속 범위다. 기존API 공개 전환·main 병합·Pages 교체·시간별 예약 프롬프트 변경을 자동 수행하지 않는다. 아래 T030/T025는 API 전달과 별도 데이터 viewer의 당시 이력이다.
+
 > T030 최신 결정: T025의 검증된 private API 전달 범위로 API 개발은 완료한다. 아래 공개 운영 검토 대기 문구는 당시 이력이며 API 공개 전환은 private 서버 relay를 사용할 다음 실제 앱 설계의 필수 조건이 아니다. catalog-view는 별도 데이터 검토 도구다. 오류/운영 관찰은 유지보수로 분리하고 다음 제품 요구·UX·API 연동·추첨 규칙 설계는 T031을 따른다. 이번 문서 정리로 Site/데이터/자동화를 변경하지 않는다.
 
 

@@ -1,0 +1,2 @@
+import Link from "next/link";
+export default function NotFound() { return <section className="state-panel"><p className="eyebrow">PAGE NOT FOUND</p><h1>페이지를 찾을 수 없습니다.</h1><p>주소를 확인하거나 선수팩 목록에서 다시 시작해 주세요.</p><Link className="primary-button action-link" href="/packs">선수팩으로 이동 ↗</Link></section>; }

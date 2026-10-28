@@ -202,7 +202,7 @@
       "update_when": [
         "사용자 요구·작업 절차·검증 명령·제품 및 운영 원칙 변경"
       ],
-      "reviewed_in": "T030"
+      "reviewed_in": "T032"
     },
     {
       "path": "_headers",
@@ -376,7 +376,7 @@
       "update_when": [
         "데이터 계약·파이프라인·라우팅·이력 영속화·운영 방식 변경"
       ],
-      "reviewed_in": "T030"
+      "reviewed_in": "T032"
     },
     {
       "path": "docs/COLLECTION.md",
@@ -429,7 +429,7 @@
       "update_when": [
         "빌드 명령·출력·라우팅·배포 설정·공개 검증 결과 변경"
       ],
-      "reviewed_in": "T030"
+      "reviewed_in": "T032"
     },
     {
       "path": "docs/FILE_SYNC.json",
@@ -448,7 +448,7 @@
       "update_when": [
         "파일 추가·삭제·이름 변경·역할/의존관계 변경·영향 검토"
       ],
-      "reviewed_in": "T030"
+      "reviewed_in": "T032"
     },
     {
       "path": "docs/ROADMAP.md",
@@ -474,7 +474,7 @@
       "update_when": [
         "단계 상태·현재/이전/다음 작업·완료 조건·추가 요구 변경"
       ],
-      "reviewed_in": "T030"
+      "reviewed_in": "T032"
     },
     {
       "path": "docs/WORKPLAN.md",
@@ -499,7 +499,7 @@
       "update_when": [
         "매 작업 착수·추가 요구·파일 변경·검증 결과·작업 종료"
       ],
-      "reviewed_in": "T030"
+      "reviewed_in": "T032"
     },
     {
       "path": "index.html",
@@ -759,7 +759,7 @@
       "update_when": [
         "설치·실행·검증·표본 범위·진입 문서·공개 상태 변경"
       ],
-      "reviewed_in": "T030"
+      "reviewed_in": "T032"
     },
     {
       "path": "docs/sources/CARD_API_AUDIT.md",
@@ -1231,7 +1231,7 @@
       "update_when": [
         "해당 범위/입력/완료조건·관계·권한/운영 근거 변경. reference의 과거 관측값은 덮어쓰지 않음"
       ],
-      "reviewed_in": "T030"
+      "reviewed_in": "T032"
     },
     {
       "path": "data/research/probability-scope-baseline.json",
@@ -1394,7 +1394,7 @@
       "update_when": [
         "사용자 범위/입력 상태·원격/로컬 반영·이관/검증 결과·지원 도구/작업 상태 변경"
       ],
-      "reviewed_in": "T030"
+      "reviewed_in": "T032"
     },
     {
       "path": "docs/FILE_SYNC_AUDIT.md",
@@ -4459,6 +4459,691 @@
         "새 현재 상태/원격 파일·인벤토리 감사·인수인계/완료 정책 검증 결과 변경"
       ],
       "reviewed_in": "T030"
+    },
+    {
+      "path": ".github/workflows/efsimulator-app-check.yml",
+      "role": "실제 eFsimulator 앱의 api-server-setup push/PR에서 고정 설치·관련 회귀·TypeScript·Worker 빌드 검사",
+      "priority": "P0",
+      "related_paths": [
+        "docs/WORKPLAN.md",
+        "docs/DEPLOYMENT.md",
+        "README.md",
+        "services/efsimulator-app/package.json",
+        "services/efsimulator-app/pnpm-lock.yaml",
+        "services/efsimulator-app/tests/catalog-relay.test.mjs",
+        "services/efsimulator-app/tests/pack-preview.test.mjs"
+      ],
+      "update_when": [
+        "실제 앱 소스 경계·검사 명령·Node/pnpm 버전·브랜치/경로 조건 변경"
+      ],
+      "reviewed_in": "T032"
+    },
+    {
+      "path": "services/efsimulator-app/.env.example",
+      "role": "실제 앱의 서버 전용 API origin/서비스 인증 환경변수 이름 예시; 비밀값 없음",
+      "priority": "P1",
+      "related_paths": [
+        "services/efsimulator-app/README.md",
+        "services/efsimulator-app/package.json",
+        "docs/DEPLOYMENT.md"
+      ],
+      "update_when": [
+        "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T032"
+    },
+    {
+      "path": "services/efsimulator-app/.gitignore",
+      "role": "실제 앱 의존성·빌드·로컬 환경/인증 설정의 비추적 경계",
+      "priority": "P1",
+      "related_paths": [
+        "services/efsimulator-app/README.md",
+        "services/efsimulator-app/package.json",
+        "docs/DEPLOYMENT.md"
+      ],
+      "update_when": [
+        "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T032"
+    },
+    {
+      "path": "services/efsimulator-app/.npmrc",
+      "role": "실제 앱 고정 설치 설정",
+      "priority": "P1",
+      "related_paths": [
+        "services/efsimulator-app/README.md",
+        "services/efsimulator-app/package.json",
+        "docs/DEPLOYMENT.md"
+      ],
+      "update_when": [
+        "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T032"
+    },
+    {
+      "path": "services/efsimulator-app/.openai/hosting.json",
+      "role": "실제 eFsimulator owner-private Site의 반환 project_id와 Worker hosting 설정",
+      "priority": "P0",
+      "related_paths": [
+        "services/efsimulator-app/README.md",
+        "services/efsimulator-app/package.json",
+        "docs/DEPLOYMENT.md"
+      ],
+      "update_when": [
+        "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T032"
+    },
+    {
+      "path": "services/efsimulator-app/README.md",
+      "role": "실제 앱 페이지·서버 API relay·미구현 추첨 엔진·검사/배포 범위 안내",
+      "priority": "P1",
+      "related_paths": [
+        "services/efsimulator-app/package.json",
+        "docs/DEPLOYMENT.md"
+      ],
+      "update_when": [
+        "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T032"
+    },
+    {
+      "path": "services/efsimulator-app/app/api/v1/[[...path]]/route.ts",
+      "role": "실제 앱 same-origin 조회 요청을 서버 전용 private API relay로 전달하는 어댑터",
+      "priority": "P1",
+      "related_paths": [
+        "services/efsimulator-app/README.md",
+        "services/efsimulator-app/package.json",
+        "docs/DEPLOYMENT.md",
+        "services/efsimulator-app/lib/catalog-relay.mjs",
+        "services/efsimulator-app/app/components/catalog-data.tsx"
+      ],
+      "update_when": [
+        "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T032"
+    },
+    {
+      "path": "services/efsimulator-app/app/components/catalog-data.tsx",
+      "role": "실제 API pagination/snapshot 일치·에러/로딩/재조회와8필드 카드/팩 데이터 상태",
+      "priority": "P1",
+      "related_paths": [
+        "services/efsimulator-app/README.md",
+        "services/efsimulator-app/package.json",
+        "docs/DEPLOYMENT.md",
+        "services/efsimulator-app/lib/catalog-relay.mjs"
+      ],
+      "update_when": [
+        "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T032"
+    },
+    {
+      "path": "services/efsimulator-app/app/components/catalog-pages.tsx",
+      "role": "선수/팩 목록·상세·시뮬레이터 진입 화면과 검색/선택 흐름",
+      "priority": "P1",
+      "related_paths": [
+        "services/efsimulator-app/README.md",
+        "services/efsimulator-app/package.json",
+        "docs/DEPLOYMENT.md",
+        "services/efsimulator-app/lib/catalog-relay.mjs",
+        "services/efsimulator-app/app/components/catalog-data.tsx"
+      ],
+      "update_when": [
+        "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T032"
+    },
+    {
+      "path": "services/efsimulator-app/app/components/catalog-ui.tsx",
+      "role": "실제 앱 navigation·경계/로딩·카드/팩 대표 이미지·직접 상세 링크 공통 UI",
+      "priority": "P1",
+      "related_paths": [
+        "services/efsimulator-app/README.md",
+        "services/efsimulator-app/package.json",
+        "docs/DEPLOYMENT.md",
+        "services/efsimulator-app/lib/catalog-relay.mjs",
+        "services/efsimulator-app/app/components/catalog-data.tsx"
+      ],
+      "update_when": [
+        "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T032"
+    },
+    {
+      "path": "services/efsimulator-app/app/globals.css",
+      "role": "실제 앱 반응형 탐색/상세/진입 화면 스타일",
+      "priority": "P1",
+      "related_paths": [
+        "services/efsimulator-app/README.md",
+        "services/efsimulator-app/package.json",
+        "docs/DEPLOYMENT.md",
+        "services/efsimulator-app/lib/catalog-relay.mjs",
+        "services/efsimulator-app/app/components/catalog-data.tsx"
+      ],
+      "update_when": [
+        "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T032"
+    },
+    {
+      "path": "services/efsimulator-app/app/layout.tsx",
+      "role": "실제 앱 한국어 layout·metadata·공통 데이터/화면 shell",
+      "priority": "P1",
+      "related_paths": [
+        "services/efsimulator-app/README.md",
+        "services/efsimulator-app/package.json",
+        "docs/DEPLOYMENT.md",
+        "services/efsimulator-app/lib/catalog-relay.mjs",
+        "services/efsimulator-app/app/components/catalog-data.tsx"
+      ],
+      "update_when": [
+        "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T032"
+    },
+    {
+      "path": "services/efsimulator-app/app/not-found.tsx",
+      "role": "없는 페이지의 명확한 안내와 팩 목록 복귀",
+      "priority": "P1",
+      "related_paths": [
+        "services/efsimulator-app/README.md",
+        "services/efsimulator-app/package.json",
+        "docs/DEPLOYMENT.md",
+        "services/efsimulator-app/lib/catalog-relay.mjs",
+        "services/efsimulator-app/app/components/catalog-data.tsx"
+      ],
+      "update_when": [
+        "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T032"
+    },
+    {
+      "path": "services/efsimulator-app/app/packs/[saleId]/page.tsx",
+      "role": "문자열 판매 회차ID의 실제 팩 상세 페이지",
+      "priority": "P1",
+      "related_paths": [
+        "services/efsimulator-app/README.md",
+        "services/efsimulator-app/package.json",
+        "docs/DEPLOYMENT.md",
+        "services/efsimulator-app/lib/catalog-relay.mjs",
+        "services/efsimulator-app/app/components/catalog-data.tsx"
+      ],
+      "update_when": [
+        "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T032"
+    },
+    {
+      "path": "services/efsimulator-app/app/packs/page.tsx",
+      "role": "실제 판매 중/종료 팩 목록 페이지",
+      "priority": "P1",
+      "related_paths": [
+        "services/efsimulator-app/README.md",
+        "services/efsimulator-app/package.json",
+        "docs/DEPLOYMENT.md",
+        "services/efsimulator-app/lib/catalog-relay.mjs",
+        "services/efsimulator-app/app/components/catalog-data.tsx"
+      ],
+      "update_when": [
+        "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T032"
+    },
+    {
+      "path": "services/efsimulator-app/app/page.tsx",
+      "role": "실제 앱 시작 페이지에서 /packs로의 명시적 이동",
+      "priority": "P1",
+      "related_paths": [
+        "services/efsimulator-app/README.md",
+        "services/efsimulator-app/package.json",
+        "docs/DEPLOYMENT.md",
+        "services/efsimulator-app/lib/catalog-relay.mjs",
+        "services/efsimulator-app/app/components/catalog-data.tsx"
+      ],
+      "update_when": [
+        "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T032"
+    },
+    {
+      "path": "services/efsimulator-app/app/players/[id]/page.tsx",
+      "role": "정확한 문자열 카드ID의 실제 선수 상세 페이지",
+      "priority": "P1",
+      "related_paths": [
+        "services/efsimulator-app/README.md",
+        "services/efsimulator-app/package.json",
+        "docs/DEPLOYMENT.md",
+        "services/efsimulator-app/lib/catalog-relay.mjs",
+        "services/efsimulator-app/app/components/catalog-data.tsx"
+      ],
+      "update_when": [
+        "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T032"
+    },
+    {
+      "path": "services/efsimulator-app/app/players/page.tsx",
+      "role": "실제 선수 카드 목록 페이지",
+      "priority": "P1",
+      "related_paths": [
+        "services/efsimulator-app/README.md",
+        "services/efsimulator-app/package.json",
+        "docs/DEPLOYMENT.md",
+        "services/efsimulator-app/lib/catalog-relay.mjs",
+        "services/efsimulator-app/app/components/catalog-data.tsx"
+      ],
+      "update_when": [
+        "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T032"
+    },
+    {
+      "path": "services/efsimulator-app/app/simulator/page.tsx",
+      "role": "팩 선택/구성을 확인하는 별도 시뮬레이터 진입 페이지; 추첨 엔진 없음",
+      "priority": "P1",
+      "related_paths": [
+        "services/efsimulator-app/README.md",
+        "services/efsimulator-app/package.json",
+        "docs/DEPLOYMENT.md",
+        "services/efsimulator-app/lib/catalog-relay.mjs",
+        "services/efsimulator-app/app/components/catalog-data.tsx"
+      ],
+      "update_when": [
+        "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T032"
+    },
+    {
+      "path": "services/efsimulator-app/cloudflare-env.d.ts",
+      "role": "실제 앱 Worker/서버 환경 타입",
+      "priority": "P1",
+      "related_paths": [
+        "services/efsimulator-app/README.md",
+        "services/efsimulator-app/package.json",
+        "docs/DEPLOYMENT.md"
+      ],
+      "update_when": [
+        "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T032"
+    },
+    {
+      "path": "services/efsimulator-app/lib/catalog-relay.mjs",
+      "role": "고정 private API origin으로 GET만 중계·서비스 인증 서버 보관·요청/응답/redirect 제한",
+      "priority": "P1",
+      "related_paths": [
+        "services/efsimulator-app/README.md",
+        "services/efsimulator-app/package.json",
+        "docs/DEPLOYMENT.md",
+        "services/efsimulator-app/app/components/catalog-data.tsx"
+      ],
+      "update_when": [
+        "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T032"
+    },
+    {
+      "path": "services/efsimulator-app/lib/pack-preview.mjs",
+      "role": "정확한 카드ID의 Epic/ShowTime 표시용 최대3장 selector와 미확인 순서 fallback",
+      "priority": "P1",
+      "related_paths": [
+        "services/efsimulator-app/README.md",
+        "services/efsimulator-app/package.json",
+        "docs/DEPLOYMENT.md",
+        "services/efsimulator-app/lib/catalog-relay.mjs",
+        "services/efsimulator-app/app/components/catalog-data.tsx"
+      ],
+      "update_when": [
+        "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T032"
+    },
+    {
+      "path": "services/efsimulator-app/lib/preview-player-types.json",
+      "role": "재사용한 표시 전용 카드ID→등급 metadata와 입력 해시; 추첨 확률/규칙 근거 아님",
+      "priority": "P1",
+      "related_paths": [
+        "services/efsimulator-app/README.md",
+        "services/efsimulator-app/package.json",
+        "docs/DEPLOYMENT.md",
+        "services/efsimulator-app/lib/catalog-relay.mjs",
+        "services/efsimulator-app/app/components/catalog-data.tsx",
+        "services/catalog-view/scripts/prepare-preview-types.mjs",
+        "services/efsimulator-app/lib/pack-preview.mjs"
+      ],
+      "update_when": [
+        "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T032",
+      "generated_from": "services/catalog-view/lib/preview-player-types.json"
+    },
+    {
+      "path": "services/efsimulator-app/next.config.ts",
+      "role": "공식 Vinext 호환 실제 앱 설정",
+      "priority": "P1",
+      "related_paths": [
+        "services/efsimulator-app/README.md",
+        "services/efsimulator-app/package.json",
+        "docs/DEPLOYMENT.md"
+      ],
+      "update_when": [
+        "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T032"
+    },
+    {
+      "path": "services/efsimulator-app/package.json",
+      "role": "실제 앱 독립 명령·Node/pnpm 기준·의존성 계약",
+      "priority": "P0",
+      "related_paths": [
+        "services/efsimulator-app/README.md",
+        "docs/DEPLOYMENT.md"
+      ],
+      "update_when": [
+        "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T032"
+    },
+    {
+      "path": "services/efsimulator-app/pnpm-lock.yaml",
+      "role": "실제 앱의 고정 의존 잠금",
+      "priority": "P0",
+      "related_paths": [
+        "services/efsimulator-app/README.md",
+        "services/efsimulator-app/package.json",
+        "docs/DEPLOYMENT.md"
+      ],
+      "update_when": [
+        "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T032"
+    },
+    {
+      "path": "services/efsimulator-app/pnpm-workspace.yaml",
+      "role": "실제 앱 패키지 작업공간 설정",
+      "priority": "P1",
+      "related_paths": [
+        "services/efsimulator-app/README.md",
+        "services/efsimulator-app/package.json",
+        "docs/DEPLOYMENT.md"
+      ],
+      "update_when": [
+        "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T032"
+    },
+    {
+      "path": "services/efsimulator-app/scripts/build-verified.sh",
+      "role": "실제 앱 공식 Sites 설치·실행·빌드 통합 helper: scripts/build-verified.sh",
+      "priority": "P1",
+      "related_paths": [
+        "services/efsimulator-app/README.md",
+        "services/efsimulator-app/package.json",
+        "docs/DEPLOYMENT.md"
+      ],
+      "update_when": [
+        "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T032"
+    },
+    {
+      "path": "services/efsimulator-app/scripts/execution-profile.mjs",
+      "role": "실제 앱 공식 Sites 설치·실행·빌드 통합 helper: scripts/execution-profile.mjs",
+      "priority": "P1",
+      "related_paths": [
+        "services/efsimulator-app/README.md",
+        "services/efsimulator-app/package.json",
+        "docs/DEPLOYMENT.md"
+      ],
+      "update_when": [
+        "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T032"
+    },
+    {
+      "path": "services/efsimulator-app/scripts/install-ci.mjs",
+      "role": "실제 앱 공식 Sites 설치·실행·빌드 통합 helper: scripts/install-ci.mjs",
+      "priority": "P1",
+      "related_paths": [
+        "services/efsimulator-app/README.md",
+        "services/efsimulator-app/package.json",
+        "docs/DEPLOYMENT.md"
+      ],
+      "update_when": [
+        "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T032"
+    },
+    {
+      "path": "services/efsimulator-app/scripts/install-ci.sh",
+      "role": "실제 앱 공식 Sites 설치·실행·빌드 통합 helper: scripts/install-ci.sh",
+      "priority": "P1",
+      "related_paths": [
+        "services/efsimulator-app/README.md",
+        "services/efsimulator-app/package.json",
+        "docs/DEPLOYMENT.md"
+      ],
+      "update_when": [
+        "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T032"
+    },
+    {
+      "path": "services/efsimulator-app/scripts/install-pnpm.sh",
+      "role": "실제 앱 공식 Sites 설치·실행·빌드 통합 helper: scripts/install-pnpm.sh",
+      "priority": "P1",
+      "related_paths": [
+        "services/efsimulator-app/README.md",
+        "services/efsimulator-app/package.json",
+        "docs/DEPLOYMENT.md"
+      ],
+      "update_when": [
+        "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T032"
+    },
+    {
+      "path": "services/efsimulator-app/scripts/npm-install.mjs",
+      "role": "실제 앱 공식 Sites 설치·실행·빌드 통합 helper: scripts/npm-install.mjs",
+      "priority": "P1",
+      "related_paths": [
+        "services/efsimulator-app/README.md",
+        "services/efsimulator-app/package.json",
+        "docs/DEPLOYMENT.md"
+      ],
+      "update_when": [
+        "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T032"
+    },
+    {
+      "path": "services/efsimulator-app/scripts/pnpm-install.mjs",
+      "role": "실제 앱 공식 Sites 설치·실행·빌드 통합 helper: scripts/pnpm-install.mjs",
+      "priority": "P1",
+      "related_paths": [
+        "services/efsimulator-app/README.md",
+        "services/efsimulator-app/package.json",
+        "docs/DEPLOYMENT.md"
+      ],
+      "update_when": [
+        "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T032"
+    },
+    {
+      "path": "services/efsimulator-app/scripts/run-framework.mjs",
+      "role": "실제 앱 공식 Sites 설치·실행·빌드 통합 helper: scripts/run-framework.mjs",
+      "priority": "P1",
+      "related_paths": [
+        "services/efsimulator-app/README.md",
+        "services/efsimulator-app/package.json",
+        "docs/DEPLOYMENT.md"
+      ],
+      "update_when": [
+        "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T032"
+    },
+    {
+      "path": "services/efsimulator-app/scripts/sites-env.mjs",
+      "role": "실제 앱 공식 Sites 설치·실행·빌드 통합 helper: scripts/sites-env.mjs",
+      "priority": "P1",
+      "related_paths": [
+        "services/efsimulator-app/README.md",
+        "services/efsimulator-app/package.json",
+        "docs/DEPLOYMENT.md"
+      ],
+      "update_when": [
+        "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T032"
+    },
+    {
+      "path": "services/efsimulator-app/scripts/sites-env.sh",
+      "role": "실제 앱 공식 Sites 설치·실행·빌드 통합 helper: scripts/sites-env.sh",
+      "priority": "P1",
+      "related_paths": [
+        "services/efsimulator-app/README.md",
+        "services/efsimulator-app/package.json",
+        "docs/DEPLOYMENT.md"
+      ],
+      "update_when": [
+        "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T032"
+    },
+    {
+      "path": "services/efsimulator-app/scripts/tool-environment.mjs",
+      "role": "실제 앱 공식 Sites 설치·실행·빌드 통합 helper: scripts/tool-environment.mjs",
+      "priority": "P1",
+      "related_paths": [
+        "services/efsimulator-app/README.md",
+        "services/efsimulator-app/package.json",
+        "docs/DEPLOYMENT.md"
+      ],
+      "update_when": [
+        "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T032"
+    },
+    {
+      "path": "services/efsimulator-app/scripts/vite/sites-vite-plugin.LICENSE",
+      "role": "실제 앱 공식 Sites 설치·실행·빌드 통합 helper: scripts/vite/sites-vite-plugin.LICENSE",
+      "priority": "P1",
+      "related_paths": [
+        "services/efsimulator-app/README.md",
+        "services/efsimulator-app/package.json",
+        "docs/DEPLOYMENT.md"
+      ],
+      "update_when": [
+        "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T032"
+    },
+    {
+      "path": "services/efsimulator-app/scripts/vite/sites-vite-plugin.ts",
+      "role": "실제 앱 공식 Sites 설치·실행·빌드 통합 helper: scripts/vite/sites-vite-plugin.ts",
+      "priority": "P1",
+      "related_paths": [
+        "services/efsimulator-app/README.md",
+        "services/efsimulator-app/package.json",
+        "docs/DEPLOYMENT.md"
+      ],
+      "update_when": [
+        "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T032"
+    },
+    {
+      "path": "services/efsimulator-app/tests/catalog-relay.test.mjs",
+      "role": "실제 앱 서버 중계의 인증/목적지/GET·redirect/크기/오류 보안 경계14회귀",
+      "priority": "P1",
+      "related_paths": [
+        "services/efsimulator-app/README.md",
+        "services/efsimulator-app/package.json",
+        "docs/DEPLOYMENT.md",
+        "services/efsimulator-app/lib/catalog-relay.mjs",
+        "services/efsimulator-app/app/components/catalog-data.tsx"
+      ],
+      "update_when": [
+        "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T032"
+    },
+    {
+      "path": "services/efsimulator-app/tests/pack-preview.test.mjs",
+      "role": "실제 앱 표시 selector의 등급 우선·단일Epic·Highlight 보충 금지·fallback6회귀",
+      "priority": "P1",
+      "related_paths": [
+        "services/efsimulator-app/README.md",
+        "services/efsimulator-app/package.json",
+        "docs/DEPLOYMENT.md",
+        "services/efsimulator-app/lib/catalog-relay.mjs",
+        "services/efsimulator-app/app/components/catalog-data.tsx"
+      ],
+      "update_when": [
+        "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T032"
+    },
+    {
+      "path": "services/efsimulator-app/tsconfig.json",
+      "role": "실제 앱 TypeScript 검사 설정",
+      "priority": "P1",
+      "related_paths": [
+        "services/efsimulator-app/README.md",
+        "services/efsimulator-app/package.json",
+        "docs/DEPLOYMENT.md"
+      ],
+      "update_when": [
+        "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T032"
+    },
+    {
+      "path": "services/efsimulator-app/vite.config.ts",
+      "role": "실제 앱 공식 Sites/Vinext Worker 빌드와 same-zone public front-door 호환 통합",
+      "priority": "P0",
+      "related_paths": [
+        "services/efsimulator-app/README.md",
+        "services/efsimulator-app/package.json",
+        "docs/DEPLOYMENT.md"
+      ],
+      "update_when": [
+        "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T032"
+    },
+    {
+      "path": "services/efsimulator-app/worker/index.ts",
+      "role": "실제 앱 공식 Worker 실행 진입점",
+      "priority": "P0",
+      "related_paths": [
+        "services/efsimulator-app/README.md",
+        "services/efsimulator-app/package.json",
+        "docs/DEPLOYMENT.md"
+      ],
+      "update_when": [
+        "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
+      ],
+      "reviewed_in": "T032"
+    },
+    {
+      "path": "data/research/sites-app-T032.json",
+      "role": "T032 실제 앱의 private 배포·source/버전·API relay/직접 페이지·비밀값 비노출·검증 범위의 비밀값 없는 실행 근거",
+      "priority": "P1",
+      "related_paths": [
+        "docs/WORKPLAN.md",
+        "docs/DEPLOYMENT.md",
+        "services/efsimulator-app/.openai/hosting.json",
+        "services/efsimulator-app/README.md",
+        ".github/workflows/efsimulator-app-check.yml"
+      ],
+      "update_when": [
+        "실제 앱 배포 버전·API 연동/페이지/보안 검증·테스트/브라우저 QA 범위 변경"
+      ],
+      "reviewed_in": "T032"
     }
   ]
 }

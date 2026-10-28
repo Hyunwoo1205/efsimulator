@@ -1,0 +1,151 @@
+{
+  "observedAt": "2026-10-28T00:08:06.240Z",
+  "origin": "https://efsimulator.hyunw09.chatgpt.site",
+  "apiReads": [
+    {
+      "path": "/api/v1/health",
+      "status": 200,
+      "count": null,
+      "version": "c8cbaa7783d2889870347cf1509d3dc3141c41f76db81245c8aadf236e3dd854"
+    },
+    {
+      "path": "/api/v1/manifest",
+      "status": 200,
+      "count": null,
+      "version": "c8cbaa7783d2889870347cf1509d3dc3141c41f76db81245c8aadf236e3dd854"
+    },
+    {
+      "path": "/api/v1/live?limit=100",
+      "status": 200,
+      "count": 7,
+      "version": "c8cbaa7783d2889870347cf1509d3dc3141c41f76db81245c8aadf236e3dd854"
+    },
+    {
+      "path": "/api/v1/archive?limit=100",
+      "status": 200,
+      "count": 0,
+      "version": "c8cbaa7783d2889870347cf1509d3dc3141c41f76db81245c8aadf236e3dd854"
+    },
+    {
+      "path": "/api/v1/packs?limit=100",
+      "status": 200,
+      "count": 7,
+      "version": "c8cbaa7783d2889870347cf1509d3dc3141c41f76db81245c8aadf236e3dd854"
+    },
+    {
+      "path": "/api/v1/players?limit=100",
+      "status": 200,
+      "count": 70,
+      "version": "c8cbaa7783d2889870347cf1509d3dc3141c41f76db81245c8aadf236e3dd854"
+    },
+    {
+      "path": "/api/v1/packs/italian-league-selection-8-oct-26%3A%3A2026-10",
+      "status": 200,
+      "count": null,
+      "version": "c8cbaa7783d2889870347cf1509d3dc3141c41f76db81245c8aadf236e3dd854"
+    },
+    {
+      "path": "/api/v1/packs/italian-league-selection-8-oct-26%3A%3A2026-10/cards?limit=100",
+      "status": 200,
+      "count": 11,
+      "version": "c8cbaa7783d2889870347cf1509d3dc3141c41f76db81245c8aadf236e3dd854"
+    },
+    {
+      "path": "/api/v1/players/105874165112743",
+      "status": 200,
+      "count": null,
+      "version": "c8cbaa7783d2889870347cf1509d3dc3141c41f76db81245c8aadf236e3dd854"
+    },
+    {
+      "path": "/api/v1/admin/publications",
+      "method": "GET",
+      "status": 400
+    },
+    {
+      "path": "/api/v1/players",
+      "method": "POST",
+      "status": 405
+    }
+  ],
+  "pages": [
+    {
+      "path": "/packs",
+      "status": 200
+    },
+    {
+      "path": "/players",
+      "status": 200
+    },
+    {
+      "path": "/packs/italian-league-selection-8-oct-26%3A%3A2026-10",
+      "status": 200
+    },
+    {
+      "path": "/players/105874165112743",
+      "status": 200
+    },
+    {
+      "path": "/simulator",
+      "status": 200
+    },
+    {
+      "path": "/simulator?pack=italian-league-selection-8-oct-26%3A%3A2026-10",
+      "status": 200
+    }
+  ],
+  "credentialExposure": false,
+  "clientBundleSecretScan": true,
+  "counts": {
+    "archive": 0,
+    "live": 7,
+    "pack": 7,
+    "player": 70
+  },
+  "publicationVersion": "c8cbaa7783d2889870347cf1509d3dc3141c41f76db81245c8aadf236e3dd854",
+  "playerFieldCount": 8,
+  "interactiveBrowserQa": false,
+  "taskId": "T032",
+  "sourceDirectory": "services/efsimulator-app",
+  "site": {
+    "projectId": "appgprj_6ae13ac0e9d88191978e6953f7286966",
+    "audience": "owner-private",
+    "sourceCommit": "fd8b85fff6aabab4dd37aacf3398cfabbbc814d2",
+    "versionId": "appgprj_6ae13ac0e9d88191978e6953f7286966~appgver_5c621c014dcc8191a06b21c296d1b3a8",
+    "deploymentId": "appgdep_6ae13cb4f0c8819180a8be1db7efc2fd",
+    "deploymentStatus": "succeeded",
+    "deployedAt": "2026-10-28T00:07:33.098488+00:00",
+    "environmentRevision": 1,
+    "upstreamApiProjectId": "appgprj_6ae0d51638b481918f7767684a3cf38b"
+  },
+  "validation": {
+    "appRegression": {
+      "passed": 20,
+      "failed": 0
+    },
+    "rootRegression": {
+      "passed": 394,
+      "failed": 0
+    },
+    "typecheck": "passed",
+    "workerBuild": "passed",
+    "specifiedNode": "24.19.0",
+    "actualNode": "24.22.1",
+    "actualNpm": "11.9.0",
+    "privateApiAudienceVerified": true,
+    "appAudienceVerified": true,
+    "localBrowserPreview": "packs and simulator navigation and missing-local-credentials error UI observed",
+    "hostedBrowser": "ChatGPT sign-in gate observed; interactive data UI not verified",
+    "sourceMatchesSavedBuild": true,
+    "clientModelValidatedAgainstHostedApi": true
+  },
+  "scope": {
+    "catalogListAndDetails": true,
+    "simulatorPackSelection": true,
+    "drawEngine": false,
+    "publicAudienceChange": false,
+    "existingApiModified": false,
+    "existingReviewViewerModified": false,
+    "automationModified": false,
+    "rawAndRulesModified": false
+  }
+}

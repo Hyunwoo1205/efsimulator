@@ -1,4 +1,4 @@
-<!-- project-state: {"stage":"R6","previous":"T030","current":"T031","next":"T017"} -->
+<!-- project-state: {"stage":"R6","previous":"T032","current":"T017","next":"T018"} -->
 
 # efsimulator 작업 계획과 이력
 
@@ -6,16 +6,16 @@
 
 ## 현재 작업과 매 작업 갱신
 
-- 이전 작업: T030 — API 완료 기준·원격 파일/인벤토리·문서/인수인계·GitHub 완료 정책 정리.
-- 현재 작업: T031 — 실제 eFsimulator 요구사항·UI 흐름·기존 API 연동·추첨 규칙 설계 예정.
-- 다음 작업: T017 — 설계·검증된 규칙에 따른 작은 추첨판·익명 Standard·2D 결과.
-- 현재 조건: 최신 사용자 지시에 따라 API 개발 단계는 T025의 검증된 비공개 전달 범위로 완료하고 향후 오류·운영 관찰은 유지보수로 분리한다. T029의 catalog-view는 데이터 확인용 별도 검토 앱이며 실제 eFsimulator 제품이 아니다. T030은 문서·원격 파일/인벤토리·인수인계 정합성을 정리했고 현재 T031 제품 설계는 예정 단계다. API 공개 전환은 비공개 API 서버 중계로 진행할 앱 설계의 필수 조건이 아니며 새 프런트엔드·엔진·Site·자동화를 시작하지 않는다.
+- 이전 작업: T032 — 실제 앱 서버·API 연동·선수/팩 조회·시뮬레이터 진입 페이지의 private 배포 완료.
+- 현재 작업: T017 — 추첨 모드별 규칙·잔여 풀·익명 Standard·최소 엔진/2D 결과 세부 설계와 구현 예정.
+- 다음 작업: T018 — 검증된 엔진/연출 시안 뒤3D·모바일 성능·실패 fallback.
+- 현재 조건: T032의 실제 eFsimulator 앱 서버와 private API relay·선수/팩 목록/상세·별도 시뮬레이터 진입 페이지를 owner-private으로 배포하고 실제 API/직접 페이지·보안 경계를 검증했다. 실제 URL은 https://efsimulator.hyunw09.chatgpt.site 이다. T031의 페이지/API 연동 설계 하위 범위는 구체화됐고 잔여 추첨 규칙·엔진/2D는 T017,3D는 T018로 남긴다. 실데이터 화면의 hosted 브라우저 상호작용 QA는 로그인 장벽으로 미수행이며 API8필드·publication·raw·규칙·자동화와 catalog-view/Pages는 보존했다.
 
 매 작업 시작 시 Git 상태·이전 결과·이번/다음 작업·선행 조건을 확인한다. FILE_SYNC의 P0→P1→P2로 관련 파일을 검토하되 필요한 파일은 등급과 무관하게 함께 수정한다. 추가 요구는 ID·영향 단계·선행 조건·순서·상태를 기록한다. 파일별 수정/변경불필요/미해결과 근거, 경로 추가/삭제/이름 변경·참조를 같은 작업에서 갱신한다. 검증과 이전/현재/다음 포인터를 맞추며 구현/수집/발행 완료는 실제 근거가 있을 때만 표시한다.
 
 ## 최신 추가 조건과 이전 조건의 적용
 
-C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_BEFORE_PROBABILITY_SCOPE.md)에 보존한다. 관리 최신화·ID/근거·실패 보존·접근 거부 우회 금지·무료 우선·운영 승인 분리 원칙은 계속 적용한다. 범위 결정은 날짜별 이력이며 현재 범위·완료 정책은 최신 C063~C064와 아래 T030/T031을 우선한다. 전체 수집과 사이트 범위를 혼동하지 않는다.
+C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_BEFORE_PROBABILITY_SCOPE.md)에 보존한다. 관리 최신화·ID/근거·실패 보존·접근 거부 우회 금지·무료 우선·운영 승인 분리 원칙은 계속 적용한다. 범위 결정은 날짜별 이력이며 현재 범위·완료 정책은 최신 C065와 아래 T032를 우선하고 API 완료/정상 반영 정책 C063~C064를 유지한다. 전체 수집과 사이트 범위를 혼동하지 않는다.
 
 | 조건 ID | 최신 결정 | 영향 단계 / 선행 조건 / 처리 순서 | 상태 |
 | --- | --- | --- | --- |
@@ -53,6 +53,7 @@ C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_B
 | C062 | 검토 앱의 Epic/ShowTime 팩 미리보기는 해당 등급을 최대3장 우선 표시하고1장이면1장만 표시; Highlight로 보충하지 않음; 등급 미확인 시 기존 순서 유지 | T029/R3. 보존 raw의 정확한 카드ID와 efhub_types_js의5/6/8 코드 의미 검증→표시 전용 metadata/selector→회귀/빌드→기존 private 조회 Site만 재배포 | 표시 개선·7회귀·전체374테스트·TypeScript/Worker 빌드·동일 private 조회 Site 재배포/실제 relay 검증 완료. API/raw/규칙/자동화 불변; 신규 등급 자동 확보 보장 없음 |
 | C063 | API 개발은 완료 기준으로 고정하고 향후 오류는 유지보수; 다음은 실제 eFsimulator 제품의 요구/UI/API 연동·추첨 규칙 설계 | T030 문서 정합성→T031 제품 설계→검증된 규칙의 T017 최소 추첨판→T018 연출/3D. 검토 viewer는 실제 앱 완료가 아님 | T025 private API 전달 완료로 정리; 공개 API 전환·연속 운영 관찰은 앱 설계의 새 전역 선행 조건 아님 |
 | C064 | 승인된 개발 작업은 관련 파일 검토·인벤토리/기록·검증 후 같은 작업 브랜치의 정상 commit/push와 원격 내용/CI 상태 확인까지 수행 | T030 공통 완료 정책. P0→필요 P1/P2 검토; 역할/우선순위/연관/갱신 조건/검토 ID 등록; 업로드 실패를 완료로 보고하지 않음 | 무변경·읽기 전용·시간별 데이터 작업은 커밋 제외; raw/credential은 Git 제외; main 병합·공개 접근 변경은 자동 수행하지 않음 |
+| C065 | 실제 eFsimulator 앱 서버를 별도 제작하고 기존 private API에 서버 전용으로 연결; 선수/팩 목록/상세와 별도 시뮬레이터 진입 페이지 제공 | T032/R3. 실제 앱 소스/등록ID→서버 relay·조회 화면→검증·private 배포→원격 실조회→정상 소스 반영. API8필드/원본/규칙/자동화·기존 viewer/Pages 보존 | 실제 앱 private 배포·API 목록/상세/직접 페이지·보안/검사 검증 완료. 엔진/3D·추첨 규칙 확정은 후속; hosted 실데이터 브라우저 상호작용 QA는 미수행 |
 
 
 ## 이전 작업의 현재 해석
@@ -597,12 +598,12 @@ Sites 계정의 실제 한도·비용·영속 저장·실제 인증·백업 미�
 
 - 단계: R6
 - 상태: 예정
-- 이전: T031
+- 이전: T032
 - 다음: T018
 
 ### 목표·입력·순서
 
-입력: 운영 검증된 DB/API, 같은 회차의 공식 추첨 규칙과 SIMULATOR_PLAN.
+입력: T025 완료 API와 T032 실제 앱 서버/조회·진입 화면, 같은 회차의 검증 가능한 추첨 규칙과 SIMULATOR_PLAN. T031에서 남은 모드/세션 규칙 검토를 이 작업의 세부 설계로 이어간다.
 
 1. 복원/잔여·단일/다회·리셋·가격/제한을 확인한 모드만 독립 추첨 엔진에 구현한다.
 2. 가상 Standard 그룹과 실제 특수 카드·잔여 수·팩 revision을 연결한다. Standard에도 모션을 제공하되 실명 선수처럼 표시하지 않는다.
@@ -1481,7 +1482,7 @@ API 완료 기준·현행/역사 상태 구분·다음 실제 제품 설계·공
 ## T031 — 실제 eFsimulator 요구사항·UI 흐름·API 연동·추첨 규칙 설계
 
 - 단계: R6
-- 상태: 예정
+- 상태: 진행 중
 - 이전: T030
 - 다음: T017
 
@@ -1491,9 +1492,101 @@ API 개발 완료 기준을 입력으로 실제 eFsimulator 제품의 요구사�
 
 공식 초기N·종료UTC·초기 표시 확률, 검증한 특수S/카드ID 및 A=N−S를 설계 입력으로 재사용한다. 균등/반올림의 해석도 필요한 범위를 별도로 확인하며 초기 표시 확률만으로 추첨 규칙 전체를 검증했다고 확대하지 않는다. 복원/비복원·정확한 잔여 처리·단일/다회·리셋·마지막 수량·가격/재화/할인·무료/티켓·횟수/지역/플랫폼/계정 제한은 확인한 근거 없이 구현값으로 고정하지 않는다. 미확인 가격 때문에 모든 UI를 중단하지 않고 비용 표시는 보류하며, 추첨 방식이 미확인인 모드는 비활성화하는 설계를 사용한다. API ready와 계획 용어 simulation_ready는 구분하고 같은 회차/N/완전한 특수S/신선도/검증한 추첨 규칙이 필요함을 설계에 반영한다. 이는 지금 API 코드나 필드 계약을 추가하는 작업이 아니다. viewer의 카드 등급 sidecar는 표시 metadata이며 추첨 규칙·확률의 근거가 아니다. 관련 규칙은 앱 전용 metadata/레지스트리로 분리하고 현재 선수8필드 API 계약을 임의 확장하지 않는다.
 
-이 작업은 설계 단계이며 지금 새 화면·추첨 엔진·3D·Site·자동화를 구현/생성하지 않는다. 설계/규칙의 검증과 사용자 검토를 거친 뒤 T017의 작은 추첨판·2D 결과와 T018의3D/모바일 성능 순서로 이어간다. API 공개 전환은 private 서버 연동의 선행 조건이 아니다.
+T030 당시에는 설계만 예정했으나 최신 T032 사용자 요청으로 실제 앱 서버·페이지 경계와 API 연동 하위 범위 구현을 시작한다. 이 변경을 모든 추첨 규칙/세션 설계 완료로 확대하지 않으며 엔진·3D·자동화는 T032에 추가하지 않는다. 설계/규칙의 검증과 사용자 검토를 거친 뒤 T017의 작은 추첨판·2D 결과와 T018의3D/모바일 성능 순서로 이어간다. API 공개 전환은 private 서버 연동의 선행 조건이 아니다.
+
+T032 적용: 실제 앱은 별도 Site·서비스 소스로 분리하고 기존 API8필드와 서버 전용 credential을 사용한다. 목록·상세와 시뮬레이터 진입 화면의 경계를 구체화하되 추첨 모드/잔여 풀/가격/리셋 등의 근거 검토는 남긴다.
 
 ### 파일 최신화 검토
 
 | 파일 | 결과 | 근거 |
 | --- | --- | --- |
+
+
+## T032 — 실제 eFsimulator 앱 서버·API 연동·선수/팩 조회 화면
+
+- 단계: R3
+- 상태: 완료
+- 이전: T030
+- 다음: T017
+
+최신 사용자가 실제 앱 서버 제작과 기존 API 연동을 지시했다. T025의 완료 API와 T029의 별도 데이터 검토 viewer를 보존하고 실제 eFsimulator 소스/서버를 새 경계로 제작한다. 이번 범위는 서버 전용 private API relay·선수/팩 목록과 상세·별도 시뮬레이터 진입 페이지이며 추첨 엔진·실제 개봉/잔여 풀 변경·3D·새 자동화는 포함하지 않는다. T031의 페이지 경계/API 연동 설계 하위 범위를 구체화하고 상품별 추첨 규칙/세션 설계의 남은 검토는 유지한다.
+
+새 실제 앱 Site `appgprj_6ae13ac0e9d88191978e6953f7286966`를 기본 owner-private으로 등록하고 반환 ID를 저장했다. 예상 URL은 `https://efsimulator.hyunw09.chatgpt.site`다. 등록/예상 URL은 배포 성공 근거가 아니다. 구현 작업 폴더는 `/workspace/sites/efsimulator`, 최종 소스는 검증 후 기존 저장소의 `services/efsimulator-app/`에 복사·관리 등록한다. 기존 api-server-setup 브랜치와 사용자 변경을 유지하며 main/work·기존 API/viewer/Pages·이관 제외 Site는 자동 변경하지 않는다.
+
+앱 서버만 API origin/서비스 credential을 보유하고 브라우저에는 같은 origin의 검증된 조회 경로만 제공한다. API 선수8필드·기존 publication/saleId/카드ID를 그대로 사용하고 원본 수집·D1 쓰기·API 계약 확장·raw 공개를 방문자 요청에 추가하지 않는다. API ready와 시뮬레이션 가능은 구분하며 별도 진입 페이지가 있다고 추첨 엔진/규칙 검증 완료라고 표시하지 않는다.
+
+검증 계획은 서버 relay의 목적지/GET 경계·비밀값 비노출·오류/없는 항목 처리, 실제 API 목록/상세·snapshot 참조, 화면 경로/반응형·직접 주소와 가능한 브라우저 상호작용, TypeScript/Worker 빌드·관련/전체 회귀·관리/파일 링크 검사다. 같은 source의 공식 Sites 저장/배포 결과와 실제 서비스 인증 조회를 각각 기록하고, 미실행/차단된 QA와 원격 소스/CI 반영 상태를 성공으로 추정하지 않는다. 최종 app 소스 복사 신호 후 신규 경로를 FILE_SYNC와 아래 검토 표에 등록한다.
+
+### 실행 결과
+
+실제 앱 소스44파일을 검증된 작업 폴더에서 저장소 `services/efsimulator-app/`로 복사하고 FILE_SYNC에 등록했다. 페이지는 `/packs`, `/packs/[saleId]`, `/players`, `/players/[id]`, `/simulator`이며 홈은 `/packs`로 이동한다. 실제 앱 서버의14 relay 회귀와 표시 selector6회귀, TypeScript 검사, 공식 Sites Worker 빌드가 통과했다. 기존 viewer의 monorepo 개발용 metadata 생성기는 앱 실행 의존성이 아니므로 복사하지 않았고 관련 원본 viewer 테스트는 유지했다.
+
+실제 앱 owner-private 저장/배포가 성공했다. Site `appgprj_6ae13ac0e9d88191978e6953f7286966`, Sites source SHA `fd8b85fff6aabab4dd37aacf3398cfabbbc814d2`, 저장 version `appgprj_6ae13ac0e9d88191978e6953f7286966~appgver_5c621c014dcc8191a06b21c296d1b3a8`, 배포 `appgdep_6ae13cb4f0c8819180a8be1db7efc2fd`, 환경 revision1, native 성공 시각 `2026-10-28T00:07:33.098488+00:00`, URL `https://efsimulator.hyunw09.chatgpt.site`다. 현재 access는 본인 소유자1명/custom·외부 초대 없음으로 확인했다. 환경에는 API origin과 서버 secret 서비스 접근값을 설정했으며 값은 기록하지 않는다.
+
+2026-10-28T00:08:06.240Z 실제 앱 origin의 서비스 인증 조회에서 health ready/manifest·live7/archive0·packs7·players70·정확한 회차 팩 상세/11명 명단·선수 상세가 모두HTTP200과 동일 publication `c8cbaa7783d2889870347cf1509d3dc3141c41f76db81245c8aadf236e3dd854`를 반환했다. 선수 상세8필드를 유지했고 관리자 중계 요청400·쓰기405를 확인했다.6개 목록/상세/시뮬레이터 직접 페이지가HTTP200이고 실제 secret 문자열의 클라이언트 bundle 비포함 검사도 통과했다. 수치는 해당 관측 시점이며 고정 판매 수나 장기 가용성 보장이 아니다.
+
+별도 추가 검증으로 실제 앱의 validateCatalog 클라이언트 모델을 TypeScript 컴파일하고 fresh hosted API manifest/live/archive/players 응답에 적용해 동일 publication과7팩70카드 형식/참조를 확인했다. 이는 UI 클릭·시각 검증이 아니다.
+
+root 전체 회귀394/394·실패0, 앱20회귀·TypeScript·공식 Worker 빌드가 통과했다. 실제 환경Node24.22.1/npm11.9.0과 지정Node24.19.0 차이는 유지한다. 로컬 preview 브라우저의 `/packs`→`/simulator` navigation과 API secret 미설정503 오류 UI만 확인했다. hosted 브라우저는 ChatGPT 로그인 장벽으로 실데이터 상호작용 QA를 수행하지 못했으며 HTTP/API·직접 주소 검증을 시각/클릭 데이터 QA로 확대하지 않는다.
+
+배포·연동·직접 페이지·보안/검증 근거는 [T032 실행 근거](../data/research/sites-app-T032.json)에 보존했다. T032의 실제 서버/조회·진입 화면 전달 범위는 완료했고 추첨 엔진·2D 결과/잔여 풀·3D는 제공하지 않는다. 기존 API·viewer·Pages·raw/규칙·자동화는 변경하지 않았다. 새 소스/문서의 GitHub 정상 반영·원격 파일/CI 최종 결과는 별도로 확인하며 자신의 미래 commit SHA를 문서에 만들지 않는다. 최종 관리 검사330파일·33작업·로컬 기준735c625 대비107경로를 통과했고, Markdown 상대 링크214개에서 누락0건을 확인했다. P0148/P1170/P212와 기존 FILE_SYNC 순서를 유지했다. 로컬107경로에는 기존 원격 반영 작업도 포함되므로 새 미업로드 경로 수로 단정하지 않는다.
+
+### 파일 최신화 검토
+
+| 파일 | 결과 | 근거 |
+| --- | --- | --- |
+| `AGENTS.md` | 수정 | 最新 실제 앱 서버/조회·API 연동 실행 범위와 기존 API/예약/원본·엔진 경계 명시 |
+| `README.md` | 수정 | 현재 T032 실제 앱 서버 제작과 API 완료·viewer/기존 web 분리 상태 반영 |
+| `docs/ROADMAP.md` | 수정 | R3/T032 현재 포인터와 T031 하위 설계·후속 T017/T018 연결 |
+| `docs/WORKPLAN.md` | 수정 | C065·T032 범위/등록·선행/검증 계획과 미확인 성공 구분 |
+| `docs/FILE_SYNC.json` | 수정 | 현재 수정 문서의 역할/관련 경로·reviewed_in 갱신; 앱 신규 파일은 최종 복사 후 등록 |
+| `docs/ARCHITECTURE.md` | 수정 | 실제 앱 별도 서버/Site·private API relay와 검토 viewer 경계 |
+| `docs/DEPLOYMENT.md` | 수정 | 실제 앱 등록 ID·예상 URL·소스 복사·private 저장/배포/실조회 검증 계획 |
+| `docs/SIMULATOR_PLAN.md` | 수정 | 조회/시뮬레이터 진입 페이지와 미구현 엔진·규칙/3D 경계 |
+| `docs/CHATGPT_WORK_HANDOFF.md` | 수정 | T032 실제 앱 서버 제작을 최상단 현재 범위로 반영하고 T030 이전 이력 보존 |
+| `.github/workflows/efsimulator-app-check.yml` | 수정 | 실제 앱20회귀·TypeScript·Worker 빌드용 push/PR workflow; 최종 source 복사 후 관련 경로 보완 |
+| `services/efsimulator-app/.env.example` | 수정 | 실제 앱의 서버 전용 API origin/서비스 인증 환경변수 이름 예시; 비밀값 없음 |
+| `services/efsimulator-app/.gitignore` | 수정 | 실제 앱 의존성·빌드·로컬 환경/인증 설정의 비추적 경계 |
+| `services/efsimulator-app/.npmrc` | 수정 | 실제 앱 고정 설치 설정 |
+| `services/efsimulator-app/.openai/hosting.json` | 수정 | 실제 eFsimulator owner-private Site의 반환 project_id와 Worker hosting 설정 |
+| `services/efsimulator-app/README.md` | 수정 | 실제 앱 페이지·서버 API relay·미구현 추첨 엔진·검사/배포 범위 안내 |
+| `services/efsimulator-app/app/api/v1/[[...path]]/route.ts` | 수정 | 실제 앱 same-origin 조회 요청을 서버 전용 private API relay로 전달하는 어댑터 |
+| `services/efsimulator-app/app/components/catalog-data.tsx` | 수정 | 실제 API pagination/snapshot 일치·에러/로딩/재조회와8필드 카드/팩 데이터 상태 |
+| `services/efsimulator-app/app/components/catalog-pages.tsx` | 수정 | 선수/팩 목록·상세·시뮬레이터 진입 화면과 검색/선택 흐름 |
+| `services/efsimulator-app/app/components/catalog-ui.tsx` | 수정 | 실제 앱 navigation·경계/로딩·카드/팩 대표 이미지·직접 상세 링크 공통 UI |
+| `services/efsimulator-app/app/globals.css` | 수정 | 실제 앱 반응형 탐색/상세/진입 화면 스타일 |
+| `services/efsimulator-app/app/layout.tsx` | 수정 | 실제 앱 한국어 layout·metadata·공통 데이터/화면 shell |
+| `services/efsimulator-app/app/not-found.tsx` | 수정 | 없는 페이지의 명확한 안내와 팩 목록 복귀 |
+| `services/efsimulator-app/app/packs/[saleId]/page.tsx` | 수정 | 문자열 판매 회차ID의 실제 팩 상세 페이지 |
+| `services/efsimulator-app/app/packs/page.tsx` | 수정 | 실제 판매 중/종료 팩 목록 페이지 |
+| `services/efsimulator-app/app/page.tsx` | 수정 | 실제 앱 시작 페이지에서 /packs로의 명시적 이동 |
+| `services/efsimulator-app/app/players/[id]/page.tsx` | 수정 | 정확한 문자열 카드ID의 실제 선수 상세 페이지 |
+| `services/efsimulator-app/app/players/page.tsx` | 수정 | 실제 선수 카드 목록 페이지 |
+| `services/efsimulator-app/app/simulator/page.tsx` | 수정 | 팩 선택/구성을 확인하는 별도 시뮬레이터 진입 페이지; 추첨 엔진 없음 |
+| `services/efsimulator-app/cloudflare-env.d.ts` | 수정 | 실제 앱 Worker/서버 환경 타입 |
+| `services/efsimulator-app/lib/catalog-relay.mjs` | 수정 | 고정 private API origin으로 GET만 중계·서비스 인증 서버 보관·요청/응답/redirect 제한 |
+| `services/efsimulator-app/lib/pack-preview.mjs` | 수정 | 정확한 카드ID의 Epic/ShowTime 표시용 최대3장 selector와 미확인 순서 fallback |
+| `services/efsimulator-app/lib/preview-player-types.json` | 수정 | 재사용한 표시 전용 카드ID→등급 metadata와 입력 해시; 추첨 확률/규칙 근거 아님 |
+| `services/efsimulator-app/next.config.ts` | 수정 | 공식 Vinext 호환 실제 앱 설정 |
+| `services/efsimulator-app/package.json` | 수정 | 실제 앱 독립 명령·Node/pnpm 기준·의존성 계약 |
+| `services/efsimulator-app/pnpm-lock.yaml` | 수정 | 실제 앱의 고정 의존 잠금 |
+| `services/efsimulator-app/pnpm-workspace.yaml` | 수정 | 실제 앱 패키지 작업공간 설정 |
+| `services/efsimulator-app/scripts/build-verified.sh` | 수정 | 실제 앱 공식 Sites 설치·실행·빌드 통합 helper |
+| `services/efsimulator-app/scripts/execution-profile.mjs` | 수정 | 실제 앱 공식 Sites 설치·실행·빌드 통합 helper |
+| `services/efsimulator-app/scripts/install-ci.mjs` | 수정 | 실제 앱 공식 Sites 설치·실행·빌드 통합 helper |
+| `services/efsimulator-app/scripts/install-ci.sh` | 수정 | 실제 앱 공식 Sites 설치·실행·빌드 통합 helper |
+| `services/efsimulator-app/scripts/install-pnpm.sh` | 수정 | 실제 앱 공식 Sites 설치·실행·빌드 통합 helper |
+| `services/efsimulator-app/scripts/npm-install.mjs` | 수정 | 실제 앱 공식 Sites 설치·실행·빌드 통합 helper |
+| `services/efsimulator-app/scripts/pnpm-install.mjs` | 수정 | 실제 앱 공식 Sites 설치·실행·빌드 통합 helper |
+| `services/efsimulator-app/scripts/run-framework.mjs` | 수정 | 실제 앱 공식 Sites 설치·실행·빌드 통합 helper |
+| `services/efsimulator-app/scripts/sites-env.mjs` | 수정 | 실제 앱 공식 Sites 설치·실행·빌드 통합 helper |
+| `services/efsimulator-app/scripts/sites-env.sh` | 수정 | 실제 앱 공식 Sites 설치·실행·빌드 통합 helper |
+| `services/efsimulator-app/scripts/tool-environment.mjs` | 수정 | 실제 앱 공식 Sites 설치·실행·빌드 통합 helper |
+| `services/efsimulator-app/scripts/vite/sites-vite-plugin.LICENSE` | 수정 | 실제 앱 공식 Sites 설치·실행·빌드 통합 helper |
+| `services/efsimulator-app/scripts/vite/sites-vite-plugin.ts` | 수정 | 실제 앱 공식 Sites 설치·실행·빌드 통합 helper |
+| `services/efsimulator-app/tests/catalog-relay.test.mjs` | 수정 | 실제 앱 서버 중계의 인증/목적지/GET·redirect/크기/오류 보안 경계14회귀 |
+| `services/efsimulator-app/tests/pack-preview.test.mjs` | 수정 | 실제 앱 표시 selector의 등급 우선·단일Epic·Highlight 보충 금지·fallback6회귀 |
+| `services/efsimulator-app/tsconfig.json` | 수정 | 실제 앱 TypeScript 검사 설정 |
+| `services/efsimulator-app/vite.config.ts` | 수정 | 실제 앱 공식 Sites/Vinext Worker 빌드와 same-zone public front-door 호환 통합 |
+| `services/efsimulator-app/worker/index.ts` | 수정 | 실제 앱 공식 Worker 실행 진입점 |
+| `data/research/sites-app-T032.json` | 수정 | 실제 private 앱 배포·동일 API publication/8필드·직접 페이지·보안·검사와 브라우저 QA 한계의 근거 |

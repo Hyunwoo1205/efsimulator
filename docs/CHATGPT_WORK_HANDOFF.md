@@ -1,4 +1,21 @@
-# 현재 인수인계 — T030, 2026-10-28 KST
+# 현재 인수인계 — T032 실제 앱 서버 전달, 2026-10-28 KST
+
+최신 사용자 지시는 실제 eFsimulator 앱 서버와 기존 private API 연동·선수/팩 목록/상세·별도 시뮬레이터 진입 페이지 제작이다. API 개발 완료/유지보수 기준과 기존 raw/8필드·가공 publication·규칙·자동화는 유지한다. 검토용 `services/catalog-view/`를 실제 앱으로 바꾸어 부르거나 기존 Pages/API 서버를 교체하지 않는다.
+
+- 새 실제 앱 Site: `appgprj_6ae13ac0e9d88191978e6953f7286966`, owner-private 배포/서비스 인증 API 연동·직접 페이지 검증 완료. 실제 URL `https://efsimulator.hyunw09.chatgpt.site`. hosted 실데이터 브라우저 상호작용 QA는 로그인 장벽으로 미수행이다.
+- 구현 폴더: `/workspace/sites/efsimulator`. 최종 검증 소스44파일은 저장소 `services/efsimulator-app/`에 복사해 FILE_SYNC와 작업별 검토에 등록했다. 기존 api-server-setup 브랜치와 사용자 변경을 유지한다.
+- 앱 서버만 정확한 API origin/서비스 credential을 보유하고 브라우저에는 같은 origin의 조회만 제공한다. 방문자 GET에서 원본 수집/DB 쓰기를 하지 않으며 API8필드를 확장하거나 credential을 클라이언트·Git·예약 프롬프트에 넣지 않는다.
+- 이번 범위는 서버/조회·진입 화면이다. T031의 페이지/API 설계 하위 범위를 구체화하되 추첨 규칙·실제 개봉/잔여 상태·3D는 T017/T018 및 잔여 설계다. API ready나 진입 페이지를 simulation_ready/엔진 완료로 보지 않는다.
+- 현재 작업은 T017의 모드별 추첨 규칙·잔여 풀·익명 Standard·최소 엔진/2D 세부 설계/구현 예정, 이전 T032 서버/조회·진입 화면 전달 완료, 다음 T018 3D/모바일 성능이다. 실제 검사·저장 source SHA/배포 버전·서비스 인증 조회·브라우저 QA와 GitHub/CI 반영 상태는 [WORKPLAN](WORKPLAN.md)에서 확인한다. 실패/미실행을 성공으로 추정하지 않는다.
+- 이 개별 개발 지시를 일반 hourly 예약 프롬프트에 복사하지 않는다. 공개 audience 전환·main 병합·기존 Pages 교체를 자동 수행하지 않는다.
+
+실제 API/페이지·보안·검사·브라우저 QA 범위와 정확한 Sites source/저장 version/배포 ID는 [T032 실행 근거](../data/research/sites-app-T032.json)를 따른다. 앱20회귀·전체394회귀·TypeScript·공식 Worker 빌드는 통과했고 실제Node24.22.1/npm11.9.0을 지정Node24.19.0 실행으로 바꾸어 적지 않는다. 개봉 엔진/3D는 아직 제공하지 않는다.
+
+현재 역할·우선순위·연관·검토와 개발 완료의 정상 commit/push·원격 내용/CI 확인 절차는 [AGENTS](../AGENTS.md)·[FILE_SYNC](FILE_SYNC.json)·[ROADMAP](ROADMAP.md)을 함께 따른다. 아래 T030과 더 오래된 이력의 문서 전용/구현 보류 범위를 현재 T032 요청의 금지로 다시 적용하지 않는다.
+
+---
+
+# T030 인수인계 snapshot — 당시 문서 점검 이력
 
 이 최상단 항목이 현재 실행 기준이다. 아래 T020~T023의 `work` 브랜치·API 미구현·배포 제외·당시 푸시 승인 범위는 역사 원문이며 현재 작업으로 다시 적용하지 않는다. 실제 최신 ref와 파일은 **GitHub `Hyunwoo1205/efsimulator`의 `api-server-setup` 브랜치**에서 확인하고 [ROADMAP](ROADMAP.md)·[WORKPLAN](WORKPLAN.md)·[FILE_SYNC](FILE_SYNC.json)·[AGENTS](../AGENTS.md)를 함께 읽는다. Library의 이전 인수인계 MD는 보존된 과거 snapshot이며 현재 GitHub 문서의 대체물이 아니다.
 
