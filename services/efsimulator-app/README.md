@@ -31,3 +31,12 @@
 동적 경로의 saleId와 카드 ID는 `lib/route-id.mjs`로 한 번만 안전하게 디코딩한다. 이미 디코딩된 ID도 그대로 지원하며 잘못된 인코딩·중첩 인코딩·경로 구분자를 거부한다. 팩 회차나 선수 ID를 이름으로 추정하지 않는다. 해당 회귀 검증은 `tests/route-id.test.mjs`에 있다.
 
 브라우저 검증은 배포용 Worker/클라이언트 빌드와 별도로 보존한 실제 API 응답 snapshot으로 수행하며 QA snapshot·보조 Worker·인증값은 소스/배포에 포함하지 않는다. 실제 hosted API 재조회와 로그인한 hosted 브라우저 검증의 범위는 작업 근거에서 구분한다.
+
+
+## 공통 선수 카드 표시 (T034)
+
+`app/components/catalog-ui.tsx`의 `Portrait`가 모든 선수 이미지를 담당한다. 카드 원본의 240×340 좌표계에 왼쪽 위 OVR·그 아래 포지션·하단 영문 이름을 함께 배치한다. 선수 이름은 API의 기존 영문 `name`을 쓰며, 긴 이름은 실제 글꼴 폭을 측정해 한 줄 안에서만 축소한다. 표시 OVR은 기존 API 값을 그대로 사용한다.
+
+이미지의 `object-fit:contain`과 SVG의 `preserveAspectRatio:meet`를 맞춰 상세 화면의 여백에서도 위치가 유지된다. 각 `Portrait`의 격리된 paint/stacking context와 `overflow:hidden`, 상위 팩 영역 clipping을 유지해야 이미지·글자가 함께 회전·잘리고 다른 카드 뒤로 가려진다. 텍스트를 카드 밖이나 portal로 분리하지 않는다. 이미지가 없거나 실패해도 선수 식별 글자는 남고, 다른 imageUrl의 오류 상태를 재사용하지 않는다.
+
+적용 범위: 팩 목록 미리보기·펼친 명단·팩 상세·선수 목록/상세·관련 팩·시뮬레이터 선택/명단. 원본 글꼴 출처는 `public/fonts/README.md`를 따른다. API 계약·선수 수치·팩 대표 선수 선택 규칙은 변경하지 않는다.

@@ -1,4 +1,4 @@
-<!-- project-state: {"stage":"R6","previous":"T033","current":"T017","next":"T018"} -->
+<!-- project-state: {"stage":"R6","previous":"T034","current":"T017","next":"T018"} -->
 
 # efsimulator 작업 계획과 이력
 
@@ -6,16 +6,16 @@
 
 ## 현재 작업과 매 작업 갱신
 
-- 이전 작업: T033 — production 선수/팩 navigation·명단 펼침·encoded ID 상세 연결 수정과 private 재배포 검증 완료.
+- 이전 작업: T034 — 공통 선수 카드 OVR·포지션·영문 이름·겹침/크롭과 참고 이미지 비교·private 재배포 검증 완료.
 - 현재 작업: T017 — 추첨 모드별 규칙·잔여 풀·익명 Standard·최소 엔진/2D 결과 세부 작업 예정.
 - 다음 작업: T018 — 검증된 엔진/연출 뒤3D·모바일 성능·실패 fallback.
-- 현재 조건: T033에서 production navigation/RSC prefetch 오류와 encoded saleId 상세 lookup을 수정하고 실제 API snapshot을 사용한 동일 production 빌드의 검색·명단·상세 교차 이동·필터/탭/refresh 브라우저 흐름을 검증했다. 같은 private Site에 재배포하고 fresh hosted API/직접 페이지·보안 경계도 확인했다. 이는 로그인된 hosted UI 세션 직접 QA와 구분한다. API8필드·raw/규칙·자동화·audience·viewer/Pages 보존, 추첨 엔진/3D는 미구현이다.
+- 현재 조건: T034 공통 Portrait를240×340 원본 좌표와 원본 eFootball 글꼴로 보정했다. 실제 API snapshot을 사용하는 production 화면에서 미리보기·명단·상세·모바일·시뮬레이터·긴 이름과 가림 경계를 검증하고 같은 private Site에 재배포했다. 이는 로그인된 hosted UI 직접클릭 QA와 구분한다. API8필드·raw/규칙·자동화·audience·viewer/Pages 보존, 추첨 엔진/3D는 미구현이다.
 
 매 작업 시작 시 Git 상태·이전 결과·이번/다음 작업·선행 조건을 확인한다. FILE_SYNC의 P0→P1→P2로 관련 파일을 검토하되 필요한 파일은 등급과 무관하게 함께 수정한다. 추가 요구는 ID·영향 단계·선행 조건·순서·상태를 기록한다. 파일별 수정/변경불필요/미해결과 근거, 경로 추가/삭제/이름 변경·참조를 같은 작업에서 갱신한다. 검증과 이전/현재/다음 포인터를 맞추며 구현/수집/발행 완료는 실제 근거가 있을 때만 표시한다.
 
 ## 최신 추가 조건과 이전 조건의 적용
 
-C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_BEFORE_PROBABILITY_SCOPE.md)에 보존한다. 관리 최신화·ID/근거·실패 보존·접근 거부 우회 금지·무료 우선·운영 승인 분리 원칙은 계속 적용한다. 범위 결정은 날짜별 이력이며 현재 범위·완료 정책은 최신 C066과 아래 T033을 우선하고 API 완료/정상 반영 정책 C063~C064를 유지한다. 전체 수집과 사이트 범위를 혼동하지 않는다.
+C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_BEFORE_PROBABILITY_SCOPE.md)에 보존한다. 관리 최신화·ID/근거·실패 보존·접근 거부 우회 금지·무료 우선·운영 승인 분리 원칙은 계속 적용한다. 범위 결정은 날짜별 이력이며 현재 범위·완료 정책은 최신 C067과 아래 T034를 우선하고 API 완료/정상 반영 정책 C063~C064를 유지한다. 전체 수집과 사이트 범위를 혼동하지 않는다.
 
 | 조건 ID | 최신 결정 | 영향 단계 / 선행 조건 / 처리 순서 | 상태 |
 | --- | --- | --- | --- |
@@ -55,6 +55,7 @@ C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_B
 | C064 | 승인된 개발 작업은 관련 파일 검토·인벤토리/기록·검증 후 같은 작업 브랜치의 정상 commit/push와 원격 내용/CI 상태 확인까지 수행 | T030 공통 완료 정책. P0→필요 P1/P2 검토; 역할/우선순위/연관/갱신 조건/검토 ID 등록; 업로드 실패를 완료로 보고하지 않음 | 무변경·읽기 전용·시간별 데이터 작업은 커밋 제외; raw/credential은 Git 제외; main 병합·공개 접근 변경은 자동 수행하지 않음 |
 | C065 | 실제 eFsimulator 앱 서버를 별도 제작하고 기존 private API에 서버 전용으로 연결; 선수/팩 목록/상세와 별도 시뮬레이터 진입 페이지 제공 | T032/R3. 실제 앱 소스/등록ID→서버 relay·조회 화면→검증·private 배포→원격 실조회→정상 소스 반영. API8필드/원본/규칙/자동화·기존 viewer/Pages 보존 | 실제 앱 private 배포·API 목록/상세/직접 페이지·보안/검사 검증 완료. 엔진/3D·추첨 규칙 확정은 후속; hosted 실데이터 브라우저 상호작용 QA는 미수행 |
 | C066 | 기존 선수/팩 조회 기능이 실제로 동작하도록 production navigation·명단 펼침·ID 상세 연결 수정 | T033/R3. production 재현→표준a/full navigation·인라인 명단·safe1회decode→회귀/production QA→동일 private Site 재배포/실조회 | production snapshot 상호작용·ID3회귀/앱23/전체397·타입/빌드·동일 private 재배포/fresh hosted API 검증 완료. T032 한계 이력과 hosted UI 직접 QA 구분·핵심 계약 보존 |
+| C067 | 실제 앱의 모든 선수 카드 이미지에 왼쪽 위 OVR·그 아래 작은 포지션·아래쪽 영문 이름을 공통 적용; 겹침/크롭 시 카드와 글자를 함께 가림 | T034/R3. 첨부 EFHub 카드 좌표/글꼴 비교→공통 Portrait 적용→목록/미리보기/명단/상세/시뮬레이터 반응형 QA→동일 private Site 배포·GitHub/문서 정합성 | 공통 표시·397/23회귀·타입/공식빌드·production 시각 QA·동일 private 재배포 검증 완료; API8필드·원본/규칙·자동화·audience 유지 |
 
 
 ## 이전 작업의 현재 해석
@@ -599,7 +600,7 @@ Sites 계정의 실제 한도·비용·영속 저장·실제 인증·백업 미�
 
 - 단계: R6
 - 상태: 예정
-- 이전: T033
+- 이전: T034
 - 다음: T018
 
 ### 목표·입력·순서
@@ -1637,3 +1638,54 @@ root 전체 회귀394/394·실패0, 앱20회귀·TypeScript·공식 Worker 빌�
 | `services/efsimulator-app/tests/route-id.test.mjs` | 수정 | 회차별encoded/decoded 동등성·숫자문자열 정밀도·잘못된/중첩 인코딩 거부3회귀 |
 | `.github/workflows/efsimulator-app-check.yml` | 검토 결과 변경 불필요 | 기존 tests/*.test.mjs가 새ID3회귀를 포함한23테스트를 실행하므로 workflow 코드 변경 없이 연관 경로만 갱신 |
 | `data/research/app-interactions-T033.json` | 수정 | 두 production 원인·397/23회귀·production snapshot 실브라우저 QA와 별도 배포 결과의 근거 |
+
+
+## T034 — 공통 선수 카드 OVR·포지션·영문 이름과 가림 표시
+
+- 단계: R3
+- 상태: 완료
+- 이전: T033
+- 다음: T017
+
+사용자가 첨부한 EFHub 카드처럼 왼쪽 위의 큰 오버롤, 바로 아래 작은 포지션, 카드 아래쪽 영문 이름을 실제 앱의 모든 선수 이미지에 일괄 적용한다. 팩 미리보기·펼친 명단·선수 목록/상세·팩 상세·시뮬레이터 진입의 공통 Portrait를 적용 지점으로 사용한다. 그림과 글자가 같은 카드 좌표계·변형·쌓임/클립에 참여하도록 하여 잘린 부분이나 다른 카드 뒤의 글자가 앞에 새어 나오지 않게 한다. 첨부 이미지의 위치/비율/글꼴과 실제 반응형 화면을 비교하며 확인되지 않은 등급/평점을 추정하지 않는다.
+
+선행 기준은 T033의 실제 앱/동작과 기존 private API다. GitHub 원격 api-server-setup은 280e44b56d539551a7c68e79167f7cc76c063760이고 작업 시작 때 원격333파일과 FILE_SYNC의 로컬333파일 blob SHA가 모두 일치했다. 로컬HEAD735c625의 status 차이는 이미 원격 반영된 이력이므로 되돌리지 않는다. 구현은 /workspace/sites/efsimulator, 검증한 소스는 services/efsimulator-app/에 복사한다. API8필드·D1·raw·수집/발행규칙·예약·기존 viewer/Pages·private audience는 그대로 둔다.
+
+검증 계획은 공통 카드의 실제 데이터/영문명·모든 호출 지점·세로 비율·이미지 로딩 실패/미확인값·좁은 화면/긴 이름, 팩의 겹침/크롭과 pointer/검색/이동, 참고 이미지와의 시각 비교, 관련/전체 테스트·TypeScript·공식 Worker 빌드·관리 검사다. 배포/hosted 직접 QA·로컬 snapshot QA·GitHub 반영/CI는 실제 확인한 범위를 구분한다.
+
+### 실행 결과
+
+공통 Portrait의 원본240×340 좌표계에서 OVR은x43/y50·47px stencil, 포지션은x43/y76·22.5px Sans Bold, 영문명은중앙x120/y267·28.125px Sans Bold로 보정했다. 공식 제공 원본 eFootball 글꼴2개를 사용하며 원본 메타데이터/저작권과 URL을 fonts/README에 보존했다. 글꼴 사용을 오픈소스/재배포 허가로 주장하지 않는다. API의 영문name·OVR·position을 그대로 쓰며 getComputedTextLength를 fonts.ready/loadingdone 뒤 측정해227단위를 넘는 긴 이름만 한 줄에 맞춘다. 이미지와 SVG가 contain/meet 변형을 공유하고 카드의 isolation/paint containment/overflow clipping 안에서 함께 회전·겹침·가림에 참여한다.
+
+최종 앱23테스트·전체397테스트·TypeScript·공식 Worker build가 통과했다. 최종6개 제품 파일을 Site source와 저장소 서비스 폴더에 동일하게 복사했다. 관리337파일/35작업과 로컬기준735c625대비114경로 검사를 통과했고 diff 공백 오류가 없다.114경로는 이미 원격 반영된 과거 변경도 포함하며 이번 새 변경 파일 수로 해석하지 않는다. 실제Node24.22.1/npm11.9.0과 지정Node24.19.0 차이를 유지한다.
+
+2026-10-28T06:31:15.544Z의 실제 API7팩70카드 snapshot을 최종 production 빌드의 브라우저에서 확인했다. desktop ItalianAttackers preview3장·펼친11명·상세14portrait, mobile390px iframe의 동일production Inzaghi 상세를 첨부 카드와 비교했다. Magical Dribblers 대표 Raphinha/Doku/Doue와 긴 FrancoMastantuono의 textLength227 적용도 확인했다. 확인 구간의 앱 콘솔 오류는 없고 확장 프로그램 오류는 구분했다. 복구 후 시뮬레이터도14portrait 각각3labeltext·overflow:hidden·isolation:isolate와Epic미리보기3장/명단 화면을 확인했다. 이는 로그인된 hosted UI 직접클릭 검증은 아니다. 같은 private Site의 native 저장/배포는 succeeded로 확인됐으며 정확한 source/version/deployment는 아래와 실행 JSON을 따른다.
+
+
+같은 실제 앱 private 배포가 성공했다. source SHA는8359d38a78c180b388732d15f2604881b742fc34, 저장version은appgprj_6ae13ac0e9d88191978e6953f7286966~appgver_c1b81ab56f348191ba9a927bd8cca591, 배포ID는appgdep_6ae1975e3ccc8191887d09d17f32119c, 환경revision1, native 성공시각은2026-10-28T06:34:22.594305+00:00, URL은https://efsimulator.hyunw09.chatgpt.site다. 최신 GitHub 반영/원격 전체 내용/CI는 최종 동기화 후 실제 확인하며 이 문서에 자기자신의 미래commit SHA를 넣지 않는다.
+
+2026-10-28T06:34:54.493Z의 fresh hosted 검증은9개 정상API·6직접페이지HTTP200, 같은publication의7팩70카드/선수8필드, adminGET400·POST405·clientsecret비포함을 확인했다. 배포된 원본글꼴2URL도HTTP200·50,440/48,060bytes 원본byte일치이며 실제HTML연결CSS에card-overall/eFootballStencil/card-labels가 포함됐다. Site추적49파일과저장소서비스49파일은byte차이0이고 QA entry/snapshot은배포archive에없다. hosted브라우저는로그인화면이므로직접클릭성공으로기록하지않는다.
+
+### 파일 최신화 검토
+
+| 파일 | 결과 | 근거 |
+| --- | --- | --- |
+| `README.md` | 수정 | 공통 카드 표시 작업과 다음 엔진 단계 안내 |
+| `docs/WORKPLAN.md` | 수정 | C067·T034 범위/선행/가림/시각 검증 계획과 파일 검토 |
+| `docs/ROADMAP.md` | 수정 | 현재 T034 카드 표시와 후속 T017/T018 순서 |
+| `docs/FILE_SYNC.json` | 수정 | T034 영향/신규 파일의 역할·우선순위·연관/갱신 조건 등록 |
+| `docs/CHATGPT_WORK_HANDOFF.md` | 수정 | T034 현재 범위와 기존 API/원본/자동화/비공개 보존 |
+| `docs/DEPLOYMENT.md` | 수정 | 같은 실제 앱의 카드 표시 재배포와 관측별 QA 구분 |
+| `docs/FILE_SYNC_AUDIT.md` | 수정 | 원격333파일과 작업 시작 로컬333파일 전체 blob 일치 근거 |
+| `data/research/card-artwork-T034.json` | 수정 | 카드 좌표/공통 표시·가림·회귀/시각 검증·배포의 비밀값 없는 근거 |
+| `services/efsimulator-app/app/components/catalog-ui.tsx` | 수정 | 모든 선수 이미지에서 공통 카드 표시 및 같은 쌓임/크롭 경계 적용 |
+| `services/efsimulator-app/app/globals.css` | 수정 | 카드 좌표 기준 크기·오버레이 글꼴/위치·겹침/클립 반응형 |
+| `services/efsimulator-app/app/components/catalog-pages.tsx` | 검토 결과 변경 불필요 | 모든 선수 이미지가 Portrait/PlayerCard/PackArtwork를 경유하는지 최종 소스에서 확인 |
+| `services/efsimulator-app/app/components/catalog-data.tsx` | 검토 결과 변경 불필요 | 기존 API의 영문name·overallRating·position·imageUrl 계약을 표시용으로 재사용 |
+| `services/efsimulator-app/README.md` | 수정 | 공통 카드 표시/누락값/가림 동작과 시각 검증 범위 설명 |
+| `.github/workflows/efsimulator-app-check.yml` | 검토 결과 변경 불필요 | 기존 앱 tests/TypeScript/Worker 빌드 경로 유지 |
+| `AGENTS.md` | 검토 결과 변경 불필요 | 기존 매 작업 GitHub/파일 목록·검증 완료 조건이 T034에도 그대로 적용 |
+| `docs/CATALOG_DATA_CONTRACT.md` | 검토 결과 변경 불필요 | 화면 전용 표시로 선수8필드·팩/선수 연결·원본/발행 계약 변경 없음 |
+| `services/efsimulator-app/public/fonts/eFootballStencil-Regular.woff` | 수정 | 원본 eFootball stencil OVR 글꼴과 원본 저작권 메타데이터를 그대로 보존 |
+| `services/efsimulator-app/public/fonts/eFootballSans-Bold.woff` | 수정 | 참고 카드의 포지션/영문명 원본 eFootball Sans Bold 글꼴 |
+| `services/efsimulator-app/public/fonts/README.md` | 수정 | 공식 글꼴 URL·원본 저작권·메타데이터 보존과 라이선스 비주장 기록 |

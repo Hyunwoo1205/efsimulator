@@ -1,5 +1,11 @@
 # Sites 배포·DB API 운영 계획
 
+## T034 공통 카드 표시 — 전달 완료
+
+기존 실제 앱 Site와 owner-private audience를 유지한 채 공통 Portrait의 OVR·포지션·영문 이름·겹침/크롭 표시를 수정한다. API/데이터/비밀값/자동화는 변경하지 않는다. 첨부 카드와 반응형 화면을 비교하고 공식 Worker build의 검증한 소스를 같은 Site에 저장/배포한다. 로컬 실제API snapshot production에서 미리보기/펼친명단/상세/모바일390/긴이름/시뮬레이터14portrait의 공통표시와clip/stacking을 확인했다.397전체/23앱회귀·TypeScript·공식Worker빌드가 통과했다. source8359d38a78c180b388732d15f2604881b742fc34, 저장version appgprj_6ae13ac0e9d88191978e6953f7286966~appgver_c1b81ab56f348191ba9a927bd8cca591, 배포 appgdep_6ae1975e3ccc8191887d09d17f32119c, 환경revision1·native succeeded2026-10-28T06:34:22.594305+00:00·기존URL을 확인했다. hosted 로그인UI 직접클릭 QA와 로컬production QA를 구분하며 GitHub/CI는 최종 원격 확인 결과를 따른다.
+
+2026-10-28T06:34:54.493Z의 fresh hosted 검증은9개 정상API·6직접페이지HTTP200, 같은publication의7팩70카드/선수8필드, adminGET400·POST405·clientsecret비포함을 확인했다. 배포된 원본글꼴2URL도HTTP200·50,440/48,060bytes 원본byte일치이며 실제HTML연결CSS에card-overall/eFootballStencil/card-labels가 포함됐다. Site추적49파일과저장소서비스49파일은byte차이0이고 QA entry/snapshot은배포archive에없다. hosted브라우저는로그인화면이므로직접클릭성공으로기록하지않는다.
+
 ## T033 production 상호작용 보완 — 전달 완료
 
 같은 실제 앱 Site의 private audience를 유지해 선수/팩 navigation·팩 목록 명단 펼침·시뮬레이터 URL 이동과 인코딩된 상세 route ID 처리를 보완한다. production build에서 next/link/RSC prefetch TypeError와 route saleId encoded lookup 실패를 재현했다. 표준 a/full navigation과 안전한1회 decode를 적용한 뒤 회귀·동일 production 빌드의 snapshot fixture 브라우저 흐름을 검증하며, 별도 hosted/API 검증과 구분한다.

@@ -16,3 +16,16 @@
 
 /* Inline rosters remain on the list while detail navigation uses native links. */
 .pack-entry{min-width:0}.roster-toggle{width:100%;display:flex;justify-content:space-between;align-items:center;border:1px solid var(--line);border-top:0;background:#edf0e4;color:var(--ink);padding:15px 20px;cursor:pointer;font:inherit;font-size:12px;font-weight:600}.roster-toggle:hover{background:#e2e9d5}.roster-toggle:focus-visible{outline:3px solid #638441;outline-offset:2px}.inline-roster{padding:20px 15px;border:1px solid var(--line);border-top:0;background:#fbfcf6}.inline-roster h3{font-size:15px;margin:0 0 15px}.inline-roster-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.inline-roster .player-content{padding:10px}.inline-roster .player-content h3{font-size:12px;margin:8px 0}.inline-roster .player-topline{font-size:10px}.inline-roster .rating{font-size:13px}.inline-roster .play-style{font-size:10px}.inline-standard{font-size:12px;color:#64705e;line-height:1.7;margin:18px 0}.inline-roster>.text-button{margin-top:18px}
+
+@font-face{font-family:'eFootballStencil';src:url('/fonts/eFootballStencil-Regular.woff') format('woff');font-weight:400 900;font-style:normal;font-display:swap}
+@font-face{font-family:'eFootballSans';src:url('/fonts/eFootballSans-Bold.woff') format('woff');font-weight:700 900;font-style:normal;font-display:swap}
+/* Card artwork uses one 240 × 340 coordinate system at every display size.
+   Keep paint order inside each portrait so pack overlaps mask image AND type. */
+.portrait{isolation:isolate;contain:paint;aspect-ratio:240/340;min-height:0}
+.portrait img,.portrait .card-labels{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center}
+.portrait img{z-index:1}
+.portrait .card-labels{z-index:2;pointer-events:none;overflow:hidden;fill:#fff;text-shadow:0 1px 2px #0009;font-family:'eFootballSans','Arial Narrow','DM Sans',Arial,sans-serif;font-weight:800;line-height:1}
+.card-overall{font-family:'eFootballStencil','Arial Black','DM Sans',sans-serif;font-size:47px;font-weight:400;letter-spacing:0}
+.card-position{font-size:22.5px;font-weight:800;letter-spacing:.2px}
+.card-name{font-size:28.125px;font-weight:800;letter-spacing:-.5px}
+.pack-lineup .portrait{flex-shrink:0}

@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { selectPackPreview } from "../../lib/pack-preview.mjs";
 import { dateOnly, dateTime, packPath, packTitle, playerPath, useCatalog, type Pack, type Player } from "./catalog-data";
 
@@ -27,11 +27,40 @@ export function RefreshButton() {
   return <button className="refresh" disabled={loading} onClick={refresh}>{loading ? "불러오는 중" : "새로고침"} <span aria-hidden="true">↻</span></button>;
 }
 
+/** A single card coordinate space keeps every label attached to its artwork.
+ * The SVG and image use the same contain/meet transform, including letterboxing.
+ * Portrait is a stacking context: a neighbouring card occludes the entire face.
+ */
 export function Portrait({ player, small = false, featured = false }: { player: Player; small?: boolean; featured?: boolean }) {
-  const [failed, setFailed] = useState(false);
+  const [failedImage, setFailedImage] = useState<string | null>(null);
+  const nameRef = useRef<SVGTextElement>(null);
   let image: string | null = null;
   try { const url = new URL(player.imageUrl ?? ""); if (url.protocol === "https:" && url.hostname === "efimg.com") image = url.href; } catch { /* Optional image. */ }
-  return <div className={`portrait${small ? " small" : ""}${featured ? " featured" : ""}`}><span aria-hidden="true" className="portrait-fallback">ef<span>.</span></span>{image && !failed && <img src={image} alt={`${player.name} 선수 카드`} loading={featured ? "eager" : "lazy"} decoding="async" referrerPolicy="no-referrer" onError={() => setFailed(true)} />}</div>;
+  useEffect(() => {
+    let active = true;
+    const fitName = () => {
+      const text = nameRef.current;
+      if (!active || !text) return;
+      text.removeAttribute("textLength");
+      // Measure the actual font, never abbreviate names or expand short names.
+      if (text.getComputedTextLength() > 227) text.setAttribute("textLength", "227");
+    };
+    fitName();
+    void document.fonts.ready.then(fitName);
+    document.fonts.addEventListener("loadingdone", fitName);
+    return () => { active = false; document.fonts.removeEventListener("loadingdone", fitName); };
+  }, [player.name]);
+  const rating = player.overallRating ?? "—";
+  const position = player.position ?? "—";
+  return <div className={`portrait${small ? " small" : ""}${featured ? " featured" : ""}`} role="img" aria-label={`${player.name}, 오버롤 ${rating}, ${position} 선수 카드`}>
+    <span aria-hidden="true" className="portrait-fallback">ef<span>.</span></span>
+    {image && failedImage !== image && <img src={image} alt="" aria-hidden="true" loading={featured ? "eager" : "lazy"} decoding="async" referrerPolicy="no-referrer" onError={() => setFailedImage(image)} />}
+    <svg className="card-labels" viewBox="0 0 240 340" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
+      <text className="card-overall" x="43" y="50" textAnchor="middle">{rating}</text>
+      <text className="card-position" x="43" y="76" textAnchor="middle">{position}</text>
+      <text ref={nameRef} className="card-name" x="120" y="267" textAnchor="middle" lengthAdjust="spacingAndGlyphs" lang="en">{player.name}</text>
+    </svg>
+  </div>;
 }
 
 export function PlayerCard({ player }: { player: Player }) {

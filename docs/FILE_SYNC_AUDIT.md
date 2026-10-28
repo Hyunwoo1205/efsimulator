@@ -1,3 +1,7 @@
+> T034 최종검토:공통카드제품6파일과문서/근거8파일을현재원격기준과분리해이번14변경으로확인했다.관리337파일/35작업과로컬735c625기준114경로검사·diff공백검사가통과했다.114는과거기반차이포함이며이번변경수는14다.Site49추적파일과저장소서비스49파일byte일치와실제private배포/글꼴/데이터재조회를확인했다.자세한근거는WORKPLAN T034·card-artwork-T034.json을따르며최종GitHub/CI는원격확인결과로보고한다.
+
+> T034 시작 기준: GitHub api-server-setup ref를 직접 조회해280e44b56d539551a7c68e79167f7cc76c063760, tree1c16174daeccd4717de22d7341162eddbef4f82a를 확인했다. recursive tree의333blob과 FILE_SYNC의 실제 로컬333파일을 Git blob SHA-1로 대조해 차이0·원격 전용0·truncated=false였다. 새 공통 카드 작업의 영향 검토/신규 파일/검증 결과는 WORKPLAN T034와 FILE_SYNC를 따른다. 이 시작 감사는 이후 수정본의 원격 반영이나 CI 성공을 뜻하지 않는다.
+
 > T030 현재 기준: 이 파일은 T020~T023 당시 이관/점검 이력이다. API 전달은 T025로 완료됐고 현재 작업은 실제 제품 설계를 준비하는 단계다. 최신 브랜치·실제 상태·완료 절차는 [현재 인수인계](CHATGPT_WORK_HANDOFF.md)·[ROADMAP](ROADMAP.md)·[WORKPLAN](WORKPLAN.md)을 우선하며 아래의 미배포/이전 work 지시를 현재 금지나 다음 작업으로 재적용하지 않는다.
 
 > T022 최신 이관·Sites 검토 결과는 [MIGRATION_STATUS](MIGRATION_STATUS.md)와 [검증 JSON](../data/research/work-migration-verification.json)을 따른다. 아래는 T020/T021의 전수 점검·검사 이력이다. 이번 T022의 영향 파일 검토는 WORKPLAN에 별도 기록하며 과거 전수 판정을 재실행했다고 주장하지 않는다.

@@ -1,3 +1,11 @@
+# 현재 인수인계 — T034 공통 카드 표시, 2026-10-28 KST
+
+최신 사용자 요청은 실제 앱의 모든 선수 카드 이미지에 첨부 EFHub처럼 OVR·그 아래 작은 포지션·아래쪽 영문 이름을 표시하고, 겹침/크롭에 따라 글자도 카드와 함께 가리도록 하는 것이다. 공통 Portrait를 중심으로 구현하며 실제 이미지/글꼴/좌표와 반응형을 비교한다. T034 공통 카드·397전체/23앱 회귀·타입/공식빌드·production 시각 QA·동일 private 배포가 완료됐다. 이전 T034→현재 T017 추첨 규칙·엔진/2D 예정→다음 T018 3D다. 원본240×340좌표·원본eFootball stencil/SansBold글꼴을 사용하고 긴 이름만 실제 측정해227단위로 축소한다. 시뮬레이터도14portrait/3labeltext·같은clip/stacking을 확인했다. 이는 로그인된hosted UI 직접클릭 QA와 구분한다. source8359d38a78c180b388732d15f2604881b742fc34의 private 배포 succeeded를 확인했으며 최신 GitHub/CI는 최종 원격 확인 결과를 따른다.
+
+작업 기준은 api-server-setup 원격280e44b56d539551a7c68e79167f7cc76c063760이다. 작업 시작 시 로컬333관리파일과 원격333blob 내용이 모두 일치했다. 로컬HEAD/status는 이미 원격 반영된 작업 이력과 다르므로 reset/clean/브랜치 변경하지 않는다. 실제 앱 Site appgprj_6ae13ac0e9d88191978e6953f7286966와 API/원본/규칙/자동화·private audience를 보존한다. 후속 실제 결과는 WORKPLAN T034와 card-artwork-T034.json에 기록하고 이전 T033 QA와 구분한다.
+
+2026-10-28T06:34:54.493Z의 fresh hosted 검증은9개 정상API·6직접페이지HTTP200, 같은publication의7팩70카드/선수8필드, adminGET400·POST405·clientsecret비포함을 확인했다. 배포된 원본글꼴2URL도HTTP200·50,440/48,060bytes 원본byte일치이며 실제HTML연결CSS에card-overall/eFootballStencil/card-labels가 포함됐다. Site추적49파일과저장소서비스49파일은byte차이0이고 QA entry/snapshot은배포archive에없다. hosted브라우저는로그인화면이므로직접클릭성공으로기록하지않는다.
+
 # 현재 인수인계 — T033 선수·팩 상호작용 수정 전달, 2026-10-28 KST
 
 사용자 요청에 따라 실제 production build의 선수/팩 navigation·명단 펼침·상세 ID 연결을 보완한다. next/link/RSC prefetch TypeError로 URL/DOM이 이동하지 않는 문제와 router가 saleId를 `%3A%3A`로 전달해 상세를 찾지 못하는 문제를 재현했다. 표준 a/full navigation·인라인 명단 toggle·안전한 route ID1회 decode를 적용했고397전체/23앱 회귀·TypeScript·공식 Worker 빌드, 같은 production 빌드의 실제 API snapshot 기반 검색/명단/상세·필터·탭·refresh를 검증했다. 실제 private 재배포와 fresh hosted/API 재조회도 확인했다.

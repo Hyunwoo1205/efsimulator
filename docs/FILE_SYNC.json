@@ -429,7 +429,7 @@
       "update_when": [
         "빌드 명령·출력·라우팅·배포 설정·공개 검증 결과 변경"
       ],
-      "reviewed_in": "T033"
+      "reviewed_in": "T034"
     },
     {
       "path": "docs/FILE_SYNC.json",
@@ -448,7 +448,7 @@
       "update_when": [
         "파일 추가·삭제·이름 변경·역할/의존관계 변경·영향 검토"
       ],
-      "reviewed_in": "T033"
+      "reviewed_in": "T034"
     },
     {
       "path": "docs/ROADMAP.md",
@@ -474,7 +474,7 @@
       "update_when": [
         "단계 상태·현재/이전/다음 작업·완료 조건·추가 요구 변경"
       ],
-      "reviewed_in": "T033"
+      "reviewed_in": "T034"
     },
     {
       "path": "docs/WORKPLAN.md",
@@ -499,7 +499,7 @@
       "update_when": [
         "매 작업 착수·추가 요구·파일 변경·검증 결과·작업 종료"
       ],
-      "reviewed_in": "T033"
+      "reviewed_in": "T034"
     },
     {
       "path": "index.html",
@@ -759,7 +759,7 @@
       "update_when": [
         "설치·실행·검증·표본 범위·진입 문서·공개 상태 변경"
       ],
-      "reviewed_in": "T033"
+      "reviewed_in": "T034"
     },
     {
       "path": "docs/sources/CARD_API_AUDIT.md",
@@ -1394,7 +1394,7 @@
       "update_when": [
         "사용자 범위/입력 상태·원격/로컬 반영·이관/검증 결과·지원 도구/작업 상태 변경"
       ],
-      "reviewed_in": "T033"
+      "reviewed_in": "T034"
     },
     {
       "path": "docs/FILE_SYNC_AUDIT.md",
@@ -1410,7 +1410,7 @@
       "update_when": [
         "사용자 범위/입력 상태·원격/로컬 반영·이관/검증 결과·지원 도구/작업 상태 변경"
       ],
-      "reviewed_in": "T030"
+      "reviewed_in": "T034"
     },
     {
       "path": "data/research/work-handoff-inputs.json",
@@ -4542,12 +4542,14 @@
       "priority": "P1",
       "related_paths": [
         "services/efsimulator-app/package.json",
-        "docs/DEPLOYMENT.md"
+        "docs/DEPLOYMENT.md",
+        "services/efsimulator-app/public/fonts/README.md",
+        "data/research/card-artwork-T034.json"
       ],
       "update_when": [
         "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
       ],
-      "reviewed_in": "T033"
+      "reviewed_in": "T034"
     },
     {
       "path": "services/efsimulator-app/app/api/v1/[[...path]]/route.ts",
@@ -4605,12 +4607,14 @@
         "services/efsimulator-app/package.json",
         "docs/DEPLOYMENT.md",
         "services/efsimulator-app/lib/catalog-relay.mjs",
-        "services/efsimulator-app/app/components/catalog-data.tsx"
+        "services/efsimulator-app/app/components/catalog-data.tsx",
+        "services/efsimulator-app/public/fonts/README.md",
+        "data/research/card-artwork-T034.json"
       ],
       "update_when": [
         "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
       ],
-      "reviewed_in": "T033"
+      "reviewed_in": "T034"
     },
     {
       "path": "services/efsimulator-app/app/globals.css",
@@ -4621,12 +4625,14 @@
         "services/efsimulator-app/package.json",
         "docs/DEPLOYMENT.md",
         "services/efsimulator-app/lib/catalog-relay.mjs",
-        "services/efsimulator-app/app/components/catalog-data.tsx"
+        "services/efsimulator-app/app/components/catalog-data.tsx",
+        "services/efsimulator-app/public/fonts/README.md",
+        "data/research/card-artwork-T034.json"
       ],
       "update_when": [
         "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
       ],
-      "reviewed_in": "T033"
+      "reviewed_in": "T034"
     },
     {
       "path": "services/efsimulator-app/app/layout.tsx",
@@ -5194,6 +5200,69 @@
         "실제 상호작용 수정·production snapshot QA·hosted 재조회/배포·검증 범위 변경"
       ],
       "reviewed_in": "T033"
+    },
+    {
+      "path": "data/research/card-artwork-T034.json",
+      "role": "T034 공통 선수 카드 좌표·가림/시각 비교·회귀/Worker·private 배포의 비밀값 없는 실행 근거",
+      "priority": "P1",
+      "related_paths": [
+        "docs/WORKPLAN.md",
+        "docs/DEPLOYMENT.md",
+        "services/efsimulator-app/README.md",
+        "services/efsimulator-app/app/components/catalog-ui.tsx",
+        "services/efsimulator-app/app/globals.css"
+      ],
+      "update_when": [
+        "공통 카드 표시·영문명/평점/포지션·이미지 가림·시각 QA·검사/배포 결과 변경"
+      ],
+      "reviewed_in": "T034"
+    },
+    {
+      "path": "services/efsimulator-app/public/fonts/eFootballStencil-Regular.woff",
+      "role": "공통 카드 OVR의 eFootball 원본 stencil 글꼴; 공식 제공 파일의 원본 메타데이터 보존",
+      "priority": "P1",
+      "related_paths": [
+        "services/efsimulator-app/app/components/catalog-ui.tsx",
+        "services/efsimulator-app/app/globals.css",
+        "services/efsimulator-app/README.md",
+        "data/research/card-artwork-T034.json",
+        "services/efsimulator-app/public/fonts/README.md"
+      ],
+      "update_when": [
+        "카드 글꼴 파일·출처·메타데이터·서체 선택 또는 원본 제공 경로 변경"
+      ],
+      "reviewed_in": "T034"
+    },
+    {
+      "path": "services/efsimulator-app/public/fonts/eFootballSans-Bold.woff",
+      "role": "공통 카드 포지션·영문명의 eFootball Sans Bold 글꼴; 공식 제공 파일의 원본 메타데이터 보존",
+      "priority": "P1",
+      "related_paths": [
+        "services/efsimulator-app/app/components/catalog-ui.tsx",
+        "services/efsimulator-app/app/globals.css",
+        "services/efsimulator-app/README.md",
+        "data/research/card-artwork-T034.json",
+        "services/efsimulator-app/public/fonts/README.md"
+      ],
+      "update_when": [
+        "카드 글꼴 파일·출처·메타데이터·서체 선택 또는 원본 제공 경로 변경"
+      ],
+      "reviewed_in": "T034"
+    },
+    {
+      "path": "services/efsimulator-app/public/fonts/README.md",
+      "role": "카드 원본 글꼴 공식 URL·저작권/메타데이터 보존·라이선스 비주장 출처 기록",
+      "priority": "P1",
+      "related_paths": [
+        "services/efsimulator-app/app/components/catalog-ui.tsx",
+        "services/efsimulator-app/app/globals.css",
+        "services/efsimulator-app/README.md",
+        "data/research/card-artwork-T034.json"
+      ],
+      "update_when": [
+        "카드 글꼴 파일·출처·메타데이터·서체 선택 또는 원본 제공 경로 변경"
+      ],
+      "reviewed_in": "T034"
     }
   ]
 }

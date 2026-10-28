@@ -1,0 +1,183 @@
+{
+  "task": "T034",
+  "status": "completed",
+  "reference": "User-provided EFHub card screenshots IMG_4139.jpeg and IMG_4140.jpeg",
+  "scope": "Actual eFsimulator common player-card artwork overlays and clipping/occlusion",
+  "baseline": {
+    "branch": "api-server-setup",
+    "commit": "280e44b56d539551a7c68e79167f7cc76c063760",
+    "tree": "1c16174daeccd4717de22d7341162eddbef4f82a",
+    "localManagedFiles": 333,
+    "remoteBlobs": 333,
+    "blobMismatches": 0,
+    "remoteOnlyFiles": 0,
+    "truncated": false
+  },
+  "implementation": {
+    "component": "services/efsimulator-app/app/components/catalog-ui.tsx:Portrait",
+    "nativeCardCoordinates": [
+      240,
+      340
+    ],
+    "overall": {
+      "x": 43,
+      "baselineY": 50,
+      "fontSize": 47,
+      "font": "eFootballStencil"
+    },
+    "position": {
+      "x": 43,
+      "baselineY": 76,
+      "fontSize": 22.5,
+      "font": "eFootballSans Bold"
+    },
+    "englishName": {
+      "x": 120,
+      "baselineY": 267,
+      "fontSize": 28.125,
+      "font": "eFootballSans Bold",
+      "value": "Existing API name field",
+      "fit": "After fonts.ready and font loadingdone, getComputedTextLength; shrink only beyond 227 card units; no abbreviation or expansion"
+    },
+    "imageAndOverlayAlignment": "image object-fit:contain and SVG preserveAspectRatio:xMidYMid meet share the card transform",
+    "occlusion": "Portrait isolation:isolate + contain:paint + overflow:hidden; all image/labels stay within the card stacking context and parent clipping",
+    "imageFailure": "Failure state is keyed by image URL; labels remain with accessible role=img/name",
+    "appliesTo": [
+      "pack list preview",
+      "expanded inline roster",
+      "pack detail artwork and roster",
+      "player list",
+      "player detail",
+      "related packs",
+      "simulator selection artwork and roster"
+    ],
+    "fontSources": {
+      "base": "https://www.konami.com/efootball/s/font/",
+      "files": [
+        "eFootballStencil-Regular.woff",
+        "eFootballSans-Bold.woff"
+      ],
+      "copyrightMetadataRetained": true,
+      "redistributionLicenseClaimed": false,
+      "sourceNotes": "services/efsimulator-app/public/fonts/README.md"
+    }
+  },
+  "checks": {
+    "appTests": {
+      "passed": 23,
+      "failed": 0
+    },
+    "fullTests": {
+      "passed": 397,
+      "failed": 0
+    },
+    "typeScript": "passed",
+    "officialWorkerBuild": "passed",
+    "projectCheck": {
+      "files": 337,
+      "tasks": 35,
+      "baselineLocalCommit": "735c625",
+      "changedPathsIncludingPreviouslyPushedWork": 114,
+      "result": "passed"
+    },
+    "gitDiffCheck": "passed",
+    "actualToolVersions": {
+      "node": "24.22.1",
+      "configuredNode": "24.19.0",
+      "npm": "11.9.0"
+    }
+  },
+  "visualQa": {
+    "snapshotObservedAt": "2026-10-28T06:31:15.544Z",
+    "packs": 7,
+    "players": 70,
+    "mode": "Actual API snapshot with the final local production Worker/client build; not authenticated hosted UI clicks",
+    "nativeSourceImageSize": [
+      240,
+      340
+    ],
+    "verified": [
+      "Desktop filtered Italian League Attackers pack preview uses all three selected cards with common typography",
+      "Inline roster expands eleven special players",
+      "Pack detail shows fourteen portraits (three previews plus eleven roster cards)",
+      "Mobile 390px iframe displays the same production Inzaghi detail and visually matches the supplied card reference",
+      "Magical Dribblers preview remains Raphinha, Doku, Doue",
+      "Franco Mastantuono long name is measured and constrained to textLength 227",
+      "Only browser extension console errors observed; no application console errors in verified interval",
+      "Recovered simulator production browser QA: fourteen portraits, each containing three label texts with overflow:hidden and isolation:isolate; three epic previews plus roster visually checked"
+    ],
+    "referenceComparison": {
+      "source": "Supplied EFHub screenshots",
+      "match": "Original official eFootball stencil and sans fonts; calibrated native-card coordinates, relative type size and baseline positions",
+      "exactPixelIdentityClaimed": false
+    },
+    "notExecuted": [],
+    "interruption": "Temporary tooling transport interruption recovered; no remaining environment blocker"
+  },
+  "deployment": {
+    "projectId": "appgprj_6ae13ac0e9d88191978e6953f7286966",
+    "sourceCommit": "8359d38a78c180b388732d15f2604881b742fc34",
+    "savedVersionId": "appgprj_6ae13ac0e9d88191978e6953f7286966~appgver_c1b81ab56f348191ba9a927bd8cca591",
+    "deploymentId": "appgdep_6ae1975e3ccc8191887d09d17f32119c",
+    "environmentRevision": 1,
+    "status": "succeeded",
+    "succeededAt": "2026-10-28T06:34:22.594305+00:00",
+    "url": "https://efsimulator.hyunw09.chatgpt.site",
+    "audience": "owner-private",
+    "hostedReadback": {
+      "status": "passed",
+      "observedAt": "2026-10-28T06:34:54.493Z",
+      "normalApiRoutes": 9,
+      "normalApiStatus": 200,
+      "directPages": 6,
+      "directPageStatus": 200,
+      "samePublication": true,
+      "packs": 7,
+      "players": 70,
+      "playerFieldCount": 8,
+      "adminGetStatus": 400,
+      "writePostStatus": 405,
+      "clientSecretScan": "passed",
+      "deployedFonts": [
+        {
+          "file": "eFootballStencil-Regular.woff",
+          "status": 200,
+          "bytes": 50440,
+          "sourceByteMatch": true
+        },
+        {
+          "file": "eFootballSans-Bold.woff",
+          "status": 200,
+          "bytes": 48060,
+          "sourceByteMatch": true
+        }
+      ],
+      "linkedCssContains": [
+        "card-overall",
+        "eFootballStencil",
+        "card-labels"
+      ],
+      "authenticatedHostedBrowserClicks": "not performed; sign-in wall"
+    }
+  },
+  "preserved": [
+    "API eight-field player contract",
+    "D1 publication and raw inputs",
+    "collection and publishing rules",
+    "hourly automation",
+    "private audience",
+    "catalog viewer and Pages"
+  ],
+  "sourceCopy": {
+    "productFiles": 6,
+    "allMatch": true,
+    "trackedSiteFiles": 49,
+    "repoServiceByteMismatches": 0,
+    "archiveExcludes": [
+      "qa-entry",
+      "qa-snapshot",
+      "T034-qa",
+      "ui-snapshot"
+    ]
+  }
+}
