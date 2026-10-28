@@ -1,4 +1,4 @@
-<!-- project-state: {"stage":"R6","previous":"T032","current":"T017","next":"T018"} -->
+<!-- project-state: {"stage":"R6","previous":"T033","current":"T017","next":"T018"} -->
 
 # efsimulator 작업 계획과 이력
 
@@ -6,16 +6,16 @@
 
 ## 현재 작업과 매 작업 갱신
 
-- 이전 작업: T032 — 실제 앱 서버·API 연동·선수/팩 조회·시뮬레이터 진입 페이지의 private 배포 완료.
-- 현재 작업: T017 — 추첨 모드별 규칙·잔여 풀·익명 Standard·최소 엔진/2D 결과 세부 설계와 구현 예정.
-- 다음 작업: T018 — 검증된 엔진/연출 시안 뒤3D·모바일 성능·실패 fallback.
-- 현재 조건: T032의 실제 eFsimulator 앱 서버와 private API relay·선수/팩 목록/상세·별도 시뮬레이터 진입 페이지를 owner-private으로 배포하고 실제 API/직접 페이지·보안 경계를 검증했다. 실제 URL은 https://efsimulator.hyunw09.chatgpt.site 이다. T031의 페이지/API 연동 설계 하위 범위는 구체화됐고 잔여 추첨 규칙·엔진/2D는 T017,3D는 T018로 남긴다. 실데이터 화면의 hosted 브라우저 상호작용 QA는 로그인 장벽으로 미수행이며 API8필드·publication·raw·규칙·자동화와 catalog-view/Pages는 보존했다.
+- 이전 작업: T033 — production 선수/팩 navigation·명단 펼침·encoded ID 상세 연결 수정과 private 재배포 검증 완료.
+- 현재 작업: T017 — 추첨 모드별 규칙·잔여 풀·익명 Standard·최소 엔진/2D 결과 세부 작업 예정.
+- 다음 작업: T018 — 검증된 엔진/연출 뒤3D·모바일 성능·실패 fallback.
+- 현재 조건: T033에서 production navigation/RSC prefetch 오류와 encoded saleId 상세 lookup을 수정하고 실제 API snapshot을 사용한 동일 production 빌드의 검색·명단·상세 교차 이동·필터/탭/refresh 브라우저 흐름을 검증했다. 같은 private Site에 재배포하고 fresh hosted API/직접 페이지·보안 경계도 확인했다. 이는 로그인된 hosted UI 세션 직접 QA와 구분한다. API8필드·raw/규칙·자동화·audience·viewer/Pages 보존, 추첨 엔진/3D는 미구현이다.
 
 매 작업 시작 시 Git 상태·이전 결과·이번/다음 작업·선행 조건을 확인한다. FILE_SYNC의 P0→P1→P2로 관련 파일을 검토하되 필요한 파일은 등급과 무관하게 함께 수정한다. 추가 요구는 ID·영향 단계·선행 조건·순서·상태를 기록한다. 파일별 수정/변경불필요/미해결과 근거, 경로 추가/삭제/이름 변경·참조를 같은 작업에서 갱신한다. 검증과 이전/현재/다음 포인터를 맞추며 구현/수집/발행 완료는 실제 근거가 있을 때만 표시한다.
 
 ## 최신 추가 조건과 이전 조건의 적용
 
-C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_BEFORE_PROBABILITY_SCOPE.md)에 보존한다. 관리 최신화·ID/근거·실패 보존·접근 거부 우회 금지·무료 우선·운영 승인 분리 원칙은 계속 적용한다. 범위 결정은 날짜별 이력이며 현재 범위·완료 정책은 최신 C065와 아래 T032를 우선하고 API 완료/정상 반영 정책 C063~C064를 유지한다. 전체 수집과 사이트 범위를 혼동하지 않는다.
+C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_BEFORE_PROBABILITY_SCOPE.md)에 보존한다. 관리 최신화·ID/근거·실패 보존·접근 거부 우회 금지·무료 우선·운영 승인 분리 원칙은 계속 적용한다. 범위 결정은 날짜별 이력이며 현재 범위·완료 정책은 최신 C066과 아래 T033을 우선하고 API 완료/정상 반영 정책 C063~C064를 유지한다. 전체 수집과 사이트 범위를 혼동하지 않는다.
 
 | 조건 ID | 최신 결정 | 영향 단계 / 선행 조건 / 처리 순서 | 상태 |
 | --- | --- | --- | --- |
@@ -54,6 +54,7 @@ C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_B
 | C063 | API 개발은 완료 기준으로 고정하고 향후 오류는 유지보수; 다음은 실제 eFsimulator 제품의 요구/UI/API 연동·추첨 규칙 설계 | T030 문서 정합성→T031 제품 설계→검증된 규칙의 T017 최소 추첨판→T018 연출/3D. 검토 viewer는 실제 앱 완료가 아님 | T025 private API 전달 완료로 정리; 공개 API 전환·연속 운영 관찰은 앱 설계의 새 전역 선행 조건 아님 |
 | C064 | 승인된 개발 작업은 관련 파일 검토·인벤토리/기록·검증 후 같은 작업 브랜치의 정상 commit/push와 원격 내용/CI 상태 확인까지 수행 | T030 공통 완료 정책. P0→필요 P1/P2 검토; 역할/우선순위/연관/갱신 조건/검토 ID 등록; 업로드 실패를 완료로 보고하지 않음 | 무변경·읽기 전용·시간별 데이터 작업은 커밋 제외; raw/credential은 Git 제외; main 병합·공개 접근 변경은 자동 수행하지 않음 |
 | C065 | 실제 eFsimulator 앱 서버를 별도 제작하고 기존 private API에 서버 전용으로 연결; 선수/팩 목록/상세와 별도 시뮬레이터 진입 페이지 제공 | T032/R3. 실제 앱 소스/등록ID→서버 relay·조회 화면→검증·private 배포→원격 실조회→정상 소스 반영. API8필드/원본/규칙/자동화·기존 viewer/Pages 보존 | 실제 앱 private 배포·API 목록/상세/직접 페이지·보안/검사 검증 완료. 엔진/3D·추첨 규칙 확정은 후속; hosted 실데이터 브라우저 상호작용 QA는 미수행 |
+| C066 | 기존 선수/팩 조회 기능이 실제로 동작하도록 production navigation·명단 펼침·ID 상세 연결 수정 | T033/R3. production 재현→표준a/full navigation·인라인 명단·safe1회decode→회귀/production QA→동일 private Site 재배포/실조회 | production snapshot 상호작용·ID3회귀/앱23/전체397·타입/빌드·동일 private 재배포/fresh hosted API 검증 완료. T032 한계 이력과 hosted UI 직접 QA 구분·핵심 계약 보존 |
 
 
 ## 이전 작업의 현재 해석
@@ -598,7 +599,7 @@ Sites 계정의 실제 한도·비용·영속 저장·실제 인증·백업 미�
 
 - 단계: R6
 - 상태: 예정
-- 이전: T032
+- 이전: T033
 - 다음: T018
 
 ### 목표·입력·순서
@@ -1590,3 +1591,49 @@ root 전체 회귀394/394·실패0, 앱20회귀·TypeScript·공식 Worker 빌�
 | `services/efsimulator-app/vite.config.ts` | 수정 | 실제 앱 공식 Sites/Vinext Worker 빌드와 same-zone public front-door 호환 통합 |
 | `services/efsimulator-app/worker/index.ts` | 수정 | 실제 앱 공식 Worker 실행 진입점 |
 | `data/research/sites-app-T032.json` | 수정 | 실제 private 앱 배포·동일 API publication/8필드·직접 페이지·보안·검사와 브라우저 QA 한계의 근거 |
+
+
+## T033 — production 선수·팩 navigation·명단 펼침·상세 연결 수정
+
+- 단계: R3
+- 상태: 완료
+- 이전: T032
+- 다음: T017
+
+사용자가 기존 선수/팩 조회 사이트 기능의 실제 동작을 요청했다. T032의 API/직접 페이지 HTTP 검증과 hosted 실데이터 상호작용 QA 미수행 사실을 보존하고, 이번 production build에서 재현한 UI 오류를 별도 수정한다. 개발 build에서는 동작하던 next/link의 RSC/prefetch 및 선수 navigation에서 TypeError와 URL/DOM 이동 실패를 확인했다. 또 production router가 saleId를 `%3A%3A` 인코딩 상태로 전달해 같은 실제 회차를 목록에서 찾지 못하는 상세 lookup 문제를 확인했다. 이를 API 원본 누락/팩 매핑 오류로 해석하지 않는다.
+
+수정 범위는 실제 앱의 표준 a navigation, 시뮬레이터의 URL 기반 전체 navigation, 팩 목록의 인라인 명단 펼침/접기, route ID의 안전한1회 decode와 관련 회귀다. API8필드·D1 publication·raw·규칙·매핑·자동화·private audience는 바꾸지 않는다. 기존 API/viewer/Pages와 작업 브랜치를 보존한다. 구현은 `/workspace/sites/efsimulator`에서 수행하고 최종 신호 후 `services/efsimulator-app/`에 같은 검증 소스를 복사한다.
+
+검증은 같은 production 빌드에서 실제 API 응답을 바탕으로 한7팩70카드 snapshot fixture를 사용해 검색·명단 펼침·선수/팩 상세·시뮬레이터 연결을 확인하고, snapshot을 사용한 로컬 production QA와 로그인 보호된 hosted 브라우저 직접 QA를 구분한다. safe decode의 정상/이미 decode된/잘못된 percent 입력 회귀·기존20회귀·TypeScript·공식 Worker 빌드·전체 테스트와 관리 검사를 수행하고, 동일 private Site의 실제 저장/배포·원격 API 연결·소스/CI 반영은 개별 근거로 기록한다. 최종 증거 JSON을 data/research/app-interactions-T033.json에 저장하고 FILE_SYNC에 등록했다.
+
+### 실행 결과
+
+최종 실제 앱 소스의6개 TSX/CSS와 README를 수정하고 lib/route-id.mjs·tests/route-id.test.mjs를 추가해 총9개 경로를 저장소에 복사했다. safe decode는 정상/이미 decode된 saleId를 같은 정확한 회차로 연결하고 숫자 카드ID 문자열 정밀도를 보존하며 중첩 인코딩·구분자/제어·잘못된percent 입력은 거부한다. 실제 앱23테스트(기존20+ID3)·전체397테스트·TypeScript·공식 Worker 빌드가 통과했다. 실제Node24.22.1/npm11.9.0과 지정Node24.19.0 차이를 유지한다.
+
+2026-10-28T02:22:53.440Z에 확보한 실제 API publication `c8cbaa7783d2889870347cf1509d3dc3141c41f76db81245c8aadf236e3dd854`,7팩70카드 snapshot을 사용해 배포용 production Worker/클라이언트 빌드의 브라우저 흐름을 검증했다. Raphinha 검색1팩·팩 명단11명 펼침/접기·encoded Magical 회차 상세N150/S11/A139·Raphinha 선수 상세/관련 팩 이동·메뉴의 선수70카드 이동·Doku 검색1명/CF0/LWF1·판매 종료0→판매 중7 탭/새로고침을 실제 클릭으로 확인했다. 최종 검사 구간 앱 콘솔 오류는0건이며 확장 프로그램 오류는 구분했다.
+
+이 QA 환경은 같은 production Worker/클라이언트 산출물을 비추적 복사하고 읽기 API 응답만 실제 snapshot으로 제공한 환경이다. snapshot·보조 Worker·비밀값을 소스/배포에 포함하지 않았으며 로그인된 hosted 세션의 직접 브라우저 상호작용 검증은 아니다. 기존 T032의 HTTP/API 검증과 당시 UI QA 한계는 그대로 보존한다. 동일 private Site 재배포가 native succeeded로 확인됐다. Sites source SHA `2e8f3239012956bd7a83a655a0a9d85dd2c7615b`, 저장 version `appgprj_6ae13ac0e9d88191978e6953f7286966~appgver_f9b728ac6f348191b8cf20fb88596267`, 배포 `appgdep_6ae15e04d84081919c88e7ddac3fac5c`, 환경 revision1·성공 시각 `2026-10-28T02:29:40.701939+00:00`, 실제 URL은 기존 `https://efsimulator.hyunw09.chatgpt.site`다. owner-private1명 audience와 서버 환경을 유지했고 실제 archive에 QA snapshot/보조 entry가 없는 것을 검사했다. 배포 후2026-10-28T02:30:13.566Z부터 수행한 fresh hosted 검증도 exit0으로 완료했다. 같은 실제 앱 origin의 정상 API9경로가HTTP200·동일 publication/7팩70카드·선수8필드를 반환했고 직접6페이지HTTP200·admin중계400/POST405·실제 secret 문자열 HTML/클라이언트 bundle 비포함을 확인했다. 이 HTTP/API 재조회는 로그인한 hosted UI 세션의 클릭 QA가 아니다. Site source46파일과 저장소 서비스46파일은 byte차이0이고 Site source checkout은 clean이었다. QA snapshot/보조 entry가 배포 archive에 없음을 실제 검사했다.
+
+[T033 실행 근거](../data/research/app-interactions-T033.json)에 두 원인·수정·production snapshot 브라우저 흐름과 별도 fresh hosted/API/배포 검증을 보존한다. T033 전달 범위는 완료했다. 최종 GitHub 정상 반영·원격 파일/CI 결과는 별도로 확인하며 자신의 미래 commit SHA를 문서에 지어내지 않는다.
+
+### 파일 최신화 검토
+
+| 파일 | 결과 | 근거 |
+| --- | --- | --- |
+| `README.md` | 수정 | 현 production navigation/인코딩된 회차ID 상세 오류 수정 진행과 기존 API/QA 근거 구분 |
+| `docs/WORKPLAN.md` | 수정 | C066·T033 재현 원인·수정 범위/검증 계획·T032 당시 한계 보존 |
+| `docs/ROADMAP.md` | 수정 | 현재 R3/T033 수정과 후속 T017/T018 포인터 일치 |
+| `docs/FILE_SYNC.json` | 수정 | T033 수정 문서 검토 ID 갱신; 최종 제품 소스/근거는 복사 후 등록 |
+| `docs/DEPLOYMENT.md` | 수정 | 동일 private Site의 production 상호작용 보완·QA/저장·배포 검증 경계 |
+| `docs/CHATGPT_WORK_HANDOFF.md` | 수정 | 최상단에 현재 T033 원인/진행·동일 Site/API 보존·로컬 production QA와 hosted QA 구분 |
+| `services/efsimulator-app/app/components/catalog-pages.tsx` | 수정 | 팩 검색/판매 탭·명단 펼침/접기와 표준 상세 링크·시뮬레이터 full navigation |
+| `services/efsimulator-app/app/components/catalog-ui.tsx` | 수정 | 메뉴·선수/팩 카드·breadcrumb/복귀의 표준 a navigation으로 production RSC 링크 오류 회피 |
+| `services/efsimulator-app/app/globals.css` | 수정 | 팩 인라인 명단 toggle/펼친 선수 grid 스타일 |
+| `services/efsimulator-app/app/not-found.tsx` | 수정 | 없는 경로에서 팩 목록으로의 표준 링크 복귀 |
+| `services/efsimulator-app/app/packs/[saleId]/page.tsx` | 수정 | production encoded saleId를 안전하게1회 decode 후 정확한 팩 회차 lookup |
+| `services/efsimulator-app/app/players/[id]/page.tsx` | 수정 | encoded/decoded 카드ID를 안전하게 정규화한 문자열 상세 lookup |
+| `services/efsimulator-app/README.md` | 수정 | production navigation·인라인 명단·안전한ID decode와 snapshot QA/hosted QA 범위 설명 |
+| `services/efsimulator-app/lib/route-id.mjs` | 수정 | URL segment1회 decode·문자열ID 유지·중첩 인코딩/구분자/제어/잘못된percent 입력 fail-closed |
+| `services/efsimulator-app/tests/route-id.test.mjs` | 수정 | 회차별encoded/decoded 동등성·숫자문자열 정밀도·잘못된/중첩 인코딩 거부3회귀 |
+| `.github/workflows/efsimulator-app-check.yml` | 검토 결과 변경 불필요 | 기존 tests/*.test.mjs가 새ID3회귀를 포함한23테스트를 실행하므로 workflow 코드 변경 없이 연관 경로만 갱신 |
+| `data/research/app-interactions-T033.json` | 수정 | 두 production 원인·397/23회귀·production snapshot 실브라우저 QA와 별도 배포 결과의 근거 |

@@ -1,5 +1,8 @@
 # efsimulator
 
+> T033 수정 완료: production 선수/팩 navigation·명단 펼침·encoded 회차ID 상세 연결을 보완해 같은 production 빌드에서 실제 API snapshot 기반 검색/명단/상세/필터·탭·새로고침 흐름을 확인했고 동일 private Site에 재배포했다. 별도 fresh hosted API/직접 페이지·보안 검증도 통과했다. 로그인한 hosted UI 세션 직접 QA와는 구분하며 [실행 근거](data/research/app-interactions-T033.json)를 따른다. API/raw/규칙/자동화와 private 접근은 유지했다.
+
+
 **API 개발 완료 기준을 유지하며 실제 eFsimulator 앱 서버·API 연동·조회 화면을 비공개 배포했다.** 오류 수정과 운영 관찰은 유지보수로 이어간다. 현재 작업·다음 단계는 [ROADMAP](docs/ROADMAP.md)과 [WORKPLAN](docs/WORKPLAN.md), 새 환경의 실행 기준은 [최신 인수인계](docs/CHATGPT_WORK_HANDOFF.md)를 따른다.
 
 | 구성 | 현재 역할과 상태 |

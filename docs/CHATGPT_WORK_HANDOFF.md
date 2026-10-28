@@ -1,4 +1,14 @@
-# 현재 인수인계 — T032 실제 앱 서버 전달, 2026-10-28 KST
+# 현재 인수인계 — T033 선수·팩 상호작용 수정 전달, 2026-10-28 KST
+
+사용자 요청에 따라 실제 production build의 선수/팩 navigation·명단 펼침·상세 ID 연결을 보완한다. next/link/RSC prefetch TypeError로 URL/DOM이 이동하지 않는 문제와 router가 saleId를 `%3A%3A`로 전달해 상세를 찾지 못하는 문제를 재현했다. 표준 a/full navigation·인라인 명단 toggle·안전한 route ID1회 decode를 적용했고397전체/23앱 회귀·TypeScript·공식 Worker 빌드, 같은 production 빌드의 실제 API snapshot 기반 검색/명단/상세·필터·탭·refresh를 검증했다. 실제 private 재배포와 fresh hosted/API 재조회도 확인했다.
+
+현재는 R6/T017 규칙/잔여 풀·엔진/2D 세부 작업 예정, 이전 T033 수정 전달 완료, 다음 T018 3D다. 구현 폴더 `/workspace/sites/efsimulator`의 최종 검증 소스를 동일 repo 서비스 폴더로 복사하고 FILE_SYNC와 작업별 검토를 갱신했다. 최종 GitHub 소스 반영과 원격 내용·CI 상태 확인은 완료 조건에 따라 진행한다. Site `appgprj_6ae13ac0e9d88191978e6953f7286966`와 private 접근, API8필드/raw/규칙/자동화, 기존 API/viewer/Pages를 보존한다.
+
+T032의 API/직접 페이지 HTTP 검증과 당시 hosted 브라우저 실데이터 상호작용 QA 미수행은 역사 근거로 유지한다. 이번 실제 API 응답 snapshot fixture를 이용한 로컬 production 브라우저 검증과 hosted 직접 QA도 구분하며 미검증을 성공으로 승격하지 않는다. 최종 source46파일은 저장소와 byte일치하고 같은 private Site에 저장/배포했다. fresh hosted9API/6직접페이지와 secret비노출을 별도 검증했다. 최종 source/저장version/배포ID·QA snapshot capture 시각/검증 환경은 [T033 근거](../data/research/app-interactions-T033.json)와 WORKPLAN에 기록했다. 개별 수정 경과를 일반 hourly 예약 프롬프트에 복사하지 않는다.
+
+---
+
+# T032 실제 앱 서버 전달 snapshot — 당시 이력
 
 최신 사용자 지시는 실제 eFsimulator 앱 서버와 기존 private API 연동·선수/팩 목록/상세·별도 시뮬레이터 진입 페이지 제작이다. API 개발 완료/유지보수 기준과 기존 raw/8필드·가공 publication·규칙·자동화는 유지한다. 검토용 `services/catalog-view/`를 실제 앱으로 바꾸어 부르거나 기존 Pages/API 서버를 교체하지 않는다.
 

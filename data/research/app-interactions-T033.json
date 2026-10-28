@@ -1,0 +1,193 @@
+{
+  "taskId": "T033",
+  "recordedAt": "2026-10-28T02:29:09.769071+00:00",
+  "causes": [
+    {
+      "kind": "production_client_navigation",
+      "reproduced": "Vinext RSC prefetch TypeError te is not a function; clicking player navigation leaves route and DOM unchanged with TypeError e is not a function",
+      "fixedBy": "Native anchor navigation instead of next/link; native simulator selection navigation"
+    },
+    {
+      "kind": "encoded_route_param",
+      "reproduced": "Existing pack saleId URL with encoded colons displays pack not found",
+      "fixedBy": "One safe decode of route params before exact ID lookup"
+    }
+  ],
+  "features": [
+    "pack and player list search",
+    "player position filter combined with search",
+    "live/archive tabs",
+    "inline full special roster expand/collapse",
+    "pack and player details with cross links",
+    "refresh",
+    "existing grade-selected previews"
+  ],
+  "validation": {
+    "appRegression": {
+      "passed": 23,
+      "failed": 0
+    },
+    "rootRegression": {
+      "passed": 397,
+      "failed": 0
+    },
+    "typecheck": "passed",
+    "workerBuild": "passed",
+    "actualNode": "24.22.1",
+    "specifiedNode": "24.19.0",
+    "actualNpm": "11.9.0"
+  },
+  "browserQa": {
+    "environment": "local preview of exact production Worker/client build; API read responses replayed from actual hosted snapshot in an ignored QA wrapper",
+    "fixtureCapturedAt": "2026-10-28T02:22:53.440Z",
+    "publicationVersion": "c8cbaa7783d2889870347cf1509d3dc3141c41f76db81245c8aadf236e3dd854",
+    "counts": {
+      "live": 7,
+      "players": 70
+    },
+    "checksPassed": [
+      "pack search Raphinha yields one pack",
+      "inline Magical Dribblers roster expands eleven special players and collapses",
+      "Raphinha detail and related pack links navigate",
+      "encoded Magical Dribblers pack detail shows N150/S11/A139",
+      "players menu navigates and shows seventy cards",
+      "Doku search one result; CF filter zero; LWF filter one",
+      "archive tab zero and live tab seven",
+      "refresh preserves successful catalog"
+    ],
+    "newAppConsoleErrors": 0,
+    "hostedAuthenticatedBrowserSession": false,
+    "qaSnapshotAndWrapperIncludedInSourceOrArchive": false
+  },
+  "preservation": {
+    "apiContractUnchanged": true,
+    "rawRulesMappingsUnchanged": true,
+    "automationUnchanged": true,
+    "reviewViewerUnchanged": true,
+    "siteAudienceUnchanged": true
+  },
+  "deployment": {
+    "id": "appgdep_6ae15e04d84081919c88e7ddac3fac5c",
+    "project_id": "appgprj_6ae13ac0e9d88191978e6953f7286966",
+    "title": "eFsimulator",
+    "version_id": "appgprj_6ae13ac0e9d88191978e6953f7286966~appgver_f9b728ac6f348191b8cf20fb88596267",
+    "type": "publish",
+    "status": "succeeded",
+    "url": "https://efsimulator.hyunw09.chatgpt.site",
+    "has_mcp": false,
+    "screenshot_asset_pointer": null,
+    "provider_deployment_id": "site---6ae13ac0e9d88191978e6953f7286966",
+    "failure_message": null,
+    "env_set_revision": 1,
+    "updated_at": "2026-10-28T02:29:40.701939+00:00",
+    "sourceCommit": "2e8f3239012956bd7a83a655a0a9d85dd2c7615b"
+  },
+  "hostedVerification": {
+    "observedAt": "2026-10-28T02:30:13.566Z",
+    "origin": "https://efsimulator.hyunw09.chatgpt.site",
+    "apiReads": [
+      {
+        "path": "/api/v1/health",
+        "status": 200,
+        "count": null,
+        "version": "c8cbaa7783d2889870347cf1509d3dc3141c41f76db81245c8aadf236e3dd854"
+      },
+      {
+        "path": "/api/v1/manifest",
+        "status": 200,
+        "count": null,
+        "version": "c8cbaa7783d2889870347cf1509d3dc3141c41f76db81245c8aadf236e3dd854"
+      },
+      {
+        "path": "/api/v1/live?limit=100",
+        "status": 200,
+        "count": 7,
+        "version": "c8cbaa7783d2889870347cf1509d3dc3141c41f76db81245c8aadf236e3dd854"
+      },
+      {
+        "path": "/api/v1/archive?limit=100",
+        "status": 200,
+        "count": 0,
+        "version": "c8cbaa7783d2889870347cf1509d3dc3141c41f76db81245c8aadf236e3dd854"
+      },
+      {
+        "path": "/api/v1/packs?limit=100",
+        "status": 200,
+        "count": 7,
+        "version": "c8cbaa7783d2889870347cf1509d3dc3141c41f76db81245c8aadf236e3dd854"
+      },
+      {
+        "path": "/api/v1/players?limit=100",
+        "status": 200,
+        "count": 70,
+        "version": "c8cbaa7783d2889870347cf1509d3dc3141c41f76db81245c8aadf236e3dd854"
+      },
+      {
+        "path": "/api/v1/packs/italian-league-selection-8-oct-26%3A%3A2026-10",
+        "status": 200,
+        "count": null,
+        "version": "c8cbaa7783d2889870347cf1509d3dc3141c41f76db81245c8aadf236e3dd854"
+      },
+      {
+        "path": "/api/v1/packs/italian-league-selection-8-oct-26%3A%3A2026-10/cards?limit=100",
+        "status": 200,
+        "count": 11,
+        "version": "c8cbaa7783d2889870347cf1509d3dc3141c41f76db81245c8aadf236e3dd854"
+      },
+      {
+        "path": "/api/v1/players/105874165112743",
+        "status": 200,
+        "count": null,
+        "version": "c8cbaa7783d2889870347cf1509d3dc3141c41f76db81245c8aadf236e3dd854"
+      },
+      {
+        "path": "/api/v1/admin/publications",
+        "method": "GET",
+        "status": 400
+      },
+      {
+        "path": "/api/v1/players",
+        "method": "POST",
+        "status": 405
+      }
+    ],
+    "pages": [
+      {
+        "path": "/packs",
+        "status": 200
+      },
+      {
+        "path": "/players",
+        "status": 200
+      },
+      {
+        "path": "/packs/italian-league-selection-8-oct-26%3A%3A2026-10",
+        "status": 200
+      },
+      {
+        "path": "/players/105874165112743",
+        "status": 200
+      },
+      {
+        "path": "/simulator",
+        "status": 200
+      },
+      {
+        "path": "/simulator?pack=italian-league-selection-8-oct-26%3A%3A2026-10",
+        "status": 200
+      }
+    ],
+    "credentialExposure": false,
+    "clientBundleSecretScan": true,
+    "counts": {
+      "archive": 0,
+      "live": 7,
+      "pack": 7,
+      "player": 70
+    },
+    "publicationVersion": "c8cbaa7783d2889870347cf1509d3dc3141c41f76db81245c8aadf236e3dd854",
+    "playerFieldCount": 8,
+    "interactiveBrowserQa": false
+  },
+  "archiveQaFilesExcluded": true
+}

@@ -429,7 +429,7 @@
       "update_when": [
         "빌드 명령·출력·라우팅·배포 설정·공개 검증 결과 변경"
       ],
-      "reviewed_in": "T032"
+      "reviewed_in": "T033"
     },
     {
       "path": "docs/FILE_SYNC.json",
@@ -448,7 +448,7 @@
       "update_when": [
         "파일 추가·삭제·이름 변경·역할/의존관계 변경·영향 검토"
       ],
-      "reviewed_in": "T032"
+      "reviewed_in": "T033"
     },
     {
       "path": "docs/ROADMAP.md",
@@ -474,7 +474,7 @@
       "update_when": [
         "단계 상태·현재/이전/다음 작업·완료 조건·추가 요구 변경"
       ],
-      "reviewed_in": "T032"
+      "reviewed_in": "T033"
     },
     {
       "path": "docs/WORKPLAN.md",
@@ -499,7 +499,7 @@
       "update_when": [
         "매 작업 착수·추가 요구·파일 변경·검증 결과·작업 종료"
       ],
-      "reviewed_in": "T032"
+      "reviewed_in": "T033"
     },
     {
       "path": "index.html",
@@ -759,7 +759,7 @@
       "update_when": [
         "설치·실행·검증·표본 범위·진입 문서·공개 상태 변경"
       ],
-      "reviewed_in": "T032"
+      "reviewed_in": "T033"
     },
     {
       "path": "docs/sources/CARD_API_AUDIT.md",
@@ -1394,7 +1394,7 @@
       "update_when": [
         "사용자 범위/입력 상태·원격/로컬 반영·이관/검증 결과·지원 도구/작업 상태 변경"
       ],
-      "reviewed_in": "T032"
+      "reviewed_in": "T033"
     },
     {
       "path": "docs/FILE_SYNC_AUDIT.md",
@@ -4471,12 +4471,14 @@
         "services/efsimulator-app/package.json",
         "services/efsimulator-app/pnpm-lock.yaml",
         "services/efsimulator-app/tests/catalog-relay.test.mjs",
-        "services/efsimulator-app/tests/pack-preview.test.mjs"
+        "services/efsimulator-app/tests/pack-preview.test.mjs",
+        "services/efsimulator-app/lib/route-id.mjs",
+        "services/efsimulator-app/tests/route-id.test.mjs"
       ],
       "update_when": [
         "실제 앱 소스 경계·검사 명령·Node/pnpm 버전·브랜치/경로 조건 변경"
       ],
-      "reviewed_in": "T032"
+      "reviewed_in": "T033"
     },
     {
       "path": "services/efsimulator-app/.env.example",
@@ -4545,7 +4547,7 @@
       "update_when": [
         "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
       ],
-      "reviewed_in": "T032"
+      "reviewed_in": "T033"
     },
     {
       "path": "services/efsimulator-app/app/api/v1/[[...path]]/route.ts",
@@ -4592,7 +4594,7 @@
       "update_when": [
         "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
       ],
-      "reviewed_in": "T032"
+      "reviewed_in": "T033"
     },
     {
       "path": "services/efsimulator-app/app/components/catalog-ui.tsx",
@@ -4608,7 +4610,7 @@
       "update_when": [
         "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
       ],
-      "reviewed_in": "T032"
+      "reviewed_in": "T033"
     },
     {
       "path": "services/efsimulator-app/app/globals.css",
@@ -4624,7 +4626,7 @@
       "update_when": [
         "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
       ],
-      "reviewed_in": "T032"
+      "reviewed_in": "T033"
     },
     {
       "path": "services/efsimulator-app/app/layout.tsx",
@@ -4656,7 +4658,7 @@
       "update_when": [
         "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
       ],
-      "reviewed_in": "T032"
+      "reviewed_in": "T033"
     },
     {
       "path": "services/efsimulator-app/app/packs/[saleId]/page.tsx",
@@ -4667,12 +4669,13 @@
         "services/efsimulator-app/package.json",
         "docs/DEPLOYMENT.md",
         "services/efsimulator-app/lib/catalog-relay.mjs",
-        "services/efsimulator-app/app/components/catalog-data.tsx"
+        "services/efsimulator-app/app/components/catalog-data.tsx",
+        "services/efsimulator-app/lib/route-id.mjs"
       ],
       "update_when": [
         "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
       ],
-      "reviewed_in": "T032"
+      "reviewed_in": "T033"
     },
     {
       "path": "services/efsimulator-app/app/packs/page.tsx",
@@ -4715,12 +4718,13 @@
         "services/efsimulator-app/package.json",
         "docs/DEPLOYMENT.md",
         "services/efsimulator-app/lib/catalog-relay.mjs",
-        "services/efsimulator-app/app/components/catalog-data.tsx"
+        "services/efsimulator-app/app/components/catalog-data.tsx",
+        "services/efsimulator-app/lib/route-id.mjs"
       ],
       "update_when": [
         "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
       ],
-      "reviewed_in": "T032"
+      "reviewed_in": "T033"
     },
     {
       "path": "services/efsimulator-app/app/players/page.tsx",
@@ -5144,6 +5148,52 @@
         "실제 앱 배포 버전·API 연동/페이지/보안 검증·테스트/브라우저 QA 범위 변경"
       ],
       "reviewed_in": "T032"
+    },
+    {
+      "path": "services/efsimulator-app/lib/route-id.mjs",
+      "role": "URL segment1회 decode·문자열ID 유지·중첩 인코딩/구분자/제어/잘못된percent 입력 fail-closed",
+      "priority": "P1",
+      "related_paths": [
+        "services/efsimulator-app/app/packs/[saleId]/page.tsx",
+        "services/efsimulator-app/app/players/[id]/page.tsx",
+        "services/efsimulator-app/tests/route-id.test.mjs",
+        "services/efsimulator-app/README.md"
+      ],
+      "update_when": [
+        "route segment 인코딩/회차·카드 문자열ID 정규화·잘못된 입력 경계 또는 production routing 동작 변경"
+      ],
+      "reviewed_in": "T033"
+    },
+    {
+      "path": "services/efsimulator-app/tests/route-id.test.mjs",
+      "role": "회차별encoded/decoded 동등성·숫자문자열 정밀도·잘못된/중첩 인코딩 거부3회귀",
+      "priority": "P1",
+      "related_paths": [
+        "services/efsimulator-app/app/packs/[saleId]/page.tsx",
+        "services/efsimulator-app/app/players/[id]/page.tsx",
+        "services/efsimulator-app/lib/route-id.mjs",
+        "services/efsimulator-app/README.md"
+      ],
+      "update_when": [
+        "route segment 인코딩/회차·카드 문자열ID 정규화·잘못된 입력 경계 또는 production routing 동작 변경"
+      ],
+      "reviewed_in": "T033"
+    },
+    {
+      "path": "data/research/app-interactions-T033.json",
+      "role": "T033 production navigation/encoded ID 원인·실제 snapshot QA·회귀/타입/빌드·private 재배포 결과의 비밀값 없는 근거",
+      "priority": "P1",
+      "related_paths": [
+        "docs/WORKPLAN.md",
+        "docs/DEPLOYMENT.md",
+        "services/efsimulator-app/README.md",
+        "services/efsimulator-app/lib/route-id.mjs",
+        "services/efsimulator-app/tests/route-id.test.mjs"
+      ],
+      "update_when": [
+        "실제 상호작용 수정·production snapshot QA·hosted 재조회/배포·검증 범위 변경"
+      ],
+      "reviewed_in": "T033"
     }
   ]
 }

@@ -1,5 +1,12 @@
 # Sites 배포·DB API 운영 계획
 
+## T033 production 상호작용 보완 — 전달 완료
+
+같은 실제 앱 Site의 private audience를 유지해 선수/팩 navigation·팩 목록 명단 펼침·시뮬레이터 URL 이동과 인코딩된 상세 route ID 처리를 보완한다. production build에서 next/link/RSC prefetch TypeError와 route saleId encoded lookup 실패를 재현했다. 표준 a/full navigation과 안전한1회 decode를 적용한 뒤 회귀·동일 production 빌드의 snapshot fixture 브라우저 흐름을 검증하며, 별도 hosted/API 검증과 구분한다.
+
+T032 당시 HTTP/API·직접 페이지 성공은 보존하고 이를 당시 미수행한 UI 상호작용 성공으로 재해석하지 않는다. 최종 검증 소스와 archive를 동일 Site에 저장/배포하고 source/버전/실제 응답을 확인한다. 최종 source `2e8f3239012956bd7a83a655a0a9d85dd2c7615b`, 저장 version `appgprj_6ae13ac0e9d88191978e6953f7286966~appgver_f9b728ac6f348191b8cf20fb88596267`, 배포 `appgdep_6ae15e04d84081919c88e7ddac3fac5c`, 환경 revision1·native succeeded와 owner-private1명을 확인했다. 배포용 archive에서 QA snapshot/보조 entry를 제외한 것을 검사했다.397전체/23앱 회귀·TypeScript·Worker 빌드와 같은 production 빌드의 실제 API snapshot 브라우저 흐름을 검증했으며 hosted 인증 UI 클릭 QA로 바꾸어 기록하지 않는다. 재배포 뒤 fresh hosted9API/6페이지HTTP200·8필드/동일 publication·admin400/쓰기405·secret HTML/bundle 비포함을 별도로 확인했다. 정확한 시각/범위는 [T033 근거](../data/research/app-interactions-T033.json)와 WORKPLAN을 따른다. API/원본/규칙/자동화·audience는 변경하지 않는다.
+
+
 ## T032 실제 앱 서버/API 연동 배포 — 전달 완료
 
 최신 사용자 지시에 따라 실제 eFsimulator 서버를 기존 API·검토 viewer와 분리해 제작한다. 새 Site `appgprj_6ae13ac0e9d88191978e6953f7286966`를 기본 owner-private으로 등록하고 project_id를 저장했다. 예상 origin은 `https://efsimulator.hyunw09.chatgpt.site`다. 이후 검증한 동일 source의 private 저장/배포와 실제 API/직접 페이지 조회를 확인했다. 실제 URL은 위 origin이며 등록만으로 성공을 추정하지 않았다.

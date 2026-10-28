@@ -1,18 +1,18 @@
-<!-- project-state: {"stage":"R6","previous":"T032","current":"T017","next":"T018"} -->
+<!-- project-state: {"stage":"R6","previous":"T033","current":"T017","next":"T018"} -->
 
 # efsimulator 개발 로드맵
 
-최신 전달(T032): **완료된 API 기반의 실제 eFsimulator 앱 서버·조회/상세·시뮬레이터 진입 페이지를 private 배포하고 연동을 검증했다.** 다음은 T017의 추첨 모드/규칙·엔진/2D 세부 작업이며3D는 T018 후속이다. 공식 상품 한정 가공 API와 누적 raw의 분리는 [데이터 계약](CATALOG_DATA_CONTRACT.md)을 유지한다. 과거 전체 raw 공개 API·얇은 아카이브·스키마 재구축 계획을 다음 개발의 전역 선행 조건으로 다시 적용하지 않는다.
+최신 전달(T033): **production 선수/팩 navigation·명단 펼침·encoded ID 상세 연결을 수정하고 같은 production 빌드의 snapshot 브라우저 흐름과 private 재배포/fresh hosted API를 검증했다.** 다음은 T017 추첨 규칙/엔진·2D, T018 3D다. T032 당시 UI QA 한계와 이번 검증 환경은 구분한다. 공식 상품 한정 가공 API와 누적 raw의 분리는 [데이터 계약](CATALOG_DATA_CONTRACT.md)을 유지한다. 과거 전체 raw 공개 API·얇은 아카이브·스키마 재구축 계획을 다음 개발의 전역 선행 조건으로 다시 적용하지 않는다.
 
 ## 현재 위치
 
 | 항목 | 내용 |
 | --- | --- |
-| 현재 단계 | R6 — 실제 앱 기반 위의 추첨 규칙·최소 엔진/2D 세부 설계·구현 예정 |
-| 이전 작업 | T032 — 실제 앱 서버/API 연동·조회/진입 화면 private 배포와 실조회 검증 완료 |
-| 현재 작업 | T017 — 모드별 추첨 규칙·잔여 풀·익명 Standard·최소 엔진/2D 결과 세부 작업 예정 |
+| 현재 단계 | R6 — 추첨 모드/규칙·최소 엔진/2D 세부 작업 예정 |
+| 이전 작업 | T033 — production 조회 UI·상세 ID 수정과 상호작용/재배포/fresh API 검증 완료 |
+| 현재 작업 | T017 — 추첨 모드별 규칙·잔여 풀·익명 Standard·최소 엔진/2D 세부 작업 예정 |
 | 다음 작업 | T018 — 검증된 엔진/연출 뒤3D·모바일 성능·실패 fallback |
-| 현재 조건 | 실제 앱 https://efsimulator.hyunw09.chatgpt.site 의 private 배포·실제 API 목록/상세/동일 버전·직접6페이지·비밀값 비노출 검증 완료. API8필드·원본/규칙/자동화·viewer/Pages 보존. 추첨 엔진/3D와 hosted 실데이터 브라우저 상호작용 QA는 미완료 |
+| 현재 조건 | 실제 app의 표준 navigation/명단 toggle/safe ID decode 전달. snapshot production 브라우저의 검색/상세/필터/탭/refresh와 fresh hosted9API/6페이지·보안 검증 완료. hosted 로그인 UI 직접 QA와 구분. 핵심 API/데이터/자동화/audience 불변 |
 
 ## 전달된 기반과 남은 범위
 

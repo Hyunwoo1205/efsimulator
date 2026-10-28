@@ -23,3 +23,11 @@
 ## 검사와 배포
 
 `npm test`, `node node_modules/typescript/bin/tsc --noEmit`, Sites 공식 `build-site.mjs`를 사용한다. `.openai/hosting.json`의 실제 project_id를 재사용하고 새 Site를 중복 생성하지 않는다. 현재는 owner-private 검토 배포이며 공개 audience 변경은 별도 범위다. 실제 배포 근거와 다음 작업은 저장소 WORKPLAN·DEPLOYMENT·FILE_SYNC를 따른다.
+
+## 조회 상호작용 (T033)
+
+내부 페이지 이동은 표준 링크를 사용한다. 현재 Vinext 배포 빌드의 RSC 링크 사전읽기/탐색 오류를 피해 메뉴·팩·선수 상세를 직접 URL로 연다. 팩 목록은 검색·판매 상태 탭·선수 명단 펼치기/접기·상세 연결을 제공한다. 선수 목록의 이름/카드 번호 검색과 포지션 필터를 함께 사용할 수 있다.
+
+동적 경로의 saleId와 카드 ID는 `lib/route-id.mjs`로 한 번만 안전하게 디코딩한다. 이미 디코딩된 ID도 그대로 지원하며 잘못된 인코딩·중첩 인코딩·경로 구분자를 거부한다. 팩 회차나 선수 ID를 이름으로 추정하지 않는다. 해당 회귀 검증은 `tests/route-id.test.mjs`에 있다.
+
+브라우저 검증은 배포용 Worker/클라이언트 빌드와 별도로 보존한 실제 API 응답 snapshot으로 수행하며 QA snapshot·보조 Worker·인증값은 소스/배포에 포함하지 않는다. 실제 hosted API 재조회와 로그인한 hosted 브라우저 검증의 범위는 작업 근거에서 구분한다.
