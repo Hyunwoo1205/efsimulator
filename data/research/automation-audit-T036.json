@@ -1,0 +1,185 @@
+{
+  "task": "T036",
+  "status": "verified",
+  "baseline": {
+    "branch": "api-server-setup",
+    "commit": "80204f5a80878aa4728c828a12cdd67671161e00",
+    "tree": "0bbd8d9e28fc309671aba7b408a239fe01e86fc4",
+    "localRemoteFiles": 340,
+    "mismatches": 0
+  },
+  "automation": {
+    "id": "6adf7e14fa6481918b556a418f94098d",
+    "enabled": true,
+    "schedulePreserved": true,
+    "promptSaved": true,
+    "promptLength": 11277,
+    "actualNewScheduledExecutionObserved": false,
+    "lastRecordedRun": {
+      "scheduledFor": "2026-10-29T02:21:40Z",
+      "recordedStatus": "completed",
+      "observedAction": "four confirmed sales moved from live to archive; API readback verified",
+      "sourceFreshFetchSuccessful": false
+    }
+  },
+  "scope": {
+    "unchangedRulesVersion": "catalog-rules-1.2.0",
+    "unchangedRulesSha256": "0fc5aacc2c80eb2e0a889f677d180e7a9825f96346313d670ea5779348799d98",
+    "dataCodeRedeployRequired": false,
+    "gitSummaryPath": "data/updates/catalog-latest.json",
+    "rawAndPrivateLogsInGit": false,
+    "pendingStagesResume": true,
+    "unknownProducts": "pending with source evidence; not automatic approval",
+    "existingRawPayloadCorrections": "conflict requiring reviewed development",
+    "fullEfhubRawCollection": "not claimed",
+    "newPlayerDisplayTypeMetadata": "static reviewed map; requires separate maintenance for new IDs"
+  },
+  "checks": {
+    "fullTests": 443,
+    "failed": 0,
+    "actualAppTests": 41,
+    "viewerTests": 34,
+    "newOperationalTests": 15,
+    "appTypeScript": "passed",
+    "viewerTypeScript": "passed",
+    "appWorkerBuild": "passed",
+    "viewerWorkerBuild": "passed",
+    "lockedRulesCheck": "passed"
+  },
+  "freshness": {
+    "pollMilliseconds": 60000,
+    "visibilityAware": true,
+    "focusOnlineCheck": true,
+    "unchangedManifestSkipsCollections": true,
+    "atomicReplacement": true,
+    "lastGoodOnFailure": true,
+    "versionRaceRetries": 2,
+    "serverRelayNoStore": true,
+    "authenticatedHostedBrowserClicks": "not performed; behavior covered by controller tests; hosted HTTP/full-readback separately",
+    "explicitCompletePaginationRequired": true,
+    "knownExpiryProjectedWithoutVersionChange": true
+  },
+  "deployments": {
+    "app": {
+      "id": "appgdep_6ae2b7c5a13c81919c2578d86f067b36",
+      "project_id": "appgprj_6ae13ac0e9d88191978e6953f7286966",
+      "title": "eFsimulator",
+      "version_id": "appgprj_6ae13ac0e9d88191978e6953f7286966~appgver_81023e91a71c8191adbfb72bca3fbe45",
+      "type": "publish",
+      "status": "succeeded",
+      "url": "https://efsimulator.hyunw09.chatgpt.site",
+      "has_mcp": false,
+      "screenshot_asset_pointer": null,
+      "provider_deployment_id": "site---6ae13ac0e9d88191978e6953f7286966",
+      "failure_message": null,
+      "env_set_revision": 1,
+      "updated_at": "2026-10-29T03:04:51.975783+00:00",
+      "sourceCommit": "fed69b36d3bf9ccc5f1409909a64ea6b49a35bfa"
+    },
+    "viewer": {
+      "id": "appgdep_6ae2b7ebd11c8191851ca5b9dc7b233a",
+      "project_id": "appgprj_6ae0d64b624c8191b6266b96d48111f3",
+      "title": "eFsimulator 선수팩 조회",
+      "version_id": "appgprj_6ae0d64b624c8191b6266b96d48111f3~appgver_defab3a2418c8191b952a7dc1f3c9a0a",
+      "type": "publish",
+      "status": "succeeded",
+      "url": "https://efsimulator-catalog.hyunw09.chatgpt.site",
+      "has_mcp": false,
+      "screenshot_asset_pointer": null,
+      "provider_deployment_id": "site---6ae0d64b624c8191b6266b96d48111f3",
+      "failure_message": null,
+      "env_set_revision": 1,
+      "updated_at": "2026-10-29T03:05:32.784760+00:00",
+      "sourceCommit": "d84f9aab43c0a41f224160961ee0c267a68a0611"
+    }
+  },
+  "siteVerification": {
+    "schemaVersion": 1,
+    "operation": "verify_sites",
+    "publicationVersion": "35b7ae56caf6f835b62d8601bbe151abaa98c8378bbeff13a684e261a1ee9e7f",
+    "verifiedAt": "2026-10-29T03:06:17.370Z",
+    "verified": true,
+    "counts": {
+      "player": 70,
+      "pack": 7,
+      "live": 3,
+      "archive": 4
+    },
+    "manifestCounts": {
+      "archive": 4,
+      "live": 3,
+      "pack": 7,
+      "player": 70
+    },
+    "collectionSha256": {
+      "players": "433451054f3ae4266367dc78b5dfb35850ba365ab2443c797b48311d71cd4580",
+      "packs": "08e3e32dd687500556ce371e796900b8f139664f80230a9507d030e98169b1cf",
+      "live": "1d64c88366553ffc191168e7ce031e494e2559f6a96767cec608fd6e77556fc3",
+      "archive": "7f388c4e2bbf99fbeca5b25470d39a4006f65445e9d066e646047c5cecfd877b"
+    },
+    "sites": {
+      "api": {
+        "origin": "https://efsimulator-catalog-api.hyunw09.chatgpt.site",
+        "verified": true
+      },
+      "viewer": {
+        "origin": "https://efsimulator-catalog.hyunw09.chatgpt.site",
+        "verified": true
+      },
+      "app": {
+        "origin": "https://efsimulator.hyunw09.chatgpt.site",
+        "verified": true
+      }
+    }
+  },
+  "verificationRecord": "Read-only audit of current hosted generation; zero new data changes claimed. Raw counts referenced from retained monitor checkpoint; no archive redownload or source HTML collection in this audit.",
+  "sourceCopy": {
+    "efsimulator-app": {
+      "siteTrackedFiles": 53,
+      "mismatches": []
+    },
+    "catalog-view": {
+      "siteTrackedFiles": 38,
+      "mismatches": []
+    }
+  },
+  "firstSiteVerification": {
+    "schemaVersion": 1,
+    "operation": "verify_sites",
+    "publicationVersion": "35b7ae56caf6f835b62d8601bbe151abaa98c8378bbeff13a684e261a1ee9e7f",
+    "verifiedAt": "2026-10-29T02:57:16.685Z",
+    "verified": true,
+    "counts": {
+      "player": 70,
+      "pack": 7,
+      "live": 3,
+      "archive": 4
+    },
+    "manifestCounts": {
+      "archive": 4,
+      "live": 3,
+      "pack": 7,
+      "player": 70
+    },
+    "collectionSha256": {
+      "players": "433451054f3ae4266367dc78b5dfb35850ba365ab2443c797b48311d71cd4580",
+      "packs": "08e3e32dd687500556ce371e796900b8f139664f80230a9507d030e98169b1cf",
+      "live": "1d64c88366553ffc191168e7ce031e494e2559f6a96767cec608fd6e77556fc3",
+      "archive": "7f388c4e2bbf99fbeca5b25470d39a4006f65445e9d066e646047c5cecfd877b"
+    },
+    "sites": {
+      "api": {
+        "origin": "https://efsimulator-catalog-api.hyunw09.chatgpt.site",
+        "verified": true
+      },
+      "viewer": {
+        "origin": "https://efsimulator-catalog.hyunw09.chatgpt.site",
+        "verified": true
+      },
+      "app": {
+        "origin": "https://efsimulator.hyunw09.chatgpt.site",
+        "verified": true
+      }
+    }
+  }
+}

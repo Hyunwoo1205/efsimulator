@@ -1,5 +1,18 @@
 # Sites 배포·DB API 운영 계획
 
+> T036 자동 갱신의 최신 공통 완료 절차는 [AUTOMATION](AUTOMATION.md)을 따른다. 정상 변경은 비공개 묶음 저장·원격 발행·API/두 소비 사이트 전체 대조·GitHub 요약 영수증/CI 확인까지 수행하고 미완료 단계만 재개한다. 아래 과거 작업의 정기 커밋 금지는 코드/규칙/관리문서에 유지하되 검증 요약 고정 파일은 최신 승인으로 허용한다. 미검토 상품/원본 충돌과 실제 자동 반영 범위를 구분한다.
+
+## T036 자동 갱신 소비 화면 — 전달 완료
+
+두 기존 Site의 audience와 env revision1을 유지해 보이는 탭60초 버전 점검·focus/online 확인·원자 세대 교체·마지막 정상 자료 보존·부분 pagination 거부와 종료시각 로컬 투영을 배포했다. 데이터 변경은 API publication 발행만으로 연결되며 매번 소스 재배포를 요구하지 않는다.443전체/41실제앱/34viewer/15운영도구 회귀·두 TypeScript·Worker build와 규칙 해시를 확인했다.
+
+| Site | source | 저장 version | 배포 |
+| --- | --- | --- | --- |
+| app | `fed69b36d3bf9ccc5f1409909a64ea6b49a35bfa` | `appgprj_6ae13ac0e9d88191978e6953f7286966~appgver_81023e91a71c8191adbfb72bca3fbe45` | `appgdep_6ae2b7c5a13c81919c2578d86f067b36` succeeded |
+| viewer | `d84f9aab43c0a41f224160961ee0c267a68a0611` | `appgprj_6ae0d64b624c8191b6266b96d48111f3~appgver_defab3a2418c8191b952a7dc1f3c9a0a` | `appgdep_6ae2b7ebd11c8191851ca5b9dc7b233a` succeeded |
+
+정확한 실조회 시각·전량 해시·새 예약 실행 관찰 한계는 [T036 근거](../data/research/automation-audit-T036.json)에 기록한다. 이후 일반 데이터 변경에는 [운영 절차](AUTOMATION.md)에 따라 API·두 relay 전량 검증과 GitHub 고정 영수증/CI 확인을 수행한다.
+
 ## T035 목록 정렬 — 전달 완료
 
 같은 실제 앱과 private audience를 유지해 팩/선수의 Epic·Show Time 우선 및 최신 출시순을 공통 적용한다. API/원본/발행규칙/예약은 변경하지 않는다. 402전체/28앱·타입/Worker build·production 목록/필터/명단 순서를 검증했다. Site source e53b63a075c4a37eb8e4087ad14149634e9c3cc7, 저장version appgprj_6ae13ac0e9d88191978e6953f7286966~appgver_6baba892a1208191b4b07e0ec758a438, 배포 appgdep_6ae1a25e59708191992acf0be5f49546, 환경revision1·native succeeded·배포갱신2026-10-28T07:21:21.075057+00:00·기존 URL을 확인했다. GitHub 원격/CI 결과는 별도로 확인한다.

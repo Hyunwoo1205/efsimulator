@@ -1,0 +1,20 @@
+name: Catalog update record checks
+on:
+  push:
+    branches: [api-server-setup]
+    paths: ['data/updates/catalog-latest.json', 'scripts/catalog-update-record.mjs', 'tests/catalog-update-record.test.mjs', 'services/catalog-api/scripts/lifecycle/verify-sites.mjs', 'services/catalog-api/tests/verify-sites.test.mjs', 'docs/AUTOMATION.md', 'config/catalog-automation.json', '.github/workflows/catalog-update-check.yml']
+  pull_request:
+    paths: ['data/updates/catalog-latest.json', 'scripts/catalog-update-record.mjs', 'tests/catalog-update-record.test.mjs', 'services/catalog-api/scripts/lifecycle/verify-sites.mjs', 'services/catalog-api/tests/verify-sites.test.mjs', 'docs/AUTOMATION.md', 'config/catalog-automation.json', '.github/workflows/catalog-update-check.yml']
+permissions:
+  contents: read
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.19.0
+      - run: node scripts/project-check.mjs
+      - run: node --test tests/catalog-update-record.test.mjs services/catalog-api/tests/verify-sites.test.mjs
+      - run: node scripts/catalog-update-record.mjs --check data/updates/catalog-latest.json

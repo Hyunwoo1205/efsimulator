@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "operation": "verification",
+  "observedAt": "2026-10-29T02:57:16.685Z",
+  "sourceCommit": "80204f5a80878aa4728c828a12cdd67671161e00",
+  "runtimeVersion": "d1bc52c774d742687ba5bfb864a912df1f0acb204ace99dd41fbdebc4de67adc",
+  "publicationVersion": "35b7ae56caf6f835b62d8601bbe151abaa98c8378bbeff13a684e261a1ee9e7f",
+  "rulesIdentity": {
+    "version": "catalog-rules-1.2.0",
+    "sha256": "0fc5aacc2c80eb2e0a889f677d180e7a9825f96346313d670ea5779348799d98"
+  },
+  "counts": {
+    "rawPlayers": 47408,
+    "rawPacks": 1699,
+    "players": 70,
+    "packs": 7,
+    "live": 3,
+    "archive": 4
+  },
+  "changes": {
+    "rawPlayersAdded": 0,
+    "rawPacksAdded": 0,
+    "playersAdded": 0,
+    "playersUpdated": 0,
+    "packsAdded": 0,
+    "packsUpdated": 0,
+    "archivedPacks": 0,
+    "targetFiles": []
+  },
+  "phases": {
+    "bundle": "not_required",
+    "api": "verified",
+    "sites": "verified",
+    "github": "pending"
+  },
+  "evidence": {
+    "bundleSha256": null,
+    "sourceReceiptSha256": null,
+    "sitesReceiptSha256": "0778312f5388d404e155e3543612540c13c7a64a27f304f9fbb5c5b76394506c",
+    "officialHtmlSha256": null,
+    "efhubHtmlSha256": null
+  },
+  "runId": "5f117758fc8490e0b03215b0b86c5a28a6acd28ec7a33aa493bc34ca429e1c0b"
+}

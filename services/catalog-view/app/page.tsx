@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { selectPackPreview } from "../lib/pack-preview.mjs";
+import { createCatalogRefresh, projectCatalogSales } from "../lib/catalog-refresh.mjs";
 
 type Player = { id: string; name: string; slug: string; position: string | null; overallRating: number | null; playingStyle: string | null; playingStyleDefensive: string | null; imageUrl: string | null };
 type Pack = { saleId: string; name: string; officialTitle: string; playerCount: number; totalPlayerCount: number; standardPlayerCount: number; date: string | null; endsAt: string; players: Player[] };
@@ -25,23 +26,6 @@ async function read(path: string, signal: AbortSignal) {
   return body;
 }
 
-async function collection<T>(name: string, version: string, signal: AbortSignal): Promise<T[]> {
-  const result: T[] = []; let cursor: string | null = null;
-  for (let page = 0; page < 1000; page++) {
-    const query = new URLSearchParams({ limit: "100" });
-    if (cursor) query.set("cursor", cursor);
-    const body = await read(`${name}?${query}`, signal);
-    if (body.meta?.catalog_snapshot_id !== version) throw new Error("조회 중 데이터가 갱신됐습니다. 새로고침해 주세요.");
-    if (!Array.isArray(body.data)) throw new Error("데이터 응답을 확인할 수 없습니다.");
-    result.push(...body.data);
-    const next = body.pagination?.next_cursor;
-    if (!next) return result;
-    if (next === cursor) throw new Error("다음 목록을 불러올 수 없습니다.");
-    cursor = next;
-  }
-  throw new Error("조회 범위가 너무 큽니다. 잠시 후 다시 시도해 주세요.");
-}
-
 function Portrait({ player, small = false }: { player: Player; small?: boolean }) {
   const [failed, setFailed] = useState(false);
   let image: string | null = null;
@@ -62,26 +46,27 @@ function PlayerTile({ player, small = false }: { player: Player; small?: boolean
 }
 
 export default function Home() {
-  const [catalog, setCatalog] = useState<Catalog | null>(null);
+  const [snapshot, setCatalog] = useState<Catalog | null>(null);
+  const [now, setNow] = useState(() => Date.now());
   const [error, setError] = useState("");
-  const [attempt, setAttempt] = useState(0);
+  const refreshRef = useRef<(() => void) | null>(null);
   const [tab, setTab] = useState<Tab>("live");
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState<string | null>(null);
 
+  useEffect(() => { const interval = setInterval(() => setNow(Date.now()), 1000); return () => clearInterval(interval); }, []);
   useEffect(() => {
-    const controller = new AbortController(); setError(""); setCatalog(null);
-    (async () => {
-      const manifestResponse = await read("manifest", controller.signal);
-      const manifest = manifestResponse.data as Manifest;
-      if (!manifest?.version_id) throw new Error("아직 검증된 데이터가 발행되지 않았습니다.");
-      const [live, archive, players] = await Promise.all([
-        collection<Pack>("live", manifest.version_id, controller.signal), collection<Pack>("archive", manifest.version_id, controller.signal), collection<Player>("players", manifest.version_id, controller.signal),
-      ]);
-      if (!controller.signal.aborted) setCatalog({ manifest, live, archive, players });
-    })().catch(reason => { if (!controller.signal.aborted) setError(reason instanceof Error ? reason.message : "데이터를 불러오지 못했습니다."); });
-    return () => controller.abort();
-  }, [attempt]);
+    const updater = createCatalogRefresh({
+      read,
+      onCatalog: (next: Catalog) => { setCatalog(next); setNow(Date.now()); },
+      onError: (message: string) => setError(message),
+    });
+    refreshRef.current = () => { void updater.refresh(); };
+    void updater.start();
+    return () => { refreshRef.current = null; updater.dispose(); };
+  }, []);
+  const refresh = () => refreshRef.current?.();
+  const catalog = useMemo(() => projectCatalogSales(snapshot, now) as Catalog | null, [snapshot, now]);
 
   const packs = catalog ? (tab === "archive" ? catalog.archive : catalog.live) : [];
   const normalized = normalize(query.trim());
@@ -101,10 +86,11 @@ export default function Home() {
       </section>
 
       <section className="catalog" id="catalog" aria-busy={!catalog && !error}>
-        <div className="section-heading"><div><p className="eyebrow">EXPLORE THE COLLECTION</p><h2>기록을 살펴보세요.</h2></div><button className="refresh" onClick={() => setAttempt(value => value + 1)} disabled={!catalog && !error}>새로고침 <span aria-hidden="true">↻</span></button></div>
+        <div className="section-heading"><div><p className="eyebrow">EXPLORE THE COLLECTION</p><h2>기록을 살펴보세요.</h2></div><button className="refresh" onClick={refresh} disabled={!catalog && !error}>새로고침 <span aria-hidden="true">↻</span></button></div>
         <div className="catalog-toolbar"><div className="tabs" role="tablist" aria-label="목록 종류">{(Object.keys(tabLabels) as Tab[]).map(value => <button type="button" role="tab" id={`tab-${value}`} aria-selected={tab === value} aria-controls="catalog-results" key={value} onClick={() => { setTab(value); setSelected(null); }}>{tabLabels[value]}<span>{catalog?.[value].length ?? "—"}</span></button>)}</div><label className="search"><span className="visually-hidden">팩 또는 선수 검색</span><span aria-hidden="true">⌕</span><input type="search" value={query} maxLength={200} placeholder={tab === "players" ? "선수 이름 · 카드 ID 검색" : "팩 이름 · 포함된 선수 검색"} onChange={event => setQuery(event.target.value)} /></label></div>
 
-        {error ? <div className="state-panel" role="alert"><span className="state-icon">!</span><h3>잠시 연결을 확인해 주세요.</h3><p>{error}</p><button className="primary-button" onClick={() => setAttempt(value => value + 1)}>다시 불러오기</button></div> : !catalog ? <div className="state-panel loading" role="status"><div className="loading-bar" /><h3>선수와 명단을 불러오고 있어요.</h3><p>검증된 데이터에 연결하고 있습니다.</p></div> : <div id="catalog-results" role="tabpanel" aria-labelledby={`tab-${tab}`}>
+        {error && catalog && <div className="state-panel" role="status"><h3>새 자료를 확인하지 못했습니다.</h3><p>{error} 마지막으로 확인한 자료를 표시합니다.</p><button className="primary-button" onClick={refresh}>다시 불러오기</button></div>}
+        {error && !catalog ? <div className="state-panel" role="alert"><span className="state-icon">!</span><h3>잠시 연결을 확인해 주세요.</h3><p>{error}</p><button className="primary-button" onClick={refresh}>다시 불러오기</button></div> : !catalog ? <div className="state-panel loading" role="status"><div className="loading-bar" /><h3>선수와 명단을 불러오고 있어요.</h3><p>검증된 데이터에 연결하고 있습니다.</p></div> : <div id="catalog-results" role="tabpanel" aria-labelledby={`tab-${tab}`}>
           <div className="results-summary"><p>{query.trim() ? `“${query.trim()}” 검색 결과` : tabLabels[tab]}<strong>{total}건</strong></p><span>{tab === "players" ? "카드마다 고유 ID로 구분합니다." : "전체 인원과 특수 선수 수를 함께 표시합니다."}</span></div>
           {total === 0 ? <div className="state-panel empty"><span className="eyebrow">NO COLLECTIONS</span><h3>{query.trim() ? "일치하는 자료가 없습니다." : tab === "archive" ? "아직 종료된 명단이 없습니다." : "현재 표시할 자료가 없습니다."}</h3><p>{query.trim() ? "다른 이름이나 카드 ID로 검색해 보세요." : "확인한 자료가 추가되면 이곳에 표시됩니다."}</p></div> : tab === "players" ? <div className="players-grid">{matchingPlayers.map(player => <PlayerTile key={player.id} player={player} />)}</div> : <>
             <div className="packs-grid">{matchingPacks.map((pack, index) => <article className={selected === pack.saleId ? "pack-tile selected" : "pack-tile"} key={pack.saleId}>

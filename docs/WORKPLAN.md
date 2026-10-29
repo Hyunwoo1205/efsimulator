@@ -1,4 +1,4 @@
-<!-- project-state: {"stage":"R6","previous":"T035","current":"T017","next":"T018"} -->
+<!-- project-state: {"stage":"R6","previous":"T036","current":"T017","next":"T018"} -->
 
 # efsimulator 작업 계획과 이력
 
@@ -6,16 +6,16 @@
 
 ## 현재 작업과 매 작업 갱신
 
-- 이전 작업: T035 — 팩·선수 Epic/Show Time 우선과 팩 날짜 최신순 공통 정렬·회귀/화면/private 재배포 검증 완료.
+- 이전 작업: T036 — 자동 갱신 전체 절차·사이트 신선도·GitHub 기록 보완과 실제 세 사이트 대조 완료.
 - 현재 작업: T017 — 추첨 모드별 규칙·잔여 풀·익명 Standard·최소 엔진/2D 결과 세부 작업 예정.
-- 다음 작업: T018 — 검증된 엔진/연출 뒤3D·모바일 성능·실패 fallback.
+- 다음 작업: T018 — 검증된 엔진/연출 뒤 3D·모바일 성능·실패 fallback.
 - 현재 조건: T035의 모든 실제 앱 목록은 Epic/Show Time 한 우선 그룹과 유효 팩 날짜 내림차순을 공유한다. 선수는 최초 확인 연결팩 날짜를 표시용으로 사용하며 실제 최초 출시일로 주장하지 않는다.402전체/28앱 회귀·타입/Worker build·실제 snapshot production 정렬/필터/명단·같은 private 배포를 확인했다. API8필드·raw/규칙/자동화·기존viewer/Pages·audience와 T034 카드 표시는 보존했다.
 
 매 작업 시작 시 Git 상태·이전 결과·이번/다음 작업·선행 조건을 확인한다. FILE_SYNC의 P0→P1→P2로 관련 파일을 검토하되 필요한 파일은 등급과 무관하게 함께 수정한다. 추가 요구는 ID·영향 단계·선행 조건·순서·상태를 기록한다. 파일별 수정/변경불필요/미해결과 근거, 경로 추가/삭제/이름 변경·참조를 같은 작업에서 갱신한다. 검증과 이전/현재/다음 포인터를 맞추며 구현/수집/발행 완료는 실제 근거가 있을 때만 표시한다.
 
 ## 최신 추가 조건과 이전 조건의 적용
 
-C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_BEFORE_PROBABILITY_SCOPE.md)에 보존한다. 관리 최신화·ID/근거·실패 보존·접근 거부 우회 금지·무료 우선·운영 승인 분리 원칙은 계속 적용한다. 범위 결정은 날짜별 이력이며 현재 범위·완료 정책은 최신 C068과 아래 T035를 우선하고 API 완료/정상 반영 정책 C063~C064를 유지한다. 전체 수집과 사이트 범위를 혼동하지 않는다.
+C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_BEFORE_PROBABILITY_SCOPE.md)에 보존한다. 관리 최신화·ID/근거·실패 보존·접근 거부 우회 금지·무료 우선·운영 승인 분리 원칙은 계속 적용한다. 범위 결정은 날짜별 이력이며 현재 범위·완료 정책은 최신 C069와 아래 T036를 우선하고 API 완료/정상 반영 정책 C063~C064를 유지한다. 전체 수집과 사이트 범위를 혼동하지 않는다.
 
 | 조건 ID | 최신 결정 | 영향 단계 / 선행 조건 / 처리 순서 | 상태 |
 | --- | --- | --- | --- |
@@ -56,6 +56,7 @@ C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_B
 | C065 | 실제 eFsimulator 앱 서버를 별도 제작하고 기존 private API에 서버 전용으로 연결; 선수/팩 목록/상세와 별도 시뮬레이터 진입 페이지 제공 | T032/R3. 실제 앱 소스/등록ID→서버 relay·조회 화면→검증·private 배포→원격 실조회→정상 소스 반영. API8필드/원본/규칙/자동화·기존 viewer/Pages 보존 | 실제 앱 private 배포·API 목록/상세/직접 페이지·보안/검사 검증 완료. 엔진/3D·추첨 규칙 확정은 후속; hosted 실데이터 브라우저 상호작용 QA는 미수행 |
 | C066 | 기존 선수/팩 조회 기능이 실제로 동작하도록 production navigation·명단 펼침·ID 상세 연결 수정 | T033/R3. production 재현→표준a/full navigation·인라인 명단·safe1회decode→회귀/production QA→동일 private Site 재배포/실조회 | production snapshot 상호작용·ID3회귀/앱23/전체397·타입/빌드·동일 private 재배포/fresh hosted API 검증 완료. T032 한계 이력과 hosted UI 직접 QA 구분·핵심 계약 보존 |
 | C067 | 실제 앱의 모든 선수 카드 이미지에 왼쪽 위 OVR·그 아래 작은 포지션·아래쪽 영문 이름을 공통 적용; 겹침/크롭 시 카드와 글자를 함께 가림 | T034/R3. 첨부 EFHub 카드 좌표/글꼴 비교→공통 Portrait 적용→목록/미리보기/명단/상세/시뮬레이터 반응형 QA→동일 private Site 배포·GitHub/문서 정합성 | 공통 표시·397/23회귀·타입/공식빌드·production 시각 QA·동일 private 재배포 검증 완료; API8필드·원본/규칙·자동화·audience 유지 |
+| C069 | 기존 예약의 HTML/가공/DB 발행/소비 사이트 확인/업데이트 기록/GitHub 반영을 점검하고 누락을 보완 | T036/R5. 무변경 무응답·규칙 동결 유지, 정상 데이터 변경에는 요약 영수증만 같은 브랜치 커밋 허용; 열린 두 화면 자동 갱신 | 절차/구현·두 private 재배포·443회귀·실제 세 사이트 대조·예약 저장 완료; 변경 지침의 다음 실제 예약 실행은 관찰 대기 |
 | C068 | 실제 앱의 모든 팩/선수 목록에서 Epic·Show Time을 같은 우선 그룹으로 묶고 각 그룹 안은 최신 출시순; 나머지도 최신순 | T035/R3. 정확한 카드 타입5/8과 출시 근거 확인→공통 정렬→모든 목록 적용/회귀→같은 private 배포·GitHub 확인 | 공통 정렬·402/28회귀·타입/Worker build·production QA·같은 private 재배포 완료; Highlight/미등록 등급 추정 없음 |
 
 
@@ -601,7 +602,7 @@ Sites 계정의 실제 한도·비용·영속 저장·실제 인증·백업 미�
 
 - 단계: R6
 - 상태: 예정
-- 이전: T035
+- 이전: T036
 - 다음: T018
 
 ### 목표·입력·순서
@@ -1735,3 +1736,63 @@ root 전체 회귀394/394·실패0, 앱20회귀·TypeScript·공식 Worker 빌�
 | `.github/workflows/efsimulator-app-check.yml` | 검토 결과 변경 불필요 | 기존 tests/*.test.mjs·타입/Worker build가 정렬 회귀를 포함 |
 | `services/efsimulator-app/lib/catalog-order.mjs` | 수정 | 정확한 타입5/8·팩 제목 우선 그룹과 유효 날짜/최초 연결팩/문자열ID 동률의 순수 공통 정렬 |
 | `services/efsimulator-app/tests/catalog-order.test.mjs` | 수정 | 혼합그룹·날짜/ID 동률·누락/미등록 타입·재수록·무변형과 실제 명단 회귀 |
+
+## T036 — 자동 갱신 전체 절차·사이트 신선도·GitHub 기록 보완
+
+- 단계: R5
+- 상태: 완료
+- 이전: T035
+- 다음: T017
+
+선행 조건: 최신 예약 프롬프트·모니터 v10·원격 api-server-setup 80204f5와 관리340파일 전량 일치를 확인했다. 2026-10-29 02:21 UTC 예약 실행은 완료되어 종료4팩 처리·원격 발행을 실제 기록했다. 이는 신규 HTML 수집 성공이 아니며 EFHub cooldown/공식 점검 상태를 보존한다.
+
+범위: 고정 수집/가공/8필드/규칙 잠금은 유지하고 주변 운영 절차·사이트 소비·GitHub 요약만 보완한다. 구현/테스트·같은 private 두 Site 배포·fresh 사이트 전량 대조·예약 지침 저장·같은 브랜치/CI 확인을 각각 근거대로 기록한다. 신규 미검토 상품/새 회차·기존 raw 수정·전체 raw 전수 자동 누적은 현행 코드에서 보류됨을 명시한다.
+
+검증 결과: 고정 규칙 해시 불변, 전체443/실제앱41/viewer34/운영도구15 회귀·두 타입 검사·Worker build를 통과했다. 같은 private 두 Site에 자동 갱신을 배포하고 2026-10-29T03:06:17.370Z에 세 사이트의 players/packs/live/archive 전량·중첩/참조·manifest를 대조했다. 같은 publication 35b7ae56…의7팩70명/live3/archive4였다. 현재 예약은 enabled·기존 hourly 시각 유지·새 프롬프트 11,277자 저장이 반환값과 일치한다. 배포/세부근거는 data/research/automation-audit-T036.json, 운영 기준은 docs/AUTOMATION.md다.
+
+이번에는 새 원출처 수집·데이터 변경·DB 재적재·새 예약 실행을 꾸미지 않았다. GitHub 영수증은 operation=verification이며 actualNewScheduledExecutionObserved=false를 유지한다. 확인한 기존 예약의 종료 처리 성공과 변경된 지침으로 실행될 다음 예약은 별개다. GitHub의 새 소스/영수증 반영과 해당 CI는 완료 조건에 따라 원격에서 실제 확인한다.
+
+### 파일 최신화 검토
+
+| 파일 | 결과 | 근거 |
+| --- | --- | --- |
+| `.github/workflows/catalog-update-check.yml` | 수정 | 데이터 변경 요약 전용 경로의 파일 목록·영수증 schema·3사이트 검증 도구 회귀 CI |
+| `AGENTS.md` | 수정 | 매 작업의 확인·변경 영향 검토·검증·상태 갱신 규칙 |
+| `README.md` | 수정 | 공식확률표 선수팩 목표·현재 구현 경계·계획/검사 진입 문서 |
+| `config/catalog-automation.json` | 수정 | 기존 예약·소스 브랜치·비공개 저장 ID·3사이트 ID/origin·고정 기록 경로; 비밀값 없음 |
+| `data/research/automation-audit-T036.json` | 수정 | 예약 원문/실제실행 점검·규칙불변·두배포·테스트·실제3사이트 대조 범위의비밀값없는근거 |
+| `data/updates/catalog-latest.json` | 수정 | 현재 가공 세대의 최신 변경/확인 요약; 전체 이력은 Git history, 원본과 상세 로그는 별도 보존 |
+| `docs/AUTOMATION.md` | 수정 | 자동 갱신의 공통 수집·저장/발행·3사이트 대조·재개·GitHub/CI 완료 계약 |
+| `docs/CATALOG_DATA_CONTRACT.md` | 수정 | T024 원본 HTML 수집·가공 선수/팩·전체 live/archive·파일별 로그 계약과 검증 |
+| `docs/CHATGPT_WORK_HANDOFF.md` | 수정 | T021 원문과 T022 Work 이관·Sites 전환 최신 지시·검증 결과의 연결 |
+| `docs/COLLECTION.md` | 수정 | T024 원본 HTML 수집·가공 선수/팩·전체 live/archive·파일별 로그 계약과 검증 |
+| `docs/DATA_LIFECYCLE.md` | 수정 | T024 원본 HTML 수집·가공 선수/팩·전체 live/archive·파일별 로그 계약과 검증 |
+| `docs/DEPLOYMENT.md` | 수정 | Sites static/Worker·Git source 전달·D1/R2·검토/운영·인증/비용/백업 계획과 검증 한계 |
+| `docs/FILE_SYNC.json` | 수정 | 관리 파일 역할·연관 경로·우선순위·갱신 조건·검토 작업의 단일 목록 |
+| `docs/FILE_SYNC_AUDIT.md` | 수정 | T020 전체 관리 파일의 등록/내용 영향 판정·GitHub 미반영·구현 공백·검증/이관 한계 보고 |
+| `docs/ROADMAP.md` | 수정 | 전체 누적/공식 현행의 R0~R6·Sites 배포·완료 조건·현재/이전/다음 |
+| `docs/WORKPLAN.md` | 수정 | T 작업과 C 추가 조건·입출력/검증·현재 상태·매 작업 영향 파일 검토 |
+| `scripts/catalog-update-record.mjs` | 수정 | 비민감 hash/count/status 화이트리스트 고정 영수증 생성·동일결과 무쓰기·read-only CI 검증 |
+| `services/catalog-api/scripts/lifecycle/verify-sites.mjs` | 수정 | 정확한3origin·숨긴stdin 인증으로API/viewer/실제앱 전량readback·버전/분할/중첩 대조 |
+| `services/catalog-api/tests/verify-sites.test.mjs` | 수정 | 3사이트 원격 full-readback·변조/부분/경합/리디렉션·secret비노출 합성 회귀 |
+| `services/catalog-view/app/page.tsx` | 수정 | 가공 live/archive/선수 조회·검색·명단·오류/로딩 화면 |
+| `services/catalog-view/lib/catalog-refresh.mjs` | 수정 | 동일 manifest 경량 확인·visible/focus/online 자동 갱신·완전한세대교체·실패보존/경합제한 |
+| `services/catalog-view/tests/catalog-refresh.test.mjs` | 수정 | 전체세대 교체·동일버전전체조회생략·경합/부분응답·실패/timeout·탭/온라인·정리 회귀 |
+| `services/efsimulator-app/app/components/catalog-data.tsx` | 수정 | 실제 API pagination/snapshot 일치·에러/로딩/재조회와8필드 카드/팩 데이터 상태 |
+| `services/efsimulator-app/lib/catalog-refresh.mjs` | 수정 | 동일 manifest 경량 확인·visible/focus/online 자동 갱신·완전한세대교체·실패보존/경합제한 |
+| `services/efsimulator-app/tests/catalog-refresh.test.mjs` | 수정 | 전체세대 교체·동일버전전체조회생략·경합/부분응답·실패/timeout·탭/온라인·정리 회귀 |
+| `tests/catalog-update-record.test.mjs` | 수정 | 원문/credential 임의필드 거부·해시/분할·고정경로·재시도 무쓰기·단계전이·위조 runId 회귀 |
+| `services/catalog-api/policy/rules.lock.json` | 검토 결과 변경 불필요 | 고정 데이터/인증/표시·기존 검사 계약을 재사용하며 이번 운영 보완에 임의 변경 불필요 |
+| `services/catalog-api/policy/approved-mappings.json` | 검토 결과 변경 불필요 | 고정 데이터/인증/표시·기존 검사 계약을 재사용하며 이번 운영 보완에 임의 변경 불필요 |
+| `services/catalog-api/scripts/lifecycle/run-cycle.mjs` | 검토 결과 변경 불필요 | 고정 데이터/인증/표시·기존 검사 계약을 재사용하며 이번 운영 보완에 임의 변경 불필요 |
+| `services/catalog-api/scripts/lifecycle/collect-cycle.mjs` | 검토 결과 변경 불필요 | 고정 데이터/인증/표시·기존 검사 계약을 재사용하며 이번 운영 보완에 임의 변경 불필요 |
+| `services/catalog-api/scripts/lifecycle/workspace.mjs` | 검토 결과 변경 불필요 | 고정 데이터/인증/표시·기존 검사 계약을 재사용하며 이번 운영 보완에 임의 변경 불필요 |
+| `services/catalog-api/scripts/lifecycle/publish-remote.mjs` | 검토 결과 변경 불필요 | 고정 데이터/인증/표시·기존 검사 계약을 재사용하며 이번 운영 보완에 임의 변경 불필요 |
+| `services/efsimulator-app/lib/preview-player-types.json` | 검토 결과 변경 불필요 | 고정 데이터/인증/표시·기존 검사 계약을 재사용하며 이번 운영 보완에 임의 변경 불필요 |
+| `services/catalog-view/lib/preview-player-types.json` | 검토 결과 변경 불필요 | 고정 데이터/인증/표시·기존 검사 계약을 재사용하며 이번 운영 보완에 임의 변경 불필요 |
+| `services/efsimulator-app/lib/catalog-order.mjs` | 검토 결과 변경 불필요 | 고정 데이터/인증/표시·기존 검사 계약을 재사용하며 이번 운영 보완에 임의 변경 불필요 |
+| `services/efsimulator-app/lib/catalog-relay.mjs` | 검토 결과 변경 불필요 | 고정 데이터/인증/표시·기존 검사 계약을 재사용하며 이번 운영 보완에 임의 변경 불필요 |
+| `services/catalog-view/lib/catalog-relay.mjs` | 검토 결과 변경 불필요 | 고정 데이터/인증/표시·기존 검사 계약을 재사용하며 이번 운영 보완에 임의 변경 불필요 |
+| `.github/workflows/efsimulator-app-check.yml` | 검토 결과 변경 불필요 | 고정 데이터/인증/표시·기존 검사 계약을 재사용하며 이번 운영 보완에 임의 변경 불필요 |
+| `services/efsimulator-app/README.md` | 검토 결과 변경 불필요 | 고정 데이터/인증/표시·기존 검사 계약을 재사용하며 이번 운영 보완에 임의 변경 불필요 |
+| `services/catalog-view/README.md` | 검토 결과 변경 불필요 | 고정 데이터/인증/표시·기존 검사 계약을 재사용하며 이번 운영 보완에 임의 변경 불필요 |

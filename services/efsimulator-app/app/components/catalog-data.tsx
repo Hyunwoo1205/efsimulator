@@ -1,7 +1,8 @@
 "use client";
 
-import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { createContext, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { orderCatalog, sortPacks } from "../../lib/catalog-order.mjs";
+import { createCatalogRefresh } from "../../lib/catalog-refresh.mjs";
 
 export type Player = { id: string; name: string; slug: string; position: string | null; overallRating: number | null; playingStyle: string | null; playingStyleDefensive: string | null; imageUrl: string | null };
 export type Pack = { saleId: string; name: string; officialTitle: string; playerCount: number; totalPlayerCount: number; standardPlayerCount: number; date: string | null; endsAt: string; players: Player[] };
@@ -21,23 +22,6 @@ async function read(path: string, signal: AbortSignal): Promise<ApiBody> {
   return body;
 }
 
-async function collection<T>(name: string, version: string, signal: AbortSignal): Promise<T[]> {
-  const result: T[] = []; const seen = new Set<string>(); let cursor: string | null = null;
-  for (let page = 0; page < 1000; page++) {
-    const query = new URLSearchParams({ limit: "100" });
-    if (cursor) query.set("cursor", cursor);
-    const body = await read(`${name}?${query}`, signal);
-    if (body.meta?.catalog_snapshot_id !== version) throw new Error("조회 중 자료가 갱신됐습니다. 새로고침해 주세요.");
-    if (!Array.isArray(body.data)) throw new Error("목록을 확인할 수 없습니다. 다시 불러와 주세요.");
-    result.push(...body.data);
-    const next = body.pagination?.next_cursor;
-    if (!next) return result;
-    if (seen.has(next)) throw new Error("다음 목록을 불러올 수 없습니다. 다시 시도해 주세요.");
-    seen.add(next); cursor = next;
-  }
-  throw new Error("목록을 불러오는 데 시간이 걸립니다. 잠시 후 다시 시도해 주세요.");
-}
-
 function validateCatalog(catalog: Catalog) {
   const { live, archive, players } = catalog;
   const playerIds = new Set<string>(); const packIds = new Set<string>();
@@ -53,26 +37,26 @@ function validateCatalog(catalog: Catalog) {
 
 export function CatalogProvider({ children }: { children: React.ReactNode }) {
   const [catalog, setCatalog] = useState<Catalog | null>(null);
-  const [error, setError] = useState(""); const [loading, setLoading] = useState(true); const [attempt, setAttempt] = useState(0);
+  const [error, setError] = useState(""); const [loading, setLoading] = useState(true);
+  const refreshRef = useRef<(() => void) | null>(null);
   const [now, setNow] = useState(() => Date.now());
   useEffect(() => { const interval = setInterval(() => setNow(Date.now()), 1000); return () => clearInterval(interval); }, []);
   useEffect(() => {
-    const controller = new AbortController(); setError(""); setLoading(true);
-    (async () => {
-      const manifest = (await read("manifest", controller.signal)).data as Manifest;
-      if (!manifest?.version_id) throw new Error("자료를 준비하고 있습니다. 잠시 후 다시 확인해 주세요.");
-      const [live, archive, players] = await Promise.all([
-        collection<Pack>("live", manifest.version_id, controller.signal), collection<Pack>("archive", manifest.version_id, controller.signal), collection<Player>("players", manifest.version_id, controller.signal),
-      ]);
-      const next = { manifest, live, archive, players }; validateCatalog(next);
-      if (!controller.signal.aborted) { setCatalog(orderCatalog(next)); setNow(Date.now()); }
-    })().catch(reason => { if (!controller.signal.aborted) setError(reason instanceof Error ? reason.message : "자료를 불러오지 못했습니다."); }).finally(() => { if (!controller.signal.aborted) setLoading(false); });
-    return () => controller.abort();
-  }, [attempt]);
+    const updater = createCatalogRefresh({
+      read,
+      transform: (next: Catalog) => { validateCatalog(next); return orderCatalog(next); },
+      onCatalog: (next: Catalog) => { setCatalog(next); setNow(Date.now()); },
+      onError: (message: string) => setError(message),
+      onLoading: (value: boolean) => setLoading(value),
+    });
+    refreshRef.current = () => { void updater.refresh(); };
+    void updater.start();
+    return () => { refreshRef.current = null; updater.dispose(); };
+  }, []);
   const live = useMemo(() => catalog?.live.filter(pack => Date.parse(pack.endsAt) > now) ?? [], [catalog, now]);
   const archive = useMemo(() => catalog ? sortPacks([...catalog.archive, ...catalog.live.filter(pack => Date.parse(pack.endsAt) <= now)]) : [], [catalog, now]);
   const allPacks = useMemo(() => sortPacks([...live, ...archive]), [live, archive]);
-  return <CatalogContext.Provider value={{ catalog, live, archive, allPacks, error, loading, now, refresh: () => setAttempt(value => value + 1) }}>{children}</CatalogContext.Provider>;
+  return <CatalogContext.Provider value={{ catalog, live, archive, allPacks, error, loading, now, refresh: () => refreshRef.current?.() }}>{children}</CatalogContext.Provider>;
 }
 
 export function useCatalog() {
