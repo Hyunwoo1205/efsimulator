@@ -1,5 +1,6 @@
 /** Shared, deterministic validation for every catalog mutation entry point. */
-export const PLAYER_FIELDS = Object.freeze(['id', 'name', 'slug', 'position', 'overallRating', 'playingStyle', 'playingStyleDefensive', 'imageUrl']);
+export const PLAYER_FIELDS = Object.freeze(['id', 'name', 'slug', 'position', 'overallRating', 'playingStyle', 'playingStyleDefensive', 'imageUrl', 'playerType']);
+export const LEGACY_PLAYER_FIELDS = Object.freeze(PLAYER_FIELDS.filter(field => field !== 'playerType'));
 export const RAW_PLAYER_FIELDS = Object.freeze(['id', 'name', 'nameJa', 'nameZh', 'slug', 'nationality', 'nationalityCode', 'team', 'position', 'overallRating', 'playingStyle', 'playingStyleDefensive', 'imageUrl', 'playerType']);
 export const RAW_PACK_FIELDS = Object.freeze(['name', 'slug', 'date', 'playerCount']);
 export const PROCESSED_PACK_FIELDS = Object.freeze(['saleId', 'name', 'slug', 'date', 'playerCount', 'sourceReportedPlayerCount', 'totalPlayerCount', 'standardPlayerCount', 'endsAt', 'officialTitle', 'members', 'countCorrection', 'provenance', 'drawOptions']);
@@ -31,7 +32,10 @@ export function canonical(value) {
   throw new Error('Only finite, defined JSON values are valid catalog data');
 }
 export function assertProcessedPlayer(player) {
-  keys(player, PLAYER_FIELDS, PLAYER_FIELDS, 'processed player eight public');
+  // Legacy immutable publications remain readable while current materialization
+  // always includes the exact source playerType. Unknown positive codes are kept.
+  keys(player, LEGACY_PLAYER_FIELDS, PLAYER_FIELDS, 'processed player public');
+  if (Object.hasOwn(player, 'playerType')) requireValue(Number.isSafeInteger(player.playerType) && player.playerType > 0, 'Invalid processed player type');
   requireValue(decimalId(player.id), 'Player id must remain a decimal string');
   for (const key of ['name', 'slug', 'position', 'imageUrl']) requireValue(text(player[key]), `Invalid processed player ${key}`);
   requireValue(integer(player.overallRating) && player.overallRating <= 200, 'Invalid processed player rating');

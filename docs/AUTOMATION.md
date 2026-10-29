@@ -1,6 +1,6 @@
 # 선수·선수팩 자동 갱신 운영 절차
 
-T036의 공통 실행 계약이다. 예약은 이 문서와 현재 상태 파일을 읽는다. 상품명·수량·일회성 승인·장애 경과는 예약 문구에 복사하지 않는다. 매시간 점검이며 원출처 변경을 즉시 전달하는 webhook은 아니다.
+T036/T041의 공통 실행 계약이다. T041은 원본 타입의 가공/API 전달과 역할별 사이트 접근 정책을 추가한다. 예약은 이 문서와 현재 상태 파일을 읽는다. 상품명·수량·일회성 승인·장애 경과는 예약 문구에 복사하지 않는다. 매시간 점검이며 원출처 변경을 즉시 전달하는 webhook은 아니다.
 
 ## 변경 감지와 안전한 수집
 
@@ -13,17 +13,17 @@ T036의 공통 실행 계약이다. 예약은 이 문서와 현재 상태 파일
 
 최신 GitHub api-server-setup과 데이터 묶음의 RULES/CURRENT·검토 매핑 해시를 검사한 뒤 `services/catalog-api/scripts/lifecycle/run-cycle.mjs`만 실행한다. 보존 HTML/오류 receipt의 재실행 결과를 사용한다. AI가 DB JSON·verified 후보·가짜 HTTP receipt를 작성하지 않는다.
 
-순서는 신규 raw append → 선수/팩 raw 로그 → 공식 상품 한정 가공 선수 8필드와 팩 전체 연결 → 종료 live 전체를 archive로 이동 → 현재 유효 자료 전체 중첩 → 실제 targetFile별 api_updates 로그다. 무삭제·문자열 카드 ID·N/S/A·정확한 회차·원본 보존·검증된 보정·멱등성·불변 세대와 CURRENT 전환을 유지한다. 종료 시각은 출처 장애 중에도 적용한다.
+순서는 신규 raw append → 선수/팩 raw 로그 → 공식 상품 한정 가공 선수9필드(원본 `playerType` 포함)와 팩 전체 연결 → 종료 live 전체를 archive로 이동 → 현재 유효 자료 전체 중첩 → 실제 targetFile별 api_updates 로그다. 무삭제·문자열 카드 ID·N/S/A·정확한 회차·원본 보존·검증된 보정·멱등성·불변 세대와 CURRENT 전환을 유지한다. 종료 시각은 출처 장애 중에도 적용한다.
 
-**현행 자동 처리 범위:** 검토 레지스트리에 등록된 매핑의 정상 추가와 확인된 판매 종료다. 미등록 신규 상품/같은 제목의 새 회차, 특수 ID 누락·인원 불일치, 기존 raw 값 변경은 pending/충돌로 근거를 보존한다. 전체 EFHub 신규 raw 전수 누적이나 기존 raw 개정 자동화를 완료했다고 주장하지 않는다. 이 경우 관련 HTML 근거 수집·완전성 점검까지 하고 필요한 근거/수정 개발을 한 번 보고한다. 완료된 승인과 카드 ID 검증/DB 반영을 구분하며 같은 질문을 반복하지 않는다. 규칙/파서/매핑/타입 표시 메타데이터를 정기 실행 중 임의 수정하지 않는다. 신규 등급 메타데이터가 없는 카드를 Epic으로 추정하지 않는다.
+**현행 자동 처리 범위:** 검토 레지스트리에 등록된 매핑의 정상 추가와 확인된 판매 종료다. 미등록 신규 상품/같은 제목의 새 회차, 특수 ID 누락·인원 불일치, 기존 raw 값 변경은 pending/충돌로 근거를 보존한다. 전체 EFHub 신규 raw 전수 누적이나 기존 raw 개정 자동화를 완료했다고 주장하지 않는다. 이 경우 관련 HTML 근거 수집·완전성 점검까지 하고 필요한 근거/수정 개발을 한 번 보고한다. 완료된 승인과 카드 ID 검증/DB 반영을 구분하며 같은 질문을 반복하지 않는다. 규칙/파서/매핑/타입사전을 정기 실행 중 임의 수정하지 않는다. 신규 가공은 정확한 카드 ID의 raw `playerType`을 양의 안전 정수로 검사하고 가공 선수·목록/상세 API·live/archive 중첩에 그대로 전달한다. 타입 누락/잘못된 입력은 반영을 보류한다. 알려진5(Epic)·8(Show Time)·3(Trend)·6(Highlight)는 공통 소비 코드로 분류하고, 나머지 유효 코드는 원본 그대로 미분류로 보존한다. 예약을 실행하는 에이전트는 새 코드를 실제 발견하면 중복 억제해 한 번 보고한다. 이는 운영 지침이며 알 수 없는 양의 코드만을 위한 cycle 전용 경고/pending 생성기를 구현했다는 뜻이 아니다. 팩 이름·OVR·고정70명 레지스트리로 카드 타입을 추정하지 않는다. 타입 전달/원본 코드 일치 검사도 전량 readback의 일부다.
 
 ## 저장 → 발행 → 소비 사이트 확인
 
 1. 최신 세대·raw/logs/불변 publication을 보존한 깨끗한 source를 기존 검증 압축 도구로 묶는다. SOURCE 밖에 생성하고 최종 exit 0과 gzipComplete/tarComplete/membersMatchSource를 확인한다. 같은 Library ID에 expected_current_version을 지정해 저장하고 정확한 새 버전의 SHA/압축 무결성을 확인한다. 압축본 저장 실패 전에 정상 기준 해시를 앞당기지 않는다.
 2. 실제 변경을 확인하면 첫 저장 전에 작은 모니터에 preparing 의도를 기록한다. 데이터 묶음 저장 후 checkpoint 기록 사이에 중단돼도 다음 실행이 같은 Library ID의 실제 최신 버전·CURRENT를 대조해 이어가도록 기준 bundleVersion/runtime과 목표 세대/receipt를 보존한다. 후속 작업이 중간에 끊겨도 재개되도록 작은 모니터의 `hosting.pipeline`에 runtimeVersion/publicationVersion/bundleVersion과 단계별 상태(bundle/api/sites/github), receipt hash, lastErrorCode를 버전 보호로 먼저 기록한다. GitHub 미완료 시 엄격한 요약 영수증 전체와 SHA도 pipeline.github.record에 보존해 실행 환경이 바뀌어도 동일 기록을 재사용한다. credential·HTML 원문·개별 선수 데이터는 넣지 않는다. `pendingPublication`의 기존 미완료 상태도 계속 읽는다. 단계 완료 뒤 상태를 갱신하고 마지막 정상 기준과 transport*를 보존한다. 미완료 단계가 있으면 전체 완료가 아니다.
-3. 각 Site의 최신 get_site로 사용자 소유·owner-private를 확인한다. 기존 ID와 origin은 `config/catalog-automation.json`을 따른다. 현재 지원되는 서비스 접근을 각 실행마다 얻고 메모리/숨긴 stdin으로만 전달한다. 접근 설정을 바꾸거나 토큰을 생성/회전하지 않는다.
+3. 각 Site의 최신 get_site로 사용자 소유와 역할별 기대 접근 정책을 확인한다. 기존 ID·origin·`expectedAccessMode`는 `config/catalog-automation.json`을 따른다. API와 검토 viewer는 owner-private(소유자만 허용, 다른 편집자/그룹/외부 방문자 없음), 실제 앱은 사용자가 공개를 승인한 public이다. API/admin을 앱과 함께 공개하지 않는다. 현재 지원되는 서비스 접근을 필요한 Site별로 각 실행마다 얻고 메모리/숨긴 stdin으로만 전달한다. 실제 앱의 익명 읽기 검증에는 인증 헤더를 보내지 않는다. 기대 audience와 다르면 발행/사이트 검증을 보류하고 접근 설정·토큰을 자동 생성/회전/변경하지 않는다.
 4. `publish-remote.mjs --root ABSOLUTE_CATALOG_RUNTIME`에 stdin으로 원격 연결 정보를 전달한다. 분할 적재 → 전량 readback/해시 검증 → expected-current CAS 활성화 → health/manifest/선수·팩 전량 재조회를 통과해야 api=verified다. 같은 publication이면 재적재하지 않는다. 충돌/오류 시 정상 활성본을 보존한다.
-5. `verify-sites.mjs`로 API·검토 viewer·실제 eFsimulator의 health/manifest와 players/packs/live/archive를 페이지 끝까지 읽어 같은 버전·전체 내용·참조/분할/인원을 대조한다. 부분 응답·로그인 HTML·다른 버전이면 sites를 pending/failed로 남긴다. API만 성공했다고 실제 사이트 반영 완료로 보고하지 않는다. 데이터 변경에는 소스 재배포가 필요 없다.
+5. `verify-sites.mjs`로 API·검토 viewer·실제 eFsimulator의 health/manifest와 players/packs/live/archive를 페이지 끝까지 읽어 같은 버전·전체 내용·참조/분할/인원·카드 타입을 대조한다. 비공개 API/viewer는 각각의 서비스 접근으로 읽고 공개 실제 앱은 익명 GET으로 같은 데이터를 제공하는지 확인한다. 부분 응답·로그인 HTML·다른 버전이면 sites를 pending/failed로 남긴다. API만 성공했다고 실제 사이트 반영 완료로 보고하지 않는다. 데이터 변경에는 소스 재배포가 필요 없다.
 6. 열린 두 화면은 보이는 탭에서 60초마다 manifest를 비교하고 탭 복귀/온라인 복구 때 확인한다. 버전 변경 때만 목록 전체를 검증해 한 번에 교체한다. 실패하면 마지막 정상 화면을 유지한다. 숨긴 탭·오프라인·브라우저 지연 때문에 정확히 60초 내 반영을 보장하지 않는다.
 
 ## GitHub 갱신 기록과 재개

@@ -26,8 +26,9 @@ function validateInput(input) {
   ensure(keys(input.sites, Object.keys(SITE_ORIGINS)), 'All three site connections are required');
   for (const [name, origin] of Object.entries(SITE_ORIGINS)) {
     const site = input.sites[name];
-    ensure(keys(site, ['origin', 'serviceToken']) && site.origin === origin, 'Site origin is not the exact allowed origin');
-    ensure(typeof site.serviceToken === 'string' && site.serviceToken.length > 0 && site.serviceToken.length <= 32768 && !/[\r\n]/.test(site.serviceToken), 'Invalid site credential');
+    const anonymousApp = name === 'app' && site?.accessMode === 'public';
+    ensure(keys(site, anonymousApp ? ['origin', 'accessMode'] : ['origin', 'serviceToken']) && site.origin === origin, 'Site origin is not the exact allowed origin');
+    if (!anonymousApp) ensure(typeof site.serviceToken === 'string' && site.serviceToken.length > 0 && site.serviceToken.length <= 32768 && !/[\r\n]/.test(site.serviceToken), 'Invalid site credential');
   }
 }
 
@@ -60,7 +61,7 @@ function createReader(site, fetchImpl, timeoutMs) {
     let response;
     try {
       response = await fetchImpl(url.href, { method: 'GET', redirect: 'error', credentials: 'omit',
-        headers: { Accept: 'application/json', 'Cache-Control': 'no-cache', 'OAI-Sites-Authorization': `Bearer ${site.serviceToken}` },
+        headers: { Accept: 'application/json', 'Cache-Control': 'no-cache', ...(site.accessMode === 'public' ? {} : { 'OAI-Sites-Authorization': `Bearer ${site.serviceToken}` }) },
         signal: AbortSignal.timeout(timeoutMs) });
     } catch { throw new Error('Site verification request failed'); }
     ensure(!response.redirected && response.status === 200 && (!response.url || new URL(response.url).origin === site.origin), 'Site verification HTTP response rejected');

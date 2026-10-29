@@ -255,7 +255,7 @@
       "update_when": [
         "사용자 요구·작업 절차·검증 명령·제품 및 운영 원칙 변경"
       ],
-      "reviewed_in": "T040"
+      "reviewed_in": "T041"
     },
     {
       "path": "README.md",
@@ -344,7 +344,7 @@
       "update_when": [
         "자동 갱신 경로·완료 기준·검증·대상 또는 기록 schema 변경 시"
       ],
-      "reviewed_in": "T039"
+      "reviewed_in": "T041"
     },
     {
       "path": "data/catalog.json",
@@ -776,7 +776,7 @@
       "update_when": [
         "자동 갱신 경로·완료 기준·검증·대상 또는 기록 schema 변경 시"
       ],
-      "reviewed_in": "T040"
+      "reviewed_in": "T041"
     },
     {
       "path": "docs/API_SELECTION.md",
@@ -852,7 +852,7 @@
       "update_when": [
         "자동 갱신 경로·완료 기준·검증·대상 또는 기록 schema 변경 시"
       ],
-      "reviewed_in": "T039"
+      "reviewed_in": "T041"
     },
     {
       "path": "docs/CATALOG_DATA_CONTRACT.md",
@@ -866,7 +866,7 @@
       "update_when": [
         "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
       ],
-      "reviewed_in": "T040"
+      "reviewed_in": "T041"
     },
     {
       "path": "docs/CHATGPT_WORK_HANDOFF.md",
@@ -887,7 +887,7 @@
       "update_when": [
         "사용자 범위/입력 상태·원격/로컬 반영·이관/검증 결과·지원 도구/작업 상태 변경"
       ],
-      "reviewed_in": "T040"
+      "reviewed_in": "T041"
     },
     {
       "path": "docs/COLLECTION.md",
@@ -977,7 +977,7 @@
       "update_when": [
         "파일 추가·삭제·이름 변경·역할/의존관계 변경·영향 검토"
       ],
-      "reviewed_in": "T040"
+      "reviewed_in": "T041"
     },
     {
       "path": "docs/FILE_SYNC_AUDIT.md",
@@ -1053,7 +1053,7 @@
       "update_when": [
         "단계 상태·현재/이전/다음 작업·완료 조건·추가 요구 변경"
       ],
-      "reviewed_in": "T040"
+      "reviewed_in": "T041"
     },
     {
       "path": "docs/SIMULATOR_PLAN.md",
@@ -1078,7 +1078,7 @@
       "update_when": [
         "해당 범위/입력/완료조건·관계·권한/운영 근거 변경. reference의 과거 관측값은 덮어쓰지 않음"
       ],
-      "reviewed_in": "T040"
+      "reviewed_in": "T041"
     },
     {
       "path": "docs/WORKPLAN.md",
@@ -1104,7 +1104,7 @@
       "update_when": [
         "매 작업 착수·추가 요구·파일 변경·검증 결과·작업 종료"
       ],
-      "reviewed_in": "T040"
+      "reviewed_in": "T041"
     },
     {
       "path": "docs/reference/ARCHITECTURE_BEFORE_PROBABILITY_SCOPE.md",
@@ -2959,7 +2959,7 @@
       "update_when": [
         "데이터 형식·가공 규칙·HTML 증거·매핑 검토·반복 실행 계약 변경"
       ],
-      "reviewed_in": "T040"
+      "reviewed_in": "T041"
     },
     {
       "path": "services/catalog-api/lib/catalog-lifecycle.mjs",
@@ -2973,7 +2973,7 @@
       "update_when": [
         "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
       ],
-      "reviewed_in": "T040"
+      "reviewed_in": "T041"
     },
     {
       "path": "services/catalog-api/lib/connector-context.ts",
@@ -3171,7 +3171,7 @@
       "update_when": [
         "데이터 형식·가공 규칙·HTML 증거·매핑 검토·반복 실행 계약 변경"
       ],
-      "reviewed_in": "T040"
+      "reviewed_in": "T041"
     },
     {
       "path": "services/catalog-api/postcss.config.mjs",
@@ -3447,7 +3447,7 @@
       "update_when": [
         "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
       ],
-      "reviewed_in": "T040"
+      "reviewed_in": "T041"
     },
     {
       "path": "services/catalog-api/scripts/lifecycle/publish-remote.mjs",
@@ -3522,7 +3522,7 @@
       "update_when": [
         "자동 갱신 경로·완료 기준·검증·대상 또는 기록 schema 변경 시"
       ],
-      "reviewed_in": "T039"
+      "reviewed_in": "T041"
     },
     {
       "path": "services/catalog-api/scripts/lifecycle/workspace.mjs",
@@ -3536,7 +3536,7 @@
       "update_when": [
         "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
       ],
-      "reviewed_in": "T040"
+      "reviewed_in": "T041"
     },
     {
       "path": "services/catalog-api/scripts/npm-install.mjs",
@@ -3687,7 +3687,7 @@
       "update_when": [
         "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
       ],
-      "reviewed_in": "T040"
+      "reviewed_in": "T041"
     },
     {
       "path": "services/catalog-api/tests/catalog-contract.test.mjs",
@@ -3716,7 +3716,7 @@
       "update_when": [
         "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
       ],
-      "reviewed_in": "T027"
+      "reviewed_in": "T041"
     },
     {
       "path": "services/catalog-api/tests/client.test.mjs",
@@ -3880,6 +3880,20 @@
       "reviewed_in": "T039"
     },
     {
+      "path": "services/catalog-api/tests/player-types.test.mjs",
+      "role": "정확한 원본타입 가공·API/중첩·migration·신규수집 회귀",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/lib/catalog-contract.mjs",
+        "services/catalog-api/lib/catalog-lifecycle.mjs",
+        "services/catalog-api/scripts/lifecycle/workspace.mjs"
+      ],
+      "update_when": [
+        "카드타입 계약·등급순서·OVR·팩날짜 정렬 변경"
+      ],
+      "reviewed_in": "T041"
+    },
+    {
       "path": "services/catalog-api/tests/publication-admin.test.mjs",
       "role": "관리 writer 인증·계약·불변 적재·부분 실패·CAS 회귀",
       "priority": "P1",
@@ -3906,7 +3920,7 @@
       "update_when": [
         "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
       ],
-      "reviewed_in": "T024"
+      "reviewed_in": "T041"
     },
     {
       "path": "services/catalog-api/tests/publish-remote.test.mjs",
@@ -3920,7 +3934,7 @@
       "update_when": [
         "원격 publication·인증·조회 앱 동작 또는 공식 Sites 빌드/배포 계약 변경"
       ],
-      "reviewed_in": "T025"
+      "reviewed_in": "T041"
     },
     {
       "path": "services/catalog-api/tests/reviewed-cache.test.mjs",
@@ -3963,7 +3977,7 @@
       "update_when": [
         "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
       ],
-      "reviewed_in": "T027"
+      "reviewed_in": "T041"
     },
     {
       "path": "services/catalog-api/tests/verify-sites.test.mjs",
@@ -3975,7 +3989,7 @@
       "update_when": [
         "자동 갱신 경로·완료 기준·검증·대상 또는 기록 schema 변경 시"
       ],
-      "reviewed_in": "T036"
+      "reviewed_in": "T041"
     },
     {
       "path": "services/catalog-api/tsconfig.json",
@@ -4119,7 +4133,7 @@
       "update_when": [
         "원격 publication·인증·조회 앱 동작 또는 공식 Sites 빌드/배포 계약 변경"
       ],
-      "reviewed_in": "T030"
+      "reviewed_in": "T041"
     },
     {
       "path": "services/catalog-view/app/api/v1/[[...path]]/route.ts",
@@ -4147,7 +4161,7 @@
       "update_when": [
         "원격 publication·인증·조회 앱 동작 또는 공식 Sites 빌드/배포 계약 변경"
       ],
-      "reviewed_in": "T025"
+      "reviewed_in": "T041"
     },
     {
       "path": "services/catalog-view/app/layout.tsx",
@@ -4176,7 +4190,7 @@
       "update_when": [
         "원격 publication·인증·조회 앱 동작 또는 공식 Sites 빌드/배포 계약 변경"
       ],
-      "reviewed_in": "T036"
+      "reviewed_in": "T041"
     },
     {
       "path": "services/catalog-view/cloudflare-env.d.ts",
@@ -4191,6 +4205,19 @@
         "원격 publication·인증·조회 앱 동작 또는 공식 Sites 빌드/배포 계약 변경"
       ],
       "reviewed_in": "T025"
+    },
+    {
+      "path": "services/catalog-view/lib/catalog-order.mjs",
+      "role": "API등급/OVR·팩최신순 공통정렬",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-view/app/page.tsx",
+        "services/catalog-view/lib/pack-preview.mjs"
+      ],
+      "update_when": [
+        "카드타입 계약·등급순서·OVR·팩날짜 정렬 변경"
+      ],
+      "reviewed_in": "T041"
     },
     {
       "path": "services/catalog-view/lib/catalog-refresh.mjs",
@@ -4233,11 +4260,11 @@
       "update_when": [
         "대표 카드 선택 규칙·확인된 카드 등급·표시 metadata 원본/생성·fallback 동작 변경"
       ],
-      "reviewed_in": "T029"
+      "reviewed_in": "T041"
     },
     {
       "path": "services/catalog-view/lib/preview-player-types.json",
-      "role": "현재 승인 가공70카드의 표시 전용 ID→playerType 및 raw/publication/등급표 근거 해시",
+      "role": "과거T029 고정타입표와 검토입력 해시 기록; 현재런타임 미사용",
       "priority": "P1",
       "related_paths": [
         "docs/WORKPLAN.md",
@@ -4248,7 +4275,7 @@
       "update_when": [
         "대표 카드 선택 규칙·확인된 카드 등급·표시 metadata 원본/생성·fallback 동작 변경"
       ],
-      "reviewed_in": "T029",
+      "reviewed_in": "T041",
       "generated_from": "services/catalog-view/scripts/prepare-preview-types.mjs"
     },
     {
@@ -4544,7 +4571,7 @@
       "update_when": [
         "대표 카드 선택 규칙·확인된 카드 등급·표시 metadata 원본/생성·fallback 동작 변경"
       ],
-      "reviewed_in": "T029"
+      "reviewed_in": "T041"
     },
     {
       "path": "services/catalog-view/tsconfig.json",
@@ -4659,7 +4686,7 @@
       "update_when": [
         "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
       ],
-      "reviewed_in": "T038"
+      "reviewed_in": "T041"
     },
     {
       "path": "services/efsimulator-app/app/api/v1/[[...path]]/route.ts",
@@ -4693,7 +4720,7 @@
       "update_when": [
         "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
       ],
-      "reviewed_in": "T040"
+      "reviewed_in": "T041"
     },
     {
       "path": "services/efsimulator-app/app/components/catalog-pages.tsx",
@@ -4711,7 +4738,7 @@
       "update_when": [
         "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
       ],
-      "reviewed_in": "T040"
+      "reviewed_in": "T041"
     },
     {
       "path": "services/efsimulator-app/app/components/catalog-ui.tsx",
@@ -4729,7 +4756,7 @@
       "update_when": [
         "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
       ],
-      "reviewed_in": "T037"
+      "reviewed_in": "T041"
     },
     {
       "path": "services/efsimulator-app/app/globals.css",
@@ -4747,7 +4774,7 @@
       "update_when": [
         "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
       ],
-      "reviewed_in": "T040"
+      "reviewed_in": "T041"
     },
     {
       "path": "services/efsimulator-app/app/layout.tsx",
@@ -4908,7 +4935,7 @@
       "update_when": [
         "팩/선수 표시 정렬·타입/날짜 근거·누락/동률/재수록·원본 무변형 정책 변경"
       ],
-      "reviewed_in": "T038"
+      "reviewed_in": "T041"
     },
     {
       "path": "services/efsimulator-app/lib/catalog-refresh.mjs",
@@ -4966,11 +4993,11 @@
       "update_when": [
         "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
       ],
-      "reviewed_in": "T037"
+      "reviewed_in": "T041"
     },
     {
       "path": "services/efsimulator-app/lib/preview-player-types.json",
-      "role": "재사용한 표시 전용 카드ID→등급 metadata와 입력 해시; 추첨 확률/규칙 근거 아님",
+      "role": "과거T029 고정타입표와 검토입력 해시 기록; 현재런타임 미사용",
       "priority": "P1",
       "related_paths": [
         "services/efsimulator-app/README.md",
@@ -4984,7 +5011,7 @@
       "update_when": [
         "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
       ],
-      "reviewed_in": "T032",
+      "reviewed_in": "T041",
       "generated_from": "services/catalog-view/lib/preview-player-types.json"
     },
     {
@@ -5301,7 +5328,7 @@
       "update_when": [
         "팩/선수 표시 정렬·타입/날짜 근거·누락/동률/재수록·원본 무변형 정책 변경"
       ],
-      "reviewed_in": "T035"
+      "reviewed_in": "T041"
     },
     {
       "path": "services/efsimulator-app/tests/catalog-refresh.test.mjs",
@@ -5357,7 +5384,7 @@
       "update_when": [
         "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
       ],
-      "reviewed_in": "T032"
+      "reviewed_in": "T041"
     },
     {
       "path": "services/efsimulator-app/tests/route-id.test.mjs",

@@ -7,7 +7,7 @@ import { generatePublication, PLAYER_FIELDS } from '../scripts/lifecycle/publica
 import { createDrawOptions } from '../lib/catalog-contract.mjs';
 
 const NOW = '2026-10-27T00:00:00.000Z';
-const player = (id, name) => ({ id, name, slug: `player-${id}`, position: 'CF', overallRating: 85, playingStyle: null, playingStyleDefensive: null, imageUrl: `https://efimg.com/${id}.png` });
+const player = (id, name) => ({ id, name, slug: `player-${id}`, position: 'CF', overallRating: 85, playingStyle: null, playingStyleDefensive: null, imageUrl: `https://efimg.com/${id}.png`, playerType: 5 });
 function state() {
   const players = [player('1', '100% Player'), player('2', "O'Brien"), player('999999999999999999999999999', 'Huge ID Player')];
   const packs = [
@@ -60,7 +60,7 @@ test('missing DB/schema are safe503; empty schema and legacy imports cannot pret
   } finally { f.close(); }
 });
 
-test('processed details are exactly8fields and manifest contains only safe publication metadata', async () => {
+test('processed details are exactly9fields and manifest contains only safe publication metadata', async () => {
   const f = fixture();
   try {
     const body = await (await f.request('/cards/999999999999999999999999999')).json();
@@ -110,12 +110,12 @@ test('live and archive materialize complete nested copies and expire atUTCend ev
   } finally { f.close(); }
 });
 
-test('packcards read the sameversion membership and all8publicplayerfields', async () => {
+test('packcards read the sameversion membership and all9publicplayerfields', async () => {
   const f = fixture();
   try {
     const body = await (await f.request('/packs/sale-1/cards')).json();
     assert.deepEqual(body.data.map(item => item.id), ['1', '2']);
-    assert.ok(body.data.every(item => Object.keys(item).length === 8));
+    assert.ok(body.data.every(item => Object.keys(item).length === PLAYER_FIELDS.length));
     assert.equal(body.meta.special_player_count, 2); assert.equal(body.meta.total_player_count, 150);
     assert.equal((await f.request('/packs/missing/cards')).status, 404);
     assert.equal((await f.request('/packs/sale-1/cards?q=Player')).status, 400);

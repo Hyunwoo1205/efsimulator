@@ -1,4 +1,7 @@
-> T038 설계 반영(미구현): 시뮬레이터에 판매 중/판매 종료 팩 체험 섹션, 가상 코인 사용량 누적, 균등 비복원·수동/전부 소진 리셋을 제공할 계획이다. 현재 API에는 가격/10회 지원 필드가 없다. 실제 게임 영상의 공개 순서와 팩별 옵션을 조사한 뒤 2D를 확정한다. 현재 비활성 SimulatorPage와 종료 차단 문구는 후속 구현의 수정 대상이며 이번에 배포하지 않았다.
+> T041 최신 변경: 고정70명 표시 목록 대신 API의 원본 `playerType`을 사용한다. Epic(5) → Show Time(8) → Trend(3) → Highlight(6) 순서이며 선수는 등급 안 OVR 내림차순, 팩은 등급 안 날짜 최신순이다. 팩 대표 등급 선수의 OVR 상위 최대3명을 미리보기로 표시하고 낮은 등급을 보충하지 않는다. 실제 앱 public 전환은 사용자 승인 범위이며 API/admin·검토 viewer의 owner-private와 서버 전용 인증은 유지한다. 실제 검증/전환 완료 여부는 WORKPLAN을 따른다.
+
+> T040/T041 현황: 판매 중/종료 체험 선택과 API 추첨 옵션·타입 표시를 제공한다. 가격은 근거 확인 전 null이며 실제 추첨 엔진·세션·2D/3D는 후속 T017/T018 범위다.
+
 
 # eFsimulator 실제 앱
 
@@ -16,15 +19,15 @@
 
 브라우저는 같은 origin의 `/api/v1/*`를 호출한다. 서버는 Sites 런타임의 `CATALOG_API_ORIGIN`, secret `CATALOG_API_SERVICE_TOKEN`으로 기존 private API만 호출한다. 사용자 헤더·쿠키, 임의 URL, 관리자 경로·쓰기·리디렉션은 중계하지 않는다. 인증값은 소스·브라우저·로그에 넣지 않는다.
 
-서버/Worker와 검증된 중계는 catalog-view에서 재사용하며 실제 앱 UI·경로는 별도로 구성한다. 선수8필드 API와 누적 원본·규칙 잠금은 유지한다. 목록 조회는 동일 publication만 함께 표시하며 변경 중에는 재조회 안내를 제공한다.
+서버/Worker와 검증된 중계는 catalog-view에서 재사용하며 실제 앱 UI·경로는 별도로 구성한다. 가공 선수는 기존8필드에 정확한 원본 `playerType`을 추가한9필드 API를 소비한다. 과거8필드 발행본 읽기 호환성과 누적 원본·규칙 잠금은 유지한다. 목록 조회는 동일 publication만 함께 표시하며 변경 중에는 재조회 안내를 제공한다.
 
 ## 대표 카드
 
-`lib/pack-preview.mjs`와 표시 전용 등급 metadata는 Epic/Show Time 대표 카드를 최대3장 선택하며 Highlight를 채우지 않는다. 미확인 등급은 기존 순서로 표시한다. 이 metadata는 추첨 규칙/확률 근거가 아니며 신규 등급을 자동 수집하지 않는다. metadata의 새 검증은 monorepo의 기존 catalog-view 개발 도구로 수행한 결과를 별도 개발 검토로 전달한다.
+`lib/pack-preview.mjs`는 API의 카드별 `playerType`과 공통 정렬을 사용해 팩 대표 등급의 OVR 상위 최대3명을 선택한다. Epic/Show Time에 낮은 등급을 채우지 않는다. 신규 카드도 API가 전달한 타입을 사용하며 고정된 과거70명 표시 레지스트리를 운영 기준으로 쓰지 않는다. 미확인/새 코드는 미분류로 보존하고 이름·OVR로 추정하지 않는다. 등급/정렬은 추첨 규칙이나 확률을 바꾸지 않는다.
 
 ## 검사와 배포
 
-`npm test`, `node node_modules/typescript/bin/tsc --noEmit`, Sites 공식 `build-site.mjs`를 사용한다. `.openai/hosting.json`의 실제 project_id를 재사용하고 새 Site를 중복 생성하지 않는다. 현재는 owner-private 검토 배포이며 공개 audience 변경은 별도 범위다. 실제 배포 근거와 다음 작업은 저장소 WORKPLAN·DEPLOYMENT·FILE_SYNC를 따른다.
+`npm test`, `node node_modules/typescript/bin/tsc --noEmit`, Sites 공식 `build-site.mjs`를 사용한다. `.openai/hosting.json`의 실제 project_id를 재사용하고 새 Site를 중복 생성하지 않는다. T041 사용자는 실제 앱의 public 전환을 승인했다. 실제 전환/배포는 해당 native 반환 상태를 확인한 뒤 완료로 기록하며 API/admin·검토 viewer는 계속 owner-private다. 실제 배포 근거와 다음 작업은 저장소 WORKPLAN·DEPLOYMENT·FILE_SYNC를 따른다.
 
 ## 조회 상호작용 (T033)
 
@@ -44,13 +47,11 @@
 적용 범위: 팩 목록 미리보기·펼친 명단·팩 상세·선수 목록/상세·관련 팩·시뮬레이터 선택/명단. 원본 글꼴 출처는 `public/fonts/README.md`를 따른다. API 계약·선수 수치·팩 대표 선수 선택 규칙은 변경하지 않는다.
 
 
-## 목록 정렬 (T035)
+## 목록 정렬 (T041)
 
-공통 `lib/catalog-order.mjs`는 팩과 선수를 Epic·Show Time 통합 그룹 우선, 각 그룹의 팩 날짜 내림차순으로 정렬한다. 선수의 등급은 exact 카드 ID 표시 레지스트리의 5(Epic)/8(Show Time)만 사용하므로 같은 팩의 Highlight 카드를 우선 그룹으로 올리지 않는다. 팩은 기존 공식/원본 제목의 Epic·Show Time 접두어를 사용한다.
+공통 `lib/catalog-order.mjs`가 Epic(5) → Show Time(8) → Trend(3) → Highlight(6) → 미분류 순서를 제공한다. 선수는 정확한 카드 ID의 API `playerType`으로만 등급을 구분하고 같은 등급 안에서 `overallRating` 내림차순으로 정렬한다. 미확인 OVR은 뒤에 두고 동률은 결정적인 문자열 ID 등 키로 고정한다. 팩은 검증된 대표 등급 안에서 유효한 원본 팩 날짜 최신순이며 미확인 날짜는 뒤에 둔다. 팩 제목을 개별 선수 타입으로 전파하지 않는다.
 
-선수별 출시일은 기존 8필드 API/원본에 없으므로 정확한 ID로 연결한 팩의 알려진 날짜를 사용한다. 같은 카드가 여러 팩에 등장하면 확인된 가장 이른 날짜를 유지해 재등장만으로 신규 카드처럼 정렬하지 않는다. 이는 실제 최초 출시일을 검증했다는 뜻이 아니다. 날짜가 없거나 유효하지 않으면 해당 그룹 끝으로, 날짜 동률이면 문자열 ID 순으로 고정한다. 등급 미확인은 기타 그룹이며 이름·OVR·ID 숫자값으로 추정하지 않는다.
-
-검색·판매 상태·포지션 필터는 공통 순서를 유지한다. 팩 안의 명단, 선수 상세의 관련 팩과 시뮬레이터 선택 목록도 동일 기준이다. 종료 전환으로 archive에 합쳐질 때도 다시 정렬한다. 원본 배열·응답·선수 필드·대표 카드 선택 규칙은 변경하지 않는다.
+검색·판매 상태·포지션 필터는 공통 순서를 유지한다. 팩 미리보기·팩 내부 명단·선수 목록/상세의 관련 팩·시뮬레이터 선택/명단도 같은 기준을 사용한다. API 데이터가 갱신되면 타입과 정렬도 새 publication을 기준으로 함께 갱신한다. 기존 카드 표시·원본 배열과 추첨 확률은 보존한다. 이전 T035의 Epic/Show Time 통합 그룹·선수 날짜 정렬은 이 최신 사용자 결정으로 대체된다.
 
 
 ## T017 후속 설계 (T037, 미구현)

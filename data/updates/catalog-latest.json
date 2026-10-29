@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
   "operation": "data_update",
-  "observedAt": "2026-10-29T15:43:59.555Z",
-  "sourceCommit": "99cef8c5c61e9384815ad19b9841620cd9f18eff",
-  "runtimeVersion": "a45604b21c530cc3f198a249d5db1dc98190dc6e38801970388c75b16abc5e46",
-  "publicationVersion": "b19fb27858818fcc1a36e83e8593ca5a6c3fb9a5d3c27cfb4d3a824e44b2d57f",
+  "observedAt": "2026-10-29T16:02:43.681Z",
+  "sourceCommit": "34cadf408aa3590c09e14760ee99f035eda88a4c",
+  "runtimeVersion": "692fadd81facc6dabc24e705d0fcb3392bd7f1c83774745046c61c7d039ebe72",
+  "publicationVersion": "75456924010cf12a58834d5aa2e0da27b7bb2143c200cebd832400ff1ec26ab5",
   "rulesIdentity": {
-    "version": "catalog-rules-1.4.0",
-    "sha256": "022083fd7aeb0ab9aeefd2a477c60f20c21178aedd193860f22f32641cc1317c"
+    "version": "catalog-rules-1.5.0",
+    "sha256": "e1615b82f916cb8aa3e1ce2a4530571418320e5aeec619ab7876c90cbce5f0e3"
   },
   "counts": {
     "rawPlayers": 47501,
@@ -21,15 +21,15 @@
     "rawPlayersAdded": 0,
     "rawPacksAdded": 0,
     "playersAdded": 0,
-    "playersUpdated": 0,
+    "playersUpdated": 163,
     "packsAdded": 0,
-    "packsUpdated": 13,
+    "packsUpdated": 0,
     "archivedPacks": 0,
     "targetFiles": [
       "archive.json",
       "live.json",
       "logs/api_updates.jsonl",
-      "processed/packs.json"
+      "processed/players.json"
     ]
   },
   "phases": {
@@ -39,11 +39,11 @@
     "github": "pending"
   },
   "evidence": {
-    "bundleSha256": "47160c8df784617ff93a8ac60cdd8585cccb380df5bc034a726217c5d7feba5c",
+    "bundleSha256": "00ec45c74cdf11aefe67bf60d04156ce94a17055e0dfd9d19c75d4091a5ef965",
     "sourceReceiptSha256": null,
-    "sitesReceiptSha256": "3f185b8507938350290568b1bcc69c686f7b5fbc2c311e3c03d5f2e9db62e7f6",
+    "sitesReceiptSha256": "bce93c259ad566d5843a4302bbe37b793282b8030807771120e3aa7ab14ed8bd",
     "officialHtmlSha256": null,
     "efhubHtmlSha256": null
   },
-  "runId": "2c53af1f344984d2aaae7995958c12edd12d3ade20c77e8fced82befd6e5dd28"
+  "runId": "9626cf1548a77fe95238761a2d18ec463375e0058b3d9f58742f2c33ab878b30"
 }

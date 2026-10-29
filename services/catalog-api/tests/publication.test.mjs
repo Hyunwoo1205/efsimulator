@@ -61,7 +61,7 @@ test('uploaded content collisions and checksum changes are rejected rather than 
 
 test('publications reject rawfields, brokenreferences, duplicatedpartitions, and incomplete specialcards', () => {
   const withRaw = fixture(); withRaw.players[0].nameJa = '不公開';
-  assert.throws(() => generatePublication({ state: withRaw }), /eight/);
+  assert.throws(() => generatePublication({ state: withRaw }), /processed player/);
   const orphan = fixture(); orphan.packs[0].members[0].id = '123';
   assert.throws(() => generatePublication({ state: orphan }), /processed player/);
   const duplicate = fixture(); duplicate.archive.push(structuredClone(duplicate.active[0]));

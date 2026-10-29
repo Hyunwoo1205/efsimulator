@@ -27,7 +27,7 @@ function fixture() {
 }
 const ingest = values => reconcileCatalog(values ?? fixture());
 
-test('player projection has exactly the requested eight fields and keeps string precision', () => {
+test('player projection has exactly the typed public fields and keeps string precision', () => {
   const player = projectPlayer(card('999999999999999999999999999999', { playingStyle: 'Goal Poacher' }));
   assert.deepEqual(Object.keys(player), PLAYER_FIELDS);
   assert.equal(player.id, '999999999999999999999999999999');

@@ -1,3 +1,17 @@
+# 현재 추가 인수인계 — T041 타입·정렬·실제 앱 공개, 2026-10-30 KST
+
+현재T041은 사용자 요청에 따라 정확한 원본 `playerType`을9번째 가공 선수 필드로 전달하고, 고정70명 표시 목록에 없는 신규 카드도 같은 API 타입을 소비하도록 보완하는 작업이다. Epic5 → Show Time8 → Trend3 → Highlight6, 같은 등급 선수는 OVR 내림차순·팩은 최신 날짜순이다. 미리보기는 팩 대표 등급의 OVR 상위 최대3명이며 WPOTY의 Epic3명은 Harry Kane·Lamine Yamal·Kylian Mbappé다. 팩 이름·OVR로 개별 선수 타입을 추정하지 않는다. 미확인 숫자 코드는 그대로 미분류로 보존한다. 새 코드의 한 번 보고는 예약 운영 지침이며 cycle 전용 새 코드 경고 생성기는 구현하지 않았다.
+
+과거8필드 불변 발행본은 읽기 호환성을 유지하고 현행 세대는 exactraw ID 대조·명시migration·규칙채택으로 새로 만든다. raw·팩/회차/명단·drawOptions·archive전이·기존 카드표시는 보존한다. 신규 가공/자동화는 raw타입 검사→가공 선수·live/archive 중첩→API 전량readback→사이트 소비까지 같은 값을 전달해야 한다. 이전 T035의 Epic/Show Time 통합/선수 날짜 정렬과70명 정적 레지스트리는 최신 정책이 아니다.
+
+사용자는 실제 eFsimulator 앱 Site의 공개를 승인했다. API/admin과 검토 catalog-view는 owner-private를 유지하고 실제 앱만 public으로 전환한다. 자동화는 config의 역할별 `expectedAccessMode`를 읽어 private API/viewer의 서비스 접근과 공개 앱의 익명 GET을 구분한다. 정기 실행 중 audience·파서·규칙·타입사전을 임의 변경하는 금지는 유지한다. 공개 승인 자체를 public배포/익명조회 성공으로 기록하지 않는다.
+
+관측:163명은7Epic/11Show Time/44Trend/101Highlight, WPOTY는Kane88·Yamal88·Mbappé87의3Epic과8Highlight로원본대조했다. 고정70명표시레지스트리의신규누락이원인이며동적API타입소비로수정했다. 전체476회귀·세서비스TypeScript/공식Worker빌드와API/앱/viewer의private배포는성공했다. 새runtime은 `692fadd81facc6dabc24e705d0fcb3392bd7f1c83774745046c61c7d039ebe72`, publication은 `75456924010cf12a58834d5aa2e0da27b7bb2143c200cebd832400ff1ec26ab5`다. 묶음v19저장후정확한저장본을재다운로드해SHA256 `00ec45c74cdf11aefe67bf60d04156ce94a17055e0dfd9d19c75d4091a5ef965`·gzip/tar완전성을확인했고위publication의원격적재/전체readback/CAS활성화가verified다.
+
+기존예약의실제update는같은hourly/활성상태로성공했고9필드타입전달/역할별audience정책이저장됐다. 새지침의실제다음예약실행은미관찰이다. 실제앱은nativeaccessrevision2에서public으로전환됐고API/viewer는revision1의소유자전용비공개를유지했다.2026-10-29T16:10:34.952Z세사이트전량publication/타입일치와공개앱익명GET을확인했다. 공개브라우저에서WPOTY대표Kane/Yamal/Mbappé·3Epic뒤8Highlight의등급/OVR명단·전체7Epic뒤ShowTime/OVR순을확인했다. API source78d13f2967c7b58b9c62a7fdc4f40889cf13e890/deployappgdep_6ae36ec1f93081918b29f56f0b170b7c,viewer source13f479382eaa8b9de6d7748d67573e199726dd34/deployappgdep_6ae36f00e308819199ac06dfbb01350c는succeeded다. 관찰된배지간격의작은CSS보완·최종앱공개재배포와GitHub/실제CI는진행중이며데이터는바꾸지않는다. 포인터는이전T040/현재T041/다음T018이며T017추첨엔진·세션·결과·2D는후속범위다. 아래T040/이전snapshot의8필드·비공개앱·통합정렬은당시이력으로보존한다. 최종근거와미완료단계는WORKPLAN을따른다.
+
+---
+
 # 현재 추가 인수인계 — T040 추첨 옵션의 가공 API 반영, 2026-10-30 KST
 
 사용자가 전체 11명 팩은 단일만, 11명 초과는 단일·10회이며 이 구분을 가공 선수팩과 실제 사이트용 API에 넣도록 명시했다. 이번 T040은 그 계약·가공·조회/사이트 소비·기존 세대 migration/발행과 저장/배포·원격 전달 검증을 완료했다. T038 당시의 앱 규칙 레지스트리 전용 제안과 API 옵션 필드 부재 설명은 이 최신 지시로 대체된다. raw4필드·선수8필드·같은 saleId/명단·기존 비공개 audience를 유지한다.

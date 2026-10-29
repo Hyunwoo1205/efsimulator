@@ -130,6 +130,6 @@ test('redirects, non-JSON sign-in responses, and transport errors are refused wi
 test('malformed local publication cannot create any remote records', async t => {
   const f = fixture(t), bad = publication();
   bad.records[0].payload.privateRaw = { secret: true };
-  await assert.rejects(publishRemote({ ...f.options, publication: bad }), /eight/);
+  await assert.rejects(publishRemote({ ...f.options, publication: bad }), /processed player/);
   assert.equal(f.calls.length, 0);
 });

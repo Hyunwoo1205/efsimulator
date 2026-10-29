@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
-  "version": "catalog-rules-1.4.0",
-  "reviewId": "T040-user-confirmed-draw-options-total-count",
+  "version": "catalog-rules-1.5.0",
+  "reviewId": "T041-exact-player-types-for-dynamic-grade-order",
   "files": [
     {
       "path": "lib/catalog-contract.mjs",
-      "sha256": "e91bdc2a00e83e059c2fb605d58dbb6bce82ac8e69e84ed4ed478b0e748ef35e"
+      "sha256": "9f71a5738ed054709bbb2fbf88de31fadb0c5b622005ea7c5277997c17784dfe"
     },
     {
       "path": "lib/catalog-lifecycle.mjs",
-      "sha256": "8ac1844616967114ee488c61810fd022c1c472f0672e325365ce5a59f6cbac39"
+      "sha256": "cec98daa8fb2138bece06c47f0ad5b8c1ea407bf0654a3565a1bd0d3b0db13d1"
     },
     {
       "path": "lib/catalog-api.mjs",
@@ -33,7 +33,7 @@
     },
     {
       "path": "scripts/lifecycle/workspace.mjs",
-      "sha256": "a9fb7a017b322bb7ecb193d36ab6a9f5727d1f88d4d357619a4af35da9ba0e87"
+      "sha256": "fd1c282ceca4ea67328e171d0658b29a979f205b1aa826fa8d3214f05b8a23da"
     },
     {
       "path": "scripts/lifecycle/run-cycle.mjs",
@@ -41,7 +41,7 @@
     },
     {
       "path": "scripts/lifecycle/publication.mjs",
-      "sha256": "1681d71ff624497e3595af3f0496b811deaa4c202e8ca6dbe40098f87bf92fcd"
+      "sha256": "608c48224a41d6b42d8caf13302a71d54cd4013e66eb74fb7ec5be39ce304857"
     },
     {
       "path": "scripts/lifecycle/reviewed-cache.mjs",

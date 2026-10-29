@@ -1,53 +1,66 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { selectPackPreview } from '../lib/pack-preview.mjs';
+import { sortPlayers, sortPacks, orderCatalog, playerGrade } from '../lib/catalog-order.mjs';
 import metadata from '../lib/preview-player-types.json' with { type: 'json' };
 import { buildPreviewTypes } from '../scripts/prepare-preview-types.mjs';
 
-const player = (id, name = 'Unchanged player', overallRating = 99) => ({ id, name, overallRating });
+const player = (id, playerType, overallRating = 99, name = id) => ({ id, playerType, overallRating, name });
 const ids = players => players.map(value => value.id);
 
-test('Magical Dribblers preview chooses the three actual Show Time cards after Highlight cards', () => {
-  const pack = { officialTitle: 'Show Time: Magical Dribblers', players: [
-    player('105896176839655', 'Rafa Silva'), player('105896176881795', 'Ulisses Garcia'), player('105896176886332', 'Kingsley Ehizibue'),
-    player('106800804376628', 'Raphinha'), player('106800804393500', 'Jeremy Doku'), player('106800804418912', 'Desire Doue'),
+test('new API cards outside the historical registry are selected by exact source type and OVR', () => {
+  const pack = { officialTitle: 'Show Time: Newly published', players: [
+    player('new-highlight', 6, 110), player('new-show-low', 8, 90),
+    player('new-show-best', 8, 99), player('new-show-next', 8, 98), player('new-show-fourth', 8, 95),
   ] };
-  const preview = selectPackPreview(pack);
-  assert.deepEqual(preview.map(value => value.name), ['Raphinha', 'Jeremy Doku', 'Desire Doue']);
-  assert.ok(preview.every(value => metadata.playerTypes[value.id] === 8));
-  assert.deepEqual(selectPackPreview({ ...pack, officialTitle: '', name: 'Showtime: Magical Dribblers' }), preview);
+  const before = structuredClone(pack);
+  assert.deepEqual(ids(selectPackPreview(pack)), ['new-show-best', 'new-show-next', 'new-show-fourth']);
+  assert.deepEqual(pack, before);
 });
 
-test('Italian League Attackers preview chooses all three actual Epic cards in source order', () => {
-  const pack = { officialTitle: 'Epic: Italian League Attackers', name: "Italian League Selection Attackers 26 Oct '26", players: [
-    player('105896445274201', 'Domenico Berardi'), player('105896445333214', 'Nikola Vlasic'), player('105896445333407', 'Willem Geubbels'),
-    player('88046292831684', 'Filippo Inzaghi'), player('88046292831703', 'Nakata Hidetoshi'), player('88046292831719', 'Roberto Baggio'),
-  ] };
-  assert.deepEqual(ids(selectPackPreview(pack)), ['88046292831684', '88046292831703', '88046292831719']);
+test('WPOTY previews Kane, Yamal and Mbappe in OVR order while every Highlight stays below Epic', () => {
+  const players = [
+    player('105879802349991', 6, 86, 'Erling Haaland'),
+    player('105879802223959', 6, 84, 'Lionel Messi'),
+    player('88047366549630', 5, 87, 'Kylian Mbappe'),
+    player('88047366601026', 5, 88, 'Lamine Yamal'),
+    player('88046024308919', 5, 88, 'Harry Kane'),
+  ];
+  const pack = { officialTitle: 'Epic: World Player of the Year 2026', players };
+  assert.deepEqual(selectPackPreview(pack).map(p => p.name), ['Harry Kane', 'Lamine Yamal', 'Kylian Mbappe']);
+  assert.deepEqual(sortPlayers(players).map(p => p.playerType), [5, 5, 5, 6, 6]);
 });
 
-test('Quaresma preview shows its single Epic without filling two places with Highlight cards', () => {
+test('a single Epic is never padded with higher-OVR Highlight cards', () => {
   const pack = { officialTitle: 'Epic: Ricardo Quaresma', players: [
-    player('105899934993248', 'Rigoberto Rivas'), player('105899934997085', 'David Bates'), player('105899935007795', 'Kerem Demirbay'), player('88045487395246', 'Ricardo Quaresma'),
+    player('highlight1', 6, 120), player('highlight2', 6, 119), player('epic', 5, 88),
   ] };
-  assert.deepEqual(ids(selectPackPreview(pack)), ['88045487395246']);
+  assert.deepEqual(ids(selectPackPreview(pack)), ['epic']);
 });
 
-test('ordinary packs and target packs without known matching grade preserve the first three', () => {
-  const players = [player('105899934993248'), player('105899934997085'), player('105899935007795'), player('88045487395246')];
-  assert.deepEqual(selectPackPreview({ officialTitle: 'League Selection: Worldwide', players }), players.slice(0, 3));
-  assert.deepEqual(selectPackPreview({ officialTitle: 'Show Time: Unrecognized cards', players }), players.slice(0, 3));
-  const unknown = [player('999', 'Epic star', 110), player('998', 'Show Time star', 1), player('997'), player('996')];
-  assert.deepEqual(selectPackPreview({ officialTitle: 'Epic: Unknown', players: unknown }), unknown.slice(0, 3));
+test('source grade precedes rating and known cards precede missing or future taxonomy', () => {
+  const players = [player('future', 99, 150), player('highlight', 6, 120), player('trend', 3, 100),
+    player('show', 8, 90), player('epic-low', 5, 80), player('epic-high', 5, 99), { id: 'missing', overallRating: 160 }];
+  assert.deepEqual(ids(sortPlayers(players)), ['epic-high', 'epic-low', 'show', 'trend', 'highlight', 'missing', 'future']);
+  assert.equal(playerGrade({ id: 'unregistered', playerType: 99 }).label, '등급 미확인');
+  assert.equal(playerGrade({ id: 'epic-name', name: 'Epic star', overallRating: 110 }).rank, 4);
 });
 
-test('selection uses exact string card IDs, preserves order and ignores names and OVR', () => {
-  const players = [player('a', 'Epic label', 110), player('b', 'Ordinary name', 1), player('c'), player('d'), player('e')];
-  const registry = { playerTypes: { a: 6, b: 5, c: 5, d: 5, e: 5 } };
-  const before = structuredClone(players);
-  assert.deepEqual(ids(selectPackPreview({ name: 'Epic: Any release', players }, registry)), ['b', 'c', 'd']);
-  assert.deepEqual(players, before);
-  assert.deepEqual(selectPackPreview({ officialTitle: 'Show Time: No inferred grade', players }, registry), players.slice(0, 3));
+test('pack class follows actual card types, then date descending; unknown types are not promoted by titles', () => {
+  const pack = (saleId, date, type, officialTitle = '') => ({ saleId, date, officialTitle, players: [player(saleId, type)] });
+  const packs = [pack('new-highlight', '2026-12-01', 6), pack('old-epic', '2026-10-01', 5),
+    pack('new-epic', '2026-10-29', 5), pack('show', '2026-11-01', 8), pack('trend', '2026-11-02', 3),
+    pack('unknown', '2026-12-02', 99, 'Epic: Unverified')];
+  assert.deepEqual(sortPacks(packs).map(p => p.saleId), ['new-epic', 'old-epic', 'show', 'trend', 'new-highlight', 'unknown']);
+});
+
+test('catalog ordering reaches player tab and nested rosters without mutating the snapshot', () => {
+  const players = [player('highlight', 6, 120), player('epic-low', 5, 80), player('epic-high', 5, 99)];
+  const catalog = { live: [{ saleId: 'mixed', date: '2026-10-29', players }], archive: [], players };
+  const before = structuredClone(catalog); const result = orderCatalog(catalog);
+  assert.deepEqual(ids(result.players), ['epic-high', 'epic-low', 'highlight']);
+  assert.deepEqual(ids(result.live[0].players), ids(result.players));
+  assert.deepEqual(catalog, before);
 });
 
 test('display registry contains only approved card IDs/types and exact input provenance', () => {

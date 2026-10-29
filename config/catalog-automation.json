@@ -8,8 +8,20 @@
   "monitorLibraryFileId": "libfile_e698576906b48191a8d8c0a3c2e631ae",
   "catalogLibraryFileId": "libfile_c2f287178cd08191ba0888019e56ee5d",
   "sites": {
-    "api": { "projectId": "appgprj_6ae0d51638b481918f7767684a3cf38b", "origin": "https://efsimulator-catalog-api.hyunw09.chatgpt.site" },
-    "viewer": { "projectId": "appgprj_6ae0d64b624c8191b6266b96d48111f3", "origin": "https://efsimulator-catalog.hyunw09.chatgpt.site" },
-    "app": { "projectId": "appgprj_6ae13ac0e9d88191978e6953f7286966", "origin": "https://efsimulator.hyunw09.chatgpt.site" }
+    "api": {
+      "projectId": "appgprj_6ae0d51638b481918f7767684a3cf38b",
+      "origin": "https://efsimulator-catalog-api.hyunw09.chatgpt.site",
+      "expectedAccessMode": "owner-private"
+    },
+    "viewer": {
+      "projectId": "appgprj_6ae0d64b624c8191b6266b96d48111f3",
+      "origin": "https://efsimulator-catalog.hyunw09.chatgpt.site",
+      "expectedAccessMode": "owner-private"
+    },
+    "app": {
+      "projectId": "appgprj_6ae13ac0e9d88191978e6953f7286966",
+      "origin": "https://efsimulator.hyunw09.chatgpt.site",
+      "expectedAccessMode": "public"
+    }
   }
 }

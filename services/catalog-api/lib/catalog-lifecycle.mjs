@@ -2,7 +2,7 @@
  * Pure application catalogue reconciliation. Raw JSON is never queried by the
  * HTTP API: it is input to this materialization step only.
  */
-import { PLAYER_FIELDS, PROCESSED_PACK_FIELDS, createDrawOptions, assertRawPlayer, assertRawPack, assertProcessedPack, assertApiUpdateLog, assertRawUpdateLog, canonical as canonicalJson, compareText } from './catalog-contract.mjs';
+import { PLAYER_FIELDS, PROCESSED_PACK_FIELDS, createDrawOptions, assertProcessedPlayer, assertRawPlayer, assertRawPack, assertProcessedPack, assertApiUpdateLog, assertRawUpdateLog, canonical as canonicalJson, compareText } from './catalog-contract.mjs';
 export { PLAYER_FIELDS } from './catalog-contract.mjs';
 export const CATALOG_FILES = Object.freeze({ players: 'processed/players.json', packs: 'processed/packs.json', active: 'live.json', archive: 'archive.json' });
 const own = (value, key) => Object.prototype.hasOwnProperty.call(value, key);
@@ -39,6 +39,7 @@ export function projectPlayer(raw) {
   if (!object(raw) || typeof raw.id !== 'string' || !/^\d+$/.test(raw.id)) fail('Player id must remain a decimal string');
   for (const field of ['name', 'slug', 'position', 'imageUrl']) if (!nonempty(raw[field])) fail(`Player ${raw.id} lacks ${field}`);
   if (!integer(raw.overallRating) || raw.overallRating > 200) fail(`Invalid player rating: ${raw.id}`);
+  if (!Number.isSafeInteger(raw.playerType) || raw.playerType <= 0) fail(`Invalid player type: ${raw.id}`);
   let image;
   try { image = new URL(raw.imageUrl); } catch { fail(`Invalid player image: ${raw.id}`); }
   if (image.protocol !== 'https:') fail(`Player image must use HTTPS: ${raw.id}`);
@@ -123,8 +124,7 @@ export function validateLifecycleState(state) {
   const archive = indexUnique(state.archive, 'saleId', 'archive packs');
   const referenced = new Set();
   for (const [id, player] of players) {
-    if (!same(Object.keys(player).sort(), [...PLAYER_FIELDS].sort())) fail(`Unexpected processed player fields: ${id}`);
-    if (!same(projectPlayer(player), player)) fail(`Invalid processed player: ${id}`);
+    assertProcessedPlayer(player);
   }
   for (const [id, pack] of packs) {
     assertProcessedPack(pack);
@@ -179,6 +179,30 @@ export function enrichPackDrawOptions(state, now) {
   const changes = [];
   for (const key of ['packs', 'active', 'archive']) {
     const change = fileChange(state[key], next[key], 'saleId', CATALOG_FILES[key], at, null, []);
+    if (change) { changes.push(change); next.updates.push(change); }
+  }
+  const invariants = validateLifecycleState(next);
+  return { state: next, changes, invariants, changed: changes.length > 0 };
+}
+
+/** Add only exact source card types; no name, pack grade or OVR inference. */
+export function enrichPlayerTypes(state, rawPlayers, now) {
+  validateLifecycleState(state);
+  if (!timestamp(now)) fail('Invalid player-type migration clock');
+  const raw = indexUnique(rawPlayers, 'id', 'raw players');
+  const next = copy(state);
+  next.players = next.players.map(player => {
+    const source = raw.get(player.id);
+    if (!source) fail(`Player-type source is missing: ${player.id}`);
+    const projected = projectPlayer(source);
+    if (own(player, 'playerType') && player.playerType !== projected.playerType) fail(`Existing player type conflicts with source: ${player.id}`);
+    return { ...player, playerType: projected.playerType };
+  });
+  const players = new Map(next.players.map(player => [player.id, player]));
+  for (const key of ['active', 'archive']) next[key] = next[key].map(pack => ({ ...pack, players: pack.members.map(member => copy(players.get(member.id))) }));
+  const changes = [];
+  for (const key of ['players', 'active', 'archive']) {
+    const change = fileChange(state[key], next[key], key === 'players' ? 'id' : 'saleId', CATALOG_FILES[key], new Date(now).toISOString(), null, []);
     if (change) { changes.push(change); next.updates.push(change); }
   }
   const invariants = validateLifecycleState(next);

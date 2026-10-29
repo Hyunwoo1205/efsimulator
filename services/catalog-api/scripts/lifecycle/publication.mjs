@@ -2,7 +2,7 @@ import { createHash } from 'node:crypto';
 import { assertProcessedPack, assertProcessedPlayer, PROCESSED_PACK_FIELDS, canonical, compareText } from '../../lib/catalog-contract.mjs';
 export { canonical } from '../../lib/catalog-contract.mjs';
 
-export const PLAYER_FIELDS = ['id', 'name', 'slug', 'position', 'overallRating', 'playingStyle', 'playingStyleDefensive', 'imageUrl'];
+export { PLAYER_FIELDS } from '../../lib/catalog-contract.mjs';
 const KINDS = ['player', 'pack', 'live', 'archive'];
 const hash = value => createHash('sha256').update(value).digest('hex');
 const literal = value => `'${String(value).replaceAll("'", "''")}'`;
@@ -27,7 +27,6 @@ export function assertPublicationState(state) {
   const archive = uniqueMap(state.archive, 'saleId', 'archive');
   for (const player of players.values()) {
     requireValue(/^\d+$/.test(player.id), 'Player IDs must remain decimal strings');
-    requireValue(Object.keys(player).sort().join(',') === [...PLAYER_FIELDS].sort().join(','), 'Processed players must contain exactly the eight public fields');
     assertProcessedPlayer(player);
   }
   requireValue(live.size + archive.size === packs.size, 'Live and archive must partition processed packs');

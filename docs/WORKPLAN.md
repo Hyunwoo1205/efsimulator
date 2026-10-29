@@ -1,4 +1,4 @@
-<!-- project-state: {"stage":"R6","previous":"T040","current":"T017","next":"T018"} -->
+<!-- project-state: {"stage":"R6","previous":"T040","current":"T041","next":"T018"} -->
 
 # efsimulator 작업 계획과 이력
 
@@ -6,17 +6,17 @@
 
 ## 현재 작업과 매 작업 갱신
 
-- 이전 작업: T040 — 추첨옵션13팩 가공/API·사이트 전달과migration·v18저장·발행/배포·세사이트/13팩상세·GitHub원격359파일·실제CI3건 검증 완료.
-- 현재 작업: T017 — 전달된 API drawOptions와 사용자 비복원/리셋 정책을 소비하는 추첨 엔진·저장·개봉 화면/2D 구현. 팩별 가격/할인·보장조건과 영상공개흐름 조사는 별도 미완료다.
-- 다음 작업: T018 — T017의 API 옵션 소비·추첨 엔진/저장/화면·2D를 먼저 마친 뒤3D·모바일 성능·실패 fallback.
+- 이전 작업: T040 — 추첨옵션13팩 가공/API·앱전달·저장/발행·원격/CI 검증 완료.
+- 현재 작업: T041 — 카드 타입9번째필드·자동갱신 전달·등급/OVR 정렬·WPOTY미리보기 수정과 실제 앱 공개 전환, 구현/검증 진행 중.
+- 다음 작업: T018 — T017 추첨 엔진·저장·2D를 먼저 마친 뒤3D·모바일 성능·실패 fallback.
 - 최근 유지보수: T039 — 신규6팩·93명과 원본 누적·가공·판매 상태를 갱신했다. 현재 가공163명/13팩·판매중9/종료4이며 저장본/API/세 사이트/구현 커밋·실제CI 검증을 완료했다. 제품 T017/T018 범위와 T038 미확인 항목은 보존한다.
-- 현재 조건: T035의 모든 실제 앱 목록은 Epic/Show Time 한 우선 그룹과 유효 팩 날짜 내림차순을 공유한다. 선수는 최초 확인 연결팩 날짜를 표시용으로 사용하며 실제 최초 출시일로 주장하지 않는다.402전체/28앱 회귀·타입/Worker build·실제 snapshot production 정렬/필터/명단·같은 private 배포를 확인했다. API8필드·raw/규칙/자동화·기존viewer/Pages·audience와 T034 카드 표시는 보존했다.
+- 현재 조건: T041이 T035의 Epic/Show Time 통합·선수 날짜 정렬을 대체한다. Epic5→Show Time8→Trend3→Highlight6, 선수는 등급 안 OVR 내림차순·팩은 날짜 최신순이다. exact raw 타입을 API에 전달하며 원본·팩 구성/추첨옵션·카드 표시를 보존한다. 실제 앱만 public, API/admin·viewer는 owner-private를 유지하고 실제 검증 범위만 완료로 기록한다.
 
 매 작업 시작 시 Git 상태·이전 결과·이번/다음 작업·선행 조건을 확인한다. FILE_SYNC의 P0→P1→P2로 관련 파일을 검토하되 필요한 파일은 등급과 무관하게 함께 수정한다. 추가 요구는 ID·영향 단계·선행 조건·순서·상태를 기록한다. 파일별 수정/변경불필요/미해결과 근거, 경로 추가/삭제/이름 변경·참조를 같은 작업에서 갱신한다. 검증과 이전/현재/다음 포인터를 맞추며 구현/수집/발행 완료는 실제 근거가 있을 때만 표시한다.
 
 ## 최신 추가 조건과 이전 조건의 적용
 
-C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_BEFORE_PROBABILITY_SCOPE.md)에 보존한다. 관리 최신화·ID/근거·실패 보존·접근 거부 우회 금지·무료 우선·운영 승인 분리 원칙은 계속 적용한다. 범위 결정은 날짜별 이력이며 현재 범위·완료 정책은 최신 C077와 C071~C075의 사용자 결정을 T037/C070 제안보다 우선하고 C069/T036의 자동 갱신 절차를 적용하며 API 완료/정상 반영 정책 C063~C064를 유지한다. 전체 수집과 사이트 범위를 혼동하지 않는다.
+C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_BEFORE_PROBABILITY_SCOPE.md)에 보존한다. 관리 최신화·ID/근거·실패 보존·접근 거부 우회 금지·무료 우선·운영 승인 분리 원칙은 계속 적용한다. 범위 결정은 날짜별 이력이며 현재 범위·완료 정책은 최신 C078·C077와 C071~C075의 사용자 결정을 T037/C070 제안보다 우선하고 C069/T036의 자동 갱신 절차를 적용하며 API 완료/정상 반영 정책 C063~C064를 유지한다. 전체 수집과 사이트 범위를 혼동하지 않는다.
 
 | 조건 ID | 최신 결정 | 영향 단계 / 선행 조건 / 처리 순서 | 상태 |
 | --- | --- | --- | --- |
@@ -66,6 +66,7 @@ C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_B
 | C075 | 10회 지원 팩도 잔여1~9명이면10회 버튼 잠금·단일 소진 확정 | T038/T017-A→B/C/D; 현재회차10명이상에서 정확히10회, 묶음축소/회차이월 금지, 단일 가격은 별도검증 | 사용자 정책 확정·설계 반영, 구현/배포 미수행 |
 | C070 | T017을 어떤 방식으로 설계·구현할지 구체적인 계획 작성 요청 | T037 계획만 작성 → T017-A 규칙/신선도·세션 계약 → B 엔진/C 저장/D 화면/E 2D/F 검토 배포 → T018. 기존 API·운영 데이터·예약·사이트 배포 변경 없음 | 계획 작성·관련 문서/파일 목록 갱신. 실제 추첨 기능은 미구현 |
 
+| C078 | 카드 타입 exactraw→가공선수9번째필드/API·중첩·자동갱신 전달, Epic→Show Time→Trend→Highlight·선수OVR/팩최신순·대표등급상위3미리보기; 실제 앱 공개 승인 | T041/R6. 원본타입/WPOTY대조→명시migration/규칙채택→데이터/API·표시/자동화검사→앱배포/public→익명조회·원격/CI; API/admin/viewer는비공개 | 구현·검증 진행 중; 새출처 수집/공개·CI 완료를 선행 주장하지 않음 |
 | C077 | 전체11명 팩은1회만, 전체11명초과는1회·10회; 가공 선수팩과 실제 사이트용 API에 반영 | T040/T017-A. 공식 totalPlayerCount 기준→사용자 근거 drawOptions/가격null→기존세대 migration/규칙채택→저장/API/세 사이트/기록/GitHub·CI 검증 | 완료: 가공/API·앱소비·migration·v18저장·발행/배포·세사이트/13팩상세·원격359파일일치·실제CI3건성공. 엔진·2D/3D는 후속 |
 | C076 | 미완료된 데이터 업데이트를 지금 진행하도록 요청 | T039/R5. 정상 수동 브라우저 DOM의 공식9상품과 EFHub6신규팩·93특수ID 검토 → 파서/receipt 회귀·규칙 명시채택 → 고정 수집/가공 → 동일 묶음 저장·API/사이트·GitHub/CI | 완료: 6팩93명 추가·461회귀·v17 저장본·API/세 사이트 전량 검증·원격13파일 일치·실제CI2건 성공 |
 
@@ -2018,3 +2019,82 @@ API는 소스 `930dee21bc64cc446a40ec88d8f932a2ea76b2ad`/배포 `appgdep_6ae369d
 | `services/efsimulator-app/app/globals.css` | 수정 | 옵션메타·별도 선택영역 반응형스타일 |
 | `services/efsimulator-app/lib/draw-options.mjs` | 수정 | API권위·미확인처리·비용표시·잔여guard |
 | `services/efsimulator-app/tests/draw-options.test.mjs` | 수정 | API옵션·가격null·잔여경계 회귀 |
+
+
+## T041 — 카드 타입 전달·등급/OVR 정렬·실제 앱 공개
+
+- 단계: R6
+- 상태: 진행 중
+- 이전: T040
+- 다음: T018
+
+### 목표·선행 조건·순서
+
+2026-10-30 KST 사용자는 Epic → Show Time → Trend → Highlight의 분리된 우선순위, 같은 등급 선수의 OVR 내림차순·팩의 최신 날짜순, WPOTY Epic3명(Harry Kane·Lamine Yamal·Kylian Mbappé)의 대표 미리보기·명단 순서와 원본 타입 분류 확인, 자동화에서도 타입 분류·전달, 실제 사이트 공개를 요청했다(C078). T035의 통합 그룹/선수 날짜 정렬과 고정70명 표시 레지스트리를 운영 타입 기준으로 쓰던 방식을 대체한다.
+
+타입은 정확한 카드 ID에 연결된 원본 `playerType`을9번째 가공 선수 필드로 전달한다. 신규 가공은 누락/잘못된 타입을 보류하고 알려지지 않은 유효 숫자는 원본 그대로 미분류로 보존한다. 이름·팩 포함·OVR로 카드 타입을 추정하지 않는다. 과거8필드 불변 발행본은 읽기 호환성을 유지하며, 현재 세대는 명시 검토·규칙 채택·expected CURRENT migration으로 processed/players와 중첩/live/archive·대상 로그를 갱신한다. raw·팩 회차/명단·drawOptions·판매 상태·archive 전이를 보존한다.
+
+공통 표시 순서는5 Epic→8 Show Time→3 Trend→6 Highlight→미분류다. 선수는 등급 안 OVR 내림차순·동률 결정적 키, 팩은 대표 등급 안 유효 날짜 최신순이다. 대표 미리보기는 해당 등급의 OVR 상위 최대3명만 선택하며 낮은 등급을 보충하지 않는다. 모든 검색/필터·팩 명단·상세·시뮬레이터가 같은 기준을 사용하고 추첨 확률을 바꾸지 않는다.
+
+공개 대상은 실제 앱 Site 하나다. API/admin과 catalog-view는 소유자 전용 비공개를 유지한다. 기존 자동화의 모든 Site owner-private 검사·선수8필드 설명은 역할별 기대 audience와9필드 전달로 보완한다. 실제 앱은 익명 GET으로 같은 publication/전체 데이터·타입을 읽는지 확인하며 공개를 쓰기 권한으로 해석하지 않는다. 예약에서 audience·파서/규칙·타입사전을 임의 변경하는 금지는 유지한다.
+
+처리 순서는 원본/타입근거·현재세대 점검→API 가공/명시migration·자동화 검증→앱 공통정렬/미리보기→회귀/관리·규칙채택/저장→원격발행·사이트배포/public→익명/전체 readback·브라우저QA→같은브랜치 정상반영·원격/실제CI다. T017 엔진·저장·2D/3D 구현은 이번 범위가 아니다.
+
+### 검증·진행 상태
+
+원인을 확인했다. 고정70명 표시 레지스트리가 이후 추가된 카드에 적용되지 않았으며 원본163명 타입 자체는7Epic/11Show Time/44Trend/101Highlight로 대조됐다. WPOTY는 Harry Kane(OVR88)·Lamine Yamal(88)·Kylian Mbappé(87)의3Epic과 나머지8Highlight이며 원본 코드와 일치한다. 이름·팩명·높은OVR로 타입을 만들어내지 않았다. 가공 API9필드와 앱/viewer의 동적 타입 소비·등급/OVR 정렬·미리보기 경로로 수정했다.
+
+전체476테스트, API/앱/viewer TypeScript 검사와 세 서비스의 공식 Worker 빌드가 통과했다. API/실제 앱/검토 viewer의 private 배포는 모두 succeeded다. 새 runtime은 `692fadd81facc6dabc24e705d0fcb3392bd7f1c83774745046c61c7d039ebe72`, publication은 `75456924010cf12a58834d5aa2e0da27b7bb2143c200cebd832400ff1ec26ab5`다. 새 데이터 묶음 v19 저장을 완료했고 정확한 저장본을 다시 내려받아 SHA256 `00ec45c74cdf11aefe67bf60d04156ce94a17055e0dfd9d19c75d4091a5ef965`·gzip/tar 완전성을 검증했다. 해당 publication은 원격 적재·전체 readback/해시·expected-current CAS 활성화로 verified를 확인했다.
+
+기존 예약의 실제 update는 성공했고 같은 hourly 일정·활성 상태를 유지했다. 저장된 지침은9필드 타입 전달·역할별 audience·공개 앱 익명 조회를 우선한다. 변경 지침의 다음 실제 예약 실행은 아직 관찰하지 않았다. 유효한 새 숫자 타입의 미분류 보존은 구현됐고 새 코드 한 번 보고는 예약 운영 지침이다. 해당 코드만을 위한 cycle 전용 경고/pending 생성기를 이번에 구현했다고 주장하지 않는다.
+
+API source `78d13f2967c7b58b9c62a7fdc4f40889cf13e890`/배포 `appgdep_6ae36ec1f93081918b29f56f0b170b7c`, viewer source `13f479382eaa8b9de6d7748d67573e199726dd34`/배포 `appgdep_6ae36f00e308819199ac06dfbb01350c`가 succeeded다. 실제 앱은 native access revision2에서 public으로 전환됐고 API/viewer는 revision1의 소유자 전용 비공개를 유지했다. 2026-10-29T16:10:34.952Z 세 사이트의 전체 컬렉션·타입·publication 일치를 검증했으며 실제 앱은 인증 헤더 없는 익명 GET으로 조회했다.
+
+공개 앱 브라우저에서 로그인 없이 팩 목록을 열어 WPOTY 미리보기 Kane/Yamal/Mbappé를 시각 확인했다. 펼친 명단은3Epic 뒤8Highlight로, 각 등급 안 OVR 순서이며 전체 선수 목록도7Epic 뒤Show Time과 OVR순으로 확인했다. 타입 배지 간격이 좁은 표시를 관찰해 작은 CSS padding/gap 보완을 진행하고 있으며 이 마지막 앱 빌드·공개 재배포는 아직 대기다. 데이터 세대는 변경하지 않는다. GitHub/실제CI 최종 확인도 진행 중이다. T017 추첨 엔진·저장·2D/3D는 이번 완료 범위가 아니다.
+
+### 파일 최신화 검토
+
+| 파일 | 결과 | 근거 |
+| --- | --- | --- |
+| `AGENTS.md` | 수정 | 최신 타입9필드·정렬·원본권위·역할별 audience 승인 범위 |
+| `docs/CATALOG_DATA_CONTRACT.md` | 수정 | 타입/legacy호환·새가공/중첩·migration/로그·분류/정렬 계약 |
+| `docs/AUTOMATION.md` | 수정 | 정기 exactraw타입전달·미분류 보존과 private API/viewer·public 앱 검증 절차 |
+| `config/catalog-automation.json` | 수정 | Site별 expectedAccessMode·기존 ID/origin 유지 |
+| `docs/WORKPLAN.md` | 수정 | T041/C078 요구·선행조건·현재포인터·실제 검증 대기·파일검토 |
+| `docs/ROADMAP.md` | 수정 | 최신 타입/정렬/공개 요청과 다음 T017/T018 경계 |
+| `docs/CHATGPT_WORK_HANDOFF.md` | 수정 | 현재 구현·검증 대기와 과거8필드/70명 레지스트리 이력 구분 |
+| `services/efsimulator-app/README.md` | 수정 | API타입 소비·정렬/미리보기·공개 앱/비공개 upstream 경계 |
+| `services/catalog-api/lib/catalog-contract.mjs` | 수정 | 가공선수9필드·숫자타입 엄격검사·과거8필드 읽기호환 |
+| `services/catalog-api/lib/catalog-lifecycle.mjs` | 수정 | exactraw타입 투영·중첩/player유지·명시 보강과 변경로그 |
+| `services/catalog-api/scripts/lifecycle/workspace.mjs` | 수정 | expected CURRENT 타입migration·raw/팩/전이 보존 |
+| `services/catalog-api/scripts/lifecycle/verify-sites.mjs` | 수정 | private API/viewer 서비스접근과public앱 익명 전량대조 |
+| `services/catalog-api/policy/rules.lock.json` | 수정 | 타입계약 검토버전/해시·명시채택 |
+| `services/catalog-api/tests/player-types.test.mjs` | 수정 | 원본타입·legacy·migration보존/멱등·API9필드 회귀 |
+| `services/catalog-api/tests/catalog-lifecycle.test.mjs` | 수정 | 9필드 신규투영·기존가공 회귀 |
+| `services/catalog-api/tests/publication.test.mjs` | 수정 | 타입포함 publication검증·기존세대 호환 |
+| `services/catalog-api/tests/publish-remote.test.mjs` | 수정 | 원격발행9필드 내용/해시 검증 회귀 |
+| `services/catalog-api/tests/run-cycle.test.mjs` | 수정 | 신규 수집/가공 타입전달 경로 회귀 |
+| `services/catalog-api/tests/verify-sites.test.mjs` | 수정 | 공개앱 무인증·비공개 서비스인증·타입 정합회귀 |
+| `services/efsimulator-app/lib/catalog-order.mjs` | 수정 | API 타입별4그룹·선수OVR/팩최신순·안정동률 |
+| `services/efsimulator-app/lib/pack-preview.mjs` | 수정 | 대표등급 OVR상위최대3·낮은등급 보충방지 |
+| `services/efsimulator-app/app/components/catalog-data.tsx` | 수정 | 선수playerType형식·기존발행본 소비호환 |
+| `services/efsimulator-app/app/components/catalog-pages.tsx` | 수정 | 공통정렬·분류/정렬 안내·목록/명단/시뮬레이터 연결 |
+| `services/efsimulator-app/app/components/catalog-ui.tsx` | 수정 | 카드 타입구분 표시·기존OVR/이름그림 보존 |
+| `services/efsimulator-app/app/globals.css` | 수정 | 타입표시·반응형 스타일 |
+| `services/efsimulator-app/tests/catalog-order.test.mjs` | 수정 | 4등급·OVR·unknown·팩날짜·검색공통 회귀 |
+| `services/efsimulator-app/tests/pack-preview.test.mjs` | 수정 | 동적API타입·WPOTY3Epic·최대3/보충금지 회귀 |
+| `services/catalog-view/README.md` | 수정 | 현재동적API소비와역사70명레지스트리 구분 |
+| `services/catalog-view/lib/catalog-order.mjs` | 수정 | 검토viewer 공통등급/OVR/팩최신순 소비 |
+| `services/catalog-view/lib/pack-preview.mjs` | 수정 | viewer 대표카드 exactAPI타입·OVR선택 |
+| `services/catalog-view/app/page.tsx` | 수정 | 9필드타입 소비·정렬/미리보기 표시 |
+| `services/catalog-view/app/globals.css` | 수정 | viewer 타입 표시스타일 |
+| `services/catalog-view/tests/pack-preview.test.mjs` | 수정 | viewer 동적유형/대표선택 회귀 |
+| `data/updates/catalog-latest.json` | 수정 | 타입 보강 데이터세대의비민감변경·발행/검증단계요약 |
+| `docs/FILE_SYNC.json` | 수정 | 타입/정렬관련신규파일·연관경로·T041검토등록 |
+| `services/catalog-view/lib/preview-player-types.json` | 검토 결과 변경 불필요 | 과거70명표시근거자료로보존하며현행동적타입소비의운영원본으로쓰지않음 |
+| `services/efsimulator-app/lib/preview-player-types.json` | 검토 결과 변경 불필요 | 과거70명표시근거자료로보존하며현행동적타입소비의운영원본으로쓰지않음 |
+| `services/catalog-api/scripts/lifecycle/publication.mjs` | 수정 | 기존8필드·새9필드 선수의 가공/중첩 일치 검증·불변발행본 호환 |
+| `services/catalog-api/tests/catalog-api.test.mjs` | 수정 | 이전8필드 호환 fixture와 현행 타입 포함API 검증 |
+| `docs/SIMULATOR_PLAN.md` | 수정 | 현행선수9필드·공개앱검증과이전8필드/로그인한계 이력 구분 |
+
+최종 실제 앱 공개 배포: 소스 `6df0d766927d75deb9e9a36691a6f92c7d0dcfde`, 배포 `appgdep_6ae37090b5c48191be652d6bb5fba3e5`. 등급 배지의 간격·테두리를 공개 화면에서 확인했다. 데이터 publication은 그대로이며 원격 소스 반영과 CI를 마무리한다.

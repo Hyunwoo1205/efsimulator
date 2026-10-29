@@ -91,8 +91,9 @@ test('HTML check → original raw append → immutable workspace → SQLite publ
   assert.deepEqual(loaded.rawPacks, [f.baselinePack, originalPack]);
   assert.deepEqual(JSON.parse(await readFile(join(f.initial.versionPath, 'raw/players_raw.json'), 'utf8')), [f.baselinePlayer], 'Previous raw generation remains immutable');
   assert.equal(loaded.state.players.length, 1, 'Raw population is not the API population');
-  assert.deepEqual(Object.keys(loaded.state.players[0]), ['id', 'name', 'slug', 'position', 'overallRating', 'playingStyle', 'playingStyleDefensive', 'imageUrl']);
+  assert.deepEqual(Object.keys(loaded.state.players[0]), ['id', 'name', 'slug', 'position', 'overallRating', 'playingStyle', 'playingStyleDefensive', 'imageUrl', 'playerType']);
   assert.equal(loaded.state.players[0].playingStyleDefensive, null);
+  assert.equal(loaded.state.players[0].playerType, originalPlayer.playerType, 'routine materialization retains the exact source type');
   assert.equal(loaded.state.active.length, 1); assert.equal(loaded.state.archive.length, 0);
   assert.deepEqual(loaded.state.active[0].players, loaded.state.players);
   const rawPlayerLog = await jsonLines(join(loaded.versionPath, 'logs/players_raw_updates.jsonl'));
@@ -109,8 +110,10 @@ test('HTML check → original raw append → immutable workspace → SQLite publ
   assert.equal(health.data.ready, true); assert.equal(health.data.raw_in_runtime, false);
   const players = await apiGet(db, 'players', NOW, queries);
   assert.deepEqual(players.data, loaded.state.players);
+  assert.equal(players.data[0].playerType, originalPlayer.playerType);
   const live = await apiGet(db, 'live', NOW, queries);
   assert.deepEqual(live.data, loaded.state.active);
+  assert.equal(live.data[0].players[0].playerType, originalPlayer.playerType);
   assert.equal(live.data[0].totalPlayerCount, 150); assert.equal(live.data[0].playerCount, 1);
   assert.deepEqual(live.data[0].members, [{ id: ID, name: originalPlayer.name }]);
   assert.deepEqual((await apiGet(db, 'packs/new-pack/cards', NOW, queries)).data, loaded.state.players);

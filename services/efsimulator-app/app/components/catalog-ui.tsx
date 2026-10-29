@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { playerGrade } from "../../lib/catalog-order.mjs";
 import { selectPackPreview } from "../../lib/pack-preview.mjs";
 import { dateOnly, dateTime, packPath, packTitle, playerPath, useCatalog, type Pack, type Player } from "./catalog-data";
 
@@ -64,7 +65,7 @@ export function Portrait({ player, small = false, featured = false }: { player: 
 }
 
 export function PlayerCard({ player }: { player: Player }) {
-  return <article className="player-tile"><a className="player-tile-link" href={playerPath(player.id)}><Portrait player={player} /><div className="player-content"><div className="player-topline"><span className="position">{player.position ?? "포지션 미확인"}</span><span className="rating"><span>OVR</span> {player.overallRating ?? "—"}</span></div><h3>{player.name}</h3><p className="play-style">{player.playingStyle ?? player.playingStyleDefensive ?? "스타일 미확인"}</p><span className="detail-link-label">선수 살펴보기 <span aria-hidden="true">↗</span></span></div></a></article>;
+  return <article className="player-tile"><a className="player-tile-link" href={playerPath(player.id)}><Portrait player={player} /><div className="player-content"><div className="player-topline"><span className="position">{player.position ?? "포지션 미확인"}</span><span className="player-grade">{playerGrade(player).label}</span><span className="rating"><span>OVR</span> {player.overallRating ?? "—"}</span></div><h3>{player.name}</h3><p className="play-style">{player.playingStyle ?? player.playingStyleDefensive ?? "스타일 미확인"}</p><span className="detail-link-label">선수 살펴보기 <span aria-hidden="true">↗</span></span></div></a></article>;
 }
 
 export function PackArtwork({ pack }: { pack: Pack }) {

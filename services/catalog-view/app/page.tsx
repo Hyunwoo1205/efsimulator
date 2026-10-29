@@ -2,9 +2,10 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { selectPackPreview } from "../lib/pack-preview.mjs";
+import { orderCatalog, playerGrade } from "../lib/catalog-order.mjs";
 import { createCatalogRefresh, projectCatalogSales } from "../lib/catalog-refresh.mjs";
 
-type Player = { id: string; name: string; slug: string; position: string | null; overallRating: number | null; playingStyle: string | null; playingStyleDefensive: string | null; imageUrl: string | null };
+type Player = { playerType?: number; id: string; name: string; slug: string; position: string | null; overallRating: number | null; playingStyle: string | null; playingStyleDefensive: string | null; imageUrl: string | null };
 type Pack = { saleId: string; name: string; officialTitle: string; playerCount: number; totalPlayerCount: number; standardPlayerCount: number; date: string | null; endsAt: string; players: Player[] };
 type Manifest = { version_id: string; created_at: string | null };
 type Catalog = { manifest: Manifest; live: Pack[]; archive: Pack[]; players: Player[] };
@@ -40,7 +41,7 @@ function PlayerTile({ player, small = false }: { player: Player; small?: boolean
   return <article className={small ? "player-tile compact" : "player-tile"}>
     <Portrait player={player} small={small} />
     <div className="player-content"><div className="player-topline"><span className="position">{player.position ?? "포지션 미확인"}</span><span className="rating"><span>OVR</span> {player.overallRating ?? "—"}</span></div>
-      <h3>{player.name}</h3><p className="play-style">{player.playingStyle ?? player.playingStyleDefensive ?? "플레이 스타일 미확인"}</p><span className="card-id">{player.id}</span>
+      <h3>{player.name}</h3><span className="card-grade">{playerGrade(player).label}</span><p className="play-style">{player.playingStyle ?? player.playingStyleDefensive ?? "플레이 스타일 미확인"}</p><span className="card-id">{player.id}</span>
     </div>
   </article>;
 }
@@ -66,7 +67,7 @@ export default function Home() {
     return () => { refreshRef.current = null; updater.dispose(); };
   }, []);
   const refresh = () => refreshRef.current?.();
-  const catalog = useMemo(() => projectCatalogSales(snapshot, now) as Catalog | null, [snapshot, now]);
+  const catalog = useMemo(() => { const projected = projectCatalogSales(snapshot, now); return projected ? orderCatalog(projected) as Catalog : null; }, [snapshot, now]);
 
   const packs = catalog ? (tab === "archive" ? catalog.archive : catalog.live) : [];
   const normalized = normalize(query.trim());
@@ -91,7 +92,7 @@ export default function Home() {
 
         {error && catalog && <div className="state-panel" role="status"><h3>새 자료를 확인하지 못했습니다.</h3><p>{error} 마지막으로 확인한 자료를 표시합니다.</p><button className="primary-button" onClick={refresh}>다시 불러오기</button></div>}
         {error && !catalog ? <div className="state-panel" role="alert"><span className="state-icon">!</span><h3>잠시 연결을 확인해 주세요.</h3><p>{error}</p><button className="primary-button" onClick={refresh}>다시 불러오기</button></div> : !catalog ? <div className="state-panel loading" role="status"><div className="loading-bar" /><h3>선수와 명단을 불러오고 있어요.</h3><p>검증된 데이터에 연결하고 있습니다.</p></div> : <div id="catalog-results" role="tabpanel" aria-labelledby={`tab-${tab}`}>
-          <div className="results-summary"><p>{query.trim() ? `“${query.trim()}” 검색 결과` : tabLabels[tab]}<strong>{total}건</strong></p><span>{tab === "players" ? "카드마다 고유 ID로 구분합니다." : "전체 인원과 특수 선수 수를 함께 표시합니다."}</span></div>
+          <div className="results-summary"><p>{query.trim() ? `“${query.trim()}” 검색 결과` : tabLabels[tab]}<strong>{total}건</strong></p><span>{tab === "players" ? "Epic → Show Time → Trend → Highlight · 같은 등급은 OVR 순" : "Epic → Show Time → Trend → Highlight · 같은 등급은 최신순"}</span></div>
           {total === 0 ? <div className="state-panel empty"><span className="eyebrow">NO COLLECTIONS</span><h3>{query.trim() ? "일치하는 자료가 없습니다." : tab === "archive" ? "아직 종료된 명단이 없습니다." : "현재 표시할 자료가 없습니다."}</h3><p>{query.trim() ? "다른 이름이나 카드 ID로 검색해 보세요." : "확인한 자료가 추가되면 이곳에 표시됩니다."}</p></div> : tab === "players" ? <div className="players-grid">{matchingPlayers.map(player => <PlayerTile key={player.id} player={player} />)}</div> : <>
             <div className="packs-grid">{matchingPacks.map((pack, index) => <article className={selected === pack.saleId ? "pack-tile selected" : "pack-tile"} key={pack.saleId}>
               <div className="pack-art"><span className="pack-number">{String(index + 1).padStart(2, "0")}</span><span className="pack-status">{tab === "live" ? "판매 중" : "판매 종료"}</span><div className="pack-lineup" aria-hidden="true">{selectPackPreview(pack).map(player => <Portrait player={player} small key={player.id} />)}</div><span className="pack-art-label">PLAYER COLLECTION</span></div>

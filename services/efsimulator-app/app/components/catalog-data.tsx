@@ -4,7 +4,7 @@ import { createContext, useContext, useEffect, useMemo, useRef, useState } from 
 import { orderCatalog, sortPacks } from "../../lib/catalog-order.mjs";
 import { createCatalogRefresh } from "../../lib/catalog-refresh.mjs";
 
-export type Player = { id: string; name: string; slug: string; position: string | null; overallRating: number | null; playingStyle: string | null; playingStyleDefensive: string | null; imageUrl: string | null };
+export type Player = { id: string; name: string; slug: string; position: string | null; overallRating: number | null; playingStyle: string | null; playingStyleDefensive: string | null; imageUrl: string | null; playerType?: number };
 export type DrawOptions = { single: { supported: boolean; count: 1; coinCost: number | null }; ten: { supported: boolean; count: 10; coinCost: number | null; minimumRemaining: 10 }; provenance: { authority: string; reference: string; rule: string } };
 export type Pack = { saleId: string; name: string; officialTitle: string; playerCount: number; totalPlayerCount: number; standardPlayerCount: number; date: string | null; endsAt: string; players: Player[]; drawOptions?: DrawOptions };
 type Manifest = { version_id: string; created_at: string | null };
@@ -25,13 +25,13 @@ async function read(path: string, signal: AbortSignal): Promise<ApiBody> {
 
 function validateCatalog(catalog: Catalog) {
   const { live, archive, players } = catalog;
-  const playerIds = new Set<string>(); const packIds = new Set<string>();
+  const playerIds = new Set<string>(); const packIds = new Set<string>(); const playerTypes = new Map<string, number | undefined>();
   for (const player of players) {
-    if (typeof player?.id !== "string" || typeof player.name !== "string" || playerIds.has(player.id)) throw new Error("선수 자료를 확인할 수 없습니다. 다시 불러와 주세요.");
-    playerIds.add(player.id);
+    if (typeof player?.id !== "string" || typeof player.name !== "string" || playerIds.has(player.id) || (player.playerType !== undefined && (!Number.isSafeInteger(player.playerType) || player.playerType < 1))) throw new Error("선수 자료를 확인할 수 없습니다. 다시 불러와 주세요.");
+    playerIds.add(player.id); playerTypes.set(player.id, player.playerType);
   }
   for (const pack of [...live, ...archive]) {
-    if (typeof pack?.saleId !== "string" || packIds.has(pack.saleId) || !Array.isArray(pack.players) || !Number.isFinite(Date.parse(pack.endsAt)) || !Number.isSafeInteger(pack.totalPlayerCount) || !Number.isSafeInteger(pack.playerCount) || pack.standardPlayerCount !== pack.totalPlayerCount - pack.playerCount || pack.standardPlayerCount < 0 || pack.players.length !== pack.playerCount || pack.players.some(player => !playerIds.has(player.id))) throw new Error("선수팩 구성을 확인할 수 없습니다. 새로고침해 주세요.");
+    if (typeof pack?.saleId !== "string" || packIds.has(pack.saleId) || !Array.isArray(pack.players) || !Number.isFinite(Date.parse(pack.endsAt)) || !Number.isSafeInteger(pack.totalPlayerCount) || !Number.isSafeInteger(pack.playerCount) || pack.standardPlayerCount !== pack.totalPlayerCount - pack.playerCount || pack.standardPlayerCount < 0 || pack.players.length !== pack.playerCount || pack.players.some(player => !playerIds.has(player.id) || player.playerType !== playerTypes.get(player.id))) throw new Error("선수팩 구성을 확인할 수 없습니다. 새로고침해 주세요.");
     packIds.add(pack.saleId);
   }
 }

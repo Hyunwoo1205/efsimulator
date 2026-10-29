@@ -1,3 +1,5 @@
+> T041 최신 계약: 가공 선수에 원본의 정확한 숫자 `playerType`을9번째 필드로 전달한다. 신규 가공·선수 목록/상세·live/archive 중첩이 같은 타입을 제공하며 고정70명 표시 목록을 타입의 운영 원본으로 쓰지 않는다. 알려진 타입의 정렬은 Epic(5) → Show Time(8) → Trend(3) → Highlight(6), 선수는 등급 안 OVR 내림차순·팩은 등급 안 날짜 최신순이다. 미확인 코드는 원본 그대로 미분류로 보존한다. T024/T040의 선수8필드 제한은 이 최신 사용자 지시로 확장된다. 실제 앱만 공개하며 API·관리 경로와 검토 viewer는 비공개를 유지한다.
+
 > T040 최신 계약: 가공 팩과 live/archive·자체 API에 사용자 확인 근거의 `drawOptions`를 추가한다. 전체 11명 팩은 단일만, 전체 11명 초과는 단일·10회다. 가격은 미확인 null로 별도 관리한다. raw4필드·선수8필드는 유지한다. live/archive는 실제 판매 구분이며 검증된 종료 팩 체험은 별도 섹션에서 제공하는 소비자 정책이다. 아래 T024/T038의 당시 13필드·앱 레지스트리 전용 설명보다 이 최신 계약을 우선한다. [시뮬레이터 계획](SIMULATOR_PLAN.md).
 
 # 수집 원본과 자체 API 데이터 계약
@@ -22,11 +24,21 @@
 
 ## 선수와 팩
 
-가공 선수의 필드는 정확히 `id`, `name`, `slug`, `position`, `overallRating`, `playingStyle`, `playingStyleDefensive`, `imageUrl`이다. 일본어/중국어 이름·국적·팀·종류·팩 역참조는 넣지 않는다. 없는 선택 필드는 null이며 원본 ID는 문자열을 유지한다. OVR의 레벨/부스터 조건은 이 계약에서 새로 추정하지 않는다.
+가공 선수의 현행 필드는 `id`, `name`, `slug`, `position`, `overallRating`, `playingStyle`, `playingStyleDefensive`, `imageUrl`, `playerType`의9개다. `playerType`은 정확한 원본 카드 ID에 연결된 양의 안전 정수 코드를 그대로 복사한다. 일본어/중국어 이름·국적·팀·팩 역참조는 넣지 않는다. 없는 선택 필드는 null이며 원본 ID는 문자열을 유지한다. OVR의 레벨/부스터 조건은 이 계약에서 새로 추정하지 않는다.
 
 팩은 원본 이름·slug·date 외에 `saleId`, `officialTitle`, `playerCount`, `sourceReportedPlayerCount`, `totalPlayerCount`, `standardPlayerCount`, `endsAt`, `members:[{id,name}]`, `countCorrection`, `provenance`, `drawOptions`를 포함한다. `date`는 EFHub의 원본 날짜이며 판매 시작일로 해석하지 않는다. `saleId`는 검증한 상품 회차의 내부 식별자다. 같은 제목의 재판매는 자동으로 같은 회차로 합치지 않는다.
 
 `playerCount`는 검증한 특수 인원, `sourceReportedPlayerCount`는 원본 표시값이다. 2026-10-26 Italian League Attackers는 원본 8과 사용자 확인 11을 모두 보존한다. 원본 파일을 11로 고치거나 카드 세 장을 버리지 않는다. 공식 전체 N과 검증한 전체 특수 S가 같은 회차에서 확인되어야 `standardPlayerCount=N−S`를 계산한다. 특수 명단 부족·중복·음수이면 새 상품 발행을 보류한다. 일반 선수의 실명/ID가 확보되지 않았다면 가짜 선수 레코드를 만들지 않는다. 중첩 `players`는 확인된 특수 카드 전체이며 N명 전원의 실명 명단이라는 뜻이 아니다.
+
+### T041 카드 타입과 표시 순서
+
+신규 가공은 raw의 정확한 카드 ID와 `playerType`을 검사·복사한다. 타입 누락·문자열/실수·0/음수는 신규 반영을 거부하고 기존 정상 자료를 유지한다. 기존 유효 숫자 코드가 알려진 분류표 밖이면 값을 보존하며 Epic/Show Time/Trend/Highlight로 추정하지 않는다. 새 미분류 코드의 중복 억제 보고는 예약 운영 지침이다. 알려지지 않은 양의 코드만을 위한 cycle 전용 경고/pending 생성기는 구현하지 않았으며, 타입 누락/잘못된 형식과 기존 raw 값 충돌은 실제 기존 검증/보류 경로를 따른다. 정기 실행 중 타입사전·규칙 잠금을 임의로 수정하지 않는다.
+
+알려진 타입은5 Epic,8 Show Time,3 Trend,6 Highlight 순으로 배치한다. 선수의2차 키는 표시 `overallRating` 내림차순이며 미확인 OVR은 뒤에 둔다. 같은 등급·OVR의 순서는 결정적인 문자열 ID 등 타이브레이커를 사용한다. 팩의 대표 등급은 검증된 카드 타입/명시 상품 분류를 바탕으로 결정하고 같은 등급 팩의2차 키는 유효한 원본 `date` 내림차순이다. 팩 등급을 개별 선수 등급으로 전파하지 않는다.
+
+대표 미리보기는 팩 대표 등급의 선수 중 OVR 상위 최대3명만 선택하고 낮은 등급을 보충하지 않는다. 동일한 분류·정렬을 검색/필터·팩 내부 명단·상세·관련 팩·시뮬레이터에 적용한다. 이 순서는 표시용이며 추첨 확률을 바꾸지 않는다.
+
+과거 불변8필드 발행본은 읽을 수 있게 유지한다. 현행 세대 보강은 규칙 검토·채택 뒤 `workspace.mjs migrate-player-types --root <작업공간> --expected-version <현재해시> --now <UTC>`로 정확한raw ID를 대조해 수행한다. raw 원문·팩 구성·drawOptions·판매 상태·archive 전이 메타를 보존하고 processed/players·중첩/live/archive와 대상별 변경 로그만 갱신한다. API 발행·전체 중첩 대조·사이트 소비·원격/CI까지 검증한 결과만 완료로 기록한다.
 
 ### T040 추첨 옵션
 
@@ -44,14 +56,14 @@
 
 `processed/packs.json`, `live.json`, `archive.json`, API 팩 목록/상세와 두 소비 사이트의 중계가 동일한 값을 유지한다. 신규 팩과 종료 전이도 같은 가공 함수를 사용한다. 10회 지원과 현재 잔여 수량은 별개이며 사용자가 정한 C075에 따라 잔여 1~9명은 10회 버튼을 비활성화한다. 기존 저장 세대는 명시 검토한 migration으로 메타데이터와 변경 로그를 추가하며 raw·특수 명단·과거 결과를 수정하지 않는다. 기존 필드 없는 불변 세대는 그대로 읽을 수 있게 호환성을 유지하며, 규칙 채택 뒤 `node services/catalog-api/scripts/lifecycle/workspace.mjs migrate-draw-options --root <작업공간> --expected-version <현재해시> --now <UTC>`로 processed/live/archive와 대상별 변경 로그에만 새 필드를 추가한다. 기존 raw·가공 선수 바이트는 유지한다. 전체 데이터 보존·규칙 채택·새 발행·API/소비 사이트 전량 대조 전에는 운영 반영 완료라고 하지 않는다.
 
-`live.json`의 항목은 팩의 모든 필드와 `players:[{위 8개 선수 필드}]`를 포함한다. `archive.json`도 동일한 내용을 보존하고 `archivedAt`, `archiveReason`을 더한다. 공유 카드는 여러 팩 안에 등장할 수 있다.
+`live.json`의 항목은 팩의 모든 필드와 `players:[{위 9개 선수 필드}]`를 포함한다. `archive.json`도 동일한 내용을 보존하고 `archivedAt`, `archiveReason`을 더한다. 공유 카드는 여러 팩 안에 등장할 수 있다.
 
 ```json
 {
   "saleId": "검증한-팩-slug::회차",
   "slug": "검증한-팩-slug",
   "members": [{"id": "문자열 카드 ID", "name": "선수 이름"}],
-  "players": [{"id": "문자열 카드 ID", "name": "선수 이름", "slug": "선수-slug", "position": "CF", "overallRating": 85, "playingStyle": null, "playingStyleDefensive": null, "imageUrl": "https://example.invalid/card.png"}]
+  "players": [{"id": "문자열 카드 ID", "name": "선수 이름", "slug": "선수-slug", "position": "CF", "overallRating": 85, "playingStyle": null, "playingStyleDefensive": null, "imageUrl": "https://example.invalid/card.png", "playerType": 5}]
 }
 ```
 
@@ -73,7 +85,7 @@
 
 - live와 archive의 `saleId`는 서로 겹치지 않으며 합집합이 가공 팩 전체와 같다.
 - live와 archive 안의 선수 ID 합집합을 중복 제거하면 가공 선수 전체와 같다. 단순 배열 길이 합계는 공유 카드 때문에 다를 수 있다.
-- 모든 `members.id`는 가공 선수에 존재하고 ID·이름이 일치한다. 중첩 선수는 8개 필드를 빠짐없이 포함한다.
+- 모든 `members.id`는 가공 선수에 존재하고 ID·이름이 일치한다. 현행 중첩 선수는9개 필드를 빠짐없이 포함하고 같은 ID의 가공 선수와 `playerType`까지 일치한다. 과거8필드 불변 세대는 읽기 호환성을 유지하되 타입 미확인으로 처리한다.
 - 두 중첩 파일의 팩 필드는 가공 팩과 같다. archive의 전이 메타만 추가한다.
 - API `/cards`(`/players` 별칭), `/packs`는 가공 누적 자료, `/live`, `/archive`는 중첩 자료다. 원본/이전 47,408장 staging으로 fallback하지 않는다.
 - 매시간 실행 사이에 종료 시각이 도래해도 API GET은 서버 UTC로 live에서 제외하고 archive 뷰에서 반환한다. GET에서 DB를 쓰지 않으며 실제 파일 이동과 로그는 다음 갱신에서 확정한다.

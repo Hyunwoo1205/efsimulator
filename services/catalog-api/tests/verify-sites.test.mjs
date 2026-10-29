@@ -5,7 +5,7 @@ import { verifySites, SITE_ORIGINS } from '../scripts/lifecycle/verify-sites.mjs
 const VERSION = 'a'.repeat(64);
 const NOW = '2026-10-29T03:00:00.000Z';
 const TOKEN = 'synthetic-site-token-only';
-function fixture({ size = 2, dynamicArchive = false, alter = (_role, _name, body) => body } = {}) {
+function fixture({ size = 2, dynamicArchive = false, publicApp = false, alter = (_role, _name, body) => body } = {}) {
   const players = Array.from({ length: size }, (_, index) => ({ id: `9007199254740993${String(index).padStart(4, '0')}`, name: `Synthetic ${index}`, slug: `synthetic-${index}`,
     position: 'CF', overallRating: 85, playingStyle: null, playingStyleDefensive: null, imageUrl: 'https://efimg.com/synthetic.png' }));
   const pack = { saleId: 'synthetic-sale', name: 'Synthetic Pack', slug: 'synthetic-pack', date: '2026-10-26', playerCount: size,
@@ -14,11 +14,12 @@ function fixture({ size = 2, dynamicArchive = false, alter = (_role, _name, body
   const data = { players, packs: [pack], live: dynamicArchive ? [] : [{ ...pack, players }], archive: dynamicArchive ? [{ ...pack, players, archivedAt: pack.endsAt, archiveReason: 'end_reached', archivePersisted: false }] : [] };
   const counts = { player: size, pack: 1, live: 1, archive: 0 };
   const input = { expectedVersionId: VERSION, sites: Object.fromEntries(Object.entries(SITE_ORIGINS).map(([role, origin]) => [role, { origin, serviceToken: `${TOKEN}-${role}` }])) };
+  if (publicApp) input.sites.app = { origin: SITE_ORIGINS.app, accessMode: 'public' };
   const calls = [];
   const fetchImpl = async (url, options) => {
     const parsed = new URL(url), role = Object.keys(SITE_ORIGINS).find(name => SITE_ORIGINS[name] === parsed.origin);
     assert.ok(role); assert.equal(options.method, 'GET'); assert.equal(options.redirect, 'error'); assert.equal(options.credentials, 'omit');
-    assert.equal(options.headers['OAI-Sites-Authorization'], `Bearer ${TOKEN}-${role}`);
+    assert.equal(options.headers['OAI-Sites-Authorization'], publicApp && role === 'app' ? undefined : `Bearer ${TOKEN}-${role}`);
     const name = parsed.pathname.split('/').at(-1); calls.push({ role, name });
     let body;
     if (name === 'health') body = { data: { ready: true, database: 'connected', raw_in_runtime: false, latest_snapshot_id: VERSION, counts } };
@@ -85,5 +86,21 @@ test('redirects, sign-in HTML, excessive body and transport exceptions never dis
   for (const fetchImpl of implementations) {
     const f = fixture();
     await assert.rejects(verifySites(f.input, { fetchImpl }), error => !error.message.includes(TOKEN));
+  }
+});
+
+test('public app is verified anonymously while API and viewer remain authenticated', async () => {
+  const f = fixture({ publicApp: true });
+  assert.equal((await verify(f)).verified, true);
+  assert.ok(f.calls.some(call => call.role === 'app'));
+});
+
+test('anonymous mode is limited to the exact app and cannot carry a service credential', async () => {
+  for (const role of ['api', 'viewer', 'app']) {
+    const f = fixture();
+    f.input.sites[role].accessMode = 'public';
+    if (role !== 'app') delete f.input.sites[role].serviceToken;
+    await assert.rejects(verify(f));
+    assert.equal(f.calls.length, 0);
   }
 });
