@@ -1,5 +1,7 @@
 # 누적 원본·가공 API·실제 앱의 구조와 설계 이력
 
+> T037 후속 설계: [SIMULATOR_PLAN](SIMULATOR_PLAN.md)은 기존 카탈로그 서버와 순수 추첨 엔진·IndexedDB 세션·결과 renderer를 분리한다. 규칙/신선도 계약 → 엔진 → 저장 → 화면/2D 순서이며 아직 미구현이다. 현재 API8필드·원격 DB·조회 relay는 그대로 재사용한다.
+
 ## T030 API 전달 기준과 T032 실제 앱 구현
 
 API 개발은 완료 기준과 향후 오류 유지보수를 유지하며 최신 T032 지시는 실제 앱 서버·API relay·조회 화면 제작이다. 현재 구현은 [데이터 계약](CATALOG_DATA_CONTRACT.md)의 누적 raw·공식 상품 한정 가공 publication·전체 중첩 live/archive다. T023/T024/T027/T028의 계약·수집/검증과 T025의 실제 private Worker/D1 배포·원격 적재/전체 해시·조회·포인터 복구·인증을 재사용한다. 아래 T020~T023의 전체 raw API·미구현 스키마 설명은 당시 설계 이력이며 새로운 API 재구축 지시가 아니다.

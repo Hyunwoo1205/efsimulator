@@ -254,7 +254,7 @@
       "update_when": [
         "사용자 요구·작업 절차·검증 명령·제품 및 운영 원칙 변경"
       ],
-      "reviewed_in": "T036"
+      "reviewed_in": "T037"
     },
     {
       "path": "README.md",
@@ -281,7 +281,7 @@
       "update_when": [
         "설치·실행·검증·표본 범위·진입 문서·공개 상태 변경"
       ],
-      "reviewed_in": "T036"
+      "reviewed_in": "T037"
     },
     {
       "path": "_headers",
@@ -343,7 +343,7 @@
       "update_when": [
         "자동 갱신 경로·완료 기준·검증·대상 또는 기록 schema 변경 시"
       ],
-      "reviewed_in": "T036"
+      "reviewed_in": "T037"
     },
     {
       "path": "data/catalog.json",
@@ -815,7 +815,7 @@
       "update_when": [
         "데이터 계약·파이프라인·라우팅·이력 영속화·운영 방식 변경"
       ],
-      "reviewed_in": "T032"
+      "reviewed_in": "T037"
     },
     {
       "path": "docs/AUTOMATION.md",
@@ -831,7 +831,7 @@
       "update_when": [
         "자동 갱신 경로·완료 기준·검증·대상 또는 기록 schema 변경 시"
       ],
-      "reviewed_in": "T036"
+      "reviewed_in": "T037"
     },
     {
       "path": "docs/CATALOG_DATA_CONTRACT.md",
@@ -845,7 +845,7 @@
       "update_when": [
         "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
       ],
-      "reviewed_in": "T036"
+      "reviewed_in": "T037"
     },
     {
       "path": "docs/CHATGPT_WORK_HANDOFF.md",
@@ -865,7 +865,7 @@
       "update_when": [
         "사용자 범위/입력 상태·원격/로컬 반영·이관/검증 결과·지원 도구/작업 상태 변경"
       ],
-      "reviewed_in": "T036"
+      "reviewed_in": "T037"
     },
     {
       "path": "docs/COLLECTION.md",
@@ -911,7 +911,7 @@
       "update_when": [
         "해당 범위/입력/완료조건·관계·권한/운영 근거 변경. reference의 과거 관측값은 덮어쓰지 않음"
       ],
-      "reviewed_in": "T036"
+      "reviewed_in": "T037"
     },
     {
       "path": "docs/DEPLOYMENT.md",
@@ -936,7 +936,7 @@
       "update_when": [
         "빌드 명령·출력·라우팅·배포 설정·공개 검증 결과 변경"
       ],
-      "reviewed_in": "T036"
+      "reviewed_in": "T037"
     },
     {
       "path": "docs/FILE_SYNC.json",
@@ -955,7 +955,7 @@
       "update_when": [
         "파일 추가·삭제·이름 변경·역할/의존관계 변경·영향 검토"
       ],
-      "reviewed_in": "T036"
+      "reviewed_in": "T037"
     },
     {
       "path": "docs/FILE_SYNC_AUDIT.md",
@@ -971,7 +971,7 @@
       "update_when": [
         "사용자 범위/입력 상태·원격/로컬 반영·이관/검증 결과·지원 도구/작업 상태 변경"
       ],
-      "reviewed_in": "T036"
+      "reviewed_in": "T037"
     },
     {
       "path": "docs/MIGRATION_STATUS.md",
@@ -1030,23 +1030,31 @@
       "update_when": [
         "단계 상태·현재/이전/다음 작업·완료 조건·추가 요구 변경"
       ],
-      "reviewed_in": "T036"
+      "reviewed_in": "T037"
     },
     {
       "path": "docs/SIMULATOR_PLAN.md",
-      "role": "기반 운영 검증 뒤 추첨/가상 Standard·카드연출·3D/모바일/접근성 단계별 계획",
+      "role": "T017 규칙/신선도·확률/익명 Standard·IndexedDB/복구·UX/2D·A~F 수용 기준과 T018 연결의 구현 계획",
       "priority": "P1",
       "related_paths": [
         "docs/ROADMAP.md",
         "docs/WORKPLAN.md",
         "docs/ARCHITECTURE.md",
         "docs/DEPLOYMENT.md",
-        "docs/DATA_LIFECYCLE.md"
+        "docs/DATA_LIFECYCLE.md",
+        "docs/CATALOG_DATA_CONTRACT.md",
+        "docs/AUTOMATION.md",
+        "services/efsimulator-app/README.md",
+        "services/efsimulator-app/app/components/catalog-data.tsx",
+        "services/efsimulator-app/app/components/catalog-pages.tsx",
+        "services/efsimulator-app/app/components/catalog-ui.tsx",
+        "services/efsimulator-app/lib/catalog-refresh.mjs",
+        "services/efsimulator-app/lib/catalog-relay.mjs"
       ],
       "update_when": [
         "해당 범위/입력/완료조건·관계·권한/운영 근거 변경. reference의 과거 관측값은 덮어쓰지 않음"
       ],
-      "reviewed_in": "T032"
+      "reviewed_in": "T037"
     },
     {
       "path": "docs/WORKPLAN.md",
@@ -1071,7 +1079,7 @@
       "update_when": [
         "매 작업 착수·추가 요구·파일 변경·검증 결과·작업 종료"
       ],
-      "reviewed_in": "T036"
+      "reviewed_in": "T037"
     },
     {
       "path": "docs/reference/ARCHITECTURE_BEFORE_PROBABILITY_SCOPE.md",
@@ -4566,7 +4574,7 @@
       "update_when": [
         "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
       ],
-      "reviewed_in": "T035"
+      "reviewed_in": "T037"
     },
     {
       "path": "services/efsimulator-app/app/api/v1/[[...path]]/route.ts",
@@ -4600,7 +4608,7 @@
       "update_when": [
         "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
       ],
-      "reviewed_in": "T036"
+      "reviewed_in": "T037"
     },
     {
       "path": "services/efsimulator-app/app/components/catalog-pages.tsx",
@@ -4618,7 +4626,7 @@
       "update_when": [
         "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
       ],
-      "reviewed_in": "T035"
+      "reviewed_in": "T037"
     },
     {
       "path": "services/efsimulator-app/app/components/catalog-ui.tsx",
@@ -4636,7 +4644,7 @@
       "update_when": [
         "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
       ],
-      "reviewed_in": "T034"
+      "reviewed_in": "T037"
     },
     {
       "path": "services/efsimulator-app/app/globals.css",
@@ -4815,7 +4823,7 @@
       "update_when": [
         "팩/선수 표시 정렬·타입/날짜 근거·누락/동률/재수록·원본 무변형 정책 변경"
       ],
-      "reviewed_in": "T035"
+      "reviewed_in": "T037"
     },
     {
       "path": "services/efsimulator-app/lib/catalog-refresh.mjs",
@@ -4829,7 +4837,7 @@
       "update_when": [
         "자동 갱신 경로·완료 기준·검증·대상 또는 기록 schema 변경 시"
       ],
-      "reviewed_in": "T036"
+      "reviewed_in": "T037"
     },
     {
       "path": "services/efsimulator-app/lib/catalog-relay.mjs",
@@ -4844,7 +4852,7 @@
       "update_when": [
         "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
       ],
-      "reviewed_in": "T032"
+      "reviewed_in": "T037"
     },
     {
       "path": "services/efsimulator-app/lib/pack-preview.mjs",
@@ -4860,7 +4868,7 @@
       "update_when": [
         "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
       ],
-      "reviewed_in": "T032"
+      "reviewed_in": "T037"
     },
     {
       "path": "services/efsimulator-app/lib/preview-player-types.json",
