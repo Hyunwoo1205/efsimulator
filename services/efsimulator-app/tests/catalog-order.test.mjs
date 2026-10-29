@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { orderCatalog, packGrade, playerGrade, playerDates, sortPacks, sortPlayers } from '../lib/catalog-order.mjs';
+import { orderCatalog, packGrade, playerGrade, playerDates, sortGlobalPlayers, sortPacks, sortPlayers } from '../lib/catalog-order.mjs';
 
 const player = (id, playerType, overallRating = 99) => ({ id, playerType, name: 'Same name', overallRating });
 const ids = values => values.map(value => value.id ?? value.saleId);
@@ -16,7 +16,7 @@ test('packs use Epic > Show Time > Trend > Highlight and newest date within each
   assert.deepEqual(packs, before);
 });
 
-test('players use exact API type, then OVR descending; parent titles and launch dates cannot promote a Highlight', () => {
+test('pack players use exact API type, then OVR descending; parent titles cannot promote a Highlight', () => {
   const players = [player('h', 6, 110), player('s', 8, 91), player('e-low', 5, 1), player('t', 3, 110), player('e-high', 5, 99), player('u', 999, 120)];
   const before = structuredClone(players);
   assert.deepEqual(ids(sortPlayers(players)), ['e-high', 'e-low', 's', 't', 'h', 'u']);
@@ -52,9 +52,33 @@ test('catalog ordering covers live/archive/global players and nested rosters wit
   assert.equal(result.manifest, catalog.manifest);
 });
 
-test('display dates remain available but do not override player OVR ordering', () => {
+test('global players use release date before OVR while a pack roster keeps OVR order', () => {
   const old = player('old', 5, 100), recent = player('recent', 5, 90);
   const packs = [pack('old', '2026-01-01', [old]), pack('new', '2026-10-29', [recent])];
   assert.ok(playerDates(packs).get(old.id) < playerDates(packs).get(recent.id));
   assert.deepEqual(ids(sortPlayers([recent, old])), ['old', 'recent']);
+  assert.deepEqual(ids(sortGlobalPlayers([old, recent], packs)), ['recent', 'old']);
+});
+
+test('global search preserves grade priority, uses newest card release, then OVR and exact ID', () => {
+  const old = player('old', 5, 110), newerLow = player('new-low', 5, 80), newerHigh = player('new-high', 5, 90);
+  const equalA = player('9007199254740992', 5, 90), equalB = player('9007199254740993', 5, 90);
+  const missing = player('missing', 5, 120), invalid = player('invalid', 5, 130), show = player('show', 8, 140);
+  const players = [show, missing, old, newerLow, equalB, invalid, newerHigh, equalA];
+  const packs = [pack('archive', '2026-01-01', [old]), pack('recent', '2026-10-29', [newerLow, newerHigh, equalA, equalB]),
+    pack('reappearance', '2026-11-01', [old]), pack('invalid', '2026-02-30', [invalid]), pack('show', '2027-01-01', [show])];
+  const before = structuredClone({ players, packs });
+  assert.deepEqual(ids(sortGlobalPlayers(players, packs)), ['9007199254740992', '9007199254740993', 'new-high', 'new-low', 'old', 'invalid', 'missing', 'show']);
+  assert.deepEqual({ players, packs }, before);
+});
+
+test('catalog searches all releases while nested rosters retain grade/OVR order after filtering', () => {
+  const old = player('old', 5, 110), recent = player('recent', 5, 80), highlight = player('highlight', 6, 120);
+  const catalog = { live: [pack('current', '2026-10-29', [recent, old, highlight])], archive: [pack('past', '2026-01-01', [old])], players: [highlight, old, recent] };
+  const before = structuredClone(catalog), result = orderCatalog(catalog);
+  assert.deepEqual(ids(result.players), ['recent', 'old', 'highlight']);
+  assert.deepEqual(ids(result.players.filter(value => value.playerType === 5)), ['recent', 'old']);
+  assert.deepEqual(ids(result.live[0].players), ['old', 'recent', 'highlight']);
+  assert.deepEqual(ids(result.archive[0].players), ['old']);
+  assert.deepEqual(catalog, before);
 });

@@ -47,7 +47,8 @@ export function sortPacks(packs) {
   return [...packs].sort((a, b) => packGrade(a).rank - packGrade(b).rank || newestFirst(timestamp(a.date), timestamp(b.date)) || byId(a.saleId, b.saleId));
 }
 
-/** Retained display-date helper; player sorting no longer depends on release dates.
+/** First confirmed release of each exact card, across live and archived packs.
+ * Reappearance in a later pack does not turn an existing card into a new release.
  * @param {{ date?: string | null, players: { id: string }[] }[]} packs
  * @returns {Map<string, number>}
  */
@@ -72,7 +73,22 @@ export function sortPlayers(players) {
   return [...players].sort((a, b) => playerGrade(a).rank - playerGrade(b).rank || newestFirst(rating(a.overallRating), rating(b.overallRating)) || byId(a.id, b.id));
 }
 
-/** All screens use the same source grade and OVR ordering without mutating API data.
+/** Global search groups source grades, then shows newest cards before OVR ties.
+ * Pack rosters and previews use sortPlayers instead: their release date is shared.
+ * @template {{ id: string, playerType?: number, overallRating?: number | null }} T
+ * @param {T[]} players
+ * @param {{ date?: string | null, players: { id: string }[] }[]} packs
+ * @returns {T[]}
+ */
+export function sortGlobalPlayers(players, packs) {
+  const dates = playerDates(packs);
+  return [...players].sort((a, b) => playerGrade(a).rank - playerGrade(b).rank
+    || newestFirst(dates.get(a.id) ?? null, dates.get(b.id) ?? null)
+    || newestFirst(rating(a.overallRating), rating(b.overallRating))
+    || byId(a.id, b.id));
+}
+
+/** Preserve pack-local OVR order while global players use release date then OVR.
  * @template {{ id: string, playerType?: number, overallRating?: number | null }} Player
  * @template {{ saleId: string, officialTitle?: string, name?: string, date?: string | null, players: Player[] }} Pack
  * @template {{ live: Pack[], archive: Pack[], players: Player[] }} Catalog
@@ -80,5 +96,5 @@ export function sortPlayers(players) {
  */
 export function orderCatalog(catalog) {
   const orderPacks = packs => sortPacks(packs).map(pack => ({ ...pack, players: sortPlayers(pack.players) }));
-  return { ...catalog, live: orderPacks(catalog.live), archive: orderPacks(catalog.archive), players: sortPlayers(catalog.players) };
+  return { ...catalog, live: orderPacks(catalog.live), archive: orderPacks(catalog.archive), players: sortGlobalPlayers(catalog.players, [...catalog.live, ...catalog.archive]) };
 }
