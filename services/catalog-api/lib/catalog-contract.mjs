@@ -2,7 +2,8 @@
 export const PLAYER_FIELDS = Object.freeze(['id', 'name', 'slug', 'position', 'overallRating', 'playingStyle', 'playingStyleDefensive', 'imageUrl']);
 export const RAW_PLAYER_FIELDS = Object.freeze(['id', 'name', 'nameJa', 'nameZh', 'slug', 'nationality', 'nationalityCode', 'team', 'position', 'overallRating', 'playingStyle', 'playingStyleDefensive', 'imageUrl', 'playerType']);
 export const RAW_PACK_FIELDS = Object.freeze(['name', 'slug', 'date', 'playerCount']);
-export const PROCESSED_PACK_FIELDS = Object.freeze(['saleId', 'name', 'slug', 'date', 'playerCount', 'sourceReportedPlayerCount', 'totalPlayerCount', 'standardPlayerCount', 'endsAt', 'officialTitle', 'members', 'countCorrection', 'provenance']);
+export const PROCESSED_PACK_FIELDS = Object.freeze(['saleId', 'name', 'slug', 'date', 'playerCount', 'sourceReportedPlayerCount', 'totalPlayerCount', 'standardPlayerCount', 'endsAt', 'officialTitle', 'members', 'countCorrection', 'provenance', 'drawOptions']);
+const LEGACY_PACK_FIELDS = PROCESSED_PACK_FIELDS.filter(field => field !== 'drawOptions');
 export const compareText = (left, right) => left < right ? -1 : left > right ? 1 : 0;
 const object = value => value !== null && typeof value === 'object' && !Array.isArray(value) && [Object.prototype, null].includes(Object.getPrototypeOf(value));
 const text = value => typeof value === 'string' && value.trim().length > 0;
@@ -56,14 +57,35 @@ export function assertRawPack(pack) {
   requireValue(text(pack.name) && typeof pack.slug === 'string' && /^[a-z\d-]+$/.test(pack.slug) && pack.slug !== 'dummy' && date(pack.date) && integer(pack.playerCount) && pack.playerCount > 0, 'Invalid raw pack values');
   return pack;
 }
+/** T040 user-confirmed support rule. Prices have no per-sale evidence yet. */
+export function createDrawOptions(totalPlayerCount) {
+  requireValue(integer(totalPlayerCount) && totalPlayerCount > 0, 'Invalid draw option total player count');
+  return {
+    single: { supported: true, count: 1, coinCost: null },
+    ten: { supported: totalPlayerCount > 11, count: 10, coinCost: null, minimumRemaining: 10 },
+    provenance: { authority: 'direct_user_confirmation', reference: 'T040', rule: 'total_player_count_gt_11' },
+  };
+}
+export function assertDrawOptions(options, totalPlayerCount) {
+  keys(options, ['single', 'ten', 'provenance'], undefined, 'pack draw options');
+  keys(options.single, ['supported', 'count', 'coinCost'], undefined, 'single draw option');
+  keys(options.ten, ['supported', 'count', 'coinCost', 'minimumRemaining'], undefined, 'ten draw option');
+  keys(options.provenance, ['authority', 'reference', 'rule'], undefined, 'draw option provenance');
+  requireValue(canonical(options) === canonical(createDrawOptions(totalPlayerCount)), 'Pack draw options differ from the reviewed total-count rule or contain unverified prices');
+  return options;
+}
 export function assertProcessedPack(pack) {
-  keys(pack, PROCESSED_PACK_FIELDS, PROCESSED_PACK_FIELDS, 'processed pack');
+  // Existing immutable publications stay readable during staged deployment.
+  // All newly materialized records include drawOptions; explicit migration
+  // adds them to older processed/live/archive generations together.
+  keys(pack, LEGACY_PACK_FIELDS, PROCESSED_PACK_FIELDS, 'processed pack');
   requireValue(text(pack.saleId) && text(pack.officialTitle), 'Invalid processed pack identity');
   assertRawPack({ name: pack.name, slug: pack.slug, date: pack.date, playerCount: pack.playerCount });
   requireValue(timestamp(pack.endsAt) && /(?:Z|\+00:00)$/.test(pack.endsAt), 'Pack endsAt must be explicit UTC');
   requireValue(integer(pack.sourceReportedPlayerCount) && integer(pack.totalPlayerCount) && pack.totalPlayerCount > 0, 'Invalid processed pack source/total count');
   requireValue(Array.isArray(pack.members) && pack.members.length === pack.playerCount && pack.playerCount <= pack.totalPlayerCount, 'Effective special count must equal the verified linked cards');
   requireValue(integer(pack.standardPlayerCount) && pack.standardPlayerCount === pack.totalPlayerCount - pack.playerCount, 'Anonymous Standard count must equal official total minus special cards');
+  if (Object.hasOwn(pack, 'drawOptions')) assertDrawOptions(pack.drawOptions, pack.totalPlayerCount);
   const ids = [];
   for (const member of pack.members) {
     keys(member, ['id', 'name'], ['id', 'name'], 'pack member');

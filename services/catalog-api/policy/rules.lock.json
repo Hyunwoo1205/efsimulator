@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
-  "version": "catalog-rules-1.3.0",
-  "reviewId": "T039-manual-browser-dom-complete-rounds-and-pagination",
+  "version": "catalog-rules-1.4.0",
+  "reviewId": "T040-user-confirmed-draw-options-total-count",
   "files": [
     {
       "path": "lib/catalog-contract.mjs",
-      "sha256": "925f379adcf067b972ac83fa3f272b4ede53e6e58a3e27e031d5754c89640dd1"
+      "sha256": "e91bdc2a00e83e059c2fb605d58dbb6bce82ac8e69e84ed4ed478b0e748ef35e"
     },
     {
       "path": "lib/catalog-lifecycle.mjs",
-      "sha256": "c89590e2ef94eefc363fac2efd2f391e4284302be16cb4859e799f5a760c0936"
+      "sha256": "8ac1844616967114ee488c61810fd022c1c472f0672e325365ce5a59f6cbac39"
     },
     {
       "path": "lib/catalog-api.mjs",
@@ -33,7 +33,7 @@
     },
     {
       "path": "scripts/lifecycle/workspace.mjs",
-      "sha256": "3ffb5010cd27bc4c7522fe688c8dcf58d39be95f7691f227fb01b25f99655c9b"
+      "sha256": "a9fb7a017b322bb7ecb193d36ab6a9f5727d1f88d4d357619a4af35da9ba0e87"
     },
     {
       "path": "scripts/lifecycle/run-cycle.mjs",
@@ -41,7 +41,7 @@
     },
     {
       "path": "scripts/lifecycle/publication.mjs",
-      "sha256": "a4bd1974d886e343270fcdbdb6edc5a97c7cf4ba95dfbcc6bef53cd3f3e67c26"
+      "sha256": "1681d71ff624497e3595af3f0496b811deaa4c202e8ca6dbe40098f87bf92fcd"
     },
     {
       "path": "scripts/lifecycle/reviewed-cache.mjs",

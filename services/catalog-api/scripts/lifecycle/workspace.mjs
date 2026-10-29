@@ -2,7 +2,7 @@ import { createHash, randomUUID } from 'node:crypto';
 import { open, readFile, appendFile, mkdir, rename, rm, lstat } from 'node:fs/promises';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { createLifecycleState, planRawAppend, reconcileCatalog, validateLifecycleState } from '../../lib/catalog-lifecycle.mjs';
+import { createLifecycleState, enrichPackDrawOptions, planRawAppend, reconcileCatalog, validateLifecycleState } from '../../lib/catalog-lifecycle.mjs';
 import { canonical, compareText } from '../../lib/catalog-contract.mjs';
 import { activeRules, loadMappingApprovals, approvalDigest } from './rules.mjs';
 import { replayCollectionReceipt } from './collection-receipt.mjs';
@@ -331,6 +331,24 @@ export async function adoptRules({ root, expectedVersion, reviewId, reason, now 
   });
 }
 
+/** Explicit reviewed pack metadata migration after adopting the T040 rules. */
+export async function migrateDrawOptions({ root, expectedVersion, now = new Date().toISOString() }) {
+  if (!validTime(now) || !/^[a-f0-9]{64}$/.test(expectedVersion ?? '')) fail('Draw-option migration requires expected version and valid UTC time');
+  root = resolve(root); now = new Date(now).toISOString();
+  return await withLock(root, async () => {
+    const loaded = await loadInternal(root);
+    await readPolicy(root, true);
+    if (loaded.current.version !== expectedVersion) fail('Draw-option migration CURRENT revision changed');
+    const result = enrichPackDrawOptions(loaded.state, now);
+    if (!result.changed) return { ...loaded, changed: false, changes: [] };
+    const files = generationFiles({ rawPlayerBytes: loaded.files.get('raw/players_raw.json'), rawPackBytes: loaded.files.get('raw/packs_raw.json'), sourcePlayerUpdateBytes: loaded.files.get(SOURCE_PLAYER_UPDATE), state: result.state });
+    await publishGeneration({ root, files, state: result.state, now, previousVersion: loaded.current.version, policy: loaded.policy });
+    await appendCheck(root, { schemaVersion: 1, checkedAt: now, status: 'changed', operation: 'T040_draw_options_migration', previousVersion: loaded.current.version, changes: result.changes.map(change => ({ id: change.id, targetFile: change.targetFile })), rawAdded: { players: 0, packs: 0 }, invariants: result.invariants });
+    const { files: ignored, ...after } = await loadInternal(root);
+    return { ...after, changed: true, changes: result.changes };
+  });
+}
+
 async function cli() {
   const [command, ...args] = process.argv.slice(2);
   const values = {};
@@ -339,7 +357,7 @@ async function cli() {
     if (!key.startsWith('--') || !args[index + 1] || own(values, key)) fail('Expected unique --key value options');
     values[key] = args[index + 1];
   }
-  const allowed = command === 'init' ? ['--root', '--players', '--packs', '--now', '--player-update'] : command === 'adopt-rules' ? ['--root', '--expected-version', '--review-id', '--reason', '--now'] : ['--root', '--receipt', '--now', '--expected-version'];
+  const allowed = command === 'init' ? ['--root', '--players', '--packs', '--now', '--player-update'] : command === 'adopt-rules' ? ['--root', '--expected-version', '--review-id', '--reason', '--now'] : command === 'migrate-draw-options' ? ['--root', '--expected-version', '--now'] : ['--root', '--receipt', '--now', '--expected-version'];
   if (Object.keys(values).some(key => !allowed.includes(key))) fail('Unknown option');
   if (!values['--root']) fail('Missing --root');
   let result;
@@ -352,7 +370,9 @@ async function cli() {
   } else if (command === 'adopt-rules') {
     result = await adoptRules({ root: values['--root'], expectedVersion: values['--expected-version'], reviewId: values['--review-id'], reason: values['--reason'], now: values['--now'] });
     process.stdout.write(`${JSON.stringify(result)}\n`); return;
-  } else fail('Usage: workspace.mjs init|apply --root DIR ...');
+  } else if (command === 'migrate-draw-options') {
+    result = await migrateDrawOptions({ root: values['--root'], expectedVersion: values['--expected-version'], now: values['--now'] });
+  } else fail('Usage: workspace.mjs init|apply|adopt-rules|migrate-draw-options --root DIR ...');
   process.stdout.write(`${JSON.stringify({ version: result.current.version, versionPath: result.versionPath, counts: result.manifest.counts, changed: result.changed ?? true, pending: result.pending ?? [] }, null, 2)}\n`);
 }
 const own = (value, key) => Object.prototype.hasOwnProperty.call(value, key);

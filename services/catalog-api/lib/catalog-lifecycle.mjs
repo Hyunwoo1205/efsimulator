@@ -2,7 +2,7 @@
  * Pure application catalogue reconciliation. Raw JSON is never queried by the
  * HTTP API: it is input to this materialization step only.
  */
-import { PLAYER_FIELDS, PROCESSED_PACK_FIELDS, assertRawPlayer, assertRawPack, assertProcessedPack, assertApiUpdateLog, assertRawUpdateLog, canonical as canonicalJson, compareText } from './catalog-contract.mjs';
+import { PLAYER_FIELDS, PROCESSED_PACK_FIELDS, createDrawOptions, assertRawPlayer, assertRawPack, assertProcessedPack, assertApiUpdateLog, assertRawUpdateLog, canonical as canonicalJson, compareText } from './catalog-contract.mjs';
 export { PLAYER_FIELDS } from './catalog-contract.mjs';
 export const CATALOG_FILES = Object.freeze({ players: 'processed/players.json', packs: 'processed/packs.json', active: 'live.json', archive: 'archive.json' });
 const own = (value, key) => Object.prototype.hasOwnProperty.call(value, key);
@@ -105,6 +105,7 @@ function processedPack(candidate, raw, observation) {
         endsAt: new Date(candidate.endsAt).toISOString(),
       },
     },
+    drawOptions: createDrawOptions(candidate.totalPlayerCount),
   };
 }
 
@@ -135,7 +136,7 @@ export function validateLifecycleState(state) {
     }
     if (active.has(id) === archive.has(id)) fail(`Pack must occur in exactly one of live/archive: ${id}`);
     const embedded = active.get(id) ?? archive.get(id);
-    const nestedKeys = [...PROCESSED_PACK_FIELDS, 'players', ...(archive.has(id) ? ['archivedAt', 'archiveReason'] : [])].sort(compareText);
+    const nestedKeys = [...PROCESSED_PACK_FIELDS.filter(field => field !== 'drawOptions' || own(pack, field)), 'players', ...(archive.has(id) ? ['archivedAt', 'archiveReason'] : [])].sort(compareText);
     if (!same(Object.keys(embedded).sort(compareText), nestedKeys)) fail(`Unexpected embedded pack fields: ${id}`);
     const { players: nestedPlayers, archivedAt, archiveReason, ...embeddedPack } = embedded;
     if (!same(embeddedPack, pack) || !same(nestedPlayers, pack.members.map(member => players.get(member.id)))) fail(`Incomplete embedded pack: ${id}`);
@@ -164,6 +165,24 @@ function fileChange(before, after, key, targetFile, at, observation, transitions
     evidence: { officialObservedAt: observation?.observedAt ?? null, officialSha256: observation?.sha256 ?? null },
   };
   return { id: eventId(event), ...event };
+}
+
+/** Explicit T040 metadata migration; leaves raw, players and sale membership intact. */
+export function enrichPackDrawOptions(state, now) {
+  validateLifecycleState(state);
+  if (!timestamp(now)) fail('Invalid draw-option migration clock');
+  const at = new Date(now).toISOString();
+  const next = copy(state);
+  for (const key of ['packs', 'active', 'archive']) {
+    next[key] = next[key].map(pack => ({ ...pack, drawOptions: createDrawOptions(pack.totalPlayerCount) }));
+  }
+  const changes = [];
+  for (const key of ['packs', 'active', 'archive']) {
+    const change = fileChange(state[key], next[key], 'saleId', CATALOG_FILES[key], at, null, []);
+    if (change) { changes.push(change); next.updates.push(change); }
+  }
+  const invariants = validateLifecycleState(next);
+  return { state: next, changes, invariants, changed: changes.length > 0 };
 }
 
 /**

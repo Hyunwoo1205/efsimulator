@@ -1,4 +1,4 @@
-> T038 소비자 정책: live/archive는 실제 판매 구분이며 종료 팩의 체험 가능 여부를 뜻하지 않는다. 시뮬레이터는 검증된 archive를 별도 섹션에서 사용한다. 현재 팩 13필드에는 가격·통화·10회 지원·할인이 없으며 앱별 규칙 레지스트리에서 근거를 연결한다. 이 문서의 raw/가공 필드·발행·자동화 계약은 변경하지 않는다. [시뮬레이터 계획](SIMULATOR_PLAN.md).
+> T040 최신 계약: 가공 팩과 live/archive·자체 API에 사용자 확인 근거의 `drawOptions`를 추가한다. 전체 11명 팩은 단일만, 전체 11명 초과는 단일·10회다. 가격은 미확인 null로 별도 관리한다. raw4필드·선수8필드는 유지한다. live/archive는 실제 판매 구분이며 검증된 종료 팩 체험은 별도 섹션에서 제공하는 소비자 정책이다. 아래 T024/T038의 당시 13필드·앱 레지스트리 전용 설명보다 이 최신 계약을 우선한다. [시뮬레이터 계획](SIMULATOR_PLAN.md).
 
 # 수집 원본과 자체 API 데이터 계약
 
@@ -24,9 +24,25 @@
 
 가공 선수의 필드는 정확히 `id`, `name`, `slug`, `position`, `overallRating`, `playingStyle`, `playingStyleDefensive`, `imageUrl`이다. 일본어/중국어 이름·국적·팀·종류·팩 역참조는 넣지 않는다. 없는 선택 필드는 null이며 원본 ID는 문자열을 유지한다. OVR의 레벨/부스터 조건은 이 계약에서 새로 추정하지 않는다.
 
-팩은 원본 이름·slug·date 외에 `saleId`, `officialTitle`, `playerCount`, `sourceReportedPlayerCount`, `totalPlayerCount`, `standardPlayerCount`, `endsAt`, `members:[{id,name}]`, `countCorrection`, `provenance`를 포함한다. `date`는 EFHub의 원본 날짜이며 판매 시작일로 해석하지 않는다. `saleId`는 검증한 상품 회차의 내부 식별자다. 같은 제목의 재판매는 자동으로 같은 회차로 합치지 않는다.
+팩은 원본 이름·slug·date 외에 `saleId`, `officialTitle`, `playerCount`, `sourceReportedPlayerCount`, `totalPlayerCount`, `standardPlayerCount`, `endsAt`, `members:[{id,name}]`, `countCorrection`, `provenance`, `drawOptions`를 포함한다. `date`는 EFHub의 원본 날짜이며 판매 시작일로 해석하지 않는다. `saleId`는 검증한 상품 회차의 내부 식별자다. 같은 제목의 재판매는 자동으로 같은 회차로 합치지 않는다.
 
 `playerCount`는 검증한 특수 인원, `sourceReportedPlayerCount`는 원본 표시값이다. 2026-10-26 Italian League Attackers는 원본 8과 사용자 확인 11을 모두 보존한다. 원본 파일을 11로 고치거나 카드 세 장을 버리지 않는다. 공식 전체 N과 검증한 전체 특수 S가 같은 회차에서 확인되어야 `standardPlayerCount=N−S`를 계산한다. 특수 명단 부족·중복·음수이면 새 상품 발행을 보류한다. 일반 선수의 실명/ID가 확보되지 않았다면 가짜 선수 레코드를 만들지 않는다. 중첩 `players`는 확인된 특수 카드 전체이며 N명 전원의 실명 명단이라는 뜻이 아니다.
+
+### T040 추첨 옵션
+
+가공 팩은 기존 13필드에 `drawOptions`를 더한 14필드다. 전체 인원은 공식 확률표의 `totalPlayerCount`를 사용하며 특수 카드만 센 `playerCount`나 Epic/Show Time 등급으로 수량을 추정하지 않는다. 현재 양의 전체 인원이 11 이하이면 단일만, 11 초과이면 단일·10회가 된다. 11명 미만 처리도 보수적으로 단일만 유지한다.
+
+```json
+{
+  "single": {"supported": true, "count": 1, "coinCost": null},
+  "ten": {"supported": true, "count": 10, "coinCost": null, "minimumRemaining": 10},
+  "provenance": {"authority": "direct_user_confirmation", "reference": "T040", "rule": "total_player_count_gt_11"}
+}
+```
+
+위 예시는 전체 11명 초과 팩이며 11명 팩의 `ten.supported`는 false다. `coinCost:null`은 가격 미확인이고 무료를 뜻하지 않는다. 이 필드의 출처는 2026-10-30 KST 사용자의 직접 확인이며 공식 확률표·EFHub가 가격/10회를 제공했다고 표시하지 않는다. 할인·보장·무료권/티켓은 별도의 검증이 필요하다.
+
+`processed/packs.json`, `live.json`, `archive.json`, API 팩 목록/상세와 두 소비 사이트의 중계가 동일한 값을 유지한다. 신규 팩과 종료 전이도 같은 가공 함수를 사용한다. 10회 지원과 현재 잔여 수량은 별개이며 사용자가 정한 C075에 따라 잔여 1~9명은 10회 버튼을 비활성화한다. 기존 저장 세대는 명시 검토한 migration으로 메타데이터와 변경 로그를 추가하며 raw·특수 명단·과거 결과를 수정하지 않는다. 기존 필드 없는 불변 세대는 그대로 읽을 수 있게 호환성을 유지하며, 규칙 채택 뒤 `node services/catalog-api/scripts/lifecycle/workspace.mjs migrate-draw-options --root <작업공간> --expected-version <현재해시> --now <UTC>`로 processed/live/archive와 대상별 변경 로그에만 새 필드를 추가한다. 기존 raw·가공 선수 바이트는 유지한다. 전체 데이터 보존·규칙 채택·새 발행·API/소비 사이트 전량 대조 전에는 운영 반영 완료라고 하지 않는다.
 
 `live.json`의 항목은 팩의 모든 필드와 `players:[{위 8개 선수 필드}]`를 포함한다. `archive.json`도 동일한 내용을 보존하고 `archivedAt`, `archiveReason`을 더한다. 공유 카드는 여러 팩 안에 등장할 수 있다.
 
@@ -91,7 +107,7 @@
 
 `policy/rules.lock.json`은 공통 형식·가공·파서·수집·receipt·파일 발행·API 코드와 검토 레지스트리의 정확한 SHA256을 고정한다. `data:rules-check`와 매 실행에서 검사하고 자동 재생성하지 않는다. 작업 공간의 RULES.json은 규칙 ID와 검토 레지스트리를 고정하며 CURRENT의 manifest/hash에도 같은 바인딩이 포함된다. 한 파일의 해시만 고쳐서는 반영되지 않는다.
 
-기존 작업 공간은 `data:adopt-rules -- --root <작업공간> --expected-version <현재해시> --review-id <검토ID> --reason <이유> --now <UTC>`로 명시적으로 채택한다. raw/가공/로그 바이트를 유지한 새 바인딩 세대를 검증하고 CURRENT를 전환하며 rule-adoptions.jsonl에 이유·전후 규칙을 기록한다. 경합이나 중단 시 기존 세대를 보존하며 불일치 상태에서는 일반 쓰기를 차단한다. 같은 정책 재채택은 변화가 없다.
+기존 작업 공간은 `data:adopt-rules -- --root <작업공간> --expected-version <현재해시> --review-id <검토ID> --reason <이유> --now <UTC>`로 명시적으로 채택한다. 일반적인 규칙 재바인딩은 raw/가공/로그 바이트를 유지한 새 세대를 검증하고 CURRENT를 전환하며 rule-adoptions.jsonl에 이유·전후 규칙을 기록한다. 경합이나 중단 시 기존 세대를 보존하며 불일치 상태에서는 일반 쓰기를 차단한다. 같은 정책 재채택은 변화가 없다. T040처럼 가공 필드를 추가하는 계약 변경은 재바인딩만으로 완료되지 않으며, 이전 세대를 검증한 명시 migration·대상 파일별 변경 로그·새 규칙 아래 전량 검증을 함께 수행한다.
 
 정기 점검은 코드·스키마·매핑·잠금·테스트를 변경하지 않는다. HTML 변경·미검토 신규 상품은 별도 검토 대상이며 새 사용자 지시 없이 self-heal/규칙 완화로 통과시키지 않는다. 전체 파일 쓰기 권한자의 고의 변경을 물리적으로 막는 권한 경계는 별도 운영 설정이다.
 

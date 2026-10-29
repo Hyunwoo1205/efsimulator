@@ -1,4 +1,4 @@
-<!-- project-state: {"stage":"R6","previous":"T039","current":"T017","next":"T018"} -->
+<!-- project-state: {"stage":"R6","previous":"T039","current":"T040","next":"T018"} -->
 
 # efsimulator 작업 계획과 이력
 
@@ -7,8 +7,8 @@
 ## 현재 작업과 매 작업 갱신
 
 - 이전 작업: T039 — 신규6팩·93명 데이터 갱신과 저장/API/세 사이트/GitHub·실제CI 검증 완료.
-- 현재 작업: T017 — A 사용자 정책/계약 조사 진행 중(T038). 종료 체험·무제한 가상 사용량·비복원/리셋은 확정했고 영상/팩별 옵션은 미완료. 엔진/C 저장/D 화면/E 2D/F 배포는 아직 없음.
-- 다음 작업: T018 — 검증된 엔진/연출 뒤 3D·모바일 성능·실패 fallback.
+- 현재 작업: T040 — drawOptions 가공/API·사이트 소비 구현,469회귀·두 서비스 타입/Worker빌드·v18저장본·원격발행·API/앱배포 완료. 세사이트 전량대조·13팩상세 일치까지 확인했고 GitHub/CI 최종검증 진행 중이며 T017 엔진/저장/개봉화면과 가격/영상조사는 별도 미완료다.
+- 다음 작업: T018 — T017의 API 옵션 소비·추첨 엔진/저장/화면·2D를 먼저 마친 뒤3D·모바일 성능·실패 fallback.
 - 최근 유지보수: T039 — 신규6팩·93명과 원본 누적·가공·판매 상태를 갱신했다. 현재 가공163명/13팩·판매중9/종료4이며 저장본/API/세 사이트/구현 커밋·실제CI 검증을 완료했다. 제품 T017/T018 범위와 T038 미확인 항목은 보존한다.
 - 현재 조건: T035의 모든 실제 앱 목록은 Epic/Show Time 한 우선 그룹과 유효 팩 날짜 내림차순을 공유한다. 선수는 최초 확인 연결팩 날짜를 표시용으로 사용하며 실제 최초 출시일로 주장하지 않는다.402전체/28앱 회귀·타입/Worker build·실제 snapshot production 정렬/필터/명단·같은 private 배포를 확인했다. API8필드·raw/규칙/자동화·기존viewer/Pages·audience와 T034 카드 표시는 보존했다.
 
@@ -16,7 +16,7 @@
 
 ## 최신 추가 조건과 이전 조건의 적용
 
-C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_BEFORE_PROBABILITY_SCOPE.md)에 보존한다. 관리 최신화·ID/근거·실패 보존·접근 거부 우회 금지·무료 우선·운영 승인 분리 원칙은 계속 적용한다. 범위 결정은 날짜별 이력이며 현재 범위·완료 정책은 최신 C071~C075의 사용자 결정을 T037/C070 제안보다 우선하고 C069/T036의 자동 갱신 절차를 적용하며 API 완료/정상 반영 정책 C063~C064를 유지한다. 전체 수집과 사이트 범위를 혼동하지 않는다.
+C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_BEFORE_PROBABILITY_SCOPE.md)에 보존한다. 관리 최신화·ID/근거·실패 보존·접근 거부 우회 금지·무료 우선·운영 승인 분리 원칙은 계속 적용한다. 범위 결정은 날짜별 이력이며 현재 범위·완료 정책은 최신 C077와 C071~C075의 사용자 결정을 T037/C070 제안보다 우선하고 C069/T036의 자동 갱신 절차를 적용하며 API 완료/정상 반영 정책 C063~C064를 유지한다. 전체 수집과 사이트 범위를 혼동하지 않는다.
 
 | 조건 ID | 최신 결정 | 영향 단계 / 선행 조건 / 처리 순서 | 상태 |
 | --- | --- | --- | --- |
@@ -66,6 +66,7 @@ C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_B
 | C075 | 10회 지원 팩도 잔여1~9명이면10회 버튼 잠금·단일 소진 확정 | T038/T017-A→B/C/D; 현재회차10명이상에서 정확히10회, 묶음축소/회차이월 금지, 단일 가격은 별도검증 | 사용자 정책 확정·설계 반영, 구현/배포 미수행 |
 | C070 | T017을 어떤 방식으로 설계·구현할지 구체적인 계획 작성 요청 | T037 계획만 작성 → T017-A 규칙/신선도·세션 계약 → B 엔진/C 저장/D 화면/E 2D/F 검토 배포 → T018. 기존 API·운영 데이터·예약·사이트 배포 변경 없음 | 계획 작성·관련 문서/파일 목록 갱신. 실제 추첨 기능은 미구현 |
 
+| C077 | 전체11명 팩은1회만, 전체11명초과는1회·10회; 가공 선수팩과 실제 사이트용 API에 반영 | T040/T017-A. 공식 totalPlayerCount 기준→사용자 근거 drawOptions/가격null→기존세대 migration/규칙채택→저장/API/세 사이트/기록/GitHub·CI 검증 | 가공/API·앱소비·migration·v18저장·원격발행/배포 완료; 세사이트/13팩상세 검증 완료·GitHub/CI 진행 중. 엔진·2D/3D와 구분 |
 | C076 | 미완료된 데이터 업데이트를 지금 진행하도록 요청 | T039/R5. 정상 수동 브라우저 DOM의 공식9상품과 EFHub6신규팩·93특수ID 검토 → 파서/receipt 회귀·규칙 명시채택 → 고정 수집/가공 → 동일 묶음 저장·API/사이트·GitHub/CI | 완료: 6팩93명 추가·461회귀·v17 저장본·API/세 사이트 전량 검증·원격13파일 일치·실제CI2건 성공 |
 
 
@@ -1966,3 +1967,54 @@ GitHub/CI 완료 확인: 같은 api-server-setup 브랜치의 구현·검토/규
 | `services/catalog-api/scripts/lifecycle/publish-remote.mjs` | 검토 결과 변경 불필요 | owner-private 접근·분할 적재/전량 readback·expected-current CAS 활성화 재사용 |
 | `services/catalog-api/scripts/lifecycle/verify-sites.mjs` | 검토 결과 변경 불필요 | 세 사이트의 동일 publication·전체4컬렉션·중첩/참조·페이지 끝 검증 재사용 |
 | `scripts/catalog-update-record.mjs` | 검토 결과 변경 불필요 | 허용 요약 필드만 고정 파일에 쓰며 미래 SHA/CI·상세 원문·credential을 기록하지 않는 계약 유지 |
+
+
+## T040 — 사용자 확인 추첨 옵션의 가공 팩·API·사이트 전달
+
+- 단계: R6
+- 상태: 진행 중
+- 이전: T039
+- 다음: T018
+
+### 목표·선행 조건·순서
+
+사용자는 POTW 등 전체11명 팩은 단일만, 전체11명초과 팩은 단일·10회이며 각각을 가공 선수팩과 실제 사이트에서 사용하는 API에 반영하도록 명시했다(C077). T038 당시의 API 필드 부재·앱 레지스트리에만 옵션을 두는 제안은 이 지시로 대체한다. 판단 기준은 공식 `totalPlayerCount`이며 `playerCount`나 카드 등급이 아니다. raw4필드·선수8필드·명단/회차·기존 기록·비공개 audience는 보존한다.
+
+계약은 가공 팩에 `drawOptions`를 추가한다. single={supported:true,count:1,coinCost:null}, ten={supported:totalPlayerCount>11,count:10,coinCost:null,minimumRemaining:10}, provenance={authority:direct_user_confirmation,reference:T040,rule:total_player_count_gt_11}다. 출처는 이번 사용자 직접 확인이며 공식 확률표/EFHub 옵션 검증으로 표시하지 않는다. 가격·할인·보장 조건은 별도 근거가 필요하며 null을0/무료로 처리하지 않는다. 잔여1~9명의10회 잠금·단일 소진은C075를 유지한다.
+
+처리 순서는 계약·결정적 가공/검사→기존 세대의 명시 migration/규칙 채택→변경 파일별 로그·새 데이터 세대→무결성 검증 묶음 저장→원격 API 발행·목록/상세·세 사이트 전량 대조→사이트 소비 화면 배포/확인→동일 브랜치 소스·기록 반영/원격·실제CI다. 기존 원본이나 현재 세대를 직접 덮어쓰지 않는다. 코드만 수정하거나 규칙만 재바인딩한 상태를 가공 DB/운영 API 완료로 기록하지 않는다.
+
+### 검증·진행 상태
+
+구현·데이터 반영·배포를 마쳤고 최종 전달 검증은 진행 중이다. 전체 npm test469개가 통과했고 API/앱 TypeScript 검사와 공식 Worker 빌드가 통과했다. 11/12명 경계·특수11명/전체150명 구분·지원값 검증·가격null·migration 보존/멱등성과 API/앱 소비 회귀를 포함한다. 현재13팩은 단일만6팩·단일/10회7팩이다. 원본47,501선수/1,705팩과 가공163선수의 바이트는 기준본과 동일하다. 추첨 옵션·가공팩/중첩/로그만 변경했으며 엔진·브라우저 세션·2D/3D는 이번 완료 범위가 아니다.
+
+catalog-rules-1.4.0을 검토·채택한 뒤 명시 migrate-draw-options로 새 세대를 만들었다. runtime은 `a45604b21c530cc3f198a249d5db1dc98190dc6e38801970388c75b16abc5e46`, publication은 `b19fb27858818fcc1a36e83e8593ca5a6c3fb9a5d3c27cfb4d3a824e44b2d57f`다. 데이터 묶음은 Library v18로 저장했고 정확한 저장본을 다시 내려받아 SHA256 `47160c8df784617ff93a8ac60cdd8585cccb380df5bc034a726217c5d7feba5c`와 무결성을 확인했다. 이 publication의 원격 적재·전량 readback·expected-current CAS 활성화를 검증했다.
+
+API는 소스 `930dee21bc64cc446a40ec88d8f932a2ea76b2ad`/배포 `appgdep_6ae369db5d008191a7b9796bd6ea3daf`, 실제 앱은 소스 `7b373f9f713fbe603e8f3382086f2e535b20ce35`/배포 `appgdep_6ae36a0acbe88191979ea3614222f55c`를 기존 비공개 audience로 배포했다. 앱은 API 옵션을 표시하고 판매 중/종료 체험 선택을 구분하며 추첨 실행 버튼은 엔진 구현 전까지 비활성이다. 가격null은 금액 미확인으로 표시한다.
+
+2026-10-29T15:48:38.438Z에 API/viewer/실제 앱의 전체 컬렉션을 끝까지 읽어 같은 publication과 전체 내용 일치를 검증했다. 실제 앱의13팩 상세API도 목록의drawOptions와 모두 일치했다. raw/가공선수뿐 아니라 이전 팩의 기존 모든 필드·archive전이 metadata도 기준본과 동일함을 확인했다. GitHub 원격 내용·해당 실제 CI 최종 확인은 진행 중이다. hosted 브라우저 직접 UI 검증은 로그인 화면에 막혀 미수행이며 배포/API 조회 확인을 UI 클릭 성공으로 확대하지 않는다. 전체 완료·포인터 전환은 남은 실제 반환 근거를 확인한 뒤 기록한다.
+
+### 파일 최신화 검토
+
+| 파일 | 결과 | 근거 |
+| --- | --- | --- |
+| `AGENTS.md` | 수정 | C077 가공API 확장 승인과 이전 레지스트리 전용 제안의 우선순위·원본/미확인 비용 보존 명시 |
+| `docs/CATALOG_DATA_CONTRACT.md` | 수정 | drawOptions14번째필드·N기준·사용자 근거·가공/중첩/API 일치·migration/가격null 계약 |
+| `docs/SIMULATOR_PLAN.md` | 수정 | API지원수량 소비·가격/보장 근거 분리·잔여1~9명 정책과 미구현 경계 정리 |
+| `docs/CHATGPT_WORK_HANDOFF.md` | 수정 | 최신T040 계약·진행 범위와T038 당시 정책/관측 구분 |
+| `docs/ROADMAP.md` | 수정 | T040→T017→T018 포인터와 남은 가격/영상/엔진 범위 정합성 |
+| `docs/WORKPLAN.md` | 수정 | T040/C077 지시·영향·처리 순서·실제검증 대기·파일검토 기록 |
+| `services/catalog-api/lib/catalog-contract.mjs` | 수정 | drawOptions엄격검사·N기준·기존불변세대호환·미확인비용null 계약 |
+| `services/catalog-api/lib/catalog-lifecycle.mjs` | 수정 | 신규가공·종료전이에 같은 결정적옵션 적용 |
+| `services/catalog-api/scripts/lifecycle/publication.mjs` | 수정 | 가공팩/중첩/발행레코드의 옵션 일치검사 |
+| `services/catalog-api/scripts/lifecycle/workspace.mjs` | 수정 | expectedCURRENT 명시 migrate-draw-options와 가공/중첩 로그·raw/선수 보존 |
+| `services/catalog-api/tests/catalog-api.test.mjs` | 수정 | 팩목록/상세/상태API 옵션 전달 검증 |
+| `services/catalog-api/tests/draw-options.test.mjs` | 수정 | 11/12경계·N/S구분·변조/가격null·migration보존/멱등회귀 |
+| `data/updates/catalog-latest.json` | 수정 | 추첨옵션13팩 갱신의 비민감 runtime/publication·검증 단계 요약 |
+| `docs/FILE_SYNC.json` | 수정 | 새 API/앱회귀·옵션소비 helper 등록과 관련파일 T040 검토 |
+| `services/catalog-api/policy/rules.lock.json` | 수정 | 검토된1.4.0·코드해시·명시채택 |
+| `services/efsimulator-app/app/components/catalog-data.tsx` | 수정 | 선택적drawOptions 타입·기존세대 호환 |
+| `services/efsimulator-app/app/components/catalog-pages.tsx` | 수정 | API옵션 표시·실행버튼 비활성·판매종료별도 선택 |
+| `services/efsimulator-app/app/globals.css` | 수정 | 옵션메타·별도 선택영역 반응형스타일 |
+| `services/efsimulator-app/lib/draw-options.mjs` | 수정 | API권위·미확인처리·비용표시·잔여guard |
+| `services/efsimulator-app/tests/draw-options.test.mjs` | 수정 | API옵션·가격null·잔여경계 회귀 |

@@ -1,4 +1,16 @@
-# 현재 추가 인수인계 — T038 사용자 결정·API/공식 근거 조사, 2026-10-29 KST
+# 현재 추가 인수인계 — T040 추첨 옵션의 가공 API 반영, 2026-10-30 KST
+
+사용자가 전체 11명 팩은 단일만, 11명 초과는 단일·10회이며 이 구분을 가공 선수팩과 실제 사이트용 API에 넣도록 명시했다. 이번 T040은 그 계약·가공·조회/사이트 소비·기존 세대 migration/발행을 구현했고 최종 전달 검증을 진행하는 작업이다. T038 당시의 앱 규칙 레지스트리 전용 제안과 API 옵션 필드 부재 설명은 이 최신 지시로 대체된다. raw4필드·선수8필드·같은 saleId/명단·기존 비공개 audience를 유지한다.
+
+가공 팩의 추가 `drawOptions`는 single(supported true/count1/coinCost null), ten(supported=`totalPlayerCount>11`/count10/coinCost null/minimumRemaining10), provenance(authority=`direct_user_confirmation`/reference=`T040`/rule=`total_player_count_gt_11`)다. 기준은 공식 전체 N이며 특수 S·Epic/Show Time 등급이 아니다. 사용자 확인을 공식 출처 가격/옵션 검증으로 표시하지 않는다. 비용 null은 미확인이고 무료/0이 아니다. 신규/종료 팩에도 같은 함수를 사용해 processed/live/archive·API 목록/상세·두 사이트가 같은 메타데이터를 제공하도록 한다.
+
+전체469회귀·API/앱 타입 검사·공식 Worker 빌드가 통과했다.13팩은 단일만6/단일·10회7이며 raw47,501선수/1,705팩·가공163선수는 기준본과 byte동일이다. 데이터묶음v18은 정확한 저장본 재다운로드 SHA256 `47160c8df784617ff93a8ac60cdd8585cccb380df5bc034a726217c5d7feba5c`로 검증했다. runtime은 `a45604b21c530cc3f198a249d5db1dc98190dc6e38801970388c75b16abc5e46`, publication은 `b19fb27858818fcc1a36e83e8593ca5a6c3fb9a5d3c27cfb4d3a824e44b2d57f`이며 원격 적재·전량 readback·CAS 활성화를 확인했다.
+
+API배포 `appgdep_6ae369db5d008191a7b9796bd6ea3daf`/소스 `930dee21bc64cc446a40ec88d8f932a2ea76b2ad`, 앱배포 `appgdep_6ae36a0acbe88191979ea3614222f55c`/소스 `7b373f9f713fbe603e8f3382086f2e535b20ce35`를 같은 비공개 audience로 배포했다. 앱은 API지원수량을 표시하고 판매중/종료체험 선택을 구분하며 실행버튼은 추첨엔진 구현 전까지 비활성이다. 2026-10-29T15:48:38.438Z 세사이트 전량대조와 같은 publication·실제앱13팩상세/API옵션 일치를 확인했다. 기존팩 전체필드·archive전이 metadata도 기준본과 동일하다. GitHub/실제CI 최종확인은 진행 중이고 hosted직접UI는 로그인화면으로 미수행이다. 전체 완료 상태와 포인터는 WORKPLAN의 최종 근거 확인 뒤 전환한다. 기존 T038의 종료 체험 섹션·코인 무잔액·균등 비복원·수동/소진 리셋·잔여1~9명의10회 잠금 정책은 유지한다. 추첨 엔진·세션 저장·결과 UI·2D/3D의 구현은 T017/T018 후속이며 영상 공개 흐름·팩별 가격/할인·보장 조건은 아직 조사 대상이다.
+
+---
+
+# T038 인수인계 snapshot — 사용자 결정·API/공식 근거 조사, 2026-10-29 KST
 
 T017-A 설계 결정 진행 중이다. 검증된 종료 팩도 체험 허용하되 판매 중/판매 종료 팩 체험을 별도 섹션으로 명확히 구분한다. 가상 코인은 잔액 없이 사용량만 누적한다. 사용자 요청 기본 추첨은 잔여 n에서 각 슬롯 1/n의 균등 비복원, 수동 리셋/전체 소진 뒤 전체 풀의 새 roundId다. 이전 결과·가상 사용량·누적 횟수를 보존하고 자동 추가 추첨은 하지 않는다. [SIMULATOR_PLAN](SIMULATOR_PLAN.md)의 최신 T038 절이 이전 종료 팩 차단·리셋 보류 제안을 대체한다.
 

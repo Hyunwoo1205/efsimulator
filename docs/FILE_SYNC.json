@@ -255,7 +255,7 @@
       "update_when": [
         "사용자 요구·작업 절차·검증 명령·제품 및 운영 원칙 변경"
       ],
-      "reviewed_in": "T039"
+      "reviewed_in": "T040"
     },
     {
       "path": "README.md",
@@ -776,7 +776,7 @@
       "update_when": [
         "자동 갱신 경로·완료 기준·검증·대상 또는 기록 schema 변경 시"
       ],
-      "reviewed_in": "T039"
+      "reviewed_in": "T040"
     },
     {
       "path": "docs/API_SELECTION.md",
@@ -866,7 +866,7 @@
       "update_when": [
         "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
       ],
-      "reviewed_in": "T039"
+      "reviewed_in": "T040"
     },
     {
       "path": "docs/CHATGPT_WORK_HANDOFF.md",
@@ -887,7 +887,7 @@
       "update_when": [
         "사용자 범위/입력 상태·원격/로컬 반영·이관/검증 결과·지원 도구/작업 상태 변경"
       ],
-      "reviewed_in": "T038"
+      "reviewed_in": "T040"
     },
     {
       "path": "docs/COLLECTION.md",
@@ -977,7 +977,7 @@
       "update_when": [
         "파일 추가·삭제·이름 변경·역할/의존관계 변경·영향 검토"
       ],
-      "reviewed_in": "T039"
+      "reviewed_in": "T040"
     },
     {
       "path": "docs/FILE_SYNC_AUDIT.md",
@@ -1053,7 +1053,7 @@
       "update_when": [
         "단계 상태·현재/이전/다음 작업·완료 조건·추가 요구 변경"
       ],
-      "reviewed_in": "T039"
+      "reviewed_in": "T040"
     },
     {
       "path": "docs/SIMULATOR_PLAN.md",
@@ -1078,7 +1078,7 @@
       "update_when": [
         "해당 범위/입력/완료조건·관계·권한/운영 근거 변경. reference의 과거 관측값은 덮어쓰지 않음"
       ],
-      "reviewed_in": "T038"
+      "reviewed_in": "T040"
     },
     {
       "path": "docs/WORKPLAN.md",
@@ -1104,7 +1104,7 @@
       "update_when": [
         "매 작업 착수·추가 요구·파일 변경·검증 결과·작업 종료"
       ],
-      "reviewed_in": "T039"
+      "reviewed_in": "T040"
     },
     {
       "path": "docs/reference/ARCHITECTURE_BEFORE_PROBABILITY_SCOPE.md",
@@ -2959,7 +2959,7 @@
       "update_when": [
         "데이터 형식·가공 규칙·HTML 증거·매핑 검토·반복 실행 계약 변경"
       ],
-      "reviewed_in": "T039"
+      "reviewed_in": "T040"
     },
     {
       "path": "services/catalog-api/lib/catalog-lifecycle.mjs",
@@ -2973,7 +2973,7 @@
       "update_when": [
         "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
       ],
-      "reviewed_in": "T027"
+      "reviewed_in": "T040"
     },
     {
       "path": "services/catalog-api/lib/connector-context.ts",
@@ -3171,7 +3171,7 @@
       "update_when": [
         "데이터 형식·가공 규칙·HTML 증거·매핑 검토·반복 실행 계약 변경"
       ],
-      "reviewed_in": "T039"
+      "reviewed_in": "T040"
     },
     {
       "path": "services/catalog-api/postcss.config.mjs",
@@ -3447,7 +3447,7 @@
       "update_when": [
         "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
       ],
-      "reviewed_in": "T039"
+      "reviewed_in": "T040"
     },
     {
       "path": "services/catalog-api/scripts/lifecycle/publish-remote.mjs",
@@ -3536,7 +3536,7 @@
       "update_when": [
         "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
       ],
-      "reviewed_in": "T039"
+      "reviewed_in": "T040"
     },
     {
       "path": "services/catalog-api/scripts/npm-install.mjs",
@@ -3687,7 +3687,7 @@
       "update_when": [
         "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
       ],
-      "reviewed_in": "T027"
+      "reviewed_in": "T040"
     },
     {
       "path": "services/catalog-api/tests/catalog-contract.test.mjs",
@@ -3762,6 +3762,20 @@
         "데이터 형식·가공 규칙·HTML 증거·매핑 검토·반복 실행 계약 변경"
       ],
       "reviewed_in": "T027"
+    },
+    {
+      "path": "services/catalog-api/tests/draw-options.test.mjs",
+      "role": "가공팩 추첨옵션 N11/12·근거/비용null·migration보존·멱등회귀",
+      "priority": "P1",
+      "related_paths": [
+        "services/catalog-api/lib/catalog-contract.mjs",
+        "services/catalog-api/lib/catalog-lifecycle.mjs",
+        "services/catalog-api/scripts/lifecycle/workspace.mjs"
+      ],
+      "update_when": [
+        "추첨옵션 API 계약·소비·경계동작 변경"
+      ],
+      "reviewed_in": "T040"
     },
     {
       "path": "services/catalog-api/tests/helpers/source-fixture.mjs",
@@ -4679,7 +4693,7 @@
       "update_when": [
         "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
       ],
-      "reviewed_in": "T038"
+      "reviewed_in": "T040"
     },
     {
       "path": "services/efsimulator-app/app/components/catalog-pages.tsx",
@@ -4697,7 +4711,7 @@
       "update_when": [
         "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
       ],
-      "reviewed_in": "T038"
+      "reviewed_in": "T040"
     },
     {
       "path": "services/efsimulator-app/app/components/catalog-ui.tsx",
@@ -4733,7 +4747,7 @@
       "update_when": [
         "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
       ],
-      "reviewed_in": "T034"
+      "reviewed_in": "T040"
     },
     {
       "path": "services/efsimulator-app/app/layout.tsx",
@@ -4924,6 +4938,19 @@
         "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
       ],
       "reviewed_in": "T038"
+    },
+    {
+      "path": "services/efsimulator-app/lib/draw-options.mjs",
+      "role": "공개API 추첨옵션검사·가격표시·잔여수량 guard",
+      "priority": "P0",
+      "related_paths": [
+        "services/efsimulator-app/app/components/catalog-pages.tsx",
+        "services/efsimulator-app/app/components/catalog-data.tsx"
+      ],
+      "update_when": [
+        "추첨옵션 API 계약·소비·경계동작 변경"
+      ],
+      "reviewed_in": "T040"
     },
     {
       "path": "services/efsimulator-app/lib/pack-preview.mjs",
@@ -5303,6 +5330,18 @@
         "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
       ],
       "reviewed_in": "T032"
+    },
+    {
+      "path": "services/efsimulator-app/tests/draw-options.test.mjs",
+      "role": "API옵션권위·미확인/잘못된입력·가격·잔여1~9 경계회귀",
+      "priority": "P1",
+      "related_paths": [
+        "services/efsimulator-app/lib/draw-options.mjs"
+      ],
+      "update_when": [
+        "추첨옵션 API 계약·소비·경계동작 변경"
+      ],
+      "reviewed_in": "T040"
     },
     {
       "path": "services/efsimulator-app/tests/pack-preview.test.mjs",

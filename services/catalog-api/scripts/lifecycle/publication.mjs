@@ -37,7 +37,7 @@ export function assertPublicationState(state) {
     requireValue(!(live.has(saleId) && archive.has(saleId)), 'A sale cannot occur in both live and archive');
     const entry = live.get(saleId) ?? archive.get(saleId);
     requireValue(entry, 'A processed pack is missing from live/archive');
-    const expectedFields = [...PROCESSED_PACK_FIELDS, 'players', ...(archive.has(saleId) ? ['archivedAt', 'archiveReason'] : [])].sort(compareText);
+    const expectedFields = [...PROCESSED_PACK_FIELDS.filter(field => field !== 'drawOptions' || Object.hasOwn(pack, field)), 'players', ...(archive.has(saleId) ? ['archivedAt', 'archiveReason'] : [])].sort(compareText);
     requireValue(canonical(Object.keys(entry).sort(compareText)) === canonical(expectedFields), 'Nested pack fields differ from expected contract');
     if (archive.has(saleId)) requireValue(typeof entry.archivedAt === 'string' && /(?:Z|[+-]\d{2}:\d{2})$/.test(entry.archivedAt) && Number.isFinite(Date.parse(entry.archivedAt)) && ['ended', 'official_removed'].includes(entry.archiveReason), 'Invalid archive transition metadata');
     requireValue(Number.isFinite(Date.parse(pack.endsAt)) && /(?:Z|\+00:00)$/.test(pack.endsAt), 'Pack endsAt must be explicit UTC');

@@ -4,6 +4,7 @@ import { DatabaseSync } from 'node:sqlite';
 import { readFileSync } from 'node:fs';
 import { handleCatalogRequest } from '../lib/catalog-api.mjs';
 import { generatePublication, PLAYER_FIELDS } from '../scripts/lifecycle/publication.mjs';
+import { createDrawOptions } from '../lib/catalog-contract.mjs';
 
 const NOW = '2026-10-27T00:00:00.000Z';
 const player = (id, name) => ({ id, name, slug: `player-${id}`, position: 'CF', overallRating: 85, playingStyle: null, playingStyleDefensive: null, imageUrl: `https://efimg.com/${id}.png` });
@@ -118,6 +119,23 @@ test('packcards read the sameversion membership and all8publicplayerfields', asy
     assert.equal(body.meta.special_player_count, 2); assert.equal(body.meta.total_player_count, 150);
     assert.equal((await f.request('/packs/missing/cards')).status, 404);
     assert.equal((await f.request('/packs/sale-1/cards?q=Player')).status, 400);
+  } finally { f.close(); }
+});
+
+test('pack list/details and live/archive reads retain identical published draw options', async () => {
+  const value = state();
+  for (const key of ['packs', 'active']) for (const pack of value[key]) pack.drawOptions = createDrawOptions(pack.totalPlayerCount);
+  const f = fixture({ value });
+  try {
+    const list = await (await f.request('/packs')).json();
+    for (const expected of value.packs) {
+      const detail = await (await f.request(`/packs/${expected.saleId}`)).json();
+      const section = expected.totalPlayerCount === 11 ? 'archive' : 'live';
+      const nested = await (await f.request(`/${section}/${expected.saleId}`)).json();
+      assert.deepEqual(list.data.find(pack => pack.saleId === expected.saleId).drawOptions, expected.drawOptions);
+      assert.deepEqual(detail.data.drawOptions, expected.drawOptions);
+      assert.deepEqual(nested.data.drawOptions, expected.drawOptions);
+    }
   } finally { f.close(); }
 });
 
