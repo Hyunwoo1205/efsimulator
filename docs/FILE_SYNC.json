@@ -668,7 +668,7 @@
     },
     {
       "path": "data/research/simulator-decisions-T038.json",
-      "role": "T038 사용자 추첨/리셋/종료체험 결정·API 가격/10회 필드 감사·공식 예외/영상 미관찰과 미완료 조사 기록",
+      "role": "T038 사용자 추첨/리셋/종료체험/잔여10명미만 결정·API 가격/10회 필드 감사·공식 예외/영상 미관찰과 미완료 조사 기록",
       "priority": "P0",
       "related_paths": [
         "docs/SIMULATOR_PLAN.md",

@@ -25,7 +25,17 @@
       "known_virtual_coin_usage"
     ],
     "result_flow": "follow_observed_actual_game_single_and_batch_opening; not yet observed",
-    "three_d": "after_user_uploads_apk_inspect_pack_opening_code_and_resources_before_choosing_reuse"
+    "three_d": "after_user_uploads_apk_inspect_pack_opening_code_and_resources_before_choosing_reuse",
+    "remaining_under_ten": {
+      "user_confirmed": true,
+      "policy": "disable_ten_for_remaining1_to9_and_finish_with_single",
+      "batch_count": 10,
+      "batch_requires_remaining_at_least": 10,
+      "no_partial_batch": true,
+      "no_cross_round_batch": true,
+      "single_cost": "use_verified_per_pack_single_price; no inferred pro_rata_discount",
+      "official_game_behavior_verified": false
+    }
   },
   "api_audit": {
     "mode": "current_local_source_exactly_matches_remote_baseline; retained_data_not_fresh_hosted_read",
@@ -128,12 +138,6 @@
       "item": "actual single/batch reveal order, controls, skip and result summary",
       "status": "not_observed_due_to_video_delivery",
       "do_not": "claim watched footage or prescribe highlight selection from title"
-    },
-    {
-      "item": "remaining1_to9 handling and cost",
-      "status": "not_verified",
-      "proposed_default": "disable_ten_and_finish_with_single; no silent truncation or within-batch refill",
-      "user_confirmed": false
     },
     {
       "item": "APK resource analysis",
