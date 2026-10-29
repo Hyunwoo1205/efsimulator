@@ -1,4 +1,4 @@
-<!-- project-state: {"stage":"R6","previous":"T040","current":"T041","next":"T018"} -->
+<!-- project-state: {"stage":"R6","previous":"T041","current":"T017","next":"T018"} -->
 
 > T036: 기존 예약의 전체 경로를 보완하고 활성 hourly 설정을 유지했다. 두 사이트의 열린 화면 자동 갱신·세 사이트 전량 대조·단계별 재개·GitHub 고정 요약 영수증은 [AUTOMATION](AUTOMATION.md)을 따른다. 신규 미검토 매핑/기존 raw 충돌은 자동 승인하지 않는다. 새 지침의 다음 예약 실행은 아직 관찰하지 않았다.
 
@@ -6,7 +6,7 @@
 
 # efsimulator 개발 로드맵
 
-최신 요청(T041, 진행 중): raw163명은7Epic/11Show Time/44Trend/101Highlight이고 WPOTY는 Kane88·Yamal88·Mbappé87의3Epic/나머지8Highlight로 대조했다. 고정70명 레지스트리의 신규 누락을 동적 API `playerType`9필드 전달로 수정하고 등급4그룹·선수OVR/팩최신순·대표등급상위3을 적용했다.476회귀·세서비스 타입/공식빌드와private배포가통과했고 예약지침저장은성공했다. 저장본v19의정확한다운로드/SHA/gzip/tar와새publication발행·세사이트전량일치/공개앱익명GET을검증했다. 실제앱은publicrevision2이며브라우저WPOTY대표3/등급별명단·전체선수등급/OVR순을확인했다. 작은배지간격CSS보완의최종앱재배포와GitHub/CI는진행중이다. API/admin·검토viewer는owner-private를유지한다. 새예약실행은미관찰이며새코드전용cycle경고를구현했다고하지않는다.
+최신 전달(T041, 완료): raw163명은7Epic/11Show Time/44Trend/101Highlight이고 WPOTY는 Kane88·Yamal88·Mbappé87의3Epic/나머지8Highlight로 대조했다. 고정70명 레지스트리의 신규 누락을 동적 API `playerType`9필드 전달로 수정하고 등급4그룹·선수OVR/팩최신순·대표등급상위3을 적용했다.476회귀·세서비스 타입/공식빌드와private배포가통과했고 예약지침저장은성공했다. 저장본v19의정확한다운로드/SHA/gzip/tar와새publication발행·세사이트전량일치/공개앱익명GET을검증했다. 실제앱은publicrevision2이며브라우저WPOTY대표3/등급별명단·전체선수등급/OVR순을확인했다. 배지간격CSS보완의최종public재배포·브라우저padding확인과구현commit33d5229f7884947b13f9a37744f85c754116a9d4의원격361파일차이0/실제CI3건성공까지확인해T041을완료했다. 후속최종문서commit의미래CI를선행기록하지않는다. API/admin·검토viewer는owner-private를유지한다. 새예약실행은미관찰이며새코드전용cycle경고를구현했다고하지않는다.
 
 최신 정책(T038/T040): 종료 팩 체험 섹션 분리·잔액 없는 가상 사용량·균등 비복원·수동/소진 리셋을 확정했다. T040 사용자 확인의 전체11명 단일만/11명초과 단일·10회를 가공 팩 `drawOptions`와 API·사이트에 반영했다.469회귀·API/앱 타입/Worker빌드·저장본v18·원격발행·두서비스배포·세사이트 전량/실제앱13팩상세 일치·구현commit의 원격359파일일치/실제CI3건성공까지 확인해 T040을 완료했다. 가격/할인·보장 조건과 영상 공개 흐름은 미확인이다. 실제 검증·배포 완료 범위는 WORKPLAN을 따른다. [기록](../data/research/simulator-decisions-T038.json).
 
@@ -23,8 +23,8 @@
 | 항목 | 내용 |
 | --- | --- |
 | 현재 단계 | R6 — 실제 시뮬레이터 핵심 기능 예정 |
-| 이전 작업 | T040 — 추첨옵션13팩 가공/API·앱전달·migration·v18저장/발행·배포·세사이트·원격/실제CI3건 검증 완료 |
-| 현재 작업 | T041 — 타입9필드·자동갱신 전달·등급/OVR 정렬·WPOTY대표 수정과 실제 앱 공개 전환, 구현/검증 진행 중 |
+| 이전 작업 | T041 — 타입9필드·4등급/OVR 정렬·미리보기·자동화지침·실제앱공개/익명브라우저·원격361파일/실제CI3건검증 완료 |
+| 현재 작업 | T017 — 전달된API타입/추첨옵션을소비하는추첨엔진·저장·개봉화면/2D; 가격/할인·보장조건·영상조사는별도 |
 | 다음 작업 | T018 — T017의 API 옵션 소비·추첨 엔진/저장/화면·2D 완성 후3D·모바일 성능 |
 | 현재 조건 | T041의 등급 분리·선수OVR/팩최신순·API 타입권위를 적용한다. 실제 앱 public과 private API/viewer 경계를 검증하며 기존 카드표시·raw·팩/추첨옵션을 보존한다. |
 
