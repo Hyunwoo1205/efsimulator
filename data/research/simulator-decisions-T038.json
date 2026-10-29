@@ -1,0 +1,152 @@
+{
+  "task": "T038",
+  "status": "in_progress",
+  "date_kst": "2026-10-29",
+  "scope": "User policy decisions and source audit; no product code, API contract, automation, or deployment change",
+  "baseline": {
+    "branch": "api-server-setup",
+    "commit": "1110cbe81dcbf26123876f4db33a0f0c5796c8b1",
+    "blob_count": 353,
+    "local_content_differences": 0
+  },
+  "user_decisions": {
+    "archive_practice": true,
+    "separate_sections": [
+      "판매 중인 선수팩",
+      "판매 종료 팩 체험"
+    ],
+    "virtual_coins": "unlimited_balance_usage_only",
+    "draw": "uniform_without_replacement_each_remaining_slot_1_over_n",
+    "manual_reset": true,
+    "exhaustion": "preserve_final_batch_then_prepare_full_new_round_without_extra_draw",
+    "preserve_on_reset": [
+      "draw_history",
+      "lifetime_draw_count",
+      "known_virtual_coin_usage"
+    ],
+    "result_flow": "follow_observed_actual_game_single_and_batch_opening; not yet observed",
+    "three_d": "after_user_uploads_apk_inspect_pack_opening_code_and_resources_before_choosing_reuse"
+  },
+  "api_audit": {
+    "mode": "current_local_source_exactly_matches_remote_baseline; retained_data_not_fresh_hosted_read",
+    "raw_pack_fields": [
+      "name",
+      "slug",
+      "date",
+      "playerCount"
+    ],
+    "processed_pack_fields": [
+      "saleId",
+      "name",
+      "slug",
+      "date",
+      "playerCount",
+      "sourceReportedPlayerCount",
+      "totalPlayerCount",
+      "standardPlayerCount",
+      "endsAt",
+      "officialTitle",
+      "members",
+      "countCorrection",
+      "provenance"
+    ],
+    "missing_fields": [
+      "price",
+      "currency",
+      "draw_options",
+      "supports_ten",
+      "multi_draw_price",
+      "discount",
+      "reset_rules"
+    ],
+    "files": [
+      "services/catalog-api/lib/catalog-contract.mjs",
+      "services/catalog-api/lib/catalog-api.mjs",
+      "services/catalog-api/scripts/lifecycle/html-sources.mjs",
+      "services/efsimulator-app/app/components/catalog-data.tsx",
+      "data/research/source-observations.json",
+      "data/research/probability-scope-baseline.json"
+    ],
+    "conclusion": "Absent from this API contract and retained records; not a claim about all possible upstream responses",
+    "integration_plan": "saleId-specific app rule registry, no inferred catalog API/raw extension"
+  },
+  "primary_sources": [
+    {
+      "url": "https://efootball-web.konami.net/probability_kr.php",
+      "observation": "uniform probabilities and subsequent probability depends on remaining player count; currently Under Maintenance, no current roster validated here",
+      "no_price_or_ten_option": true
+    },
+    {
+      "url": "https://www.konami.com/games/corporate/ja/news/topics/20260409/",
+      "publication_date": "2026-04-09",
+      "observation": "That specific Big Time & Epic National All-Stars list had usual ten-player cost900 and first-ten cost500; not a universal current pack price"
+    },
+    {
+      "url": "https://www.konami.com/efootball/en/page/v5/versioninfo_v5-20",
+      "observation": "Some Special Player Lists guarantee one Headliner when signing ten; do not silently treat as ten uniform independent commands"
+    },
+    {
+      "url": "https://www.konami.com/efootball/en-us/page/2023/season3_patch-notes_v2-40",
+      "observation": "Historical primary source confirms signing multiple players at once on mobile and console/PC; does not establish per-pack current price/support"
+    }
+  ],
+  "video_attempts": [
+    {
+      "url": "https://www.youtube.com/watch?v=fWjKkJFYcvU",
+      "title_observed": "GROUND MISSILE PACK OPENING EPIC FOR 900 COINS (eFootball 2026 Mobile)",
+      "browser_page_opened": true,
+      "visual_frames_observed": false,
+      "player_observation": {
+        "current_time": 0,
+        "ready_state": 0,
+        "screen": "black loading frame"
+      },
+      "evidence_scope": "title/channel/page metadata only; no reveal-flow conclusion"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=Q-nA4WlSo60",
+      "title_observed": "10.000 TL HESAP FULLEME 2. BÖLÜM 4 SHOW TIME OYUNCUYU ÇIKARDIK 32.600 EFOOTBALL PARALIK SERİMİZ",
+      "browser_page_opened": true,
+      "relative_publication_observed": "11d ago (page label; not converted to exact publication date)",
+      "visual_frames_observed": false,
+      "player_observation": {
+        "current_time": 0,
+        "ready_state": 0,
+        "screen": "black loading frame"
+      },
+      "evidence_scope": "title/channel/page metadata only; no reveal-flow conclusion"
+    }
+  ],
+  "pending": [
+    {
+      "item": "per-saleId single price, ten support, ten price and discount conditions",
+      "status": "not_verified",
+      "known": "user reports some packs offer10 for900; official confirms specific900/500 example",
+      "do_not": "set every Epic/Show Time to supports10 or cost900"
+    },
+    {
+      "item": "actual single/batch reveal order, controls, skip and result summary",
+      "status": "not_observed_due_to_video_delivery",
+      "do_not": "claim watched footage or prescribe highlight selection from title"
+    },
+    {
+      "item": "remaining1_to9 handling and cost",
+      "status": "not_verified",
+      "proposed_default": "disable_ten_and_finish_with_single; no silent truncation or within-batch refill",
+      "user_confirmed": false
+    },
+    {
+      "item": "APK resource analysis",
+      "status": "waiting_for_user_upload"
+    }
+  ],
+  "implementation_status": {
+    "engine": false,
+    "persistent_sessions": false,
+    "reset_ui": false,
+    "archive_sections": false,
+    "two_d_results": false,
+    "three_d": false,
+    "deployed": false
+  }
+}
