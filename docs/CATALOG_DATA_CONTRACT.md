@@ -1,6 +1,8 @@
+> T042 최신 가격 계약: 시뮬레이터는 사용자 확정에 따라 1회100코인·10회900코인으로 고정한다. 신규 `drawOptions`는 single.coinCost100/ten.coinCost900와 사용자확인 provenance referenceT042를 전달한다. 지원 수량·최소잔여는 그대로이며 과거 T040 null가격 불변 세대는 읽기 호환성을 유지한다. 현재 가격에 별도 할인/팩별 조사 게이트를 두지 않는다.
+
 > T041 최신 계약: 가공 선수에 원본의 정확한 숫자 `playerType`을9번째 필드로 전달한다. 신규 가공·선수 목록/상세·live/archive 중첩이 같은 타입을 제공하며 고정70명 표시 목록을 타입의 운영 원본으로 쓰지 않는다. 알려진 타입의 정렬은 Epic(5) → Show Time(8) → Trend(3) → Highlight(6), 선수는 등급 안 OVR 내림차순·팩은 등급 안 날짜 최신순이다. 미확인 코드는 원본 그대로 미분류로 보존한다. T024/T040의 선수8필드 제한은 이 최신 사용자 지시로 확장된다. 실제 앱만 공개하며 API·관리 경로와 검토 viewer는 비공개를 유지한다.
 
-> T040 최신 계약: 가공 팩과 live/archive·자체 API에 사용자 확인 근거의 `drawOptions`를 추가한다. 전체 11명 팩은 단일만, 전체 11명 초과는 단일·10회다. 가격은 미확인 null로 별도 관리한다. raw4필드·선수8필드는 유지한다. live/archive는 실제 판매 구분이며 검증된 종료 팩 체험은 별도 섹션에서 제공하는 소비자 정책이다. 아래 T024/T038의 당시 13필드·앱 레지스트리 전용 설명보다 이 최신 계약을 우선한다. [시뮬레이터 계획](SIMULATOR_PLAN.md).
+> T040 최신 계약: 가공 팩과 live/archive·자체 API에 사용자 확인 근거의 `drawOptions`를 추가한다. 전체 11명 팩은 단일만, 전체 11명 초과는 단일·10회다. T040 당시 가격은 미확인 null이었으며 현행 가격은 위 T042 계약을 따른다. raw4필드·선수8필드는 유지한다. live/archive는 실제 판매 구분이며 검증된 종료 팩 체험은 별도 섹션에서 제공하는 소비자 정책이다. 아래 T024/T038의 당시 13필드·앱 레지스트리 전용 설명보다 이 최신 계약을 우선한다. [시뮬레이터 계획](SIMULATOR_PLAN.md).
 
 # 수집 원본과 자체 API 데이터 계약
 
@@ -40,19 +42,19 @@
 
 과거 불변8필드 발행본은 읽을 수 있게 유지한다. 현행 세대 보강은 규칙 검토·채택 뒤 `workspace.mjs migrate-player-types --root <작업공간> --expected-version <현재해시> --now <UTC>`로 정확한raw ID를 대조해 수행한다. raw 원문·팩 구성·drawOptions·판매 상태·archive 전이 메타를 보존하고 processed/players·중첩/live/archive와 대상별 변경 로그만 갱신한다. API 발행·전체 중첩 대조·사이트 소비·원격/CI까지 검증한 결과만 완료로 기록한다.
 
-### T040 추첨 옵션
+### T040/T042 추첨 옵션과 고정 가격
 
 가공 팩은 기존 13필드에 `drawOptions`를 더한 14필드다. 전체 인원은 공식 확률표의 `totalPlayerCount`를 사용하며 특수 카드만 센 `playerCount`나 Epic/Show Time 등급으로 수량을 추정하지 않는다. 현재 양의 전체 인원이 11 이하이면 단일만, 11 초과이면 단일·10회가 된다. 11명 미만 처리도 보수적으로 단일만 유지한다.
 
 ```json
 {
-  "single": {"supported": true, "count": 1, "coinCost": null},
-  "ten": {"supported": true, "count": 10, "coinCost": null, "minimumRemaining": 10},
-  "provenance": {"authority": "direct_user_confirmation", "reference": "T040", "rule": "total_player_count_gt_11"}
+  "single": {"supported": true, "count": 1, "coinCost": 100},
+  "ten": {"supported": true, "count": 10, "coinCost": 900, "minimumRemaining": 10},
+  "provenance": {"authority": "direct_user_confirmation", "reference": "T042", "rule": "total_player_count_gt_11"}
 }
 ```
 
-위 예시는 전체 11명 초과 팩이며 11명 팩의 `ten.supported`는 false다. `coinCost:null`은 가격 미확인이고 무료를 뜻하지 않는다. 이 필드의 출처는 2026-10-30 KST 사용자의 직접 확인이며 공식 확률표·EFHub가 가격/10회를 제공했다고 표시하지 않는다. 할인·보장·무료권/티켓은 별도의 검증이 필요하다.
+위 예시는 전체 11명 초과 팩이며 11명 팩의 `ten.supported`는 false다. 가격은 1회100/10회900의 고정 시뮬레이터 정책이며 할인은 적용하지 않는다. 이 필드의 출처는 2026-10-30 KST 사용자의 직접 확인이며 공식 확률표·EFHub의 가격 필드를 확인했다고 표시하지 않는다. 10회 미지원 팩의 ten.coinCost900은 기본 가격 메타데이터이며 지원 여부를 바꾸지 않는다. 과거 T040 `coinCost:null` 세대는 미확인으로 읽을 수 있게 유지하되 현행 세대는 명시 `migrate-draw-options`로 고정 가격을 채택한다. 보장 조건·무료권/티켓 등 다른 모드는 별도 검토 대상이며 확인된 기본 가격을 다시 미확인으로 되돌리지 않는다.
 
 `processed/packs.json`, `live.json`, `archive.json`, API 팩 목록/상세와 두 소비 사이트의 중계가 동일한 값을 유지한다. 신규 팩과 종료 전이도 같은 가공 함수를 사용한다. 10회 지원과 현재 잔여 수량은 별개이며 사용자가 정한 C075에 따라 잔여 1~9명은 10회 버튼을 비활성화한다. 기존 저장 세대는 명시 검토한 migration으로 메타데이터와 변경 로그를 추가하며 raw·특수 명단·과거 결과를 수정하지 않는다. 기존 필드 없는 불변 세대는 그대로 읽을 수 있게 호환성을 유지하며, 규칙 채택 뒤 `node services/catalog-api/scripts/lifecycle/workspace.mjs migrate-draw-options --root <작업공간> --expected-version <현재해시> --now <UTC>`로 processed/live/archive와 대상별 변경 로그에만 새 필드를 추가한다. 기존 raw·가공 선수 바이트는 유지한다. 전체 데이터 보존·규칙 채택·새 발행·API/소비 사이트 전량 대조 전에는 운영 반영 완료라고 하지 않는다.
 

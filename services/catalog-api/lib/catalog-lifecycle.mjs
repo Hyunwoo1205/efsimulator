@@ -167,7 +167,7 @@ function fileChange(before, after, key, targetFile, at, observation, transitions
   return { id: eventId(event), ...event };
 }
 
-/** Explicit T040 metadata migration; leaves raw, players and sale membership intact. */
+/** Explicit reviewed draw-option migration; preserves raw, players and sale membership. */
 export function enrichPackDrawOptions(state, now) {
   validateLifecycleState(state);
   if (!timestamp(now)) fail('Invalid draw-option migration clock');

@@ -61,13 +61,13 @@ export function assertRawPack(pack) {
   requireValue(text(pack.name) && typeof pack.slug === 'string' && /^[a-z\d-]+$/.test(pack.slug) && pack.slug !== 'dummy' && date(pack.date) && integer(pack.playerCount) && pack.playerCount > 0, 'Invalid raw pack values');
   return pack;
 }
-/** T040 user-confirmed support rule. Prices have no per-sale evidence yet. */
+/** User-confirmed support rule and T042 fixed simulator coin prices. */
 export function createDrawOptions(totalPlayerCount) {
   requireValue(integer(totalPlayerCount) && totalPlayerCount > 0, 'Invalid draw option total player count');
   return {
-    single: { supported: true, count: 1, coinCost: null },
-    ten: { supported: totalPlayerCount > 11, count: 10, coinCost: null, minimumRemaining: 10 },
-    provenance: { authority: 'direct_user_confirmation', reference: 'T040', rule: 'total_player_count_gt_11' },
+    single: { supported: true, count: 1, coinCost: 100 },
+    ten: { supported: totalPlayerCount > 11, count: 10, coinCost: 900, minimumRemaining: 10 },
+    provenance: { authority: 'direct_user_confirmation', reference: 'T042', rule: 'total_player_count_gt_11' },
   };
 }
 export function assertDrawOptions(options, totalPlayerCount) {
@@ -75,7 +75,14 @@ export function assertDrawOptions(options, totalPlayerCount) {
   keys(options.single, ['supported', 'count', 'coinCost'], undefined, 'single draw option');
   keys(options.ten, ['supported', 'count', 'coinCost', 'minimumRemaining'], undefined, 'ten draw option');
   keys(options.provenance, ['authority', 'reference', 'rule'], undefined, 'draw option provenance');
-  requireValue(canonical(options) === canonical(createDrawOptions(totalPlayerCount)), 'Pack draw options differ from the reviewed total-count rule or contain unverified prices');
+  const current = createDrawOptions(totalPlayerCount);
+  // T040 immutable generations used null prices; keep exact legacy records
+  // readable for rule adoption while new processing/migration emits T042.
+  const legacy = structuredClone(current);
+  legacy.single.coinCost = null; legacy.ten.coinCost = null;
+  legacy.provenance.reference = 'T040';
+  const encoded = canonical(options);
+  requireValue(encoded === canonical(current) || encoded === canonical(legacy), 'Pack draw options differ from the reviewed support or fixed-price contract');
   return options;
 }
 export function assertProcessedPack(pack) {

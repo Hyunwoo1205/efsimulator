@@ -22,22 +22,22 @@ test('11 is single only; 12 and larger support ten based on official total rathe
     assert.equal(options.single.supported, true);
     assert.equal(options.ten.supported, total > 11);
     assert.equal(options.ten.minimumRemaining, 10);
-    assert.equal(options.single.coinCost, null);
-    assert.equal(options.ten.coinCost, null);
+    assert.equal(options.single.coinCost, 100);
+    assert.equal(options.ten.coinCost, 900);
     assert.deepEqual(result.state.active[0].drawOptions, options);
     assert.equal(JSON.stringify(input), before, 'source inputs are unchanged');
   }
 });
 
-test('support and nullable price metadata are strict and retain user-confirmed provenance', () => {
+test('support and fixed prices are strict and retain user-confirmed provenance', () => {
   const pack = reconcileCatalog(fixture(150)).state.packs[0];
   assert.equal(pack.playerCount, 1, 'one special card does not disable a 150-person ten draw');
-  assert.deepEqual(pack.drawOptions.provenance, { authority: 'direct_user_confirmation', reference: 'T040', rule: 'total_player_count_gt_11' });
+  assert.deepEqual(pack.drawOptions.provenance, { authority: 'direct_user_confirmation', reference: 'T042', rule: 'total_player_count_gt_11' });
   for (const edit of [
     options => { options.ten.supported = false; },
     options => { options.ten.minimumRemaining = 1; },
-    options => { options.single.coinCost = 100; },
-    options => { options.ten.coinCost = 900; },
+    options => { options.single.coinCost = 99; },
+    options => { options.ten.coinCost = 500; },
     options => { options.provenance.authority = 'official_source'; },
     options => { options.guessed = true; },
   ]) {
@@ -68,4 +68,37 @@ test('explicit legacy metadata migration preserves members, players, history and
   for (const record of publication.records.filter(record => record.kind !== 'player')) assert.deepEqual(record.payload.drawOptions, migrated.state.packs[0].drawOptions);
   const replay = enrichPackDrawOptions(migrated.state, '2026-11-02T04:00:00.000Z');
   assert.equal(replay.changed, false); assert.deepEqual(replay.changes, []); assert.deepEqual(replay.state, migrated.state);
+});
+
+
+test('exact T040 null-price publications remain readable; reviewed migration replaces prices throughout active and archived packs', () => {
+  for (const archived of [false, true]) {
+    const input = fixture(150);
+    let state = reconcileCatalog(input).state;
+    if (archived) state = reconcileCatalog({ ...input, state, candidates: [], officialObservation: null, now: '2026-11-02T02:00:00.000Z' }).state;
+    for (const key of ['packs', 'active', 'archive']) for (const pack of state[key]) {
+      pack.drawOptions.single.coinCost = null;
+      pack.drawOptions.ten.coinCost = null;
+      pack.drawOptions.provenance.reference = 'T040';
+    }
+    const original = structuredClone(state);
+    assert.doesNotThrow(() => generatePublication({ state }), 'retained null-price publication is readable');
+    const migrated = enrichPackDrawOptions(state, '2026-11-02T03:00:00.000Z');
+    assert.equal(migrated.changed, true);
+    assert.deepEqual(migrated.changes.map(change => change.targetFile), ['processed/packs.json', archived ? 'archive.json' : 'live.json']);
+    assert.deepEqual(migrated.state.players, original.players);
+    for (const key of ['packs', 'active', 'archive']) for (let i = 0; i < migrated.state[key].length; i++) {
+      const pack = migrated.state[key][i];
+      assert.equal(pack.drawOptions.single.coinCost, 100);
+      assert.equal(pack.drawOptions.ten.coinCost, 900);
+      assert.equal(pack.drawOptions.provenance.reference, 'T042');
+      const { drawOptions: ignored, ...unchanged } = pack;
+      const { drawOptions: ignoredOld, ...previous } = original[key][i];
+      assert.deepEqual(unchanged, previous, 'price migration preserves members, type metadata, archive transition and sale identity');
+    }
+    assert.deepEqual(state, original, 'retained generation is not mutated');
+    assert.equal(enrichPackDrawOptions(migrated.state, '2026-11-02T04:00:00.000Z').changed, false);
+    const bad = structuredClone(state.packs[0]); bad.drawOptions.single.coinCost = 100;
+    assert.throws(() => assertProcessedPack(bad), 'mixed legacy/current prices are rejected');
+  }
 });

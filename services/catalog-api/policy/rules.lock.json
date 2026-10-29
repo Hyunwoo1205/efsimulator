@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
-  "version": "catalog-rules-1.5.0",
-  "reviewId": "T041-exact-player-types-for-dynamic-grade-order",
+  "version": "catalog-rules-1.6.0",
+  "reviewId": "T042-user-confirmed-fixed-simulator-coin-prices",
   "files": [
     {
       "path": "lib/catalog-contract.mjs",
-      "sha256": "9f71a5738ed054709bbb2fbf88de31fadb0c5b622005ea7c5277997c17784dfe"
+      "sha256": "fb73fd355bc4198f37901ae8d4e08080c812f78e19cbd332e148f544ed12912b"
     },
     {
       "path": "lib/catalog-lifecycle.mjs",
-      "sha256": "cec98daa8fb2138bece06c47f0ad5b8c1ea407bf0654a3565a1bd0d3b0db13d1"
+      "sha256": "435baf91003725a6fea3feb0debbff9ba99458c3fb4a3c5563bde3d615f0ada9"
     },
     {
       "path": "lib/catalog-api.mjs",
@@ -33,7 +33,7 @@
     },
     {
       "path": "scripts/lifecycle/workspace.mjs",
-      "sha256": "fd1c282ceca4ea67328e171d0658b29a979f205b1aa826fa8d3214f05b8a23da"
+      "sha256": "0e9bdeca40865be30995366d9b8f0e95e16fe0aa0a02e69879d3826c0e5c6303"
     },
     {
       "path": "scripts/lifecycle/run-cycle.mjs",

@@ -331,7 +331,7 @@ export async function adoptRules({ root, expectedVersion, reviewId, reason, now 
   });
 }
 
-/** Explicit reviewed pack metadata migration after adopting the T040 rules. */
+/** Explicit reviewed draw-option migration after adopting the current rules. */
 export async function migrateDrawOptions({ root, expectedVersion, now = new Date().toISOString() }) {
   if (!validTime(now) || !/^[a-f0-9]{64}$/.test(expectedVersion ?? '')) fail('Draw-option migration requires expected version and valid UTC time');
   root = resolve(root); now = new Date(now).toISOString();
@@ -343,7 +343,7 @@ export async function migrateDrawOptions({ root, expectedVersion, now = new Date
     if (!result.changed) return { ...loaded, changed: false, changes: [] };
     const files = generationFiles({ rawPlayerBytes: loaded.files.get('raw/players_raw.json'), rawPackBytes: loaded.files.get('raw/packs_raw.json'), sourcePlayerUpdateBytes: loaded.files.get(SOURCE_PLAYER_UPDATE), state: result.state });
     await publishGeneration({ root, files, state: result.state, now, previousVersion: loaded.current.version, policy: loaded.policy });
-    await appendCheck(root, { schemaVersion: 1, checkedAt: now, status: 'changed', operation: 'T040_draw_options_migration', previousVersion: loaded.current.version, changes: result.changes.map(change => ({ id: change.id, targetFile: change.targetFile })), rawAdded: { players: 0, packs: 0 }, invariants: result.invariants });
+    await appendCheck(root, { schemaVersion: 1, checkedAt: now, status: 'changed', operation: 'draw_options_migration', previousVersion: loaded.current.version, changes: result.changes.map(change => ({ id: change.id, targetFile: change.targetFile })), rawAdded: { players: 0, packs: 0 }, invariants: result.invariants });
     const { files: ignored, ...after } = await loadInternal(root);
     return { ...after, changed: true, changes: result.changes };
   });

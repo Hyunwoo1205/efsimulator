@@ -1,4 +1,4 @@
-<!-- project-state: {"stage":"R6","previous":"T041","current":"T017","next":"T018"} -->
+<!-- project-state: {"stage":"R6","previous":"T041","current":"T042","next":"T018"} -->
 
 # efsimulator 작업 계획과 이력
 
@@ -7,7 +7,7 @@
 ## 현재 작업과 매 작업 갱신
 
 - 이전 작업: T041 — 타입9필드·등급/OVR 정렬·WPOTY미리보기·자동화 지침·실제 앱 공개와원격361파일/실제CI3건검증 완료.
-- 현재 작업: T017 — 전달된API타입/추첨옵션과사용자비복원·리셋정책을소비하는추첨엔진·저장·개봉화면/2D. 팩별가격/할인·보장조건과영상공개흐름은별도미완료.
+- 현재 작업: T042 — 사용자 확정 단일100/10회900 고정 가격의 가공/API·사이트 표시·자동화 반영, 구현/검증 진행 중.
 - 다음 작업: T018 — T017 추첨 엔진·저장·2D를 먼저 마친 뒤3D·모바일 성능·실패 fallback.
 - 최근 유지보수: T039 — 신규6팩·93명과 원본 누적·가공·판매 상태를 갱신했다. 현재 가공163명/13팩·판매중9/종료4이며 저장본/API/세 사이트/구현 커밋·실제CI 검증을 완료했다. 제품 T017/T018 범위와 T038 미확인 항목은 보존한다.
 - 현재 조건: T041이 T035의 Epic/Show Time 통합·선수 날짜 정렬을 대체한다. Epic5→Show Time8→Trend3→Highlight6, 선수는 등급 안 OVR 내림차순·팩은 날짜 최신순이다. exact raw 타입을 API에 전달하며 원본·팩 구성/추첨옵션·카드 표시를 보존한다. 실제 앱만 public, API/admin·viewer는 owner-private를 유지하고 실제 검증 범위만 완료로 기록한다.
@@ -16,7 +16,7 @@
 
 ## 최신 추가 조건과 이전 조건의 적용
 
-C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_BEFORE_PROBABILITY_SCOPE.md)에 보존한다. 관리 최신화·ID/근거·실패 보존·접근 거부 우회 금지·무료 우선·운영 승인 분리 원칙은 계속 적용한다. 범위 결정은 날짜별 이력이며 현재 범위·완료 정책은 최신 C078·C077와 C071~C075의 사용자 결정을 T037/C070 제안보다 우선하고 C069/T036의 자동 갱신 절차를 적용하며 API 완료/정상 반영 정책 C063~C064를 유지한다. 전체 수집과 사이트 범위를 혼동하지 않는다.
+C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_BEFORE_PROBABILITY_SCOPE.md)에 보존한다. 관리 최신화·ID/근거·실패 보존·접근 거부 우회 금지·무료 우선·운영 승인 분리 원칙은 계속 적용한다. 범위 결정은 날짜별 이력이며 현재 범위·완료 정책은 최신 C079·C078·C077와 C071~C075의 사용자 결정을 T037/C070 제안보다 우선하고 C069/T036의 자동 갱신 절차를 적용하며 API 완료/정상 반영 정책 C063~C064를 유지한다. 전체 수집과 사이트 범위를 혼동하지 않는다.
 
 | 조건 ID | 최신 결정 | 영향 단계 / 선행 조건 / 처리 순서 | 상태 |
 | --- | --- | --- | --- |
@@ -67,6 +67,7 @@ C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_B
 | C070 | T017을 어떤 방식으로 설계·구현할지 구체적인 계획 작성 요청 | T037 계획만 작성 → T017-A 규칙/신선도·세션 계약 → B 엔진/C 저장/D 화면/E 2D/F 검토 배포 → T018. 기존 API·운영 데이터·예약·사이트 배포 변경 없음 | 계획 작성·관련 문서/파일 목록 갱신. 실제 추첨 기능은 미구현 |
 
 | C078 | 카드 타입 exactraw→가공선수9번째필드/API·중첩·자동갱신 전달, Epic→Show Time→Trend→Highlight·선수OVR/팩최신순·대표등급상위3미리보기; 실제 앱 공개 승인 | T041/R6. 원본타입/WPOTY대조→명시migration/규칙채택→데이터/API·표시/자동화검사→앱배포/public→익명조회·원격/CI; API/admin/viewer는비공개 | 완료:9필드/정렬·저장/발행·앱public/익명/브라우저·원격361파일/실제CI3건 검증; 다음예약실행미관찰 |
+| C079 | 시뮬레이터 가격은 항상1회100코인·10회900코인으로 고정, 할인 적용 없음 | T042/R6. 새가공 가격/provenance·legacy읽기→규칙채택·현행팩migration→저장/API·사이트전량가격검증→예약/문서·원격/CI; 지원수량/잔여조건 유지 | 진행 중: 사용자 정책 확정, 구현/운영 검증 대기 |
 | C077 | 전체11명 팩은1회만, 전체11명초과는1회·10회; 가공 선수팩과 실제 사이트용 API에 반영 | T040/T017-A. 공식 totalPlayerCount 기준→사용자 근거 drawOptions/가격null→기존세대 migration/규칙채택→저장/API/세 사이트/기록/GitHub·CI 검증 | 완료: 가공/API·앱소비·migration·v18저장·발행/배포·세사이트/13팩상세·원격359파일일치·실제CI3건성공. 엔진·2D/3D는 후속 |
 | C076 | 미완료된 데이터 업데이트를 지금 진행하도록 요청 | T039/R5. 정상 수동 브라우저 DOM의 공식9상품과 EFHub6신규팩·93특수ID 검토 → 파서/receipt 회귀·규칙 명시채택 → 고정 수집/가공 → 동일 묶음 저장·API/사이트·GitHub/CI | 완료: 6팩93명 추가·461회귀·v17 저장본·API/세 사이트 전량 검증·원격13파일 일치·실제CI2건 성공 |
 
@@ -2098,3 +2099,50 @@ API source `78d13f2967c7b58b9c62a7fdc4f40889cf13e890`/배포 `appgdep_6ae36ec1f9
 | `docs/SIMULATOR_PLAN.md` | 수정 | 현행선수9필드·공개앱검증과이전8필드/로그인한계 이력 구분 |
 
 최종 실제 앱 공개 배포: 소스 `6df0d766927d75deb9e9a36691a6f92c7d0dcfde`, 배포 `appgdep_6ae37090b5c48191be652d6bb5fba3e5`. 등급 배지의 간격·테두리를 공개 화면에서 확인했다. 데이터 publication은 그대로이며 원격 소스 반영과 CI를 마무리한다.
+
+
+## T042 — 단일100·10회900 고정 시뮬레이터 가격
+
+- 단계: R6
+- 상태: 진행 중
+- 이전: T041
+- 다음: T018
+
+### 목표·선행 조건·순서
+
+2026-10-30 KST 사용자는 시뮬레이터 가격이 항상1회100코인·10회900코인이라고 확정했다(C079). T038/T040의 가격 미확인null·팩별 할인 조사 선행 제안은 현재 시뮬레이터 가격에 대해 이 결정으로 대체한다. 과거 특정 실제 상품의 할인/보장형 조사 기록은 역사로 보존하며 모든 실제 판매 조건을 다시 검증했다고 표시하지 않는다.
+
+새 가공 `drawOptions.single.coinCost=100`, `ten.coinCost=900`와 사용자 확인 provenance referenceT042를 사용한다. 전체11명 단일 전용·11명초과 단일/10회·잔여1~9명10회잠금·minimumRemaining10은 유지한다. 미지원 ten에도 기본 가격900을 보존하되 supported를 변경하지 않는다. 기존T040 null가격 불변 세대는 읽기 호환성을 유지한다. raw·선수9필드/타입·등급/OVR정렬·팩명단/전이·공개앱과비공개API/viewer 경계를 보존한다.
+
+계약/검사→새 가격 결정적 가공·명시 migration/규칙채택→변경파일 로그·불변세대/묶음저장→private API 소스 배포/원격 발행·전체 readback→API와두소비사이트 가격/지원 일치→예약공통지침·동일브랜치 소스/기록·원격/실제CI 순서로 확인한다. 앱은 기존 API 값을 표시하므로 클라이언트 가격 상수/추정값을 추가하지 않으며 코드가 바뀌지 않으면 프런트엔드 재배포를 요구하지 않는다.
+
+### 검증·진행 상태
+
+현행13팩의 processed/live/archive에 단일100·10회900과T042근거를 적용했다. raw·가공선수 바이트는 기준본과 같고 가격/근거 외 팩 필드·지원수량·minimumRemaining10·archive전이일자는 보존했다. 전체477개 테스트·API TypeScript·공식 Worker 빌드가 통과했다. catalog-rules-1.6.0을 검토·채택했고 runtime은 `c7ae1f7a2e6699e0a8779f1a4ef53f4f2824c4f1618fc7b3e11dbd547fd6775d`, publication은 `217207ba2fca71b4f4db27655a1975ac6d678bbd891586bb0a2e0060201da18c`다. 묶음v20을 저장한 뒤 정확한 저장본을 다시 내려받아 SHA256 `a76738bf89b276a4992883c05a9698af4a7f64eca430fd6ae5ea600d30cb9658`·gzip/tar완전성을 확인했다.
+
+API 소스 `64bfe2954194a6f19b9d0b237f37f710854a689f`의 비공개 배포 `appgdep_6ae3733e1a9881918d3e5b79a358c430`가 succeeded다. 클라이언트 코드는 바꾸지 않았으며 기존 API 비용 표시를 사용하므로 프런트엔드 재배포는 요구하지 않았다. 실제 앱 공개 상태와 API/viewer 비공개 경계는 유지한다. 고정 가격 예약 지침은 같은 활성 hourly 설정으로 저장했고 변경 후 다음 실제 예약 실행은 아직 관찰하지 않았다.
+
+원격 API 적재·전체 readback·CAS 활성화를 검증했고, 2026-10-29T16:27:26.356Z API/viewer/실제 앱의 모든 컬렉션이 publication `217207ba2fca71b4f4db27655a1975ac6d678bbd891586bb0a2e0060201da18c`와 전량 일치했다. 공개 앱의 익명GET에서도13팩 가격이 모두 단일100/10회900임을 확인했다. 실제 브라우저의 WPOTY 팩 상세는1회100/10회900, 전체11명 POTW는1회100/10회미지원으로 표시됐다. 프런트엔드 소스 변경/재배포 없이 API 값으로 반영됐고 지원 조건은 유지됐다. GitHub 원격 내용·실제CI 최종 확인은 진행 중이며 전체 완료로 앞당기지 않는다.
+
+추첨 엔진·세션 저장·2D/3D는 T017/T018 후속이며 이번 고정 가격 설정이 해당 기능 완성을 뜻하지 않는다.
+
+### 파일 최신화 검토
+
+| 파일 | 결과 | 근거 |
+| --- | --- | --- |
+| `AGENTS.md` | 수정 | T042 고정가격 최신우선·지원/잔여조건·legacy/원본 보존 |
+| `docs/WORKPLAN.md` | 수정 | T042/C079 요구·현재포인터·선행조건/처리순서·검증대기 |
+| `docs/ROADMAP.md` | 수정 | 고정가격 확정과 후속T017/T018 범위·가격조사게이트 정리 |
+| `docs/CHATGPT_WORK_HANDOFF.md` | 수정 | 사용자 확정100/900과 현재/과거 가격계약 구분 |
+| `docs/CATALOG_DATA_CONTRACT.md` | 수정 | 현행coinCost100/900·T042근거·T040null legacy읽기 |
+| `docs/SIMULATOR_PLAN.md` | 수정 | 비용누적·단일소진100·할인없음·미완료조사범위 정정 |
+| `docs/AUTOMATION.md` | 수정 | 고정가격 가공/API/중첩 검증·정기추정/규칙자동채택 금지 |
+| `services/efsimulator-app/README.md` | 수정 | API고정가격 소비·데이터반영과 프런트배포 구분 |
+| `services/catalog-api/lib/catalog-contract.mjs` | 수정 | 100/900 고정가격·T042근거와 기존T040null 읽기 호환 |
+| `services/catalog-api/lib/catalog-lifecycle.mjs` | 수정 | 신규가공·명시재가공의 고정가격 적용 계약 |
+| `services/catalog-api/policy/rules.lock.json` | 수정 | 검토된1.6.0 코드해시·명시채택 |
+| `services/catalog-api/scripts/lifecycle/workspace.mjs` | 수정 | 범용 추첨옵션migration 로그·가격갱신 재사용 |
+| `services/catalog-api/tests/catalog-api.test.mjs` | 수정 | 팩목록/상세 가격 전달 검증 |
+| `services/catalog-api/tests/draw-options.test.mjs` | 수정 | 고정가격·오가격 거부·legacy가격 migration·멱등 검증 |
+| `docs/FILE_SYNC.json` | 수정 | T042 관련파일 검토와 기존파일 역할/연관 유지 |
+| `data/updates/catalog-latest.json` | 수정 | 고정가격13팩 변경의 비민감 세대/발행/검증 요약 |

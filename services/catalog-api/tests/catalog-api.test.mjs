@@ -134,6 +134,9 @@ test('pack list/details and live/archive reads retain identical published draw o
       const nested = await (await f.request(`/${section}/${expected.saleId}`)).json();
       assert.deepEqual(list.data.find(pack => pack.saleId === expected.saleId).drawOptions, expected.drawOptions);
       assert.deepEqual(detail.data.drawOptions, expected.drawOptions);
+      assert.equal(detail.data.drawOptions.single.coinCost, 100);
+      assert.equal(detail.data.drawOptions.ten.coinCost, 900);
+      assert.equal(detail.data.drawOptions.provenance.reference, 'T042');
       assert.deepEqual(nested.data.drawOptions, expected.drawOptions);
     }
   } finally { f.close(); }
