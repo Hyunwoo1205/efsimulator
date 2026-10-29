@@ -73,6 +73,79 @@
         "docs/WORKPLAN.md#t028--사용자-요청에-따른-미확정-세-상품-즉시-확인api-반영",
         "private catalog-runtime/reviewed-evidence/T028/reviewed-evidence.json SHA256 e671e76edbac19debd6e58e947dbcfa1ecd3b4986b3cbf060454a90de8f51bf9"
       ]
+    },
+    {
+      "saleId": "world-player-of-the-year-2026::2026-10",
+      "mappingSha256": "093e23e2aa3d28dde0e55b49a42d90d273d23365020fdc1bc06eb46c0e1b9e31",
+      "reviewId": "T039-manual-six-product-source-review",
+      "authority": "source_verified_manual_review",
+      "evidenceRefs": [
+        "data/research/catalog-sale-mappings.json",
+        "docs/WORKPLAN.md#t039--미완료-신규-상품-수동-검토와-데이터-갱신",
+        "private catalog-runtime/reviewed-evidence/T039/source-observations.json SHA256 39540a93c71871980a9234a06ab53a569df729062640e2753851af0e0d724571",
+        "https://efhub.com/packs/world-player-of-the-year-2026 DOM SHA256 ed420f32e0da01d2594e8a7e502c5463a6268858fa25e2794be1027813895886"
+      ]
+    },
+    {
+      "saleId": "potw-29-oct-26::2026-10",
+      "mappingSha256": "e4b6d2f2b32ece9be55fb9bc9d50a6ef29b2c8ef5ee123d4618e91a8f4b3dce5",
+      "reviewId": "T039-manual-six-product-source-review",
+      "authority": "source_verified_manual_review",
+      "evidenceRefs": [
+        "data/research/catalog-sale-mappings.json",
+        "docs/WORKPLAN.md#t039--미완료-신규-상품-수동-검토와-데이터-갱신",
+        "private catalog-runtime/reviewed-evidence/T039/source-observations.json SHA256 39540a93c71871980a9234a06ab53a569df729062640e2753851af0e0d724571",
+        "https://efhub.com/packs/potw-29-oct-26 DOM SHA256 92bb425db4524758e4268d57c7b15f0fe69a151142e36c3160a5679555d6149b"
+      ]
+    },
+    {
+      "saleId": "potw-european-club-championship-29-oct-26::2026-10",
+      "mappingSha256": "c54bba44f8492c9814f83f296d781ada6ee6e6e5914b49d76df4d5786e9134b4",
+      "reviewId": "T039-manual-six-product-source-review",
+      "authority": "source_verified_manual_review",
+      "evidenceRefs": [
+        "data/research/catalog-sale-mappings.json",
+        "docs/WORKPLAN.md#t039--미완료-신규-상품-수동-검토와-데이터-갱신",
+        "private catalog-runtime/reviewed-evidence/T039/source-observations.json SHA256 39540a93c71871980a9234a06ab53a569df729062640e2753851af0e0d724571",
+        "https://efhub.com/packs/potw-european-club-championship-29-oct-26 DOM SHA256 541caf1952114e5f9616c94358f9f41c4512d086ddb78dc092de6c9a74cd03d9"
+      ]
+    },
+    {
+      "saleId": "brasileir-o-selection-29-oct-26::2026-10",
+      "mappingSha256": "2e2b73270fea993bacdee32711523352c8a0bf9ac1ac0ac31a83c5d22a2a1057",
+      "reviewId": "T039-manual-six-product-source-review",
+      "authority": "source_verified_manual_review",
+      "evidenceRefs": [
+        "data/research/catalog-sale-mappings.json",
+        "docs/WORKPLAN.md#t039--미완료-신규-상품-수동-검토와-데이터-갱신",
+        "private catalog-runtime/reviewed-evidence/T039/source-observations.json SHA256 39540a93c71871980a9234a06ab53a569df729062640e2753851af0e0d724571",
+        "https://efhub.com/packs/brasileir-o-selection-29-oct-26 DOM SHA256 3261cef9b40a12e397835c218a2d0caada2e773dfcc2bfb564ffe366e9a6c324"
+      ]
+    },
+    {
+      "saleId": "j-league-monthly-mvps-sep-26::2026-10",
+      "mappingSha256": "f77c5eae97a69a7f7d3ede5b2c09b65498e413d654b95bf36f67b2725a8dfbcc",
+      "reviewId": "T039-manual-six-product-source-review",
+      "authority": "source_verified_manual_review",
+      "evidenceRefs": [
+        "data/research/catalog-sale-mappings.json",
+        "docs/WORKPLAN.md#t039--미완료-신규-상품-수동-검토와-데이터-갱신",
+        "private catalog-runtime/reviewed-evidence/T039/source-observations.json SHA256 39540a93c71871980a9234a06ab53a569df729062640e2753851af0e0d724571",
+        "https://efhub.com/packs/j-league-monthly-mvps-sep-26 DOM SHA256 cc82e9c7ee593a28c03a1cddf475914bfb8446bc2ba49612562295cc4bbd7597"
+      ]
+    },
+    {
+      "saleId": "j-league-selection-29-oct-26::2026-10",
+      "mappingSha256": "5d63c6315450fb44a259e6560949bb1a244b6e3d0a7cae155a48d3072f38602f",
+      "reviewId": "T039-manual-six-product-source-review",
+      "authority": "source_verified_manual_review",
+      "evidenceRefs": [
+        "data/research/catalog-sale-mappings.json",
+        "docs/WORKPLAN.md#t039--미완료-신규-상품-수동-검토와-데이터-갱신",
+        "private catalog-runtime/reviewed-evidence/T039/source-observations.json SHA256 39540a93c71871980a9234a06ab53a569df729062640e2753851af0e0d724571",
+        "https://efhub.com/packs/j-league-selection-29-oct-26 DOM SHA256 b52d3d8114f2dfb2d93db9983a1de2ac9976c206b96bdb01a7524a70f0409f9d",
+        "https://efhub.com/packs/j-league-selection-29-oct-26?page=2 DOM SHA256 be5bf178ddec4cd26cac8c57a3d0fbc80339d68cc16645b12e0cd3f1d71e25a4"
+      ]
     }
   ]
 }

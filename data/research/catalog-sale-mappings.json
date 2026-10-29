@@ -231,6 +231,315 @@
         "evidenceFile": "catalog-runtime/reviewed-evidence/T028/reviewed-evidence.json",
         "retainedRawOnly": true
       }
+    },
+    {
+      "saleId": "world-player-of-the-year-2026::2026-10",
+      "packSlug": "world-player-of-the-year-2026",
+      "officialTitle": "Epic: World Player of the Year 2026",
+      "newPlayersSection": "World Player of the Year 2026",
+      "expectedTotalPlayerCount": 150,
+      "expectedEndsAt": "2026-11-05T01:59:59.000Z",
+      "expectedSpecialCount": 11,
+      "memberIds": [
+        "105879802223959",
+        "105879802323405",
+        "105879802324687",
+        "105879802327074",
+        "105879802327263",
+        "105879802345168",
+        "105879802345817",
+        "105879802349991",
+        "88046024308919",
+        "88047366549630",
+        "88047366601026"
+      ],
+      "matchEvidence": {
+        "status": "explicit_cross_source_round_mapping",
+        "authority": "source_verified_manual_review",
+        "reviewId": "T039-manual-six-product-source-review",
+        "requestBasis": "User explicitly requested completion of the outstanding data update; individual product identities were verified from retained source DOM, not represented as individual user confirmations.",
+        "sourceKind": "browser_dom",
+        "httpStatus": null,
+        "officialUrl": "https://efootball-web.konami.net/probability_kr.php",
+        "officialHtmlSha256": "98a4618fa291feb77497d66933f4f00d3e22b19061cdddd491a91c82d59a3f28",
+        "newPlayersUrl": "https://efhub.com/new-players",
+        "newPlayersHtmlSha256": "51e3549e6618dd74753cb1542c18837d02b5e899ced3037766f0af0c99ba1e7b",
+        "efhubReleaseDate": "2026-10-29",
+        "packHtmlSources": [
+          {
+            "sourceUrl": "https://efhub.com/packs/world-player-of-the-year-2026",
+            "sha256": "ed420f32e0da01d2594e8a7e502c5463a6268858fa25e2794be1027813895886",
+            "observedAt": "2026-10-29T12:21:38.574Z",
+            "file": "efsimulator-pack-world-player-of-the-year-2026.html"
+          }
+        ],
+        "membershipMethod": "Exact unique string-card ID and source-name equality across the complete new-players section and all pack roster pages; all original player records available from retained DOM. No name-derived IDs or count correction.",
+        "evidenceFile": "catalog-runtime/reviewed-evidence/T039/source-observations.json",
+        "evidenceSha256": "39540a93c71871980a9234a06ab53a569df729062640e2753851af0e0d724571"
+      }
+    },
+    {
+      "saleId": "potw-29-oct-26::2026-10",
+      "packSlug": "potw-29-oct-26",
+      "officialTitle": "POTW: Worldwide 29 Oct '26",
+      "newPlayersSection": "POTW 29 Oct '26",
+      "expectedTotalPlayerCount": 11,
+      "expectedEndsAt": "2026-11-05T01:59:59.000Z",
+      "expectedSpecialCount": 11,
+      "memberIds": [
+        "52904601946818",
+        "52904601949372",
+        "52904601956478",
+        "52904601956967",
+        "52904601957864",
+        "52904601961971",
+        "52904601981375",
+        "52904601987919",
+        "52904601990379",
+        "52904601993215",
+        "52904602005240"
+      ],
+      "matchEvidence": {
+        "status": "explicit_cross_source_round_mapping",
+        "authority": "source_verified_manual_review",
+        "reviewId": "T039-manual-six-product-source-review",
+        "requestBasis": "User explicitly requested completion of the outstanding data update; individual product identities were verified from retained source DOM, not represented as individual user confirmations.",
+        "sourceKind": "browser_dom",
+        "httpStatus": null,
+        "officialUrl": "https://efootball-web.konami.net/probability_kr.php",
+        "officialHtmlSha256": "98a4618fa291feb77497d66933f4f00d3e22b19061cdddd491a91c82d59a3f28",
+        "newPlayersUrl": "https://efhub.com/new-players",
+        "newPlayersHtmlSha256": "51e3549e6618dd74753cb1542c18837d02b5e899ced3037766f0af0c99ba1e7b",
+        "efhubReleaseDate": "2026-10-29",
+        "packHtmlSources": [
+          {
+            "sourceUrl": "https://efhub.com/packs/potw-29-oct-26",
+            "sha256": "92bb425db4524758e4268d57c7b15f0fe69a151142e36c3160a5679555d6149b",
+            "observedAt": "2026-10-29T12:21:38.574Z",
+            "file": "efsimulator-pack-potw-29-oct-26.html"
+          }
+        ],
+        "membershipMethod": "Exact unique string-card ID and source-name equality across the complete new-players section and all pack roster pages; all original player records available from retained DOM. No name-derived IDs or count correction.",
+        "evidenceFile": "catalog-runtime/reviewed-evidence/T039/source-observations.json",
+        "evidenceSha256": "39540a93c71871980a9234a06ab53a569df729062640e2753851af0e0d724571"
+      }
+    },
+    {
+      "saleId": "potw-european-club-championship-29-oct-26::2026-10",
+      "packSlug": "potw-european-club-championship-29-oct-26",
+      "officialTitle": "POTW: European Club Championship",
+      "newPlayersSection": "POTW European Club Championship 29 Oct '26",
+      "expectedTotalPlayerCount": 11,
+      "expectedEndsAt": "2026-11-05T01:59:59.000Z",
+      "expectedSpecialCount": 11,
+      "memberIds": [
+        "52912923381523",
+        "52912923389598",
+        "52912923449122",
+        "52912923449613",
+        "52912923454893",
+        "52912923459704",
+        "52912923461501",
+        "52912923467603",
+        "52912923471791",
+        "52912923500110",
+        "52912923519041"
+      ],
+      "matchEvidence": {
+        "status": "explicit_cross_source_round_mapping",
+        "authority": "source_verified_manual_review",
+        "reviewId": "T039-manual-six-product-source-review",
+        "requestBasis": "User explicitly requested completion of the outstanding data update; individual product identities were verified from retained source DOM, not represented as individual user confirmations.",
+        "sourceKind": "browser_dom",
+        "httpStatus": null,
+        "officialUrl": "https://efootball-web.konami.net/probability_kr.php",
+        "officialHtmlSha256": "98a4618fa291feb77497d66933f4f00d3e22b19061cdddd491a91c82d59a3f28",
+        "newPlayersUrl": "https://efhub.com/new-players",
+        "newPlayersHtmlSha256": "51e3549e6618dd74753cb1542c18837d02b5e899ced3037766f0af0c99ba1e7b",
+        "efhubReleaseDate": "2026-10-29",
+        "packHtmlSources": [
+          {
+            "sourceUrl": "https://efhub.com/packs/potw-european-club-championship-29-oct-26",
+            "sha256": "541caf1952114e5f9616c94358f9f41c4512d086ddb78dc092de6c9a74cd03d9",
+            "observedAt": "2026-10-29T12:21:38.574Z",
+            "file": "efsimulator-pack-potw-european-club-championship-29-oct-26.html"
+          }
+        ],
+        "membershipMethod": "Exact unique string-card ID and source-name equality across the complete new-players section and all pack roster pages; all original player records available from retained DOM. No name-derived IDs or count correction.",
+        "evidenceFile": "catalog-runtime/reviewed-evidence/T039/source-observations.json",
+        "evidenceSha256": "39540a93c71871980a9234a06ab53a569df729062640e2753851af0e0d724571"
+      }
+    },
+    {
+      "saleId": "brasileir-o-selection-29-oct-26::2026-10",
+      "packSlug": "brasileir-o-selection-29-oct-26",
+      "officialTitle": "Show Time: Brasileirão",
+      "newPlayersSection": "Brasileirão Selection 29 Oct '26",
+      "expectedTotalPlayerCount": 100,
+      "expectedEndsAt": "2026-11-05T01:59:59.000Z",
+      "expectedSpecialCount": 12,
+      "memberIds": [
+        "105887855326501",
+        "105887855326756",
+        "105887855386757",
+        "105887855410234",
+        "105887855424771",
+        "105887855432612",
+        "105887855441080",
+        "105887855453877",
+        "106794093418757",
+        "106794093438763",
+        "106794093440765",
+        "106794093523226"
+      ],
+      "matchEvidence": {
+        "status": "explicit_cross_source_round_mapping",
+        "authority": "source_verified_manual_review",
+        "reviewId": "T039-manual-six-product-source-review",
+        "requestBasis": "User explicitly requested completion of the outstanding data update; individual product identities were verified from retained source DOM, not represented as individual user confirmations.",
+        "sourceKind": "browser_dom",
+        "httpStatus": null,
+        "officialUrl": "https://efootball-web.konami.net/probability_kr.php",
+        "officialHtmlSha256": "98a4618fa291feb77497d66933f4f00d3e22b19061cdddd491a91c82d59a3f28",
+        "newPlayersUrl": "https://efhub.com/new-players",
+        "newPlayersHtmlSha256": "51e3549e6618dd74753cb1542c18837d02b5e899ced3037766f0af0c99ba1e7b",
+        "efhubReleaseDate": "2026-10-29",
+        "packHtmlSources": [
+          {
+            "sourceUrl": "https://efhub.com/packs/brasileir-o-selection-29-oct-26",
+            "sha256": "3261cef9b40a12e397835c218a2d0caada2e773dfcc2bfb564ffe366e9a6c324",
+            "observedAt": "2026-10-29T12:21:38.574Z",
+            "file": "efsimulator-pack-brasileir-o-selection-29-oct-26.html"
+          }
+        ],
+        "membershipMethod": "Exact unique string-card ID and source-name equality across the complete new-players section and all pack roster pages; all original player records available from retained DOM. No name-derived IDs or count correction.",
+        "evidenceFile": "catalog-runtime/reviewed-evidence/T039/source-observations.json",
+        "evidenceSha256": "39540a93c71871980a9234a06ab53a569df729062640e2753851af0e0d724571"
+      }
+    },
+    {
+      "saleId": "j-league-monthly-mvps-sep-26::2026-10",
+      "packSlug": "j-league-monthly-mvps-sep-26",
+      "officialTitle": "Show Time: J.LEAGUE Monthly MVPs",
+      "newPlayersSection": "J.LEAGUE Monthly MVPs Sep '26",
+      "expectedTotalPlayerCount": 100,
+      "expectedEndsAt": "2026-11-05T01:59:59.000Z",
+      "expectedSpecialCount": 8,
+      "memberIds": [
+        "105889197474220",
+        "105889197579074",
+        "105889197630881",
+        "105889197632194",
+        "106795167243218",
+        "106795167243858",
+        "106795167249137",
+        "106795167306989"
+      ],
+      "matchEvidence": {
+        "status": "explicit_cross_source_round_mapping",
+        "authority": "source_verified_manual_review",
+        "reviewId": "T039-manual-six-product-source-review",
+        "requestBasis": "User explicitly requested completion of the outstanding data update; individual product identities were verified from retained source DOM, not represented as individual user confirmations.",
+        "sourceKind": "browser_dom",
+        "httpStatus": null,
+        "officialUrl": "https://efootball-web.konami.net/probability_kr.php",
+        "officialHtmlSha256": "98a4618fa291feb77497d66933f4f00d3e22b19061cdddd491a91c82d59a3f28",
+        "newPlayersUrl": "https://efhub.com/new-players",
+        "newPlayersHtmlSha256": "51e3549e6618dd74753cb1542c18837d02b5e899ced3037766f0af0c99ba1e7b",
+        "efhubReleaseDate": "2026-10-29",
+        "packHtmlSources": [
+          {
+            "sourceUrl": "https://efhub.com/packs/j-league-monthly-mvps-sep-26",
+            "sha256": "cc82e9c7ee593a28c03a1cddf475914bfb8446bc2ba49612562295cc4bbd7597",
+            "observedAt": "2026-10-29T12:21:38.574Z",
+            "file": "efsimulator-pack-j-league-monthly-mvps-sep-26.html"
+          }
+        ],
+        "membershipMethod": "Exact unique string-card ID and source-name equality across the complete new-players section and all pack roster pages; all original player records available from retained DOM. No name-derived IDs or count correction.",
+        "evidenceFile": "catalog-runtime/reviewed-evidence/T039/source-observations.json",
+        "evidenceSha256": "39540a93c71871980a9234a06ab53a569df729062640e2753851af0e0d724571"
+      }
+    },
+    {
+      "saleId": "j-league-selection-29-oct-26::2026-10",
+      "packSlug": "j-league-selection-29-oct-26",
+      "officialTitle": "League Selection: J.LEAGUE",
+      "newPlayersSection": "J.LEAGUE Selection 29 Oct '26",
+      "expectedTotalPlayerCount": 40,
+      "expectedEndsAt": "2026-11-19T01:59:59.000Z",
+      "expectedSpecialCount": 40,
+      "memberIds": [
+        "105895103052886",
+        "105895103054021",
+        "105895103054207",
+        "105895103076471",
+        "105895103082616",
+        "105895103084857",
+        "105895103153101",
+        "105895103159062",
+        "105895103159137",
+        "105895103159203",
+        "105895103159265",
+        "105895103159890",
+        "105895103159977",
+        "105895103161566",
+        "105895103161572",
+        "105895103164302",
+        "105895103165790",
+        "105895103170623",
+        "105895103171043",
+        "105895103172907",
+        "105895103178226",
+        "105895103178761",
+        "105895103178927",
+        "105895103180673",
+        "105895103181107",
+        "105895103188914",
+        "105895103189605",
+        "105895103192653",
+        "105895103197145",
+        "105895103198507",
+        "105895103200461",
+        "105895103205665",
+        "105895103206681",
+        "105895103210828",
+        "105895103212170",
+        "105895103212370",
+        "105895103213208",
+        "105895103213737",
+        "105895103213774",
+        "105895103217981"
+      ],
+      "matchEvidence": {
+        "status": "explicit_cross_source_round_mapping",
+        "authority": "source_verified_manual_review",
+        "reviewId": "T039-manual-six-product-source-review",
+        "requestBasis": "User explicitly requested completion of the outstanding data update; individual product identities were verified from retained source DOM, not represented as individual user confirmations.",
+        "sourceKind": "browser_dom",
+        "httpStatus": null,
+        "officialUrl": "https://efootball-web.konami.net/probability_kr.php",
+        "officialHtmlSha256": "98a4618fa291feb77497d66933f4f00d3e22b19061cdddd491a91c82d59a3f28",
+        "newPlayersUrl": "https://efhub.com/new-players",
+        "newPlayersHtmlSha256": "51e3549e6618dd74753cb1542c18837d02b5e899ced3037766f0af0c99ba1e7b",
+        "efhubReleaseDate": "2026-10-29",
+        "packHtmlSources": [
+          {
+            "sourceUrl": "https://efhub.com/packs/j-league-selection-29-oct-26",
+            "sha256": "b52d3d8114f2dfb2d93db9983a1de2ac9976c206b96bdb01a7524a70f0409f9d",
+            "observedAt": "2026-10-29T12:21:38.574Z",
+            "file": "efsimulator-pack-j-league-selection-29-oct-26.html"
+          },
+          {
+            "sourceUrl": "https://efhub.com/packs/j-league-selection-29-oct-26?page=2",
+            "sha256": "be5bf178ddec4cd26cac8c57a3d0fbc80339d68cc16645b12e0cd3f1d71e25a4",
+            "observedAt": "2026-10-29T12:21:38.574Z",
+            "file": "efsimulator-pack-j-league-selection-29-oct-26-page2.html"
+          }
+        ],
+        "membershipMethod": "Exact unique string-card ID and source-name equality across the complete new-players section and all pack roster pages; all original player records available from retained DOM. No name-derived IDs or count correction.",
+        "evidenceFile": "catalog-runtime/reviewed-evidence/T039/source-observations.json",
+        "evidenceSha256": "39540a93c71871980a9234a06ab53a569df729062640e2753851af0e0d724571"
+      }
     }
   ],
   "pendingOfficialTitles": [],

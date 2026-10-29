@@ -255,7 +255,7 @@
       "update_when": [
         "사용자 요구·작업 절차·검증 명령·제품 및 운영 원칙 변경"
       ],
-      "reviewed_in": "T038"
+      "reviewed_in": "T039"
     },
     {
       "path": "README.md",
@@ -344,7 +344,7 @@
       "update_when": [
         "자동 갱신 경로·완료 기준·검증·대상 또는 기록 schema 변경 시"
       ],
-      "reviewed_in": "T038"
+      "reviewed_in": "T039"
     },
     {
       "path": "data/catalog.json",
@@ -520,12 +520,15 @@
         "docs/CATALOG_DATA_CONTRACT.md",
         "services/catalog-api/README.md",
         "services/catalog-api/lib/catalog-lifecycle.mjs",
-        "services/catalog-api/scripts/lifecycle/workspace.mjs"
+        "services/catalog-api/scripts/lifecycle/workspace.mjs",
+        "services/catalog-api/policy/approved-mappings.json",
+        "services/catalog-api/policy/rules.lock.json",
+        "services/catalog-api/scripts/lifecycle/collect-cycle.mjs"
       ],
       "update_when": [
         "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
       ],
-      "reviewed_in": "T028"
+      "reviewed_in": "T039"
     },
     {
       "path": "data/research/current-catalog-observations.json",
@@ -773,7 +776,7 @@
       "update_when": [
         "자동 갱신 경로·완료 기준·검증·대상 또는 기록 schema 변경 시"
       ],
-      "reviewed_in": "T036"
+      "reviewed_in": "T039"
     },
     {
       "path": "docs/API_SELECTION.md",
@@ -849,7 +852,7 @@
       "update_when": [
         "자동 갱신 경로·완료 기준·검증·대상 또는 기록 schema 변경 시"
       ],
-      "reviewed_in": "T038"
+      "reviewed_in": "T039"
     },
     {
       "path": "docs/CATALOG_DATA_CONTRACT.md",
@@ -863,7 +866,7 @@
       "update_when": [
         "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
       ],
-      "reviewed_in": "T038"
+      "reviewed_in": "T039"
     },
     {
       "path": "docs/CHATGPT_WORK_HANDOFF.md",
@@ -974,7 +977,7 @@
       "update_when": [
         "파일 추가·삭제·이름 변경·역할/의존관계 변경·영향 검토"
       ],
-      "reviewed_in": "T038"
+      "reviewed_in": "T039"
     },
     {
       "path": "docs/FILE_SYNC_AUDIT.md",
@@ -1050,7 +1053,7 @@
       "update_when": [
         "단계 상태·현재/이전/다음 작업·완료 조건·추가 요구 변경"
       ],
-      "reviewed_in": "T038"
+      "reviewed_in": "T039"
     },
     {
       "path": "docs/SIMULATOR_PLAN.md",
@@ -1101,7 +1104,7 @@
       "update_when": [
         "매 작업 착수·추가 요구·파일 변경·검증 결과·작업 종료"
       ],
-      "reviewed_in": "T038"
+      "reviewed_in": "T039"
     },
     {
       "path": "docs/reference/ARCHITECTURE_BEFORE_PROBABILITY_SCOPE.md",
@@ -1382,7 +1385,7 @@
       "update_when": [
         "의존성·npm 명령·Node/npm 버전·앱 구성 추가"
       ],
-      "reviewed_in": "T027"
+      "reviewed_in": "T039"
     },
     {
       "path": "scripts/audit-cards.mjs",
@@ -1461,7 +1464,7 @@
       "update_when": [
         "자동 갱신 경로·완료 기준·검증·대상 또는 기록 schema 변경 시"
       ],
-      "reviewed_in": "T036"
+      "reviewed_in": "T039"
     },
     {
       "path": "scripts/catalog.mjs",
@@ -2956,7 +2959,7 @@
       "update_when": [
         "데이터 형식·가공 규칙·HTML 증거·매핑 검토·반복 실행 계약 변경"
       ],
-      "reviewed_in": "T038"
+      "reviewed_in": "T039"
     },
     {
       "path": "services/catalog-api/lib/catalog-lifecycle.mjs",
@@ -3104,7 +3107,7 @@
       "update_when": [
         "API 계약·schema·업로드/연동·배포 준비·공식 지원 source 갱신"
       ],
-      "reviewed_in": "T027"
+      "reviewed_in": "T039"
     },
     {
       "path": "services/catalog-api/pnpm-lock.yaml",
@@ -3143,12 +3146,14 @@
       "related_paths": [
         "docs/CATALOG_DATA_CONTRACT.md",
         "services/catalog-api/scripts/lifecycle/workspace.mjs",
-        "services/catalog-api/policy/rules.lock.json"
+        "services/catalog-api/policy/rules.lock.json",
+        "data/research/catalog-sale-mappings.json",
+        "services/catalog-api/scripts/lifecycle/rules.mjs"
       ],
       "update_when": [
         "데이터 형식·가공 규칙·HTML 증거·매핑 검토·반복 실행 계약 변경"
       ],
-      "reviewed_in": "T028"
+      "reviewed_in": "T039"
     },
     {
       "path": "services/catalog-api/policy/rules.lock.json",
@@ -3156,12 +3161,17 @@
       "priority": "P0",
       "related_paths": [
         "docs/CATALOG_DATA_CONTRACT.md",
-        "services/catalog-api/scripts/lifecycle/workspace.mjs"
+        "services/catalog-api/scripts/lifecycle/workspace.mjs",
+        "services/catalog-api/scripts/lifecycle/html-sources.mjs",
+        "services/catalog-api/scripts/lifecycle/collect-cycle.mjs",
+        "services/catalog-api/scripts/lifecycle/collection-receipt.mjs",
+        "services/catalog-api/scripts/lifecycle/run-cycle.mjs",
+        "services/catalog-api/policy/approved-mappings.json"
       ],
       "update_when": [
         "데이터 형식·가공 규칙·HTML 증거·매핑 검토·반복 실행 계약 변경"
       ],
-      "reviewed_in": "T028"
+      "reviewed_in": "T039"
     },
     {
       "path": "services/catalog-api/postcss.config.mjs",
@@ -3375,47 +3385,54 @@
     },
     {
       "path": "services/catalog-api/scripts/lifecycle/collect-cycle.mjs",
-      "role": "T024 원본 HTML 수집·가공 선수/팩·전체 live/archive·파일별 로그 계약과 검증",
+      "role": "공식 회차·검토 매핑·전체 ID·원본 필드를 확인하는 30회 상한 수집; 수동 DOM과 자동 HTTP를 구분",
       "priority": "P0",
       "related_paths": [
         "docs/CATALOG_DATA_CONTRACT.md",
         "services/catalog-api/README.md",
         "services/catalog-api/lib/catalog-lifecycle.mjs",
-        "services/catalog-api/scripts/lifecycle/workspace.mjs"
+        "services/catalog-api/scripts/lifecycle/workspace.mjs",
+        "services/catalog-api/tests/manual-collection-support.test.mjs",
+        "services/catalog-api/scripts/lifecycle/html-sources.mjs",
+        "services/catalog-api/scripts/lifecycle/collection-receipt.mjs"
       ],
       "update_when": [
         "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
       ],
-      "reviewed_in": "T028"
+      "reviewed_in": "T039"
     },
     {
       "path": "services/catalog-api/scripts/lifecycle/collection-receipt.mjs",
-      "role": "T027 결정적 데이터 계약·수집 증거 재실행·규칙/검토 정책 검증",
+      "role": "HTML/수동 browser DOM의 정확한 출처·null HTTP 상태·해시·규칙/원본 바인딩과 결정적 재실행 검증",
       "priority": "P0",
       "related_paths": [
         "docs/CATALOG_DATA_CONTRACT.md",
         "services/catalog-api/scripts/lifecycle/workspace.mjs",
-        "services/catalog-api/policy/rules.lock.json"
+        "services/catalog-api/policy/rules.lock.json",
+        "services/catalog-api/tests/manual-collection-support.test.mjs",
+        "services/catalog-api/scripts/lifecycle/collect-cycle.mjs"
       ],
       "update_when": [
         "데이터 형식·가공 규칙·HTML 증거·매핑 검토·반복 실행 계약 변경"
       ],
-      "reviewed_in": "T028"
+      "reviewed_in": "T039"
     },
     {
       "path": "services/catalog-api/scripts/lifecycle/html-sources.mjs",
-      "role": "T024 원본 HTML 수집·가공 선수/팩·전체 live/archive·파일별 로그 계약과 검증",
+      "role": "원본 HTML/수동 DOM의 팩 메타데이터·완전 명단·페이지 분할·Flight 선수 원문 파서; API/추정 필드 금지",
       "priority": "P0",
       "related_paths": [
         "docs/CATALOG_DATA_CONTRACT.md",
         "services/catalog-api/README.md",
         "services/catalog-api/lib/catalog-lifecycle.mjs",
-        "services/catalog-api/scripts/lifecycle/workspace.mjs"
+        "services/catalog-api/scripts/lifecycle/workspace.mjs",
+        "services/catalog-api/tests/pack-visible-metadata.test.mjs",
+        "services/catalog-api/scripts/lifecycle/collect-cycle.mjs"
       ],
       "update_when": [
         "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
       ],
-      "reviewed_in": "T038"
+      "reviewed_in": "T039"
     },
     {
       "path": "services/catalog-api/scripts/lifecycle/publication.mjs",
@@ -3430,7 +3447,7 @@
       "update_when": [
         "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
       ],
-      "reviewed_in": "T027"
+      "reviewed_in": "T039"
     },
     {
       "path": "services/catalog-api/scripts/lifecycle/publish-remote.mjs",
@@ -3444,7 +3461,7 @@
       "update_when": [
         "원격 publication·인증·조회 앱 동작 또는 공식 Sites 빌드/배포 계약 변경"
       ],
-      "reviewed_in": "T025"
+      "reviewed_in": "T039"
     },
     {
       "path": "services/catalog-api/scripts/lifecycle/reviewed-cache.mjs",
@@ -3472,22 +3489,25 @@
       "update_when": [
         "데이터 형식·가공 규칙·HTML 증거·매핑 검토·반복 실행 계약 변경"
       ],
-      "reviewed_in": "T028"
+      "reviewed_in": "T039"
     },
     {
       "path": "services/catalog-api/scripts/lifecycle/run-cycle.mjs",
-      "role": "T024 원본 HTML 수집·가공 선수/팩·전체 live/archive·파일별 로그 계약과 검증",
+      "role": "검토/규칙 잠금과 수집 receipt 재실행을 거치는 raw·가공·live/archive·publication 고정 진입점",
       "priority": "P0",
       "related_paths": [
         "docs/CATALOG_DATA_CONTRACT.md",
         "services/catalog-api/README.md",
         "services/catalog-api/lib/catalog-lifecycle.mjs",
-        "services/catalog-api/scripts/lifecycle/workspace.mjs"
+        "services/catalog-api/scripts/lifecycle/workspace.mjs",
+        "services/catalog-api/tests/manual-collection-support.test.mjs",
+        "services/catalog-api/scripts/lifecycle/collect-cycle.mjs",
+        "services/catalog-api/scripts/lifecycle/collection-receipt.mjs"
       ],
       "update_when": [
         "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
       ],
-      "reviewed_in": "T028"
+      "reviewed_in": "T039"
     },
     {
       "path": "services/catalog-api/scripts/lifecycle/verify-sites.mjs",
@@ -3502,7 +3522,7 @@
       "update_when": [
         "자동 갱신 경로·완료 기준·검증·대상 또는 기록 schema 변경 시"
       ],
-      "reviewed_in": "T036"
+      "reviewed_in": "T039"
     },
     {
       "path": "services/catalog-api/scripts/lifecycle/workspace.mjs",
@@ -3516,7 +3536,7 @@
       "update_when": [
         "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
       ],
-      "reviewed_in": "T027"
+      "reviewed_in": "T039"
     },
     {
       "path": "services/catalog-api/scripts/npm-install.mjs",
@@ -3803,6 +3823,21 @@
       "reviewed_in": "T027"
     },
     {
+      "path": "services/catalog-api/tests/manual-collection-support.test.mjs",
+      "role": "T039 수동 browser DOM의 status null·출처/시간/해시 보존과 schema3 receipt 재실행·자동모드 분리 회귀",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/scripts/lifecycle/collect-cycle.mjs",
+        "services/catalog-api/scripts/lifecycle/collection-receipt.mjs",
+        "services/catalog-api/scripts/lifecycle/run-cycle.mjs",
+        "services/catalog-api/policy/rules.lock.json"
+      ],
+      "update_when": [
+        "수동/자동 수집 모드·요청 상한·DOM 출처·receipt 검증/재실행 계약 변경"
+      ],
+      "reviewed_in": "T039"
+    },
+    {
       "path": "services/catalog-api/tests/pack-detail-fallback.test.mjs",
       "role": "T028 검토된 HTML 추출 명단 재실행 또는 과거 팩 상세 처리 회귀",
       "priority": "P0",
@@ -3815,6 +3850,20 @@
         "수집 근거·형식·전체 명단·규칙 또는 API 발행 경로 변경"
       ],
       "reviewed_in": "T028"
+    },
+    {
+      "path": "services/catalog-api/tests/pack-visible-metadata.test.mjs",
+      "role": "T039 팩 표시 메타데이터·페이지별 카드 명단과 원본 Flight 선수 데이터의 일치/누락 차단 회귀",
+      "priority": "P0",
+      "related_paths": [
+        "services/catalog-api/scripts/lifecycle/html-sources.mjs",
+        "services/catalog-api/scripts/lifecycle/collect-cycle.mjs",
+        "services/catalog-api/policy/rules.lock.json"
+      ],
+      "update_when": [
+        "팩 원본 필드·표시 명단·페이지 분할·Flight 선수 파싱 형식 변경"
+      ],
+      "reviewed_in": "T039"
     },
     {
       "path": "services/catalog-api/tests/publication-admin.test.mjs",

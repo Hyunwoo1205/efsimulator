@@ -1,5 +1,5 @@
 import { createHash } from 'node:crypto';
-import { fetchHtmlSnapshot, parseNewPlayersHtml, parseOfficialHtml, parsePackHtml, parsePackMembershipHtml, parsePlayerHtml, validateHtmlSourceUrl } from './html-sources.mjs';
+import { fetchHtmlSnapshot, parseNewPlayersHtml, parseOfficialHtml, parsePackMembershipHtml, parsePlayerHtml, validateHtmlSourceUrl } from './html-sources.mjs';
 import { assertRawPlayer, assertRawPack, canonical, compareText } from '../../lib/catalog-contract.mjs';
 import { makeCollectionReceipt, receiptResultHash } from './collection-receipt.mjs';
 import { activeRules } from './rules.mjs';
@@ -31,8 +31,9 @@ function expectedSpecialCount(mapping, pack) {
  * Check one bounded source cycle and produce append candidates, never write a DB.
  * mappings are explicit reviewed joins; names or heading slugs are never guessed.
  */
-export async function collectCycle({ mappings, rawPlayers, rawPacks, fetchHtml = fetchHtmlSnapshot, now = () => new Date(), maxRequests = 30, mappingsDocument = null, rulesIdentity = null } = {}) {
+export async function collectCycle({ mappings, rawPlayers, rawPacks, fetchHtml = fetchHtmlSnapshot, now = () => new Date(), maxRequests = 30, manualCollection = false, mappingsDocument = null, rulesIdentity = null } = {}) {
   ensure(Array.isArray(mappings) && Array.isArray(rawPlayers) && Array.isArray(rawPacks), 'invalid_collection_inputs');
+  ensure(typeof manualCollection === 'boolean', 'invalid_collection_mode');
   ensure(Number.isSafeInteger(maxRequests) && maxRequests >= 2 && maxRequests <= 30, 'invalid_request_budget');
   const startedAt = now().toISOString();
   rulesIdentity ??= await activeRules();
@@ -43,7 +44,7 @@ export async function collectCycle({ mappings, rawPlayers, rawPacks, fetchHtml =
     result.requestCount = requests;
     result.candidates.sort((a, b) => compareText(a.saleId, b.saleId));
     result.pending.sort((a, b) => compareText(canonical(a), canonical(b)));
-    result.receipt = makeCollectionReceipt({ checkedAt: startedAt, rulesIdentity, mappingsDocument: mappingsDocument ?? { schemaVersion: 1, mappings }, rawPlayers, rawPacks, maxRequests, requests: requestsEvidence, resultSha256: receiptResultHash(result) });
+    result.receipt = makeCollectionReceipt({ checkedAt: startedAt, rulesIdentity, mappingsDocument: mappingsDocument ?? { schemaVersion: 1, mappings }, rawPlayers, rawPacks, maxRequests, manualCollection, requests: requestsEvidence, resultSha256: receiptResultHash(result) });
     return result;
   };
   const result = { checkedAt: startedAt, officialObservation: { status: 'error', complete: false, observedAt: startedAt, rows: [] }, candidates: [], pending: [], sources: [] };
@@ -63,11 +64,22 @@ export async function collectCycle({ mappings, rawPlayers, rawPacks, fetchHtml =
     requests++;
     try {
       const fetchedSnapshot = await fetchHtml(url, { now: () => new Date(startedAt), timeoutMs: 20000 });
-      ensure(typeof fetchedSnapshot.html === 'string' && (!fetchedSnapshot.status || fetchedSnapshot.status === 200), 'invalid_html_snapshot');
+      ensure(typeof fetchedSnapshot.html === 'string' && Buffer.byteLength(fetchedSnapshot.html) <= 8 * 1024 * 1024, 'invalid_html_snapshot');
+      const browserDom = fetchedSnapshot.source_kind === 'browser_dom';
+      ensure(fetchedSnapshot.source_kind === undefined || browserDom, 'invalid_source_kind');
       ensure(!fetchedSnapshot.source_url || fetchedSnapshot.source_url === url, 'source_url_mismatch');
       const observedAt = fetchedSnapshot.observed_at ?? startedAt;
       ensure(typeof observedAt === 'string' && Number.isFinite(Date.parse(observedAt)), 'invalid_source_timestamp');
-      const snapshot = { source_url: url, observed_at: new Date(observedAt).toISOString(), status: 200, complete: true, bytes: Buffer.byteLength(fetchedSnapshot.html), sha256: createHash('sha256').update(fetchedSnapshot.html).digest('hex'), html: fetchedSnapshot.html };
+      const bytes = Buffer.byteLength(fetchedSnapshot.html);
+      const sha256 = createHash('sha256').update(fetchedSnapshot.html).digest('hex');
+      if (browserDom) {
+        // A DOM observation establishes page content, never an HTTP status.
+        ensure(manualCollection && fetchedSnapshot.status === null && fetchedSnapshot.complete === true
+          && fetchedSnapshot.source_url === url && fetchedSnapshot.observed_at === new Date(observedAt).toISOString()
+          && fetchedSnapshot.bytes === bytes && fetchedSnapshot.sha256 === sha256, 'invalid_browser_dom_snapshot');
+      } else ensure(fetchedSnapshot.status === undefined || fetchedSnapshot.status === 200, 'invalid_html_snapshot');
+      const snapshot = { source_url: url, observed_at: new Date(observedAt).toISOString(), status: browserDom ? null : 200,
+        ...(browserDom ? { source_kind: 'browser_dom' } : {}), complete: true, bytes, sha256, html: fetchedSnapshot.html };
       requestsEvidence.push({ url, snapshot: structuredClone(snapshot) });
       result.sources.push({ ...sourceMeta(snapshot), source_url: snapshot.source_url ?? url, status: 'ok' });
       fetched.set(url, snapshot);
@@ -81,6 +93,48 @@ export async function collectCycle({ mappings, rawPlayers, rawPacks, fetchHtml =
       fetchFailures.set(url, recordedError);
       throw recordedError;
     }
+  }
+
+
+  async function getPackDetail(url, { mapping, retainedPack, expectedMemberCount }) {
+    const parse = async pageUrl => {
+      const snapshot = await get(pageUrl);
+      return parsePackMembershipHtml(snapshot.html, { sourceUrl: pageUrl, observedAt: snapshot.observed_at ?? startedAt,
+        expectedSlug: mapping.packSlug, retainedPack, expectedMemberCount, allowPagination: true });
+    };
+    const first = await parse(url);
+    if (!first.pagination) {
+      ensure(first.membershipComplete, 'pack_membership_incomplete');
+      return first;
+    }
+    const pageUrls = first.pagination.pageUrls;
+    ensure(Array.isArray(pageUrls) && pageUrls.length >= 1 && pageUrls.length <= maxRequests
+      && new Set(pageUrls).size === pageUrls.length && pageUrls.includes(url), 'invalid_pack_pagination');
+    const pageSet = canonical([...pageUrls].sort(compareText));
+    const pageNumber = pageUrl => {
+      const parsed = validateHtmlSourceUrl(pageUrl);
+      ensure(parsed.origin === 'https://efhub.com' && parsed.pathname === new URL(url).pathname, 'pack_pagination_url_mismatch');
+      return parsed.searchParams.has('page') ? Number(parsed.searchParams.get('page')) : 1;
+    };
+    const expectedPages = pageUrls.map(pageNumber).sort((a, b) => a - b);
+    ensure(expectedPages.every((page, index) => page === index + 1), 'pack_pagination_page_gap');
+    const parts = [];
+    for (const pageUrl of [...pageUrls].sort((a, b) => pageNumber(a) - pageNumber(b))) {
+      const part = pageUrl === url ? first : await parse(pageUrl);
+      ensure(canonical(part.pack) === canonical(first.pack), 'pack_pagination_metadata_changed');
+      ensure(part.pagination && part.pagination.page === pageNumber(pageUrl)
+        && canonical([...part.pagination.pageUrls].sort(compareText)) === pageSet, 'pack_pagination_changed');
+      parts.push(part);
+    }
+    const members = parts.flatMap(part => part.members);
+    const memberIds = members.map(member => member.id);
+    const players = parts.flatMap(part => part.players);
+    const count = expectedMemberCount ?? first.pack.playerCount;
+    ensure(memberIds.length === count && new Set(memberIds).size === memberIds.length, 'pack_pagination_membership_incomplete');
+    ensure(new Set(players.map(player => player.id)).size === players.length, 'pack_pagination_player_conflict');
+    return { ...first, members, players, playerIds: memberIds, membershipComplete: true,
+      pagination: { ...first.pagination, complete: true },
+      membershipPages: parts.map(({ source_url, observed_at, sha256 }) => ({ sourceUrl: source_url, observedAt: observed_at, sha256 })) };
   }
 
   try {
@@ -139,9 +193,8 @@ export async function collectCycle({ mappings, rawPlayers, rawPacks, fetchHtml =
       // never be bypassed by trying a different page.
       if (!section) {
         const url = `https://efhub.com/packs/${mapping.packSlug}`;
-        const snapshot = await get(url);
-        const detail = parsePackMembershipHtml(snapshot.html, { sourceUrl: url, observedAt: snapshot.observed_at ?? startedAt,
-          expectedSlug: mapping.packSlug, retainedPack: pack, expectedMemberCount: pack ? expectedSpecialCount(mapping, pack) : undefined });
+        const detail = await getPackDetail(url, { mapping, retainedPack: pack,
+          expectedMemberCount: pack ? expectedSpecialCount(mapping, pack) : undefined });
         if (pack) ensure(canonical(pack) === canonical(detail.pack), 'raw_pack_conflict');
         pack = detail.pack;
         detailPlayers = detail.players;
@@ -149,11 +202,11 @@ export async function collectCycle({ mappings, rawPlayers, rawPacks, fetchHtml =
         membershipSource = detail;
       } else if (!pack) {
         const url = section.packUrl ?? `https://efhub.com/packs/${mapping.packSlug}`;
-        const snapshot = await get(url);
-        const detail = parsePackHtml(snapshot.html, { sourceUrl: url, observedAt: snapshot.observed_at ?? startedAt, expectedSlug: mapping.packSlug });
+        const detail = await getPackDetail(url, { mapping });
         pack = detail.pack;
         detailPlayers = detail.players;
-        ensure(detail.membershipComplete && detail.playerIds.every(id => section.players.some(player => player.id === id)), 'pack_detail_section_mismatch');
+        ensure(detail.membershipComplete && detail.playerIds.length === section.players.length
+          && detail.playerIds.every(id => section.players.some(player => player.id === id)), 'pack_detail_section_mismatch');
       }
       assertRawPack(pack);
       const members = [...section.players].sort((a, b) => compareText(a.id, b.id));

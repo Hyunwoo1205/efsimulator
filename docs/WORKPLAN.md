@@ -9,6 +9,7 @@
 - 이전 작업: T037 — T017 설계·구현 계획과 관련 관리 문서 작성 완료.
 - 현재 작업: T017 — A 사용자 정책/계약 조사 진행 중(T038). 종료 체험·무제한 가상 사용량·비복원/리셋은 확정했고 영상/팩별 옵션은 미완료. 엔진/C 저장/D 화면/E 2D/F 배포는 아직 없음.
 - 다음 작업: T018 — 검증된 엔진/연출 뒤 3D·모바일 성능·실패 fallback.
+- 병행 유지보수: T039 — 사용자 지시에 따른 신규 6상품·93카드 수동 검토 및 저장/API/사이트/GitHub 갱신 진행 중. 제품 T017/T018 범위와 T038 미확인 항목은 보존한다.
 - 현재 조건: T035의 모든 실제 앱 목록은 Epic/Show Time 한 우선 그룹과 유효 팩 날짜 내림차순을 공유한다. 선수는 최초 확인 연결팩 날짜를 표시용으로 사용하며 실제 최초 출시일로 주장하지 않는다.402전체/28앱 회귀·타입/Worker build·실제 snapshot production 정렬/필터/명단·같은 private 배포를 확인했다. API8필드·raw/규칙/자동화·기존viewer/Pages·audience와 T034 카드 표시는 보존했다.
 
 매 작업 시작 시 Git 상태·이전 결과·이번/다음 작업·선행 조건을 확인한다. FILE_SYNC의 P0→P1→P2로 관련 파일을 검토하되 필요한 파일은 등급과 무관하게 함께 수정한다. 추가 요구는 ID·영향 단계·선행 조건·순서·상태를 기록한다. 파일별 수정/변경불필요/미해결과 근거, 경로 추가/삭제/이름 변경·참조를 같은 작업에서 갱신한다. 검증과 이전/현재/다음 포인터를 맞추며 구현/수집/발행 완료는 실제 근거가 있을 때만 표시한다.
@@ -64,6 +65,8 @@ C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_B
 | C074 | 3D는 사용자 APK 업로드 후 디컴파일·개봉 관련 자료 포함/의존성 분석으로 활용 범위 결정 | T018; 같은 확정 결과 renderer, APK만으로 재사용 가능 확정 금지 | APK 업로드 대기·3D 분석/구현 없음 |
 | C075 | 10회 지원 팩도 잔여1~9명이면10회 버튼 잠금·단일 소진 확정 | T038/T017-A→B/C/D; 현재회차10명이상에서 정확히10회, 묶음축소/회차이월 금지, 단일 가격은 별도검증 | 사용자 정책 확정·설계 반영, 구현/배포 미수행 |
 | C070 | T017을 어떤 방식으로 설계·구현할지 구체적인 계획 작성 요청 | T037 계획만 작성 → T017-A 규칙/신선도·세션 계약 → B 엔진/C 저장/D 화면/E 2D/F 검토 배포 → T018. 기존 API·운영 데이터·예약·사이트 배포 변경 없음 | 계획 작성·관련 문서/파일 목록 갱신. 실제 추첨 기능은 미구현 |
+
+| C076 | 미완료된 데이터 업데이트를 지금 진행하도록 요청 | T039/R5. 정상 수동 브라우저 DOM의 공식9상품과 EFHub6신규팩·93특수ID 검토 → 파서/receipt 회귀·규칙 명시채택 → 고정 수집/가공 → 동일 묶음 저장·API/사이트·GitHub/CI | 6팩93명 추가·규칙채택/461회귀·저장본 무결성·원격API/세사이트 전량 검증 완료, GitHub/실제CI 확인 진행 중 |
 
 
 ## 이전 작업의 현재 해석
@@ -1887,3 +1890,77 @@ root 전체 회귀394/394·실패0, 앱20회귀·TypeScript·공식 Worker 빌�
 | `docs/AUTOMATION.md` | 검토 결과 변경 불필요 | 개인 시뮬레이터 정책은 시간별 수집/발행 변경이 아님 |
 | `docs/DEPLOYMENT.md` | 검토 결과 변경 불필요 | 이번 배포 없음, 후속 같은 private 앱 전달 절차 재사용 |
 | `config/catalog-automation.json` | 검토 결과 변경 불필요 | 기존 예약/사이트 운영 대상 보존 |
+
+
+## T039 — 미완료 신규 상품 수동 검토와 데이터 갱신
+
+- 단계: R5
+- 상태: 진행 중
+- 이전: T038
+- 다음: T017
+
+### 목표·선행 조건·순서
+
+사용자는 미완료된 업데이트의 실행을 명시적으로 요청했다. 이번은 정기 실행의 자동 신규 매핑 승인이 아니라, 보존한 정상 브라우저 DOM을 직접 검토한 별도 수동 데이터 유지보수다. 기존 hourly 예약·언어 순서·대기 정책·owner-private audience와 시뮬레이터 제품 코드는 변경하지 않는다. 기존 정상7팩/70명과 판매 중3/종료4에서 신규 공식 상품과 같은 제목의 새 회차를 확인하며, 실패/부분 자료로 원본이나 기존 상품을 삭제하지 않는다.
+
+원격 소스 기준은 api-server-setup `886d4e23580e61b585fd7e220d4fb1f752b6b044`, tree `e2a07abc8d8374f64b92829d0a68bcb52a122abd`다. 연결 GitHub에서 확보한 354개 파일을 원격 blob SHA와 대조하고 기존 사용자의 다른 작업을 보존했다.
+
+순서: 실제 DOM 보존·공식/팩/목록 전체 ID 대조 → 명시 매핑/검토 해시 → 필요한 파서/receipt 회귀·규칙 버전/잠금 검토 → expected CURRENT 규칙 채택 → 고정 run-cycle → 무결성 검증된 동일 데이터 묶음 저장 → 원격 API 전량 확인/활성화 → 세 사이트 전량 대조 → GitHub 요약/개발 변경·원격 내용/CI 확인. 마지막 단계까지 확인 전에는 전체 갱신 완료로 표시하지 않는다.
+
+### 수집 근거와 검토 결과
+
+공식 정상 DOM에서9상품을 확인했다. 이전 pending5개 외에 같은 제목의 `POTW: European Club Championship`이11월5일 종료의 새 회차로 바뀌어 신규 총6팩이다. 기존10월29일 종료 회차는 별도 saleId로 보존한다. 원문은 비공개 `catalog-runtime/reviewed-evidence/T039/`의10개HTML과 `source-observations.json`에 보존하며 source_kind=browser_dom/status=null을 사용한다. HTTP200·HTTP Date·원출처 전자서명으로 꾸미지 않는다.
+
+| 공식 상품 | EFHub 팩 slug | 특수 S / 공식 전체 N | 종료 UTC |
+| --- | --- | --- | --- |
+| Epic: World Player of the Year 2026 | world-player-of-the-year-2026 | 11 / 150 | 2026-11-05T01:59:59Z |
+| POTW: Worldwide 29 Oct '26 | potw-29-oct-26 | 11 / 11 | 2026-11-05T01:59:59Z |
+| POTW: European Club Championship | potw-european-club-championship-29-oct-26 | 11 / 11 | 2026-11-05T01:59:59Z |
+| Show Time: Brasileirão | brasileir-o-selection-29-oct-26 | 12 / 100 | 2026-11-05T01:59:59Z |
+| Show Time: J.LEAGUE Monthly MVPs | j-league-monthly-mvps-sep-26 | 8 / 100 | 2026-11-05T01:59:59Z |
+| League Selection: J.LEAGUE | j-league-selection-29-oct-26 | 40 / 40 | 2026-11-19T01:59:59Z |
+
+모든6팩의 원본 date는2026-10-29이며 원본 표시 인원 보정이 없다. 각 팩의 정확한 카드 문자열ID·이름과 신규 선수 목록의 해당 섹션이 완전히 일치했다. J.LEAGUE는 page1의30명과 `?page=2`의10명을 중복 없는40명으로 대조했고, 전원 원본 선수 필드를 확보했다. 총93특수카드이며 이름/OVR로 ID나 등급을 추정하지 않는다. 공식 N−검증 S만 일반 선수 가상 인원으로 계산한다.
+
+실제 저장된10HTML의 bytes/SHA256을 모두 대조했고 근거 인덱스 SHA256은 `39540a93c71871980a9234a06ab53a569df729062640e2753851af0e0d724571`이다. 새6개 mappingDigest와 승인 레지스트리를 기존7개에 추가해 총13개를 JS assertApprovedMappings로 검증했다. authority는 source_verified_manual_review이며 사용자의 개별 상품 확인/보정 승인으로 기록하지 않았다.
+
+### 구현·검증·남은 범위
+
+기존 수집기는 신규 팩 상세에 모든 원본 선수 객체가 없으면 개별 선수 상세 fallback 전에 중단됐고, 현재 팩의 표시 메타데이터/페이지 분할과 수동 DOM의 출처 형식을 충분히 처리하지 못했다. 실제 원문을 근거로 해당 경계를 보완하되 원본 전체 필드·정확한 문자열ID·공식 회차·전 페이지 완전성·30회 요청 상한·규칙 잠금·receipt 재실행 검사는 유지한다. 자동 HTTP와 수동 DOM을 분리하고 schema3/mode manual에서만 DOM status null을 허용한다.
+
+검증 완료: 354개 소스 대조,10개HTML 무결성,6팩93ID/이름/명단/원본 필드,13개 검토 매핑, 신규 회귀18/18 및 전체 npm test461/461, project:check356파일/40작업을 확인했다. catalog-rules-1.3.0(`94f2d9ac342d8825e8aa011eedd44e1c1fe9c5a3a3942cf70ed105d5e76e432f`)을 expected CURRENT로 채택하고 고정 run-cycle을 완료했다. raw는47,501선수/1,705팩(+93/+6), 가공163선수/13팩, live9/archive4다. 기존 raw prefix와 archive는 바뀌지 않았고 orphan0을 확인했다. runtime은 `2110135b539c6d8bf01aa80b6068ce4cc23fbbbef2e43054c96b213aa064a38f`, publication은 `0de557a34888d30dac7bef1ee9085d607e97d28a78ca54fb5796c1bc9a366983`, receipt SHA256은 `b2f58400ff4e67010905b7aeed078bc102e31d728392d283d7a1e83fdd3be3fd`다. 실제 변경 대상은 processed/players.json·processed/packs.json·live.json과 신규 raw/각 로그이며 archive 변경은 없다.
+
+저장·원격 데이터 반영 확인: 동일 데이터 묶음 v17(30,724,311 bytes)을 저장하고 정확한 저장본을 다시 내려받아 SHA256 `093c879b60cb9718313c3f74b52f2a7cc348773b49db15160acc09e700597db7`·gzip/tar 완전성·177파일/241members 전량 일치를 확인했다. API와 두 소비 Site의 owner-private 상태를 새로 확인한 뒤 publication `0de557a34888d30dac7bef1ee9085d607e97d28a78ca54fb5796c1bc9a366983`를 분할 적재·전체 readback/해시 검증·expected-current CAS로 활성화했고 changed=true/verified=true를 확인했다. 2026-10-29T12:35:25.263Z에 API/viewer/실제 앱의 health/manifest와 players/packs/live/archive를 끝까지 읽어 동일 버전·163명/13팩·live9/archive4·전체 내용/참조/해시를 검증했다. 세 사이트 검증 영수증 SHA256은 `b8b8ced6d05bd210d0286f21d4b74ed13d96d1a1b1fb7392601ff6b0ea0de924`이다.
+
+고정 GitHub 요약 영수증의 runId는 `c0f5ff6586cf7751b038e34d409a35397d17920caa003dc602438ecaf4d0491b`이며 bundle/api/sites=verified, github=pending이다. 실제 raw/가공 DB·원문/상세 로그·credential은 Git에 넣지 않는다. GitHub 개발 변경/요약의 같은 브랜치 정상 반영·원격 전체 내용·실제CI가 남아 있어 T039 전체 상태는 진행 중이다. 확인 전 미래 commit SHA나 CI 통과를 문서에 만들지 않는다.
+
+### 파일 최신화 검토
+
+| 파일 | 결과 | 근거 |
+| --- | --- | --- |
+| `data/research/catalog-sale-mappings.json` | 수정 | 공식 신규5상품과 같은 제목 ECC 새 회차를 구분해 6매핑/93특수ID·총원·종료·실제 DOM 해시 등록; 기존7매핑 보존 |
+| `services/catalog-api/policy/approved-mappings.json` | 수정 | source_verified_manual_review 권한과 정확한 mappingDigest 6개 등록; 사용자 개별 확인이나 보정 승인으로 표시하지 않음 |
+| `services/catalog-api/policy/rules.lock.json` | 수정 | catalog-rules-1.3.0의 수동 DOM/팩 파서·승인 레지스트리 해시를 검토 고정하고 expected CURRENT로 명시 채택 |
+| `services/catalog-api/scripts/lifecycle/html-sources.mjs` | 수정 | 현재 팩의 표시 메타데이터·Flight 원본 및 페이지 분할 명단을 검증; ID/메타데이터 추정 금지 |
+| `services/catalog-api/scripts/lifecycle/collect-cycle.mjs` | 수정 | 수동 DOM을 명시 모드로 구분하고 팩 전 페이지·listing 전체 ID 일치와 부족 원본의 상세 fallback 검증; 요청 상한30 유지 |
+| `services/catalog-api/scripts/lifecycle/collection-receipt.mjs` | 수정 | 수동 schema3/mode manual에서만 status null/browser_dom·실제 URL·UTC·bytes/hash 검증 및 재실행 보존 |
+| `services/catalog-api/scripts/lifecycle/run-cycle.mjs` | 수정 | 명시적인 수동 수집 모드를 고정 receipt/작업 공간/발행 순서에 전달; caller verified 후보 직접 발행 금지 유지 |
+| `services/catalog-api/tests/manual-collection-support.test.mjs` | 수정 | 수동 DOM 허용 경계와 상태/URL/해시 변조·자동모드 거부·receipt 재실행 회귀 추가 |
+| `services/catalog-api/tests/pack-visible-metadata.test.mjs` | 수정 | 표시 팩 메타데이터·Flight 데이터·명단/페이지 완전성과 충돌 차단 회귀 추가 |
+| `docs/WORKPLAN.md` | 수정 | T039/C076의 수동 검토·변경 이유·증거·완료/미완료·파일별 검토 기록 |
+| `docs/ROADMAP.md` | 수정 | T039 데이터 유지보수와 제품 T017/T018 작업을 구분하고 검증 대기 범위를 명시 |
+| `docs/FILE_SYNC.json` | 수정 | 신규 회귀2파일 등록과 변경/연관 파일 역할·우선순위·관련 경로·갱신 조건·T039 검토 연결 |
+| `data/updates/catalog-latest.json` | 수정 | 신규 raw93명/6팩·가공/live 변경과 bundle/api/sites verified를 검증 요약에 기록; 자기 자신을 포함할 미래 SHA/CI를 만들지 않고 github pending 유지 |
+| `AGENTS.md` | 검토 결과 변경 불필요 | 현행 사용자 수동 지시·원본/API 분리·정상 커밋/원격/CI·규칙 검토 절차 재사용 |
+| `docs/AUTOMATION.md` | 검토 결과 변경 불필요 | 이번은 별도 수동 갱신/개발이며 기존 hourly 일정·쿨다운·자동 승인 범위를 변경하지 않음 |
+| `docs/CATALOG_DATA_CONTRACT.md` | 검토 결과 변경 불필요 | raw 무삭제·선수8필드·팩13필드·N/S/A·로그·정확한 회차·명시 검토 잠금 계약 유지 |
+| `config/catalog-automation.json` | 검토 결과 변경 불필요 | 기존 API/viewer/app ID·origin·저장 식별자·브랜치·영수증 경로 재사용 |
+| `package.json` | 검토 결과 변경 불필요 | 기존 project:check/npm test 및 지정 런타임 계약 재사용 |
+| `services/catalog-api/package.json` | 검토 결과 변경 불필요 | 기존 rules-check/adopt-rules/data:cycle/test 진입점 재사용, 패키지/잠금 변경 없음 |
+| `services/catalog-api/lib/catalog-contract.mjs` | 검토 결과 변경 불필요 | 원본12필수/선택2·가공8필드·특수/전체 인원·문자열ID·로그 검증 유지 |
+| `services/catalog-api/scripts/lifecycle/rules.mjs` | 검토 결과 변경 불필요 | 기존 mappingDigest/approved registry/규칙 파일 집합 검사를 사용 |
+| `services/catalog-api/scripts/lifecycle/workspace.mjs` | 검토 결과 변경 불필요 | expected CURRENT 규칙 채택·receipt 재실행·원본 prefix 보존·불변 세대 전환 재사용 |
+| `services/catalog-api/scripts/lifecycle/publication.mjs` | 검토 결과 변경 불필요 | 검증 가공 자료의 결정적 SQL/manifest 생성·전량 내용 검증 재사용 |
+| `services/catalog-api/scripts/lifecycle/publish-remote.mjs` | 검토 결과 변경 불필요 | owner-private 접근·분할 적재/전량 readback·expected-current CAS 활성화 재사용 |
+| `services/catalog-api/scripts/lifecycle/verify-sites.mjs` | 검토 결과 변경 불필요 | 세 사이트의 동일 publication·전체4컬렉션·중첩/참조·페이지 끝 검증 재사용 |
+| `scripts/catalog-update-record.mjs` | 검토 결과 변경 불필요 | 허용 요약 필드만 고정 파일에 쓰며 미래 SHA/CI·상세 원문·credential을 기록하지 않는 계약 유지 |

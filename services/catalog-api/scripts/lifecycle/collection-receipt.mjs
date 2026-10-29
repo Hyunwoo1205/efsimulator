@@ -17,8 +17,8 @@ export function receiptResultHash(result) {
   const { receipt: _receipt, ...value } = result;
   return digest(canonical(value));
 }
-export function makeCollectionReceipt({ checkedAt, rulesIdentity, mappingsDocument, rawPlayers, rawPacks, maxRequests, requests, resultSha256 }) {
-  return structuredClone({ schemaVersion: 1, checkedAt, rulesIdentity, mappingsDocument,
+export function makeCollectionReceipt({ checkedAt, rulesIdentity, mappingsDocument, rawPlayers, rawPacks, maxRequests, manualCollection = false, requests, resultSha256 }) {
+  return structuredClone({ schemaVersion: manualCollection ? 3 : 1, ...(manualCollection ? { mode: 'manual' } : {}), checkedAt, rulesIdentity, mappingsDocument,
     baselineSha256: baselineFingerprint(rawPlayers, rawPacks), maxRequests, requests, resultSha256 });
 }
 
@@ -32,7 +32,9 @@ export async function replayCollectionReceipt({ receipt, rawPlayers, rawPacks, n
     const { replayReviewedCacheReceipt } = await import('./reviewed-cache.mjs');
     return replayReviewedCacheReceipt({ receipt, rawPlayers, rawPacks, now, approval, rulesIdentity: expectedRules });
   }
-  assert(exact(receipt, ['schemaVersion', 'checkedAt', 'rulesIdentity', 'mappingsDocument', 'baselineSha256', 'maxRequests', 'requests', 'resultSha256']) && receipt.schemaVersion === 1, 'unsupported schema');
+  const manualCollection = receipt?.schemaVersion === 3 && receipt.mode === 'manual';
+  assert(exact(receipt, ['schemaVersion', 'checkedAt', 'rulesIdentity', 'mappingsDocument', 'baselineSha256', 'maxRequests', 'requests', 'resultSha256', ...(manualCollection ? ['mode'] : [])])
+    && (receipt.schemaVersion === 1 || manualCollection), 'unsupported schema');
   assert(iso(receipt.checkedAt) && typeof now === 'string' && Number.isFinite(Date.parse(now)) && new Date(now).toISOString() === receipt.checkedAt, 'execution clock differs');
   const rules = await activeRules();
   assert(canonical(receipt.rulesIdentity) === canonical(rules), 'rules identity differs');
@@ -48,8 +50,10 @@ export async function replayCollectionReceipt({ receipt, rawPlayers, rawPacks, n
     assert(!urls.has(request.url), 'duplicate source URL'); urls.add(request.url);
     if (request.snapshot) {
       const snapshot = request.snapshot;
-      assert(exact(snapshot, ['source_url', 'observed_at', 'status', 'complete', 'bytes', 'sha256', 'html']), 'invalid snapshot shape');
-      assert(snapshot.source_url === request.url && snapshot.status === 200 && snapshot.complete === true && iso(snapshot.observed_at), 'invalid snapshot metadata');
+      const browserDom = snapshot.source_kind === 'browser_dom';
+      assert(exact(snapshot, ['source_url', 'observed_at', 'status', 'complete', 'bytes', 'sha256', 'html', ...(browserDom ? ['source_kind'] : [])]), 'invalid snapshot shape');
+      assert(snapshot.source_url === request.url && (browserDom ? manualCollection && snapshot.status === null : snapshot.status === 200)
+        && snapshot.complete === true && iso(snapshot.observed_at), 'invalid snapshot metadata');
       assert(typeof snapshot.html === 'string' && Buffer.byteLength(snapshot.html) <= 8 * 1024 * 1024 && snapshot.bytes === Buffer.byteLength(snapshot.html) && hex(snapshot.sha256) && digest(snapshot.html) === snapshot.sha256, 'HTML bytes/hash differ');
       // Future/stale evidence cannot become fresh merely by editing checkedAt.
       const age = Date.parse(receipt.checkedAt) - Date.parse(snapshot.observed_at);
@@ -69,7 +73,7 @@ export async function replayCollectionReceipt({ receipt, rawPlayers, rawPacks, n
   };
   const { collectCycle } = await import('./collect-cycle.mjs');
   const replay = await collectCycle({ mappings: receipt.mappingsDocument.mappings, mappingsDocument: receipt.mappingsDocument,
-    rawPlayers, rawPacks, now: () => new Date(receipt.checkedAt), maxRequests: receipt.maxRequests, rulesIdentity: rules, fetchHtml });
+    rawPlayers, rawPacks, now: () => new Date(receipt.checkedAt), maxRequests: receipt.maxRequests, manualCollection, rulesIdentity: rules, fetchHtml });
   assert(cursor === receipt.requests.length, 'unused source evidence');
   assert(receiptResultHash(replay) === receipt.resultSha256, 'recomputed result differs');
   return replay;

@@ -15,7 +15,9 @@ function requireThat(condition, message, code = 'source_layout_changed') {
 export function validateHtmlSourceUrl(value) {
   let url;
   try { url = new URL(value); } catch { throw Object.assign(new Error('Invalid HTML source URL.'), { code: 'invalid_source_url' }); }
-  requireThat(url.protocol === 'https:' && !url.username && !url.password && !url.search && !url.hash && !url.port, 'Only ordinary HTTPS source pages are supported.', 'invalid_source_url');
+  const packDetail = url.origin === EFHUB && /^\/(?:[a-z]{2}\/)?packs\/[a-z\d-]+\/?$/.test(url.pathname);
+  const ordinaryPage = !url.search || (packDetail && /^\?page=[1-9]\d*$/.test(url.search) && Number.isSafeInteger(Number(url.searchParams.get('page'))) && Number(url.searchParams.get('page')) >= 2);
+  requireThat(url.protocol === 'https:' && !url.username && !url.password && ordinaryPage && !url.hash && !url.port, 'Only ordinary HTTPS source pages and explicit pack page numbers are supported.', 'invalid_source_url');
   requireThat(url.href === OFFICIAL || (url.origin === EFHUB && /^\/(?:[a-z]{2}\/)?(?:new-players|players\/\d+|packs\/[a-z\d-]+)\/?$/.test(url.pathname)), 'Only new-players and linked player/pack HTML pages are supported; API requests are forbidden.', 'invalid_source_url');
   return url;
 }
@@ -272,6 +274,44 @@ export function parsePlayerHtml(html, options = {}) {
   return { ...source, player: players[0] };
 }
 
+function packPagination(container, sourceUrl) {
+  const source = new URL(sourceUrl);
+  const page = Number(source.searchParams.get('page') ?? 1);
+  const navs = descendants(container, node => node.tag === 'nav' && String(node.attrs['aria-label'] ?? '').trim().toLowerCase() === 'pagination');
+  if (!navs.length) {
+    requireThat(page === 1, 'Pack page URL has no matching pagination controls.');
+    return null;
+  }
+  requireThat(navs.length === 1, 'Pack pagination controls are ambiguous.');
+  const links = descendants(navs[0], node => node.tag === 'a');
+  requireThat(links.length > 0, 'Pack pagination has no explicit page links.');
+  const pages = new Map();
+  const aliases = [];
+  const active = [];
+  for (const link of links) {
+    let url;
+    try { url = validateHtmlSourceUrl(new URL(link.attrs.href, source).href); }
+    catch { throw Object.assign(new Error('Pack pagination link is not an ordinary same-pack page URL.'), { code: 'source_layout_changed' }); }
+    requireThat(url.origin === source.origin && url.pathname.replace(/\/$/, '') === source.pathname.replace(/\/$/, ''), 'Pack pagination link belongs to another product.');
+    const number = Number(url.searchParams.get('page') ?? 1);
+    const label = nodeText(link).trim();
+    if (/^[1-9]\d*$/.test(label)) {
+      requireThat(Number(label) === number && !pages.has(number), 'Pack pagination page labels are duplicated or disagree with their URLs.');
+      pages.set(number, url.href);
+      if (['page', 'true'].includes(link.attrs['aria-current']) || link.attrs['data-state'] === 'active' || hasClass(link, 'bg-blue-600')) active.push(number);
+    } else {
+      requireThat(/^(?:next|previous)$/i.test(String(link.attrs['aria-label'] ?? '').trim()), 'Pack pagination has an unrecognized page link.');
+      aliases.push(url.href);
+    }
+  }
+  const numbers = [...pages.keys()].sort((a, b) => a - b);
+  requireThat(numbers.length > 0 && numbers[0] === 1 && numbers.every((number, index) => number === index + 1) && pages.has(page), 'Pack pagination page list is incomplete or does not include the source page.');
+  const pageUrls = numbers.map(number => pages.get(number));
+  requireThat(aliases.every(url => pageUrls.includes(url)), 'Pack pagination navigation points to an unlisted page.');
+  requireThat(active.length === 0 || (active.length === 1 && active[0] === page), 'Pack pagination current selection disagrees with the source URL.');
+  return { page, pageUrls };
+}
+
 /**
  * Read an explicitly selected pack's visible roster. Retained original metadata
  * may supply its fields; display-only cards never become new raw records.
@@ -285,12 +325,11 @@ export function parsePackMembershipHtml(html, options = {}) {
   const packs = uniqueObjects(embeddedObjects(html, 'pack').filter(value => value.slug === slug).map(rawPack), 'slug');
   const retainedPack = options.retainedPack ? rawPack(options.retainedPack) : null;
   requireThat(!retainedPack || retainedPack.slug === slug, 'Retained pack metadata belongs to a different slug.');
-  requireThat(packs.length === 1 || retainedPack, 'Pack HTML must explicitly include its original four-field pack metadata.');
   requireThat(!retainedPack || !packs.length || JSON.stringify(retainedPack) === JSON.stringify(packs[0]), 'Retained and embedded pack metadata disagree.');
-  const pack = retainedPack ?? packs[0];
+  let pack = retainedPack ?? packs[0];
   const dom = tree(html);
-  const headings = descendants(dom, node => node.tag === 'h1' && nodeText(node).trim() === pack.name);
-  requireThat(headings.length === 1, 'Pack heading and embedded pack metadata disagree.');
+  const headings = descendants(dom, node => node.tag === 'h1' && (!pack || nodeText(node).trim() === pack.name));
+  requireThat(headings.length === 1 && nonempty(nodeText(headings[0]).trim()), 'Pack heading and embedded pack metadata disagree.');
   // Accept only a bounded section/product container holding the matching heading and its grid.
   const candidates = [];
   domWalk(dom, node => {
@@ -303,10 +342,10 @@ export function parsePackMembershipHtml(html, options = {}) {
   requireThat(candidates.length > 0, 'Pack membership grid is absent.');
   const { node: container, grid } = candidates.at(-1);
   if (!packs.length) {
-    // A retained record supplies original fields, but is not proof that the
-    // current page is the same release. Require independent visible date and
-    // reported-count metadata inside this pack's own bounded container.
-    const separatedText = node => node.children.map(child => typeof child === 'string' ? child : separatedText(child)).join(' ');
+    // New pack HTML may expose original metadata as visible text only. Read it
+    // within this product's own container, excluding card names from metadata.
+    // A retained record must independently match that same visible release.
+    const separatedText = node => node === grid || (node.tag === 'nav' && String(node.attrs['aria-label'] ?? '').trim().toLowerCase() === 'pagination') ? '' : node.children.map(child => typeof child === 'string' ? child : separatedText(child)).join(' ');
     const visible = separatedText(container).replace(/\s+/g, ' ');
     const dates = new Set([...visible.matchAll(/\b(20\d{2}-\d{2}-\d{2})\b/g)].map(match => match[1]));
     for (const time of descendants(container, node => node.tag === 'time' && typeof node.attrs.datetime === 'string')) {
@@ -325,23 +364,29 @@ export function parsePackMembershipHtml(html, options = {}) {
         if (Number.isFinite(Date.parse(value)) && new Date(value).toISOString().slice(0, 10) === value) dates.add(value);
       }
     });
-    requireThat(dates.size === 1 && dates.has(pack.date), 'Visible pack release date is absent, ambiguous or conflicts with retained metadata.');
+    requireThat(dates.size === 1 && (!pack || dates.has(pack.date)), 'Visible pack release date is absent, ambiguous or conflicts with retained metadata.');
     const counts = new Set();
     for (const match of visible.matchAll(/\b(?:players?|player count|number of players)\s*[:(]?\s*(\d+)\b/gi)) counts.add(Number(match[1]));
     for (const match of visible.matchAll(/\b(\d+)\s+players?\b/gi)) counts.add(Number(match[1]));
-    requireThat(counts.size === 1 && counts.has(pack.playerCount), 'Visible pack reported count is absent, ambiguous or conflicts with retained metadata.');
+    requireThat(counts.size === 1 && (!pack || counts.has(pack.playerCount)), 'Visible pack reported count is absent, ambiguous or conflicts with retained metadata.');
+    if (!pack) pack = rawPack({ name: nodeText(headings[0]).trim(), slug, date: [...dates][0], playerCount: [...counts][0] });
   }
   const links = descendants(grid, node => node.tag === 'a').map(node => playerLink(node, source.source_url)).filter(Boolean);
   const expectedMemberCount = options.expectedMemberCount ?? pack.playerCount;
-  requireThat(Number.isSafeInteger(expectedMemberCount) && expectedMemberCount > 0 && links.length === expectedMemberCount && new Set(links.map(player => player.id)).size === links.length, 'Pack reported count and direct membership links differ.');
+  const pagination = packPagination(container, source.source_url);
+  const paginated = pagination && pagination.pageUrls.length > 1;
+  requireThat(Number.isSafeInteger(expectedMemberCount) && expectedMemberCount > 0 && links.length > 0 && new Set(links.map(player => player.id)).size === links.length, 'Pack reported count and direct membership links differ.');
+  const membershipComplete = !paginated && links.length === expectedMemberCount;
+  requireThat(membershipComplete || (options.allowPagination === true && paginated && links.length < expectedMemberCount), 'Pack reported count and direct membership links differ.');
   const allowed = new Set(links.map(player => player.id));
   const players = uniqueObjects(embeddedObjects(html, 'player').filter(value => allowed.has(value.id))
     .filter(value => ['name', 'slug', 'position', 'imageUrl'].every(key => nonempty(value[key])) && Number.isFinite(value.overallRating) && Number.isSafeInteger(value.playerType)).map(rawPlayer), 'id');
-  return { ...source, pack, members: links, players, playerIds: links.map(player => player.id), membershipComplete: true };
+  return { ...source, pack, members: links, players, playerIds: links.map(player => player.id), membershipComplete, ...(pagination ? { pagination } : {}) };
 }
 
 export function parsePackHtml(html, options = {}) {
   const detail = parsePackMembershipHtml(html, { ...options, retainedPack: undefined, expectedMemberCount: undefined });
+  requireThat(embeddedObjects(html, 'pack').some(value => value.slug === detail.pack.slug), 'Pack HTML must explicitly include its original four-field pack metadata.');
   requireThat(detail.players.length === detail.playerIds.length, 'Some membership cards lack their embedded original fields.');
   return Object.fromEntries(Object.entries(detail).filter(([key]) => key !== 'members'));
 }
