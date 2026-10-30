@@ -571,7 +571,7 @@
   "presentationFollowUpT045": {
     "taskId": "T045",
     "recordedOnKstDate": "2026-10-30",
-    "status": "implementation_verified_locally_publication_pending",
+    "status": "completed_requested_2d_presentation_scope_with_verification_limits",
     "authority": "Latest direct user request, root's individual still-image inspection, and actual root-reported local checks; not a frame sequence or network-speed measurement.",
     "images": [
       {
@@ -663,20 +663,129 @@
         "passed": true
       },
       "deployment": {
-        "status": "pending"
+        "url": "https://efsimulator.hyunw09.chatgpt.site",
+        "versionNumber": 14,
+        "access": "public",
+        "status": "succeeded",
+        "completedAt": "2026-10-30T04:25:02.529355Z",
+        "sourceCommit": "620eca8644ff207a61de0bca33ca65e58ae10aa9",
+        "versionId": "appgprj_6ae13ac0e9d88191978e6953f7286966~appgver_35e8aaf8e5a08191b169dee299fba4e9",
+        "deploymentId": "appgdep_6ae41c0fa4088191b0d589e9086d8cac",
+        "canonicalAppFilesMatched": 73
       },
       "hostedUiQa": {
-        "status": "pending"
+        "version": 14,
+        "status": "completed_with_observation_limits",
+        "viewportWidthObserved": 1363,
+        "horizontalOverflowObserved": false,
+        "resultOrder": {
+          "source": "existing_WPOTY10_batch",
+          "storedKaneOrdinal": 4,
+          "displayedKaneOrdinal": 1,
+          "anonymousStandardCount": 9,
+          "originalLedgerUnchanged": true,
+          "perCardVisiblePAndSmallCount": 0,
+          "accessibleRoleLabelsRetained": true
+        },
+        "alignment": {
+          "layout": "five_columns_two_rows",
+          "firstRowTop": 196.53125,
+          "artworkBoundsMatchWrapper": true,
+          "maxFractionalColumnHeightDifferencePx": 0.03125,
+          "oldFixedFeaturedHeightOffsetRemoved": true
+        },
+        "standardLoading": {
+          "completeCount": 9,
+          "naturalWidth": 240,
+          "loading": "eager",
+          "fetchPriority": "high",
+          "matchingPreloadLinkCount": 1,
+          "preloadAs": "image",
+          "singleReplayCardCount": 1,
+          "singleReplayWidth": 240,
+          "singleReplayHeight": 340,
+          "resourceTimingAvailable": false,
+          "requestCountMeasured": false,
+          "latencyMeasured": false
+        },
+        "stateAfterReplaySkipContinue": {
+          "remaining": 149,
+          "special": 11,
+          "standard": 138,
+          "roundNumber": 2,
+          "currentDrawCount": 1,
+          "currentCoinCost": 100,
+          "lifetimeDrawCount": 11,
+          "lifetimeCoinCost": 1000,
+          "historyKaneOrdinal": 4,
+          "newDrawResetOrWrite": false
+        },
+        "motion": {
+          "computedTransitionVerified": true,
+          "earlyWhiteOpacity": 0,
+          "whiteOpacityAfterAbout1500ms": 1,
+          "lateSample": {
+            "whiteOpacity": 0.9901,
+            "cardOpacity": 1,
+            "bloomOpacity": 0.9043,
+            "bloomScale": 1.1316,
+            "ringOpacity": 0.7914,
+            "ringScale": 1.0086
+          },
+          "whitePixelScreenshotVerified": false,
+          "screenshotAnomaly": "Capture path still showed an initial green-looking frame; white pixels were not certified and no definite rendering bug was established."
+        },
+        "notPerformed": [
+          "physical_mobile_device",
+          "actual_reduced_motion_preference_transition",
+          "network_resource_timing_or_equal_latency_measurement",
+          "verified_white_pixel_screenshot_capture"
+        ]
       },
       "github": {
-        "status": "pending"
-      }
+        "status": "verified_implementation_commit",
+        "repository": "Hyunwoo1205/efsimulator",
+        "branch": "api-server-setup",
+        "implementationCommit": "e4cb45db8bde5c8ff8273f06e2e459f53f57a29d",
+        "expectedParent": "6f9e9c38d4527787f0df10f8ec113a340dc473f5",
+        "force": false,
+        "exactRemoteRefVerified": true,
+        "allTrackedBlobsAndModesMatched": 380,
+        "mismatches": 0
+      },
+      "projectCheck": {
+        "baseCommit": "6f9e9c38d4527787f0df10f8ec113a340dc473f5",
+        "files": 380,
+        "tasks": 46,
+        "changedPaths": 13,
+        "exitCode": 0
+      },
+      "ci": [
+        {
+          "name": "eFsimulator app checks",
+          "runId": 41002882767,
+          "status": "completed",
+          "conclusion": "success",
+          "commit": "e4cb45db8bde5c8ff8273f06e2e459f53f57a29d",
+          "url": "https://github.com/Hyunwoo1205/efsimulator/actions/runs/41002882767"
+        },
+        {
+          "name": "Catalog API checks",
+          "runId": 41002882764,
+          "status": "completed",
+          "conclusion": "success",
+          "commit": "e4cb45db8bde5c8ff8273f06e2e459f53f57a29d",
+          "url": "https://github.com/Hyunwoo1205/efsimulator/actions/runs/41002882764"
+        }
+      ]
     },
     "limitations": [
       "Still images do not establish opening-frame timing or actual network latency.",
+      "Actual computed animation transitions were verified; the capture path did not certify white screenshot pixels.",
+      "Reduced-motion preference transitions, physical mobile-device checks, and network latency were not measured.",
       "No identical loading-duration guarantee for every browser/network.",
-      "3D/APK and mobile physical-device verification are not claimed.",
-      "Future publication/remoteSHA/CI are not invented."
+      "3D/APK are not implemented or analyzed here.",
+      "Implementation-commit CI is verified; future final-documentation-commit SHA/CI are not invented."
     ]
   }
 }
