@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "taskId": "T017",
   "recordedOnKstDate": "2026-10-30",
-  "status": "local_validation_passed_publication_pending",
+  "status": "completed_2d_scope",
   "authority": {
     "screenshots": "Root individually viewed the nine user-provided stills. Hashes were computed read-only from the supplied local originals.",
     "productFlow": "Latest direct user decisions and delegated roster-display choice. Static images from different packs are not one verified continuous opening sequence."
@@ -364,11 +364,178 @@
       "exitCode": 0,
       "clientModuleCount": 139
     },
-    "deployment": null,
-    "hostedUiQa": null,
-    "githubCommit": null,
-    "ci": null,
-    "reason": "Local tests/types/build/management facts are observed. Owner records actual deployment/hosted UI/GitHub/CI later; no future success or commit SHA is invented.",
+    "deployment": {
+      "url": "https://efsimulator.hyunw09.chatgpt.site",
+      "fullInteractionQaVersion": 12,
+      "version12": {
+        "sourceCommit": "80ae8a274f1ba2f2774a3079acbfd1759352e533",
+        "deploymentId": "appgdep_6ae41521a744819193d0ab118048c239",
+        "status": "succeeded",
+        "completedAt": "2026-10-30T03:55:30.375995Z",
+        "access": "public",
+        "canonicalSourceFilesMatched": 71
+      },
+      "version13": {
+        "versionId": "appgprj_6ae13ac0e9d88191978e6953f7286966~appgver_eaa82a4df7708191b48e15b7433827eb",
+        "sourceCommit": "c8da0462e6f0e6ab8a25298cbd2e0a8befe99805",
+        "deploymentId": "appgdep_6ae41710d0f08191bc8634ad2bc32b88",
+        "status": "succeeded",
+        "completedAt": "2026-10-30T04:03:40.782679Z",
+        "sourceDifference": "appREADME_three_lines_only",
+        "runtimeUnchangedFromVersion12": true,
+        "separateBasicAnonymousReadback": {
+          "passed": true,
+          "kind": "public_route_no_login_read_only_persisted_state_check",
+          "routePack": "POTW29",
+          "livePackCount": 9,
+          "archivePackCount": 4,
+          "persistedRound": {
+            "number": 2,
+            "N": 11,
+            "S": 11,
+            "A": 0,
+            "currentDrawCount": 0,
+            "lifetimeDrawCount": 11,
+            "lifetimeCoinCost": 1100,
+            "completionBannerVisible": true,
+            "historyResultCount": 11
+          },
+          "single100Enabled": true,
+          "tenButtonCount": 0,
+          "viewportWidthObserved": 1363,
+          "horizontalOverflowObserved": false,
+          "extraDrawOrWrite": false,
+          "allCanonicalAppFilesMatched": 71,
+          "mismatches": 0
+        }
+      },
+      "identicalVersion12And13Artifact": {
+        "contentHash": "sha256:5abdbaf53d9a6747a32cd893910de36e49f83091ca9a4b0f6fcf019feb170425",
+        "memberCount": 81
+      }
+    },
+    "hostedUiQa": {
+      "version": 12,
+      "kind": "actual_public_hosted_browser_interaction",
+      "viewportWidthObserved": 1363,
+      "horizontalOverflowObserved": false,
+      "wpoty": {
+        "initialN": 150,
+        "tenResults": 10,
+        "afterTenRemaining": 140,
+        "coinCost": 900,
+        "refreshPendingSequenceIdentical": true,
+        "replayAndMotionSkipUseSameResultsWithoutCost": true,
+        "acquiredKaneBrightness": 0.36,
+        "otherTenSpecialCardsNormal": true,
+        "manualReset": {
+          "roundNumber": 2,
+          "N": 150,
+          "S": 11,
+          "A": 139,
+          "currentDrawCount": 0,
+          "lifetimeDrawCount": 10,
+          "lifetimeCoinCost": 900,
+          "historyPreserved": true,
+          "acquiredDimCount": 0
+        },
+        "detailNavigationAndBackRestored": true
+      },
+      "potw29": {
+        "N": 11,
+        "S": 11,
+        "A": 0,
+        "tenButtonCount": 0,
+        "singleDraws": 11,
+        "uniqueSpecialResults": 11,
+        "remainingBeforeExhaustion": [
+          10,
+          9,
+          8,
+          7,
+          6,
+          5,
+          4,
+          3,
+          2,
+          1
+        ],
+        "dimBeforeExhaustion": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "coinIncrementEachDraw": 100,
+        "lastRoundOneCard": "Alex Berenguer",
+        "lastPendingResultPreservedAfterReload": true,
+        "afterContinue": {
+          "visibleRoundNumber": 2,
+          "N": 11,
+          "S": 11,
+          "A": 0,
+          "currentDrawCount": 0,
+          "lifetimeDrawCount": 11,
+          "lifetimeCoinCost": 1100,
+          "historyResultCount": 11,
+          "acquiredDimCount": 0,
+          "completionBannerVisible": true,
+          "automaticExtraDraw": false
+        }
+      },
+      "twoTabs": {
+        "samePoolRemainingBefore": 150,
+        "simultaneousSingleCommands": "one_new_batch_committed",
+        "addedCoinCost": 100,
+        "remainingAfter": 149,
+        "SAfter": 11,
+        "AAfter": 138,
+        "lifetimeDrawCountAfter": 11,
+        "lifetimeCoinCostAfter": 1000,
+        "acknowledgementSynchronized": true
+      },
+      "notPerformed": [
+        "360px_or_mobile_physical_device_hosted_QA",
+        "browser_exhaustion_of150_player_pool_until_remaining9"
+      ],
+      "unitOnlyForUnobservedBrowserBoundary": [
+        "ten_draw_disabled_at_remaining1_to9",
+        "exact10_draw_and_no_partial_or_cross_round_batch"
+      ]
+    },
+    "githubCommit": {
+      "repository": "Hyunwoo1205/efsimulator",
+      "branch": "api-server-setup",
+      "implementationCommit": "11ed42504af5c3b890902561cbf4a9eca61e161e",
+      "exactRemoteRefVerified": true,
+      "allManagedBlobsMatched": 378,
+      "mismatches": 0
+    },
+    "ci": [
+      {
+        "name": "eFsimulator App checks",
+        "runId": 41000203278,
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/Hyunwoo1205/efsimulator/actions/runs/41000203278",
+        "commit": "11ed42504af5c3b890902561cbf4a9eca61e161e"
+      },
+      {
+        "name": "Catalog API checks",
+        "runId": 41000203279,
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/Hyunwoo1205/efsimulator/actions/runs/41000203279",
+        "commit": "11ed42504af5c3b890902561cbf4a9eca61e161e"
+      }
+    ],
+    "reason": "Completed within2d scope using observed local checks, actual version12 hosted interactions, matching version13 runtime artifact, and implementation-commit remote/CI evidence. Final documentation/README commit is separate and its future SHA/CI is not invented. Videos remain unobserved and3d/APK are future scope.",
     "projectCheck": {
       "baseCommit": "e04f2defa397e658b626f197a6f305d2c697615a",
       "files": 378,
@@ -380,6 +547,25 @@
       "pack-specific keyed state and stale-store responses",
       "same-command committed-response recovery uses common UI cleanup",
       "queued IndexedDB transaction reads synchronous latest getContext"
+    ]
+  },
+  "completionScope": {
+    "completed": [
+      "uniform_without_replacement_engine",
+      "indexeddb_sessions_and_recovery",
+      "manual_and_exhausted_reset_preserving_history",
+      "site_authored_2d_single_and_ten_results",
+      "current_round_acquired_special_roster",
+      "implementation_commit_remote_and_ci"
+    ],
+    "nextTask": "T018",
+    "notClaimed": [
+      "observed_reference_video_frames_or_skip_destination",
+      "actual_game3d_exact_timing",
+      "apk_uploaded_or_analyzed",
+      "3d_renderer_implemented",
+      "all_mobile_or_browser_boundary_cases_hosted_tested",
+      "future_final_documentation_commit_ci"
     ]
   }
 }

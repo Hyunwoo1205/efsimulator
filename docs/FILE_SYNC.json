@@ -1086,7 +1086,7 @@
     },
     {
       "path": "docs/SIMULATOR_PLAN.md",
-      "role": "T017 규칙/신선도·확률/익명 Standard·IndexedDB/복구·UX/2D·A~F 수용 기준과 T018 연결의 구현 계획",
+      "role": "완료된T017 2D/비복원·IndexedDB/복구·첨부정지화면근거·실제검증한계와후속T018계약",
       "priority": "P1",
       "related_paths": [
         "docs/ROADMAP.md",
@@ -4732,7 +4732,7 @@
     },
     {
       "path": "services/efsimulator-app/README.md",
-      "role": "실제앱페이지/API경계·고정일반이미지/데이터준비·미구현엔진·검사/배포범위안내",
+      "role": "실제앱조회·2D추첨/IndexedDB·리셋/기록·공통일반표시와검증권위/배포범위안내",
       "priority": "P1",
       "related_paths": [
         "services/efsimulator-app/package.json",
