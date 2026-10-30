@@ -791,7 +791,7 @@
   "tenResultNavigationFollowUpT046": {
     "taskId": "T046",
     "recordedOnKstDate": "2026-10-30",
-    "status": "in_progress",
+    "status": "completed_ten_result_ui_scope",
     "authority": "Latest direct user request; root individually viewed the supplied still images, with read-only hashes from their local originals.",
     "sourceCommit": "1d39f44f4d1765064f3bafb17ebb307648e758ce",
     "images": [
@@ -831,7 +831,7 @@
       "drawLedgerPricesAndPool": "unchanged"
     },
     "verification": {
-      "status": "local_checks_verified_followup_pending",
+      "status": "verified_with_documented_browser_limits",
       "tests": {
         "reportedBy": "root_actual_tool_results",
         "total": 539,
@@ -849,16 +849,122 @@
         "changedPaths": 9,
         "exitCode": 0
       },
-      "deployment": null,
-      "hostedUi": null,
-      "github": null,
-      "ci": null
+      "deployment": {
+        "versionNumber": 15,
+        "status": "succeeded",
+        "accessMode": "public",
+        "updatedAt": "2026-10-30T04:44:06.154536Z",
+        "sourceCommit": "1e433952b98515b3262a7a36751dcb23bfa45e88",
+        "versionId": "appgprj_6ae13ac0e9d88191978e6953f7286966~appgver_3916782799588191bade9523732f0e46",
+        "deploymentId": "appgdep_6ae42086c9a881919bc42d0865596d7b",
+        "origin": "https://efsimulator.hyunw09.chatgpt.site",
+        "canonicalAppFilesMatched": 73
+      },
+      "hostedUi": {
+        "viewport": {
+          "width": 1363,
+          "height": 936
+        },
+        "tenResults": {
+          "entryVariants": [
+            "history_replay",
+            "skip",
+            "automatic_1800ms_completion"
+          ],
+          "focus": "top_continue",
+          "dialogScrollTop": 0,
+          "firstSortedSpecial": "Harry Kane",
+          "cards": 10,
+          "continueButtons": 2,
+          "bothEnabled": true,
+          "topAndBottomContinueClosedDialog": true,
+          "noNewDrawResetOrWrite": true,
+          "sameGeometryAsV14": {
+            "dialogHeight": 898.890625,
+            "clientHeight": 897,
+            "scrollHeight": 897,
+            "headerHeight": 116.984375,
+            "gridTop": 196.53125,
+            "firstCardWidth": 197.390625,
+            "firstCardHeight": 279.625
+          },
+          "topButton": {
+            "height": 44,
+            "gapBelowCoin": 8,
+            "bottom": 138.734375,
+            "headerBottom": 168.53125,
+            "width": 73.234375,
+            "clientWidth": 73,
+            "scrollWidth": 73,
+            "withinExistingHeader": true,
+            "noTextOverflow": true
+          }
+        },
+        "singleResult": {
+          "continueButtons": 1,
+          "topContinueButtons": 0,
+          "focus": "bottom_continue",
+          "sameGeometryAsV14": {
+            "dialogHeight": 665.578125,
+            "scrollHeight": 664,
+            "headerHeight": 116.984375,
+            "cardWidth": 240,
+            "cardHeight": 340,
+            "cardTop": 315.1875
+          }
+        },
+        "statePreserved": {
+          "remaining": 149,
+          "special": 11,
+          "standard": 138,
+          "roundNumber": 2,
+          "currentDrawCount": 1,
+          "currentCoinCost": 100,
+          "lifetimeDrawCount": 11,
+          "lifetimeCoinCost": 1000,
+          "historyKaneOrdinal": 4
+        },
+        "limitations": [
+          "Only a 1363x936 browser viewport was observed.",
+          "One Ctrl+plus attempt did not resize the viewport; a mobile-width or overflowing result dialog was not reproduced.",
+          "Physical mobile Safari behavior was not newly measured."
+        ]
+      },
+      "github": {
+        "status": "verified_implementation_commit",
+        "repository": "Hyunwoo1205/efsimulator",
+        "branch": "api-server-setup",
+        "implementationCommit": "eea7b991d44fdf3507f3378eb52687bcdc5ac602",
+        "expectedParent": "1d39f44f4d1765064f3bafb17ebb307648e758ce",
+        "force": false,
+        "exactRemoteRefVerified": true,
+        "allTrackedBlobsAndModesMatched": 380,
+        "mismatches": 0
+      },
+      "ci": [
+        {
+          "name": "eFsimulator app checks",
+          "runId": 41004650828,
+          "status": "completed",
+          "conclusion": "success",
+          "commit": "eea7b991d44fdf3507f3378eb52687bcdc5ac602",
+          "url": "https://github.com/Hyunwoo1205/efsimulator/actions/runs/41004650828"
+        },
+        {
+          "name": "Catalog API checks",
+          "runId": 41004650832,
+          "status": "completed",
+          "conclusion": "success",
+          "commit": "eea7b991d44fdf3507f3378eb52687bcdc5ac602",
+          "url": "https://github.com/Hyunwoo1205/efsimulator/actions/runs/41004650832"
+        }
+      ]
     },
     "limitations": [
-      "The supplied stills do not measure CSS viewport size, runtime focus events or browser scrolling.",
-      "Physical mobile Safari behavior and dialog/header size comparisons require separate observations.",
-      "No screenshot bytes or credentials are copied into source or deployment.",
-      "Completion and CI states are recorded only after actual verification."
+      "The supplied stills are not new runtime or CSS viewport measurements.",
+      "Actual hosted checks used 1363x936; physical mobile Safari and a genuinely overflowing dialog were not reproduced.",
+      "No screenshot bytes or credentials were copied into source or deployment.",
+      "Implementation-commit CI is verified; future final-documentation-commit SHA/CI are not invented."
     ]
   }
 }
