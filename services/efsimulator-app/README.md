@@ -9,6 +9,14 @@
 > T040/T041 현황: 판매 중/종료 체험 선택과 API 추첨 옵션·타입 표시를 제공한다. T042 고정 가격은 단일100/10회900코인이며 API 값을 그대로 표시한다. 과거 null가격은 읽기 호환성을 유지한다. 실제 추첨 엔진·세션·2D/3D는 후속 T017/T018 범위다.
 
 
+## T045 결과 표시와 자체 2D 후반 효과
+
+`lib/simulator/result-order.mjs`는 저장된 batch의 표시 사본을 기존 `sortPlayers`의 등급→OVR순으로 정렬하고 익명 일반을 마지막에 둔다. 원래 batch/획득 순서·추첨/비용·풀은 수정하지 않는다. 결과 카드 아래 실명·일반 선수·획득 순번과 저장 안내 문구를 없애고 카드 자체와 화면 읽기용 식별을 유지한다. 특수 카드 안의 기존 이름/OVR/포지션은 그대로다.
+
+결과 전용 CSS는 특수/일반 모두 같은 240×340 프레임·상단 기준선을 사용하며 기존 featured 고정 높이가 결과에서 카드 높이를 바꾸지 않게 한다. `app/simulator/page.tsx`는 같은 고정 일반 PNG의 image preload/high priority를 제공하고 `StandardCard`는 eager/high priority로 읽는다. 원본 PNG 바이트를 바꾸거나 원격 파일로 교체하지 않으며 실제 지연 시간은 브라우저/망에 따라 다르다.
+
+개봉은 자체 1800ms 2D 장면이며 후반에 카드가 점차 백색으로 밝아지고 glow/ring이 한 번 퍼진 뒤 같은 확정 결과를 표시한다. component/CSS가 같은 duration을 사용하고 reduced motion은 즉시 결과·animation none을 적용한다. skip/replay는 재추첨이나 비용 추가 없이 같은 결과를 보여준다. 검사·배포·실제 UI/원격 CI의 관측과 완료 상태는 WORKPLAN T045가 담당한다.
+
 # eFsimulator 실제 앱
 
 선수팩과 선수 탐색, 별도 시뮬레이터 진입 페이지를 제공하는 실제 제품 서버다. 검토용 catalog-view와 Site·소스를 분리한다.

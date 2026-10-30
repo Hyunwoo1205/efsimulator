@@ -1,4 +1,4 @@
-<!-- project-state: {"stage":"R6","previous":"T017","current":"T018","next":"없음"} -->
+<!-- project-state: {"stage":"R6","previous":"T017","current":"T045","next":"T018"} -->
 
 # efsimulator 작업 계획과 이력
 
@@ -7,8 +7,8 @@
 ## 현재 작업과 매 작업 갱신
 
 - 이전 작업: T017 — 균등비복원·IndexedDB/세션·수동/소진리셋·2D/결과/획득표시의533회귀/타입/빌드·public배포/실제흐름·원격378파일/실제CI2건검증완료. 360px실기기와150명풀의잔여9명실제브라우저검증은미수행/단위회귀로구분.
-- 현재 작업: T018 — 예정. 완료된2D결과/세션을재생하는후속3D·APK정적분석·모바일성능범위이며현재APK미업로드·3D미구현이다. 영상실제프레임/등급별3D세부도미확인으로유지한다.
-- 다음 작업: 없음 — T018이후의새작업범위는별도결정한다.
+- 현재 작업: T045 — 결과 표시의 등급→OVR 정렬·하단 문구 제거·특수/일반 카드 기준선 통일·일반 고정 이미지 선로딩과 자체 2D 후반 백색 발광 효과를 구현한다. 검증·배포·원격/CI는 실제 확인 전까지 진행 중이다.
+- 다음 작업: T018 — 완료된 2D 결과/세션을 재생할 3D·APK 정적 분석·모바일 성능. APK 미업로드·3D 미구현 상태를 유지한다.
 - 최근 유지보수: T039 — 신규6팩·93명과 원본 누적·가공·판매 상태를 갱신했다. 현재 가공163명/13팩·판매중9/종료4이며 저장본/API/세 사이트/구현 커밋·실제CI 검증을 완료했다. 제품 T017/T018 범위와 T038 미확인 항목은 보존한다.
 - 현재 조건: T043이 T041의 선수 정렬을 화면 범위별로 구분한다. Epic5→Show Time8→Trend3→Highlight6 우선, 팩 안 선수는 등급 안 OVR순, 전체 선수는 등급 안 확인 날짜 최신순→OVR순이며 최초 연결팩 날짜를 사용한다. 팩은 등급 안 날짜 최신순이다. exact raw 타입·원본·가공/API 계약·가격100/900·팩 구성/카드 표시와 실제 앱 public·API/admin/viewer owner-private 경계를 보존한다.
 
@@ -20,6 +20,10 @@ C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_B
 
 | 조건 ID | 최신 결정 | 영향 단계 / 선행 조건 / 처리 순서 | 상태 |
 | --- | --- | --- | --- |
+| C088 | 자체 2D 개봉 후반 카드가 점차 하얗게 밝아지며 빛이 바깥으로 퍼지는 효과 | T045/R6; 기존 확정 batch·skip/동작줄이기→단발 발광/팽창→같은 결과 | 구현 진행 중; 실제 게임 3D/시간 재현 아님 |
+| C089 | 결과 표시를 카드 종류→OVR순으로 바꾸고 카드 아래 이름/일반 선수/획득 순번 문구 제거 | T045/R6; 공통 sortPlayers 재사용·익명 일반 마지막·화면 읽기 이름 유지; 저장 acquisition ledger 무변경 | 구현 진행 중; 표시 정렬만 변경 |
+| C090 | 특수와 일반 결과 카드의 높이·상단 기준선 통일 | T045/R6; 동일 240×340 프레임/결과 전용 CSS·카드 이미지 내부 오버레이 보존 | 구현 진행 중; 정지화면의 높이 차이와 실제 브라우저 측정 구분 |
+| C091 | 일반 고정 카드 이미지가 결과에서 늦게 뜨는 현상 개선 | T045/R6; 고정 원본 바이트 유지·개봉 전 선로딩/즉시 우선 표시·실제 로딩 경로 검증 | 구현 진행 중; 모든 기기/망의 동일 속도 보장 아님 |
 | C031 | 당시 공식 대상 제한. 최신 C042에서는 이 제한을 사이트층에만 적용 | R1~R6; 모수 먼저→카드공급자 연결. 표 밖 상점/일괄팩·비코인/감독/역사·다른버전은 대상 제외 | 반영; 새 기준표 기록 |
 | C032 | 사이트/시뮬레이터의 익명 Standard 모델 방향 승인. 전체 원본의 실명 Standard 보존과 별개 | R1~R6; 동일 회차·모든 특수 완전성·중복/unknown/음수차단→가상A 생성. 구현은 후속 | 설계 반영·활성 반영 없음 |
 | C033 | API의 대상/특수완전성·안정갱신·필드/이미지저장·권한·가용성/비용 모두 필수 | R1/T009; 검증용 비활성 수집/전수 이미지 시험→모두 통과 후 최종선정→정식수집에 재사용 | 최종 선정 보류 |
@@ -2264,6 +2268,61 @@ API 소스 `64bfe2954194a6f19b9d0b237f37f710854a689f`의 비공개 배포 `appgd
 | `services/catalog-view/app/page.tsx` | 수정 | 전역 선수 결과 설명을 최신날짜→OVR 기준으로 정정 |
 | `services/catalog-view/README.md` | 수정 | viewer 전역 탐색/팩 안 명단의 정렬 계약 구분 |
 
+
+## T045 — 개봉 후반 발광·결과 정렬과 일반 카드 로딩 개선
+
+- 단계: R6
+- 상태: 진행 중
+- 이전: T017
+- 다음: T018
+
+### 요구·근거·구현 순서
+
+2026-10-30 KST 사용자는 추가 첨부2장을 기준으로 개봉 모션 후반의 점진적 백색 발광/빛 확산(C088), 결과를 기존 카드 종류→OVR순으로 정렬하고 카드 아래 이름/일반 선수/획득 순번을 없애기(C089), 특수/일반 카드 높이 통일(C090), 일반 카드 로딩 지연 보완(C091)을 지시했다. 기준 소스는 같은 api-server-setup의 `6f9e9c38d4527787f0df10f8ec113a340dc473f5`다. 앞선 T017의 엔진·원자 저장·복원/리셋·비용과 일반 고정 PNG를 재사용한다.
+
+Root가 개별 확인한 `IMG_2128.png`는 자체 개봉 화면의 정지 장면이다. `IMG_2127.png`는 일반9장과 특수1장의 10명 결과에서 획득 순번/카드 아래 이름과 특수 카드의 낮은 기준선이 보인다. 정확 파일ID·원본 바이트 SHA/크기만 기존 `data/research/simulator-ui-reference-T017.json`의 T045 후속 근거에 추가하며 첨부 바이트를 Git/배포에 복사하지 않는다. 사진으로 실제 요청/디코딩 지연이나 모션 시간·전후 프레임을 측정했다고 주장하지 않는다.
+
+처리 순서는 근거·표시 계약→순수 표시 정렬/helper 회귀→결과 컴포넌트·프레임/발광 CSS→일반 이미지 preload/eager→기능·전체 회귀/관리·타입/공식 빌드→같은 public 앱 배포·실제 화면→같은 브랜치 정상 반영·원격 내용/실제 CI 확인이다. 데이터 API·raw/processed·publication·가격100/900·규칙 잠금·자동 갱신/접근 설정을 바꾸지 않는다.
+
+### 표시·로딩·연출 계약
+
+`orderSimulatorResults`는 기존 `sortPlayers`의 Epic5 → Show Time8 → Trend3 → Highlight6 → 미분류·등급 안 OVR 내림차순/최종 문자열ID순을 재사용하고 익명 일반 결과를 뒤에 둔다. 각 결과의 수와 정확 ID를 유지하며 batch/획득 ledger는 정렬하지 않는다. 같은 batch의 skip·새로고침·replay에도 같은 표시 순서를 사용하고 새 난수/비용/저장 세대 변경을 만들지 않는다.
+
+결과 카드 아래의 `<p>`/`<small>` 이름·일반 선수·n번째 획득과 하단 저장 안내는 제거한다. 카드 식별은 accessible label로 제공하고 특수 카드 안의 기존 이름/OVR/포지션은 유지한다. 결과 전용 프레임/이미지는 같은 240×340 비율·상단/하단 기준선과 `height:100%`를 사용해 기존 featured의320/295px 높이 차이를 덮어쓴다. 이 수정은 결과 표시 범위이며 다른 상세/목록 카드에 새 높이를 전파하지 않는다.
+
+`app/simulator/page.tsx`의 `<link rel="preload" as="image" fetchPriority="high">`와 `StandardCard`의 eager/high priority가 기존 동일 PNG를 미리 요청/표시한다. 원본 고정 PNG·경로·해시는 보존한다. 로딩이 실제로 언제 완료되는지는 별도 브라우저 관측으로 기록하며 특수 이미지와 모든 망에서 같은 시간을 보장하지 않는다.
+
+자체 2D는1800ms의 component/CSS 공통 duration으로 후반 백색 cover·glow/ring 확산을 한 번 보여준다. 실제게임3D 정확시간/자산 재현이 아니며 reduced motion은 즉시 결과/animation none, skip은 같은 확정 결과에 도착한다. 이미지 준비·연출이 난수/저장/명령 전이를 수행하지 않는다.
+
+### 검증·현재 상태
+
+Root가 실제 실행한 전체 `npm test`539/539가 exit0으로 통과했다. 앱 TypeScript `--noEmit --incremental false`, 공식 Sites Worker 빌드(140 client modules), `git diff --check`도 통과했다. 이 결과는 이번 변경의 실제 로컬 검사이며 배포·실제 UI/로딩·원격 ref/내용/CI는 아직 대기 중이다. T017의533회귀와v12/v13 QA를 이번 변경의 새 검사/실제 화면 결과로 재사용하지 않는다. T018의 APK 미업로드·3D 미구현과 모바일 실기기 미관측도 유지한다.
+
+### 파일 최신화 검토
+
+| 파일 | 결과 | 근거 |
+| --- | --- | --- |
+| `AGENTS.md` | 수정 | T045/C088~C091의 표시 정렬/텍스트/기준선·자체 발광·고정 이미지 선로딩 경계 |
+| `docs/WORKPLAN.md` | 수정 | 요구·근거·순서·실제 검증 대기·변경/관련 파일 검토와 현재/다음 |
+| `docs/ROADMAP.md` | 수정 | T045 표시 유지보수 진행→T018 후속과 데이터/3D 경계 |
+| `docs/SIMULATOR_PLAN.md` | 수정 | 표시 정렬 사본·카드만 표시·공통 프레임·미리 읽기·백색 후반 효과의 최신 계약 |
+| `docs/FILE_SYNC.json` | 수정 | 신규 표시 helper/회귀 등록과 영향·연관 경로·역할·T045 검토 |
+| `data/research/simulator-ui-reference-T017.json` | 수정 | 추가 첨부2장 정확ID/원본SHA/크기·정지화면 관찰·사용자 변경 요청; 기존9장/QA 이력 보존 |
+| `services/efsimulator-app/README.md` | 수정 | 구현된 표시/프레임·선로딩·자체2D 계약과 실제 검증의 WORKPLAN 권위 |
+| `services/efsimulator-app/lib/simulator/result-order.mjs` | 수정 | 원본 batch를 보존하는 공통 등급/OVR 결과 표시 사본·익명 일반 마지막 |
+| `services/efsimulator-app/tests/simulator-result-order.test.mjs` | 수정 | 등급/OVR/동률·미분류·익명 일반 다수·입력 batch 불변 회귀 |
+| `services/efsimulator-app/app/components/simulator-results.tsx` | 수정 | 같은 batch 표시 정렬·하단 문구 제거·접근성 식별·1800ms와 skip/reduced motion |
+| `services/efsimulator-app/app/components/standard-card.tsx` | 수정 | 같은 고정 이미지의 eager/high priority; Player/새 ID 추가 없음 |
+| `services/efsimulator-app/app/simulator/page.tsx` | 수정 | 일반 이미지 preload/high priority로 결과 진입 전 준비 |
+| `services/efsimulator-app/app/globals.css` | 수정 | 동일240×340 결과 프레임·featured 높이 무효화·단발 백색 cover/glow/ring·reduced motion |
+| `services/efsimulator-app/lib/catalog-order.mjs` | 검토 결과 변경 불필요 | 기존 팩 내 타입/OVR 정렬을 결과 표시에서 재사용 |
+| `services/efsimulator-app/app/components/catalog-ui.tsx` | 검토 결과 변경 불필요 | 특수 Portrait/내부 이름·OVR/포지션 유지; 결과 컨테이너 CSS에서 기준선 통일 |
+| `services/efsimulator-app/lib/simulator/session.mjs` | 검토 결과 변경 불필요 | 원래 획득 순서/비용/회차·ledger와 복원/리셋 전이 보존 |
+| `services/efsimulator-app/lib/simulator/storage.mjs` | 검토 결과 변경 불필요 | 기존 IndexedDB 원자 저장·commandId/revision/복구를 그대로 소비 |
+| `services/efsimulator-app/public/images/simulator/standard-card-170588-cdf8117dae82.png` | 검토 결과 변경 불필요 | 미리 읽기 개선이며 동결 원본 PNG 바이트/해시 유지 |
+| `services/catalog-api/policy/rules.lock.json` | 검토 결과 변경 불필요 | API/가공/파서/검토 정책 변경 없어 잠금 채택/재발행 불필요 |
+| `config/catalog-automation.json` | 검토 결과 변경 불필요 | 정기 수집/발행·사이트별 audience 변경 없음 |
+| `data/updates/catalog-latest.json` | 검토 결과 변경 불필요 | 데이터 변경이 없어 시간별 요약 영수증 추가/갱신 없음 |
 
 ## T044 — 고정 익명 일반 카드와 승인된 팩 데이터 준비 판정
 

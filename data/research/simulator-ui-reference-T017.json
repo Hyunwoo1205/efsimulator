@@ -567,5 +567,116 @@
       "all_mobile_or_browser_boundary_cases_hosted_tested",
       "future_final_documentation_commit_ci"
     ]
+  },
+  "presentationFollowUpT045": {
+    "taskId": "T045",
+    "recordedOnKstDate": "2026-10-30",
+    "status": "implementation_verified_locally_publication_pending",
+    "authority": "Latest direct user request, root's individual still-image inspection, and actual root-reported local checks; not a frame sequence or network-speed measurement.",
+    "images": [
+      {
+        "order": 1,
+        "filename": "IMG_2128.png",
+        "libraryFileId": "libfile_376f60ed5c5c8191ab4f04147a7be4e9",
+        "sourceKind": "user_supplied_still_image",
+        "role": "existing_2d_opening_before_requested_late_white_burst",
+        "visualInspection": {
+          "inspectedBy": "root_assistant",
+          "method": "direct_view_image",
+          "exactInspectionTimestamp": null
+        },
+        "localOriginal": {
+          "sha256": "1a0824fe11b38a7f0893bcdf9a523876abed1b1a8023650d6d5e1970696af7ef",
+          "sizeBytes": 2002773,
+          "bytesCopiedIntoRepository": false
+        },
+        "confirmedVisible": [
+          "자체 개봉 모달/카드 뒷면",
+          "카드 공개 안내와 건너뛰기"
+        ],
+        "notEstablishedByThisStill": [
+          "모션 후반의 시간/프레임 순서",
+          "실제 3D 장면/타이밍",
+          "이미지 전송/디코딩 지연 측정"
+        ]
+      },
+      {
+        "order": 2,
+        "filename": "IMG_2127.png",
+        "libraryFileId": "libfile_aabb3188cd4481918f90af30b3351e68",
+        "sourceKind": "user_supplied_still_image",
+        "role": "existing_result_labels_and_misaligned_special_frame",
+        "visualInspection": {
+          "inspectedBy": "root_assistant",
+          "method": "direct_view_image",
+          "exactInspectionTimestamp": null
+        },
+        "localOriginal": {
+          "sha256": "cef16af67dd50e323640d6d6ceab5b2c9c6d364d6783857a4ff98d6920034ae8",
+          "sizeBytes": 2085946,
+          "bytesCopiedIntoRepository": false
+        },
+        "confirmedVisible": [
+          "10명 결과에 일반9장과 특수1장",
+          "카드 아래 일반 선수/선수 실명과 획득 순번",
+          "특수 카드의 상하 기준선이 일반 카드와 다름"
+        ],
+        "notEstablishedByThisStill": [
+          "카드 이름으로 새로운 raw/가공 ID 매핑",
+          "사진만으로 네트워크/디코딩 지연 정량 측정"
+        ]
+      }
+    ],
+    "decisions": {
+      "opening": "site-authored1800ms opening; late gradual white cover with one outward glow/ring burst; shared component/CSS duration; skip and reduced motion show the same committed batch",
+      "displayOrder": "sortPlayers grade5→8→3→6→unknown then OVR descending and exact stringID tie; anonymous Standard last; presentation copy only",
+      "visibleCardsOnly": "Remove per-card below-image real name/일반 선수/ordinal and bottom storage note; preserve card-internal labels and accessible identification",
+      "alignment": "Same240x340 frame and top/bottom alignment; result-scoped height100% overrides existing featured320/295px",
+      "standardLoading": "Same frozen PNG bytes/path; image preload fetchPriorityhigh on simulator route and eager/highpriority on StandardCard",
+      "unchanged": [
+        "original batch/acquisition ledger order",
+        "RNG/uniform without-replacement probabilities",
+        "cost100/900 and totalN support/minimumRemaining10",
+        "IndexedDB command/session/reset semantics",
+        "raw/processed/API/publication/rules",
+        "site access and existing automation",
+        "frozen original PNG bytes"
+      ]
+    },
+    "verification": {
+      "tests": {
+        "scope": "root_full_npm_test",
+        "passed": 539,
+        "total": 539,
+        "exitCode": 0
+      },
+      "typescript": {
+        "scope": "app_tsc_noEmit_incrementalfalse",
+        "exitCode": 0
+      },
+      "build": {
+        "scope": "official_Sites_Worker_build",
+        "exitCode": 0,
+        "clientModuleCount": 140
+      },
+      "diffCheck": {
+        "passed": true
+      },
+      "deployment": {
+        "status": "pending"
+      },
+      "hostedUiQa": {
+        "status": "pending"
+      },
+      "github": {
+        "status": "pending"
+      }
+    },
+    "limitations": [
+      "Still images do not establish opening-frame timing or actual network latency.",
+      "No identical loading-duration guarantee for every browser/network.",
+      "3D/APK and mobile physical-device verification are not claimed.",
+      "Future publication/remoteSHA/CI are not invented."
+    ]
   }
 }
