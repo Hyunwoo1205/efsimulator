@@ -1,4 +1,6 @@
-> T044 현재 작업: 사용자 지정170588 원본PNG를고정파일로보존한익명일반카드와승인된팩데이터준비판정을구현한다. 엔진·세션·리셋은없고실행버튼은비활성이다. 제공YouTube -OPQF_c4WN4는실제프레임을관찰하지못해2D공개흐름미확정이다. 494회귀·앱TypeScript/공식Worker빌드와공개API원자적snapshot13팩data-ready를확인했고새배포/UIQA·GitHub/CI는아직미완료다. 실제후속결과는WORKPLAN을따른다.
+> T017 구현 진행 중: 첨부9장/사용자지시의2D전체흐름과균등비복원엔진·IndexedDB/세션·리셋·결과/획득표시를연결한다. 구입확인창없이버튼→원자저장→짧은자체2D→단일중앙/10명반응형그리드→계속을제공하는계약이며검사/배포완료는아직기록하지않는다. 일반은명단에잔여수만표시하고결과에서만고정170588이미지를쓴다. 영상재생실패는3D후속참고로보존하며2D선행게이트가아니다. [근거](../../data/research/simulator-ui-reference-T017.json).
+
+> T044 전달 당시 상태: 사용자 지정170588 원본PNG를고정파일로보존한익명일반카드와승인된팩데이터준비판정을구현한다. 엔진·세션·리셋은없고실행버튼은비활성이다. 제공YouTube -OPQF_c4WN4는실제프레임을관찰하지못해2D공개흐름미확정이다. 494회귀·앱TypeScript/공식Worker빌드와공개API원자적snapshot13팩data-ready를확인했고새배포/UIQA·GitHub/CI는아직미완료다. 실제후속결과는WORKPLAN을따른다.
 
 > T042 가격: 1회100코인·10회900코인으로 고정하며 할인은 적용하지 않는다. 지원 여부와 잔여10명 조건은 기존 API 계약을 따른다. 앱은 API 가격을 소비하므로 데이터 발행·자동 갱신으로 반영되는지 검증한다.
 
@@ -17,7 +19,7 @@
 - `/packs/[saleId]`: 회차별 전체 구성과 선수 상세 연결
 - `/players`: 선수 카드 탐색
 - `/players/[id]`: 카드 상세와 포함된 팩
-- `/simulator`: 현재 팩 선택과 구성 확인. 추첨 엔진은 T017 후속 작업이며 아직 제공하지 않는다.
+- `/simulator`: T017에서팩선택·원자저장/복구·균등비복원단일/10회·리셋·2D결과/획득표시를구현중. 실제검사/배포범위는WORKPLAN을따른다.
 
 ## 서버 연결
 
@@ -60,12 +62,20 @@
 
 ## T044 일반 카드와 팩 데이터 준비
 
-`app/components/standard-card.tsx`는 Player입력을받지않는익명일반표시전용이다. `public/images/simulator/standard-card-170588-cdf8117dae82.png`를로컬에서만읽으며이름·OVR·포지션오버레이가없다. 원본회색실루엣·프레임·별은그대로보존하고이미지오류시STANDARD대체표시를쓴다. 선택팩A>0일때미리보기를표시한다. 원격170588카드가바뀌어도자동교체하지않으며정확한출처·확보한PNG/해시·HTML403관측은같은폴더README를따른다.170588을팩의실명선수나일반슬롯ID로추가하지않는다.
+`app/components/standard-card.tsx`는 Player입력을받지않는익명일반표시전용이다. `public/images/simulator/standard-card-170588-cdf8117dae82.png`를로컬에서만읽으며이름·OVR·포지션오버레이가없다. 원본회색실루엣·프레임·별은그대로보존하고이미지오류시STANDARD대체표시를쓴다. T044때선택팩A>0미리보기를추가했으며현재T017명단은일반잔여수만표시하고고정카드는일반결과에만사용한다. 원격170588카드가바뀌어도자동교체하지않으며정확한출처·확보한PNG/해시·HTML403관측은같은폴더README를따른다.170588을팩의실명선수나일반슬롯ID로추가하지않는다.
 
 `lib/simulator/prepare.mjs`는같은원자적CatalogProvider snapshot의saleId·N/S/A·members/전량선수9필드관계·중복/누락·유효양의타입·현행API옵션100/900을검증한다. 미분류양의타입도특수S에포함하고일반은N−S집계만유지한다. 반환ready/status/reasonCodes는데이터구성준비이며원출처신선도·엔진·저장·추첨가능보증이아니다. 로딩/조회오류·구성/옵션불일치면ready:false로표시하고입력·API·세션을수정하지않는다.
 
 준비판정경계회귀는`tests/simulator-prepare.test.mjs`,고정자산SHA/PNG크기검사는`tests/standard-artwork.test.mjs`다. 전체494회귀·앱타입/공식빌드는통과했다. 기존공개API익명5GET의동일publication/163선수/13팩snapshot에서13팩data-ready를확인했고170588이선수API에추가되지않았음을확인했다. 새코드배포·실제UIQA·원격/CI는아직완료로기록하지않는다. 영상공개흐름미확정과APK미업로드를유지한다.
 
-## T017 후속 설계 (T037, 엔진 미구현)
+## T017 모듈과 저장·연출 경계
 
-[T017 설계·구현 계획](../../docs/SIMULATOR_PLAN.md)을 기준으로 한 팩 규칙/신선도·세션 계약 → 순수 엔진 → IndexedDB 저장/복구 → 화면 → 2D → 검토 배포를 진행한다. 기존 relay·카드·정렬·자동 갱신을 재사용하고 일반 선수는 익명 슬롯 수로 관리한다. 결과·잔여 풀 저장을 확정한 뒤 연출하며 전체 이동/새로고침·연속 클릭·다중 탭·같은 팩 개정·종료를 검증한다. 이번에는 계획 문서만 작성했으며 엔진/세션/결과 코드는 아직 없다.
+- `lib/simulator/prepare.mjs`: 같은원자적API snapshot의회차/N/S/A·전량9필드/명단·지원수량/100900검사.
+- `engine.mjs`, `random.mjs`: 일반을실명객체없는정수로관리하고매장잔여n에서균등추첨·제거한다. Web Crypto/rejection sampling을사용하며Math.random대체가없다.
+- `session.mjs`: 팩별schema/poolFingerprint·revision/commandId·현재/과거회차·batch/누적비용·미확인결과와수동/소진리셋전이.
+- `storage.mjs`: `createSimulatorStore`의load/ensure/execute/close. 최신값읽기·검증·전이·put을같은IndexedDB readwrite transaction에서처리하고완료이벤트뒤반환한다. 다중탭revision·중복command·중단/실패·오래된자료/풀변경을보존하며무통보메모리대체나기록삭제를하지않는다.
+- `app/components/simulator-page.tsx`, `simulator-results.tsx`: 같은저장batch의팩/결과/계속/명단과짧은자체2D·건너뛰기·동작줄이기를연결한다. 난수·비용·잔여풀을모션이나skip에서다시계산하지않는다.
+
+판매중/종료체험을분리하고같은기기/브라우저의팩별진행을복원한다. 잔여1~9명일때10회는잠그고단일100으로소진한다. 수동/소진리셋은풀만복원하며이전결과·누적사용량을보존한다. 현재회차의정확특수ID만명단에서어둡게하고일반은잔여수로보인다. 단일은중앙1장,10회는정확히10장반응형그리드이며일반결과마다고정카드를표시한다. 구입확인창·계약권재화·3D는추가하지않는다.
+
+이절은구현계약이다. 모듈별검사와전체회귀·타입/공식빌드·실제저장복구/UI/배포·GitHub/CI성공은실제근거가확인된뒤WORKPLAN과근거기록에추가한다. 원본첨부이미지는저장소/배포에복사하지않는다. 별도API/raw/processed·규칙잠금·가격계약은변경하지않는다.

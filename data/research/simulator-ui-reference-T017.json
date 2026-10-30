@@ -1,0 +1,385 @@
+{
+  "schemaVersion": 1,
+  "taskId": "T017",
+  "recordedOnKstDate": "2026-10-30",
+  "status": "local_validation_passed_publication_pending",
+  "authority": {
+    "screenshots": "Root individually viewed the nine user-provided stills. Hashes were computed read-only from the supplied local originals.",
+    "productFlow": "Latest direct user decisions and delegated roster-display choice. Static images from different packs are not one verified continuous opening sequence."
+  },
+  "originalFilePolicy": {
+    "existingLibraryItemsReused": true,
+    "imageBytesInRepository": false,
+    "newImageUploadOrCopyPerformed": false,
+    "onlyMetadataAndObservationsCommitted": true
+  },
+  "images": [
+    {
+      "order": 1,
+      "filename": "IMG_4167.png",
+      "libraryFileId": "libfile_5492a85cc34c819186db9ef1e48b3d89",
+      "sourceKind": "user_supplied_still_image",
+      "role": "pack_overview",
+      "visualInspection": {
+        "inspectedBy": "root_assistant",
+        "method": "direct_view_image",
+        "allNineIndividuallyInspected": true,
+        "exactInspectionTimestamp": null
+      },
+      "localOriginal": {
+        "sha256": "7688765bffcfefbe2b1624b38c1f62a5a778949e4062cb1310150f679b2eefa9",
+        "sizeBytes": 3186984,
+        "bytesCopiedIntoRepository": false
+      },
+      "confirmedVisible": [
+        "팩 화면에 대표 카드3장",
+        "모두 보기 진입",
+        "1회100·10회900 선택"
+      ],
+      "notEstablishedByThisStill": [
+        "사진의 원래 상품을 현재DB saleId에 임의매핑",
+        "동작 순서/실제개봉시간을 정지화면만으로 확인"
+      ],
+      "adoption": "T017_2D_layout_reference"
+    },
+    {
+      "order": 2,
+      "filename": "IMG_4100 (1).jpeg",
+      "libraryFileId": "libfile_0359b020d2d48191bae7f4d47b800dcd",
+      "sourceKind": "user_supplied_still_image",
+      "role": "roster_overview",
+      "visualInspection": {
+        "inspectedBy": "root_assistant",
+        "method": "direct_view_image",
+        "allNineIndividuallyInspected": true,
+        "exactInspectionTimestamp": null
+      },
+      "localOriginal": {
+        "sha256": "642fa80581f1ea0644e67999bca7af7499d149c879198d5df303d90c58868e8a",
+        "sizeBytes": 335002,
+        "bytesCopiedIntoRepository": false
+      },
+      "confirmedVisible": [
+        "명단 화면",
+        "전체150/150 표시"
+      ],
+      "notEstablishedByThisStill": [
+        "1번사진과 같은팩/회차라고 추정",
+        "원본150명 실명명단을현재가공DB로 임의매핑"
+      ],
+      "adoption": "T017_2D_layout_reference"
+    },
+    {
+      "order": 3,
+      "filename": "IMG_4190.png",
+      "libraryFileId": "libfile_23830af20fd08191b6641cdc95f84938",
+      "sourceKind": "user_supplied_still_image",
+      "role": "purchase_confirmation",
+      "visualInspection": {
+        "inspectedBy": "root_assistant",
+        "method": "direct_view_image",
+        "allNineIndividuallyInspected": true,
+        "exactInspectionTimestamp": null
+      },
+      "localOriginal": {
+        "sha256": "4fd529e1b88284ab43679f0f9e21c9adc64beda018fccbde4fda7bd62751b6fa",
+        "sizeBytes": 1611764,
+        "bytesCopiedIntoRepository": false
+      },
+      "confirmedVisible": [
+        "실제게임 구입확인창"
+      ],
+      "notEstablishedByThisStill": [
+        "시뮬레이터에도 구입확인창이필요하다고 판단",
+        "확인창만으로 자동구매/유료결제규칙 추정"
+      ],
+      "adoption": "exclude_purchase_confirmation_by_explicit_user_instruction"
+    },
+    {
+      "order": 4,
+      "filename": "IMG_4188.jpeg",
+      "libraryFileId": "libfile_98b4633a64b08191b731230cc14e47f7",
+      "sourceKind": "user_supplied_still_image",
+      "role": "three_dimensional_opening_moment",
+      "visualInspection": {
+        "inspectedBy": "root_assistant",
+        "method": "direct_view_image",
+        "allNineIndividuallyInspected": true,
+        "exactInspectionTimestamp": null
+      },
+      "localOriginal": {
+        "sha256": "dc461b077ae10b8a6b3d1bb05331746aedebcc5fe373bce1cf2047865c72644a",
+        "sizeBytes": 241666,
+        "bytesCopiedIntoRepository": false
+      },
+      "confirmedVisible": [
+        "개봉중3D장면의 한순간"
+      ],
+      "notEstablishedByThisStill": [
+        "3D장면의전후순서/등급조건/길이/사운드추정",
+        "이번2D단계에서3D리소스를재사용했다고 주장"
+      ],
+      "adoption": "T018_3D_reference_only"
+    },
+    {
+      "order": 5,
+      "filename": "IMG_4189.jpeg",
+      "libraryFileId": "libfile_878c4cb700e0819183a1f353b2a94889",
+      "sourceKind": "user_supplied_still_image",
+      "role": "single_result",
+      "visualInspection": {
+        "inspectedBy": "root_assistant",
+        "method": "direct_view_image",
+        "allNineIndividuallyInspected": true,
+        "exactInspectionTimestamp": null
+      },
+      "localOriginal": {
+        "sha256": "0a3a7965c9528d867251800e2528c1f8362c6731012189dac8e10c4ac206c09c",
+        "sizeBytes": 97337,
+        "bytesCopiedIntoRepository": false
+      },
+      "confirmedVisible": [
+        "중앙 단일카드 결과",
+        "계속하기 조작"
+      ],
+      "notEstablishedByThisStill": [
+        "동일팩/회차/전체개봉영상이라고추정",
+        "대표카드선정/공개정렬규칙을사진만으로 추정"
+      ],
+      "adoption": "T017_2D_layout_reference"
+    },
+    {
+      "order": 6,
+      "filename": "IMG_3951.jpeg",
+      "libraryFileId": "libfile_26a046fef244819186a24eccb389f896",
+      "sourceKind": "user_supplied_still_image",
+      "role": "ten_result_a",
+      "visualInspection": {
+        "inspectedBy": "root_assistant",
+        "method": "direct_view_image",
+        "allNineIndividuallyInspected": true,
+        "exactInspectionTimestamp": null
+      },
+      "localOriginal": {
+        "sha256": "d5ff0166b9dc39e453ea2c0e5533fc0a84895bf1df6822e582e3811018facefc",
+        "sizeBytes": 270901,
+        "bytesCopiedIntoRepository": false
+      },
+      "confirmedVisible": [
+        "10명 결과카드",
+        "넓은화면의5열2행 배치"
+      ],
+      "notEstablishedByThisStill": [
+        "7번과같은팩/같은추첨묶음이라고 추정",
+        "모바일에도5열을강제"
+      ],
+      "adoption": "T017_2D_layout_reference"
+    },
+    {
+      "order": 7,
+      "filename": "IMG_2037.PNG",
+      "libraryFileId": "libfile_b50d53f1f5388191a26a678292e11d9d",
+      "sourceKind": "user_supplied_still_image",
+      "role": "ten_result_b",
+      "visualInspection": {
+        "inspectedBy": "root_assistant",
+        "method": "direct_view_image",
+        "allNineIndividuallyInspected": true,
+        "exactInspectionTimestamp": null
+      },
+      "localOriginal": {
+        "sha256": "b6299866ac0485f0226e313c0e8f02bce2db4b0fd2803a231d46bb9d8fa5c433",
+        "sizeBytes": 2368880,
+        "bytesCopiedIntoRepository": false
+      },
+      "confirmedVisible": [
+        "다른팩의10명 결과카드",
+        "넓은화면의5열2행 배치"
+      ],
+      "notEstablishedByThisStill": [
+        "6번과같은팩/같은추첨묶음이라고 추정",
+        "두사진으로결과순서/등급확률을 증명"
+      ],
+      "adoption": "T017_2D_layout_reference"
+    },
+    {
+      "order": 8,
+      "filename": "IMG_4053.png",
+      "libraryFileId": "libfile_50b4536a5a74819192967b326078ed1f",
+      "sourceKind": "user_supplied_still_image",
+      "role": "acquired_roster_a",
+      "visualInspection": {
+        "inspectedBy": "root_assistant",
+        "method": "direct_view_image",
+        "allNineIndividuallyInspected": true,
+        "exactInspectionTimestamp": null
+      },
+      "localOriginal": {
+        "sha256": "4004c45641ff9c02b2c8a2172ec1a3a865c6eff641f97a004ec5ab272c07c1c4",
+        "sizeBytes": 1900894,
+        "bytesCopiedIntoRepository": false
+      },
+      "confirmedVisible": [
+        "명단의획득카드가어둡게표시됨"
+      ],
+      "notEstablishedByThisStill": [
+        "9번과같은팩/연속회차라고 추정",
+        "사진상카드를현재DB ID/팩으로 임의연결"
+      ],
+      "adoption": "T017_2D_layout_reference"
+    },
+    {
+      "order": 9,
+      "filename": "IMG_4174.jpeg",
+      "libraryFileId": "libfile_a3e48d4182d08191987fb652d032dc26",
+      "sourceKind": "user_supplied_still_image",
+      "role": "acquired_roster_b",
+      "visualInspection": {
+        "inspectedBy": "root_assistant",
+        "method": "direct_view_image",
+        "allNineIndividuallyInspected": true,
+        "exactInspectionTimestamp": null
+      },
+      "localOriginal": {
+        "sha256": "9d9add4b1fca7c2a7c3f891d8ab03ad7e7ead217b355192ad197f1bb9e3d68bc",
+        "sizeBytes": 293542,
+        "bytesCopiedIntoRepository": false
+      },
+      "confirmedVisible": [
+        "별도명단에서획득카드가어둡게표시됨"
+      ],
+      "notEstablishedByThisStill": [
+        "8번과같은팩/연속회차라고 추정",
+        "서로다른사진을하나의개봉기록으로 합치기"
+      ],
+      "adoption": "T017_2D_layout_reference"
+    }
+  ],
+  "confirmedProductDecisions": {
+    "deliveryOrder": [
+      "complete_2d_simulator",
+      "T018_3d_after_apk_analysis"
+    ],
+    "purchaseConfirmation": "omit_per_explicit_user_instruction",
+    "rosterDisplay": {
+      "choiceAuthority": "user_delegated_to_assistant",
+      "special": "Show verified special cards; dim only exact special card IDs acquired in the active round.",
+      "standard": "Individual roster entries are special players only. An anonymous-information panel may show one shared frozen170588 illustration with the remaining anonymous count; each standard result uses the same shared illustration. No fabricated real-name or per-slot player entity is created.",
+      "sourcePlayer170588AddedToPack": false
+    },
+    "flow": [
+      "pack_overview_or_roster",
+      "single_or_ten_button",
+      "atomically_commit_batch_remaining_pool_cost_and_pending_result",
+      "short_site_authored_2d_opening",
+      "single_centered_card_or_responsive_ten_card_grid",
+      "continue",
+      "pack_overview_with_current_round_acquired_cards_dimmed"
+    ],
+    "skip": {
+      "scope": "during_opening_motion",
+      "effect": "show the same already_committed batch immediately",
+      "redrawOrAdditionalCost": false,
+      "authority": "application_policy_from_user_requested_flow_not_observed_video_behavior"
+    },
+    "motionTiming": {
+      "source": "site_authored_2d",
+      "exactGame3dTimingVerified": false
+    },
+    "persistence": {
+      "engineBeforeMotion": true,
+      "indexedDbAtomicCommand": true,
+      "expectedRevisionAndCommandId": true,
+      "perPackResume": "same_device_and_browser",
+      "manualOrExhaustedReset": "restore_pool_preserve_previous_results_and_accumulated100_900_cost",
+      "tenWhenRemaining1To9": "disabled_single_only",
+      "packSpecificKeyedUi": "chosenId React key and store-instance identity isolate delayed responses/state across packs",
+      "queuedTransactionContext": "Read synchronous execute.getContext inside the queued readwrite transaction immediately before new draw/reset checks; no network/await; duplicate commands and pending acknowledgement remain recoverable.",
+      "uncertainCommitRecovery": "Reload the same recorded commandId and pass through the same committed(saved) UI cleanup path; never draw again to resolve an uncertain response."
+    }
+  },
+  "videos": [
+    {
+      "url": "https://www.youtube.com/watch?v=-OPQF_c4WN4",
+      "role": "T018_grade_specific_3d_reference_only",
+      "previousObservationTask": "T044",
+      "metadataDuration": "3:35",
+      "actualFramesObserved": 0,
+      "priorPlayerState": {
+        "currentTime": 0,
+        "readyState": 0,
+        "bufferedRanges": 0,
+        "error": null
+      },
+      "requestedAgainThisTask": false,
+      "notVerified": [
+        "grade-specific3d_sequence",
+        "exact_timing",
+        "sound",
+        "skip_destination"
+      ],
+      "gatesT0172d": false
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=VoEDBxb9iNY",
+      "role": "requested_arrival_screen_reference_after_skipping_opening_segment",
+      "metadataDuration": "0:52",
+      "actualFramesObserved": 0,
+      "observedPlayerState": {
+        "currentTime": 0,
+        "readyState": 0,
+        "bufferedRanges": 0,
+        "error": null
+      },
+      "oneRefreshAttempted": true,
+      "afterRefresh": "same_zero_playback_state_then_stop",
+      "skipDestinationObserved": false,
+      "contractTicketCurrencyImplemented": false,
+      "notVerified": [
+        "actual_arrival_screen",
+        "opening_frames",
+        "skip_destination",
+        "video_timing"
+      ],
+      "gatesT0172d": false
+    }
+  ],
+  "supersededGate": {
+    "previous": "A playable opening-video frame was required before deciding any2d result flow.",
+    "current": "The nine inspected stills and latest user instructions authorize this2d flow. Unobserved video3d details remain T018 references and are not claimed verified."
+  },
+  "implementationEvidence": {
+    "tests": {
+      "scope": "root_full_npm_test",
+      "passed": 533,
+      "total": 533,
+      "exitCode": 0
+    },
+    "typescript": {
+      "scope": "app_tsc_noEmit",
+      "exitCode": 0
+    },
+    "build": {
+      "scope": "official_Sites_Worker_build",
+      "exitCode": 0,
+      "clientModuleCount": 139
+    },
+    "deployment": null,
+    "hostedUiQa": null,
+    "githubCommit": null,
+    "ci": null,
+    "reason": "Local tests/types/build/management facts are observed. Owner records actual deployment/hosted UI/GitHub/CI later; no future success or commit SHA is invented.",
+    "projectCheck": {
+      "baseCommit": "e04f2defa397e658b626f197a6f305d2c697615a",
+      "files": 378,
+      "tasks": 45,
+      "changedPaths": 21,
+      "exitCode": 0
+    },
+    "reviewedGuards": [
+      "pack-specific keyed state and stale-store responses",
+      "same-command committed-response recovery uses common UI cleanup",
+      "queued IndexedDB transaction reads synchronous latest getContext"
+    ]
+  }
+}

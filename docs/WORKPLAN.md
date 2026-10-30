@@ -7,7 +7,7 @@
 ## 현재 작업과 매 작업 갱신
 
 - 이전 작업: T044 — 고정익명일반이미지·팩데이터준비판정·494회귀/타입/빌드·앱v11배포/고정자산·실제공개화면/원격367파일·실제CI2건 검증 완료. 영상프레임/2D흐름은별도미완료.
-- 현재 작업: T017 — 승인된데이터준비·고정일반카드·API옵션100/900을소비하는추첨엔진·세션/리셋·2D를구현한다. 제공영상실제프레임관찰과공개흐름은T017-E미완료로유지한다.
+- 현재 작업: T017 — 사용자첨부9장과최신지시의2D전체흐름에맞춰비복원엔진·IndexedDB저장/세션·리셋·개봉/결과/획득표시를구현중. 구입확인창은생략하며기존영상미재생은2D게이트에서제외·3D후속참고로분리한다. 검사/배포/원격완료는아직기록하지않는다.
 - 다음 작업: T018 — T017엔진·세션/리셋·2D를마친뒤사용자APK분석·3D·모바일성능을진행한다.
 - 최근 유지보수: T039 — 신규6팩·93명과 원본 누적·가공·판매 상태를 갱신했다. 현재 가공163명/13팩·판매중9/종료4이며 저장본/API/세 사이트/구현 커밋·실제CI 검증을 완료했다. 제품 T017/T018 범위와 T038 미확인 항목은 보존한다.
 - 현재 조건: T043이 T041의 선수 정렬을 화면 범위별로 구분한다. Epic5→Show Time8→Trend3→Highlight6 우선, 팩 안 선수는 등급 안 OVR순, 전체 선수는 등급 안 확인 날짜 최신순→OVR순이며 최초 연결팩 날짜를 사용한다. 팩은 등급 안 날짜 최신순이다. exact raw 타입·원본·가공/API 계약·가격100/900·팩 구성/카드 표시와 실제 앱 public·API/admin/viewer owner-private 경계를 보존한다.
@@ -16,7 +16,7 @@
 
 ## 최신 추가 조건과 이전 조건의 적용
 
-C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_BEFORE_PROBABILITY_SCOPE.md)에 보존한다. 관리 최신화·ID/근거·실패 보존·접근 거부 우회 금지·무료 우선·운영 승인 분리 원칙은 계속 적용한다. 범위 결정은 날짜별 이력이며 현재 범위·완료 정책은 최신 C081~C083·C080·C079·C078·C077와 C071~C075의 사용자 결정을 T037/C070 제안보다 우선하고 C069/T036의 자동 갱신 절차를 적용하며 API 완료/정상 반영 정책 C063~C064를 유지한다. 전체 수집과 사이트 범위를 혼동하지 않는다.
+C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_BEFORE_PROBABILITY_SCOPE.md)에 보존한다. 관리 최신화·ID/근거·실패 보존·접근 거부 우회 금지·무료 우선·운영 승인 분리 원칙은 계속 적용한다. 범위 결정은 날짜별 이력이며 현재 범위·완료 정책은 최신 C084~C087·C081~C083·C080·C079·C078·C077와 C071~C075의 사용자 결정을 T037/C070 제안보다 우선하고 C069/T036의 자동 갱신 절차를 적용하며 API 완료/정상 반영 정책 C063~C064를 유지한다. 전체 수집과 사이트 범위를 혼동하지 않는다.
 
 | 조건 ID | 최신 결정 | 영향 단계 / 선행 조건 / 처리 순서 | 상태 |
 | --- | --- | --- | --- |
@@ -67,6 +67,10 @@ C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_B
 | C070 | T017을 어떤 방식으로 설계·구현할지 구체적인 계획 작성 요청 | T037 계획만 작성 → T017-A 규칙/신선도·세션 계약 → B 엔진/C 저장/D 화면/E 2D/F 검토 배포 → T018. 기존 API·운영 데이터·예약·사이트 배포 변경 없음 | 계획 작성·관련 문서/파일 목록 갱신. 실제 추첨 기능은 미구현 |
 
 | C078 | 카드 타입 exactraw→가공선수9번째필드/API·중첩·자동갱신 전달, Epic→Show Time→Trend→Highlight·선수OVR/팩최신순·대표등급상위3미리보기; 실제 앱 공개 승인 | T041/R6. 원본타입/WPOTY대조→명시migration/규칙채택→데이터/API·표시/자동화검사→앱배포/public→익명조회·원격/CI; API/admin/viewer는비공개 | 완료:9필드/정렬·저장/발행·앱public/익명/브라우저·원격361파일/실제CI3건 검증; 다음예약실행미관찰 |
+| C084 | 실제2D추첨·저장·리셋·결과/명단까지먼저완성하고3D는후속 | T017-A~F. 기존API준비/가격→순수균등비복원엔진/난수→세션·IndexedDB원자저장→2D/결과·명단→경계/복구·배포/원격검증 | 승인·구현진행중;3D/APK·계약권재화는범위밖 |
+| C085 | 첨부9장순서의화면참고,구입확인창생략,단일중앙1장/10명그리드/계속·획득카드dim | T017-D/E. root개별정지화면검토·파일ID/SHA등록→저장후짧은자체2D→같은확정결과skip→반응형전체결과→현재회차특수IDdim | 화면계약확정·구현진행중;다른팩사진간연속시퀀스/DB매핑추정없음 |
+| C086 | 명단표시방법위임:특수카드+일반잔여수,일반정보는공통그림1장/잔여수·일반결과는같은고정이미지로표시 | T017-B/D. N/S/A익명슬롯가중·정확특수ID·현회차dim→수동/소진리셋후현재풀복원·과거결과/누적100900보존 | 선택반영·구현진행중;일반실명/가짜ID/API선수추가없음 |
+| C087 | -OPQF_c4WN4는등급별3D후속참고,새영상VoEDBxb9iNY는앞부분skip도착화면참고 | T017-E/T018. 최신첨부사진·명시지시로2D계약확정;영상실제프레임/metadata구분·계약권재화제외 | 새영상0:52metadata만확인·실제프레임0/skip도착미확인;기존영상재요청없고2D게이트아님 |
 | C081 | 지정EFHub170588 얼굴없는Standard이미지를 이름/OVR없이 일반슬롯공통카드로사용하며 향후원격얼굴변화대비별도고정파일보존 | T044/T017-A·D/E. 정확rawID/imageUrl→PNG정상확보·시각/해시→Player없는표시→N−S익명집계유지·원본/가공/API불변 | 완료:고정PNG해시/호스팅·공개WPOTY익명표시·494회귀/빌드·앱v11/원격367파일·실제CI2건검증;상세HTML403이력보존 |
 | C082 | 직전팩준비판정안승인 | T044/T017-A. 같은원자적snapshot·정확saleId·N/S/A·members/전량9필드·현행API옵션100/900검증→reasonCodes/data-ready→후속엔진/저장 | 완료:12회귀·동일snapshot13팩data-ready·공개WPOTY준비안내·원격/실제CI검증;엔진/세션/신선도보증아님 |
 | C083 | 실제개봉영상YouTube -OPQF_c4WN4제공 | T044/T017-E. 공개페이지/metadata와실제재생프레임구분→관찰한공개흐름만확정;3D는APK후속 | 영상관찰시도기록완료;공개페이지/3:35metadata만확인하고currentTime0/readyState0으로실제프레임관찰실패·T017-E공개흐름분석미완료 |
@@ -614,38 +618,84 @@ Sites 계정의 실제 한도·비용·영속 저장·실제 인증·백업 미�
 | 파일 | 결과 | 근거 |
 | --- | --- | --- |
 
-## T017 — 검증된 추첨 엔진과 가상 Standard·카드 연출
+## T017 — 균등 비복원 추첨·IndexedDB 세션과 2D 개봉 전체 흐름
 
 - 단계: R6
 - 상태: 진행 중
 - 이전: T044
 - 다음: T018
 
-### 목표·입력·순서
+### 목표·최신 승인·처리 순서
 
-입력: T025 완료 API와 T032 실제 앱 서버/조회·진입 화면, 같은 회차의 검증 가능한 추첨 규칙과 SIMULATOR_PLAN. T031에서 남은 모드/세션 규칙 검토를 이 작업의 세부 설계로 이어간다.
+기준소스는같은api-server-setup의 `e04f2defa397e658b626f197a6f305d2c697615a`다. T044의고정일반이미지·13팩data-ready와T042가격100/900·C075잔여1~9명10회잠금·비복원/리셋/종료체험정책을소비한다. 최신사용자는2D전체기능을먼저완성하고3D는나중에진행하라고지시했다(C084). 첨부9장을개별정지화면으로검토한근거와명시지시가2D화면계약을확정한다. 이전의영상프레임재생선행게이트는이결정으로대체한다.
 
-1. T040의 API drawOptions 지원수량과 T038의 균등 비복원·수동/소진 리셋·종료 체험·가상 사용량 정책을 소비한다. 팩별 가격/할인·보장조건 근거를 구분해 계약을 확정하고 독립 추첨 엔진에 구현한다.
-2. 가상 Standard 그룹과 실제 특수 카드·잔여 수·팩 revision을 연결한다. Standard에도 모션을 제공하되 실명 선수처럼 표시하지 않는다.
-3. 기본 개봉/카드 연출과 건너뛰기·동작 줄이기·키보드/스크린리더·오류 fallback을 연결한다.
-4. N/S/A·잔여0/초과·중복·연속 클릭·revision/종료 경계와 확률 분포를 검증하고 최소 검토판을 사용자에게 보여준다.
+사용자원본사진은저장소에복사/재업로드하지않는다. `data/research/simulator-ui-reference-T017.json`에정확순서·파일명·LibraryID·로컬원본바이트의SHA/크기·root개별view_image관찰·확인/미확인범위를기록한다.1팩대표3/모두보기/가격버튼,2다른팩명단150/150,3실제게임구입확인창,4개봉3D한순간,5중앙단일결과/계속,6·7서로다른팩의10명5×2결과,8·9서로다른명단의획득dim이다. 서로다른사진간팩·회차·카드ID매핑이나전체개봉시간을추정하지않는다.
 
-### 산출물·검증·완료 조건
+구입확인창은사용자명시지시로생략한다(C085). 버튼→한IndexedDB명령으로결과·비용·잔여풀/pending결과저장완료→짧은자체2D→단일중앙1장/정확히10장의반응형그리드→계속→현재회차의정확특수ID만획득dim으로표시한다. 모션중skip은동일저장batch의결과로바로이동하며재추첨/추가차감이없다. 실제3D정확타이밍을재현했다고주장하지않는다. 사용자가위임한명단표시는특수카드+일반잔여수로결정했다(C086). 일반정보에는기존고정170588공통이미지1장과잔여수를표시하고각일반결과에도같은이미지를쓰며실명/가짜선수ID가없다.
 
-규칙/경계/분포 테스트, 결과와 잔여 수의 일관성, 접근성·가상/실제 구분, 사용자 검토 기록이 완료 조건이다. 표시 확률의 반올림값을 원본 규칙으로 임의 보정하지 않는다.
+원본/processed·별도API9필드/옵션·규칙/파서/잠금과가격·기존예약/발행·실제앱public/API-admin-viewer비공개는보존한다. 준비/규칙→순수engine/random/session→IndexedDB원자저장/복구→전용페이지/2D/결과/명단→경계·전체회귀/관리/타입/공식빌드→현재audience의동일실제앱배포·호스팅/화면검증→같은브랜치정상반영·원격내용/실제CI순서로완료근거를쌓는다.
 
-### 선행 조건·보류 사항
+### 엔진·세션·저장 계약
 
-T025의 API 전달 완료 기준을 재사용하고 T031의 실제 앱 요구·API 연동·추첨 규칙 설계가 선행한다. 미확인 규칙이 필요한 모드는 비활성화하고 실제 결제/계정 연결은 추가하지 않는다. 가격 미확인은 비용 표시를 보류할 이유이며 모든 UI 설계를 중단할 이유가 아니다. 과거 T015/T016의 넓은 전역 API 구현·연속 운영 관찰을 다시 필수 개발 게이트로 요구하지 않는다.
+특수정확ID배열과일반정수A를합한잔여R에서WebCrypto/rejection sampling으로균등정수슬롯을뽑고매장제거한다. 기본1장또는지원되는정확10장만처리하고부분묶음/회차이월은없다. 일반그룹을1장취급하거나50:50으로가중하지않는다. 알려지지않은유효양의playerType도검증된특수S에포함한다.
 
-### 예상 영향 파일
+session schema1은검증snapshot·정규화poolFingerprint·현재/이전회차·batches·누적100900·미확인pending결과·revision/commandId를보존한다. 풀식별은정확회차/N/특수ID/사용자정책/API옵션을포함하고전역publication·표시변화는제외한다. 이는확률입력식별이며암호학적무결성/원출처인증해시가아니다. 수동/소진리셋은현재풀만복원하고이전결과/비용을보존하며마지막소진결과+완료회차+다음전체풀을함께유지하고자동추가추첨하지않는다.
 
-새 추첨 엔진/가상 그룹·상태·연출/접근성 UI와 경계/분포 테스트(신규 예정), SIMULATOR_PLAN·관리 문서. 신규 파일의 경로/역할·연관 파일은 착수 때 확정하고 추가와 동시에 FILE_SYNC에 등록한다.
+`createSimulatorStore`의load/ensure/execute/close를사용한다. 최신record읽기·ledger/schema검증·동기engine전이·put이같은IndexedDB readwrite transaction에있고complete이벤트뒤에만성공반환한다. commandId재시도는새난수/쓰기없이기존결과를돌려주며다중탭의오래된revision은거절한다. 새draw/reset은현재준비/정확풀일치가필요하고pending확인은이미저장된결과를재현한다. quota/abort/저장불가/손상/미지원schema/다른풀은원본기록을삭제하거나무통보메모리모드로전환하지않는다. source갱신/상세이동/새로고침뒤미확인결과·기록을복원한다.
+
+팩선택하위상태는 `key={chosenId}`로분리하고스토어인스턴스참조도대조해이전팩의지연응답/애니메이션/리셋확인상태가새팩으로새지않게한다. 팩이바뀌면기존구독/스토어를정리하고해당팩의저장기록을복원한다.
+
+새draw/reset의 `execute.getContext()`는대기중이던IndexedDB readwrite transaction안에서전이직전에동기로현재pack/preparation참조를읽는다. 네트워크/await를transaction에넣지않으며대기중자료오류/풀변경을확인하면추가난수/쓰기없이중단한다. 이미기록된commandId재시도·pending ack는이새자료검사에막혀확정결과를잃지않게한다.
+
+저장은성공했으나완료응답처리가불명확하면같은commandId가저장된기록을다시읽어 `committed(saved)`라는공통UI정리경로를거친다. 이경로는직접성공과복구성공모두세션반영/리셋창닫기·ack후replay/모션상태정리·같은팩변경알림을맞추며finally에서busy/즉시잠금을해제한다. 재추첨으로불명확한완료를해결하지않는다.
+
+### 영상 관찰과 후속 3D의 경계
+
+기존 `-OPQF_c4WN4`는등급별3D후속참고로재분류하며이번에재요청하지않았다. 추가 `VoEDBxb9iNY`는앞부분skip도착화면참고요청이지만공개페이지0:52metadata만표시되고실제프레임0/currentTime0/readyState0/buffered0/errornull이었다.1회새로고침후동일해중단했으며skip도착/실제시간을봤다고주장하지않는다(C087). 첨부/명시지시의2D흐름은이영상미재생에막히지않는다. 계약권재화·3D·사용자APK는이번범위에추가하지않는다.
+
+### 진행·검증·완료 조건
+
+로컬구현검증을확인했고실제배포/공개화면·원격/CI는진행중이다. Root의전체 `npm test`533/533이exit0으로통과했다. 앱TypeScript `--noEmit`과공식Sites Worker빌드도통과했고클라이언트모듈은139개다. 독립엔진/난수/세션·IndexedDB전이와기존회귀를포함하며,transaction대기중getContext변경/재시도·ack보존과pack-keyed상태/저장성공응답복구UI정리도검토했다. `project:check --base e04f2defa397e658b626f197a6f305d2c697615a`는378파일/45작업/21변경경로로통과했다. 이결과는로컬검증이며실제배포/UIQA·GitHub원격/CI성공을선행기록하지않는다. T017진행중을유지한다.
+
+필수검증은N/S/A불변식·특수비복원/일반가중·잔여1~9/정확10·새회차/수동리셋의기록/누적보존·연속클릭·commandId멱등·다중탭expectedRevision·abort/quota/손상/저장불가·다른팩publication/표시변경·동일팩풀변경보존이다. 결과저장전연출없음·skip/계속으로재추첨/재차감없음·새로고침pending복구·현재회차획득dim·단일중앙/정확10명반응형·익명일반결과·종료체험·키보드/동작줄이기/이미지실패를실제화면에서확인한다. 실제관찰한PC/모바일폭과미수행을구분한다. 적절한회귀/관리/타입/빌드·같은앱배포/실조회·원격소스·실제CI확인후에만상태를갱신하고미래SHA를지어내지않는다.
 
 ### 파일 최신화 검토
 
 | 파일 | 결과 | 근거 |
 | --- | --- | --- |
+| `AGENTS.md` | 수정 | C084~C087최신2D실행/첨부근거·구입확인생략·원자저장/skip·익명명단/3D후속경계 |
+| `data/research/simulator-ui-reference-T017.json` | 수정 | T017첨부9장순서/정확파일ID·원본SHA·정지화면관찰·사용자흐름·영상미관찰/2D게이트대체근거 |
+| `docs/FILE_SYNC.json` | 수정 | 신규근거/모듈/회귀등록·변경/관련파일역할/우선순위/의존/갱신조건/T017검토 |
+| `docs/ROADMAP.md` | 수정 | 2D전체우선·영상게이트대체·현재/다음·API/규칙/3D경계 |
+| `docs/SIMULATOR_PLAN.md` | 수정 | 첨부9장/명시지시의확정2D·원자저장·명단/결과·엔진/세션/복구계약 |
+| `docs/WORKPLAN.md` | 수정 | T017실행범위·첨부/사용자결정·진행상태/검증대기·변경/관련전파일검토표 |
+| `services/efsimulator-app/README.md` | 수정 | 구현중모듈/저장/연출분리·데이터/자산/검사범위·원본첨부비복사 |
+| `services/efsimulator-app/app/components/catalog-pages.tsx` | 수정 | 기존조회페이지보존·SimulatorPage를전용상태/연출컴포넌트로분리연결 |
+| `services/efsimulator-app/app/components/simulator-page.tsx` | 수정 | 팩선택/잔여·저장명령/복구·리셋·기록·현재회차획득dim과결과화면연결 |
+| `services/efsimulator-app/app/components/simulator-results.tsx` | 수정 | 저장완료batch의짧은자체2D/skip·단일중앙/10명반응형결과·계속/동작줄이기 |
+| `services/efsimulator-app/app/globals.css` | 수정 | 2D/결과단일·10명그리드·명단dim/기록/조작의반응형/접근성표시 |
+| `services/efsimulator-app/lib/simulator/engine.mjs` | 수정 | 잔여특수정확ID와익명일반정수의균등비복원순수추첨·입력/불변식검사 |
+| `services/efsimulator-app/lib/simulator/random.mjs` | 수정 | WebCrypto32/53bit rejection sampling의안전정수균등난수·Math.random대체금지 |
+| `services/efsimulator-app/lib/simulator/session.mjs` | 수정 | 팩별schema1/snapshot·풀식별·revision/commandId·결과/누적/수동·소진리셋전이와ledger검증 |
+| `services/efsimulator-app/lib/simulator/storage.mjs` | 수정 | IndexedDB팩별load/ensure/execute·한transaction최신읽기/검증/전이/put·완료후반환·실패보존 |
+| `services/efsimulator-app/package.json` | 수정 | 실제IndexedDB전이검사용fake-indexeddb를devDependency로추가·제품재화/서버의존추가없음 |
+| `services/efsimulator-app/pnpm-lock.yaml` | 수정 | 선택한fake-indexeddb개발검사의의존해시/재현설치를잠금 |
+| `services/efsimulator-app/tests/simulator-engine.test.mjs` | 수정 | 잔여1n/매장제거·익명정수가중·고정난수/경계·입력불변엔진회귀 |
+| `services/efsimulator-app/tests/simulator-random.test.mjs` | 수정 | WebCrypto32/53bit거절샘플링·정확상한·소스실패/거절상한·Math.random미사용회귀 |
+| `services/efsimulator-app/tests/simulator-session.test.mjs` | 수정 | 세션schema·pending/ack·명령멱등/revision·단일/10회·수동/소진리셋·누적/무결성회귀 |
+| `services/efsimulator-app/tests/simulator-storage.test.mjs` | 수정 | fake-indexeddb실제transaction의복구/동시탭·멱등·commit/abort/quota·오류/자료보존회귀 |
+| `config/catalog-automation.json` | 검토 결과 변경 불필요 | 기존사이트역할별접근/수집·발행/예약대상과영수증경로보존 |
+| `data/updates/catalog-latest.json` | 검토 결과 변경 불필요 | 원본/processed·데이터세대/발행변경이없어시간별데이터영수증을새로작성하지않음 |
+| `services/catalog-api/lib/catalog-contract.mjs` | 검토 결과 변경 불필요 | 현행9필드·N/S/A/옵션100900을읽기전용소비·raw/processed/API계약변경없음 |
+| `services/catalog-api/policy/rules.lock.json` | 검토 결과 변경 불필요 | 수집/가공/파서/규칙코드변경이없어잠금재생성·채택/migration불필요 |
+| `services/efsimulator-app/app/components/catalog-data.tsx` | 검토 결과 변경 불필요 | 현행catalog상태/정확saleId·members/9필드전달을재사용·API조회형식변경없음 |
+| `services/efsimulator-app/app/components/catalog-ui.tsx` | 검토 결과 변경 불필요 | 기존특수Portrait/팩대표표시를재사용·사진으로카드ID/등급을추정하지않음 |
+| `services/efsimulator-app/app/components/standard-card.tsx` | 검토 결과 변경 불필요 | 이름/OVR없는고정일반이미지컴포넌트를결과별로재사용;실명Player입력추가없음 |
+| `services/efsimulator-app/app/simulator/page.tsx` | 검토 결과 변경 불필요 | 기존/simulator진입경로가catalog-pages의동일export를통해새전용페이지로연결 |
+| `services/efsimulator-app/lib/catalog-refresh.mjs` | 검토 결과 변경 불필요 | 동일publication전체페이지의원자snapshot/갱신조회계약을재사용·추첨중원출처요청없음 |
+| `services/efsimulator-app/lib/draw-options.mjs` | 검토 결과 변경 불필요 | API지원수량/100900/잔여10명guard를재사용·가격/지원정책추정없음 |
+| `services/efsimulator-app/lib/simulator/prepare.mjs` | 검토 결과 변경 불필요 | T044same-snapshot·N/S/A·전량9필드/멤버십/현행100900data-ready를그대로재사용 |
+| `services/efsimulator-app/public/images/simulator/standard-card-170588-cdf8117dae82.png` | 검토 결과 변경 불필요 | T044원본고정PNG/SHA유지·새이미지편집/다운로드/교체없음 |
 
 ## T018 — 3D 모델·권리·모바일 성능과 공개 검증
 
