@@ -787,5 +787,78 @@
       "3D/APK are not implemented or analyzed here.",
       "Implementation-commit CI is verified; future final-documentation-commit SHA/CI are not invented."
     ]
+  },
+  "tenResultNavigationFollowUpT046": {
+    "taskId": "T046",
+    "recordedOnKstDate": "2026-10-30",
+    "status": "in_progress",
+    "authority": "Latest direct user request; root individually viewed the supplied still images, with read-only hashes from their local originals.",
+    "sourceCommit": "1d39f44f4d1765064f3bafb17ebb307648e758ce",
+    "images": [
+      {
+        "order": 1,
+        "filename": "IMG_4192.png",
+        "libraryFileId": "libfile_f4e3856316348191947fb89d45712e06",
+        "sha256": "a8e3eedb03e64c03782750e4710c8854e0e0d9a672e48b58bd006b12eae2ceb4",
+        "sizeBytes": 2228533,
+        "observedBy": "root_individual_still_image_view",
+        "observation": "Mobile Safari still of a ten-card result scrolled near the bottom, with the lower Continue button visibly focused; heading and first cards are above the view."
+      },
+      {
+        "order": 2,
+        "filename": "IMG_4193.png",
+        "libraryFileId": "libfile_dfdcc8e34c7c8191b2d1fa22589c9355",
+        "sha256": "9ccfb3b27ec6423a4dcedf03c082736d54731866028100e10b4e8bf37897cc89",
+        "sizeBytes": 2289676,
+        "observedBy": "root_individual_still_image_view",
+        "observation": "Requested top-of-dialog view shows the ten-draw heading, 900-coin badge and first sorted special card beside an anonymous Standard."
+      }
+    ],
+    "confirmedDecisions": {
+      "onlyTenCardResultChanged": true,
+      "openAtTopOfDialog": true,
+      "topContinueBelow900CoinBadge": true,
+      "bottomContinueRetained": true,
+      "continueButtonCount": 2,
+      "useExistingHeaderWhitespaceWithoutIncreasingHeight": true,
+      "singleCardLayoutAndFocusUnchanged": true,
+      "sameCommittedResultAndConfirmationHandler": true
+    },
+    "implementationContract": {
+      "tenCardResultFocus": "Top Continue with preventScroll, followed by dialog scrollTop=0 on entry to results, including skip and replay.",
+      "headerButtonPlacement": "Use the existing cost/header whitespace without adding normal-flow vertical height.",
+      "singleCardBehavior": "Preserve the existing lower Continue focus, layout and single confirmation button.",
+      "drawLedgerPricesAndPool": "unchanged"
+    },
+    "verification": {
+      "status": "local_checks_verified_followup_pending",
+      "tests": {
+        "reportedBy": "root_actual_tool_results",
+        "total": 539,
+        "passed": 539,
+        "exitCode": 0,
+        "typescriptNoEmitExitCode": 0,
+        "officialWorkerBuildExitCode": 0,
+        "clientModules": 140,
+        "diffCheckExitCode": 0
+      },
+      "projectCheck": {
+        "baseCommit": "1d39f44f4d1765064f3bafb17ebb307648e758ce",
+        "files": 380,
+        "tasks": 47,
+        "changedPaths": 9,
+        "exitCode": 0
+      },
+      "deployment": null,
+      "hostedUi": null,
+      "github": null,
+      "ci": null
+    },
+    "limitations": [
+      "The supplied stills do not measure CSS viewport size, runtime focus events or browser scrolling.",
+      "Physical mobile Safari behavior and dialog/header size comparisons require separate observations.",
+      "No screenshot bytes or credentials are copied into source or deployment.",
+      "Completion and CI states are recorded only after actual verification."
+    ]
   }
 }

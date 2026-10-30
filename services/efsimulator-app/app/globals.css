@@ -41,6 +41,13 @@
 .pack-lineup .portrait{flex-shrink:0}
 
 /* Result cards share one frame, overriding featured portrait heights at every breakpoint. */
+.sim-result-header-controls{position:relative;flex:0 0 auto;align-self:start}
+.sim-result-header-controls>.sim-result-cost{display:block}
+.sim-result-header-controls>.sim-result-top-continue{
+  position:absolute;top:calc(100% + 8px);left:0;width:100%;min-width:0;height:44px;
+  margin:0;padding:6px 3px;display:flex;align-items:center;justify-content:center;
+  font-size:10px;line-height:1.2;letter-spacing:0;white-space:nowrap;
+}
 .sim-results-grid{align-items:start}
 .sim-result-card{position:relative;width:100%;aspect-ratio:240/340}
 .sim-result-card>.portrait,.sim-result-card>.standard-card,.sim-result-card>.standard-card-fallback{

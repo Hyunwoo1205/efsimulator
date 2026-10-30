@@ -21,6 +21,7 @@ export function SimulatorResults({ batch, players, packTitle, animate, busy, onC
   const [phase, setPhase] = useState<"opening" | "results">(animate ? "opening" : "results");
   const dialog = useRef<HTMLDialogElement>(null);
   const next = useRef<HTMLButtonElement>(null);
+  const topNext = useRef<HTMLButtonElement>(null);
   const skip = useRef<HTMLButtonElement>(null);
   useEffect(() => {
     const element = dialog.current;
@@ -29,7 +30,13 @@ export function SimulatorResults({ batch, players, packTitle, animate, busy, onC
     return () => { element?.close(); previous?.focus(); };
   }, []);
   useEffect(() => {
-    if (phase !== "opening") { next.current?.focus(); return; }
+    if (phase !== "opening") {
+      if (batch.count === 10) {
+        topNext.current?.focus({ preventScroll: true });
+        if (dialog.current) dialog.current.scrollTop = 0;
+      } else next.current?.focus();
+      return;
+    }
     skip.current?.focus();
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (reduced.matches) { setPhase("results"); return; }
@@ -38,12 +45,12 @@ export function SimulatorResults({ batch, players, packTitle, animate, busy, onC
     const reduce = () => { if (reduced.matches) setPhase("results"); };
     reduced.addEventListener("change", reduce);
     return () => { window.clearTimeout(timer); reduced.removeEventListener("change", reduce); };
-  }, [phase]);
+  }, [phase, batch.count]);
   const orderedResults = orderSimulatorResults(batch.results, players);
   return <dialog ref={dialog} className="sim-result-dialog" aria-labelledby="sim-result-heading" onCancel={event => {
     event.preventDefault(); if (phase === "opening") setPhase("results"); else if (!busy) onContinue();
   }}>
-    <div className="sim-result-header"><div><p className="eyebrow">{batch.roundNumber}회차 · {batch.count}회 뽑기</p><h2 id="sim-result-heading">{phase === "opening" ? "카드를 공개합니다." : "획득한 선수"}</h2><p>{packTitle}</p></div><span className="sim-result-cost">{batch.coinCost.toLocaleString("ko-KR")} 코인</span></div>
+    <div className="sim-result-header"><div><p className="eyebrow">{batch.roundNumber}회차 · {batch.count}회 뽑기</p><h2 id="sim-result-heading">{phase === "opening" ? "카드를 공개합니다." : "획득한 선수"}</h2><p>{packTitle}</p></div>{phase === "results" && batch.count === 10 ? <div className="sim-result-header-controls"><span className="sim-result-cost">{batch.coinCost.toLocaleString("ko-KR")} 코인</span><button ref={topNext} type="button" className="primary-button sim-result-top-continue" disabled={busy} onClick={onContinue}>{busy ? "확인 중" : "계속하기"} →</button></div> : <span className="sim-result-cost">{batch.coinCost.toLocaleString("ko-KR")} 코인</span>}</div>
     {phase === "opening" ? <div className="sim-opening"><div className="sim-opening-visual" aria-hidden="true" style={{ "--sim-opening-duration": `${OPENING_DURATION_MS}ms` } as CSSProperties}><div className="sim-sealed-card"><span>ef.</span><small>PLAYER COLLECTION</small></div></div><p role="status">저장된 추첨 결과를 공개하고 있습니다.</p><button ref={skip} className="text-button" type="button" onClick={() => setPhase("results")}>건너뛰기 ↗</button></div> : <>
       <div className={`sim-results-grid ${batch.count === 1 ? "single" : "multiple"}`} aria-label={`획득한 선수 ${batch.count}명`}>
         {orderedResults.map(({ result, player, acquisitionIndex }) => {
