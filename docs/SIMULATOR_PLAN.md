@@ -29,7 +29,7 @@ T038 당시 공식 1차 자료에서 특정 상품의 첫 회500코인 할인·�
 
 ### T044 자산·준비 판정 작업의 현재 범위
 
-사용자는 EFHub170588 이미지의 별도 고정과 직전 팩 준비 판정안을 승인하고 [실제 개봉 영상](https://www.youtube.com/watch?v=-OPQF_c4WN4)을 제공했다. 이 승인은 추첨 엔진·세션·리셋·2D공개흐름까지 이미 구현/검증됐다는 뜻이 아니다. 전체494회귀·앱타입/공식Worker빌드와기존공개API의원자적snapshot13팩data-ready검증을확인했다. 새코드배포·실제UIQA·원격/CI는아직미완료이며WORKPLAN T044의실제기록을따른다.
+사용자는 EFHub170588 이미지의 별도 고정과 직전 팩 준비 판정안을 승인하고 [실제 개봉 영상](https://www.youtube.com/watch?v=-OPQF_c4WN4)을 제공했다. 이 승인은 추첨 엔진·세션·리셋·2D공개흐름까지 이미 구현/검증됐다는 뜻이 아니다. 전체494회귀·앱타입/공식Worker빌드와기존공개API의원자적snapshot13팩data-ready검증을확인했다. 앱version11public배포·고정자산익명200/원본SHA일치·실제WPOTY구성150/11/139와이름/OVR없는일반이미지·가격버튼비활성·원격367파일일치/구현commit `f2ff13cf73d33633e6af95f28c3c5489a959a64c`의실제CI2건성공까지검증해한정된T044를완료했다.1363px화면은확인했으나360px/모바일실기기QA는미수행이며추첨엔진·세션/리셋·2D공개흐름완료와구분한다. 최종문서commit의미래SHA/CI를선행기록하지않으며상세근거는WORKPLAN T044를따른다.
 
 지정 상세페이지는 한 번의403/error1010으로 실패했고 우회하지 않았다. 기존 raw의 정확한ID170588에 연결된 `https://efimg.com/efootballhub22/images/player_cards/170588_l.png`에서 원본PNG를 정상 확보·직접 시각확인했다.240×340 RGBA·114,522bytes·SHA256 `cdf8117dae82623d6408ad285a3c4cfae6b1c18703f896f044d585e52c29957c`이며 회색 실루엣과 원본 프레임/별만 있고 이미지 자체 이름·OVR·포지션은 없다. 고정 파일은 `services/efsimulator-app/public/images/simulator/standard-card-170588-cdf8117dae82.png`, 출처 설명은 같은 폴더 README다. 실행 중 원격 URL을 읽거나 자동 교체하지 않는다. StandardCard는 Player입력/텍스트오버레이가 없는 익명 표시 전용이며 A>0인 선택팩에 미리보기로 연결한다.
 
