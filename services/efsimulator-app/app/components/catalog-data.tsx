@@ -6,7 +6,7 @@ import { createCatalogRefresh } from "../../lib/catalog-refresh.mjs";
 
 export type Player = { id: string; name: string; slug: string; position: string | null; overallRating: number | null; playingStyle: string | null; playingStyleDefensive: string | null; imageUrl: string | null; playerType?: number };
 export type DrawOptions = { single: { supported: boolean; count: 1; coinCost: number | null }; ten: { supported: boolean; count: 10; coinCost: number | null; minimumRemaining: 10 }; provenance: { authority: string; reference: string; rule: string } };
-export type Pack = { saleId: string; name: string; officialTitle: string; playerCount: number; totalPlayerCount: number; standardPlayerCount: number; date: string | null; endsAt: string; players: Player[]; drawOptions?: DrawOptions };
+export type Pack = { saleId: string; name: string; officialTitle: string; playerCount: number; totalPlayerCount: number; standardPlayerCount: number; date: string | null; endsAt: string; members: { id: string; name: string }[]; players: Player[]; drawOptions?: DrawOptions };
 type Manifest = { version_id: string; created_at: string | null };
 type Catalog = { manifest: Manifest; live: Pack[]; archive: Pack[]; players: Player[] };
 type ApiBody = { data?: unknown; error?: { code?: string }; meta?: { catalog_snapshot_id?: string }; pagination?: { next_cursor?: string | null } };

@@ -1,4 +1,4 @@
-<!-- project-state: {"stage":"R6","previous":"T043","current":"T017","next":"T018"} -->
+<!-- project-state: {"stage":"R6","previous":"T043","current":"T044","next":"T017"} -->
 
 # efsimulator 작업 계획과 이력
 
@@ -7,8 +7,8 @@
 ## 현재 작업과 매 작업 갱신
 
 - 이전 작업: T043 — 팩 안 등급/OVR·전체 선수 등급/최신날짜/OVR 정렬·전체폭 반응형 명단·481회귀/배포/화면·원격361파일/실제CI3건 검증 완료.
-- 현재 작업: T017 — 전달된API 타입·추첨옵션·고정가격100/900과 사용자 비복원/리셋정책을 소비하는 추첨엔진·저장·개봉화면/2D. 기본가격은 확정됐으며 보장조건·실제영상공개흐름은 별도.
-- 다음 작업: T018 — T017 추첨 엔진·저장·2D를 먼저 마친 뒤3D·모바일 성능·실패 fallback.
+- 현재 작업: T044 — 사용자지정170588 고정익명일반자산과 승인된팩데이터준비판정·제공영상확인. 검사/배포·GitHub/CI는진행중이며 T017엔진/세션/리셋·2D와T018APK/3D는후속이다.
+- 다음 작업: T017 — 승인된데이터준비·API옵션을소비하는추첨엔진·세션/리셋·2D를구현한다. 이후T018에서APK분석·3D·모바일성능을진행한다.
 - 최근 유지보수: T039 — 신규6팩·93명과 원본 누적·가공·판매 상태를 갱신했다. 현재 가공163명/13팩·판매중9/종료4이며 저장본/API/세 사이트/구현 커밋·실제CI 검증을 완료했다. 제품 T017/T018 범위와 T038 미확인 항목은 보존한다.
 - 현재 조건: T043이 T041의 선수 정렬을 화면 범위별로 구분한다. Epic5→Show Time8→Trend3→Highlight6 우선, 팩 안 선수는 등급 안 OVR순, 전체 선수는 등급 안 확인 날짜 최신순→OVR순이며 최초 연결팩 날짜를 사용한다. 팩은 등급 안 날짜 최신순이다. exact raw 타입·원본·가공/API 계약·가격100/900·팩 구성/카드 표시와 실제 앱 public·API/admin/viewer owner-private 경계를 보존한다.
 
@@ -16,7 +16,7 @@
 
 ## 최신 추가 조건과 이전 조건의 적용
 
-C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_BEFORE_PROBABILITY_SCOPE.md)에 보존한다. 관리 최신화·ID/근거·실패 보존·접근 거부 우회 금지·무료 우선·운영 승인 분리 원칙은 계속 적용한다. 범위 결정은 날짜별 이력이며 현재 범위·완료 정책은 최신 C080·C079·C078·C077와 C071~C075의 사용자 결정을 T037/C070 제안보다 우선하고 C069/T036의 자동 갱신 절차를 적용하며 API 완료/정상 반영 정책 C063~C064를 유지한다. 전체 수집과 사이트 범위를 혼동하지 않는다.
+C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_BEFORE_PROBABILITY_SCOPE.md)에 보존한다. 관리 최신화·ID/근거·실패 보존·접근 거부 우회 금지·무료 우선·운영 승인 분리 원칙은 계속 적용한다. 범위 결정은 날짜별 이력이며 현재 범위·완료 정책은 최신 C081~C083·C080·C079·C078·C077와 C071~C075의 사용자 결정을 T037/C070 제안보다 우선하고 C069/T036의 자동 갱신 절차를 적용하며 API 완료/정상 반영 정책 C063~C064를 유지한다. 전체 수집과 사이트 범위를 혼동하지 않는다.
 
 | 조건 ID | 최신 결정 | 영향 단계 / 선행 조건 / 처리 순서 | 상태 |
 | --- | --- | --- | --- |
@@ -67,6 +67,9 @@ C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_B
 | C070 | T017을 어떤 방식으로 설계·구현할지 구체적인 계획 작성 요청 | T037 계획만 작성 → T017-A 규칙/신선도·세션 계약 → B 엔진/C 저장/D 화면/E 2D/F 검토 배포 → T018. 기존 API·운영 데이터·예약·사이트 배포 변경 없음 | 계획 작성·관련 문서/파일 목록 갱신. 실제 추첨 기능은 미구현 |
 
 | C078 | 카드 타입 exactraw→가공선수9번째필드/API·중첩·자동갱신 전달, Epic→Show Time→Trend→Highlight·선수OVR/팩최신순·대표등급상위3미리보기; 실제 앱 공개 승인 | T041/R6. 원본타입/WPOTY대조→명시migration/규칙채택→데이터/API·표시/자동화검사→앱배포/public→익명조회·원격/CI; API/admin/viewer는비공개 | 완료:9필드/정렬·저장/발행·앱public/익명/브라우저·원격361파일/실제CI3건 검증; 다음예약실행미관찰 |
+| C081 | 지정EFHub170588 얼굴없는Standard이미지를 이름/OVR없이 일반슬롯공통카드로사용하며 향후원격얼굴변화대비별도고정파일보존 | T044/T017-A·D/E. 정확rawID/imageUrl→PNG정상확보·시각/해시→Player없는표시→N−S익명집계유지·원본/가공/API불변 | 구현/494회귀·타입/빌드확인;상세HTML403보존·배포/UI/원격미완료 |
+| C082 | 직전팩준비판정안승인 | T044/T017-A. 같은원자적snapshot·정확saleId·N/S/A·members/전량9필드·현행API옵션100/900검증→reasonCodes/data-ready→후속엔진/저장 | 구현/12회귀·익명원자적snapshot13팩준비검증;ready는데이터구성만·배포/엔진/세션/신선도와구분 |
+| C083 | 실제개봉영상YouTube -OPQF_c4WN4제공 | T044/T017-E. 공개페이지/metadata와실제재생프레임구분→관찰한공개흐름만확정;3D는APK후속 | 공개페이지/3:35metadata확인;currentTime0/readyState0으로실제프레임관찰실패·2D흐름미확정 |
 | C080 | 선수 정렬은 팩 안 같은 등급 OVR순, 전체 선수 검색/목록은 같은 등급 최신날짜→OVR순; 펼친 명단은 기기 폭에 맞게 사용 가능한 열 활용 | T043/R6. 기존 exactAPI타입·4등급·최초연결팩 날짜 유지→정렬 범위 분리/반응형 명단→회귀·화면/배포·원격/CI; raw/가공 계약·규칙/발행·가격·접근정책 불변 | 완료:481회귀·두사이트타입/공식빌드·동일publication전량/공개화면1363px·배포·원격361파일/실제CI3건 검증; 모바일실기기QA미수행 |
 | C079 | 시뮬레이터 가격은 항상1회100코인·10회900코인으로 고정, 할인 적용 없음 | T042/R6. 새가공 가격/provenance·legacy읽기→규칙채택·현행팩migration→저장/API·사이트전량가격검증→예약/문서·원격/CI; 지원수량/잔여조건 유지 | 완료:13팩고정가격·legacy호환·477회귀/빌드·v20저장·API/세사이트/공개UI·예약·원격361파일/실제CI3건 검증 |
 | C077 | 전체11명 팩은1회만, 전체11명초과는1회·10회; 가공 선수팩과 실제 사이트용 API에 반영 | T040/T017-A. 공식 totalPlayerCount 기준→사용자 근거 drawOptions/가격null→기존세대 migration/규칙채택→저장/API/세 사이트/기록/GitHub·CI 검증 | 완료: 가공/API·앱소비·migration·v18저장·발행/배포·세사이트/13팩상세·원격359파일일치·실제CI3건성공. 엔진·2D/3D는 후속 |
@@ -614,8 +617,8 @@ Sites 계정의 실제 한도·비용·영속 저장·실제 인증·백업 미�
 ## T017 — 검증된 추첨 엔진과 가상 Standard·카드 연출
 
 - 단계: R6
-- 상태: 진행 중
-- 이전: T043
+- 상태: 예정
+- 이전: T044
 - 다음: T018
 
 ### 목표·입력·순서
@@ -2197,3 +2200,60 @@ API 소스 `64bfe2954194a6f19b9d0b237f37f710854a689f`의 비공개 배포 `appgd
 | `services/catalog-view/tests/pack-preview.test.mjs` | 수정 | viewer 전역/팩 범위·미상 날짜·재수록·OVR 동률 회귀 |
 | `services/catalog-view/app/page.tsx` | 수정 | 전역 선수 결과 설명을 최신날짜→OVR 기준으로 정정 |
 | `services/catalog-view/README.md` | 수정 | viewer 전역 탐색/팩 안 명단의 정렬 계약 구분 |
+
+
+## T044 — 고정 익명 일반 카드와 승인된 팩 데이터 준비 판정
+
+- 단계: R6
+- 상태: 진행 중
+- 이전: T043
+- 다음: T017
+
+### 목표·승인 범위·순서
+
+2026-10-30 KST 사용자는 (C081) EFHub170588의 얼굴 사진 없는Standard이미지를이름/OVR없이사용하고원격이미지변경에대비해별도고정파일로보존, (C082) 직전팩준비판정안승인, (C083) 실제개봉영상YouTube `-OPQF_c4WN4`제공을지시했다. 이번범위는고정익명표시·읽기전용데이터준비와영상관찰시도다. 엔진·난수추첨·세션저장·잔여풀/리셋·2D공개흐름·APK/3D를이미구현했다고표시하지않는다.
+
+기준은동일api-server-setup의정상작업소스 `2b8bdc4445021be89a8e64881604beaf940d54b7`다. 원본/processed·API9필드/팩옵션·가격100/900·수집/발행규칙과잠금·API/admin/viewer owner-private/실제앱public경계는보존한다. 정확rawID/imageUrl연결→이미지정상확보/시각/고정해시→StandardCard/팩데이터준비→회귀/관리/타입/공식빌드→같은실제앱배포·호스팅자산/화면/데이터검증→정상GitHub반영/원격내용·실제CI순으로진행한다. 원격이미지가바뀌어도실행중자동대체/수집하지않는다.
+
+### 확보 근거·구현 경계
+
+지정EFHub상세는1회403/error1010으로실패했고우회하지않았다. 보존raw정확문자열ID170588의imageUrl `https://efimg.com/efootballhub22/images/player_cards/170588_l.png`를연결해이미지호스트에서정상PNG를확보·직접시각확인했다.240×340 RGBA·114,522bytes·SHA256 `cdf8117dae82623d6408ad285a3c4cfae6b1c18703f896f044d585e52c29957c`다. 회색무명실루엣·배경/프레임/별은보존하고이미지자체얼굴사진·이름·OVR·포지션은없다. 새고정파일은 `services/efsimulator-app/public/images/simulator/standard-card-170588-cdf8117dae82.png`이며같은폴더README가출처/관측을기록한다. 원본이미지에편집을가하지않고StandardCard는Player입력/Portrait텍스트오버레이없이이파일만사용한다. 선택팩A>0일때일반공통카드미리보기를추가하지만170588선수를팩/API에편입하지않는다.
+
+팩데이터준비는같은원자적Catalog snapshot의정확saleId·N/S/A·members/전역/중첩9필드일치·고유문자열ID·현행T042 API옵션100/900을검증해ready/status/reasonCodes를반환한다. 미분류여도유효양의타입은S에포함하고일반은N−S익명집계로유지한다. 로딩/조회오류·누락/중복/불일치/잘못된옵션은ready:false다. ready는데이터구성준비만뜻하며원출처최신관측/TTL·엔진·저장가능·보장조건을검증했다고표시하지않는다. 입력·API·세션을수정하지않고실행버튼은비활성으로유지한다.
+
+제공영상은공개페이지와3분35초metadata만확인했다. 실제player의currentTime0/readyState0/buffered0/errornull상태가이어졌고1회새로고침뒤15초광고대기도0:00에머물렀다. 실제프레임관찰/단일·10회카드공개순서분석은미완료로두며2D흐름은미확정이다. APK는없다. 재생실패를자료분석완료로승격하지않는다.
+
+### 검증·진행 상태
+
+전체 `npm test`494개가모두통과(exit0)했다. 준비판정12회귀와고정PNG시그니처/크기/SHA검사를포함한다. 신규준비모듈의JSDoc/JS타입표현을맞춘뒤앱TypeScript검사가exit0이고공식Sites Worker빌드도exit0이다. `project:check --base 2b8bdc4445021be89a8e64881604beaf940d54b7`는367파일/45작업/15변경경로의등록·검토정합성을확인했다.
+
+공개실제앱에서기존 `readCatalogSnapshot`을익명으로실행해5GET으로같은 publication `217207ba2fca71b4f4db27655a1975ac6d678bbd891586bb0a2e0060201da18c`의163선수/13팩을읽었다. 반환한하나의원자적snapshot을준비함수에전달한13팩모두data-ready:true/reasonCodes없음이었다. 선수API에는170588이추가되지않았다. 이결과는기존실제API내용의익명읽기와로컬준비판정의결합검증이며새코드의호스팅배포·화면클릭검증·원출처최신관측을뜻하지않는다.
+
+아직새앱배포·고정자산호스팅/실제UIQA·GitHub원격/CI는미완료이므로T044진행중을유지한다. 코드/자산작성·data-ready로추첨가능상태를기록하지않는다. T044다음은T017엔진·세션/리셋·2D이며T018로직행하지않는다. 데이터세대·묶음재압축·API재발행은변경범위가아니므로수행하지않는다.
+
+### 파일 최신화 검토
+
+| 파일 | 결과 | 근거 |
+| --- | --- | --- |
+| `AGENTS.md` | 수정 | C081~C083최신승인·고정익명이미지/데이터준비·영상미확인·원본/규칙불변경계 |
+| `docs/FILE_SYNC.json` | 수정 | 신규6파일등록·모든변경/관련파일역할/우선순위/의존/조건/T044검토 |
+| `docs/ROADMAP.md` | 수정 | T044실행과T017엔진/세션/2D·T018후속경계/포인터 |
+| `docs/SIMULATOR_PLAN.md` | 수정 | 고정170588원본이미지·익명표시/9필드구성준비/ready의미·영상재생실패명시 |
+| `docs/WORKPLAN.md` | 수정 | T044/C081~C083·요구/선행/처리순서/미검증상태·전파일검토표 |
+| `services/efsimulator-app/README.md` | 수정 | 고정일반이미지와data-ready소비계약·영상/엔진/세션미완료경계 |
+| `services/efsimulator-app/app/components/catalog-data.tsx` | 수정 | 기존API의members를Pack타입에명시해전량일치검증에전달;네트워크/API계약변경없음 |
+| `services/efsimulator-app/app/components/catalog-pages.tsx` | 수정 | prepareSimulatorPack상태안내·일반A>0에만StandardCard미리보기·실행버튼비활성유지 |
+| `services/efsimulator-app/app/components/standard-card.tsx` | 수정 | Player입력·이름/OVR/포지션오버레이없는고정익명일반카드·이미지실패대체표시 |
+| `services/efsimulator-app/app/globals.css` | 수정 | 준비안내·고정일반카드/실패대체·작은화면미리보기의읽기편한배치 |
+| `services/efsimulator-app/lib/simulator/prepare.mjs` | 수정 | 같은원자적catalog의saleId/N/S/A·members/선수9필드·API옵션검증과data-ready/reasonCodes;엔진/저장없음 |
+| `services/efsimulator-app/public/images/simulator/README.md` | 수정 | 사용자지정170588고정PNG의정확raw연결·원격URL·시각/해시·상세HTML403과이미지정상확보구분 |
+| `services/efsimulator-app/public/images/simulator/standard-card-170588-cdf8117dae82.png` | 수정 | 얼굴사진·이름/OVR/포지션없는원본240x340PNG의SHA고정일반슬롯공통자산 |
+| `services/efsimulator-app/tests/simulator-prepare.test.mjs` | 수정 | 데이터준비의원자snapshot·N/S/A·고유문자열ID/9필드·미분류양의타입·현행옵션·무변경경계회귀 |
+| `services/efsimulator-app/tests/standard-artwork.test.mjs` | 수정 | 익명일반고정원본PNG의SHA256·시그니처·240x340크기회귀 |
+| `services/efsimulator-app/lib/catalog-refresh.mjs` | 검토 결과 변경 불필요 | 기존전체페이지/manifest동일publication을원자snapshot으로채택하는조회계약을그대로재사용 |
+| `services/efsimulator-app/lib/draw-options.mjs` | 검토 결과 변경 불필요 | 현행T042가격100/900·수량API소비검사를준비함수에서재사용;가격/지원수량변경없음 |
+| `services/efsimulator-app/app/components/catalog-ui.tsx` | 검토 결과 변경 불필요 | 실명특수Portrait는유지하고익명카드가Player/텍스트오버레이를재사용하지않게별도분리 |
+| `services/catalog-api/lib/catalog-contract.mjs` | 검토 결과 변경 불필요 | 현행선수9필드·가공팩/API옵션계약을읽기전용소비하며확장/migration없음 |
+| `services/catalog-api/policy/rules.lock.json` | 검토 결과 변경 불필요 | 가공/파서/규칙변경없고기존잠금바이트보존·채택/재발행불필요 |
+| `config/catalog-automation.json` | 검토 결과 변경 불필요 | 원본수집/발행·사이트별접근정책·예약대상변경없음 |
+| `data/updates/catalog-latest.json` | 검토 결과 변경 불필요 | 원본/processed/데이터세대변경이없어시간별데이터갱신요약을새로만들지않음 |

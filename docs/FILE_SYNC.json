@@ -250,12 +250,14 @@
         "docs/MIGRATION_STATUS.md",
         "docs/API_SERVER_PREPARATION.md",
         "docs/CATALOG_DATA_CONTRACT.md",
-        "data/research/simulator-decisions-T038.json"
+        "data/research/simulator-decisions-T038.json",
+        "services/efsimulator-app/lib/simulator/prepare.mjs",
+        "services/efsimulator-app/public/images/simulator/README.md"
       ],
       "update_when": [
         "사용자 요구·작업 절차·검증 명령·제품 및 운영 원칙 변경"
       ],
-      "reviewed_in": "T043"
+      "reviewed_in": "T044"
     },
     {
       "path": "README.md",
@@ -344,7 +346,7 @@
       "update_when": [
         "자동 갱신 경로·완료 기준·검증·대상 또는 기록 schema 변경 시"
       ],
-      "reviewed_in": "T041"
+      "reviewed_in": "T044"
     },
     {
       "path": "data/catalog.json",
@@ -776,7 +778,7 @@
       "update_when": [
         "자동 갱신 경로·완료 기준·검증·대상 또는 기록 schema 변경 시"
       ],
-      "reviewed_in": "T042"
+      "reviewed_in": "T044"
     },
     {
       "path": "docs/API_SELECTION.md",
@@ -972,12 +974,15 @@
         "tests/project-check.test.mjs",
         "docs/RAW_PAGE_MERGE.md",
         "docs/MIGRATION_STATUS.md",
-        "docs/CATALOG_DATA_CONTRACT.md"
+        "docs/CATALOG_DATA_CONTRACT.md",
+        "docs/SIMULATOR_PLAN.md",
+        "services/efsimulator-app/lib/simulator/prepare.mjs",
+        "services/efsimulator-app/public/images/simulator/README.md"
       ],
       "update_when": [
         "파일 추가·삭제·이름 변경·역할/의존관계 변경·영향 검토"
       ],
-      "reviewed_in": "T043"
+      "reviewed_in": "T044"
     },
     {
       "path": "docs/FILE_SYNC_AUDIT.md",
@@ -1048,12 +1053,13 @@
         "docs/MIGRATION_STATUS.md",
         "docs/API_SERVER_PREPARATION.md",
         "docs/CATALOG_DATA_CONTRACT.md",
-        "data/research/simulator-decisions-T038.json"
+        "data/research/simulator-decisions-T038.json",
+        "services/efsimulator-app/lib/simulator/prepare.mjs"
       ],
       "update_when": [
         "단계 상태·현재/이전/다음 작업·완료 조건·추가 요구 변경"
       ],
-      "reviewed_in": "T043"
+      "reviewed_in": "T044"
     },
     {
       "path": "docs/SIMULATOR_PLAN.md",
@@ -1073,12 +1079,17 @@
         "services/efsimulator-app/app/components/catalog-ui.tsx",
         "services/efsimulator-app/lib/catalog-refresh.mjs",
         "services/efsimulator-app/lib/catalog-relay.mjs",
-        "data/research/simulator-decisions-T038.json"
+        "data/research/simulator-decisions-T038.json",
+        "services/efsimulator-app/lib/simulator/prepare.mjs",
+        "services/efsimulator-app/app/components/standard-card.tsx",
+        "services/efsimulator-app/public/images/simulator/README.md",
+        "services/efsimulator-app/tests/simulator-prepare.test.mjs",
+        "services/efsimulator-app/tests/standard-artwork.test.mjs"
       ],
       "update_when": [
         "해당 범위/입력/완료조건·관계·권한/운영 근거 변경. reference의 과거 관측값은 덮어쓰지 않음"
       ],
-      "reviewed_in": "T042"
+      "reviewed_in": "T044"
     },
     {
       "path": "docs/WORKPLAN.md",
@@ -1099,12 +1110,15 @@
         "docs/MIGRATION_STATUS.md",
         "docs/API_SERVER_PREPARATION.md",
         "docs/CATALOG_DATA_CONTRACT.md",
-        "data/research/simulator-decisions-T038.json"
+        "data/research/simulator-decisions-T038.json",
+        "services/efsimulator-app/lib/simulator/prepare.mjs",
+        "services/efsimulator-app/tests/simulator-prepare.test.mjs",
+        "services/efsimulator-app/tests/standard-artwork.test.mjs"
       ],
       "update_when": [
         "매 작업 착수·추가 요구·파일 변경·검증 결과·작업 종료"
       ],
-      "reviewed_in": "T043"
+      "reviewed_in": "T044"
     },
     {
       "path": "docs/reference/ARCHITECTURE_BEFORE_PROBABILITY_SCOPE.md",
@@ -2959,7 +2973,7 @@
       "update_when": [
         "데이터 형식·가공 규칙·HTML 증거·매핑 검토·반복 실행 계약 변경"
       ],
-      "reviewed_in": "T042"
+      "reviewed_in": "T044"
     },
     {
       "path": "services/catalog-api/lib/catalog-lifecycle.mjs",
@@ -3171,7 +3185,7 @@
       "update_when": [
         "데이터 형식·가공 규칙·HTML 증거·매핑 검토·반복 실행 계약 변경"
       ],
-      "reviewed_in": "T042"
+      "reviewed_in": "T044"
     },
     {
       "path": "services/catalog-api/postcss.config.mjs",
@@ -4673,7 +4687,7 @@
     },
     {
       "path": "services/efsimulator-app/README.md",
-      "role": "실제 앱 페이지·서버 API relay·미구현 추첨 엔진·검사/배포 범위 안내",
+      "role": "실제앱페이지/API경계·고정일반이미지/데이터준비·미구현엔진·검사/배포범위안내",
       "priority": "P1",
       "related_paths": [
         "services/efsimulator-app/package.json",
@@ -4681,12 +4695,17 @@
         "services/efsimulator-app/public/fonts/README.md",
         "data/research/card-artwork-T034.json",
         "services/efsimulator-app/lib/catalog-order.mjs",
-        "services/efsimulator-app/tests/catalog-order.test.mjs"
+        "services/efsimulator-app/tests/catalog-order.test.mjs",
+        "services/efsimulator-app/lib/simulator/prepare.mjs",
+        "services/efsimulator-app/app/components/standard-card.tsx",
+        "services/efsimulator-app/public/images/simulator/README.md",
+        "services/efsimulator-app/tests/simulator-prepare.test.mjs",
+        "services/efsimulator-app/tests/standard-artwork.test.mjs"
       ],
       "update_when": [
         "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
       ],
-      "reviewed_in": "T043"
+      "reviewed_in": "T044"
     },
     {
       "path": "services/efsimulator-app/app/api/v1/[[...path]]/route.ts",
@@ -4706,7 +4725,7 @@
     },
     {
       "path": "services/efsimulator-app/app/components/catalog-data.tsx",
-      "role": "실제 API pagination/snapshot 일치·에러/로딩/재조회와8필드 카드/팩 데이터 상태",
+      "role": "실제API원자snapshot조회·로딩/오류/갱신과9필드선수·members포함팩타입/준비판정입력",
       "priority": "P1",
       "related_paths": [
         "services/efsimulator-app/README.md",
@@ -4715,16 +4734,18 @@
         "services/efsimulator-app/lib/catalog-relay.mjs",
         "services/efsimulator-app/lib/catalog-order.mjs",
         "services/efsimulator-app/tests/catalog-order.test.mjs",
-        "services/efsimulator-app/lib/catalog-refresh.mjs"
+        "services/efsimulator-app/lib/catalog-refresh.mjs",
+        "services/efsimulator-app/lib/simulator/prepare.mjs",
+        "services/efsimulator-app/tests/simulator-prepare.test.mjs"
       ],
       "update_when": [
         "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
       ],
-      "reviewed_in": "T041"
+      "reviewed_in": "T044"
     },
     {
       "path": "services/efsimulator-app/app/components/catalog-pages.tsx",
-      "role": "범위별 선수 정렬·선수/팩 목록·상세·시뮬레이터 진입과 전체행 명단/검색/접기·펼치기 흐름",
+      "role": "선수/팩조회·범위별정렬/전체폭명단과시뮬레이터선택·data-ready·고정일반미리보기",
       "priority": "P1",
       "related_paths": [
         "services/efsimulator-app/README.md",
@@ -4733,12 +4754,15 @@
         "services/efsimulator-app/lib/catalog-relay.mjs",
         "services/efsimulator-app/app/components/catalog-data.tsx",
         "services/efsimulator-app/lib/catalog-order.mjs",
-        "services/efsimulator-app/tests/catalog-order.test.mjs"
+        "services/efsimulator-app/tests/catalog-order.test.mjs",
+        "services/efsimulator-app/lib/simulator/prepare.mjs",
+        "services/efsimulator-app/app/components/standard-card.tsx",
+        "services/efsimulator-app/tests/simulator-prepare.test.mjs"
       ],
       "update_when": [
         "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
       ],
-      "reviewed_in": "T043"
+      "reviewed_in": "T044"
     },
     {
       "path": "services/efsimulator-app/app/components/catalog-ui.tsx",
@@ -4751,16 +4775,33 @@
         "services/efsimulator-app/lib/catalog-relay.mjs",
         "services/efsimulator-app/app/components/catalog-data.tsx",
         "services/efsimulator-app/public/fonts/README.md",
-        "data/research/card-artwork-T034.json"
+        "data/research/card-artwork-T034.json",
+        "services/efsimulator-app/app/components/standard-card.tsx"
       ],
       "update_when": [
         "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
       ],
-      "reviewed_in": "T041"
+      "reviewed_in": "T044"
+    },
+    {
+      "path": "services/efsimulator-app/app/components/standard-card.tsx",
+      "role": "Player입력·이름/OVR/포지션오버레이없는고정익명일반카드·이미지실패대체표시",
+      "priority": "P1",
+      "related_paths": [
+        "services/efsimulator-app/public/images/simulator/standard-card-170588-cdf8117dae82.png",
+        "services/efsimulator-app/public/images/simulator/README.md",
+        "services/efsimulator-app/app/components/catalog-pages.tsx",
+        "services/efsimulator-app/app/globals.css",
+        "services/efsimulator-app/tests/standard-artwork.test.mjs"
+      ],
+      "update_when": [
+        "익명일반카드표시·자산경로/해시·오버레이분리·실패대체변경"
+      ],
+      "reviewed_in": "T044"
     },
     {
       "path": "services/efsimulator-app/app/globals.css",
-      "role": "실제 앱 반응형 탐색/상세/진입과 화면 폭 기반 전체행 명단·카드 열 스타일",
+      "role": "실제앱반응형명단/카드와데이터준비안내·고정익명일반미리보기스타일",
       "priority": "P1",
       "related_paths": [
         "services/efsimulator-app/README.md",
@@ -4770,12 +4811,13 @@
         "services/efsimulator-app/app/components/catalog-data.tsx",
         "services/efsimulator-app/public/fonts/README.md",
         "data/research/card-artwork-T034.json",
-        "services/efsimulator-app/app/components/catalog-pages.tsx"
+        "services/efsimulator-app/app/components/catalog-pages.tsx",
+        "services/efsimulator-app/app/components/standard-card.tsx"
       ],
       "update_when": [
         "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
       ],
-      "reviewed_in": "T043"
+      "reviewed_in": "T044"
     },
     {
       "path": "services/efsimulator-app/app/layout.tsx",
@@ -4944,12 +4986,14 @@
       "related_paths": [
         "services/efsimulator-app/tests/catalog-refresh.test.mjs",
         "services/efsimulator-app/app/components/catalog-data.tsx",
-        "docs/AUTOMATION.md"
+        "docs/AUTOMATION.md",
+        "services/efsimulator-app/lib/simulator/prepare.mjs",
+        "services/efsimulator-app/tests/simulator-prepare.test.mjs"
       ],
       "update_when": [
         "자동 갱신 경로·완료 기준·검증·대상 또는 기록 schema 변경 시"
       ],
-      "reviewed_in": "T037"
+      "reviewed_in": "T044"
     },
     {
       "path": "services/efsimulator-app/lib/catalog-relay.mjs",
@@ -4972,12 +5016,14 @@
       "priority": "P0",
       "related_paths": [
         "services/efsimulator-app/app/components/catalog-pages.tsx",
-        "services/efsimulator-app/app/components/catalog-data.tsx"
+        "services/efsimulator-app/app/components/catalog-data.tsx",
+        "services/efsimulator-app/lib/simulator/prepare.mjs",
+        "services/efsimulator-app/tests/simulator-prepare.test.mjs"
       ],
       "update_when": [
         "추첨옵션 API 계약·소비·경계동작 변경"
       ],
-      "reviewed_in": "T040"
+      "reviewed_in": "T044"
     },
     {
       "path": "services/efsimulator-app/lib/pack-preview.mjs",
@@ -5028,6 +5074,23 @@
         "route segment 인코딩/회차·카드 문자열ID 정규화·잘못된 입력 경계 또는 production routing 동작 변경"
       ],
       "reviewed_in": "T033"
+    },
+    {
+      "path": "services/efsimulator-app/lib/simulator/prepare.mjs",
+      "role": "같은원자적catalog의saleId/N/S/A·members/선수9필드·API옵션검증과data-ready/reasonCodes;엔진/저장없음",
+      "priority": "P0",
+      "related_paths": [
+        "services/efsimulator-app/app/components/catalog-data.tsx",
+        "services/efsimulator-app/lib/catalog-refresh.mjs",
+        "services/efsimulator-app/lib/draw-options.mjs",
+        "services/efsimulator-app/app/components/catalog-pages.tsx",
+        "services/efsimulator-app/tests/simulator-prepare.test.mjs",
+        "docs/SIMULATOR_PLAN.md"
+      ],
+      "update_when": [
+        "팩데이터준비계약·정확한회차/명단/타입/API가격·이유코드/읽기전용경계변경"
+      ],
+      "reviewed_in": "T044"
     },
     {
       "path": "services/efsimulator-app/next.config.ts",
@@ -5130,6 +5193,35 @@
         "카드 글꼴 파일·출처·메타데이터·서체 선택 또는 원본 제공 경로 변경"
       ],
       "reviewed_in": "T034"
+    },
+    {
+      "path": "services/efsimulator-app/public/images/simulator/README.md",
+      "role": "사용자지정170588고정PNG의정확raw연결·원격URL·시각/해시·상세HTML403과이미지정상확보구분",
+      "priority": "P1",
+      "related_paths": [
+        "services/efsimulator-app/public/images/simulator/standard-card-170588-cdf8117dae82.png",
+        "services/efsimulator-app/app/components/standard-card.tsx",
+        "services/efsimulator-app/tests/standard-artwork.test.mjs",
+        "docs/SIMULATOR_PLAN.md"
+      ],
+      "update_when": [
+        "이미지원본·확보관측/출처·SHA·별도고정/익명표시범위변경"
+      ],
+      "reviewed_in": "T044"
+    },
+    {
+      "path": "services/efsimulator-app/public/images/simulator/standard-card-170588-cdf8117dae82.png",
+      "role": "얼굴사진·이름/OVR/포지션없는원본240x340PNG의SHA고정일반슬롯공통자산",
+      "priority": "P1",
+      "related_paths": [
+        "services/efsimulator-app/public/images/simulator/README.md",
+        "services/efsimulator-app/app/components/standard-card.tsx",
+        "services/efsimulator-app/tests/standard-artwork.test.mjs"
+      ],
+      "update_when": [
+        "별도검토된원본이미지교체시새파일/해시·연관경로·검증함께갱신;원격자동교체금지"
+      ],
+      "reviewed_in": "T044"
     },
     {
       "path": "services/efsimulator-app/scripts/build-verified.sh",
@@ -5400,6 +5492,34 @@
         "route segment 인코딩/회차·카드 문자열ID 정규화·잘못된 입력 경계 또는 production routing 동작 변경"
       ],
       "reviewed_in": "T033"
+    },
+    {
+      "path": "services/efsimulator-app/tests/simulator-prepare.test.mjs",
+      "role": "데이터준비의원자snapshot·N/S/A·고유문자열ID/9필드·미분류양의타입·현행옵션·무변경경계회귀",
+      "priority": "P1",
+      "related_paths": [
+        "services/efsimulator-app/lib/simulator/prepare.mjs",
+        "services/efsimulator-app/lib/draw-options.mjs",
+        "services/efsimulator-app/app/components/catalog-data.tsx"
+      ],
+      "update_when": [
+        "준비입력/출력·일치/오류/읽기전용경계변경"
+      ],
+      "reviewed_in": "T044"
+    },
+    {
+      "path": "services/efsimulator-app/tests/standard-artwork.test.mjs",
+      "role": "익명일반고정원본PNG의SHA256·시그니처·240x340크기회귀",
+      "priority": "P1",
+      "related_paths": [
+        "services/efsimulator-app/public/images/simulator/standard-card-170588-cdf8117dae82.png",
+        "services/efsimulator-app/public/images/simulator/README.md",
+        "services/efsimulator-app/app/components/standard-card.tsx"
+      ],
+      "update_when": [
+        "원본자산교체·고정해시/크기·표시분리계약변경"
+      ],
+      "reviewed_in": "T044"
     },
     {
       "path": "services/efsimulator-app/tsconfig.json",
