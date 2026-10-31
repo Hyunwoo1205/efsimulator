@@ -782,6 +782,24 @@ T017의2D전체기능범위를완료했다. 전체 `npm test`533/533이exit0으�
 
 상세 증거·원본/추출 자료·분석 스크립트는 저장소 밖에 있으며 원본 소스/자산·계정값을 Git/public dist에 추가하지 않았다. 개봉 모델·애니메이션·카메라·텍스처/효과의 실제 decode·재생과 정확한 타이밍, 웹 변환·사용 가능 범위는 계속 미해결이다.
 
+### 실제 2차 정적 분석 결과 (2026-11-01 KST)
+
+같은 IPA 전체 4,145,921,439bytes의 SHA256을 다시 계산해 위 입력 기준과 일치함을 확인했다. 네이티브의 직접 문자열·getter/초기화 명령에서 `++UE4+Release-4.26` 브랜치와 current-version `4.26.0` 필드의 강한 정적 근거를 확인했다. 이는 제공된 수정 iOS 실행파일의 정보이며 정확한 vendor fork/backport·런타임 값이나 공식 원본 IPA와의 동등성을 검증한 결과가 아니다.
+
+평문 global IoStore의 물리 block을 따라 이름27,275개와 스크립트 객체29,886개를 판독하고 전체 바이트 소비·name/outer/CDO 참조와 outer chain 비순환을 검증했다. 넓은 검색으로 선별한95개 객체에는 경기/보상 관련 항목도 있어 전부 개봉 전용이라고 분류하지 않는다. 네이티브 두 클래스의42+6=48개 고유 메서드는 NativeFuncs/FuncInfo 양쪽96행에서 global 객체와 정확히 연결됐고, 선택한4개 exec→wrapper 분기는 원래 명령을 다시 판독해 대조했다. chained pointer format 6의 offset 재배치를 해석한 것은 UE 컨테이너 암호화 해제가 아니다. reflected API 이름/객체 연결은 cooked 콘텐츠 디렉터리·Blueprint 본문·구체적인 모델/모션/카메라 자산 확보와 구분한다. 조립 chunk의 새 SHA256과 ZIP CRC를 확인했지만 원래 TOC chunk hash 알고리즘은 독립 검증하지 않았다.
+
+CARDBOX71개 cue에서159개 cue–파형 참조와 중복 제거한48개 파형을 연결했다. 선택한 ACB/AFS2 참조·파일 경계, HCA 헤더 CRC·채널/샘플레이트/샘플 수의 일치를 확인했으며 선택 파형에는 모두 `ciph=56` 표시가 있다. 이는 UE AES와 다른 CRI 음향 keycode 암호화 표시다.159는 독립 오디오 개수가 아니며 헤더 검증은 프레임 CRC·적합한 키·PCM 변환·실제 청취·cue 조건/랜덤/타이밍 검증을 뜻하지 않는다. CPK의 `.seq/.gani/.ask/.frig/.geom` 5개 표본은 경계 안에서 읽고 새 SHA256을 기록했으나 내부 모델·모션 변환은 수행하지 않았다.
+
+현재 CUE4Parse/FModel·UEViewer·Unreal 공식 도구와 CRI/vgmstream의 판독/변환 지원은 primary-source로 조사했다. 도구에 해당 형식의 코드가 있는 사실과 이번 IPA에서 실제 변환이 성공한 사실을 구분한다. .NET/FModel/UEViewer/vgmstream 기반 실제 자산 변환·게임 코드 실행·음향/장면 재생은 수행하지 않았다. callback slot과 virtual dispatch의 런타임 대상·정확한 시간/확률 의미, 암호화된 콘텐츠의 실제 자산 추출·decode와 웹3D/모바일 검증·배포는 계속 미해결이며 T018 전체는 진행 중이다.
+
+### 2차 비공개 증거 저장과 검증 범위
+
+[2차 분석 보고서](https://chatgpt.com/library?file_id=libfile_4ad74937d4ec8191a52a0ec9ad1545e3&account_id=personal)는 Library `libfile_4ad74937d4ec8191a52a0ec9ad1545e3` version0,17,361bytes, SHA256 `9203e00f3510a645295de696115cf4c0b251146be08a1910469220d364cbfe35`로 저장했다. [2차 분석 증거 ZIP](https://chatgpt.com/library?file_id=libfile_d5d82b63015c819198364afc2ed31214&account_id=personal)은 Library `libfile_d5d82b63015c819198364afc2ed31214` version0,334,430bytes·27members, 전량 ZIP CRC 통과, SHA256 `d1a0d88cb44fcc7c912b890848b8fff1893d12cdccce728b935b63bda4287f6b`다. 실제 저장 성공/exit0을 확인한 영수증이며 원본 IPA·실행파일·게임 자산·키/인증값을 Git/public dist에 추가하지 않았다. 상세 경로/주소·참조 그래프와 자체 분석 스크립트는 비공개 증거로 유지한다.
+
+global 저장 JSON과 새 입력 판독의 일치·전체 참조 검증 및 암호화 global/미지원 TOC/물리 경계 초과/잘못된 chunk 종류/미해결 CDO를 거부하는5개 메모리 변조 사례를 확인했다. audio의 ACB/AFS2/HCA 참조·헤더 검증과 native 명령 재판독은 정적 증거 검증이며 복호화·실제 디코딩/재생 검증이 아니다.
+
+이번 문서 반영 전 GitHub 기준382파일/329고유blob·5,699,939bytes를 수신해 전부 원래 size/Git blob SHA와 대조하고 전체 tree `fd73e15e5d33797198dfb3c9580cc0fa16b36276` 및 기준 commit `40b63035e07bc16c3bac3a28e6e2a5aac3817a84`와 정확히 일치함을 확인했다. 기준 관리검사는382파일/49작업/변경0, 전체 `npm test`는539통과/실패0/skip0·exit0이다. 실제 환경은 Node24.22.1/npm11.9.0이며 지정 Node24.19.0과 patch 차이가 있다. `fake-indexeddb`6.2.6은 기존 잠금 SHA512로 정상 `npm ci --ignore-scripts` 설치했고 제품 package/lock/source는 변경하지 않았다. 본문 2차 반영 후 관리검사 `npm run project:check -- --base 40b63035e07bc16c3bac3a28e6e2a5aac3817a84`는382파일/49작업/변경3경로로 통과했고, 전체 `npm test`는539통과/실패0/skip0·exit0으로 완료됐다. 검증 결과 문구와 공백/변경 범위를 마지막으로 대조하며 원격 commit/ref·내용과 CI는 실제 수행 후 확인한다. 이 로컬 결과를 앱 타입/공식 빌드·자산 변환·실제 재생 성공으로 확대하지 않는다.
+
 ### 비공개 증거 저장·로컬 검증
 
 비공개 분석 증거 묶음을 Library `libfile_1de670e04aa48191b523af5544076289` version0에 저장했다.313,786bytes·19members이며 ZIP CRC 검사가 통과했고 SHA256은 `d28c3b3fe69d523f68f9c685fa104a957eb9ba8047d1c9f19373b67c9836dbdf`다. 원본 IPA·실행파일·추출 게임 자산·타사 전체 소스·계정/인증값은 이 저장 영수증이나 Git/public dist에 포함하지 않는다.
@@ -796,15 +814,17 @@ T038 당시 APK 업로드 후 자료 확인을 요청한 이력은 보존하고,
 
 이번 저장소 영향은 AGENTS·WORKPLAN·ROADMAP·SIMULATOR_PLAN·FILE_SYNC의 범위/상태/근거 기록이다. 원본/추출 파일·비공개 분석 스크립트·상세 덤프는 저장소 밖에 둔다. 제품 renderer·모델/텍스처/리깅·압축/로더/3D fallback·모바일 측정·배포 자산 목록/사용 범위 기록은 후속 구현 때 경로를 확정하고 FILE_SYNC에 등록한다.
 
+이번 2차 반영은 WORKPLAN·ROADMAP·FILE_SYNC 세 파일만 수정한다. 아래 AGENTS/SIMULATOR_PLAN의 수정 표시는 1차 T018 이력이며, 2차 재검토에서는 기존 정적 분석/비공개 증거·확정 batch 재생 계약이 유효해 추가 변경이 불필요했다. 제품 코드·데이터/규칙·예약·사이트는 변경하지 않았다.
+
 ### 파일 최신화 검토
 
 | 파일 | 결과 | 근거 |
 | --- | --- | --- |
 | `AGENTS.md` | 수정 | C099~C100의 IPA 정적 분석·수정 구성 구분과 기존 제품/운영 경계 |
-| `docs/WORKPLAN.md` | 수정 | 실제 확보 IPA 기준·분석 순서/진행 상태·미확인 APK와 후속 3D 구분 |
-| `docs/ROADMAP.md` | 수정 | T048 완료→T018 진행 중 포인터와 최초 정적 분석 범위 |
+| `docs/WORKPLAN.md` | 수정 | 1차 입력/분석 이력 보존과 2차 native/global/audio·CPK 집계/한계·비공개 저장 영수증·실제 검증/현재 T018 진행 상태 |
+| `docs/ROADMAP.md` | 수정 | T048 완료→T018 진행 중 포인터 유지·2차 정적 판독 요약과 실제 변환/재생/웹3D 미완료 구분 |
 | `docs/SIMULATOR_PLAN.md` | 수정 | IPA 기반 개봉 코드/자산 분석과 현재 확정 batch/세션 보존 계약 |
-| `docs/FILE_SYNC.json` | 수정 | 위 5개 관리 파일의 역할·T018 검토 및 연관 경로 확인 |
+| `docs/FILE_SYNC.json` | 수정 | 1차 5개 검토 이력과 이번 3개 문서의 2차 분석/비공개 영수증 갱신 조건·기존 경로/우선순위/T018 검토 유지 |
 
 관리검사 `project:check`는382파일/49작업, 최초 기준 커밋 대비 변경5경로로 통과했고 전체 `npm test`는539통과/실패0·exit0으로 완료됐다. 위 비공개 증거 저장/무결성·분석 검증17개/자체Python7개 컴파일까지 확인했다. 분석 기록5파일은 같은 api-server-setup 브랜치의 `61edbf13c6849c1e6634d312c1ecc619d28c8652`에 정상 CAS 전진으로 반영했다. 실제 원격 ref를 확인하고 원격에서 가져온 전체 tree `92de6ede570fcc636bf3d729fc17fa71ca119a17`가 검증한 로컬 index의 전체 내용과 같음을 대조했다. 해당 커밋의 Catalog API checks(run41183388527)는 completed/success다. 이 원격/CI 근거는 해당 분석 기록 커밋에 한정하고 이후 정리 문서의 미래 SHA/CI를 선행 작성하지 않는다. 기록 전달과 로컬 검사 통과를 개봉 자산 decode·웹 재생 검증 또는 T018 전체 완료로 확대하지 않는다.
 
