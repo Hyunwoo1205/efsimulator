@@ -264,7 +264,7 @@
       "update_when": [
         "사용자 요구·작업 절차·검증 명령·제품 및 운영 원칙 변경"
       ],
-      "reviewed_in": "T048"
+      "reviewed_in": "T018"
     },
     {
       "path": "README.md",
@@ -1009,7 +1009,7 @@
       "update_when": [
         "파일 추가·삭제·이름 변경·역할/의존관계 변경·영향 검토"
       ],
-      "reviewed_in": "T048"
+      "reviewed_in": "T018"
     },
     {
       "path": "docs/FILE_SYNC_AUDIT.md",
@@ -1088,15 +1088,17 @@
       "update_when": [
         "단계 상태·현재/이전/다음 작업·완료 조건·추가 요구 변경"
       ],
-      "reviewed_in": "T048"
+      "reviewed_in": "T018"
     },
     {
       "path": "docs/SIMULATOR_PLAN.md",
-      "role": "완료된T017 2D/비복원·IndexedDB/복구·첨부정지화면근거·실제검증한계와후속T018계약",
+      "role": "완료된T017 2D/비복원·IndexedDB/복구와T018 IPA 개봉 코드/자산 정적 분석·후속3D의 범위/한계 계약",
       "priority": "P1",
       "related_paths": [
         "docs/ROADMAP.md",
         "docs/WORKPLAN.md",
+        "AGENTS.md",
+        "docs/FILE_SYNC.json",
         "docs/ARCHITECTURE.md",
         "docs/DEPLOYMENT.md",
         "docs/DATA_LIFECYCLE.md",
@@ -1131,7 +1133,7 @@
       "update_when": [
         "해당 범위/입력/완료조건·관계·권한/운영 근거 변경. reference의 과거 관측값은 덮어쓰지 않음"
       ],
-      "reviewed_in": "T048"
+      "reviewed_in": "T018"
     },
     {
       "path": "docs/WORKPLAN.md",
@@ -1173,7 +1175,7 @@
       "update_when": [
         "매 작업 착수·추가 요구·파일 변경·검증 결과·작업 종료"
       ],
-      "reviewed_in": "T048"
+      "reviewed_in": "T018"
     },
     {
       "path": "docs/reference/ARCHITECTURE_BEFORE_PROBABILITY_SCOPE.md",
