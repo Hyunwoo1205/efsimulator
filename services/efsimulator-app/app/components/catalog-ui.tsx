@@ -4,15 +4,15 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { playerGrade } from "../../lib/catalog-order.mjs";
 import { selectPackPreview } from "../../lib/pack-preview.mjs";
-import { dateOnly, dateTime, packPath, packTitle, playerPath, useCatalog, type Pack, type Player } from "./catalog-data";
+import { dateOnly, dateTime, packPath, packTitle, playerPath, simulatorPath, useCatalog, type Pack, type Player } from "./catalog-data";
 
 export function SiteShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   return <>
     <a className="skip-link" href="#main-content">본문으로 바로 가기</a>
-    <header className="site-header"><a className="brand" href="/packs" aria-label="eFsimulator 홈">ef<span>.</span><strong>eFsimulator<small>PLAYERS / PACKS / SIMULATOR</small></strong></a><nav className="main-nav" aria-label="주요 메뉴">{[{ href: "/packs", title: "선수팩" }, { href: "/players", title: "선수" }, { href: "/simulator", title: "시뮬레이터" }].map(item => <a href={item.href} key={item.href} aria-current={pathname.startsWith(item.href) ? "page" : undefined}>{item.title}</a>)}</nav></header>
+    <header className="site-header"><a className="brand" href="/packs" aria-label="eFsimulator 홈">ef<span>.</span><strong>eFsimulator</strong></a><nav className="main-nav" aria-label="주요 메뉴">{[{ href: "/packs", title: "PACKS", label: "선수팩" }, { href: "/players", title: "PLAYERS", label: "선수" }, { href: "/simulator", title: "SIMULATOR", label: "시뮬레이터" }].map(item => <a href={item.href} aria-label={item.label} key={item.href} aria-current={pathname.startsWith(item.href) ? "page" : undefined}>{item.title}</a>)}</nav></header>
     <main id="main-content">{children}</main>
-    <footer><a className="footer-brand" href="/packs">eFsimulator<span>.</span></a><p>eFootball 비공식 팬 프로젝트<br />게임 정보와 이미지는 각 권리자에게 귀속됩니다.</p><span className="footer-index">EXPLORE / COLLECT / SIMULATE</span></footer>
+    <footer><a className="footer-brand" href="/packs">eFsimulator<span>.</span></a><p>eFootball 비공식 팬 프로젝트 · 게임 정보와 이미지는 각 권리자에게 귀속됩니다.</p></footer>
   </>;
 }
 
@@ -73,7 +73,7 @@ export function PackArtwork({ pack }: { pack: Pack }) {
 }
 
 export function PackCard({ pack, ended, index = 0 }: { pack: Pack; ended: boolean; index?: number }) {
-  return <article className="pack-tile"><a className="pack-tile-link" href={packPath(pack.saleId)}><div className="pack-art"><span className="pack-number">{String(index + 1).padStart(2, "0")}</span><span className={`pack-status${ended ? " ended" : ""}`}>{ended ? "판매 종료" : "판매 중"}</span><PackArtwork pack={pack} /><span className="pack-art-label">PLAYER COLLECTION</span></div><div className="pack-content"><p className="pack-release">{dateOnly(pack.date)} 출시</p><h3>{packTitle(pack)}</h3><div className="pack-counts"><span>전체 <strong>{pack.totalPlayerCount}명</strong></span><span>특수 선수 <strong>{pack.playerCount}명</strong></span></div><p className="pack-end">{ended ? "판매 종료" : "판매 종료 예정"}<time dateTime={pack.endsAt}>{dateTime(pack.endsAt)}</time></p><span className="roster-button">구성과 선수 살펴보기 <span aria-hidden="true">↗</span></span></div></a></article>;
+  return <article className="pack-tile"><a className="pack-tile-link" href={packPath(pack.saleId)}><div className="pack-art"><span className="pack-number">{String(index + 1).padStart(2, "0")}</span><span className={`pack-status${ended ? " ended" : ""}`}>{ended ? "판매 종료" : "판매 중"}</span><PackArtwork pack={pack} /><span className="pack-art-label">PLAYER COLLECTION</span></div><div className="pack-content"><p className="pack-release">{dateOnly(pack.date)} 출시</p><h3>{packTitle(pack)}</h3><div className="pack-counts"><span>전체 <strong>{pack.totalPlayerCount}명</strong></span><span>특수 선수 <strong>{pack.playerCount}명</strong></span></div><p className="pack-end">{ended ? "판매 종료" : "판매 종료 예정"}<time dateTime={pack.endsAt}>{dateTime(pack.endsAt)}</time></p></div></a><div className="pack-card-actions"><a href={packPath(pack.saleId)}>구성과 선수 살펴보기 <span aria-hidden="true">↗</span></a><a className="pack-open-link" href={simulatorPath(pack.saleId)} aria-label={`${packTitle(pack)} ${ended ? "종료 팩 체험" : "팩 바로 열기"}`}>팩 바로 열기 <span aria-hidden="true">↗</span></a></div></article>;
 }
 
 export function Breadcrumb({ items }: { items: { href?: string; title: string }[] }) {

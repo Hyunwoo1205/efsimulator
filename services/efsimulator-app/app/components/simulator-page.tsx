@@ -2,8 +2,9 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { dateTime, packPath, packTitle, simulatorPath, useCatalog, type Pack, type Player, type DrawOptions } from "./catalog-data";
+import { dateTime, packPath, packTitle, useCatalog, type Pack, type Player, type DrawOptions } from "./catalog-data";
 import { PackArtwork, PlayerCard } from "./catalog-ui";
+import { PackPicker } from "./pack-picker";
 import { StandardCard } from "./standard-card";
 import { SimulatorResults, type DrawBatch } from "./simulator-results";
 import { prepareSimulatorPack } from "../../lib/simulator/prepare.mjs";
@@ -133,18 +134,17 @@ function SimulatorSelection({ chosenId }: { chosenId: string }) {
   if (session && pack && preparation.ready) { try { changed = session.poolFingerprint !== poolFingerprint(pack); } catch { changed = true; } }
   const ready = Boolean(preparation.ready && session && !restoring && !storageError && !changed && !busy && !pending && !replayId && !resetOpen);
   const options = session?.snapshot.drawOptions ?? pack?.drawOptions;
-  const groups = [{ key: "live", title: "판매 중인 선수팩", packs: live }, { key: "archive", title: "판매 종료 팩 체험", packs: archive }];
   const title = pack ? packTitle(pack) : session?.snapshot.packTitle ?? "선수팩";
   const initial = session?.initial ?? (pack ? { totalPlayerCount: pack.totalPlayerCount, specialPlayerCount: pack.playerCount, standardPlayerCount: pack.standardPlayerCount } : null);
   const availableIds = new Set(round?.remainingSpecialIds ?? pack?.players.map(player => player.id) ?? []);
   const displayPlayers = session?.snapshot.players ?? pack?.players ?? [];
 
   return <>
-    <section className="page-intro simulator-intro"><p className="eyebrow">PACK OPENING SIMULATOR</p><h1>한 번의 선택,<br /><span>다음 카드의 순간.</span></h1><p>구입 확인 없이 바로 추첨하세요. 진행 상황은 이 기기와 브라우저에 저장됩니다.</p></section>
+    <section className="page-intro simulator-intro"><h1 className="display-title">PACK OPENING SIMULATOR</h1></section>
     <section className="simulator-layout sim-play-layout">
-      <aside className="simulator-picker"><div className="section-heading"><div><p className="eyebrow">CHOOSE A COLLECTION</p><h2>선수팩 선택</h2></div></div>
-        {groups.map(group => <section className={`simulator-pack-group ${group.key}`} key={group.key}><label htmlFor={`simulator-pack-${group.key}`}>{group.title}<span>{group.packs.length}팩</span></label><select disabled={busy || Boolean(pending)} id={`simulator-pack-${group.key}`} value={group.packs.some(item => item.saleId === chosenId) ? chosenId : ""} onChange={event => window.location.assign(event.target.value ? simulatorPath(event.target.value) : "/simulator")}><option value="">{group.title} 선택</option>{group.packs.map(item => <option key={item.saleId} value={item.saleId}>{packTitle(item)}</option>)}</select></section>)}
-        <p className="picker-note">가상 코인은 잔액 제한 없이 사용량만 기록합니다. 종료 팩도 연습할 수 있습니다.</p><a className="back-to-packs" href="/packs">모든 선수팩 살펴보기 ↗</a>
+      <aside className="simulator-picker"><div className="section-heading"><h2>선수팩 선택</h2></div>
+        <PackPicker live={live} archive={archive} chosenId={chosenId} disabled={busy || Boolean(pending)} />
+        <a className="back-to-packs" href="/packs">모든 선수팩 살펴보기 ↗</a>
       </aside>
       <div className="simulator-preview">
         {!chosenId ? <div className="simulator-welcome"><span className="simulator-welcome-mark" aria-hidden="true">ef.</span><h2>어떤 선수팩을 열어볼까요?</h2><p>판매 중 또는 판매 종료 팩을 선택하세요.</p>{!catalog && <button className="text-button" onClick={refresh}>{loading ? "자료 확인 중" : "다시 불러오기"}</button>}</div> : !pack && !session ? <div className="state-panel" role="status"><h2>{loading || restoring ? "선수팩을 확인하고 있어요." : "선수팩을 불러오지 못했어요."}</h2><p>{storageError || error || "목록에서 다른 팩을 선택하거나 다시 불러와 주세요."}</p><button className="primary-button" disabled={loading} onClick={refresh}>다시 불러오기</button></div> : <div className="simulator-selected">
@@ -163,9 +163,9 @@ function SimulatorSelection({ chosenId }: { chosenId: string }) {
           {resetOpen && <div className="sim-reset-confirm" role="group" aria-label="팩 리셋 확인"><p>현재 팩의 전체 풀을 새 회차로 복원할까요? 이전 획득 내역과 누적 코인 사용량은 보존됩니다.</p><button autoFocus className="primary-button" disabled={busy} onClick={() => { void execute("reset"); }}>새 회차 시작</button><button className="text-button" disabled={busy} onClick={() => setResetOpen(false)}>취소</button></div>}
           <section className="sim-pool-section"><div className="sim-pool-heading"><h3>특수 선수 명단</h3><button type="button" className="text-button" aria-expanded={rosterOpen} aria-controls="sim-special-roster" onClick={() => setRosterOpen(value => !value)}>{rosterOpen ? "명단 접기" : "특수 선수 모두 보기"} {rosterOpen ? "−" : "+"}</button></div>
             {rosterOpen && <div id="sim-special-roster" className="simulator-roster-grid">{displayPlayers.map(player => <div className={`sim-roster-card ${availableIds.has(player.id) ? "" : "is-acquired"}`} key={player.id}><PlayerCard player={player} />{!availableIds.has(player.id) && <span className="sim-acquired-tag">획득</span>}</div>)}</div>}
-            {initial && initial.standardPlayerCount > 0 && <div className="simulator-standard-preview"><StandardCard /><div><h3>일반 선수 {round?.remainingStandardCount ?? initial.standardPlayerCount}명 남음</h3><p>일반 선수는 공통 카드와 잔여 수량으로 표시합니다. 명단에는 특수 선수만 표시합니다.</p></div></div>}
+            {initial && initial.standardPlayerCount > 0 && <div className="simulator-standard-preview"><StandardCard /><div><h3>일반 선수 {round?.remainingStandardCount ?? initial.standardPlayerCount}명 남음</h3></div></div>}
           </section>
-          {session && session.batches.length > 0 && <details className="sim-history"><summary>획득 내역 · 총 {session.totals.drawCount}명</summary><p>회차를 리셋해도 이전 기록은 남습니다.</p><ol>{session.batches.toReversed().map(batch => <li key={batch.id}><div><strong>{batch.roundNumber}회차 · {batch.count}명</strong><small>{dateTime(batch.createdAt)} · {batch.coinCost} 코인</small><p>{batch.results.map(result => result.kind === "special" ? session.snapshot.players.find(player => player.id === result.cardId)?.name ?? "특수 선수" : "일반 선수").join(" · ")}</p></div><button type="button" className="text-button" disabled={busy || Boolean(pending)} onClick={() => { setAnimateId(null); setReplayId(batch.id); }}>다시 보기</button></li>)}</ol></details>}
+          {session && session.batches.length > 0 && <details className="sim-history"><summary>획득 내역 · 총 {session.totals.drawCount}명</summary><ol>{session.batches.toReversed().map(batch => <li key={batch.id}><div><strong>{batch.roundNumber}회차 · {batch.count}명</strong><small>{dateTime(batch.createdAt)} · {batch.coinCost} 코인</small><p>{batch.results.map(result => result.kind === "special" ? session.snapshot.players.find(player => player.id === result.cardId)?.name ?? "특수 선수" : "일반 선수").join(" · ")}</p></div><button type="button" className="text-button" disabled={busy || Boolean(pending)} onClick={() => { setAnimateId(null); setReplayId(batch.id); }}>다시 보기</button></li>)}</ol></details>}
           {pack && <a className="text-button sim-pack-detail" href={packPath(pack.saleId)}>팩 상세 보기 ↗</a>}
           <p className="sim-storage-note">이 기기·브라우저에 저장됩니다. 브라우저 데이터 삭제나 기기 변경 시 기록을 복구할 수 없습니다.</p>
         </div>}

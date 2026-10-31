@@ -1,4 +1,4 @@
-<!-- project-state: {"stage":"R6","previous":"T046","current":"T018","next":"없음"} -->
+<!-- project-state: {"stage":"R6","previous":"T046","current":"T047","next":"T018"} -->
 
 # efsimulator 작업 계획과 이력
 
@@ -7,8 +7,8 @@
 ## 현재 작업과 매 작업 갱신
 
 - 이전 작업: T046 — 10명 결과 위쪽 우선·900코인 아래 계속하기 추가/하단 유지·헤더/결과 창 높이와 단일 결과 보존을 구현했다.539회귀/타입/공식빌드·v15 public·실제10명 초점/버튼/기록·v14와동일크기/단일·원격380blob/구현CI2건을 확인했다. 관찰은1363×936이며 모바일 실기기/넘치는 창은 재현하지 못한 범위를 구분한다.
-- 현재 작업: T018 — 예정. 완료된 2D 결과/세션을 재생할 3D·APK 정적 분석·모바일 성능이며 APK 미업로드·3D 미구현이다. 영상 실제 프레임/3D 세부는 미확인으로 유지한다.
-- 다음 작업: 없음 — T018 이후의 새 작업 범위는 별도 결정한다.
+- 현재 작업: T047 — 중앙 eFootball 메뉴·간결한 페이지 제목·팩 바로 열기·대표 카드 이미지 선택창 구현과 검증/배포 진행 중.
+- 다음 작업: T018 — 사용자 IPA/APK 제공 후 파일 구조·정적 분석 가능 범위 확인과 3D 후속 검토. 파일 미제공 상태다.
 - 최근 유지보수: T039 — 신규6팩·93명과 원본 누적·가공·판매 상태를 갱신했다. 현재 가공163명/13팩·판매중9/종료4이며 저장본/API/세 사이트/구현 커밋·실제CI 검증을 완료했다. 제품 T017/T018 범위와 T038 미확인 항목은 보존한다.
 - 현재 조건: T043이 T041의 선수 정렬을 화면 범위별로 구분한다. Epic5→Show Time8→Trend3→Highlight6 우선, 팩 안 선수는 등급 안 OVR순, 전체 선수는 등급 안 확인 날짜 최신순→OVR순이며 최초 연결팩 날짜를 사용한다. 팩은 등급 안 날짜 최신순이다. exact raw 타입·원본·가공/API 계약·가격100/900·팩 구성/카드 표시와 실제 앱 public·API/admin/viewer owner-private 경계를 보존한다.
 
@@ -20,6 +20,10 @@ C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_B
 
 | 조건 ID | 최신 결정 | 영향 단계 / 선행 조건 / 처리 순서 | 상태 |
 | --- | --- | --- | --- |
+| C094 | 상단 메뉴를 중앙으로 이동하고 기존 eFootball 폰트로 표시 | T047/R6; 기존 폰트 재사용→반응형 메뉴/현재 페이지 표시→화면 검증 | 진행 중 |
+| C095 | 큰 한국어 홍보 제목·중복 설명을 제거하고 기존 영문 페이지명을 eFootball 큰 제목으로 표시 | T047/R6; 팩/선수/시뮬레이터 제목 정리·필수 오류/확인 안내 보존 | 진행 중 |
+| C096 | 팩 카드 하단을 구성 상세와 해당 팩 시뮬레이터 바로 열기로 분리 | T047/R6; 정확한 saleId 링크→판매중/종료 체험 연결 확인 | 진행 중 |
+| C097 | 시뮬레이터의 텍스트 팩 선택을 이름·기존 대표 카드 최대3장 이미지 선택창으로 변경 | T047/R6; 기존 PackArtwork/타입권위·busy/pending 잠금→모달 키보드/스크롤/선택 확인 | 진행 중 |
 | C092 | 10개 결과는 정렬된 첫 카드가 보이는 창 맨 위부터 표시; 1개 결과 수정 없음 | T046/R6; 하단 focus의 자동 스크롤 제거→10명 위쪽 초점/scrollTop0→진입·skip/replay 확인 | 완료:539회귀/v15·10명 위쪽 초점/scroll0·단일 기존 초점/1버튼/동일크기 확인; 모바일 넘침 실측은 미수행 |
 | C093 | 10개 결과의900코인 아래 계속하기 추가, 하단도 유지해 총2개; 기존 공간만 사용해 창 높이 증가 없음 | T046/R6; 헤더 여백 내 배치·같은 확인 handler→상/하단/공간·기록 검증 | 완료:상하단2버튼/같은 확인·v14와정확동일헤더/창높이·원격/구현CI 확인 |
 | C088 | 자체 2D 개봉 후반 카드가 점차 하얗게 밝아지며 빛이 바깥으로 퍼지는 효과 | T045/R6; 기존 확정 batch·skip/동작줄이기→단발 발광/팽창→같은 결과 | 구현/계산스타일 전이 확인; 실제 흰색 픽셀 캡처는 미확인, 게임3D/시간 재현 아님 |
@@ -2270,6 +2274,55 @@ API 소스 `64bfe2954194a6f19b9d0b237f37f710854a689f`의 비공개 배포 `appgd
 | `services/catalog-view/app/page.tsx` | 수정 | 전역 선수 결과 설명을 최신날짜→OVR 기준으로 정정 |
 | `services/catalog-view/README.md` | 수정 | viewer 전역 탐색/팩 안 명단의 정렬 계약 구분 |
 
+
+## T047 — 중앙 메뉴·간결한 제목과 이미지 선수팩 선택
+
+- 단계: R6
+- 상태: 진행 중
+- 이전: T046
+- 다음: T018
+
+### 요구·선행 조건·처리 순서
+
+2026-10-31 KST 사용자는 상단 메뉴 중앙 이동/eFootball 폰트(C094), 페이지별 홍보 제목과 설명 제거/영문 페이지명 큰 제목(C095), 팩 카드 하단의 구성 보기/해당 팩 바로 열기(C096), 이름과 대표 카드 이미지로 고르는 선택창(C097)을 요청했다. 기준은 api-server-setup `3602ce092821edcf996c97a9415d1587ea5f3b24`이며 시작 worktree는 깨끗했다. 실제 앱 Site owner/public을 확인하고 기존 Site 소스를 공식 helper로 열어 기준 앱73파일 중 이번 수정분 이외의 차이가 없음을 확인했다. API/viewer·가격100/900·원본·가공·publication·규칙/예약을 변경하지 않는다.
+
+순서는 기존 계약/소스 확인→공통 제목·메뉴/팩 링크와 선택창 병행 구현→기능/전체 회귀·관리·타입/공식 빌드→같은 public Site 배포·실제 링크/선택/초점/이미지 검증→같은 GitHub 브랜치 정상 반영·원격 파일/실제CI 확인이다. IPA 질문은 파일 미제공 상태의 분석 가능 범위 안내이며 T018의 실제 디컴파일/3D 완료가 아니다.
+
+### 구현과 검증 상태
+
+메뉴는 PACKS/PLAYERS/SIMULATOR를 eFootballSans로 페이지 중앙에 표시하고 한국어 접근성 이름을 유지한다. PLAYER COLLECTIONS/PLAYER CARDS/PACK OPENING SIMULATOR가 eFootballStencil의 h1이다. 중복 설명과 홍보 문구를 정리하되 자료 오류·리셋 확인·저장 한계는 남긴다. 팩 카드의 상세와 시뮬레이터 링크는 중첩 링크 없이 정확한 saleId로 연결한다.
+
+PackPicker는 native dialog로 판매중/종료 체험과 검색·선택 상태를 표시한다. 기존 API playerType/PackArtwork의 최고 등급 OVR 상위 최대3장을 재사용한다. Escape/닫기와 launcher 초점 복귀·배경 스크롤 잠금·반응형3/2/1열을 제공하고 busy/pending 전환 잠금을 유지한다. 실제 엔진·난수·원자 저장·비복원/리셋·결과는 수정하지 않는다.
+
+구현 후 앱 TypeScript·전체539회귀·관리검사382파일/48작업/13변경경로·공식 Sites Worker 빌드가 exit0으로 통과했다. 내부 managed preview는 vinext 개발 서버가 출력된 뒤 health timeout으로 종료됐고 status=stopped였다. 별도 서버/권한 변경으로 대체하지 않고 배포본에서 브라우저를 확인한다. 배포/실제 브라우저·GitHub/CI는 확인 후 이곳에 기록한다. Node24.22.1/npm11.9.0 환경이며 이전 도구 활성화 스크립트와 네트워크 정책 파일/환경상태 도구가 이 세션에 없다. 기존 연결/공식 Sites 경로를 사용하고 환경이나 네트워크 정책을 변경하지 않는다.
+
+실제 앱v16은 public을 유지한 같은 Site에서 `2026-10-31T06:54:41.901434Z`에 succeeded다. Site 소스 `1baca5bd8c9b4ed6d72e5f960a7c206ee7043b64`, version `appgprj_6ae13ac0e9d88191978e6953f7286966~appgver_2a78f2b657dc8191929b05171f3c1315`, deployment `appgdep_6ae590a2eac0819193a13d7cb6aea749`, archive SHA256 `955d9a0e15994cce49cf8f4fc2edf24c99ed58a2f927603cb07fb62b58aa481d`/83members다. canonical 앱75파일과 Site 소스는 바이트 차이0으로 확인했다.
+
+실제 익명 브라우저1363×936에서 중앙 메뉴/eFootballSans와 큰 eFootballStencil 제목을 확인했다. 헤더 중심674px와 메뉴 중심673.9921875px이며 가로 넘침은 없었다. 팩 목록은9/4/163 자료를 유지했고 WPOTY 바로 열기 링크가 정확한 saleId 시뮬레이터로 이동했다. 선택창의9판매중/4종료 체험·WPOTY 대표Kane/Yamal/Mbappé·선택상태·Kane검색·빈검색에서Escape닫기/launcher초점·body overflow 복구를 확인했다. 검색값이 있을 때 Chrome search의 첫Escape는 검색을 비우며 다음Escape가 닫는다.27개 대표이미지는 실제 complete/naturalWidth>0으로 확인했다. 종료 팩 Magical Dribblers를 이미지로 선택해 정확한 회차URL·종료체험·100/900 버튼이 표시됨을 확인했다. 추첨은 실행하지 않아 이 검증이 새 획득 기록을 만들지 않았다. 모바일 실기기·좁은 뷰포트 실측은 미수행이며 반응형CSS 검토와 구분한다. GitHub/실제CI는 진행 중이다.
+
+### 파일 최신화 검토
+
+| 파일 | 결과 | 근거 |
+| --- | --- | --- |
+| `AGENTS.md` | 수정 | 최신 사용자 UI 범위·원본/가격/세션 불변과 IPA 파일 제공 후 분석 경계 |
+| `docs/WORKPLAN.md` | 수정 | C094~097·현재/다음·선행조건/검증과 실제 관측 상태 |
+| `docs/ROADMAP.md` | 수정 | T047현재/T018후속 포인터 |
+| `docs/FILE_SYNC.json` | 수정 | 신규 선택창/CSS 등록·변경 경로/연관과 T047검토 |
+| `docs/SIMULATOR_PLAN.md` | 수정 | 이미지 선택/정확 saleId와 저장/엔진 범위 보존 |
+| `services/efsimulator-app/README.md` | 수정 | 중앙 메뉴/영문 제목·두 링크와 이미지 선택창 사용 |
+| `services/efsimulator-app/public/fonts/README.md` | 수정 | 기존 폰트 UI재사용과 현재 앱 audience 문서 권위 |
+| `services/efsimulator-app/app/components/catalog-ui.tsx` | 수정 | 중앙 영문 메뉴/한국어 접근성·팩 두 링크·공통 artwork 재사용 |
+| `services/efsimulator-app/app/components/catalog-pages.tsx` | 수정 | 큰 영문 제목·홍보/중복 설명 제거·상세/검색/명단 유지 |
+| `services/efsimulator-app/app/components/simulator-page.tsx` | 수정 | 영문 제목·선택창 launcher 연결과 busy/pending/기존 실행 유지 |
+| `services/efsimulator-app/app/components/pack-picker.tsx` | 수정 | 신규 native dialog·판매상태/검색·대표이미지·URL선택·초점/스크롤 |
+| `services/efsimulator-app/app/components/pack-picker.css` | 수정 | 신규 반응형 모달·대표카드3장·선택/초점 상태 |
+| `services/efsimulator-app/app/globals.css` | 수정 | 중앙 메뉴/eFootball큰제목·팩 두 링크·좁은화면 대응 |
+| `services/efsimulator-app/lib/pack-preview.mjs` | 검토 결과 변경 불필요 | 기존 최고 확인 등급 OVR 최대3 규칙 재사용 |
+| `services/efsimulator-app/lib/simulator/storage.mjs` | 검토 결과 변경 불필요 | 추첨/명령/원자저장·이전 진행 기록 불변 |
+| `services/efsimulator-app/lib/simulator/session.mjs` | 검토 결과 변경 불필요 | 가격/난수/풀/리셋 전이 불변 |
+| `config/catalog-automation.json` | 검토 결과 변경 불필요 | 시간별수집·발행·audience대상 불변 |
+| `services/catalog-api/policy/rules.lock.json` | 검토 결과 변경 불필요 | 원본/가공/API변경 없음·규칙채택/재발행 불필요 |
+| `data/updates/catalog-latest.json` | 검토 결과 변경 불필요 | 데이터 갱신이 아닌 앱UI변경으로 기존 요약영수증 보존 |
 
 ## T046 — 10명 결과의 위쪽 우선 표시와 기존 공간의 계속하기
 

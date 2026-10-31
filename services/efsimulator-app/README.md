@@ -23,6 +23,12 @@
 
 초기 표시 위치와 버튼 배치의 실제 검증·배포·원격/CI 완료 범위는 WORKPLAN T046을 따른다. 카드 순서·저장된 batch·비용·잔여풀·재생/건너뛰기의 추첨 동작은 T017/T045 계약을 유지한다.
 
+## T047 탐색과 이미지 선수팩 선택
+
+상단 PACKS / PLAYERS / SIMULATOR 메뉴는 페이지 중앙에 기존 eFootballSans로 표시하고 페이지 제목은 eFootballStencil을 사용한다. 장식용 한국어 홍보 제목과 중복 설명은 제거한다. 팩 카드의 두 하단 링크는 구성 상세와 해당 saleId의 시뮬레이터로 연결한다.
+
+`pack-picker.tsx`와 `pack-picker.css`는 판매중/종료 체험·검색·선택 상태를 가진 native dialog를 제공한다. 기존 PackArtwork의 대표 등급 OVR 상위 최대3장을 재사용하며 하위 등급을 채우지 않는다. Escape/닫기·초점 복귀·배경 스크롤 잠금과 좁은 화면의 단일열 선택을 제공한다. busy/pending 상태의 팩 전환 잠금과 기존 추첨/저장은 유지한다.
+
 # eFsimulator 실제 앱
 
 선수팩과 선수 탐색, 별도 시뮬레이터 진입 페이지를 제공하는 실제 제품 서버다. 검토용 catalog-view와 Site·소스를 분리한다.
