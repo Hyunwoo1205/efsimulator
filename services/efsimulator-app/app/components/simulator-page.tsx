@@ -142,7 +142,7 @@ function SimulatorSelection({ chosenId }: { chosenId: string }) {
   return <>
     <section className="page-intro simulator-intro"><h1 className="display-title">PACK OPENING SIMULATOR</h1></section>
     <section className="simulator-layout sim-play-layout">
-      <aside className="simulator-picker"><div className="section-heading"><h2>선수팩 선택</h2></div>
+      <aside className="simulator-picker">
         <PackPicker live={live} archive={archive} chosenId={chosenId} disabled={busy || Boolean(pending)} />
         <a className="back-to-packs" href="/packs">모든 선수팩 살펴보기 ↗</a>
       </aside>

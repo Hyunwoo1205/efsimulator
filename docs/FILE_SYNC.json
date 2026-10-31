@@ -264,7 +264,7 @@
       "update_when": [
         "사용자 요구·작업 절차·검증 명령·제품 및 운영 원칙 변경"
       ],
-      "reviewed_in": "T047"
+      "reviewed_in": "T048"
     },
     {
       "path": "README.md",
@@ -1009,7 +1009,7 @@
       "update_when": [
         "파일 추가·삭제·이름 변경·역할/의존관계 변경·영향 검토"
       ],
-      "reviewed_in": "T047"
+      "reviewed_in": "T048"
     },
     {
       "path": "docs/FILE_SYNC_AUDIT.md",
@@ -1088,7 +1088,7 @@
       "update_when": [
         "단계 상태·현재/이전/다음 작업·완료 조건·추가 요구 변경"
       ],
-      "reviewed_in": "T047"
+      "reviewed_in": "T048"
     },
     {
       "path": "docs/SIMULATOR_PLAN.md",
@@ -1131,7 +1131,7 @@
       "update_when": [
         "해당 범위/입력/완료조건·관계·권한/운영 근거 변경. reference의 과거 관측값은 덮어쓰지 않음"
       ],
-      "reviewed_in": "T047"
+      "reviewed_in": "T048"
     },
     {
       "path": "docs/WORKPLAN.md",
@@ -1173,7 +1173,7 @@
       "update_when": [
         "매 작업 착수·추가 요구·파일 변경·검증 결과·작업 종료"
       ],
-      "reviewed_in": "T047"
+      "reviewed_in": "T048"
     },
     {
       "path": "docs/reference/ARCHITECTURE_BEFORE_PROBABILITY_SCOPE.md",
@@ -4769,7 +4769,7 @@
       "update_when": [
         "실제 앱 페이지/데이터/API 연동·보안 경계·표시 metadata 또는 공식 Sites 빌드/배포 계약 변경"
       ],
-      "reviewed_in": "T047"
+      "reviewed_in": "T048"
     },
     {
       "path": "services/efsimulator-app/app/api/v1/[[...path]]/route.ts",
@@ -4870,7 +4870,7 @@
       "update_when": [
         "팩/세션상태·명령/복구·UI/접근성·잔여/획득표시흐름변경"
       ],
-      "reviewed_in": "T047"
+      "reviewed_in": "T048"
     },
     {
       "path": "services/efsimulator-app/app/components/simulator-results.tsx",
@@ -6035,7 +6035,7 @@
     },
     {
       "path": "services/efsimulator-app/app/components/pack-picker.tsx",
-      "role": "팩명/대표최대3장이미지의native dialog·검색/판매상태·URL선택·초점/스크롤제어",
+      "role": "단일선수팩선택진입·선택팩그룹기본·대표최대3장native dialog·검색/판매상태·URL선택·초점/스크롤",
       "priority": "P1",
       "related_paths": [
         "services/efsimulator-app/app/components/simulator-page.tsx",
@@ -6047,11 +6047,11 @@
       "update_when": [
         "팩선택UI·모달/접근성·검색/선택상태·대표이미지표시변경"
       ],
-      "reviewed_in": "T047"
+      "reviewed_in": "T048"
     },
     {
       "path": "services/efsimulator-app/app/components/pack-picker.css",
-      "role": "팩이미지선택창·launcher·대표3장/선택상태와3/2/1열반응형스타일",
+      "role": "단일선수팩선택버튼·대표3장/선택상태와3/2/1열모달반응형스타일",
       "priority": "P1",
       "related_paths": [
         "services/efsimulator-app/app/components/pack-picker.tsx",
@@ -6060,7 +6060,7 @@
       "update_when": [
         "팩선택창배치/카드미리보기·반응형/초점표시변경"
       ],
-      "reviewed_in": "T047"
+      "reviewed_in": "T048"
     }
   ]
 }

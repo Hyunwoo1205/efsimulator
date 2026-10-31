@@ -35,14 +35,15 @@ export function PackPicker({ live, archive, chosenId, disabled }: { live: Pack[]
     setOpen(false);
   }
 
-  function launch(key: Group, button: HTMLButtonElement) {
+  function launch(button: HTMLButtonElement) {
     if (disabled) return;
     launcher.current = button;
-    setGroup(key); setQuery(""); setOpen(true);
+    setGroup(archive.some(pack => pack.saleId === chosenId) || !live.length ? "archive" : "live");
+    setQuery(""); setOpen(true);
   }
 
   return <>
-    <div className="visual-pack-launchers">{groups.map(item => <button className="visual-pack-launcher" key={item.key} type="button" disabled={disabled || !item.packs.length} aria-haspopup="dialog" onClick={event => launch(item.key, event.currentTarget)}><span>{item.title}<small>{item.packs.length}팩</small></span><strong>이미지로 선택 <span aria-hidden="true">↗</span></strong></button>)}</div>
+    <button className="visual-pack-launcher" type="button" disabled={disabled || !live.length && !archive.length} aria-haspopup="dialog" onClick={event => launch(event.currentTarget)}><span>선수팩 선택</span><span aria-hidden="true">↗</span></button>
     <dialog ref={dialog} className="pack-picker-dialog" aria-labelledby={headingId} onCancel={() => setOpen(false)} onClose={() => { setOpen(false); launcher.current?.focus({ preventScroll: true }); }} onClick={event => { if (event.target === event.currentTarget) close(); }}>
       <div className="pack-picker-panel">
         <header className="pack-picker-heading"><h2 id={headingId}>선수팩 선택</h2><button autoFocus type="button" className="pack-picker-close" aria-label="선수팩 선택 닫기" onClick={close}>닫기 <span aria-hidden="true">×</span></button></header>
