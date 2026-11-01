@@ -7,7 +7,7 @@
 ## 현재 작업과 매 작업 갱신
 
 - 이전 작업: T048 — 단일 ‘선수팩 선택’ 버튼으로 통합하고 판매중/종료 전환은 창 안에 유지했다.539회귀·관리/타입/공식빌드·v17 실제 단일버튼/탭/선택복귀/초점·원격 동일tree와 구현CI2건 성공을 확인했다.
-- 현재 작업: T018 — 진행 중. 확보 IPA의 네이티브 공급 경로를 정적으로 추적해 암호화 UE 컨테이너26개를 mount하고 개봉 관련 UE 표본3개와 HCA48개를 실제 판독/변환했다. C102로 선수별 3D 모델·모션 대응/추출 P1~P5 계획을 추가했으며 해당 선수별 작업은 미착수다. 전체 자산·원본 소스 복구/장면 재생·APK 버전 비교·웹3D 구현/배포는 미수행이다.
+- 현재 작업: T018 — 진행 중. C103 계속 지시로 선수별 분석에 실제 착수해 원본24,203 Player↔Appearance ID를 전수 연결하고 얼굴·몸·훈련복3메시 GLB/PSK와 대표 얼굴 diffuse PNG1개를 추출했다. P1~P3진행/P4결합재생미완료/P5미착수다. 기존 UE26개 mount/개봉표본·WAV48 성과를 유지하며 전체선수·고유모션/원본소스 완전복구·APK비교·웹3D구현/배포는 미완료다.
 - 다음 작업: 없음 — T018 이후 범위는 별도 결정한다.
 - 최근 유지보수: T039 — 신규6팩·93명과 원본 누적·가공·판매 상태를 갱신했다. 현재 가공163명/13팩·판매중9/종료4이며 저장본/API/세 사이트/구현 커밋·실제CI 검증을 완료했다. 제품 T017/T018 범위와 T038 미확인 항목은 보존한다.
 - 현재 조건: T043이 T041의 선수 정렬을 화면 범위별로 구분한다. Epic5→Show Time8→Trend3→Highlight6 우선, 팩 안 선수는 등급 안 OVR순, 전체 선수는 등급 안 확인 날짜 최신순→OVR순이며 최초 연결팩 날짜를 사용한다. 팩은 등급 안 날짜 최신순이다. exact raw 타입·원본·가공/API 계약·가격100/900·팩 구성/카드 표시와 실제 앱 public·API/admin/viewer owner-private 경계를 보존한다.
@@ -16,11 +16,12 @@
 
 ## 최신 추가 조건과 이전 조건의 적용
 
-C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_BEFORE_PROBABILITY_SCOPE.md)에 보존한다. 관리 최신화·ID/근거·실패 보존·접근 거부 우회 금지·무료 우선·운영 승인 분리 원칙은 계속 적용한다. 범위 결정은 날짜별 이력이며 현재 범위·완료 정책은 최신 C102의 선수별 모델/모션 추출 계획과 C099~C101의 IPA 자료/실제 분석, C094~C098의 UI 결정, C084~C087·C081~C083·C080·C079·C078·C077와 C071~C075의 사용자 결정을 T037/C070 제안보다 우선하고 C069/T036의 자동 갱신 절차를 적용하며 API 완료/정상 반영 정책 C063~C064를 유지한다. 전체 수집과 사이트 범위를 혼동하지 않는다.
+C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_BEFORE_PROBABILITY_SCOPE.md)에 보존한다. 관리 최신화·ID/근거·실패 보존·접근 거부 우회 금지·무료 우선·운영 승인 분리 원칙은 계속 적용한다. 범위 결정은 날짜별 이력이며 현재 범위·완료 정책은최신 C103의 선수별 실제 분석 계속과 C102의 모델/모션 추출 계획, C099~C101의 IPA 자료/실제 분석, C094~C098의 UI 결정, C084~C087·C081~C083·C080·C079·C078·C077와 C071~C075의 사용자 결정을 T037/C070 제안보다 우선하고 C069/T036의 자동 갱신 절차를 적용하며 API 완료/정상 반영 정책 C063~C064를 유지한다. 전체 수집과 사이트 범위를 혼동하지 않는다.
 
 | 조건 ID | 최신 결정 | 영향 단계 / 선행 조건 / 처리 순서 | 상태 |
 | --- | --- | --- | --- |
-| C102 | 선수별 3D 모델 및 선수 모션 추출을 작업 계획에 포함 | T018/R6; 선수/카드/게임 자산 ID 대응→모델/의존성 추출→개봉·입장·경기 및 공용/고유 모션 구분→대표 선수 결합 검증→대상 확대 | 계획 반영; P1~P5 선수별 작업 미착수. 기존 PSA는 선수 고유/공용 여부 미확인 |
+| C103 | C102 계획 뒤 작업 계속 지시로 선수별 자료의 실제 분석/표본 추출에 착수 | T018/R6; 원본/수정 ID·자산 대응→검증된 geometry/texture 표본→context/모션·rig 연결→대표 결합 검증→확인 범위 확대 | P1~P3진행: ID전수join/3메시GLB·PSK/얼굴PNG1개·정적참조; P4동적결합미완료/P5미착수, 선수고유판정미확인 |
+| C102 | 선수별 3D 모델 및 선수 모션 추출을 작업 계획에 포함 | T018/R6; 선수/카드/게임 자산 ID 대응→모델/의존성 추출→개봉·입장·경기 및 공용/고유 모션 구분→대표 선수 결합 검증→대상 확대 | 당시 계획 반영/미착수 이력; 이후 C103실제착수. 기존 PSA의 선수 고유/공용 여부는 계속 미확인 |
 | C101 | 암호화된 코드 추출/분석 작업의 실제 진행과 다운로드 완료 후 재개 요청 | T018/R6; 같은 원본 무결성 재확인→실행파일/UE/CRI 암호화 계층 구분→공급 경로의 정적 추적→실제 컨테이너/음향 검증→비공개 결과 보존 | UE26개 mount·3package 엄격 판독·HCA48개 전체 decode/WAV 추출 확인; 실제 장면 재생·원본 소스 완전 복구·웹3D 완료 아님 |
 | C099 | 사용자가 개인용 Drive에 IPA/APK를 제공했으며 두 파일은 서로 다른 버전이라고 명시 | T018/R6; 실제 확보 파일의 해시·앱/빌드 버전·무결성 고정→파일별 독립 분석→확보 뒤 버전 차이를 구분해 비교 | IPA 4,145,921,439bytes·11.1.1/11.1.110·22,040 ZIP 항목 CRC 통과 확인; APK 원본 다운로드/내부 버전 비교 미확인 |
 | C100 | IPA 분석 계획 승인 후 분석 작업 시작 요청 | T018/R6; 개봉 코드 추적과 자산 판독 병행→커스텀 영향 구분→핵심 자산/의존성→근거별 연출 명세·웹 적용 판단 | 정적 분석 진행 중; 원본 소스 완전 복구·3D 구현/타이밍·자산 재사용·배포 완료 아님 |
@@ -864,6 +865,8 @@ WAV48개 합140,410,594bytes를 생성하고 Python wave와 ffprobe로 PCM_s16le
 
 ### C102 — 선수별 3D 모델·모션 추출 계획 추가 (2026-11-01 KST)
 
+아래 표/문단은 C102 계획 반영 당시의 미착수 이력이며, 이후 계속 지시로 착수한 현재 상태는 뒤의 C103 실제 결과를 따른다.
+
 사용자는 다음 작업을 진행하기 전에 선수별 3D 모델과 선수 모션 추출을 계획에 포함하도록 요청했다. 상세 작업과 완료 기준의 권위는 [SIMULATOR_PLAN의 선수별 추출 계획](SIMULATOR_PLAN.md)이다. 기존 T018의 정적 분석/표본 추출 흐름에 다음 순서를 추가하며 T018 자체는 진행 중으로 유지한다.
 
 | 순서 | 작업·완료 판정 | 상태 |
@@ -885,6 +888,78 @@ WAV48개 합140,410,594bytes를 생성하고 Python wave와 ffprobe로 PCM_s16le
 | `docs/FILE_SYNC.json` | 수정 | 5문서의 역할/연관/갱신 조건·T018 검토 반영 |
 
 이번 C102 계획 문서5개는 기준 commit `ba0266c44ba98919f7b39f63288b2eb8ecc30e6f`에서 검토했다. `npm run project:check -- --base ba0266c44ba98919f7b39f63288b2eb8ecc30e6f`는382파일/49작업/변경5경로로 통과했고 공백/변경 범위 검사도 통과했다. 전체 `npm test`는539통과/실패0/skip0·exit0이며5문서의 FILE_SYNC 역할/우선순위/연관·C102갱신 조건/T018검토와 독립 계획 QA의 정합성을 확인했다. 환경은 Node24.22.1/npm11.9.0으로 기존 지정 Node24.19.0과 patch 차이가 있다. 이는 계획 반영의 로컬 검사이며 새 선수 자산 추출/변환·시각 재생·제품 앱 빌드/배포·예약 변경을 수행한 결과가 아니다. 현재R6/이전T048/현재T018진행중/다음없음을 유지하며, 이후 원격 ref/전체변경내용·CI는 실제 수행 후 확인한다. 기존 3차 실제 분석 보고서/저장본은 해당 이력으로 보존하고 이번 계획의 권위는 Git 관리 문서다. 자신을 포함한 미래 commit SHA나 미실행 CI 성공을 선행 기록하지 않는다.
+
+### C103 — 선수별 자료 실제 분석·표본 추출 4차 (2026-11-01 KST)
+
+C102 계획을 저장한 뒤 사용자가 작업 계속을 지시하여 실제 정적 분석·표본 추출에 착수했다. C102의 미착수 표시는 당시 이력으로 보존하며 현재 상태는 아래 실제 근거에 따른다. 기준은 같은 `api-server-setup`의 commit `d08865d07e95742cb8d5a5198f8074fb004656c5`/tree `dbf261c619623206666a875c6357867845f56023`이고 로컬·fresh 원격 일치/사용자 변경 없음을 확인했다. 동결된3차 자료를 수정하지 않고 별도4차 분석 폴더에서 작업했다.
+
+원본 IPA4,145,921,439bytes를 다시 전량 읽어 기존 SHA256 `b792f05ea95b8426375004c4742230cf5c1d8c55732f291d0d10aea56b2f197a`와 같고 읽기 전후 size/mtime이 유지됨을 확인했다. 기존145,919개 untruncated package 목록은 원래 SHA와 대조해 재사용했다. 정확한 character 경로 prefix의45,467개 후보는 RealFace35,570/Body505/Uniform5,872/EditHair1,283/Montage1,068 등을 포함하는 파일명/디렉터리 집계이며 선수 수나 실제 mesh 전수 판독 수가 아니다.
+
+최종UE선택package17개/export18개는엄격모드판독에서failure0이었다. DataTable6개/총1,115행과참조·원본pose를별도비공개추출물에보존했다. Core-only경로합성검사51개가통과했고원native iOS구성41파일의전체SHA도fresh대조했다. 이는17개선택표본/한정검증이며전체145,919packages·모든payload/serialized IoStore hash·의존성전수검증으로확대하지않는다.
+
+#### P1 — 원본/수정 테이블과 자산 ID의 실제 대응
+
+선택CPK3개의 member/TOC·전체CRC/SHA를 대조하고 WESYS표28개를 한정된 자체 decoder로 읽었다. 선언 출력 길이·압축 stream EOF·Adler와 잘못된 입력 거절을 검사했다. 원본 native iOS와 동봉 Android 이름의 수정 livedata를 별도 출처로 유지했다. 원본Player24,203×400bytes와Appearance24,203×64bytes는24,203/24,203고유ID·같은순서로 exact join됐고, 수정층은46,623/46,623고유ID로 같았다. Team은 양쪽1,015×1,600bytes이며 PlayerAssignment의Player/Team참조는 원본24,365/24,365·수정24,050/24,050이 일치했다. 명칭 슬롯의UTF8경계도 전수 검사했다.
+
+원본24,203ID는 모두 수정층에 있고 수정층에22,420ID가 더 있었다. 공유ID의Appearance는24,199개가 byte-identical/4개가 달랐다. ID100112는 원본Player명칭의Danilo Cataldi/CATALDI와 같은순서Appearance ID로 연결됐고 수정층의 해당Appearance bytes도 같았다. 이는 원본 테이블 ID/명칭의 근거이며 외부 EFHub 카드 namespace나 모든 runtime 얼굴 선택 입력의 end-to-end검증이 아니다.
+
+네이티브 `SearchRealFace`의 수정 trampoline은4개입력ID치환/7개직접face-token반환 후 미일치 입력을 원래본문으로 보냈다. 이11개source ID는 원본Player0/11·수정Player/Appearance11/11에 존재했다.100112는11개비교모두미일치해 unchanged ID로본문에 도달했고 조건별숫자token유지와 경로존재/redirector검사를 정적으로 추적했다. 함수가 전체경로를 그대로 반환한다고 표현하지 않는다. Appearance의disk자료→runtime wrapper복사와stride를 확인했지만 `GetFaceNumber`의this와wrapper의정확한binding은 미추적이므로 disk필드를 곧바로face mesh번호로 해석하지 않는다. 실제call bool·상위getter선택도 미확인이다.
+
+`DT_RealFaceMapping`874행의TargetId는277고유대상경로로 대응했고874/874참조가 native전체inventory에 정확히1개씩 존재했다. source variant자체의SK파일은0개이고cycle0/최대1edge였다.277개전수mesh클래스 판독이나 외부카드ID 연결은 아니다. `DT_EfbxInfo`22행ID는 양쪽Player22/22exact join됐고 native numericID→FName row lookup도 확인했지만 non-null참조44개/고유22개자산은 현native iOS전체inventory에서 모두missing이다. 다른플랫폼/버전파일을 추정해 채우지 않는다.
+
+#### P2 — 모델3개와 대표 텍스처1개의 실제 추출
+
+| 실제 USkeletalMesh 표본 | vertices | triangles | reference bones | 원본 LOD 수 |
+| --- | ---: | ---: | ---: | ---: |
+| `SK_100112_Face` | 1,606 | 2,158 | 166 | 2 |
+| `SK_001a01` | 2,887 | 3,850 | 166 | 2 |
+| `SK_Player_Trainingkit` | 8,368 | 12,422 | 166 | 2 |
+
+세메시가 같은 `SKEL_Body`를 직접참조함을 읽고 LOD0의실제position/UV/normal·section bone map·skin influence·reference pose로geometry JSON·PSK·GLB를 생성했다. 독립PSK검사는 source위치/UV/triangle winding·weight float32값/순서·bone hierarchy를 대조했다. body/face/훈련복weight수는9,177/2,797/27,758이고최대influence7/4/8이다. GLB는JOINTS/WEIGHTS두set으로최대8개영향을보존했다. Khronos glTF-Validator의실제GLB3개는오류0/경고0이며UV미사용info/bufferView target hint는그대로기록했다. 독립source대조에서positions/triangles/전체skin과bone name/order/parent/translation/scale, float32 inverse-bind가일치했고 `worldBind×IBM−I`최대잔차는약6.03×10⁻⁸이었다. 임의허용threshold로pass를만든결과가아니다.
+
+non-unit scale6본/최대편차0.43153614를확인했고GLB는원scale vector를보존했다. PSK의ancestor scale translation bake만으로bind/deformation충실도를확정하지않는다. mesh와기존PSA의bone name/parent구조는대응하지만index순서는달랐다. 같은skeleton의body↔face reference pose도translation87행/rotation104행의정확한값이달랐고최대translation component차이는0.585456source units다. 훈련복에도pose차이가있어동일pose로합치지않는다. 독립source-geometry검사는유한position/normal/UV·bone transform, triangle경계·section전체coverage/중복없음·bone이름/parent cycle을검사했다. 실제source vertex로렌더링한정적PNG는텍스처없는형상이며skinning/animation/재질·텍스처/동적결합검증이아니다.
+
+ImageSharp3.2.0의정상restore/audit뒤공식license target이빌드를차단해사용하지않았고target제거/라이선스발급·동의대행/우회를하지않았다. 실제geometry는ImageSharp/Conversion참조없는Core-only도구로추출해정상restore·locked restore·Release경고0/오류0·NuGet advisory0을확인했다. 이전3차의전이경고이력과다른실제도구경로다.
+
+`T_100112_Face_D`는실제UTexture2D/PF_ASTC_8x8·128×128/sRGB·원본mip8개였다. 정상배포MIT Texture2DDecoder1.0.6으로선택mip0의4,096bytes를BGRA65,536bytes/stride512로해독하고RGBA로변환해stdlib PNG encoder로28,585bytes를생성했다. CRC/EOF·scanline·원RGBA bytes대조와ASTC합성표본검사를통과했다. ImageSharp/Pillow/게임내장decoder를호출하지않았다. 이는얼굴UV atlas의실제픽셀해독이며선수시각식별·material적용·게임shader충실도나P4완료가아니다. 다른포맷/전체mip변환도미확인이다.
+
+#### P3 — context/모션·rig 연결과 남은 결합 검증
+
+GoalEditAnimeParams162행·ModelViewAnime_Interface19행·ModelViewParams21행등의실제table을읽고PlayerDetails의AnimParamRowName→대기row, 세리머니Body/Face/LeftHand/RightHand필드를추적했다. Interface19/Goal162행의non-None경로는Body에만있고Face/LeftHand/RightHand는전부None이었다. 별도얼굴/손모션확보결과가아니다. `idle_akimbo_06_loop`301frames/SequenceLength10초, `goal_celebrate_0006`181frames/6초와기존cardbox434frames/약14.433333초가같은SKEL_Body를직접참조했다. 이는정적context→row/animation·rig연결이며실제settings instance의Interface/Goal table선택, 선수별binding·공용/고유·trigger와전체연출시간은미확인이다.
+
+| 계획 | 현재 실제 상태 |
+| --- | --- |
+| P1 선수와 자산 식별 | 진행: 양쪽Player↔Appearance전수join·ID치환/참조확인; 외부카드namespace/얼굴getter end-to-endbinding 미해결 |
+| P2 선수별 모델 추출 | 진행: 3메시LOD0 geometry/skin·GLB/PSK·대표diffuse PNG1개; 선수별체형/복장·전체재질/텍스처의존성 미완료 |
+| P3 모션 추출·대응 | 진행: UI/세리머니context/row·animation/skeleton참조·metadata; runtime table선택·선수고유/공용 미확인 |
+| P4 대표 선수 결합 검증 | 미완료: 텍스처없는정적형상과별도PNG해독까지, 재질/텍스처적용·정확한bone/scale/pose대응·동적결합재생 미확인 |
+| P5 대상 확대 | 미착수: 대표선수의완성된결합검증뒤확대 |
+
+이어갈순서는얼굴getter/PlayerId의남은binding과외부카드namespace를좁히고대표선수체형/복장선택·재질/텍스처의존성연결→이름기반bone대응·scale/pose보존검증→실제모션결합검증→검증범위확대다. missingEfbx·다른texture포맷/모든mip·불명확참조를미해결로유지하며전체선수모델/고유모션확보로확대보고하지않는다. 자체정적분석기·독립검증/렌더도구만실행했고IPA앱/내장Python·dylib/서버·Blueprint나제품코드/API/데이터·가격100/900·확정DrawBatch·규칙·예약·사이트배포는변경하지않았다. R6/이전T048/현재T018진행중/다음없음은유지한다.
+
+#### 4차 비공개 산출물·검증과 파일 최신화 검토
+
+게임원본/추출물과상세표는사용자비공개산출물에, 자체도구/집계/출처·검증은별도안전증거로분리했다. 키값/키해시·개인계정DB/캡처응답을보고서/안전증거/Git에넣지않았다. 다음5개Library저장은모두succeeded/프로세스exit0·local metadata반영을확인했고실제파일의bytes/SHA를영수증과다시대조했다. 3차보고서/저장본은이전실제분석이력으로보존한다.
+
+| 저장 파일 | version | bytes | SHA256 |
+| --- | ---: | ---: | --- |
+| [eFsimulator_T018_stage4_player_assets_20261101.md](https://chatgpt.com/library?file_id=libfile_ac12dbe906208191bf83c429bcf2f8dd&account_id=personal) | 0 | 13,388 | `7684b81b91e121d901b147e3ed10dde73fa9a5ac184772a1f09b1ef20fe1e4ef` |
+| [eFsimulator_T018_stage4_evidence_20261101.zip](https://chatgpt.com/library?file_id=libfile_89b3b427f04c8191940166b796c6f7a2&account_id=personal) | 0 | 265,654 | `3ef5ca3250a305744f67ac0ed44f38fa346aef942c35b4ae200d2efe0ecc7241` |
+| [eFsimulator_T018_stage4_models_20261101.zip](https://chatgpt.com/library?file_id=libfile_019b9b1a7c3481919afd82ce02cb8392&account_id=personal) | 0 | 3,242,455 | `b1396d977c051ec654f133ad3464fd9b06dbd23f80123a7a86ea63658c3bffa0` |
+| [eFsimulator_C102_selected_game_tables_20261101.zip](https://chatgpt.com/library?file_id=libfile_78388e6750e88191a93d6a9d9d70d695&account_id=personal) | 0 | 20,277,881 | `99c2c581a6089de8f276a445c4cf44952b4c8f7c210bd2600dbba5ee4a80be93` |
+| [player_geometry_static_preview.png](https://chatgpt.com/library?file_id=libfile_8d36181607ec81919536b25dffafdecb&account_id=personal) | 0 | 274,214 | `2be1df57fe812760804b76e499d45277ff0c1921fe7884d4292eac8969ee06ee` |
+
+안전증거ZIP94members의전체CRC와top-level manifest93항목, nested native16/tables11/loose4/UE44의bytes/SHA·출처정합성을독립대조했다. 보고서/안전증거의표현과개인키/게임payload제외범위도검토했다. 모델사용자ZIP은53members로원UE47개를byte-identical하게보존하고root catalog3개·정적PNG·README·manifest를추가했다. 선택table ZIP60members는NativeRoutes의이전stale dependency SHA를고친최종표/manifest와일치한저장본이다. 전체ZIP CRC/정확한전체SHA를검증했으며표/모델과안전증거의공개범위를혼동하지않는다. 정적PNG274,214bytes는별도저장했지만동적재생검증이아니다.
+
+5문서와실제저장영수증반영후 `npm run project:check -- --base d08865d07e95742cb8d5a5198f8074fb004656c5`는382파일/49작업/변경5경로로통과했고공백/변경범위검사도통과했다. 전체 `npm test`는539통과/실패0/skip0·exit0이었다. 실제환경은Node24.22.1/npm11.9.0이며지정Node24.19.0과patch차이가있고제품package/lock/source는변경하지않았다. 이로컬검사와독립분석도구의Release검증을제품앱타입/빌드QA·사이트배포성공으로확대하지않는다. 이후정상원격반영/CI는실제완료한범위로확인하며미래자기commit SHA/미실행CI성공을선행기록하지않는다. R6/이전T048/현재T018진행중/다음없음과P1~P3부분진행/P4미완료/P5미착수는유지한다.
+
+| 파일 | 검토 결과 | 이유 |
+| --- | --- | --- |
+| `AGENTS.md` | 수정 | C102당시계획과C103실제착수의승인/상태구분·원본코드미실행/운영경계 |
+| `docs/SIMULATOR_PLAN.md` | 수정 | P1~P3실제진행/P4미완료/P5미착수·표본/도구경로·결합검증한계 |
+| `docs/WORKPLAN.md` | 수정 | C103추가조건·원본/수정/patch/참조와실제geometry/texture/모션근거·검증/미해결/재개순서 |
+| `docs/ROADMAP.md` | 수정 | 실제4차결과·한계·현재/이전/다음과C102이력정합 |
+| `docs/FILE_SYNC.json` | 수정 | 관련5문서역할/조건/T018검토와실제4차선수별표본/영수증갱신조건 |
 
 ### 1차 비공개 증거 저장·로컬 검증 (이력)
 
@@ -1789,7 +1864,7 @@ root 전체 회귀394/394·실패0, 앱20회귀·TypeScript·공식 Worker 빌�
 
 | 파일 | 결과 | 근거 |
 | --- | --- | --- |
-| `AGENTS.md` | 수정 | 最新 실제 앱 서버/조회·API 연동 실행 범위와 기존 API/예약/원본·엔진 경계 명시 |
+| `AGENTS.md` | 수정 | 최신 실제 앱 서버/조회·API 연동 실행 범위와 기존 API/예약/원본·엔진 경계 명시 |
 | `README.md` | 수정 | 현재 T032 실제 앱 서버 제작과 API 완료·viewer/기존 web 분리 상태 반영 |
 | `docs/ROADMAP.md` | 수정 | R3/T032 현재 포인터와 T031 하위 설계·후속 T017/T018 연결 |
 | `docs/WORKPLAN.md` | 수정 | C065·T032 범위/등록·선행/검증 계획과 미확인 성공 구분 |
