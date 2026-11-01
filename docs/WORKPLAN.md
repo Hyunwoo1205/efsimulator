@@ -7,7 +7,7 @@
 ## 현재 작업과 매 작업 갱신
 
 - 이전 작업: T048 — 단일 ‘선수팩 선택’ 버튼으로 통합하고 판매중/종료 전환은 창 안에 유지했다.539회귀·관리/타입/공식빌드·v17 실제 단일버튼/탭/선택복귀/초점·원격 동일tree와 구현CI2건 성공을 확인했다.
-- 현재 작업: T018 — 진행 중. C104 지시로 native 선택 참조·3clip 실decode/재질·텍스처 연결과 독립 viewer skin motion3영상을 진단했다. Stage4 winding 오류는 원본 보존 후 새 corrected GLB로 분리했다. P1~P3부분진행/P4기술증거 추가·native 완성선수 동등 미확인/P5미착수이며 실제 game clock/retarget/shader·선수고유/전체외형·웹구현/배포는 미완료다.
+- 현재 작업: T018 — 진행 중. C105 사용자 보고를 반영해 old12fps 표시 생략과3clip JSON coverage를 구분하고 raw-key30/60fps/독립수치 비교·조건부 손/신발/피부 선택을 확인했다. 유일 원인·사용자 체감 해결/native 완성선수 동등성은 미확정이며 P1~P3부분진행/P4미완료/P5미착수·제품/웹구현/배포 미완료를 유지한다.
 - 다음 작업: 없음 — T018 이후 범위는 별도 결정한다.
 - 최근 유지보수: T039 — 신규6팩·93명과 원본 누적·가공·판매 상태를 갱신했다. 현재 가공163명/13팩·판매중9/종료4이며 저장본/API/세 사이트/구현 커밋·실제CI 검증을 완료했다. 제품 T017/T018 범위와 T038 미확인 항목은 보존한다.
 - 현재 조건: T043이 T041의 선수 정렬을 화면 범위별로 구분한다. Epic5→Show Time8→Trend3→Highlight6 우선, 팩 안 선수는 등급 안 OVR순, 전체 선수는 등급 안 확인 날짜 최신순→OVR순이며 최초 연결팩 날짜를 사용한다. 팩은 등급 안 날짜 최신순이다. exact raw 타입·원본·가공/API 계약·가격100/900·팩 구성/카드 표시와 실제 앱 public·API/admin/viewer owner-private 경계를 보존한다.
@@ -16,10 +16,11 @@
 
 ## 최신 추가 조건과 이전 조건의 적용
 
-C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_BEFORE_PROBABILITY_SCOPE.md)에 보존한다. 관리 최신화·ID/근거·실패 보존·접근 거부 우회 금지·무료 우선·운영 승인 분리 원칙은 계속 적용한다. 범위 결정은 날짜별 이력이며 현재 범위·완료 정책은 최신 C104/C103의 선수별 실제 분석 계속과 C102의 모델/모션 추출 계획, C099~C101의 IPA 자료/실제 분석, C094~C098의 UI 결정, C084~C087·C081~C083·C080·C079·C078·C077와 C071~C075의 사용자 결정을 T037/C070 제안보다 우선하고 C069/T036의 자동 갱신 절차를 적용하며 API 완료/정상 반영 정책 C063~C064를 유지한다. 전체 수집과 사이트 범위를 혼동하지 않는다.
+C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_BEFORE_PROBABILITY_SCOPE.md)에 보존한다. 관리 최신화·ID/근거·실패 보존·접근 거부 우회 금지·무료 우선·운영 승인 분리 원칙은 계속 적용한다. 범위 결정은 날짜별 이력이며 현재 범위·완료 정책은 최신 C105의 모션 자연스러움 관찰/원인 분리와 C104/C103의 선수별 실제 분석 계속, C102의 모델/모션 추출 계획, C099~C101의 IPA 자료/실제 분석, C094~C098의 UI 결정, C084~C087·C081~C083·C080·C079·C078·C077와 C071~C075의 사용자 결정을 T037/C070 제안보다 우선하고 C069/T036의 자동 갱신 절차를 적용하며 API 완료/정상 반영 정책 C063~C064를 유지한다. 전체 수집과 사이트 범위를 혼동하지 않는다.
 
 | 조건 ID | 최신 결정 | 영향 단계 / 선행 조건 / 처리 순서 | 상태 |
 | --- | --- | --- | --- |
+| C105 | 사용자가 영상 모션이 자연스럽지 않다고 보고하고 프레임 끊김/수집 미완료 중 원인을 모른다고 하며 참고해서 진행 요청 | T018/R6; 사용자 관찰→fps/보간 비교→key/track coverage·연속성 audit→native 선택/retarget·실제 참조 부품→근거별 판정 | 실제 표시 생략/선택JSON audit·raw-key 비교/조건부 부품 추출; 유일 원인·체감 해결/native 동등 미확정 |
 | C104 | 다음 작업 진행 지시에 따라 선수별 참조·재질/animation과 독립 기술 결합 검증 계속 | T018/R6; 조건부 native binding→재질/texture graph·원animation decode→변환오류 분리 수정→독립 skin motion/QA→native 선택·완성외형 후속 검증 | P1~P3부분진행/P4진단영상 증거 추가·완성 native 동등 미확인/P5미착수; Stage4원본 보존·제품/배포 미변경 |
 | C103 | C102 계획 뒤 작업 계속 지시로 선수별 자료의 실제 분석/표본 추출에 착수 | T018/R6; 원본/수정 ID·자산 대응→검증된 geometry/texture 표본→context/모션·rig 연결→대표 결합 검증→확인 범위 확대 | P1~P3진행: ID전수join/3메시GLB·PSK/얼굴PNG1개·정적참조; P4동적결합미완료/P5미착수, 선수고유판정미확인 |
 | C102 | 선수별 3D 모델 및 선수 모션 추출을 작업 계획에 포함 | T018/R6; 선수/카드/게임 자산 ID 대응→모델/의존성 추출→개봉·입장·경기 및 공용/고유 모션 구분→대표 선수 결합 검증→대상 확대 | 당시 계획 반영/미착수 이력; 이후 C103실제착수. 기존 PSA의 선수 고유/공용 여부는 계속 미확인 |
@@ -1037,6 +1038,86 @@ EGL Mesa llvmpipe/ModernGL5.13.0, NumPy1.26.4, Pillow13.0.0, FFmpeg6.1.1을 사�
 | `docs/WORKPLAN.md` | 수정 | C104·조건부 참조/실decode·원변환 오류/수정 분리·실제 진단과 측정·저장영수증/후속 순서 |
 | `docs/ROADMAP.md` | 수정 | C104 실제 결과/한계와 현재·이전·다음 및 Stage4 이력 보존 |
 | `docs/FILE_SYNC.json` | 수정 | 관련5문서 역할/갱신조건/T018검토·C104실제산출물/검증영수증 조건 |
+
+### C105 — 모션 자연스러움 사용자 보고와 원인 분리 6차 (2026-11-01 KST)
+
+사용자는 “영상을 보니 프레임이 끊겨서인지 아직 모두 수집되지 않아서인지 모르겠지만 모션이 자연스럽지 못했어. 이점 참고하면서 작업 진행해줘”라고 요청했다. 이는 사용자의 영상 관찰이며 원인을 독립 확인한 결과가 아니다. 표시 fps/보간, 원키·track coverage/연속성, bind/retarget, 실제 부품·Uniform/skin 선택을 분리하여 다음 작업을 계속한다. 기준 commit은 `a7ec0d50d741325c1b14a1a197f8947441b2434f`, tree는 `1e209125c269bfcd4f8af24cd7f635224150993e`이며 fresh 원격/로컬 일치·clean을 확인했다. 기존 Stage5 source/12fps 영상과 모든 이전 단계 자료를 보존한다.
+
+| 조사 축 | 계획한 비교와 검증 | 확정하지 않은 점 |
+| --- | --- | --- |
+| 표시 정책 | 같은 clip/mesh/material·camera/root/time 범위의12/30/60fps 및 frame interpolation 비교. 실제 frame 수/fps/duration과 source time·보간/정규화 정책을 기록한다. | 기존12fps는 확인된 표시 정책이지만 사용자 보고의 원인으로 확정하지 않는다. 보간은 새 원키/모션 복구가 아니다. |
+| 원animation coverage/연속성 | compressed/sparse key·decoded sample 전체의 count/time coverage/끝점·TRS 연속성과 reference track을 audit한다. | encoded67/missing99의99개는 source reference-local 유지라는 기존 근거가 있다. 이를 자동 수집 누락으로 보거나 quaternion 표현 차이를 실동작 끊김으로 확정하지 않는다. |
+| 선택/retarget/부품 | 실제 native Uniform/skin selector producer, bind/AnimationRelative/twist/facial 조건과 참조된 손/신발·visibility를 추적한다. | 화면상 부품 부재·native 선택 미확인·샘플/retarget 문제를 같은 원인으로 합치지 않는다. |
+| 판정과 다음 범위 | 같은 동작/시간대의 영상·수치와 관찰을 연결하고 개선·미해결을 원인별로 기록한다. | 독립 viewer의 매끄러운 표시와 완성 선수/native clock/shader/retarget 동등성은 별도다. |
+
+위 표는 C105 착수 당시의 조사 순서이며 아래 실제 결과와 구분한다. 임의 smoothing/기준 완화로 원래 불연속이나 형식 실패를 숨기지 않고 source/표시/retarget 근거의 범위를 보존한다. 최종 동결 QA/정확한 Library 저장 영수증을 대조했으며 사용자 체감 자연스러움 해결은 아직 완료로 표시하지 않는다.
+
+#### 6차 실제 결과 — 표시 생략·원키 보간과 조건부 부품/피부 선택
+
+선택3clip의 raw/sample JSON 전수 감사에서 frame index 누락·중복·역순, 비유한TRS와 component key-time 오류는0이었다. 각 clip의 encoded67tracks와 source reference-local로 유지한99bones를 구분한다.99본을 추출 실패나 게임의 모든 추가 layer 부재로 해석하지 않는다. 선택 JSON의 구조·수치 검증이며 compressed bitstream의 별개 codec 재decode나 전체 자산 수집 완료가 아니다.
+
+| clip | 보존된 source frames | 기존12fps에 표시 | 표시하지 않은 정수 source frames |
+| --- | ---: | ---: | ---: |
+| idle | 301 | 120 | 181 |
+| goal | 181 | 72 | 109 |
+| cardbox | 434 | 173 | 261 |
+
+기존 `rint(linspace(...))`는 대개2~3 source frame씩 건너뛰고 보간하지 않았다. 추출 JSON에는 있던 약60%의 frame을 영상에서 생략했고12fps hold는83.33ms, 새60fps는16.67ms다. 끊김에 영향을 줄 수 있는 확인된 표시 차이이며 부자연스러움의 유일한 원인 확정은 아니다. 원키에도 goal 다리의 인접frame 약44.023° 변화나 blink/eye의 빠른 변화가 있어 임의 이상치로 평활화하지 않았다. 기존 quaternion norm bias가 행렬의 `2/(q·q)`로 상쇄되는 점도 확인해 norm 오차만을 떨림 원인으로 지목하지 않는다.
+
+새 sampler는 baked 정수 sample 사이가 아니라 raw sparse component keys와 원 key time을 직접 평가한다. T/S lerp·unit shortest-arc quaternion SLERP를 쓰고 거의 평행할 때 normalized lerp를 사용한다. fallback99본은 source reference-local 그대로다. Optical Flow/AI/temporal filter·원키 추가 복구는 수행하지 않았고 native UE 보간/retarget 동등성은 미확인이다.
+
+독립 scalar/bisect 구현이 정수·half-frame·key 주변.25/.75 및12/30/60fps grid의635,282bone-frame을 대조했다. T/S component 차이는0, Q component 최대차이는2.22×10⁻¹⁶, orientation 차이는약3.26×10⁻¹⁴°였다. reference99본의378,873pair도 local reference를 유지했다. 이는 선택한 유효 입력 계산의 일치이며 QA 부록의 일반 입력 검증 한계5개를 그대로 보존했다. 범용 외부 입력 validator로 완성했다고 보고하지 않는다. 같은 dense raw 표시 기준의 local orientation 최대오차는 goal에서 old12fps75.84°→new60fps21.56°였지만 pixel/native 동등성·사용자 체감 개선 보증은 아니다.
+
+| 새 영상 | 실제 frames/fps | 인코딩 길이 |
+| --- | --- | ---: |
+| goal_raw_sparse_30fps.mp4 | 181/30 | 6.033333초 |
+| goal_raw_sparse_60fps.mp4 | 361/60 | 6.016667초 |
+| idle_raw_sparse_60fps.mp4 | 601/60 | 10.016667초 |
+| cardbox_raw_sparse_60fps.mp4 | 867/60 | 14.45초 |
+| goal_12_30_60fps_comparison.mp4 | 361/60 | 6.016667초 |
+| goal_four_part_candidate_60fps.mp4 | 361/60 | 6.016667초 |
+| cardbox_four_part_candidate_60fps.mp4 | 867/60 | 14.45초 |
+
+ffprobe로7영상의 frame/fps/duration/H.264를 확인했다. 개별640×720·3열비교1440×540이며 endpoint pose를 한 인코딩 frame 동안 추가 유지해 원pose span6/10/14.4333334초와 길이가 다르다. JSON literal14.433333과 원Single14.433333396911621의 구분 전후 sample grid/영상hash는 같고 metadata만 정밀화했다. 비교는 같은2mesh/camera/material/skin 정책을 쓰지만 old12를 hold로 늘린 열의 endpoint가 약1/12초 먼저 도착하므로 native-time-aligned가 아니다. 손/신발을 추가한 별도4part 후보와 비교장면을 혼동하지 않는다.
+
+native 피부 선택은 두 분기를 실제 typed 참조로 구분했다. Appearance Skin3bits→cfg120→선택된 DefaultFace mode1의 actor1100이 연결되며 cfg488에는 별도 중복 저장된다. cfg488을 actor1100의 producer로 이어 붙이지 않는다. RealFace mode0에서는 `SK_100112_Face.AssetUserData`의 실제 FPackageIndex가 typed `PesFaceAssetDataMobile` export를 가리키고 직렬화된 `SkinColor=2`가 native typed field44→actor1100→`T_Sk2_Skin_D`로 이어진다. missing userdata fallback4와 custom/state bypass를 별도 조건으로 남겼다. 실제 active branch/비동기 로드 성공을 관찰한 것은 아니다.
+
+Uniform68개 선택 검사에서 registry key 조회/field 복사를 좁혔지만 현재callback 등록·Uniform key/파일 선택은 미완료다.92byte file 분기의 source byte20/21→Uniform392/396이 body loader의 첫selector로 이어질 수 있다. 별도96byte/edited overwrite 경로가 있어 전형식·실제home/away/팀 값으로 일반화하지 않았다. 손/신발161개 선택 검사는 HumanLoadId→equipment lookup·package-exists/default→cfg492(boots)/500(hand/glove)→loader를 연결했다. 고정 조건부 기본손 `SK_Hand_pl`과 패키지부재 대체신발 `SK_s0051_Shoes`를 추출했고 `SK_Glove_pl` 분기는 이번 대상이 아니다. PID100112의 실제 장비/분기/로딩 성공은 미관측이다. 피부 경로41검사와 기존 native41파일 무변경도 확인했다.
+
+손462vertices/712triangles·신발3,566vertices/4,718triangles는 각각166bones/최대skin influences4다. 새material6개/PNG12개·전체UV(손LOD0 4채널/신발1채널)·추가LOD를 보존했다. 실제 T_Sk2 PNG도 읽었으나 native shader의 mask/UV/parameter를 복원하지 않아 손/몸 전체 BodyBaseColor에 대입하지 않았다. 정상 Core-only CUE/MIT Texture2DDecoder1.0.6·stdlib PNG를 사용했고 ImageSharp 우회/shader 실행은 없다.
+
+새 geometry GLB2개는 source CW index 보존·Y/Z 반사·cm→m 변환으로 Khronos 오류0/경고0·정보6/hint16이었다. 원position/normal·전체UV/index/joint/weight를 float32로 독립 대조하고166bones의 name/parent/IBM을 확인했다. local transform 잔차는최대6.66×10⁻¹⁶, world bind×float32 IBM 잔차는약6.03×10⁻⁸였다. 손712면·신발4,712/4,718면의 방향과 원반대6면을 보존했다. 신발의12 twist bind quaternion 차이는 직접weighted bone/그조상이 아니었으며 각 mesh bind를 유지한 독립delta/전체weight로4part 후보를 렌더했다.
+
+비교 still과4part contact를 육안 확인했으나 원게임 재생과 직접 대조하지 않았다. 손 색은 BodyBaseColor 기본atlas+UV0 진단값이라 native 피부blend와 다를 수 있다. 손가락·추가procedural/hand/cloth layer, 실제kit/장비·native retarget/clock/shader와 사용자 체감 자연스러움 해결은 미완료다. 다음은 실제Uniform/equipment row/callback·caller→원본file값, native graph/clock·bind/twist/facial retarget·skin/kit shader 조합을 좁히고 대표 조립이 확인된 뒤 확대하는 순서다.
+
+최종 native/parts/animation manifest와 source hash를 동결했다. animation manifest의8파일/653,011bytes와 sampling 비교635,282개, native의피부41/Uniform68/손·신발161검사와기존41파일무변경, parts의31파일/347,505bytes 및별도manifest를 대조했다. 원본 게임 코드·Blueprint/내장Python/dylib/서버는 실행하지 않았다.
+
+#### 6차 비공개 산출물·최종 검증
+
+다음6개 저장은 모두 succeeded/프로세스exit0·local metadata 반영을 확인했고 실제 파일의bytes/SHA와 version0을 정확한 영수증에 대조했다. 보고서·안전증거·private assets와 비교영상/대표4part영상/contact 이미지를 구분하며 Git/public dist에는5작업문서만 반영한다.
+
+| 저장 파일 | version | bytes | SHA256 |
+| --- | ---: | ---: | --- |
+| [eFsimulator_T018_stage6_motion_quality_20261101.md](https://chatgpt.com/library?file_id=libfile_482c19ba32f881918d01bbc8f92216f3&account_id=personal) | 0 | 13,812 | `6b64ce95db1c443634b31026db4c78bf65ccfdd4511c63fb4857981f8eb7b59a` |
+| [eFsimulator_T018_stage6_evidence_20261101.zip](https://chatgpt.com/library?file_id=libfile_f7d63c7fb2d88191a7dc1c8f4b00a0d5&account_id=personal) | 0 | 758,952 | `e37a435654b6944bfe99af01984cc8e2172e34a812b64e5da3cd284e07435e4d` |
+| [eFsimulator_T018_stage6_private_assets_20261101.zip](https://chatgpt.com/library?file_id=libfile_8204534546ec81918f2f2479237fb05c&account_id=personal) | 0 | 14,673,822 | `06cacf72f8800ddeaf23e0cf9b9eeab5627103bb8c525b11316d65f0aabed7cc` |
+| [eFsimulator_T018_stage6_12_30_60fps_comparison_20261101.mp4](https://chatgpt.com/library?file_id=libfile_b46c49573b3881919f58dc7f6a4991ce&account_id=personal) | 0 | 703,601 | `0cd518ef1f1ffb042bbbb048a554a4e32dc487f744324fa1621d3c99a308bbf8` |
+| [eFsimulator_T018_stage6_candidate_60fps_20261101.mp4](https://chatgpt.com/library?file_id=libfile_86502684a3488191a08098db8732ef70&account_id=personal) | 0 | 636,781 | `bc84a73a7b4423ed893b47987dd9eec176151fde1d4d695717daea489ae44a13` |
+| [eFsimulator_T018_stage6_candidate_contact_20261101.png](https://chatgpt.com/library?file_id=libfile_216b82e703248191b7921609a2e2fb90&account_id=personal) | 0 | 121,351 | `49ae74b59ed26078c018edae69008e4b641cfeda6b2c568235d66edc5bcb7fd7` |
+
+안전ZIP93members는 허용목록92개+manifest이며 privacy·전체CRC·member SHA/bytes 검증을 통과했다. 자체도구/선택metadata/독립QA/허용dependency만 포함하고 game payload·full geometry/TRS/UV·PNG/video·키값/키해시·seed/계정자료/실행파일과 raw worker streams는 제외했다. private ZIP50members는 불변 source ZIP3개(animation21/material58/parts68members), 영상7개·old12baseline·재생job6개와이미지/검증을 보존했고 nested CRC/member SHA도 대조했다. 사용자 보관용 추출물을 안전증거/Git 공개범위와 혼동하지 않는다.
+
+5문서와 실제6개 저장 영수증 반영 후 `npm run project:check -- --base a7ec0d50d741325c1b14a1a197f8947441b2434f`는382파일/49작업/변경5경로로 통과했고 공백/변경 범위 검사도 통과했다. 전체 `npm test`는539통과/실패0/skip0·exit0이었다. 실제 환경은 Node24.22.1/npm11.9.0이며 지정 Node24.19.0과 patch 차이가 있다. 제품 package/lock/source·사이트/배포/자동화는 변경하지 않았다. 이 검사와 선택 입력의 sampler/geometry 검증을 범용 validator·제품 앱 빌드·native 재생/체감 자연스러움 해결로 확대하지 않는다. 이후 정상 원격 반영/CI는 실제 수행 뒤 확인하며 자신을 포함한 미래 commit SHA/미실행 CI 성공을 선행 기록하지 않는다.
+
+기존 P1~P3 부분 진행·P4 독립 기술 증거/완성 native 미확인·P5 미착수를 유지한다. 제품/API/데이터·가격100/900·확정 DrawBatch·규칙·예약·배포와 원본 앱/Python/dylib/서버/Blueprint 미실행 경계는 변경하지 않는다. 현재 상태는R6/이전T048/현재T018진행중/다음없음이다.
+
+| 파일 | 검토 결과 | 이유 |
+| --- | --- | --- |
+| `AGENTS.md` | 수정 | C105 사용자 관찰/원인 구분·독립 비교와 원본 보존·결과 권위의 지시 |
+| `docs/SIMULATOR_PLAN.md` | 수정 | P3/P4에 fps/보간·key/track coverage/연속성·retarget/부품 원인 분리와 수용 기준 추가 |
+| `docs/WORKPLAN.md` | 수정 | C105 원문·기준 상태·조사 순서·사용자 보고와 미확정 원인·검증 대기 구분 |
+| `docs/ROADMAP.md` | 수정 | C105 현재 조사와 이전 C104 성과 보존·T018진행/P5미착수 정합 |
+| `docs/FILE_SYNC.json` | 수정 | 관련5문서 역할/갱신조건/T018검토·C105 비교/실제 증거 갱신 조건 |
 
 ### 1차 비공개 증거 저장·로컬 검증 (이력)
 

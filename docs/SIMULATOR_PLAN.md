@@ -18,15 +18,30 @@
 
 | 순서 | 작업 | 산출물·완료 기준 | 현재 상태 |
 | --- | --- | --- | --- |
-| P1 선수와 자산 식별 | 선수/카드/게임 ID와 원본 컨테이너·package·모델/모션 참조를 연결한다. 개별 자산과 공유 자산, 버전·variant를 구분한다. | 각 연결의 출처·참조·확인/추론/미확인을 가진 대응표, 대상 수와 연결 성공/누락/충돌 목록. 이름만 맞는 연결은 확정하지 않는다. | 부분 진행: 기존 전수join과 native wrapper/외형getter 조건부 연결·Skin3→cfg488/face token→LoadRealFace 추적; 실제 선택/외부카드 namespace·전체 조합 미완료 |
-| P2 선수별 모델 추출 | 얼굴·헤어·체형·몸·유니폼/장비의 실제 분리·조합 방식과 mesh, skeleton, skin weights, material, texture, morph/LOD/bulk data 의존성을 추적해 필요한 파일을 추출·변환한다. | 표본별 원본/출력 크기·hash·도구/profile·의존성 목록, geometry/UV·뼈대/skin·참조 구조 검증 결과. 카드마다 독립 mesh가 있다고 가정하지 않으며 누락/미지원은 남긴다. | 부분 진행: mesh3/material14/PNG10·두LOD section9개·전체UV 참조graph; Stage4 보존/새 corrected·진단texture GLB 별도. 손/신발·선수별kit/전체외형 미완료 |
-| P3 선수 모션 추출·대응 | 개봉·입장·경기 모션을 구분하고 각 모션의 공용·선수 고유·미확인 여부, 실제 선수 binding·선택 조건과 대상 skeleton을 추적한다. 필요한 animation/curve를 추출·변환한다. | 선수/rig별 모션 연결표와 frame/rate·범위·bone/curve 구조 검사. 고유 모션은 실제 연결 근거가 있을 때만 확정하며 파일명과 기존 PSA 표본만으로 분류하지 않는다. | 부분 진행: 실제3clip/PSA3·source skeleton-only animation GLB1·raw frame 보존; runtime table/선수별 선택·고유판정·retarget/curve 보정 미완료 |
-| P4 대표 선수 결합 검증 | 대표 선수 모델·재질/텍스처·뼈대와 대응 모션을 결합해 좌표계/단위·bind pose·skin·bone/curve 정합성과 실제 시각 재생을 확인한다. | 추출/변환/구조 검사/시각 재생·rig 호환성을 별도 결과로 기록. 대표 표본의 완료는 필요한 의존성과 모션 결합 재생을 확인한 경우에만 표시하며 파일 생성만으로 완료하지 않는다. | 진행·미완료: 독립 viewer의 texture/skin motion3영상·정적 진단 확인; native retarget/clock/shader·kit 선택/전체assembly 동등성 미확인 |
+| P1 선수와 자산 식별 | 선수/카드/게임 ID와 원본 컨테이너·package·모델/모션 참조를 연결한다. 개별 자산과 공유 자산, 버전·variant를 구분한다. | 각 연결의 출처·참조·확인/추론/미확인을 가진 대응표, 대상 수와 연결 성공/누락/충돌 목록. 이름만 맞는 연결은 확정하지 않는다. | 부분 진행: 기존join·DefaultFace Appearance Skin3→cfg120→actor1100과RealFace typed SkinColor2·Uniform/장비producer 조건부 추적; 실제선택/외부카드 namespace·전체조합 미완료 |
+| P2 선수별 모델 추출 | 얼굴·헤어·체형·몸·유니폼/장비의 실제 분리·조합 방식과 mesh, skeleton, skin weights, material, texture, morph/LOD/bulk data 의존성을 추적해 필요한 파일을 추출·변환한다. | 표본별 원본/출력 크기·hash·도구/profile·의존성 목록, geometry/UV·뼈대/skin·참조 구조 검증 결과. 카드마다 독립 mesh가 있다고 가정하지 않으며 누락/미지원은 남긴다. | 부분 진행: 기존3mesh와새조건부기본손/대체신발2mesh·material6/PNG12·전체UV/GLB2 추가. 실제PID 장비/skin shader/kit·완성외형 미완료 |
+| P3 선수 모션 추출·대응 | 개봉·입장·경기 모션을 구분하고 각 모션의 공용·선수 고유·미확인 여부, 실제 선수 binding·선택 조건과 대상 skeleton을 추적한다. 필요한 animation/curve를 추출·변환한다. | 선수/rig별 모션 연결표와 frame/rate·범위·bone/curve 구조 검사. 고유 모션은 실제 연결 근거가 있을 때만 확정하며 파일명과 기존 PSA 표본만으로 분류하지 않는다. | 부분 진행: 기존3clip 전체JSON coverage/연속성 audit·raw-key fractional sampler 독립635,282bone-frame 대조; native clock/retarget·추가layer/다른motion 미확인 |
+| P4 대표 선수 결합 검증 | 대표 선수 모델·재질/텍스처·뼈대와 대응 모션을 결합해 좌표계/단위·bind pose·skin·bone/curve 정합성과 실제 시각 재생을 확인한다. | 추출/변환/구조 검사/시각 재생·rig 호환성을 별도 결과로 기록. 대표 표본의 완료는 필요한 의존성과 모션 결합 재생을 확인한 경우에만 표시하며 파일 생성만으로 완료하지 않는다. | 진행·미완료: 같은2mesh의12/30/60fps 비교·별도4part60fps 후보2영상; 사용자체감 자연스러움 해결/native완성선수 동등성 미확인 |
 | P5 대상 확대·재현 자료 | 대표 표본의 검증 결과를 바탕으로 IPA에 포함된 확인 가능한 선수·variant로 확대하고 공유 모델/모션은 중복 추출 대신 연결 관계를 보존한다. | 범주별 대상/시도/추출/변환/구조 검증/재생 확인/미해결 개수, 누락·실패 이유와 재현 가능한 비공개 파일 목록. 카드 수·선수 수·고유 자산 수를 분리한다. | 미착수: P4대표결합 검증 후 확대 |
 
 P1의 목록화와 독립 hash/형식 검증은 기존 T018 분석과 병행하고, P2/P3는 검증된 선수/자산 대응·의존성부터 진행한다. ImageSharp3.2.0은 정상 restore/audit 뒤 공식 license target이 빌드를 차단해 사용하지 않았다. target 제거/라이선스 우회 없이 ImageSharp/Conversion 참조가 없는 Core-only 기하 도구의 정상/locked restore·Release 경고0/오류0/advisory0을 확인했고, 대표 ASTC mip0은 정상 배포 MIT Texture2DDecoder1.0.6으로 해독했다. 3차의 ImageSharp3.1.12 경고를 소급하여 제거한 결과가 아니며 다른 포맷/전체mip 지원은 별도 검증한다. 잘못된 ID/미지원 포맷을 맞추기 위해 검사를 완화하거나 이름으로 관계를 채우지 않는다.
 
 C103 당시에는 정적 preview/atlas PNG까지만 확인했고 C104에서 별도 texture/skin motion 기술 진단을 추가했다. 같은 skeleton 참조만으로 완성 선수 모델을 확정하지 않으며 mesh별 reference pose/non-unit scale6본·bone index 차이를 유지한다. 독립 viewer는 정확한 bone name의 `sourceGlobalAnim×inverse(sourceGlobalRef)`와 전체 influence LBS를 쓰고 quaternion/weight 정규화·camera-follow를 명시한다. 원raw animation은 보존하며 이 진단을 게임 native retarget/clock/shader/kit 선택과 동등하다고 보지 않는다. Stage4 GLB의 Y/Z 반사 후 추가 winding swap 앞면 오류는 원본을 동결 보존하고 새 corrected GLB로 수정했다. 새6GLB의 Khronos 오류0/경고0·semantic diff는 변환 보존 검증이며 native appearance 동등성은 아니다. 원본/수정ID·missing 자산과 선수별 선택 미확인은 [WORKPLAN T018](WORKPLAN.md)에 기록한다.
+
+#### 모션 자연스러움 비교와 원인 분리 (C105)
+
+사용자는 C104 영상을 보고 모션이 자연스럽지 않다고 보고했으며 프레임 끊김/수집 미완료 중 원인을 모른다고 했다. 사용자 관찰과 검증된 원인을 구분하고 P3/P4에 아래 비교를 추가한다. 기존12fps는 인코딩/표시 정책의 확인값이지만, 이것만으로 부자연스러움의 원인이라고 확정하지 않는다. encoded67tracks와 source reference-local로 유지된99tracks를 원본·decoder·선택된 retarget 근거 없이 추출 누락으로 분류하지 않는다.
+
+| 비교 축 | 조사·검증 계획 | 판정과 보존 조건 |
+| --- | --- | --- |
+| 표시 fps와 보간 | 동일 source clip/mesh/material·camera/시간 범위로 기존12fps와30/60fps·frame interpolation을 비교한다. key 선택/보간·quaternion 정규화·root/camera 정책을 명시한다. | 실제 fps/frame 수/duration과 대응 source time을 검증한다. 고fps/보간으로 새 원키나 모션을 복구했다고 주장하지 않는다. |
+| 원키·track coverage/연속성 | compressed/sparse key와 decoded sample 전체의 수·time coverage·끝점·position/rotation/scale 연속성을 조사한다. reference track과 실제 encoded track, quaternion 표현 차이·수치 이상을 구분한다. | 끊김/불연속의 위치와 source/표시 단계 근거를 남기고 미검증 codec/retarget은 미해결로 둔다. 임의 smoothing으로 원본 오류를 숨기지 않는다. |
+| bind/retarget와 부품·선택 | source/mesh bind·AnimationRelative·twist/facial 조건, 실제 Uniform/skin selector producer와 참조된 손/신발·visibility를 추적한다. | 화면상 부품 누락과 모션 샘플/retarget 문제를 같은 원인으로 단정하지 않는다. 실제 참조·구조·조립 검증 후 반영한다. |
+| 비교 결과와 수용 범위 | 같은 동작/시간대의 비교 영상·측정과 관찰을 대응시키고 개선된 표시와 남은 native 차이를 정리한다. | 원인 확정/추론/미확인을 구분한다. 자연스러움·native 동등성 완료는 실제 결과/관찰 근거가 있는 범위에서만 기록한다. |
+
+이 표는 C105 조사 계획이며 최종 결과와 구분한다. 현재 비교 경로는 old12의 nearest 정수 frame/무보간과 raw sparse T/S lerp·정규화 shortest quaternion SLERP의30/60fps를 분리한다. endpoint pose를1frame 추가 유지한 실제 인코딩 duration과 원clip 길이를 구분하고 old12 endpoint가 먼저 도착하는 비교를 native-time-aligned로 표시하지 않는다. Optical Flow/AI/temporal filter나 원키 추가 복구를 수행한 것으로 표현하지 않는다.
+
+기본 손/fallback 신발의4부품 기술 후보도 실제 PID의 장비 선택/피부색·shader/retarget와 구분한다. Appearance Skin3→cfg120→DefaultFace mode1의actor1100과RealFace mode0의 실제 mesh.AssetUserData→typed SkinColor2→actor1100 경로는 서로 다르며 cfg488은 별도 중복 저장이다. 손/신발GLB/전체UV/skin 검증과 sampler의 선택 유효 입력 일치를 범용validator 완성이나 native선택관측으로 확대하지 않는다. sampler의 일반 입력 검증 한계5개·동결 manifest/실제 저장 영수증은 [WORKPLAN T018](WORKPLAN.md)에 기록한다. 기존 source/Stage5 영상과 T018 진행·P5 미착수·제품/배포/확정 DrawBatch 계약은 유지한다.
 
 원본/추출 자산·키·상세 덤프는 비공개로 보존하고 Git/public dist에는 넣지 않는다. 위의 결합 재생 검증은 추출 데이터와 독립 분석 도구를 대상으로 하며 IPA 앱·내장 Python/dylib/서버·Blueprint를 실행하지 않는다. 선수 모션 조사 항목이 경기 기능 구현을 뜻하지 않으며 웹3D 적용·배포는 후속 범위다. 같은 확정 DrawBatch를 재생하고 skip/실패로 재추첨·추가 비용을 발생시키지 않는 기존 계약을 유지한다. 실제 진행/검사 결과와 미해결 목록은 [WORKPLAN의 T018 기록](WORKPLAN.md)을 따른다.
 
