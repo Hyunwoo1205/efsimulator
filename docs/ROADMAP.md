@@ -28,6 +28,8 @@
 
 C103 작업 계속 지시로 선수별 실제 정적 분석/표본 추출을 시작했다. 원본24,203/수정46,623 Player↔Appearance ID를 전수join하고 native치환11ID(원본0/수정11)와 출처를 분리했다. RealFace874행의277고유대상은 inventory에 모두존재했고 Efbx22행의44참조/22고유자산은 모두missing이다. 얼굴·몸·훈련복3메시를skin/뼈대와GLB·PSK로변환해Khronos오류0/경고0, 텍스처없는정적형상과 얼굴ASTC diffuse1개→PNG픽셀해독을확인했다. ImageSharplicense target차단을우회하지않고참조없는Core-only·MIT Texture2DDecoder정상경로를사용해Release경고0/오류0/advisory0이었다. 엄격17package/18exports실패0·6DataTables/1,115행·합성51검증과실제5개저장영수증은WORKPLAN을따른다. UI/세리머니 context/row/animation과같은skeleton 참조는읽었으나runtime table선택·특정선수binding/고유여부는미확인이다. P1~P3진행/P4재질·텍스처적용과동적결합재생미완료/P5미착수이며scale/pose·외부카드namespace/얼굴getter상위binding·missing자산한계를WORKPLAN에보존한다. 제품변경/원본코드실행/배포없이현재T018진행·이전T048·다음미배정을유지한다.
 
+C104 다음 작업 지시로 native wrapper/선택graph·material14/PNG10/mesh3과 원모션3clip을 추가 추적/decode했다. 독립 EGL viewer의 texture/전체influence skin motion3영상(idle120frames/10초·goal72/6초·cardbox173/14.416667초,640×720 H.264/12fps)과 정적 진단을 만들고3clip×3mesh/2,748mesh-frames의 유한값·reference/위치를 대조했다. Stage4 GLB의 Y/Z 반사 뒤 추가 winding 오류는 원본을 동결 보존하고 corrected3/diagnostic textured3GLB로 분리 수정했으며 공식 Khronos 오류0/경고0과 semantic diff6/6을 확인했다. 원301/181/434frame JSON과 source 잔여normal 예외를 유지하고 독립 reference-delta/quat·weight 정규화·camera-follow를 게임 native retarget/clock/shader/kit 선택·손/신발 포함 완성 선수와 동등하다고 보지 않는다. P1~P3부분진행/P4독립기술증거 추가·native완성 미확인/P5미착수이며 실제6개 저장 영수증과 한계는 WORKPLAN T018을 따른다. 제품/배포/원본코드 실행 없이 현재T018진행을 유지한다.
+
 이전 T048 완료: 바깥 선택 진입을 ‘선수팩 선택’ 하나로 통합하고 수량/이미지로 선택 문구를 제거했다. 창 안의 판매중/종료 탭과 검색/이미지·선택한 팩 그룹 기본/닫기·초점 복귀를 유지한다.539회귀·관리/타입/공식빌드·v17public 실제UI·원격382파일동일tree/구현CI2건성공을확인했다. 데이터/가격/세션/자동갱신은유지했고당시다음은파일미제공상태의T018이었다.
 
 최신 T047 완료: 중앙 PACKS/PLAYERS/SIMULATOR와 영문 큰 제목에 기존 eFootball 폰트를 적용하고 홍보/중복 설명을 정리했다. 팩 구성/바로열기 두 링크와 판매중/종료 체험·대표최대3장·검색/초점복귀 이미지선택창을 제공한다.539회귀·관리/타입/공식빌드·v16public 실제1363×936의링크/이미지/검색/닫기·원격382파일동일tree/구현CI2건성공을확인했다. 모바일실기기는미수행이며추첨/가격100·900·저장/API/규칙/예약을보존한다. 다음T018은IPA/APK미제공상태로실제파일분석/3D를완료하지않았다.
@@ -52,7 +54,7 @@ C103 작업 계속 지시로 선수별 실제 정적 분석/표본 추출을 시
 | --- | --- |
 | 현재 단계 | R6 — T017 2D 전달 후 T018 IPA 정적 분석 진행 중 |
 | 이전 작업 | T048 — 단일 선수팩 선택 버튼·창 안 판매상태 전환,539회귀/v17실제UI·원격/구현CI2건확인 |
-| 현재 작업 | T018 — 진행 중: C103 선수별 실제 ID/자산 대응·3메시GLB/PSK/대표얼굴PNG·모션context/rig 추적(P1~P3진행). P4동적결합미완료/P5미착수·APK비교/웹3D/모바일/배포미수행 |
+| 현재 작업 | T018 — 진행 중: C104 native 선택참조/3clip 실decode·재질연결·독립 viewer skin motion 진단(P1~P3부분진행/P4기술증거 추가·native완성 미확인/P5미착수). Stage4 보존/새변환 수정 분리·APK비교/웹3D/배포 미수행 |
 | 다음 작업 | 없음 — T018 이후 범위는 별도 결정 |
 | 현재 조건 | T043은 T041의 등급/API 타입권위를 유지하고 선수 정렬을 전역 최신날짜→OVR/팩 안 OVR로 구분한다. 최초 연결팩 날짜·팩최신순·대표상위3·가격100/900·앱public/API-viewer private 경계를 보존한다. |
 

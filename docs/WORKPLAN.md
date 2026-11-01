@@ -7,7 +7,7 @@
 ## 현재 작업과 매 작업 갱신
 
 - 이전 작업: T048 — 단일 ‘선수팩 선택’ 버튼으로 통합하고 판매중/종료 전환은 창 안에 유지했다.539회귀·관리/타입/공식빌드·v17 실제 단일버튼/탭/선택복귀/초점·원격 동일tree와 구현CI2건 성공을 확인했다.
-- 현재 작업: T018 — 진행 중. C103 계속 지시로 선수별 분석에 실제 착수해 원본24,203 Player↔Appearance ID를 전수 연결하고 얼굴·몸·훈련복3메시 GLB/PSK와 대표 얼굴 diffuse PNG1개를 추출했다. P1~P3진행/P4결합재생미완료/P5미착수다. 기존 UE26개 mount/개봉표본·WAV48 성과를 유지하며 전체선수·고유모션/원본소스 완전복구·APK비교·웹3D구현/배포는 미완료다.
+- 현재 작업: T018 — 진행 중. C104 지시로 native 선택 참조·3clip 실decode/재질·텍스처 연결과 독립 viewer skin motion3영상을 진단했다. Stage4 winding 오류는 원본 보존 후 새 corrected GLB로 분리했다. P1~P3부분진행/P4기술증거 추가·native 완성선수 동등 미확인/P5미착수이며 실제 game clock/retarget/shader·선수고유/전체외형·웹구현/배포는 미완료다.
 - 다음 작업: 없음 — T018 이후 범위는 별도 결정한다.
 - 최근 유지보수: T039 — 신규6팩·93명과 원본 누적·가공·판매 상태를 갱신했다. 현재 가공163명/13팩·판매중9/종료4이며 저장본/API/세 사이트/구현 커밋·실제CI 검증을 완료했다. 제품 T017/T018 범위와 T038 미확인 항목은 보존한다.
 - 현재 조건: T043이 T041의 선수 정렬을 화면 범위별로 구분한다. Epic5→Show Time8→Trend3→Highlight6 우선, 팩 안 선수는 등급 안 OVR순, 전체 선수는 등급 안 확인 날짜 최신순→OVR순이며 최초 연결팩 날짜를 사용한다. 팩은 등급 안 날짜 최신순이다. exact raw 타입·원본·가공/API 계약·가격100/900·팩 구성/카드 표시와 실제 앱 public·API/admin/viewer owner-private 경계를 보존한다.
@@ -16,10 +16,11 @@
 
 ## 최신 추가 조건과 이전 조건의 적용
 
-C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_BEFORE_PROBABILITY_SCOPE.md)에 보존한다. 관리 최신화·ID/근거·실패 보존·접근 거부 우회 금지·무료 우선·운영 승인 분리 원칙은 계속 적용한다. 범위 결정은 날짜별 이력이며 현재 범위·완료 정책은최신 C103의 선수별 실제 분석 계속과 C102의 모델/모션 추출 계획, C099~C101의 IPA 자료/실제 분석, C094~C098의 UI 결정, C084~C087·C081~C083·C080·C079·C078·C077와 C071~C075의 사용자 결정을 T037/C070 제안보다 우선하고 C069/T036의 자동 갱신 절차를 적용하며 API 완료/정상 반영 정책 C063~C064를 유지한다. 전체 수집과 사이트 범위를 혼동하지 않는다.
+C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_BEFORE_PROBABILITY_SCOPE.md)에 보존한다. 관리 최신화·ID/근거·실패 보존·접근 거부 우회 금지·무료 우선·운영 승인 분리 원칙은 계속 적용한다. 범위 결정은 날짜별 이력이며 현재 범위·완료 정책은 최신 C104/C103의 선수별 실제 분석 계속과 C102의 모델/모션 추출 계획, C099~C101의 IPA 자료/실제 분석, C094~C098의 UI 결정, C084~C087·C081~C083·C080·C079·C078·C077와 C071~C075의 사용자 결정을 T037/C070 제안보다 우선하고 C069/T036의 자동 갱신 절차를 적용하며 API 완료/정상 반영 정책 C063~C064를 유지한다. 전체 수집과 사이트 범위를 혼동하지 않는다.
 
 | 조건 ID | 최신 결정 | 영향 단계 / 선행 조건 / 처리 순서 | 상태 |
 | --- | --- | --- | --- |
+| C104 | 다음 작업 진행 지시에 따라 선수별 참조·재질/animation과 독립 기술 결합 검증 계속 | T018/R6; 조건부 native binding→재질/texture graph·원animation decode→변환오류 분리 수정→독립 skin motion/QA→native 선택·완성외형 후속 검증 | P1~P3부분진행/P4진단영상 증거 추가·완성 native 동등 미확인/P5미착수; Stage4원본 보존·제품/배포 미변경 |
 | C103 | C102 계획 뒤 작업 계속 지시로 선수별 자료의 실제 분석/표본 추출에 착수 | T018/R6; 원본/수정 ID·자산 대응→검증된 geometry/texture 표본→context/모션·rig 연결→대표 결합 검증→확인 범위 확대 | P1~P3진행: ID전수join/3메시GLB·PSK/얼굴PNG1개·정적참조; P4동적결합미완료/P5미착수, 선수고유판정미확인 |
 | C102 | 선수별 3D 모델 및 선수 모션 추출을 작업 계획에 포함 | T018/R6; 선수/카드/게임 자산 ID 대응→모델/의존성 추출→개봉·입장·경기 및 공용/고유 모션 구분→대표 선수 결합 검증→대상 확대 | 당시 계획 반영/미착수 이력; 이후 C103실제착수. 기존 PSA의 선수 고유/공용 여부는 계속 미확인 |
 | C101 | 암호화된 코드 추출/분석 작업의 실제 진행과 다운로드 완료 후 재개 요청 | T018/R6; 같은 원본 무결성 재확인→실행파일/UE/CRI 암호화 계층 구분→공급 경로의 정적 추적→실제 컨테이너/음향 검증→비공개 결과 보존 | UE26개 mount·3package 엄격 판독·HCA48개 전체 decode/WAV 추출 확인; 실제 장면 재생·원본 소스 완전 복구·웹3D 완료 아님 |
@@ -960,6 +961,82 @@ GoalEditAnimeParams162행·ModelViewAnime_Interface19행·ModelViewParams21행�
 | `docs/WORKPLAN.md` | 수정 | C103추가조건·원본/수정/patch/참조와실제geometry/texture/모션근거·검증/미해결/재개순서 |
 | `docs/ROADMAP.md` | 수정 | 실제4차결과·한계·현재/이전/다음과C102이력정합 |
 | `docs/FILE_SYNC.json` | 수정 | 관련5문서역할/조건/T018검토와실제4차선수별표본/영수증갱신조건 |
+
+### C104 — 참조·원모션 decode와 독립 기술 결합 진단 5차 (2026-11-01 KST)
+
+사용자의 다음 작업 진행 지시에 따라 C103 뒤 선수별 분석을 계속했다. 기준은 같은 `api-server-setup`의 commit `f974007ea2b6b1b333b8735db357569af33089ae`/tree `92dd73bb4d7a11cc3b4c93fdf8745b954d80637f`이며 fresh 원격/로컬 일치와 clean을 확인했다. Stage4 입력/보고서/추출물을 수정하지 않고 새 5차 자료와 수정 변환을 분리했다. 앞의 C103 P4 정적 표본/동적 재생 미확인은 당시 이력이며, 이번 독립 기술 진단 증거와 구분한다.
+
+#### P1/P2 — 조건부 native 선택과 재질/텍스처 참조
+
+DataThis와 runtime wrapper의 연결을 선택 dispatcher의 receiver 보존·callback·kind0 호출로 좁혔다. 이 dispatcher의 kind7 GetFaceNumber가 runtime row를 받는 조건부 정적 연결이며 실제 kind7 실행/반환값을 관찰하지 않았다. 원본 Appearance와 runtime row의 같은 숫자 offset을 동일 필드로 읽지 않는다. 원본/수정 대표 row에서 Skin selector3을 확인하고 CharacterAppearance→cfg488 및 face token→mobile vtable→구체적 `LoadRealFace` 경로를 연결했다. 실제 로드 성공이나 모든 runtime 선택 입력을 확인한 결과는 아니다.
+
+body selector는 별도 Uniform 필드에서 오며 Skin3을 body `SK_001a03` 또는 texture suffix3으로 추정하지 않는다. cfg488→LoadSkinTexture의 actor1100 연결도 미확인이다. LoadCover→body loading→callback→SetBodyMesh는 같은 body component를 갱신/교체하므로 base body와 trainingkit을 무조건 겹치지 않았다. 이 조건부 근거를 완성 선수 외형의 end-to-end 동등성이나 외부 카드 namespace 확정으로 확대하지 않는다.
+
+선택 mesh3개→material/instance14개→실제 texture10개를 추적하고 두 LOD의 section→slot 관계9개와 모든 UV 채널을 보존했다. Face UV는 LOD0/1에서2/1채널, Body4/4, Trainingkit2/2이며 UV0는 Stage4의 모든 LOD0 vertex와 정확히 일치했다. ASTC4×4/6×6/8×8의 첫 available cooked mip를 정상 MIT Texture2DDecoder1.0.6으로 해독한 PNG10개는 CRC/EOF/scanline/hash/크기를 검사했다. ImageSharp 또는 라이선스 target 우회는 사용하지 않았다.
+
+local material parameter와 parent/default를 구분했다. 일부 MI override의 최종 효과와 sRGB의 직렬화/default를 구분하고, 선택 chain에 없던 eye texture를 임의로 바인딩하지 않았다. Body/normal-map alpha를 자동 투명도로 해석하거나 Uniform vector를 PNG 전체에 임의로 곱하지 않았다. shader-map은 읽지 않았고 원본 shader를 복원하지 않았다. 손/신발은 이번 선택 결합에 포함하지 않았다.
+
+#### P3 — 원animation3개 실decode와 원본 보존
+
+idle/goal/cardbox3clip을 AKF_PerTrackCompression의 sparse/sample TRS로 실제 decode했다. clip별 encoded track67개와 source reference-local을 유지한 missing track99개로166bones를 다뤘고 총152,056개 sampled frame TRS를 보존했다. 원frame JSON의301/181/434frames와 sparse key time을 유지했다. 선택 표본의 compressed curve name/byte는0, raw/decoded curve는null이며 다른 자산까지 일반화하지 않는다. BodyAnime에는 jaw/eyelid/eye 등 facial13본이 있으므로 FaceAnime=None을 얼굴 본 무동작으로 해석하지 않는다. AnimationRelative 조건을 기록했고 미검증 RetargetTracks는 적용하지 않았다.
+
+PSA3개 중 cardbox는 Stage3 CUE export와 byte-identical이었다. canonical source skeleton-only animation GLB1개는166nodes와3clips×498 TRS channels를 갖고 mesh/skin은 없다. original SequenceLength endpoint를 쓰는 표시 시간이며 native clock이 아니다. 공식 Khronos 검사 오류0/경고0이며 NODE_EMPTY 정보70개를 억제하지 않았다. 원 quaternion의 최대 norm error 약0.001693은 JSON에 그대로 보존하고 GLB/viewer에서만 명시적으로 정규화했다.
+
+별도 Core-only animation adapter는 pinned CUE4Parse1.2.2.202610/source `1e3293d4b3ecaf6ef3d73641b9ffe47fa4cf1562`의 GPL 소스14개를 byte-identical로 보존했다. 합성27검사와 실제 T/S float32 exact·Q0~1ULP 대조를 수행했다. build 오류0이나 upstream nullable 경고6개가 남았고 restore audit는0이다. vendor warning10개는 level count만 기록했다. 앞의 Stage4 Core-only 기하 도구 경고0과 다른 결과이며, 독립된 별개 codec으로 원bitstream을 재decode한 것은 아니다.
+
+#### P4 — 새 corrected 변환과 독립 EGL 기술 진단
+
+실제 렌더 검사에서 Stage4 GLB의 Y/Z 좌표 반사 뒤 추가 winding swap으로 앞면이 뒤집히는 변환 오류를 발견했다. 당시 doubleSided gray model의 Khronos 구조검사 오류0/경고0은 culling/시각 충실도를 검증하지 못했다. 원Stage4 GLB/ZIP은 동결하고 source triangle index 순서를 보존한 corrected GLB3개와 별도 diagnostic textured GLB3개를 만들었다. normal-dot 양수는 face2,157/2,158·body3,834/3,850·훈련복12,315/12,422였다. 반대 방향1/16/107개는 source에도 있어 임의 heuristic 수정 없이 보존했다.
+
+새6GLB의 공식 Khronos 검사는 모두 오류0/경고0이며 정보10/hint48을 억제하지 않았다. 독립 semantic diff6/6은 비index bytes/metadata,167nodes(166bones+mesh1개),166joint skin과 inverse-bind 보존을 확인했다. corrected index는 source geometry 순서와 정확히 같고 BIN 전체의 차이는 index 수정과 명시된 PNG5개/정렬 범위에 한정됐다. Stage4 및 animation 동결166항목도 변경 없음을 확인했다. 구조/변환 보존 검증을 native appearance 동등성으로 확대하지 않는다.
+
+독립 EGL viewer는 bone 이름/parent를 정확히 대응하고 `sourceGlobalAnim×inverse(sourceGlobalRef)` delta와 전체 influence LBS를 계산했다. quaternion/weight 정규화와 reference-delta는 진단 정책이며 native UE retarget가 아니다. 별도 NumPy 구현이3clip×3mesh 전체2,748mesh-frames의 유한 position/normal을 재계산했다.99개 missing-track local reference 차이는0, child-parent delta 최대는2.274×10⁻¹³, rest×inverse(rest) 잔차는5.684×10⁻¹⁴였다. rest identity는 행렬 취소 검사로 서로 다른 bind pose가 같다는 증거가 아니다.39,732influences를 전부 유지했고 mesh별 최대 영향수는face4/body7/훈련복8이었다. viewer first/middle/last27mesh-frame의 위치차 최대는7.106×10⁻¹⁵m이며 입력6JSON/최종viewer source hash도 검증 전후 같았다.
+
+| 독립 viewer 산출물 | 실제 frame/길이 | 형식과 범위 |
+| --- | --- | --- |
+| texture를 적용한 Face100112 정적 진단 | 정지화면 | 640×720; 독립 재질/조명, 완성 선수 식별 확정 아님 |
+| idle_training_candidate.mp4 | 120frames/10초 | 640×720 H.264/12fps; source0..300 균일 정수 선택 |
+| goal_training_candidate.mp4 | 72frames/6초 | 640×720 H.264/12fps; source0..180 균일 정수 선택 |
+| cardbox_training_candidate.mp4 | 173frames/14.416667초 | 640×720 H.264/12fps; source0..433 균일 정수 선택 |
+
+ffprobe로 실제 frame count/fps/duration을 확인했다. cardbox 요청 표시14.4333334초와 인코딩173/12초를 구분한다. goal root의 약19.478m 이동은 vertex에 남고 카메라만 따라간다. 12fps 표본영상 길이를 native clock/전체 개봉 시간으로 승격하지 않는다. 정적 얼굴과 idle/cardbox/goal contact 이미지는 육안 확인했으나 손/신발을 포함한 완성 선수 동등성 검증이 아니다.
+
+EGL Mesa llvmpipe/ModernGL5.13.0, NumPy1.26.4, Pillow13.0.0, FFmpeg6.1.1을 사용했고 격리 환경 pip check는 통과했다. UV0/base-color/sRGB/일반 조명만 적용했다. native normal/SRO/layered shader·최종 alpha/cull·Uniform/kit 선택·손/신발·native retarget/clock은 미완료다. trainingkit은 기술 후보이며 실제 PID100112의 복장으로 확정하지 않는다.
+
+| 계획 | 현재 상태 |
+| --- | --- |
+| P1 선수/자산 식별 | 부분 진행: 조건부 wrapper/선택graph 추가; 실제장면 선택·외부카드namespace/완성외형 미확인 |
+| P2 모델/재질 추출 | 부분 진행: mesh3/material14/PNG10·전체UV/두LOD section graph·새변환; 전체kit/손·신발/완성assembly 미완료 |
+| P3 모션 추출/대응 | 부분 진행: 실제3clip/PSA3/source animation GLB1·원frame 보존; native retarget/curve/선수고유 판정 미완료 |
+| P4 대표 결합 검증 | 독립 texture/skin motion 기술 증거 추가·미완료: native 완성선수/clock/shader/kit 선택 동등 미확인 |
+| P5 대상 확대 | 미착수: 대표 native 결합/선택·사용 범위 검증 뒤 확대 |
+
+다음은 Uniform actual selector producer와 cfg488→actor1100·body/cover/visibility/kit 선택을 좁히고, 같은 참조 경로에서 손/신발·추가 피부 부품을 확보하는 순서다. 이후 source/mesh bind pose와 twist/facial AnimationRelative retarget·shader parameter/UV/alpha/cull을 검증하고 native clock을 별도로 확인한다. 독립 delta 영상을 비교 기준으로 유지하며 대표 ID→asset→조립→모션이 검증된 뒤 P5로 확대한다. 제품 로직·API/데이터·가격100/900·확정 DrawBatch·예약·사이트 배포와 원본 앱/Python/dylib/서버/Blueprint 실행은 변경하지 않았다. R6/이전T048/현재T018진행중/다음없음을 유지한다.
+
+#### 5차 비공개 산출물과 파일 검토
+
+보고서, 안전 증거, private assets와 대표 goal 영상·얼굴/카드박스 이미지를 별도6파일로 저장했다. 모두 succeeded/프로세스exit0·local metadata 반영을 확인하고 실제 bytes/SHA와 version0을 대조했다. source/payload/texture/video/private archive·키값/키해시·계정자료는 Git/public dist에 넣지 않았다.
+
+| 저장 파일 | version | bytes | SHA256 |
+| --- | ---: | ---: | --- |
+| [eFsimulator_T018_stage5_player_motion_20261101.md](https://chatgpt.com/library?file_id=libfile_298c584293d481918069a0995e45071d&account_id=personal) | 0 | 14,093 | `7edc63ea8923b304c4ccc3b07cbdcca54bf6ed509401760475f82d81941f1844` |
+| [eFsimulator_T018_stage5_evidence_20261101.zip](https://chatgpt.com/library?file_id=libfile_39e48c394f208191a57f3fec6c5248b7&account_id=personal) | 0 | 368,680 | `b4ec15715784a5f7830e5922db54ad1d226dbd06b3f65eb0dbdf4f86c82aa119` |
+| [eFsimulator_T018_stage5_private_assets_20261101.zip](https://chatgpt.com/library?file_id=libfile_f9d25b9886b881919c945dfe383c6acf&account_id=personal) | 0 | 9,253,996 | `adcfe2fe0027993123e9f3ac92dade3e8166ccb9a7042dc06898b189b33e2c2f` |
+| [eFsimulator_T018_stage5_goal_preview_20261101.mp4](https://chatgpt.com/library?file_id=libfile_2fec011d8f608191906c02d3e8170bf3&account_id=personal) | 0 | 210,760 | `fa3420d741571718953b6d54380e2e6c1173fd9e80fac797803c7c873aa68604` |
+| [eFsimulator_T018_stage5_face_preview_20261101.png](https://chatgpt.com/library?file_id=libfile_adb100f5176881918cca153d50ec7cf7&account_id=personal) | 0 | 118,224 | `0b551eb90b4898dbc284082f7478f7ed9c668ff9b43ed06ab1059c66cffcd797` |
+| [eFsimulator_T018_stage5_cardbox_contact_20261101.png](https://chatgpt.com/library?file_id=libfile_e836cfc439b48191ab77904d43946125&account_id=personal) | 0 | 102,358 | `5616107b36797dad2e8a43a73a13648d4668ece094a962a8632a1b948aca6285` |
+
+안전 ZIP은128members(허용목록127개+manifest)이며 전체 CRC/bytes/SHA와 원본·개인키 제외 범위를 확인했다. 자체 분석/선택 metadata/검증 결과와 허용한 pinned source·라이선스를 포함한다. private ZIP37members는 불변 material ZIP58members 및 animation ZIP21members, 새6GLB·3MP4·PNG/재생job을 포함하며 nested 원member/CRC/SHA를 대조했다. 세 이전 단계 자료는 덮어쓰지 않았다. 이번 저장은 원본 게임 코드 실행·제품 배포나 완성 선수 확보의 영수증이 아니다.
+
+5문서와 실제6개 저장 영수증 반영 후 `npm run project:check -- --base f974007ea2b6b1b333b8735db357569af33089ae`는382파일/49작업/변경5경로로 통과했고 공백/변경 범위 검사도 통과했다. 전체 `npm test`는539통과/실패0/skip0·exit0이었다. 실제 환경은 Node24.22.1/npm11.9.0으로 지정 Node24.19.0과 patch 차이가 있다. 제품 package/lock/source·사이트/배포/자동화는 변경하지 않았다. 이 로컬 결과와 독립 viewer/분석 검사를 제품 앱 빌드·native 게임 실행/동등성으로 확대하지 않는다. 이후 정상 원격 반영/CI는 실제 수행 뒤 확인하며 자신을 포함한 미래 commit SHA/미실행 CI 성공을 선행 기록하지 않는다.
+
+| 파일 | 검토 결과 | 이유 |
+| --- | --- | --- |
+| `AGENTS.md` | 수정 | C104 계속 승인·독립 진단/게임 동등성 구분·이전 원본 보존과 WORKPLAN 권위 지시만 추가 |
+| `docs/SIMULATOR_PLAN.md` | 수정 | P1~P3부분진행/P4기술증거 추가·native미완/P5미착수·변환/진단 규칙의 완료 조건 |
+| `docs/WORKPLAN.md` | 수정 | C104·조건부 참조/실decode·원변환 오류/수정 분리·실제 진단과 측정·저장영수증/후속 순서 |
+| `docs/ROADMAP.md` | 수정 | C104 실제 결과/한계와 현재·이전·다음 및 Stage4 이력 보존 |
+| `docs/FILE_SYNC.json` | 수정 | 관련5문서 역할/갱신조건/T018검토·C104실제산출물/검증영수증 조건 |
 
 ### 1차 비공개 증거 저장·로컬 검증 (이력)
 
