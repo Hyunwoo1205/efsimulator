@@ -34,6 +34,8 @@ C105 사용자의 모션 자연스러움 보고를 받아3clip JSON 전체에서
 
 C106으로8개 요구를 audit해4명시/4암시적 세부부족을 E1~E8/P1~P5/S1 입력·산출물·완료/선행 기준으로 보완했다. 실제 Uniform 등록/key=Type+2×HomeAway·장비row boots3061/기본glove1, native 모션제어/guarded후처리·T/S두reference와기존finger30/face13 encoded tracks를 확인했다. 새조건부신발/장갑 geometry/UV·보정자료, scene8packages/491exports·227localrefs/10section owners와실제Anim4·기존71cue의2정확매치를 추가 판독했다.13/Game참조는12exact+1유일casefold로모두존재했다. 새scene TRS/GLB/영상·native active선택/clock/retarget·shader/전체scene 재현은 미완료다. 계획8행 명시를 실제완료로 바꾸지 않고 C105 체감해결/원인미확정·T018진행/P5미착수·제품/DrawBatch/배포 경계를 유지한다. 최종 저장 영수증은 WORKPLAN을 따른다.
 
+C107으로 Work 유지·단계별 인계와 다음 분석을 진행한다. 최신 진입점은 WORKPLAN 상단 압축 체크포인트와 C107/Stage8 핵심절이며 AGENTS 전체/관련 계획·FILE_SYNC를 확인한 뒤 필요한 과거 근거만 읽는다. 실제scene4clip decode·127,876sampled rows/18,079stored key samples, player166본과이름`1bone`인prop의실제2본, mode3정적Q/T/S 순서·142asm/256synthetic·facial13/13을확인했다. 원키약1e-7과tool표본약.001693 norm오차를구분하고skeleton-only GLB2/0오류0경고정보71을완성재생으로확대하지않는다.4LS/487exports의indexed18축·부착참조/event15keys·20AST/28staticrefs를판독했지만partialAST/미해결worldroot·실제active binding은남는다. 잘린oldCPK보존/별도정상137,093,472bytes복구·nativefreshSHA/이전backup로컬stream을검증하되IPA전체SHA재실행/전체IPA·UE백업으로보지않는다. 다음은실제sceneclip→대표mesh reference/13mode3조건부진단과부착world/runtime연결병행이다. 보고서/짧은인계MD/안전·private ZIP4개의실제저장영수증은WORKPLAN C107에기록했으며T018진행/P5미착수·분모1/16초/native후처리/체감해결미확정과제품경계를유지한다.
+
 이전 T048 완료: 바깥 선택 진입을 ‘선수팩 선택’ 하나로 통합하고 수량/이미지로 선택 문구를 제거했다. 창 안의 판매중/종료 탭과 검색/이미지·선택한 팩 그룹 기본/닫기·초점 복귀를 유지한다.539회귀·관리/타입/공식빌드·v17public 실제UI·원격382파일동일tree/구현CI2건성공을확인했다. 데이터/가격/세션/자동갱신은유지했고당시다음은파일미제공상태의T018이었다.
 
 최신 T047 완료: 중앙 PACKS/PLAYERS/SIMULATOR와 영문 큰 제목에 기존 eFootball 폰트를 적용하고 홍보/중복 설명을 정리했다. 팩 구성/바로열기 두 링크와 판매중/종료 체험·대표최대3장·검색/초점복귀 이미지선택창을 제공한다.539회귀·관리/타입/공식빌드·v16public 실제1363×936의링크/이미지/검색/닫기·원격382파일동일tree/구현CI2건성공을확인했다. 모바일실기기는미수행이며추첨/가격100·900·저장/API/규칙/예약을보존한다. 다음T018은IPA/APK미제공상태로실제파일분석/3D를완료하지않았다.
@@ -58,7 +60,7 @@ C106으로8개 요구를 audit해4명시/4암시적 세부부족을 E1~E8/P1~P5/
 | --- | --- |
 | 현재 단계 | R6 — T017 2D 전달 후 T018 IPA 정적 분석 진행 중 |
 | 이전 작업 | T048 — 단일 선수팩 선택 버튼·창 안 판매상태 전환,539회귀/v17실제UI·원격/구현CI2건확인 |
-| 현재 작업 | T018 — 진행 중: C106 8요구 명시·Uniform/장비producer·모션후처리/실제장비geometry·scene8package/491exports 참조 분석(P1~P4/S1부분진행/P5미착수). 체감해결/native전체재현·제품/웹3D/배포 미완료 |
+| 현재 작업 | T018 — 진행 중: C107 단계인계·실제4clip/원키QA·mode3정적순서·indexed18축/부착/event 판독과입력복구. 다음은대표mesh/13mode3조건부진단·world/runtime연결이며native완성/체감해결·P5/제품배포는미완료 |
 | 다음 작업 | 없음 — T018 이후 범위는 별도 결정 |
 | 현재 조건 | T043은 T041의 등급/API 타입권위를 유지하고 선수 정렬을 전역 최신날짜→OVR/팩 안 OVR로 구분한다. 최초 연결팩 날짜·팩최신순·대표상위3·가격100/900·앱public/API-viewer private 경계를 보존한다. |
 
