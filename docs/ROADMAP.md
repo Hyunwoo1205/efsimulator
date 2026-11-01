@@ -38,6 +38,8 @@ C107으로 Work 유지·단계별 인계와 다음 분석을 진행한다. 최�
 
 C108/Stage9는실제mono10/idle04와face+kit+fixedhand+boots3061의4part기술후보(14,386v/20,792t)를Aoldglobaldelta/Bmode3+source99/Cmode3+target99로분리진단한다. bone/parent/name166·전체influence/rawsum255/7texture참조를유지하고body를kit에중복하지않았다. body/kit의untracked12twist refQ차이는2,099/2,887·4,102/8,368정점의양의직접weight에연결되고face의untracked차이는0이었다. 선정LBS계산잔차는palette4.263e-13/vertex5.329e-15m이며kit B/C6.700cm·hand2.196cm·faceA/C밀리미터차이는GT오차가아니다. paletteT91.6source units를90cm정점오류로쓰지않는다. 소품2instance→고유dummy12v4t2bones/1slot을확인했으나constant keys≠bind/world이며componentinitial/seqactorTRS·runtimeworld는미해결이다. 정상compactRef/sourceoverride의초기화branch·encodedmode3선택과6full영상/2비교60fps·65,686,476meshvertex-frame finite/viewport0을확인했다. C정책GLB4mesh/4skin·7PNG는Khronos0/0/0/0·독립reader blocking0이고 정확한8개 version0 영수증을 확인했다. 빈 폴더의169source/data·13inputs/5sources/moduleSHA 복원 gate도 통과했으나 전체 재렌더 재실행은0이다. inline coefficient의별도BSS/helper동일성은 미해결이며 다음 첫 검증은 해당 initializer/QTS입력식, 이어 actualflag/ref producer·12twist 후처리와 PlAwayworld/shader다. T018부분진행/P5미착수·nativeclock/후처리/체감자연스러움미확정·원본보존/제품경계를유지한다.
 
+C109는 원본 코드의 정적 디컴파일/추출 근거만으로 재구성하고 별도 보정식·기본값 가정·추가 정규화/보간을 넣지 않는 최신 기준이다. 기존 C108 A/B/C는 진단 이력으로 보존한다. 미확인 연산·순서/상수/임계값·초기화/reference/flag/caller/default 경로는 원본 재구성 pose/GLB/영상을 차단하는 미해결로 남기고 raw 추출은 보존하며 Stage10에서선택inline 자체BSS의정확한initializer/store2개·부호vector3개공급을찾았지만전체입력식/이후간접write·실제reference/flag/후처리가남아gate차단/원본재구성출력0이다. 다음은이자체계수를기준으로input alias/vector-lane dataflow를추적한다. 좌표/직렬화 변환은 native pose와 분리하고 원본 코드 미실행·비공개 코드/키 보호·제품 경계를 유지한다. 선택추출의정책/증거독립검토PASS·findings0/재구성BLOCKED와정확한4개version0저장을확인했으며 T018 부분진행/P5미착수·원본 소스 완전 복구/전체 pipeline·자연스러움 해결 미확정을 유지한다.
+
 이전 T048 완료: 바깥 선택 진입을 ‘선수팩 선택’ 하나로 통합하고 수량/이미지로 선택 문구를 제거했다. 창 안의 판매중/종료 탭과 검색/이미지·선택한 팩 그룹 기본/닫기·초점 복귀를 유지한다.539회귀·관리/타입/공식빌드·v17public 실제UI·원격382파일동일tree/구현CI2건성공을확인했다. 데이터/가격/세션/자동갱신은유지했고당시다음은파일미제공상태의T018이었다.
 
 최신 T047 완료: 중앙 PACKS/PLAYERS/SIMULATOR와 영문 큰 제목에 기존 eFootball 폰트를 적용하고 홍보/중복 설명을 정리했다. 팩 구성/바로열기 두 링크와 판매중/종료 체험·대표최대3장·검색/초점복귀 이미지선택창을 제공한다.539회귀·관리/타입/공식빌드·v16public 실제1363×936의링크/이미지/검색/닫기·원격382파일동일tree/구현CI2건성공을확인했다. 모바일실기기는미수행이며추첨/가격100·900·저장/API/규칙/예약을보존한다. 다음T018은IPA/APK미제공상태로실제파일분석/3D를완료하지않았다.
@@ -62,7 +64,7 @@ C108/Stage9는실제mono10/idle04와face+kit+fixedhand+boots3061의4part기술�
 | --- | --- |
 | 현재 단계 | R6 — T017 2D 전달 후 T018 IPA 정적 분석 진행 중 |
 | 이전 작업 | T048 — 단일 선수팩 선택 버튼·창 안 판매상태 전환,539회귀/v17실제UI·원격/구현CI2건확인 |
-| 현재 작업 | T018 — 진행 중: C108 actualscene2clip/대표4part의A/B/C99정책·reference/skin 독립수치와dummyprop연결 진단. 정상/source초기화·6full/2비교60fps·C정책GLB구조확인, GLB독립reader/선택복원통과·inline별도BSS/worldruntime미해결·GT/native동등/체감미확정·P5/제품배포 미완료 |
+| 현재 작업 | T018 — 진행 중: C109/Stage10 원본근거만 사용. inline 자체initializer/store·3vector공급확인, 전체input alias/vector-lane·이후write/실제reference/flag/후처리 미해결로gate차단·pose/GLB/영상0. 다음input dataflow; C108진단보존·증거검토PASS/정확4저장·P5미착수 |
 | 다음 작업 | 없음 — T018 이후 범위는 별도 결정 |
 | 현재 조건 | T043은 T041의 등급/API 타입권위를 유지하고 선수 정렬을 전역 최신날짜→OVR/팩 안 OVR로 구분한다. 최초 연결팩 날짜·팩최신순·대표상위3·가격100/900·앱public/API-viewer private 경계를 보존한다. |
 
