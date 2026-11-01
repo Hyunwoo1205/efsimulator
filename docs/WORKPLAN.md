@@ -7,7 +7,7 @@
 ## 현재 작업과 매 작업 갱신
 
 - 이전 작업: T048 — 단일 ‘선수팩 선택’ 버튼으로 통합하고 판매중/종료 전환은 창 안에 유지했다.539회귀·관리/타입/공식빌드·v17 실제 단일버튼/탭/선택복귀/초점·원격 동일tree와 구현CI2건 성공을 확인했다.
-- 현재 작업: T018 — 진행 중. 확보한 IPA의 개봉 관련 코드·PAK/IoStore/CPK와 커스텀 구성을 정적으로 분석한다. APK 원본 다운로드는 미확인이며 버전 비교·웹3D 구현/배포는 미수행이다.
+- 현재 작업: T018 — 진행 중. 확보 IPA의 네이티브 공급 경로를 정적으로 추적해 암호화 UE 컨테이너26개를 mount하고 개봉 관련 UE 표본3개와 HCA48개를 실제 판독/변환했다. 전체 자산·원본 소스 복구/장면 재생·APK 버전 비교·웹3D 구현/배포는 미수행이다.
 - 다음 작업: 없음 — T018 이후 범위는 별도 결정한다.
 - 최근 유지보수: T039 — 신규6팩·93명과 원본 누적·가공·판매 상태를 갱신했다. 현재 가공163명/13팩·판매중9/종료4이며 저장본/API/세 사이트/구현 커밋·실제CI 검증을 완료했다. 제품 T017/T018 범위와 T038 미확인 항목은 보존한다.
 - 현재 조건: T043이 T041의 선수 정렬을 화면 범위별로 구분한다. Epic5→Show Time8→Trend3→Highlight6 우선, 팩 안 선수는 등급 안 OVR순, 전체 선수는 등급 안 확인 날짜 최신순→OVR순이며 최초 연결팩 날짜를 사용한다. 팩은 등급 안 날짜 최신순이다. exact raw 타입·원본·가공/API 계약·가격100/900·팩 구성/카드 표시와 실제 앱 public·API/admin/viewer owner-private 경계를 보존한다.
@@ -20,6 +20,7 @@ C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_B
 
 | 조건 ID | 최신 결정 | 영향 단계 / 선행 조건 / 처리 순서 | 상태 |
 | --- | --- | --- | --- |
+| C101 | 암호화된 코드 추출/분석 작업의 실제 진행과 다운로드 완료 후 재개 요청 | T018/R6; 같은 원본 무결성 재확인→실행파일/UE/CRI 암호화 계층 구분→공급 경로의 정적 추적→실제 컨테이너/음향 검증→비공개 결과 보존 | UE26개 mount·3package 엄격 판독·HCA48개 전체 decode/WAV 추출 확인; 실제 장면 재생·원본 소스 완전 복구·웹3D 완료 아님 |
 | C099 | 사용자가 개인용 Drive에 IPA/APK를 제공했으며 두 파일은 서로 다른 버전이라고 명시 | T018/R6; 실제 확보 파일의 해시·앱/빌드 버전·무결성 고정→파일별 독립 분석→확보 뒤 버전 차이를 구분해 비교 | IPA 4,145,921,439bytes·11.1.1/11.1.110·22,040 ZIP 항목 CRC 통과 확인; APK 원본 다운로드/내부 버전 비교 미확인 |
 | C100 | IPA 분석 계획 승인 후 분석 작업 시작 요청 | T018/R6; 개봉 코드 추적과 자산 판독 병행→커스텀 영향 구분→핵심 자산/의존성→근거별 연출 명세·웹 적용 판단 | 정적 분석 진행 중; 원본 소스 완전 복구·3D 구현/타이밍·자산 재사용·배포 완료 아님 |
 | C098 | 시뮬레이터 선택 진입은 수량/이미지로선택 문구 없이 `선수팩 선택` 하나로 통합, 판매상태는 창 안에서 전환 | T048/R6; 선택된 팩 그룹 기본/미선택live·live빈경우archive→기존 모달/잠금 확인 | 완료:539회귀·v17실제단일버튼/내부탭·원격/구현CI확인 |
@@ -800,7 +801,67 @@ global 저장 JSON과 새 입력 판독의 일치·전체 참조 검증 및 암�
 
 이번 문서 반영 전 GitHub 기준382파일/329고유blob·5,699,939bytes를 수신해 전부 원래 size/Git blob SHA와 대조하고 전체 tree `fd73e15e5d33797198dfb3c9580cc0fa16b36276` 및 기준 commit `40b63035e07bc16c3bac3a28e6e2a5aac3817a84`와 정확히 일치함을 확인했다. 기준 관리검사는382파일/49작업/변경0, 전체 `npm test`는539통과/실패0/skip0·exit0이다. 실제 환경은 Node24.22.1/npm11.9.0이며 지정 Node24.19.0과 patch 차이가 있다. `fake-indexeddb`6.2.6은 기존 잠금 SHA512로 정상 `npm ci --ignore-scripts` 설치했고 제품 package/lock/source는 변경하지 않았다. 본문 2차 반영 후 관리검사 `npm run project:check -- --base 40b63035e07bc16c3bac3a28e6e2a5aac3817a84`는382파일/49작업/변경3경로로 통과했고, 전체 `npm test`는539통과/실패0/skip0·exit0으로 완료됐다. 검증 결과 문구와 공백/변경 범위를 마지막으로 대조하며 원격 commit/ref·내용과 CI는 실제 수행 후 확인한다. 이 로컬 결과를 앱 타입/공식 빌드·자산 변환·실제 재생 성공으로 확대하지 않는다.
 
-### 비공개 증거 저장·로컬 검증
+### 실제 3차 복호화·추출 분석 결과 (2026-11-01 KST)
+
+다운로드 대기 체크포인트 뒤 같은 IPA 전체4,145,921,439bytes를 다시 읽어 위 SHA256과 일치함을 확인했다. 네이티브199,860,352bytes도 전체 ZIP member CRC·SHA가 기존 기준과 같았다. 이번 전체 IPA 해시 재검증과 과거 전체22,040member CRC 검사를 구분하며, 이번에 모든 member를 다시 전량 CRC 검사했다고 확대하지 않는다. 분석 대상은 같은 수정/재포장 IPA이며 APK·공식 배포본과의 동등성은 확인하지 않았다.
+
+네이티브 `cryptid=0`을 재확인하고 기본 UE encryption callback의32B 복사·등록/delegate 호출, 별도 selector2 공급과 index 검증 실패 시 fallback을 ARM64 명령으로 정적으로 추적했다. 실제 native iOS 컨테이너 검증에는 기본 후보1개만 사용했다. 별도 공급 후보의 존재를 현재 자산에서 사용됐다는 결과나 GUID별 키라는 의미로 바꾸지 않는다. 키 값·키 해시·키가 포함된 raw opcode/덤프는 Git/공개 dist·공유 보고서에 넣지 않았다. 원래 C++ 변수명/주석·전체 소스 복구나 앱/게임 코드 실행 결과도 아니다.
+
+원본 native iOS `.pak/.utoc/.ucas` 구성41파일/2,619,700,724bytes를 각 member 전체 CRC를 확인하며 추출했다. Android 이름의 동봉 묶음을 섞지 않고 원본 bytes를 유지했다. 기본 후보로 암호화 logical container26개(PAK13+IoStore13)를 새로 mount해 required GUID0, indexed files163,837개를 확인했다. package inventory145,919개는 `.uasset`143,943+`.umap`1,976개이고 truncation false다. 이는 전체 payload·export를 전수 복호화/검증한 개수가 아니다.
+
+전체 inventory의 이름 필터로 선별한 opening/demo 후보는576개(519uasset+57umap), 선언 raw size 합61,991,121bytes다. 첫100,000개 index의 예비568개는 이 집계로 대체했다. 분포는 Animation157/demo408/effect2/menu1/ui3/Parkour5이며, 이름만으로 실제 개봉 확정 자산이라고 분류하지 않는다. PAK13개의 primary/path/full-directory index를 독립 검사해 저장 SHA1 region39/39가 일치했다. 합4,127 file entries는 payload hash·전체 압축 해제 검증을 뜻하지 않는다. empty mount point와 정확한 논리/AES block 정렬 길이를 처리하는 독립 gate를 보강했고 합성 PAK37회귀가 통과했다.
+
+원본 `global_mobile_ios.utoc/.ucas`와 byte-identical reader alias로 global filename 차이를 연결했다. 다른 게임의 global이나 수정된 내용을 쓰지 않았으며 선택 표본의 `globalDataAvailable=true`였다. 아래3개 package는 원래 bytes/선언 크기를 대조하고 엄격한 export failure 모드에서 failure0으로 판독했다.
+
+최종 독립 IoStore 구조 gate는 native TOC14/14(plain global1+encrypted13), chunk159,726개/physical block252,115개의 경계·참조 검사를 통과했다. `pc3600`의 예비 거부는 string pool4,996개 중 실제 경로에 참조되지 않은 빈 placeholder1개 때문이었다. 경로 참조4,995개/참조된 빈 문자열0을 확인하고 이 미참조 placeholder만 허용했다. 실제 경로의 빈 문자열/위험 요소·cycle·reachability 검사는 유지했고 회귀도 통과했다. 예비13/14는 최종 결과로 사용하지 않는다. 구조 gate 통과를 아래 미검증 serialized chunk hash나 전체 payload 검증으로 확대하지 않는다.
+
+| 실제 표본 | 읽은 package bytes | export | 판독한 구조 |
+| --- | ---: | ---: | --- |
+| `A_dml_md_cardbox_common_fp_01` | 88,835 | 1 | AnimSequence |
+| `BP_DemoGachaFxStaticMesh` | 3,567 | 7 | BlueprintGeneratedClass·Function·SceneComponent·StaticMeshComponent 등 |
+| `LS_mode_CardBox_monotypic_fp_cam0` | 416,095 | 327 | LevelSequence/MovieScene·카메라·transform·skeletal animation·subsequence·event 등 |
+
+세 번째 표본에는 CineCameraActor4/CineCameraComponent4·CameraCutSection4·TransformSection11·SkeletalAnimationSection10·SubSection3·EventTriggerSection2가 있었다. export의 정적 판독은 Blueprint 실행·장면 재생을 뜻하지 않으며, 모든 export의 바이트 소비·전체 의존성 검증도 별도다. AnimSequence 표본은434frames/SequenceLength14.433333초·166bones를 읽고 ActorX PSA3,478,360bytes로 실제 변환했다. 독립 inspector가 chunk/파일 끝 경계와 ANIMKEYS72,044=434×166·동수SCALEKEYS를 확인했다. 이는 mesh/material을 결합한 캐릭터 시각 재생이나 GLB/웹 재사용 성공이 아니며, 표본 길이를 전체 개봉 duration으로 승격하지 않는다.
+
+별도 LevelSequence의327exports 중section73개와 명시 허용한115channels/188keys의 Times/Values 길이 일치를 확인했다. PlaybackRange는inclusive0/exclusive384,000ticks이고 TickResolution Numerator24,000/DisplayRate Numerator30을 읽었지만 Denominator는 tagged fallback에 직렬화되어 있지 않았다. 기본 분모 적용을 독립 검증하지 않아16초로 확정하지 않는다. compiled channel·모든event 동작과 앞의 common animation을 같은 분기의 전체 개봉 시간으로 연결하지 않는다. IoStore 저장32B chunk hash는 아직 독립 검증하지 않았으며 새 출력 SHA가 원본 hash 검증을 대신하지 않는다.
+
+CRI는 UE와 별도로 초기화 정보→`criAtomDecrypter_Create`→HCA decryption table의 공급 경로를 정적으로 추적했다. `SE_Mode_AM.acb`의 CARDBOX71cue→159관계→중복 제거 HCA48파형을 연결하고 해당 AWB subkey를 반영해 독립 vgmstream clhca로 실제 전체 decode했다.48/48 header/CRC/ciph56와34,920frames, decoder 오류0/비유한PCM0, 선언 sample 수48/48 일치를 확인했다. 구간 검사4,608frames는 positive3,944/silent-or-unknown664/failed0이며, 한bit 바꾼 잘못된 base key는48/48에서 거절되고 frame실패3,952였다.
+
+WAV48개 합140,410,594bytes를 생성하고 Python wave와 ffprobe로 PCM_s16le·채널/sample rate/sample 수48/48을 대조했다. float PCM을[-1,1]로 clip해16bit로 변환했으며 원float5,096개가 범위를 벗어났고 최대 절댓값은1.1764166355133057이었다. WAV는 원float PCM과 bit-identical하지 않다. 실제 청취와 cue 선택/랜덤/trigger·장면과의 동기화는 수행하지 않았으며 정적 cue/파형 길이로 단일/10회 전체 연출 시간을 확정하지 않는다. Python AES-CBC·압축/msgpack 요청/응답 경로는 UE·HCA와 다른 계층으로 분류했고 해당 통신/인증 상수를 자산 키로 취급하지 않았다.
+
+사용 도구는 Capstone5.0.6, .NET SDK10.0.403/runtime10.0.14, CUE4Parse1.2.2.202610의 실제 package source `1e3293d4b3ecaf6ef3d73641b9ffe47fa4cf1562`와 eFootball/UE4.26 profile, vgmstream `d9875b1fff307e4759dfb85e49e3d5e6fb196f7c`의 standalone clhca다. source/잠금을 검증한 독립 도구이며 게임에 포함된 함수를 실행한 결과가 아니다. 도구 지원 조사·이전 합성 준비 검사를 이번 실제 복호화 결과로 소급하지 않는다.
+
+최종 UE 검증은 PAK37+IoStore16+CUE 안전 경계15+PSA7=75/75와 Python 문법 검사가 통과했다. 실제 Release 빌드는 exit0/오류0이지만 Conversion 추가 후 전이 ImageSharp3.1.12의 공개 NuGet advisory 경고6개가 남았다. 초기 준비 빌드의 경고0과 구분하며 이번에 image decoder는 호출하지 않았다. 향후 texture 변환 전 해당 의존성 교체/재검증이 필요하다. 이 독립 도구 빌드 결과를 제품 앱 타입/공식빌드·QA·배포 성공으로 보고하지 않는다.
+
+### 3차 증거 저장·재현과 다음 순서
+
+실제 보고서·자체 도구/출처/선택metadata 검증 증거와 사용자 WAV/UE 표본, 재개용 네이티브/CPK 입력을 각각 분리했다. 상세 증거/추출물·실행파일·키/키 해시·SDK/cache는 Git/공개 dist에 넣지 않는다. 별도 재개 입력에는 원래 실행파일에 내장된 상수가 존재할 수 있으며 별도 추출 key file은 포함하지 않는다. 전체 IPA나 UE 컨테이너 보존본이 아니라 native/CPK 두 원본과 provenance다. 이번 실제 결과는 직전 원본 대기 체크포인트의 같은 파일ID를 version2로 교체했다. 다음5개 저장은 모두 succeeded/프로세스exit0을 확인했으며 ID·version·실제 bytes/SHA를 대조했다.
+
+| 저장 파일 | version | bytes | SHA256 |
+| --- | ---: | ---: | --- |
+| [eFsimulator_T018_stage3_checkpoint_20261101.md](https://chatgpt.com/library?file_id=libfile_4a5fb76db27481919c2c4fbdc5367f7a&account_id=personal) | 2 | 16,793 | `1c5d5f3df25bc15c4a7ea9b6cf7c09e6d9532d7c3abf3c061aa72d166a569069` |
+| [eFsimulator_T018_actual_evidence_stage3_20261101.zip](https://chatgpt.com/library?file_id=libfile_9f3201090d508191825ec510248c8f49&account_id=personal) | 0 | 322,948 | `107e691178298ef43b2440064b9f200aef5ad6b3d58a2dca9a9edd41996f9ec6` |
+| [eFsimulator_T018_decoded_audio_20261101.zip](https://chatgpt.com/library?file_id=libfile_657e6a7b53e4819198d289687de3dc8d&account_id=personal) | 0 | 127,983,982 | `1e34fe6ec892ae050361fecff16e64272c5cc8a97de85fb4e24638f0a9936fe0` |
+| [eFsimulator_T018_selected_ue_assets_20261101.zip](https://chatgpt.com/library?file_id=libfile_d44183ae219c8191b9c15ae93ae25ccd&account_id=personal) | 0 | 363,534 | `8f38670c93faed570d7e06723967f3de778a5d5e9402d328a6391e77b3c09a71` |
+| [eFsimulator_T018_private_inputs_20261101.zip](https://chatgpt.com/library?file_id=libfile_804efc5cc584819191175c92f2ed8095&account_id=personal) | 0 | 189,126,412 | `f156c82df94c8cfedd9b400fcb238d36824a555a1f8b3046042c91302e93e116` |
+
+안전 증거 ZIP은74members 전체CRC와 내장manifest73항목의 bytes/SHA를 독립 대조했고 nested native13/audio15/UE26개 manifest도 모두 일치했다. 전체 UTF8 텍스트만 포함하며 게임 payload·개인 키·키 해시가 없는 범위를 확인했다. WAV ZIP52members/UE 표본 ZIP9members/재개 입력 ZIP4members도 전량CRC·전체SHA를 검증했다. WAV48개는 샘플 수/각 member SHA를 재확인했다. 사용자 추출물은 Git/공개 배포와 분리하고 보고서/분석 증거와 게임 원본·표본이 서로 다른 산출물임을 유지한다.
+
+이번 기준 GitHub HEAD `9e17d7937efc5428f082621162fe2b099933c4e8`의382파일/329고유blob·5,706,885bytes를 받아 전량 size/Git blob을 대조하고 tree `7971b1e73ec67a9ff2c77acee6334e568bb5a205` 및 원래 commit과 정확히 일치함을 확인했다. 기준 관리검사382파일/49작업/변경0과 전체 `npm test`539통과/실패0/skip0·exit0을 실제 실행했다. Node24.22.1/npm11.9.0이며 지정 Node24.19.0과 patch 차이가 있고 환경 activate 스크립트는 없었다. `fake-indexeddb`6.2.6은 정상 npm으로 별도 최소 설치하고 기존 lock SHA512를 대조했으며 제품 package/lock/source는 변경하지 않았다. 기준 commit의 실제 Catalog API checks(run41220591338)도 completed/success다. 3차 문서/영수증 반영 후 `npm run project:check -- --base 9e17d7937efc5428f082621162fe2b099933c4e8`는382파일/49작업/변경3경로, 전체 `npm test`는539통과/실패0/skip0·exit0이며 공백/변경 범위 검사도 통과했다. 이 결과는 이번 로컬 검사이며 이후 원격 ref·전체 변경 내용·CI는 실제 수행 후 확인한다. 미래 commit SHA/CI 성공을 선행 기록하지 않는다.
+
+이어갈 순서는 package/animation의 skeleton·mesh·material·texture/bulk data 의존성 대응 → LevelSequence frame rate/range·camera/animation/subsequence/event 연결의 정적 추출 → 선택 mesh/animation/texture 변환과 독립 출력 검사 → 남은 IoStore hash/형식·export 바이트 소비 검증 → 실제 연출 관찰과 크기/성능·사용 범위에 따른 후속 웹3D 계획이다. 파일의 시간 범위를 전체 게임 duration으로 간주하지 않는다. 현재는R6/이전T048/현재T018진행중/다음미배정이며 제품 API/앱·가격100/900·확정 DrawBatch·규칙·예약·사이트 배포는 변경하지 않았다. 후속 renderer도 같은 확정batch를 재생하고 skip/실패로 재추첨·추가비용을 적용하지 않는 기존 계약을 유지한다.
+
+### 3차 파일 최신화 검토
+
+| 파일 | 결과 | 근거 |
+| --- | --- | --- |
+| `AGENTS.md` | 검토 결과 변경 불필요 | 기존 IPA 정적 분석·제품/운영 경계와 비공개 자료 제외·같은 확정batch 계약이 유효함 |
+| `docs/WORKPLAN.md` | 수정 | C101과 실제3차 공급 경로·컨테이너/표본·음향 판독/변환·검증/한계·재개 순서와 저장 영수증 |
+| `docs/ROADMAP.md` | 수정 | 실제3차 결과 요약과 현재T018진행·장면 재생/웹3D 미완료 구분 |
+| `docs/SIMULATOR_PLAN.md` | 검토 결과 변경 불필요 | 분석 뒤 renderer 범위 결정·확정batch/2D fallback/모바일 검증 계약이 유효하며 구현 착수 없음 |
+| `docs/FILE_SYNC.json` | 수정 | 기존3문서 역할/우선순위/연관/T018 검토 유지·실제3차 추출/증거 저장·한계 갱신 조건 보완 |
+
+### 1차 비공개 증거 저장·로컬 검증 (이력)
 
 비공개 분석 증거 묶음을 Library `libfile_1de670e04aa48191b523af5544076289` version0에 저장했다.313,786bytes·19members이며 ZIP CRC 검사가 통과했고 SHA256은 `d28c3b3fe69d523f68f9c685fa104a957eb9ba8047d1c9f19373b67c9836dbdf`다. 원본 IPA·실행파일·추출 게임 자산·타사 전체 소스·계정/인증값은 이 저장 영수증이나 Git/public dist에 포함하지 않는다.
 
