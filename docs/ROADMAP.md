@@ -32,6 +32,8 @@ C104 다음 작업 지시로 native wrapper/선택graph·material14/PNG10/mesh3�
 
 C105 사용자의 모션 자연스러움 보고를 받아3clip JSON 전체에서 frame 누락/중복/역순·비유한TRS·key-time 오류0을 확인했다. 원source는 유지됐지만 old12fps는301/181/434 중120/72/173frame만 표시해 무보간2~3frame 점프가 있었다. raw sparse lerp/SLERP30/60fps와635,282bone-frame 독립 대조·같은2mesh 비교/별도4part 후보를 만들었으며 endpoint·old12위상 차이를 native clock과 구분한다. 조건부 기본손/대체신발2mesh·material6/PNG12/GLB2와 DefaultFace Appearance Skin3→cfg120·RealFace typed SkinColor2의 서로 다른 피부경로를 확인했다. 이는 선택범위 검증이며 사용자체감 해결·유일원인·범용validator·실제PID 장비/완성native선수 동등성은 미확인이다. 일반입력한계5개와실제6개저장영수증은WORKPLAN을따르며T018진행/P5미착수·DrawBatch/제품/배포계약을유지한다.
 
+C106으로8개 요구를 audit해4명시/4암시적 세부부족을 E1~E8/P1~P5/S1 입력·산출물·완료/선행 기준으로 보완했다. 실제 Uniform 등록/key=Type+2×HomeAway·장비row boots3061/기본glove1, native 모션제어/guarded후처리·T/S두reference와기존finger30/face13 encoded tracks를 확인했다. 새조건부신발/장갑 geometry/UV·보정자료, scene8packages/491exports·227localrefs/10section owners와실제Anim4·기존71cue의2정확매치를 추가 판독했다.13/Game참조는12exact+1유일casefold로모두존재했다. 새scene TRS/GLB/영상·native active선택/clock/retarget·shader/전체scene 재현은 미완료다. 계획8행 명시를 실제완료로 바꾸지 않고 C105 체감해결/원인미확정·T018진행/P5미착수·제품/DrawBatch/배포 경계를 유지한다. 최종 저장 영수증은 WORKPLAN을 따른다.
+
 이전 T048 완료: 바깥 선택 진입을 ‘선수팩 선택’ 하나로 통합하고 수량/이미지로 선택 문구를 제거했다. 창 안의 판매중/종료 탭과 검색/이미지·선택한 팩 그룹 기본/닫기·초점 복귀를 유지한다.539회귀·관리/타입/공식빌드·v17public 실제UI·원격382파일동일tree/구현CI2건성공을확인했다. 데이터/가격/세션/자동갱신은유지했고당시다음은파일미제공상태의T018이었다.
 
 최신 T047 완료: 중앙 PACKS/PLAYERS/SIMULATOR와 영문 큰 제목에 기존 eFootball 폰트를 적용하고 홍보/중복 설명을 정리했다. 팩 구성/바로열기 두 링크와 판매중/종료 체험·대표최대3장·검색/초점복귀 이미지선택창을 제공한다.539회귀·관리/타입/공식빌드·v16public 실제1363×936의링크/이미지/검색/닫기·원격382파일동일tree/구현CI2건성공을확인했다. 모바일실기기는미수행이며추첨/가격100·900·저장/API/규칙/예약을보존한다. 다음T018은IPA/APK미제공상태로실제파일분석/3D를완료하지않았다.
@@ -56,7 +58,7 @@ C105 사용자의 모션 자연스러움 보고를 받아3clip JSON 전체에서
 | --- | --- |
 | 현재 단계 | R6 — T017 2D 전달 후 T018 IPA 정적 분석 진행 중 |
 | 이전 작업 | T048 — 단일 선수팩 선택 버튼·창 안 판매상태 전환,539회귀/v17실제UI·원격/구현CI2건확인 |
-| 현재 작업 | T018 — 진행 중: C105 old12fps 표시 생략/원JSON audit·30/60fps 비교/조건부 손·신발/피부선택 확인. 유일원인·체감해결/native 동등 미확정·P1~P4부분진행/P5미착수·제품/웹3D/배포 미수행 |
+| 현재 작업 | T018 — 진행 중: C106 8요구 명시·Uniform/장비producer·모션후처리/실제장비geometry·scene8package/491exports 참조 분석(P1~P4/S1부분진행/P5미착수). 체감해결/native전체재현·제품/웹3D/배포 미완료 |
 | 다음 작업 | 없음 — T018 이후 범위는 별도 결정 |
 | 현재 조건 | T043은 T041의 등급/API 타입권위를 유지하고 선수 정렬을 전역 최신날짜→OVR/팩 안 OVR로 구분한다. 최초 연결팩 날짜·팩최신순·대표상위3·가격100/900·앱public/API-viewer private 경계를 보존한다. |
 

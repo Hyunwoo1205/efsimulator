@@ -7,7 +7,7 @@
 ## 현재 작업과 매 작업 갱신
 
 - 이전 작업: T048 — 단일 ‘선수팩 선택’ 버튼으로 통합하고 판매중/종료 전환은 창 안에 유지했다.539회귀·관리/타입/공식빌드·v17 실제 단일버튼/탭/선택복귀/초점·원격 동일tree와 구현CI2건 성공을 확인했다.
-- 현재 작업: T018 — 진행 중. C105 사용자 보고를 반영해 old12fps 표시 생략과3clip JSON coverage를 구분하고 raw-key30/60fps/독립수치 비교·조건부 손/신발/피부 선택을 확인했다. 유일 원인·사용자 체감 해결/native 완성선수 동등성은 미확정이며 P1~P3부분진행/P4미완료/P5미착수·제품/웹구현/배포 미완료를 유지한다.
+- 현재 작업: T018 — 진행 중. C106으로8요구를 E1~E8/P1~P5/S1에 명시하고 Uniform/장비 producer·모션후처리·새장비 geometry/보정자료와 실제scene8packages/491exports·227참조를 분석했다. 새모션TRS/GLB/영상·자연스러움/native완성은 미완료다. P1~P4/S1부분진행/P5미착수와 C105 원인/체감해결 미확정·제품/웹구현/배포 경계를 유지한다.
 - 다음 작업: 없음 — T018 이후 범위는 별도 결정한다.
 - 최근 유지보수: T039 — 신규6팩·93명과 원본 누적·가공·판매 상태를 갱신했다. 현재 가공163명/13팩·판매중9/종료4이며 저장본/API/세 사이트/구현 커밋·실제CI 검증을 완료했다. 제품 T017/T018 범위와 T038 미확인 항목은 보존한다.
 - 현재 조건: T043이 T041의 선수 정렬을 화면 범위별로 구분한다. Epic5→Show Time8→Trend3→Highlight6 우선, 팩 안 선수는 등급 안 OVR순, 전체 선수는 등급 안 확인 날짜 최신순→OVR순이며 최초 연결팩 날짜를 사용한다. 팩은 등급 안 날짜 최신순이다. exact raw 타입·원본·가공/API 계약·가격100/900·팩 구성/카드 표시와 실제 앱 public·API/admin/viewer owner-private 경계를 보존한다.
@@ -16,10 +16,11 @@
 
 ## 최신 추가 조건과 이전 조건의 적용
 
-C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_BEFORE_PROBABILITY_SCOPE.md)에 보존한다. 관리 최신화·ID/근거·실패 보존·접근 거부 우회 금지·무료 우선·운영 승인 분리 원칙은 계속 적용한다. 범위 결정은 날짜별 이력이며 현재 범위·완료 정책은 최신 C105의 모션 자연스러움 관찰/원인 분리와 C104/C103의 선수별 실제 분석 계속, C102의 모델/모션 추출 계획, C099~C101의 IPA 자료/실제 분석, C094~C098의 UI 결정, C084~C087·C081~C083·C080·C079·C078·C077와 C071~C075의 사용자 결정을 T037/C070 제안보다 우선하고 C069/T036의 자동 갱신 절차를 적용하며 API 완료/정상 반영 정책 C063~C064를 유지한다. 전체 수집과 사이트 범위를 혼동하지 않는다.
+C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_BEFORE_PROBABILITY_SCOPE.md)에 보존한다. 관리 최신화·ID/근거·실패 보존·접근 거부 우회 금지·무료 우선·운영 승인 분리 원칙은 계속 적용한다. 범위 결정은 날짜별 이력이며 현재 범위·완료 정책은 최신 C106의8요구 명시/다음 분석과 C105의 모션 자연스러움 관찰/원인 분리, C104/C103의 선수별 실제 분석 계속, C102의 모델/모션 추출 계획, C099~C101의 IPA 자료/실제 분석, C094~C098의 UI 결정, C084~C087·C081~C083·C080·C079·C078·C077와 C071~C075의 사용자 결정을 T037/C070 제안보다 우선하고 C069/T036의 자동 갱신 절차를 적용하며 API 완료/정상 반영 정책 C063~C064를 유지한다. 전체 수집과 사이트 범위를 혼동하지 않는다.
 
 | 조건 ID | 최신 결정 | 영향 단계 / 선행 조건 / 처리 순서 | 상태 |
 | --- | --- | --- | --- |
+| C106 | 앞서 설명한8개 요소가 추출/분석 계획에 포함됐는지 확인하고 포함하여 다음 작업 진행 요청 | T018/R6; 계획 audit→E1~E8/P1~P5/S1 명시→선택producer/graph/layer/장비/scene 참조→근거별 검증 | 계획audit/명시·실제선택/모션후처리/장비/scene참조와4저장 검증;8요구 부분/미완료/P5미착수 |
 | C105 | 사용자가 영상 모션이 자연스럽지 않다고 보고하고 프레임 끊김/수집 미완료 중 원인을 모른다고 하며 참고해서 진행 요청 | T018/R6; 사용자 관찰→fps/보간 비교→key/track coverage·연속성 audit→native 선택/retarget·실제 참조 부품→근거별 판정 | 실제 표시 생략/선택JSON audit·raw-key 비교/조건부 부품 추출; 유일 원인·체감 해결/native 동등 미확정 |
 | C104 | 다음 작업 진행 지시에 따라 선수별 참조·재질/animation과 독립 기술 결합 검증 계속 | T018/R6; 조건부 native binding→재질/texture graph·원animation decode→변환오류 분리 수정→독립 skin motion/QA→native 선택·완성외형 후속 검증 | P1~P3부분진행/P4진단영상 증거 추가·완성 native 동등 미확인/P5미착수; Stage4원본 보존·제품/배포 미변경 |
 | C103 | C102 계획 뒤 작업 계속 지시로 선수별 자료의 실제 분석/표본 추출에 착수 | T018/R6; 원본/수정 ID·자산 대응→검증된 geometry/texture 표본→context/모션·rig 연결→대표 결합 검증→확인 범위 확대 | P1~P3진행: ID전수join/3메시GLB·PSK/얼굴PNG1개·정적참조; P4동적결합미완료/P5미착수, 선수고유판정미확인 |
@@ -1118,6 +1119,85 @@ Uniform68개 선택 검사에서 registry key 조회/field 복사를 좁혔지�
 | `docs/WORKPLAN.md` | 수정 | C105 원문·기준 상태·조사 순서·사용자 보고와 미확정 원인·검증 대기 구분 |
 | `docs/ROADMAP.md` | 수정 | C105 현재 조사와 이전 C104 성과 보존·T018진행/P5미착수 정합 |
 | `docs/FILE_SYNC.json` | 수정 | 관련5문서 역할/갱신조건/T018검토·C105 비교/실제 증거 갱신 조건 |
+
+### C106 — 8개 추출·분석 요구 audit와 명시적 계획 (2026-11-01 KST)
+
+사용자는 “일단 그럼 이것들 추출/분석 계획에 포함되어있는지 확인하고 포함해서 다음 작업 진행해”라고 요청했다. 앞서 설명한8개 요소를 기준 commit `3a6c5e7f94f931be6a0ab535a92954337c0abf12`/tree `3f7154c90d10643c88e636e191c316d8e155f68d`의5문서와 대조했고 fresh 원격/로컬 일치·clean을 확인했다. C106 변경 전의 정확한 근거는 아래 기준 commit 행 링크로 고정한다. 명시는 해당 목적/작업이 직접 적힌 경우, 암시적은 포괄 문구·일부 단서/한계만 있고 요청 묶음의 세부/완료 기준이 불충분한 경우다.
+
+| 요구 | 기존 판정 | 정확한 기존 근거 | 보완할 미명시 세부 |
+| --- | --- | --- | --- |
+| E1 ID/카드/선수의 실제 Uniform/equipment 선택 | 명시 | [SIMULATOR_PLAN P1](https://github.com/Hyunwoo1205/efsimulator/blob/3a6c5e7f94f931be6a0ab535a92954337c0abf12/docs/SIMULATOR_PLAN.md?plain=1#L21), [C105 실제 Uniform/장비 한계](https://github.com/Hyunwoo1205/efsimulator/blob/3a6c5e7f94f931be6a0ab535a92954337c0abf12/docs/WORKPLAN.md?plain=1#L1085) | 기존 조건부 경로와 실제 active scene/key/선수 선택값의 미검증을 계속 구분 |
+| E2 전체 mesh/body/kit/gear와 의존성 | 명시 | [SIMULATOR_PLAN P2](https://github.com/Hyunwoo1205/efsimulator/blob/3a6c5e7f94f931be6a0ab535a92954337c0abf12/docs/SIMULATOR_PLAN.md?plain=1#L22) | 선택 표본과 full assembly 완료를 분리하고 부품·visibility/누락별 gate를 명확화 |
+| E3 bind/scale/twist/facial retarget | 명시 | [P4 bind/skin 완료 기준](https://github.com/Hyunwoo1205/efsimulator/blob/3a6c5e7f94f931be6a0ab535a92954337c0abf12/docs/SIMULATOR_PLAN.md?plain=1#L24), [C105 retarget 조사](https://github.com/Hyunwoo1205/efsimulator/blob/3a6c5e7f94f931be6a0ab535a92954337c0abf12/docs/SIMULATOR_PLAN.md?plain=1#L39) | native 정책과 독립delta의 분리·실제 retarget 미완료를 유지 |
+| E4 motion graph·clip 선택/clock/speed/loop/전이/root | 암시적·세부 미명시 | [P3 선택조건/시간](https://github.com/Hyunwoo1205/efsimulator/blob/3a6c5e7f94f931be6a0ab535a92954337c0abf12/docs/SIMULATOR_PLAN.md?plain=1#L23), [C105 native graph/clock 후속](https://github.com/Hyunwoo1205/efsimulator/blob/3a6c5e7f94f931be6a0ab535a92954337c0abf12/docs/WORKPLAN.md?plain=1#L1091) | 실제 graph/state→clip·speed/loop/전이/root의 입력/산출물·완료표 미명시 |
+| E5 추가 finger/face/gaze·procedural/IK/cloth/hair 사용 여부 | 암시적·세부 미명시 | [C105 bind/retarget 조사](https://github.com/Hyunwoo1205/efsimulator/blob/3a6c5e7f94f931be6a0ab535a92954337c0abf12/docs/SIMULATOR_PLAN.md?plain=1#L39), [추가 hand/procedural/cloth 미완료](https://github.com/Hyunwoo1205/efsimulator/blob/3a6c5e7f94f931be6a0ab535a92954337c0abf12/docs/WORKPLAN.md?plain=1#L1091) | gaze/IK/hair를 포함한 요소별 실제 사용/미사용/미확인 판별과 확인 후 분석 gate 미명시 |
+| E6 shader·UV/mask/skin/hair alpha/normal·roughness | 암시적·세부 미명시 | [P2 재질/texture 의존성](https://github.com/Hyunwoo1205/efsimulator/blob/3a6c5e7f94f931be6a0ab535a92954337c0abf12/docs/SIMULATOR_PLAN.md?plain=1#L22), [기존 shader/alpha 한계](https://github.com/Hyunwoo1205/efsimulator/blob/3a6c5e7f94f931be6a0ab535a92954337c0abf12/docs/WORKPLAN.md?plain=1#L1005) | mask/UV용도·skin/hair alpha·normal/roughness 적용식/parameter·완료 기준을 통합 명시 |
+| E7 전체 개봉 scene·배경/카메라/조명/VFX/audio timeline | 암시적·세부 미명시 | [기존 T018 장면/카메라/효과/음향 포괄 범위](https://github.com/Hyunwoo1205/efsimulator/blob/3a6c5e7f94f931be6a0ab535a92954337c0abf12/docs/SIMULATOR_PLAN.md?plain=1#L7) | 배경/조명·branch별 통합timeline/skip/end의 독립 입력·산출물·완료 기준 미명시 |
+| E8 대표 검증 뒤 다른 선수 확대 | 명시 | [SIMULATOR_PLAN P5](https://github.com/Hyunwoo1205/efsimulator/blob/3a6c5e7f94f931be6a0ab535a92954337c0abf12/docs/SIMULATOR_PLAN.md?plain=1#L25) | 대표 검증/공유·고유·variant·coverage gate를 유지하고 실제 미착수임을 명확화 |
+
+판정은4개 명시/4개 암시적이며, 관련 근거가 전혀 없는 항목은 없었다. 다만 위 세부 미명시를 “전부 이미 구체적으로 계획됐다”로 처리하지 않았다. [SIMULATOR_PLAN의 C106 8행 요구표](SIMULATOR_PLAN.md)에 E1~E8의 실제 입력·산출물·완료/선행 기준·현재 미완료를 추가하고 P1~P5 및 T018 scene 조사 S1에 연결했다. S1은 새 작업 ID나 제품 배포가 아니라 기존 T018 개봉 scene을 조사하는 subtrack이다.
+
+처리 순서는 E1 실제ID/선택 근거와 E2 의존성→E3 rig/retarget 및 E4 motion graph·clock→사용 여부를 확인한 E5 추가layer/E6 shader조합→S1 scene/timeline의 실제 참조·분기/시간 검증→대표 P4 검증을 통과한 범위의 E8/P5 확대다. 기존 근거가 있는 독립 조사/참조 판독은 병행하며 모든 gate가 전역 수집/제품 구현의 새 선행 조건이라고 일반화하지 않는다. IK·cloth/hair·gaze 등의 존재/실제 사용을 추정하지 않고 사용/미사용/미확인 근거부터 기록한다.
+
+현재8개 모두 실제 완료가 아니며 P1~P3부분진행/P4 native 완성선수 미확인/P5미착수다. 새 실제 분석 근거는 아래와 구분하고 최종 보고서·독립 QA/저장 영수증은 대기 중이다. 계획 audit/명시 반영이나 조건부 정적 근거를 graph실행·자연스러움 해결 또는 전체 T018 완료로 보고하지 않는다. C105 사용자 관찰·유일 원인/체감 해결 미확정과 원source/이전 단계 동결, 원본 앱/Blueprint/Python/dylib/서버 미실행·비공개 자료/Git 분리·DrawBatch/제품/배포/자동화 계약을 유지한다.
+
+#### 7차 실제 분석 — 선택 producer·모션 후처리·장비/scene 참조
+
+E1의 native 경로는 ModeUniform Create→concrete bridge vtable240→setter/storage→GetUniformConfigCallback 등록을 연결했다. registry key는 `Type+2*HomeAway`이며 인수 순서를 보존해 side0/type0·1→key0·1, side1/type0·1→key2·3을 확인했다. typed Team/UniformId producer와 Uniform166선택 명령/ABI4검사를 수행했다. 기존92byte file의 source20/21→Uniform392/396 및96byte/edited 분기는 분리한다. 실제 PID100112의 현재 팀·홈원정·Uniform key/파일 I/O 관찰은 아니다.
+
+sorted16byte equipment source row의 PID100112는 원본dt200의1164행과 수정dt870의1474행에서boots3061이었다. Player/Appearance 수정row1475와 같은 위치로 가정하지 않는다. GloveList의해당PID row 부재→default1, PID0 miss→cache fallback62/1을 구분했다. 실제 `SK_s3061_Shoes`/`SK_g001_Glove` package가 존재하지만 현재 착용/active flags·load 성공은 미확인이다. equipment112명령/12symbols/3vtables/2filenames/4resources/8queries와 이전Stage3~6선정53파일/4manifest의 원해시 보존을 검증했다.
+
+E3/E4에서는 native33직접calls/51선택연산·timer vtable slot2개를 판독했다. modelview/character의 body/face/hand loop/playing/position/rate·pause/timer 경로와4path SetAnimations의 직접인수position0/rate1/loop=true/playing=true를 확인했지만, 현재 개봉의 active 설정으로 단정하지 않았다. guarded PesRig FinalizeBoneTransform에는 bone scale·constraint solver·face constraint·hair/post-process bone transform 호출과 FaceComponent의 curve list 참조가 있다. 어떤 clip/branch/solver/값이 실제 활성인지와 사용자 체감 원인은 미확인이다.
+
+UAnimSequence→DecompressPose→RetargetBoneTransform의 mode3 non-additive 경로는 source/mesh 두 reference를 읽어T/S를 보정하고 quaternion 연산/정규화를 수행했다. 정확한Q곱 순서·선택clip의 실제 적용은 아직 확인하지 못했으며 vendor helper를 정답으로 적용하거나 새 변형 영상을 만들지 않았다. 기존5mesh+새장비2mesh는 실제SKEL_Body를 직접 참조하고 BoneTree166본은153Animation/13AnimationRelative였다. VirtualBones/retargetSources/Sockets는각0, face_smile metadata1개는 material=false/morphTarget=false이며 기존3clip curve payload0과 별개다.
+
+중요한 E5 교정: 기존3clip 각각67encoded tracks에는 이미skh_*finger30본과skf_*face13본이 포함된다.99reference defaults를 손가락 모션 누락으로 해석하면 안 된다. 이전Stage6 README의reference-only fingers 문구는 그 존재/누락의 근거가 아니며 이번 실제track 대조로 경계를 명확히 했다. 동결된 이전 파일은 덮어쓰지 않았다.7mesh에 직렬화된AnimClass/PostProcessAnimBlueprint/PhysicsAsset가 없고 typed physics null/morphTargets0/socket0이었지만 runtime native 할당·보정 부재를 뜻하지 않는다. 얼굴AssetUserData의eyelid 기본4개/vector offset9개를 보존했고 실제단위/bone매핑/적용식은 미확인이다.
+
+E2의 새조건부 장비는 shoes3,950vertices/5,500triangles와glove2,752vertices/4,132triangles다.7mesh·Skeleton1·material10·texture4의22원package와새geometry2/전체UV2·보정자료/HQ base-color PNG4를 별도private ZIP55members/2,314,194bytes에 보존했다. raw8bit weight합255·전체index/skin/UV/PNG를 검사했다. 새GLB/영상 생성이나 실제 PID착용 완료는 아니다.
+
+#### S1 — 실제 개봉 sequence의 authored 연결
+
+새 Core-only SceneProbe로 parent LS_mode_CardBox_monotypic_fp_cam0와 직접child3개, 실제참조된AnimSequence4개의 지정8packages/491exports를 판독했다.227local FPackageIndex identity를 독립 대조했고 parent raw는Stage3와같은SHA/327exports였다. Blueprint asset의 직렬화 데이터는 읽힐 수 있지만 실행하지 않았다.
+
+camera cut4개는 서로 다른binding GUID로 authored tick0→96000→131200→168000→384000을 연속 덮는다. 이름이 중복될 수 있어 camera 이름으로 연결하지 않았다. 실제 ObjectBinding→AnimationSections의10sections는 각각단일owner로 연결됐다. PlayerActor의2개는monotypic_10/idle_standing04, prop1bone의2개는prop0/prop1을명시했다. Face/HandL/HandR의각2개에는Animation필드가직렬화되지 않아 runtime 할당/활성화를 추정하지 않는다.
+
+SubSequence3개는add_video/fx/fp_sound0이며fx119exports와custom PesSound sections2개를 판독했다. CueName.KeyName은 `SE_MODE_CARDBOX_MONOTYPIC_FP_00`와 `BGM_MODE_V500_CARDBOX_05`로 기존71cue index와정확히일치하고각각reachable waveform1개였다. 실제 routing/음량/반복·전체동기화나particle/shader/event실행·완성scene렌더는 미검증이다.
+
+| 실제 명시된 animation | stored frames | stored SequenceLength | skeleton |
+| --- | ---: | ---: | --- |
+| A_dml_md_cardbox_monotypic_10 | 461 | 15.333333 | SKEL_Body |
+| A_dml_md_cardbox_monotypic_10_prop_0 | 231 | 15.333333 | prop1bone |
+| A_dml_md_cardbox_monotypic_10_prop_1 | 461 | 15.333333 | prop1bone |
+| A_dml_md_idle_standing_04_loop | 301 | 10 | SKEL_Body |
+
+4개raw package/metadata를 보존했으며 새sparse/sample TRS decode는 수행하지 않았다. generic common_fp01 미리보기를 실제scene player clip으로 바꾸어 부르지 않는다. prop의frame수 차이를 누락이나 동일한player frame rate로 해석하지 않는다. top-level TickResolution/DisplayRate에는Numerator24000/30만 직렬화되어 denominator1·16초/native clock을 확정하지 않는다.
+
+선택/Game 참조13개는 모두inventory에 있다.12개exact path와SK_Base_Face의Character폴더 case 차이1개를 유일casefold로 연결했으며 누락1개로 기록하지 않는다. 지정본문8MiB/12samples/1024exports·projection4096nodes/depth8 bound를 유지하고 trusted wrapper를 올바르게 읽었다. 정상locked restore/audit·Release경고0/오류0이었다. 다만 trusted CUE metadata resolver의추가package I/O까지전체transitive preflight된cap이라고주장하지 않는다. scene raw/metadata는별도private ZIP14members/919,010bytes로분리했다.
+
+native manifest12파일/111,975bytes, motion8파일/63,623bytes, assets31파일/352,151bytes와scene safe3파일/34,691bytes를 최종 동결했다.8개요소 모두명시했지만 P1~P4와S1은부분진행/P5미착수다. 새영상·자연스러움해결·완성native선수/전체개봉재현을완료로표시하지 않는다. 다음은실제scene player animation decode·동적binding/event/재생제어, exactQretarget/후처리입력·활성조건, eyelid/offset적용/skin·UV·mask shader와실제Uniform/장비상태검증이다.
+
+#### 7차 비공개 산출물과 검증
+
+최종 실제 보고서·동결수치와 다음4개 저장의 succeeded/프로세스exit0·local metadata 반영을 확인했다. 정확한 version0·실제 bytes/SHA와 Library URL을 영수증에 대조했다. 이전 Stage3~6 source/보고서/자산은 덮어쓰지 않았다.
+
+| 저장 파일 | version | bytes | SHA256 |
+| --- | ---: | ---: | --- |
+| [eFsimulator_T018_stage7_plan_and_dependencies_20261101.md](https://chatgpt.com/library?file_id=libfile_8c7d5c9f2a98819191ba2f0b07e025d5&account_id=personal) | 0 | 13,310 | `6d52ad33b8cfaad7da6dabfca75a6d15365ab8da6093f9120dfe502f43609214` |
+| [eFsimulator_T018_stage7_evidence_20261101.zip](https://chatgpt.com/library?file_id=libfile_ed70d952195c819190040e4fea9962d9&account_id=personal) | 0 | 187,482 | `ba6bec7c591588ad813f40b80f2b2c09d0ca7f3318148089101ed2e60e2c573e` |
+| [eFsimulator_T018_stage7_models_controls_20261101.zip](https://chatgpt.com/library?file_id=libfile_1591ec4fd8e08191a270eb0986ac8f29&account_id=personal) | 0 | 2,314,194 | `b37a966e2bb4b1f4048c402e9d5625086f87e896881a08c9a8387981540a3d8c` |
+| [eFsimulator_C106_scene_sources_stage7_20261101.zip](https://chatgpt.com/library?file_id=libfile_63256f5145348191bbe8e3ee784ec776&account_id=personal) | 0 | 919,010 | `b51f41ba41d967bcf93e6eb469f7e4427f22fbc4f9406b85c53221133c0507cf` |
+
+안전ZIP76members(허용목록75개+manifest)의 전체CRC·member bytes/SHA·privacy 검증을 통과했다. 자체도구/선택metadata/독립QA만 포함하고 full geometry/UV/controls·원scene metadata/camera배열·직렬화Blueprint·게임payload/키값/키해시·원실행파일/계정자료는제외했다. 모델/보정private55members와scene private14members는전체CRC·member SHA를검증하고scene archive의개인키candidate 제외범위도확인했다. 원source/상세자산은사용자보관용private자료로유지하고Git/public dist에는관련5문서만반영한다.
+
+5문서와 실제4개 저장 영수증 반영 후 `npm run project:check -- --base 3a6c5e7f94f931be6a0ab535a92954337c0abf12`는382파일/49작업/변경5경로로 통과했고 공백/변경 범위 검사도 통과했다. 전체 `npm test`는539통과/실패0/skip0·exit0이었다. 실제 환경은 Node24.22.1/npm11.9.0으로 지정 Node24.19.0과 patch 차이가 있다. 제품 package/lock/source·사이트/배포/자동화는 변경하지 않았다. 이 로컬 검사와 selected native/asset/scene 판독을 원본 코드/graph 실행·자연스러움 해결/native 전체 재현으로 확대하지 않는다. 이후 정상 원격 반영/CI는 실제 수행 뒤 확인하며 자신을 포함한 미래 commit SHA/미실행 CI 성공을 선행 기록하지 않는다. 현재R6/이전T048/현재T018진행중/다음없음·P1~P4/S1부분진행/P5미착수와 새영상/GLB없음을 유지한다.
+
+| 파일 | 검토 결과 | 이유 |
+| --- | --- | --- |
+| `AGENTS.md` | 수정 | C106 8요구 확인/계획 포함·사용 여부 우선·실제 상태 권위와 기존 경계 지시 |
+| `docs/SIMULATOR_PLAN.md` | 수정 | E1~E8 입력/산출물/완료·선행·NOT DONE와 P1~P5/T018 S1 연결 |
+| `docs/WORKPLAN.md` | 수정 | 사용자 요구·정확한 기준행 audit·명시/암시/세부미명시 판정과 다음 분석/검증 대기 |
+| `docs/ROADMAP.md` | 수정 | 8요구 명시와 실제 미완료·현재/이전/다음·C105 관찰/경계 정합 |
+| `docs/FILE_SYNC.json` | 수정 | 관련5문서 역할/갱신조건/T018검토·C106 E1~E8/S1 실제 근거 갱신 조건 |
 
 ### 1차 비공개 증거 저장·로컬 검증 (이력)
 
