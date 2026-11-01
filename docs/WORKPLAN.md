@@ -7,30 +7,31 @@
 ## 현재 작업과 매 작업 갱신
 
 - 이전 작업: T048 — 단일 ‘선수팩 선택’ 버튼으로 통합하고 판매중/종료 전환은 창 안에 유지했다.539회귀·관리/타입/공식빌드·v17 실제 단일버튼/탭/선택복귀/초점·원격 동일tree와 구현CI2건 성공을 확인했다.
-- 현재 작업: T018 — 진행 중. C107의 Work 유지/단계별 인계 방식으로 Stage8 분석을 계속한다. 실제scene4clip decode·원키/표본 QA와 선택native mode3 Q/T/S 순서·13facial 대응, 입력 재검증/별도CPK복구를 확인했다. scene projection/event·runtime활성/후처리·자연스러움/native완성은 미확정이며 P1~P4/S1부분진행/P5미착수·제품/웹구현/배포 경계를 유지한다.
+- 현재 작업: T018 — 진행 중. C108/Stage9에서 실제scene mono10/idle04와 대표4part 후보의 A/B/C retarget·전체skin 조건부 비교 및 소품mesh/부착을 조사한다. reference/가중치·선정LBS·native pose초기화/encoded mode3선택과최종6영상/2비교의표시QA를확인했다. GLB독립reader는통과했고 non-root inline/helper동일성은별도BSS로미해결이며 world/runtime은미확정이다. 정책 차이는native정답 오차가 아니며 P1~P4/S1부분진행/P5미착수·체감해결/제품배포 미완료를 유지한다.
 - 다음 작업: 없음 — T018 이후 범위는 별도 결정한다.
 - 최근 유지보수: T039 — 신규6팩·93명과 원본 누적·가공·판매 상태를 갱신했다. 현재 가공163명/13팩·판매중9/종료4이며 저장본/API/세 사이트/구현 커밋·실제CI 검증을 완료했다. 제품 T017/T018 범위와 T038 미확인 항목은 보존한다.
 - 현재 조건: T043이 T041의 선수 정렬을 화면 범위별로 구분한다. Epic5→Show Time8→Trend3→Highlight6 우선, 팩 안 선수는 등급 안 OVR순, 전체 선수는 등급 안 확인 날짜 최신순→OVR순이며 최초 연결팩 날짜를 사용한다. 팩은 등급 안 날짜 최신순이다. exact raw 타입·원본·가공/API 계약·가격100/900·팩 구성/카드 표시와 실제 앱 public·API/admin/viewer owner-private 경계를 보존한다.
 
-### 압축 재시작 체크포인트 — C107 / Stage8
+### 압축 재시작 체크포인트 — C108 / Stage9
 
-- **읽는 순서:** `AGENTS.md` 전체 → 이 블록 → T018의 최신 `C107 — Work 유지·단계별 인계와 Stage8` 절. 이어 ROADMAP 현재표·SIMULATOR_PLAN의 관련 E/P/S1행·FILE_SYNC 관련5항목을 확인한다. 이전 수십만자 이력/대화는 해당 근거가 필요할 때만 읽는다.
-- **Git/상태:** `Hyunwoo1205/efsimulator`, `api-server-setup`. 재개 시 fresh 원격HEAD/tree와 로컬변경을 먼저 확인한다. Stage8 착수 기준은 `d1d67957cc9ea0f4bcddb28161ff17f3c8707b2b`/`63c42eaeae393acbcfbac85b0a2bf2421bbd8cf7`이며 미래 자기commit을 미리 적지 않는다. R6/이전T048/현재T018진행중/다음외부미배정, P1~P4/S1부분진행/P5미착수다.
-- **이번 확인:** Stage7의 실제scene4raw package를 decode했다. player2clip은461/301frames·166bones, 이름에`1bone`이있는prop2clip은231/461frames·실제2bones다. 원키변경0이며 GLB2개는mesh0/skin0의skeleton-only 구조검증 결과다. native mode3의 Q/T/S 순서는 선택분기에서 확인했지만 실제runtime활성/후처리·완성재생은 미확인이다.
-- **입력 재검증 사례:** native199,860,352bytes freshSHA가 기존 기준과 같다. oldCPK134,217,728bytes는 잘린 상태로 보존하고 원IPA에서 별도 `stage8_inputs/dt500_mobile_all.cpk`137,093,472bytes를복구해ZIP CRC/SHA를대조했다. 원IPA4,145,921,439bytes/선택ZIP metadata·UE41파일크기만이번에확인했고IPA전체SHA/UE전량SHA를새로재검증했다고쓰지않는다.
+- **읽는 순서:** `AGENTS.md` 전체 → 이 블록 → T018의 최신 `C108 — 실제scene clip 조건부 skin/retarget와 소품 연결 Stage9` 절. 이어 ROADMAP 현재표·SIMULATOR_PLAN의 관련 E/P/S1행·FILE_SYNC 관련5항목을 확인한다. 이전 이력/대화는 해당 근거가 필요할 때만 읽는다.
+- **Git/상태:** `Hyunwoo1205/efsimulator`, `api-server-setup`. 재개 시 fresh 원격HEAD/tree와 로컬변경을 먼저 확인한다. Stage9 착수 기준은 `0ebcf9cc677e8b35cb869e1f6e1cf5eea94b06d1`/`0a4163452ec6fd4685e61830831c265bafa4285d`이며 미래 자기commit을 미리 적지 않는다. R6/이전T048/현재T018진행중/다음외부미배정, P1~P4/S1부분진행/P5미착수다.
+- **이번 확인:** 실제mono10/idle04와face+kit+fixedhand+boots3061의A/B/C 조건부진단·6전체60fps/2비교 및C정책4mesh/4skin GLB를검증했다. raw/정규화/초기화가정을명시하고GLB664joint nodes는mesh별166본rig4개직렬화이지게임skeleton664본이아니다. nativeinline/helper동일성·실제flag/후처리/nativeGT·체감자연스러움은미확정이다.
+- **기존 입력 재검증 근거(Stage8):** native199,860,352bytes freshSHA가 기존 기준과 같다. oldCPK134,217,728bytes는 잘린 상태로 보존하고 원IPA에서 별도 `stage8_inputs/dt500_mobile_all.cpk`137,093,472bytes를복구해ZIP CRC/SHA를대조했다. 원IPA4,145,921,439bytes/선택ZIP metadata·UE41파일크기만이번에확인했고IPA전체SHA/UE전량SHA를Stage9에서새로재검증했다고쓰지않는다.
 - **기존 복구 백업:** Stage3 private-input ZIP의현재로컬본189,126,412bytes를이전성공영수증과대조하고native/CPK전체stream CRC/SHA를재검증했다. 정확한범위/링크는최신C107절을따르며전체IPA/UE백업·원격재다운로드로간주하지않는다.
-- **재개 도구/자산:** `input_validation.json`/`restart_preflight.json`과 최신manifest를 기준으로 필요한 입력·도구버전/의존성을 확인한다. 현재preflight는.NET경로존재만확인하고SDK/parser버전은독립검증하지않았다. Git만으로전체IPA/UE컨테이너·비공개키·SDK/cache가복원되지않는다. 새package mount는완전한UE입력/보호된키/검증도구가추가로필요하고값/키해시/로그는기록하지않는다.
-- **다음 한 작업:** 실제scene clip을대표geometry의mesh reference와연결하고검증된13mode3본의조건부retarget진단을비교한다. 부착대상의world/runtime연결을병행하며source/target pose·본순서/skin·정규화정책을명시한다. 분모1/native16초·active binding/clock·후처리/shader·완성외형은보류한다.
-- **저장/경계:** 최신 [Stage8 보고서](https://chatgpt.com/library?file_id=libfile_0db74f607db08191b38d5eec251721f7&account_id=personal)와 [짧은 재시작MD](https://chatgpt.com/library?file_id=libfile_fcb3b663f6f48191a5a99840ab12e8df&account_id=personal)가 진입점이다. 안전/private ZIP을 포함한4개 성공영수증의정확한version/bytes/SHA는C107절을따른다. 제품/API/raw·가격100/900·DrawBatch·자동화·배포/원본게임코드실행변경은없다.
+- **선택 진단 재개:** Stage9 private ZIP에4geometry+7PNG+2tracks=13inputs/22,394,592bytes를원상대경로/SHA로담았다. safe/private를새빈폴더에복원한169source/data/2분리manifest와13inputs+5sources+moduleSHA gate가통과했다. 정상Python/NumPy/Pillow/ModernGL/EGL/FFmpeg가필요하며선택진단에는원IPA/native/keys/.NET가불필요하다. 전체재렌더를다시실행한검증은아니다.
+- **다음 한 작업:** Decompress non-root inline의별도BSS coefficient initializer와실제Q/T/S 입력식을먼저검증한다. 이어MeshComponentRig/BoneContainer flag/reference producer·12twist후처리활성과PlAwayworldbinding/shader를연결한다. nativeclock/완성외형·자연스러움해결은보류한다.
+- **저장/경계:** 최신 [Stage9 보고서](https://chatgpt.com/library?file_id=libfile_b6d0ad9df7908191ab0f9c2cbcfd4701&account_id=personal)/[재시작MD](https://chatgpt.com/library?file_id=libfile_e375f2058a048191b2aae243bd617479&account_id=personal)와C108의정확한8개version0 영수증이진입점이다. native추가검증은기존정상입력백업, 새package분석은전체IPA/UE·별도키/정상parser가추가로필요하며전체원본/키/SDK백업을뜻하지않는다. 제품/API/가격/DrawBatch/배포/자동화는변경없다.
 
 매 작업 시작 시 Git 상태·이전 결과·이번/다음 작업·선행 조건을 확인한다. FILE_SYNC의 P0→P1→P2로 관련 파일을 검토하되 필요한 파일은 등급과 무관하게 함께 수정한다. 추가 요구는 ID·영향 단계·선행 조건·순서·상태를 기록한다. 파일별 수정/변경불필요/미해결과 근거, 경로 추가/삭제/이름 변경·참조를 같은 작업에서 갱신한다. 검증과 이전/현재/다음 포인터를 맞추며 구현/수집/발행 완료는 실제 근거가 있을 때만 표시한다.
 
 ## 최신 추가 조건과 이전 조건의 적용
 
-C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_BEFORE_PROBABILITY_SCOPE.md)에 보존한다. 관리 최신화·ID/근거·실패 보존·접근 거부 우회 금지·무료 우선·운영 승인 분리 원칙은 계속 적용한다. 범위 결정은 날짜별 이력이며 현재 범위·완료 정책은 C107의 Work 유지/단계별 인계·다음 분석과 C106의8요구 명시, C105의 모션 자연스러움 관찰/원인 분리, C104/C103의 선수별 실제 분석 계속, C102의 모델/모션 추출 계획, C099~C101의 IPA 자료/실제 분석, C094~C098의 UI 결정, C084~C087·C081~C083·C080·C079·C078·C077와 C071~C075의 사용자 결정을 T037/C070 제안보다 우선하고 C069/T036의 자동 갱신 절차를 적용하며 API 완료/정상 반영 정책 C063~C064를 유지한다. 전체 수집과 사이트 범위를 혼동하지 않는다.
+C001~C030 원문·과거 처리 결과는 [이전 WORKPLAN](reference/WORKPLAN_BEFORE_PROBABILITY_SCOPE.md)에 보존한다. 관리 최신화·ID/근거·실패 보존·접근 거부 우회 금지·무료 우선·운영 승인 분리 원칙은 계속 적용한다. 범위 결정은 날짜별 이력이며 현재 범위·완료 정책은 C108의 다음조건부분석과 C107의 Work 유지/단계별 인계, C106의8요구 명시, C105의 모션 자연스러움 관찰/원인 분리, C104/C103의 선수별 실제 분석 계속, C102의 모델/모션 추출 계획, C099~C101의 IPA 자료/실제 분석, C094~C098의 UI 결정, C084~C087·C081~C083·C080·C079·C078·C077와 C071~C075의 사용자 결정을 T037/C070 제안보다 우선하고 C069/T036의 자동 갱신 절차를 적용하며 API 완료/정상 반영 정책 C063~C064를 유지한다. 전체 수집과 사이트 범위를 혼동하지 않는다.
 
 | 조건 ID | 최신 결정 | 영향 단계 / 선행 조건 / 처리 순서 | 상태 |
 | --- | --- | --- | --- |
+| C108 | Work·단계인계를 유지하며 다음작업 진행 승인 | T018/R6; frozen scene2clip/대표mesh→A/B/C조건부skin·초기화근거→60fps/GLB/소품world QA→인계/정확영수증 | reference/LBS·초기화/encoded-loop·6영상/2비교·GLB독립QA/8저장 확인; inline별도BSS/실제runtime미해결·P5미착수 |
 | C107 | Work를 유지하고 단계별 인계 기록을 남기며 다음 작업 진행 | T018/R6; fresh기준/입력확인→lane별분석/QA→최신결과·미해결/다음한작업·정확영수증압축→검사/정상반영후재개 | Stage8 실제4clip/원키QA·선택mode3·scene18채널/부착/event/입력복구와4저장검증; native완성/P5확대 미완료 |
 | C106 | 앞서 설명한8개 요소가 추출/분석 계획에 포함됐는지 확인하고 포함하여 다음 작업 진행 요청 | T018/R6; 계획 audit→E1~E8/P1~P5/S1 명시→선택producer/graph/layer/장비/scene 참조→근거별 검증 | 계획audit/명시·실제선택/모션후처리/장비/scene참조와4저장 검증;8요구 부분/미완료/P5미착수 |
 | C105 | 사용자가 영상 모션이 자연스럽지 않다고 보고하고 프레임 끊김/수집 미완료 중 원인을 모른다고 하며 참고해서 진행 요청 | T018/R6; 사용자 관찰→fps/보간 비교→key/track coverage·연속성 audit→native 선택/retarget·실제 참조 부품→근거별 판정 | 실제 표시 생략/선택JSON audit·raw-key 비교/조건부 부품 추출; 유일 원인·체감 해결/native 동등 미확정 |
@@ -1284,6 +1285,97 @@ top-level분모에보이는CUE fallback0은직렬화된0의증거가아니다. U
 | `docs/SIMULATOR_PLAN.md` | 수정 | E3/E4/E7의새decode/선택수식과runtime미확정·prop2본/원키오차의범위 |
 | `docs/ROADMAP.md` | 수정 | 최신Stage8현재/다음과P5미착수·압축재개위치/C105미확정 경계 |
 | `docs/FILE_SYNC.json` | 수정 | 5문서역할/연관/갱신조건/T018검토·C107압축인계/검증영수증 조건 |
+
+### C108 — 실제scene clip 조건부 skin/retarget와 소품 연결 Stage9 (2026-11-01 KST)
+
+사용자의 다음 작업 승인에 따라 Work/단계별 인계를 유지하며 대표geometry·실제scene source clip의 조건부retarget/skin 진단과 소품연결을 계속했다. 착수기준은 `api-server-setup`의 `0ebcf9cc677e8b35cb869e1f6e1cf5eea94b06d1`/tree `0a4163452ec6fd4685e61830831c265bafa4285d`이며 fresh원격/로컬일치·clean을확인했다. Stage8의실제mono10/idle04 raw/sparse자료와이전geometry/texture는동결하고원키·원가중치/원본자료를수정하지않았다. 정상 `stage8_inputs/dt500_mobile_all.cpk`만재사용하며잘린이전사본은사용하지않는다.
+
+#### 대표4part 후보와 A/B/C 정책
+
+정적기술후보는face100112+trainingkit+fixed hand+boots3061의4부품으로14,386vertices/20,792triangles다. body기본mesh를trainingkit에추가중복하지않았다. sourcebone name/parent166개를정확join하고전체influence·raw8bit weight합255와실제7texture binding참조를source QA에서대조했다. source행의boots3061과기술조립을현재activeUniform/착용/완성선수의증거로바꾸지않는다. 최종shader/skin blend·native후처리는미확인이다.
+
+| 정책 | 명시한 입력/변형 | 미확정 범위 |
+| --- | --- | --- |
+| A old global-delta | sourceGlobalAnimated×inverse(sourceGlobalReference)를이름매핑mesh에적용한기존독립진단 | native UE retarget를실행한결과가아님 |
+| B mode3+source99 | 선택mode3식/조건을적용하고untracked99본의source reference-local을유지 | sourceoverride초기화branch가조건부가능하나actual flag/입력관측은없음 |
+| C mode3+target99 | 선택mode3식/조건을적용하고untracked99본을target mesh reference-local로명시대체 | 정상compactRef branch에expected target reference/override비활성이필요하며actual상태미관측 |
+
+세정책의원키는같고변경0이다. sampler는동결raw sparse key의T/S보간·unit shortest-arc Q정규화를명시하며display clock은stored SequenceLength/float32를이용한선택정책이다. 실제source/native clock이나completegame pose로주장하지않는다. native99초기화/encoded-loop의두정적branch를별도로확인했지만actualcontainer/flag·inline식·후처리미확정이므로 B/C를현재실행의정답으로확정하지않는다.
+
+#### reference/skin 영향과 독립 LBS 검토
+
+`reference_skin_audit.json`은source와mesh의localreference·양의weight범위만검사했다. body/kit의untracked12twist본에reference quaternion차이가있었고해당본에직접양의가중치를가진정점은body2,099/2,887·kit4,102/8,368개였다. face의untracked reference차이는0이었다. 이수치는정적reference/weight영향범위이며정점motion오차나자연스러움의측정은아니다. untracked99본을자동추출누락으로보지도않는다.
+
+`skin_math_review.json`의별도scalar/vector Hamilton·outer-product rotation·recursive world matrix·bone-group skinning은2clips×4meshes의mesh별6선정pose와선정vertex462~566개씩을검토했다. 같은선언정책의palette최대잔차는4.263×10⁻¹³, vertex최대잔차는5.329×10⁻¹⁵m였다. shared sparse sampler를원bitstream에서독립재decode한것이나전체video frame의전정점검사는아니다.
+
+정책간거리는native ground truth에대한오차가아니다. 선정검사에서kit A/C는거의일치했으나 B/C최대차이는6.700cm, hand B/C는2.196cm였다. face A/C는mono에서1.098mm/idle에서0.436mm였고단순히전정책이동일하다고보지않는다. mode0의source/target reference차이도새palette에영향을주므로13mode3만의효과를분리한결과가아니다. palette translation차이91.6source units를vertex의90cm이동오류로환산하지않는다.
+
+자체retarget math모듈의synthetic10검사는통과했고선언된2clip/3mesh/2개명시99정책의총4,620pose cases·766,920bone poses가유한값이었다. 이는자체math의선택native형식조건부식적용이며원게임native코드/Blueprint실행은없다. runtime CompactPose매핑·실제99초기화선택·active rig/postprocess·native정확성은별도미확정으로보존한다.
+
+#### 실제소품 mesh와 부착/world 범위
+
+actualprop2instance는고유 `SK_One_bone_dummy`1개로연결됐다. 실제mesh는12vertices/4triangles·2bones/1slot이며material은WorldGridMaterial이다. 이름의One_bone을실제1본으로해석하지않는다. 두prop reference본은mesh와정확히같았지만constant animation key는bind와같지않아최대T delta는각11.70/894.13source units였다. 이local차이를runtime world위치로곧바로변환하지않는다.
+
+componentinitial과sequence actor TRS의합성·부착target/component/socket과world/runtime연결은아직미해결이다. Stage8의Pl Away상위target/선택cameraGUID미해결과기존attachment구간도보존한다. localconstant소품을정지world소품으로가정하거나이름으로가짜parent를만들지않는다.
+
+#### native pose 초기화·encoded mode3 선택의 확인 범위
+
+별도 `stage9_poseinit/pose_initialization_safe.json`은선택7functions/strict42검사등으로 GetBonePose의Reset→Decompress 직접경로를연결했다. 기본Reset은FBoneContainer compact-reference transform배열을전체compact pose에copy하고이는mode3 target-reference와같은배열이었다. 다만actualcontainer의mesh/skeleton구성은완결하지않았다. 익명byte240==1 및선택source/asset lookup조건에서는mapped skeleton/source reference로덮어쓴다. 이byte의semantic name·현재runtime값은미확인이다.
+
+non-root relative list는encoded track map에서valid skeleton→compact mapping·mode3·decompressor bool lowbit-clear gate를통과한pair만모은다. 소비loop가같은pairlist를쓰는점과untracked본을이list에추가하지않음을확인했다. 별도root-retarget/helper직접호출경로와non-rootinline을나누며이조사만으로non-rootinline대수가Stage8standalonehelper식과같다고증명하지않는다. 한정추가대조에서inline coefficient read가standalone helper와다른BSS위치임을확인했다. 파일상0을runtime계수로쓰지않고새initializer/전역탐색확대나기존계수증명의전이는0이었다. 이동일성은현재미해결로닫고다음첫검증과제로남겼다.
+
+두초기화branch는같은Decompressor로구조상도달하며source override byte와retarget-disable gate가같거나상호배타라는증거는없다. 두입력경로모두조건부mode3가능성이있지만runtimecross-object값/불변성·actualjointactivation은관찰하지않았다. C는expected target reference를가진container와source override비활성이라는조건에서정상compactRef초기화와일치한다. B도명시적source-default조건부정책으로남기며현재frame의정답으로확정하지않는다.
+
+#### 최종 60fps 표시와 C정책 GLB의 독립 검증
+
+A/B/C별actualmonotypic_10/idle04의6개전체영상이완료됐다. monotypic각921frames/60fps는15.35초encoded, idle각601frames/60fps는10.016667초였다. pose span15.3333330154/10초와마지막pose한display frame유지를인코딩길이와구분한다. source/nativeclock을확인한것은아니다.
+
+두clip의source bone-rowgrid252,652개와3policy×4mesh의meshvertex-frame65,686,476개를렌더검사에서전량finite·skin palette가역으로확인했고viewport/caption침범은0이었다. 같은정책의독립선정LBS검산과이fullgrid검사를같은범위로합치지않는다.6영상및별도3way비교2영상은ffprobe와실제프레임decode를통과했고comparison도60fps다. 최종3×3contact2장을root가직접봤지만선정이미지관찰이며전체자연스러움해결/nativeGT판정은아니다.
+
+C정책GLB1개는23,149,548bytes/SHA256 `4d5de1dd98bf078877f9e1a58f98f908f13661ead0d75cde965efdcb893a666c`로생성됐다.4mesh/4skins는각166joint로총664joint nodes·embedded PNG7개, actual2clips의461+301integer frames를담는다. 영상의60fps grid와같은sample집합으로표현하지않는다. 공식Khronos는error/warning/info/hint모두0이며독립reader의blocking도0이었다.4,025accessors·4rig/4skin·7PNG bytes와전체505,968bone-frame/1,517,904TRS record를대조했다. T/S float32차이는0, Q near-zero산술잔차는최대5.42e-20이며signed-zero차이가아니고모든bit-exact를주장하지않는다. mono461시간중2점은다른산술순서대비1ULP/최대9.5367e-7초차이였고먼저step=duration/(N−1)를구한i*step과는bit차이0이었다. nativeclock을검증한결과는아니다.
+
+source최대8influences·mesh별ownbind·원PNG는보존했다. glTF normal/Q직렬화정규화와UV0기반material은명시적근사다. eyelash는glTF BLEND와renderer alpha-discard.02차이가있으며native skin/normal/roughness/후처리/shader동등성을주장하지않는다. GLB생성과구조검사만으로native activation/완성선수나영상과정확동등을완료로표시하지않는다.
+
+#### 표시 관찰의 현재 범위
+
+root는중간smoke contact3개를직접봤고 body A/C유사·B소매차이와초기zoomout전카메라상태를관찰했다. 이는중간기술관찰이며최종raw-sparse60fps영상·GLB의검증/영수증과자연스러움완료판정이아니다. 이중간관찰과위최종표시/reader검증을구분한다. root의최종contact픽셀QA·최종source상태의선정LBS재검사와이전frozen17파일불변도확인했지만inline/native동등·체감해결은확정하지않았다.
+
+#### 빈 폴더 재개와 저장 영수증
+
+새private ZIP에는4geometry JSON+7PNG+2track JSON,13개/22,394,592bytes를원상대경로/개별SHA로보존했다. safe ZIP의sampler/math/viewer와정상Python/NumPy/Pillow/ModernGL/EGL/FFmpeg환경이면이선택진단입력을원IPA/native/UE·복호화키/.NET없이복원할수있다. 원본native검증·별도BSS/새package분석의추가입력선행조건까지없어진것은아니다.
+
+root는새빈stage9_restore_check에169source/data member를CRC/size/SHA대조후복원했다. 두root manifest는archive_manifests/safe.json·private.json으로분리하고원상대경로를유지했으며기존파일overwrite는0이었다. provider-free gate13inputs+5sources+moduleSHA가통과했고원IPA/native/keys/.NET복원과전체render재실행은0이었다. 실제복원·hash gate와동일환경의fullvideo/GLB재생성을혼동하지않는다.
+
+보고서·인계MD·안전/private ZIP·mono/idle3way영상·mono contactPNG·GLB의8개저장은모두succeeded/version0/local metadata반영을확인했다. 다음정확한ID/URL/bytes/SHA를실물과대조했으며단독영상/PNG/GLB는원생성물과byte-identical하고재인코딩하지않았다.
+
+| 산출물 / 정확 파일 | version / bytes | SHA256 |
+| --- | --- | --- |
+| 분석 보고서: [eFsimulator_T018_stage9_model_motion_20261101.md](https://chatgpt.com/library?file_id=libfile_b6d0ad9df7908191ab0f9c2cbcfd4701&account_id=personal) (`libfile_b6d0ad9df7908191ab0f9c2cbcfd4701`) | v0 / 13,950 | `a57897be04d01776cc7b3fd10f6c0a63658b67943953a129c7a196d4b61924b1` |
+| 압축 인계 MD: [eFsimulator_T018_stage9_handoff_20261101.md](https://chatgpt.com/library?file_id=libfile_e375f2058a048191b2aae243bd617479&account_id=personal) (`libfile_e375f2058a048191b2aae243bd617479`) | v0 / 5,408 | `66ce30eb75bd7755964beed24a8818ecbf62ada3991912188dc6f84071c3bd3b` |
+| 안전 근거 ZIP · 99 members: [eFsimulator_T018_stage9_evidence_20261101.zip](https://chatgpt.com/library?file_id=libfile_38a01b5a9ae08191ab380be2f9880123&account_id=personal) (`libfile_38a01b5a9ae08191ab380be2f9880123`) | v0 / 211,984 | `3d660e2e298c8e2b9f860c7d2070e60300689ba43556d241ce26a265a6259d01` |
+| 비공개 자산 ZIP · 72 members: [eFsimulator_T018_stage9_private_assets_20261101.zip](https://chatgpt.com/library?file_id=libfile_7c933495abb8819186331414e78bad38&account_id=personal) (`libfile_7c933495abb8819186331414e78bad38`) | v0 / 17,414,073 | `c9d6e382858fea919d04e6b44ebeff72e2c45afe65c65d315aec2b391678b690` |
+| mono A/B/C 60fps 비교: [eFsimulator_T018_stage9_monotypic_ABC_60fps_20261101.mp4](https://chatgpt.com/library?file_id=libfile_a1948a501d8c8191ae4ceff46631bd33&account_id=personal) (`libfile_a1948a501d8c8191ae4ceff46631bd33`) | v0 / 3,317,130 | `dbf7677f89404423b6ae09c9ad2eb862023836f2586d5459d133f9ddf1a9f256` |
+| idle A/B/C 60fps 비교: [eFsimulator_T018_stage9_idle_ABC_60fps_20261101.mp4](https://chatgpt.com/library?file_id=libfile_21de3f9e1e50819197a63e1acfe992d7&account_id=personal) (`libfile_21de3f9e1e50819197a63e1acfe992d7`) | v0 / 669,191 | `10a9c8f3f6226f15b5db4906994eaa53347ff4220dcbc7f067f08b6c704ff433` |
+| 정책 비교 contact PNG: [eFsimulator_T018_stage9_policy_comparison_20261101.png](https://chatgpt.com/library?file_id=libfile_f9b7bcaebf6c8191a487e7ddec1bc54d&account_id=personal) (`libfile_f9b7bcaebf6c8191a487e7ddec1bc54d`) | v0 / 244,762 | `f7692652b2ef206264437402168e15c78153d6552d5f391ef2b5745b4bd0f7d3` |
+| C정책 4part GLB: [eFsimulator_T018_stage9_conditional_player_20261101.glb](https://chatgpt.com/library?file_id=libfile_e4794fbbbf788191ac0fbe439f3fa596&account_id=personal) (`libfile_e4794fbbbf788191ac0fbe439f3fa596`) | v0 / 23,149,548 | `4d5de1dd98bf078877f9e1a58f98f908f13661ead0d75cde965efdcb893a666c` |
+
+안전ZIP99members/private ZIP72members의전체CRC·memberSHA와암호화키/별도복원키값·키해시/원native/계정자료·scanner원로그제외범위를확인했다. fullgeometry/TRS/PNG/GLB/영상/rawpackage·상세disassembly는private로분리하고Git/public dist에는5관리문서만반영한다. 루트최종member manifest가패키징권위이며선택입력복원은전체4GB IPA/2.6GBUE/SDK/cache백업이아니다.
+
+현재P1~P4/S1부분진행/P5미착수와actualclock/native동등·후처리/shader/최종자연스러움미확정은유지한다. 제품/API/raw·가격100/900·확정DrawBatch/skip실패무재추첨·배포/자동화변경은0이다. fullnative/source·암호화키/복원키값/해시·원raw자료는Git/보고서안전범위에넣지않고,선택metadata/QA와상세private자료를분리한다. 최종8영수증을반영했다. 5문서의실제검사결과를아래기록하고root의최종diff검토전에는commit/push/CAS를하지않는다. 미래자기commit SHA/미실행CI성공을선행기록하지않는다.
+
+#### 관리 문서 검사
+
+최종8개 version0 영수증의로컬실물 bytes/SHA를대조했고안전ZIP99/private ZIP72항목의전체CRC가통과했다. 지정5문서만변경하고 FILE_SYNC5항목의 `reviewed_in=T018`·C108갱신조건, E/P완료기준보존과현재포인터를확인했다. `npm run project:check -- --base 0ebcf9cc677e8b35cb869e1f6e1cf5eea94b06d1`은382파일/49작업/변경5경로로통과했고 `git diff --check`도exit0이었다. `npm test`는539pass/fail0/cancelled0/skipped0/todo0·exit0이었다.
+
+Node24.22.1/npm11.9.0의기존환경을사용했으며지정Node24.19.0과의patch차이·npm의기존http-proxy설정경고를구분했다. package/lock·구현/source/test/자동화는수정하지않았다. 이번검사는관리문서정합과기존회귀이며앱빌드/배포·원게임/native실행·새영상자연스러움의완료검증이아니다. 로컬검사통과와향후정상Git반영/원격내용·실제CI확인은구분하며미래commit/CI성공을기록하지않는다.
+
+| 파일 | 검토 결과 | 이유 |
+| --- | --- | --- |
+| `AGENTS.md` | 수정 | C108 다음조건부진단·A/B/C명시/GT차이구분·원본/입력/제품경계의지시만추가 |
+| `docs/WORKPLAN.md` | 수정 | 최신C108/압축인계·4part/reference/LBS/소품근거와선정범위·정책/미확정/다음순서 |
+| `docs/SIMULATOR_PLAN.md` | 수정 | E2/E3/E4/E5/E7·P4의조건부99정책·skin/reference·GLB독립검사/선택복원과world/native 미완료 |
+| `docs/ROADMAP.md` | 수정 | Stage9실제부분진전·표시/GLB/선택복원검증과최종native/체감미확정·P5미착수·현재/다음 정합 |
+| `docs/FILE_SYNC.json` | 수정 | 5문서역할/조건/T018검토·C108선택진단/인계/정확영수증 갱신조건 |
 
 ### 1차 비공개 증거 저장·로컬 검증 (이력)
 
