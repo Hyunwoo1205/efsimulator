@@ -7,21 +7,21 @@
 ## 현재 작업과 매 작업 갱신
 
 - 이전 작업: T048 — 단일 ‘선수팩 선택’ 버튼으로 통합하고 판매중/종료 전환은 창 안에 유지했다.539회귀·관리/타입/공식빌드·v17 실제 단일버튼/탭/선택복귀/초점·원격 동일tree와 구현CI2건 성공을 확인했다.
-- 현재 작업: T018 — 진행 중. C109/Stage12에서 새 Linux 환경에 원본 입력3ZIP/16members를 다시복원·검증하고 Stage11근거를 재생성해alias9/기준점52·lane36/기호식8/조건4·698명령/이전110일치를 확인했다. 원본producer9함수/선택510명령·74단언·4typedcallee연결로container초기화/복사·두reference직렬화/성분배치·compactpose연결을추적했다. 독립근거검토PASS/findings0·새4개v0저장/CRC·빈폴더복원검증은완료했지만 실제caller binding/행/flag·메모리alias/후속변경·FPCR/후처리는미해결로gate BLOCKED/원본pose·GLB·영상0이다. 다음한작업은선택caller에서container/reference key로이어지는연결과중간변경경로추적이다. 과거Stage11환경해제/저장0·C108 A/B/C와C110/T049는이력으로보존하고T018/P1~P4/S1부분진행/P5미착수를유지한다.
+- 현재 작업: T018 — 진행 중. C109/Stage13에서 Stage12 입력2ZIP/33members와 원native를 별도 복원·검증했다. Sequence/Stream 두 caller485명령·직접 의존112명령과 입력경계37기준점을 추적해 pose/container·skeleton·reference key·context/flag/stack 전달 및 중간 decoder 쓰기 가능성을 연결했다. 독립 근거검토226기준점/30ABI모델검사 PASS/findings0이다. 실제 간접대상·활성행/flag·메모리alias/후속변경·FPCR/후처리는 미해결로 gate BLOCKED/원본pose·GLB·영상0이다. 새4파일의 로컬 검증은 완료했으나 영구저장은 준비 기능 미제공 오류로 완료0이며 새ID/version을 만들지 않았다. 다음 한 작업은 간접 decoder/codec 객체의 연결·선택과 vtable 대상의 출력 메모리 쓰기 계약 추적이다. Stage11/12·기존A/B/C와C110/T049는 보존하고 T018/P1~P4/S1부분진행/P5미착수를 유지한다.
 - 다음 작업: 없음 — T018 이후 범위는 별도 결정한다.
 - 최근 유지보수: T049 — 완료. 사용자가 확인한11월2일 영문 공격수/PSG 두 상품의 연결을 별도 수동 검토로 반영했다. 전체19문자열ID·원본 필드/타입·두 출처 명단을 대조하고15매핑/검토·rules1.7.0 채택과 고정 수입을 완료했다. raw47,520/1,707·가공182/15·판매중10/종료5이며 원본prefix/종료5팩 불변을 검증했다. 원본 date2026-10-29를 제목의2 Nov로 바꾸지 않으며 저장v22·API/세사이트 전량/공개 익명·화면 및 구현 commit의 원격 내용/실제CI2건 성공을 확인했다. 로컬 전체회귀의 환경 의존성1건은 별도 보존한다. 제품 T018/C109·Stage11 미해결과 재시작 블록은 보존한다.
 - 현재 조건: T043이 T041의 선수 정렬을 화면 범위별로 구분한다. Epic5→Show Time8→Trend3→Highlight6 우선, 팩 안 선수는 등급 안 OVR순, 전체 선수는 등급 안 확인 날짜 최신순→OVR순이며 최초 연결팩 날짜를 사용한다. 팩은 등급 안 날짜 최신순이다. exact raw 타입·원본·가공/API 계약·가격100/900·팩 구성/카드 표시와 실제 앱 public·API/admin/viewer owner-private 경계를 보존한다.
 
-### 압축 재시작 체크포인트 — C109 / Stage12 reference producer와 Stage11 근거 복구
+### 압축 재시작 체크포인트 — C109 / Stage13 caller 입력·중간 변경 경계
 
-- **읽는 순서:** AGENTS 전체 → 이블록 → T018 C109 최신 Stage12절 → ROADMAP현재표·SIMULATOR_PLAN관련P/E/S1·FILE_SYNC관련항목이다. Stage11/Stage10/C108의과거결과와정확영수증은필요한근거만읽는다.
-- **기준/상태:** 이번착수 remote HEAD는 `4e5c2baff837041d0c7d1b3241bb0037e89af1ba`/tree `573d9b910b52f6858ce9b9095599bd4225eff4c0`이며 같은branch정상clone/clean을확인했다. C110/T049의별도선수팩유지보수를보존한다. R6/이전T048/현재T018진행/다음외부미배정·P1~P4/S1부분진행/P5미착수다.
-- **복원과 재생성:** 새Linux에는이전Windows폴더가없어Stage3+Stage10의3ZIP/16members를실제재다운로드해전체크기/SHA/CRC를대조했다. native199,860,352bytes/cryptid0과정상CPK137,093,472bytes는기존SHA일치다. 옛임시파일의바이트복원이라고주장하지않고검증된원본/동결도구로Stage11을재생성했다. 새선택JSON SHA는 `77c6f50d091b2dcbaf076bc59fa7169968c40652ed6fabe2e634f235e5d94c8f`다.
-- **확인 진전:** 선택698명령/Stage10선택110정확일치·initializer10대조, ABI모델alias9/기준점52·lane명령36/기호식8/조건4, 내부BL27/대상10/진입2를검증했다. 새producer9함수의선택510명령/74단언/typedcallee4검사로container초기화/fill·대입복사/기본·keyedreference직렬화·원본성분배치와compactpose연결을확인했다. 상세원명령/수식/위치는private만유지한다.
-- **독립 검토/차단:** fresh native와698+510선택명령대조·격리된자체검사재실행·진입BL별도scan이PASS/findings0이다. 같은동결parser/검증기의재사용이며새parser독립구현·fusedfloat32/runtime동등성증명이아니다. 실제caller binding/행/flag·physicalalias/후속변경·FPCR/decoder/후처리는미해결로gate BLOCKED/원본pose·GLB·영상0이다.
-- **최신 저장:** Stage12보고서/인계/safe10members/private23members의정확4개v0저장성공·로컬metadata/전체SHA와ZIP CRC·새빈폴더member복원을확인했다. 아래최신절의영수증을쓴다. Stage11당시환경해제/저장0은과거이력이며이번재생성/저장완료와구분한다. 새ZIP에는전체native/CPK/IPA·원자산/키/캐시는없다.
-- **다음 한 작업:** 선택 caller에서 container·skeleton·reference key가 전달되는 원본 경로와 그 사이의 변경 가능성을 추적한다. 원본producer확보를실제활성값/할당성공·non-overlap확정으로확대하지않고미확인입력을유지한다.
-- **검사/경계:** Node24.22.1/npm11.9.0·Python3.12.14/Capstone5.0.6. baseline관리382파일/50작업통과, npm test525/526이며기존fake-indexeddb누락으로storage test파일1개를불러오지못했다. 최종관리검사/정상remote반영·CI는최신절의실제기록을따른다. 원본/동봉코드미실행·에뮬레이션없음/보정·99기본값/clock추정없음·별도키파일미조회/미해시·기존A/B/C보존·제품/API/가격/DrawBatch/배포/자동화변경0이다.
+- **읽는 순서:** AGENTS 전체 → 이 블록 → T018 C109 최신 Stage13절 → ROADMAP현재표·SIMULATOR_PLAN관련P/E/S1·FILE_SYNC관련항목이다. 이전 Stage12/11·C108은 필요한 근거만 읽는다.
+- **기준/상태:** 착수 remote HEAD `e6272e3dc9fdb4120a5288334d5f81f7dc373ca9`/tree `acdcac9a4bf5fd954ce46e8f313b3c757354bd2b`, 사용자 로컬변경 없음·같은 branch 정상 fast-forward를 확인했다. R6/이전T048/현재T018진행/다음외부없음·P1~P4/S1부분진행/P5미착수다. C110/T049는 보존한다.
+- **실제 복원:** Stage12 safe/private 2ZIP의 크기/SHA/CRC와33members를 새 analysis-stage13에 복원·검증했다. 보존된 원native를 별도 복사해199,860,352bytes/SHA256 `3eeaf4a7995c5e4511a7b5377e8a014608aa2e57f976852fa23035141779550a`/cryptid0를 다시 대조했다. 기존33파일은 전부 불변이며 전체IPA/CPK/UE/키를 복원했다고 표시하지 않는다.
+- **확인 진전:** Sequence204명령/직접3deps112명령·92기준점/14ABI모델검사, Stream281명령·97기준점/16검사·getter2본문, DecompressPose698명령 fresh대조/중간37기준점이다. 입력10채널의 출처와 원본 분기를 연결했다. Sequence bool은 분기0 또는 미확인 가상호출 반환값이며 Stream bool0은 원본 literal이다. 중간2가상decoder에 출력pointer/span이 전달되고 key주소 노출 뒤 재조회되는 경계를 확인했다.
+- **독립 검토/차단:** fresh native/698+485+112명령 대조와 격리 재실행226기준점/30ABI모델검사가 PASS/findings0/출력BLOCKED다. 같은 동결 자체 parser/Capstone 재사용이며 독립parser구현·원명령실행/에뮬레이션·FP32/runtime동등성 증명이 아니다. 실제 대상/행/flag·alias/수명·callee변경·FPCR/후처리/clock은 미해결로 원본pose/GLB/영상·수치pose표본0이다.
+- **새 파일/저장:** 보고서·인계·safe9members/private53members의4파일을 로컬 완성했다. 크기/SHA/CRC·빈폴더 member복원 검증은 통과했다. 영구저장은 준비 기능 미제공 오류로 완료0이며 새Library ID/version을 기록하지 않는다. 기존 Stage12 저장4개v0는 유효하다. 로컬 경로/정확SHA와 재개조건은 최신절을 따른다.
+- **다음 한 작업:** 간접 decoder/codec 객체의 연결·선택 경로와 두 vtable 대상의 출력 메모리 쓰기 계약을 추적한다. 원본 getter/ABI·동일 레지스터·const 이름만으로 heap 불변/클래스 동일성을 가정하지 않는다. 별도 저장 경로로 재시도하지 않고 저장 기능 복구 뒤 기존4파일의 SHA부터 확인한다.
+- **검사/경계:** Windows Node24.22.1·Python3.12.14/Capstone5.0.6. npm미제공으로 같은Node진입점을 실행했고 baseline관리382파일/50작업 통과, 전체회귀334/526·192fail이다. 다양한 실패를 한 원인으로 단정하지 않는다. 최종관리/원격·CI는 최신절의 실제 기록을 따른다. 원본/동봉코드미실행·에뮬레이션/추가보정/99기본값/clock추정없음·별도키조회/해시없음·A/B/C보존·제품/API/가격/DrawBatch/배포/자동화변경0이다.
 
 매 작업 시작 시 Git 상태·이전 결과·이번/다음 작업·선행 조건을 확인한다. FILE_SYNC의 P0→P1→P2로 관련 파일을 검토하되 필요한 파일은 등급과 무관하게 함께 수정한다. 추가 요구는 ID·영향 단계·선행 조건·순서·상태를 기록한다. 파일별 수정/변경불필요/미해결과 근거, 경로 추가/삭제/이름 변경·참조를 같은 작업에서 갱신한다. 검증과 이전/현재/다음 포인터를 맞추며 구현/수집/발행 완료는 실제 근거가 있을 때만 표시한다.
 
@@ -34,7 +34,7 @@ C110은 두 상품 연결의 별도 데이터 유지보수 승인으로, T018/C1
 | 조건 ID | 최신 결정 | 영향 단계 / 선행 조건 / 처리 순서 | 상태 |
 | --- | --- | --- | --- |
 | C110 | 두 신규 공식 상품과 EFHub 팩의 연결이 각각 맞다고 확인하고 연결·반영을 지시 | T049/R6 별도 데이터 유지보수. 상품 identity2건만 사용자 확인, 전체19카드ID/명단/원본은 실제DOM검증→승인 해시/규칙채택→고정갱신/저장/원격/CI. T018/C109 기준·가격100/900·타입·공개경계 유지 | 완료: 명단/원본/15매핑·rules1.7.0 채택·고정 수입/독립QA·저장v22/API/세사이트·공개 익명/화면·원격7파일/382파일·구현CI2건 성공; 로컬 전체회귀525/526 환경미충족1건 별도보존 |
-| C109 | 원본 코드를 디컴파일·추출해 재구성하고 별도 보정식/추가 가정을 쓰지 말라는 지시 | T018/R6; inline 자체계수→입력alias/벡터성분→reference/flag/후처리근거, 미확인출력차단 | Stage12복구/재생성·producer9함수/510명령·독립검토PASS/4개v0저장/복원검증; 실제binding/alias/flag/후처리미해결·gate차단/출력0, 다음caller연결추적 |
+| C109 | 원본 코드를 디컴파일·추출해 재구성하고 별도 보정식/추가 가정을 쓰지 말라는 지시 | T018/R6; inline 자체계수→입력alias/벡터성분→reference/flag/후처리근거, 미확인출력차단 | Stage13 caller485/직접deps112·경계37·독립검토226/30 PASS; 로컬4파일검증/영구저장완료0, 실제간접대상/행/flag/alias/후처리미해결·gate차단/출력0; 다음decoder객체/쓰기계약추적 |
 | C108 | Work·단계인계를 유지하며 다음작업 진행 승인 | T018/R6; frozen scene2clip/대표mesh→A/B/C조건부skin·초기화근거→60fps/GLB/소품world QA→인계/정확영수증 | reference/LBS·초기화/encoded-loop·6영상/2비교·GLB독립QA/8저장 확인; inline별도BSS/실제runtime미해결·P5미착수 |
 | C107 | Work를 유지하고 단계별 인계 기록을 남기며 다음 작업 진행 | T018/R6; fresh기준/입력확인→lane별분석/QA→최신결과·미해결/다음한작업·정확영수증압축→검사/정상반영후재개 | Stage8 실제4clip/원키QA·선택mode3·scene18채널/부착/event/입력복구와4저장검증; native완성/P5확대 미완료 |
 | C106 | 앞서 설명한8개 요소가 추출/분석 계획에 포함됐는지 확인하고 포함하여 다음 작업 진행 요청 | T018/R6; 계획 audit→E1~E8/P1~P5/S1 명시→선택producer/graph/layer/장비/scene 참조→근거별 검증 | 계획audit/명시·실제선택/모션후처리/장비/scene참조와4저장 검증;8요구 부분/미완료/P5미착수 |
@@ -1515,6 +1515,54 @@ LinuxNode24.22.1/npm11.9.0·Python3.12.14/Capstone5.0.6을사용했고지정Node
 | `docs/SIMULATOR_PLAN.md` | 수정 | P4/E3의복구저장/원본typed배치·부분진행/출력차단상태 |
 | `docs/ROADMAP.md` | 수정 | 최신Stage12진전/다음caller연결추적·현재포인터/T049보존 |
 | `docs/FILE_SYNC.json` | 수정 | 관련4파일Stage12갱신조건/T018검토·경로/역할/우선순위유지 |
+
+#### Stage13 — 두 caller의 입력 출처와 중간 변경 경계 추적 (2026-11-02 KST)
+
+이번은 C109에 따른 다음 정적 분석이다. 최신 원격 HEAD `e6272e3dc9fdb4120a5288334d5f81f7dc373ca9`/tree `acdcac9a4bf5fd954ce46e8f313b3c757354bd2b`와 사용자 로컬변경 없음을 확인하고 같은 api-server-setup을 정상 fast-forward했다. AGENTS 전체·WORKPLAN 상단/C109 최신절·관련 P/E/S1와 FILE_SYNC를 읽었다. C110/T049·기존 Stage11/12와 A/B/C는 보존했다.
+
+필요한 입력을 실제로 복원했다. Stage12 safe/private 두 ZIP(14,488/78,196bytes)의 기존 전체SHA와 CRC,33members의 크기/SHA를 확인해 새 analysis-stage13에 복원했다. 원native를 별도로 복사해199,860,352bytes/SHA256 `3eeaf4a7995c5e4511a7b5377e8a014608aa2e57f976852fa23035141779550a`/cryptid0를 대조했다. frozen 자체 Mach-O parser·Capstone5.0.6과 선택698명령 JSON의 기존SHA를 검증했으며 원본 parser main/키 분석이나 원게임 코드는 실행하지 않았다. 기존33파일의 전체SHA는 최종에도 불변이었다. 전체IPA/CPK/UE/SDK/키를 복원한 것은 아니다.
+
+| 추출/분석 범위 | 새로 확인한 내용 | 미해결 경계 |
+| --- | --- | --- |
+| Sequence caller | UAnimSequence::GetBonePose 204명령·직접3의존112명령,92기준점/14명시적ABI모델검사. pose/container·skeleton·FName·context/scalar/flag·stack 등10전달채널 출처를 연결했다. 실제 getter2명령 본문과 앞 root-track/뒤 attributes 호출경계를 확인했다. | 초기 reference 준비와 이후 필드 재조회 사이 callee 효과·실제인스턴스/행/값 불변은 미증명 |
+| Stream caller | UAnimStreamable::GetAnimationPose 281명령,97기준점/16검사·getter2본문. context 복사/포인터동등분기·compressed 후보/stack 출처, reset 원본상수2블록·명시zero·미기록8bytes를 분리했다. | streaming lookup3곳·curve/codec 간접호출1곳의 실제대상/후보·chunk/수명은 미확정; 미기록영역 임의fill없음 |
+| bool·분기 차이 | Sequence는 원본 분기에서 만든0 또는 미확인 가상호출 반환값을 전달한다. Stream은 원본 명령이 bool0을 전달한다. | entry bool을 그대로 넘긴다는 해석을 배제했다. 원본0과 임의default를 구분하며 실제scene의 caller/flag를 선택하지 않음 |
+| DecompressPose 중간경계 | 기존698명령 fresh대조·37기준점, 직접BL27/간접BLR2·선택loop전호출28. 두 가상decoder에 출력pointer/span이 전달되고 reference key주소가 helper에 노출된 뒤 재조회되는 연결을 확인했다. | decoder 객체의 실제class/vtable대상·쓰기/재할당·reference alias/수명은 미확정 |
+
+같은 포인터를 레지스터에 보존한 사실과 heap 필드/배열 내용 불변은 별개다. 초기 읽기와 중간 호출 뒤 재조회는 시간상 다른 관측으로 유지했다. const signature·folded getter symbol alias·ABI의 callee-saved 규칙을 메모리 순수성/유일class 증명으로 확대하지 않는다. hidden-result 레지스터 해석도 실제 callsite 근거에만 제한했다. 원본 명령·상수/성분·초기화·분기·참조/호출 연결만 복구했고 수치pose/임의입력·보정/추가정규화·보간은 만들지 않았다.
+
+독립 검토는 fresh native 전체SHA/cryptid와698선택명령·두caller485명령·직접의존112명령을 대조했다. 격리된 canonical 도구 재실행226기준점(92+97+37)/30ABI모델검사(14+16)가 PASS_FOR_BOUNDED_EVIDENCE_ONLY/findings0, outputEligibility BLOCKED다. 같은 frozen 자체 parser/Capstone 재사용이며 독립parser구현·원명령실행/에뮬레이션·fusedFP32/runtime 동등성 증명이 아니다. 실제행/key/flag·stream후보·physicalalias/수명·후속callee변경·FPCR/FPSR/후처리·nativeclock 미확인 의존성은 유지한다. 원본 재구성 pose/GLB/영상·수치pose표본0, P1~P4/S1부분진행/P5미착수다.
+
+#### Stage13 로컬 산출물 검증·영구저장 미완료
+
+보고서·인계·safeZIP9members/privateZIP53members의4파일을 `deliverables-stage13`에 완성했다. 두 ZIP 전체CRC·새 빈폴더에 함께복원한 allowlist member/report의 크기/SHA/바이트일치가 통과했다. private는 이전33members를 그대로 포함하며 새canonical 코드/근거만 추가했다. safe에는 집계/차단·요약/독립검토·무결성자료/보고서·인계만 있고 상세 원명령/주소/수식·오프셋·원본특정 자체도구는 private에만 둔다. 전체native/CPK/IPA·게임자산/키·SDK/cache는 새 ZIP에 없다.
+
+영구저장은 준비 기능 미제공 오류로 실패해 새 저장완료0이며 Library ID/version/영수증은 없다. 원격 쓰기 결과가 성공했다고 표시하거나 별도 직접 업로드로 바꾸지 않았다. 기존 Stage12 4개v0는 보존한다. 아래 로컬 파일과 manifest가 현재 checkpoint이며, 저장 기능이 복구되면 같은4파일의 전체SHA/상태를 먼저 대조해 새저장/중복 여부를 확인한다.
+
+| 로컬 파일 (`deliverables-stage13/`) | bytes | SHA256 |
+| --- | --- | --- |
+| `eFsimulator_T018_stage13_evidence_20261102.zip` | 16,189 | `359c49b48a79423a6c7efcf087d43c29f605da91b026fe4fd71058498218017b` |
+| `eFsimulator_T018_stage13_private_code_20261102.zip` | 155,948 | `dfb340f05cddb1f2d08dd61e709522bac75d84f524fcf682e71202c71d7b6839` |
+| `eFsimulator_T018_stage13_caller_bindings_20261102.md` | 5,551 | `9b481642f8344ba893ece5c46f4383709f6409f9a998873b78fd3d4e0cb64fb5` |
+| `eFsimulator_T018_stage13_handoff_20261102.md` | 4,067 | `c3fb3333b5fc85841c2931f3bd20175418f0a02915ad26acb3900b44dfb794bb` |
+
+**다음 한 작업:** 선택 간접 decoder/codec 객체의 연결·선택 경로와 두 vtable 대상의 출력 메모리 쓰기 계약을 추적한다. caller 입력의 원본 출처를 토대로 중간변경 범위를 좁히며 미확인 활성값/physicalalias/후처리를 가정하지 않는다. 필요한 native는 기존 Stage3 백업에서 별도 복원·전체SHA를 확인하며 새 private ZIP만으로 원게임 입력이 자동복원된다고 표현하지 않는다.
+
+원본IPA/native/Blueprint·동봉Python/dylib/서버 미실행·에뮬레이션없음·별도키파일조회/해시없음·source99/target99/helper동일성/sourcefps·clock/보정 추정없음이다. 기존A/B/C와원본보존·제품/API/raw·가공/가격100·900/확정DrawBatch/배포/자동화 변경0이다.
+
+#### Stage13 관리 검사와 파일 검토
+
+Windows Node24.22.1·Python3.12.14/Capstone5.0.6을 사용했다. npm미제공으로 package명령과 동일한 Node진입점을 직접 실행했다. 문서변경전 `node scripts/project-check.mjs`는382파일/50작업 통과, `node --test`는526개중334pass/192fail·cancelled/skipped/todo0이었다. temp rename/symlink EPERM·git fixture symref Permission denied·fake-indexeddb누락·Windows ESM경로·규칙해시·불완전row assertion 등 여러 실패를 관측했으며 전부 환경오류/제품회귀라고 단정하지 않는다. system core.autocrlf=true와 규칙모듈 i/lf w/crlf도 읽기만 확인했다. source·lock·규칙/설정·개행·테스트를 바꾸거나 다른 실행경로로 실패를 우회하지 않았다. 이전 Linux525/526·539pass와 구분한다.
+
+최종관리검사 `node scripts/project-check.mjs --base e6272e3dc9fdb4120a5288334d5f81f7dc373ca9`는382파일/50작업/변경4경로로 통과했고 `git diff --check` 오류0이다. root의최종diff와이력보존검토후같은branch에정상commit/ref전진·원격4파일전체내용/실제CI를확인한다. 미래 자기commit SHA/미관측 CI성공을 선행기록하지 않는다.
+
+| 파일 | 검토 결과 | 이유 |
+| --- | --- | --- |
+| `AGENTS.md` | 검토 결과 변경 불필요 | 기존C109의근거/차단·미실행/비공개 경계 유효 |
+| `docs/WORKPLAN.md` | 수정 | 입력복원·두caller/중간변경·검토/저장실패·검사·다음한작업 |
+| `docs/SIMULATOR_PLAN.md` | 수정 | P4/E3 부분진행·실제caller/쓰기계약 미확정·출력차단 |
+| `docs/ROADMAP.md` | 수정 | 최신Stage13진전·미해결/다음한작업과현재포인터 |
+| `docs/FILE_SYNC.json` | 수정 | 관련4파일Stage13갱신조건/T018검토·역할/우선순위유지 |
 
 ### 예상 영향 파일
 
