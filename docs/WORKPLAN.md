@@ -7,21 +7,21 @@
 ## 현재 작업과 매 작업 갱신
 
 - 이전 작업: T048 — 단일 ‘선수팩 선택’ 버튼으로 통합하고 판매중/종료 전환은 창 안에 유지했다.539회귀·관리/타입/공식빌드·v17 실제 단일버튼/탭/선택복귀/초점·원격 동일tree와 구현CI2건 성공을 확인했다.
-- 현재 작업: T018 — 진행 중. C109/Stage11에서 원본 입력3ZIP/16members와 native/정상CPK를 실제 복원·검증하고 선택698명령/기존110정확일치를 확인했다. 명시적 ABI모델의입력alias9검사·두reference경로와벡터기호식8검사/원본조건순서를추적했고 독립근거검토PASS·findings0이다. 실제reference객체/배치·alias/FPCR·flag/후처리가남아gate차단·원본pose/GLB/영상0이다. 로컬 실행 환경 연결 해제로 새 private/safe 묶음의 최종 생성·영구 저장 및 최종 관리검사는 미완료다. 새 저장 영수증은 0개이며 원본 재구성 gate는 BLOCKED다. 다음 한 작업은 Stage11근거복구·영구저장이며 그 뒤reference producer/배치추적을진행한다. C108 A/B/C보존·P1~P4/S1부분진행/P5미착수·native완성/자연스러움해결미확정을유지한다.
+- 현재 작업: T018 — 진행 중. C109/Stage12에서 새 Linux 환경에 원본 입력3ZIP/16members를 다시복원·검증하고 Stage11근거를 재생성해alias9/기준점52·lane36/기호식8/조건4·698명령/이전110일치를 확인했다. 원본producer9함수/선택510명령·74단언·4typedcallee연결로container초기화/복사·두reference직렬화/성분배치·compactpose연결을추적했다. 독립근거검토PASS/findings0·새4개v0저장/CRC·빈폴더복원검증은완료했지만 실제caller binding/행/flag·메모리alias/후속변경·FPCR/후처리는미해결로gate BLOCKED/원본pose·GLB·영상0이다. 다음한작업은선택caller에서container/reference key로이어지는연결과중간변경경로추적이다. 과거Stage11환경해제/저장0·C108 A/B/C와C110/T049는이력으로보존하고T018/P1~P4/S1부분진행/P5미착수를유지한다.
 - 다음 작업: 없음 — T018 이후 범위는 별도 결정한다.
 - 최근 유지보수: T049 — 완료. 사용자가 확인한11월2일 영문 공격수/PSG 두 상품의 연결을 별도 수동 검토로 반영했다. 전체19문자열ID·원본 필드/타입·두 출처 명단을 대조하고15매핑/검토·rules1.7.0 채택과 고정 수입을 완료했다. raw47,520/1,707·가공182/15·판매중10/종료5이며 원본prefix/종료5팩 불변을 검증했다. 원본 date2026-10-29를 제목의2 Nov로 바꾸지 않으며 저장v22·API/세사이트 전량/공개 익명·화면 및 구현 commit의 원격 내용/실제CI2건 성공을 확인했다. 로컬 전체회귀의 환경 의존성1건은 별도 보존한다. 제품 T018/C109·Stage11 미해결과 재시작 블록은 보존한다.
 - 현재 조건: T043이 T041의 선수 정렬을 화면 범위별로 구분한다. Epic5→Show Time8→Trend3→Highlight6 우선, 팩 안 선수는 등급 안 OVR순, 전체 선수는 등급 안 확인 날짜 최신순→OVR순이며 최초 연결팩 날짜를 사용한다. 팩은 등급 안 날짜 최신순이다. exact raw 타입·원본·가공/API 계약·가격100/900·팩 구성/카드 표시와 실제 앱 public·API/admin/viewer owner-private 경계를 보존한다.
 
-### 압축 재시작 체크포인트 — C109 / Stage11 입력 alias·벡터 성분 추적
+### 압축 재시작 체크포인트 — C109 / Stage12 reference producer와 Stage11 근거 복구
 
-- **읽는 순서:** `AGENTS.md` 전체 → 이 블록 → T018 C109의 최신 `Stage11 — 입력 alias·벡터 성분 추적과 환경 연결 해제` 절. 이어 ROADMAP 현재표·SIMULATOR_PLAN의 관련 E/P/S1행·FILE_SYNC 관련항목을읽는다. Stage10/C108의원본증거/정확영수증은이전해당절을따른다.
-- **Git/상태:** `Hyunwoo1205/efsimulator`, `api-server-setup`. Stage11착수 fresh HEAD는 `ea7487200d103b7f3d6439d1201e2ddf8686bc73`/tree `dce165e8c6f1de27c8e7e33e1baf8d477889cbc5`다. 지정폴더가처음비어있어 repo하위에정상clone했고같은HEAD/clean을확인했다. 이후미래자기commit을미리적지않는다. R6/이전T048/현재T018진행/다음외부미배정·P1~P4/S1부분진행/P5미착수다.
-- **실제 복원/검증:** Stage3입력ZIP+Stage10 safe/private ZIP3개의전체크기/SHA/CRC와16members를대조했다. native199,860,352bytes/기존SHA·cryptid0과정상CPK137,093,472bytes/기존SHA일치다. root manifest는별도로보존했다. 전체IPA/UE·키/SDK복원을뜻하지않고잘린이전CPK/A·B·C와기존자료는보존한다.
-- **Stage11 분석 진전:** 선택함수698명령을새로정적해독해Stage10선택110명령과정확일치했다. 명시적AAPCS64모델에서alias도달정의9검사·두reference선택경로/pair producer를추적했다. Capstone CMP보조write metadata문제는명시적으로처리했다. 자체inline계수기호식8검사·명령대응36개와원본정규화/역수조건/순서를확인했다. 내부직접BL27/대상10·정확직접caller2이며간접/tail전수나runtime관측은아니다.
-- **검토/출력:** 독립검토는격리재실행에서alias9/기호식8과native/선택명령을재대조해근거검토PASS·findings0이었다. ABI모델/기호적동등성은실제reference/메모리영향·FPCR/fused float32동등성증명이아니다. literal필드위치를보존하며표준배치/기본값을추정하지않았다. 실제reference객체/배치·메모리겹침·flag/callee후처리미해결로gate BLOCKED·원본pose/GLB/영상0이다.
-- **환경/저장 미완료:** 로컬 실행 환경 연결 해제로 새 private/safe 묶음의 최종 생성·영구 저장 및 최종 관리검사는 미완료다. 새 저장 영수증은 0개이며 원본 재구성 gate는 BLOCKED다. 연결해제전작성된로컬보고서·인계/선택proof/독립검토파일의향후접근가능성은재확인해야한다. 마지막packaging호출은 transport closed로결과미확인이며완성ZIP/저장성공으로표시하지않는다. Stage10의정확4영수증과Stage3백업은계속유효한별도복원진입점이다.
-- **다음 한 작업:** 실행 환경이 복구되면 Stage11 로컬 근거의 실재·크기/SHA를 재대조하고 private/safe 묶음을 검증·영구 저장한다. 로컬본에접근할수없으면Stage3/Stage10의검증된별도백업에서필요입력을복원하고같은정적검사를재생성한다. 영구저장전단계완료로표시하지않는다. 이후분석의다음한작업은 선택 loop의 두 reference 경로와 container reference 포인터의 producer·객체 배치·실제 alias/non-overlap 근거를 추적한다.
-- **유지 경계:** 원본 IPA/native/Blueprint·동봉Python/dylib/서버미실행·에뮬레이션없음·별도키파일미조회/미해시다. 상세원본명령/수식/상수는private만유지하고Git에는집계기록만반영한다. source99/target99·helper동일성·clock/fps·보정/보간fallback을선택하지않으며제품/API/가격100·900/DrawBatch/배포/자동화는변경없다.
+- **읽는 순서:** AGENTS 전체 → 이블록 → T018 C109 최신 Stage12절 → ROADMAP현재표·SIMULATOR_PLAN관련P/E/S1·FILE_SYNC관련항목이다. Stage11/Stage10/C108의과거결과와정확영수증은필요한근거만읽는다.
+- **기준/상태:** 이번착수 remote HEAD는 `4e5c2baff837041d0c7d1b3241bb0037e89af1ba`/tree `573d9b910b52f6858ce9b9095599bd4225eff4c0`이며 같은branch정상clone/clean을확인했다. C110/T049의별도선수팩유지보수를보존한다. R6/이전T048/현재T018진행/다음외부미배정·P1~P4/S1부분진행/P5미착수다.
+- **복원과 재생성:** 새Linux에는이전Windows폴더가없어Stage3+Stage10의3ZIP/16members를실제재다운로드해전체크기/SHA/CRC를대조했다. native199,860,352bytes/cryptid0과정상CPK137,093,472bytes는기존SHA일치다. 옛임시파일의바이트복원이라고주장하지않고검증된원본/동결도구로Stage11을재생성했다. 새선택JSON SHA는 `77c6f50d091b2dcbaf076bc59fa7169968c40652ed6fabe2e634f235e5d94c8f`다.
+- **확인 진전:** 선택698명령/Stage10선택110정확일치·initializer10대조, ABI모델alias9/기준점52·lane명령36/기호식8/조건4, 내부BL27/대상10/진입2를검증했다. 새producer9함수의선택510명령/74단언/typedcallee4검사로container초기화/fill·대입복사/기본·keyedreference직렬화·원본성분배치와compactpose연결을확인했다. 상세원명령/수식/위치는private만유지한다.
+- **독립 검토/차단:** fresh native와698+510선택명령대조·격리된자체검사재실행·진입BL별도scan이PASS/findings0이다. 같은동결parser/검증기의재사용이며새parser독립구현·fusedfloat32/runtime동등성증명이아니다. 실제caller binding/행/flag·physicalalias/후속변경·FPCR/decoder/후처리는미해결로gate BLOCKED/원본pose·GLB·영상0이다.
+- **최신 저장:** Stage12보고서/인계/safe10members/private23members의정확4개v0저장성공·로컬metadata/전체SHA와ZIP CRC·새빈폴더member복원을확인했다. 아래최신절의영수증을쓴다. Stage11당시환경해제/저장0은과거이력이며이번재생성/저장완료와구분한다. 새ZIP에는전체native/CPK/IPA·원자산/키/캐시는없다.
+- **다음 한 작업:** 선택 caller에서 container·skeleton·reference key가 전달되는 원본 경로와 그 사이의 변경 가능성을 추적한다. 원본producer확보를실제활성값/할당성공·non-overlap확정으로확대하지않고미확인입력을유지한다.
+- **검사/경계:** Node24.22.1/npm11.9.0·Python3.12.14/Capstone5.0.6. baseline관리382파일/50작업통과, npm test525/526이며기존fake-indexeddb누락으로storage test파일1개를불러오지못했다. 최종관리검사/정상remote반영·CI는최신절의실제기록을따른다. 원본/동봉코드미실행·에뮬레이션없음/보정·99기본값/clock추정없음·별도키파일미조회/미해시·기존A/B/C보존·제품/API/가격/DrawBatch/배포/자동화변경0이다.
 
 매 작업 시작 시 Git 상태·이전 결과·이번/다음 작업·선행 조건을 확인한다. FILE_SYNC의 P0→P1→P2로 관련 파일을 검토하되 필요한 파일은 등급과 무관하게 함께 수정한다. 추가 요구는 ID·영향 단계·선행 조건·순서·상태를 기록한다. 파일별 수정/변경불필요/미해결과 근거, 경로 추가/삭제/이름 변경·참조를 같은 작업에서 갱신한다. 검증과 이전/현재/다음 포인터를 맞추며 구현/수집/발행 완료는 실제 근거가 있을 때만 표시한다.
 
@@ -34,7 +34,7 @@ C110은 두 상품 연결의 별도 데이터 유지보수 승인으로, T018/C1
 | 조건 ID | 최신 결정 | 영향 단계 / 선행 조건 / 처리 순서 | 상태 |
 | --- | --- | --- | --- |
 | C110 | 두 신규 공식 상품과 EFHub 팩의 연결이 각각 맞다고 확인하고 연결·반영을 지시 | T049/R6 별도 데이터 유지보수. 상품 identity2건만 사용자 확인, 전체19카드ID/명단/원본은 실제DOM검증→승인 해시/규칙채택→고정갱신/저장/원격/CI. T018/C109 기준·가격100/900·타입·공개경계 유지 | 완료: 명단/원본/15매핑·rules1.7.0 채택·고정 수입/독립QA·저장v22/API/세사이트·공개 익명/화면·원격7파일/382파일·구현CI2건 성공; 로컬 전체회귀525/526 환경미충족1건 별도보존 |
-| C109 | 원본 코드를 디컴파일·추출해 재구성하고 별도 보정식/추가 가정을 쓰지 말라는 지시 | T018/R6; inline 자체계수→입력alias/벡터성분→reference/flag/후처리근거, 미확인출력차단 | Stage11 alias9/기호식8·독립근거검토PASS/출력0; 실제객체·후처리미해결/gate차단. 환경해제로새묶음영구저장/최종검사미완료·Stage10정확4저장은보존 |
+| C109 | 원본 코드를 디컴파일·추출해 재구성하고 별도 보정식/추가 가정을 쓰지 말라는 지시 | T018/R6; inline 자체계수→입력alias/벡터성분→reference/flag/후처리근거, 미확인출력차단 | Stage12복구/재생성·producer9함수/510명령·독립검토PASS/4개v0저장/복원검증; 실제binding/alias/flag/후처리미해결·gate차단/출력0, 다음caller연결추적 |
 | C108 | Work·단계인계를 유지하며 다음작업 진행 승인 | T018/R6; frozen scene2clip/대표mesh→A/B/C조건부skin·초기화근거→60fps/GLB/소품world QA→인계/정확영수증 | reference/LBS·초기화/encoded-loop·6영상/2비교·GLB독립QA/8저장 확인; inline별도BSS/실제runtime미해결·P5미착수 |
 | C107 | Work를 유지하고 단계별 인계 기록을 남기며 다음 작업 진행 | T018/R6; fresh기준/입력확인→lane별분석/QA→최신결과·미해결/다음한작업·정확영수증압축→검사/정상반영후재개 | Stage8 실제4clip/원키QA·선택mode3·scene18채널/부착/event/입력복구와4저장검증; native완성/P5확대 미완료 |
 | C106 | 앞서 설명한8개 요소가 추출/분석 계획에 포함됐는지 확인하고 포함하여 다음 작업 진행 요청 | T018/R6; 계획 audit→E1~E8/P1~P5/S1 명시→선택producer/graph/layer/장비/scene 참조→근거별 검증 | 계획audit/명시·실제선택/모션후처리/장비/scene참조와4저장 검증;8요구 부분/미완료/P5미착수 |
@@ -1469,6 +1469,52 @@ Capstone5.0.6의 `regs_access`가일부CMP의첫GPR을쓰기대상으로보고�
 | `docs/SIMULATOR_PLAN.md` | 수정 | P4/E3와최신C109에Stage11부분진전/게이트·저장중단상태연결 |
 | `docs/ROADMAP.md` | 수정 | 현재Stage11부분진전/미완료·복구우선순위와T018/P5상태유지 |
 | `docs/FILE_SYNC.json` | 수정 | 관련4문서Stage11갱신조건/기존역할·경로·우선순위/T018검토유지 |
+
+#### Stage12 — Stage11 근거 재생성·저장과 reference producer 추적 (2026-11-02 KST)
+
+이번재개는C109의승인된정적분석이며새조건ID/원게임실행·제품범위승인이아니다. 최신원격 `4e5c2baff837041d0c7d1b3241bb0037e89af1ba`/tree `573d9b910b52f6858ce9b9095599bd4225eff4c0`와같은branch의clean체크아웃을확인했다. C110/T049의등록·규칙·선수팩/저장/운영기록을보존하고본작업으로변경하지않았다. AGENTS전체/WORKPLAN상단·C109/관련P·E·S1/FILE_SYNC를읽었다.
+
+새Linux워크스페이스에옛Windows폴더는없었다. Stage3입력/Stage10safe·private3ZIP를실제다시내려받아전체크기/SHA/CRC와16members의크기/SHA를검증했다. native199,860,352bytes/SHA256 `3eeaf4a7995c5e4511a7b5377e8a014608aa2e57f976852fa23035141779550a`/cryptid0, 정상CPK137,093,472bytes/SHA256 `f773c5372c9951638950cfcd846d43ca1892de955cef8622ebb2375e28c00c93`가같았다. root manifest는별도보존했고원본16members의전체SHA불변도다시대조했다. 전체IPA/UE·SDK/키를복원한것은아니다. Stage11로컬임시proof를그대로찾은것으로표시하지않고검증된native와동결자체도구로검사를재생성했다. Linux선택JSON은179,107bytes/SHA256 `77c6f50d091b2dcbaf076bc59fa7169968c40652ed6fabe2e634f235e5d94c8f`이며옛WindowsSHA와바이트동일성을주장하지않는다.
+
+| 범위 | 실제 검증/진전 | 한계 |
+| --- | --- | --- |
+| Stage11 명령·alias 재생성 | 698명령새해독/Stage10의110정확일치·initializer10대조, 명시적ABI모델도달정의9/9·원본기준점52/52 | helper ABI·callee메모리영향·활성branch값은미확정 |
+| inline 벡터 성분 | 자체계수·명령단언36·기호식8/8·비교조건4; 원본정규화/fallback·나눗셈/선택순서보존 | 수치pose표본0, fusedfloat32/FPCR·NaN/signed-zero비트동등성미증명 |
+| 직접 호출 | 내부BL27/대상10/정확진입2; 독립진입scan재대조 | 간접/tail·전체runtime graph아님 |
+| 원본 producer/배치 | 9함수의선택510명령·74정확단언·typedcallee연결4검사; container초기화/fill·대입복사, skeleton기본/keyedreference직렬화·적재, 원본성분배치와compactpose연결 | 실제인스턴스/행/flag·physicalalias·callee효과/후속변경미확정 |
+
+새producer근거는외부표준헤더를대입하지않고원본typedserializer·literal필드접근과복사범위를연결했다. 원본의payload복사와stride전체bulk요청을구분하고원본이쓰지않는부분을임의padding/default로채우지않는다. 원본typed성분배치근거확보가모든구조체상세/실제행/할당성공·non-overlap을뜻하지않는다. 기본/keyed참조분기를유지하며실제PID/mesh/reference선택값을대입하지않는다. CapstoneCMP보조write metadata를별도처리하는명시적ABI모델의한계,FPCR/FPSR·간접decoder/출력관련guarded후처리·초기화이후쓰기·nativeclock/scene미해결은유지한다. 원본재구성gate는차단이며pose/GLB/영상0이다.
+
+독립검토는원native전체SHA/cryptid와698선택명령·9producer함수의510선택명령을새로대조했다. 격리된검사기에서alias9/기준점52·lane36/기호식8/조건4와producer74/typedcallee4를재실행하고진입BL2를별도scan했다. 근거검토PASS/findings0, 출력자격BLOCKED다. 같은동결Mach-O/Capstoneparser와검사기를재사용한검토이며새독립parser구현·원명령실행/에뮬레이션이나fusedfloat32·runtime동등성검증은아니다. 최종safe review는3,261bytes/SHA256 `7228aa9fed4b588f4608ba85217f32932cfc5428705637c5dabcf9cc62123c31`다.
+
+#### Stage12 최종 저장·입력/출력 경계
+
+새4개파일은각각succeeded/version0이며로컬원파일의크기/전체SHA·Library identity metadata를대조했다. safeZIP10members/privateZIP23members의전체CRC와새빈폴더복원후각allowlist member/report의크기/SHA/바이트일치가통과했다. safe는집계gate·요약/독립review/무결성자료·보고서/인계만, private는선택명령·proof·원본특정오프셋/수식이있는자체도구와동결의존성만포함한다. 탐색용전체함수덤프/후보symbol목록·격리중간사본·캐시는제외했다. 새private에원native/CPK/IPA·geometry/키를넣지않으며향후native는기존Stage3백업에서별도로검증복원한다. 이번저장은이전Stage11의저장0을소급변경하지않는새재생성본이다.
+
+| 산출물 / 정확 파일 | version / bytes | SHA256 |
+| --- | --- | --- |
+| [eFsimulator_T018_stage12_reference_producers_20261102.md](https://chatgpt.com/library?file_id=libfile_3877ba3c8b008191a4c73538d09393f0&account_id=personal) (`libfile_3877ba3c8b008191a4c73538d09393f0`) | v0 / 5,345 | `fbaaaebf19f4f6e7d5ed61fac5508762d0ae8a6dce64c2fbe3d9de7f9056d416` |
+| [eFsimulator_T018_stage12_handoff_20261102.md](https://chatgpt.com/library?file_id=libfile_82aec60faf808191bc2393b44dbbd2e5&account_id=personal) (`libfile_82aec60faf808191bc2393b44dbbd2e5`) | v0 / 4,148 | `ac412164434f85741a5b934c9343f5059342547c41c0c5cdd2aa3f34210d9eda` |
+| [eFsimulator_T018_stage12_evidence_20261102.zip](https://chatgpt.com/library?file_id=libfile_2ec0de3ab8c88191ab95214f7001eab7&account_id=personal) (`libfile_2ec0de3ab8c88191ab95214f7001eab7`) | v0 / 14,488 | `b2c7cb3b3bf1b0a15e26ef7a747917df68776050024643cd517d2ce4c2b14a40` |
+| [eFsimulator_T018_stage12_private_code_20261102.zip](https://chatgpt.com/library?file_id=libfile_55880af188748191a33af13762852274&account_id=personal) (`libfile_55880af188748191a33af13762852274`) | v0 / 78,196 | `656f0f18fee114b9ddaec7b0a13638cc2d705305464d7c5afe66d0a5fc134d10` |
+
+원본IPA/native/Blueprint·동봉Python/dylib/서버미실행·원명령에뮬레이션없음·별도키파일조회/해시없음이다. source99/target99·helper동일성·sourceclock/fps·보정/추가정규화·보간을선택하지않았고기존A/B/C와원본을보존한다. 제품/API/raw·가공/가격100·900/확정DrawBatch/배포/자동화변경0이다. T018전체/P4/native동등성·체감자연스러움완료로표시하지않으며P1~P4/S1부분진행/P5미착수다.
+
+**다음 한 작업:** 선택 caller에서 container·skeleton·reference key가 전달되는 원본 경로와 그 사이의 변경 가능성을 추적한다. 복구한producer와호출입력을연결하고실제flag/row/key·physicalalias/후속변경은확인전명시적blocker로남긴다. 출력의존성이닫히기전에원본pose/GLB/영상을생성하지않는다.
+
+#### Stage12 관리 검사와 파일 검토
+
+LinuxNode24.22.1/npm11.9.0·Python3.12.14/Capstone5.0.6을사용했고지정Node24.19.0과patch차이/npm기존http-proxy경고를구분했다. 문서변경전 `npm run project:check`는382파일/50작업으로통과했다. `npm test`는526개중525pass/1fail·cancelled/skipped/todo0이며유일실패는기존 `fake-indexeddb` 누락으로storage test파일을import하지못한것이다. 이는통과한539개이전이력을복사한값이아니고실제실행결과다. 기존source/의존성lock·테스트를변경하거나누락테스트를숨기지않았다.
+
+최종 관리검사 `npm run project:check -- --base 4e5c2baff837041d0c7d1b3241bb0037e89af1ba`는382파일/50작업/변경4경로로통과했다. 기존source와테스트는변경없어위실제526회귀결과를유지한다. root의최종diff/경계검토후같은branch의정상commit/push·원격전체내용/실제CI를확인하며미래자기SHA/미관측성공을선행기록하지않는다.
+
+| 파일 | 검토 결과 | 이유 |
+| --- | --- | --- |
+| `AGENTS.md` | 검토 결과 변경 불필요 | C109의원본근거/차단·미실행/비공개경계가유효함 |
+| `docs/WORKPLAN.md` | 수정 | 복원/재생성·producer진전/미해결·정확4저장·검사/다음한작업 |
+| `docs/SIMULATOR_PLAN.md` | 수정 | P4/E3의복구저장/원본typed배치·부분진행/출력차단상태 |
+| `docs/ROADMAP.md` | 수정 | 최신Stage12진전/다음caller연결추적·현재포인터/T049보존 |
+| `docs/FILE_SYNC.json` | 수정 | 관련4파일Stage12갱신조건/T018검토·경로/역할/우선순위유지 |
 
 ### 예상 영향 파일
 
