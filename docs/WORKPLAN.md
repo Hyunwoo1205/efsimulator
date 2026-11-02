@@ -9,7 +9,7 @@
 - 이전 작업: T048 — 단일 ‘선수팩 선택’ 버튼으로 통합하고 판매중/종료 전환은 창 안에 유지했다.539회귀·관리/타입/공식빌드·v17 실제 단일버튼/탭/선택복귀/초점·원격 동일tree와 구현CI2건 성공을 확인했다.
 - 현재 작업: T018 — 진행 중. C109/Stage11에서 원본 입력3ZIP/16members와 native/정상CPK를 실제 복원·검증하고 선택698명령/기존110정확일치를 확인했다. 명시적 ABI모델의입력alias9검사·두reference경로와벡터기호식8검사/원본조건순서를추적했고 독립근거검토PASS·findings0이다. 실제reference객체/배치·alias/FPCR·flag/후처리가남아gate차단·원본pose/GLB/영상0이다. 로컬 실행 환경 연결 해제로 새 private/safe 묶음의 최종 생성·영구 저장 및 최종 관리검사는 미완료다. 새 저장 영수증은 0개이며 원본 재구성 gate는 BLOCKED다. 다음 한 작업은 Stage11근거복구·영구저장이며 그 뒤reference producer/배치추적을진행한다. C108 A/B/C보존·P1~P4/S1부분진행/P5미착수·native완성/자연스러움해결미확정을유지한다.
 - 다음 작업: 없음 — T018 이후 범위는 별도 결정한다.
-- 최근 유지보수: T049 — 사용자가 확인한11월2일 영문 공격수/PSG 두 상품의 연결을 별도 수동 검토로 반영 중이다. 전체19문자열ID·원본 필드/타입·두 출처 명단을 대조하고15매핑/검토·rules1.7.0 채택과 고정 수입을 완료했다. raw47,520/1,707·가공182/15·판매중10/종료5이며 원본prefix/종료5팩 불변을 검증했다. 원본 date2026-10-29를 제목의2 Nov로 바꾸지 않으며 저장v22·API/세사이트 전량/공개 익명 및 브라우저 반영을 확인했으며 GitHub/실제CI 완료 전에는 전체 완료로 표시하지 않는다. 제품 T018/C109·Stage11 미해결과 재시작 블록은 보존한다.
+- 최근 유지보수: T049 — 완료. 사용자가 확인한11월2일 영문 공격수/PSG 두 상품의 연결을 별도 수동 검토로 반영했다. 전체19문자열ID·원본 필드/타입·두 출처 명단을 대조하고15매핑/검토·rules1.7.0 채택과 고정 수입을 완료했다. raw47,520/1,707·가공182/15·판매중10/종료5이며 원본prefix/종료5팩 불변을 검증했다. 원본 date2026-10-29를 제목의2 Nov로 바꾸지 않으며 저장v22·API/세사이트 전량/공개 익명·화면 및 구현 commit의 원격 내용/실제CI2건 성공을 확인했다. 로컬 전체회귀의 환경 의존성1건은 별도 보존한다. 제품 T018/C109·Stage11 미해결과 재시작 블록은 보존한다.
 - 현재 조건: T043이 T041의 선수 정렬을 화면 범위별로 구분한다. Epic5→Show Time8→Trend3→Highlight6 우선, 팩 안 선수는 등급 안 OVR순, 전체 선수는 등급 안 확인 날짜 최신순→OVR순이며 최초 연결팩 날짜를 사용한다. 팩은 등급 안 날짜 최신순이다. exact raw 타입·원본·가공/API 계약·가격100/900·팩 구성/카드 표시와 실제 앱 public·API/admin/viewer owner-private 경계를 보존한다.
 
 ### 압축 재시작 체크포인트 — C109 / Stage11 입력 alias·벡터 성분 추적
@@ -33,7 +33,7 @@ C110은 두 상품 연결의 별도 데이터 유지보수 승인으로, T018/C1
 
 | 조건 ID | 최신 결정 | 영향 단계 / 선행 조건 / 처리 순서 | 상태 |
 | --- | --- | --- | --- |
-| C110 | 두 신규 공식 상품과 EFHub 팩의 연결이 각각 맞다고 확인하고 연결·반영을 지시 | T049/R6 별도 데이터 유지보수. 상품 identity2건만 사용자 확인, 전체19카드ID/명단/원본은 실제DOM검증→승인 해시/규칙채택→고정갱신/저장/원격/CI. T018/C109 기준·가격100/900·타입·공개경계 유지 | 명단/원본/15매핑·rules1.7.0 채택·고정 수입/독립QA·저장v22/API/세사이트 전량·공개 익명/화면 완료, GitHub/실제CI 진행 중 |
+| C110 | 두 신규 공식 상품과 EFHub 팩의 연결이 각각 맞다고 확인하고 연결·반영을 지시 | T049/R6 별도 데이터 유지보수. 상품 identity2건만 사용자 확인, 전체19카드ID/명단/원본은 실제DOM검증→승인 해시/규칙채택→고정갱신/저장/원격/CI. T018/C109 기준·가격100/900·타입·공개경계 유지 | 완료: 명단/원본/15매핑·rules1.7.0 채택·고정 수입/독립QA·저장v22/API/세사이트·공개 익명/화면·원격7파일/382파일·구현CI2건 성공; 로컬 전체회귀525/526 환경미충족1건 별도보존 |
 | C109 | 원본 코드를 디컴파일·추출해 재구성하고 별도 보정식/추가 가정을 쓰지 말라는 지시 | T018/R6; inline 자체계수→입력alias/벡터성분→reference/flag/후처리근거, 미확인출력차단 | Stage11 alias9/기호식8·독립근거검토PASS/출력0; 실제객체·후처리미해결/gate차단. 환경해제로새묶음영구저장/최종검사미완료·Stage10정확4저장은보존 |
 | C108 | Work·단계인계를 유지하며 다음작업 진행 승인 | T018/R6; frozen scene2clip/대표mesh→A/B/C조건부skin·초기화근거→60fps/GLB/소품world QA→인계/정확영수증 | reference/LBS·초기화/encoded-loop·6영상/2비교·GLB독립QA/8저장 확인; inline별도BSS/실제runtime미해결·P5미착수 |
 | C107 | Work를 유지하고 단계별 인계 기록을 남기며 다음 작업 진행 | T018/R6; fresh기준/입력확인→lane별분석/QA→최신결과·미해결/다음한작업·정확영수증압축→검사/정상반영후재개 | Stage8 실제4clip/원키QA·선택mode3·scene18채널/부착/event/입력복구와4저장검증; native완성/P5확대 미완료 |
@@ -3280,7 +3280,7 @@ Root가 실제 실행한 전체 `npm test`539/539가 exit0으로 통과했다. �
 ## T049 — 11월 2일 두 신규 상품 연결 확인과 데이터 반영
 
 - 단계: R6
-- 상태: 진행 중
+- 상태: 완료
 - 이전: T048
 - 다음: T018
 
@@ -3313,7 +3313,7 @@ Root가 실제 실행한 전체 `npm test`539/539가 exit0으로 통과했다. �
 
 API 전용165/165검사를 통과했다. 전체 npm test는525통과/총526이며 simulator-storage.test.mjs가 `fake-indexeddb` 미설치로 import하지 못한1건은 환경 의존성 미충족이다. 기존 설치/로컬 npm 캐시도 없었으며 package/잠금/테스트를 수정하거나 대체 DB로 통과시키지 않았다. 전체 테스트 통과로 표시하지 않고 GitHub CI의 실제 결과를 별도로 확인한다.
 
-동일 데이터 묶음 v22(59,589,999 bytes)를 저장하고 정확한 저장본을 다시 내려받아 SHA256 `222028b97004be5cc6e0dae8fabd1dee43bd680119f22a7295d21b553c02bec7`·gzip/tar 완전성·312파일/425members 전량 일치를 확인했다. API의 분할 적재·전량 readback/해시·expected-current CAS 활성화를 완료했고 changed=true/verified=true를 확인했다. publication `b2069cfda80490e0bb192c93b84ec7a42b3bd0b3a19b5afd6178df5829c1e91a`로182명/15팩·live10/archive5가 반영됐다.2026-11-02T03:11:33.016Z에 API·private viewer·public 실제 앱의 players/packs/live/archive 전체 내용·참조/타입·옵션/고정가격을 대조했고 공개 앱은 인증 헤더 없는 익명 읽기도 검증했다. 사이트 영수증 SHA256은 `732f3c1c891c74c7f9c401fc09143a156bbeac255e942ecd68382249e7c8c353`이다. 공개 /packs 브라우저에서live10/archive5·182카드·두 신규 제목과150/S11·8/S8도 직접 확인했다. 고정 요약 영수증 runId는 `7309dc2618989e142fcc1b6ce659adb701a6f4120b95fc7942918dc9479e9d8f`이며 bundle/api/sites=verified,github=pending을 유지해 자기 자신을 포함할 미래 SHA/CI를 기록하지 않는다. 실제 GitHub 정상 반영·원격 내용·CI 확인은 아직 진행 중이다. 해당 후속 단계가 남은 동안 T049는 진행 중이며 원격 반영 또는 전체 완료로 표시하지 않는다. 가격100/900·숫자playerType과 API/admin/viewer 비공개·실제 앱 public 접근 정책을 유지한다.
+동일 데이터 묶음 v22(59,589,999 bytes)를 저장하고 정확한 저장본을 다시 내려받아 SHA256 `222028b97004be5cc6e0dae8fabd1dee43bd680119f22a7295d21b553c02bec7`·gzip/tar 완전성·312파일/425members 전량 일치를 확인했다. API의 분할 적재·전량 readback/해시·expected-current CAS 활성화를 완료했고 changed=true/verified=true를 확인했다. publication `b2069cfda80490e0bb192c93b84ec7a42b3bd0b3a19b5afd6178df5829c1e91a`로182명/15팩·live10/archive5가 반영됐다.2026-11-02T03:11:33.016Z에 API·private viewer·public 실제 앱의 players/packs/live/archive 전체 내용·참조/타입·옵션/고정가격을 대조했고 공개 앱은 인증 헤더 없는 익명 읽기도 검증했다. 사이트 영수증 SHA256은 `732f3c1c891c74c7f9c401fc09143a156bbeac255e942ecd68382249e7c8c353`이다. 공개 /packs 브라우저에서live10/archive5·182카드·두 신규 제목과150/S11·8/S8도 직접 확인했다. 고정 요약 영수증 runId는 `7309dc2618989e142fcc1b6ce659adb701a6f4120b95fc7942918dc9479e9d8f`이며 bundle/api/sites=verified,github=pending을 유지해 자기 자신을 포함할 미래 SHA/CI를 기록하지 않는다. 같은 api-server-setup 브랜치의 구현·검토/규칙·고정 요약7파일을 `9e3c565af5c70469cb88b25c74e2fa62fe3296ee`에 정상 CAS 전진으로 반영하고 실제 원격 ref·382파일 및 변경7파일의 blob SHA 일치를 확인했다. 해당 commit의 [Catalog API checks run41381987878](https://github.com/Hyunwoo1205/efsimulator/actions/runs/41381987878)와 [Catalog update record checks run41381987884](https://github.com/Hyunwoo1205/efsimulator/actions/runs/41381987884)는 모두 실제 completed/success다. 따라서 이번 두 상품의 연결 확인→검토/규칙 채택→고정 수입→정확 저장본→API/세사이트·공개 화면→GitHub/실제CI까지 완료했다. 이 기록은 확인한 구현 commit의 검증이며 이후 문서 정리 commit의 미래 SHA/CI를 만들지 않는다. 위 저장/원격/GitHub·실제CI를 확인하여 T049를 완료로 전환했다. 로컬 전체525/526의 환경 의존성1건은 별도 한계로 보존하고 전체 로컬 회귀 통과로 바꾸지 않는다. 가격100/900·숫자playerType과 API/admin/viewer 비공개·실제 앱 public 접근 정책을 유지한다.
 
 ### 파일 최신화 검토
 
