@@ -270,7 +270,9 @@
         "C106 E1~E8의 실제 포함/사용 여부·P1~P5/T018 scene S1 입력/산출물/완료/선행 기준·진행 근거/한계/저장 영수증을 갱신할 때",
         "C107 Work 유지·단계별 인계/압축 재시작·입력 원본보존/별도복구·Stage8 실제 decode/선택retarget/scene검증과 정확한 저장 영수증을 갱신할 때",
         "C108 actualscene/대표4part A/B/C99정책·전체skin/reference·소품world 진단의선정범위/GT한계·압축인계/최종표시와 정확한 저장 영수증을 갱신할 때",
-        "C109 원본 근거만으로 재구성·미확인 출력 차단/보정 금지·기존 진단 이력 보존과 caller/default/inline 근거·새 인계 영수증을 갱신할 때"
+        "C109 원본 근거만으로 재구성·미확인 출력 차단/보정 금지·기존 진단 이력 보존과 caller/default/inline 근거·새 인계 영수증을 갱신할 때",
+        "C111의실제필요자료추출계속·C112연결해제복구에서완료/pending/미실행/재접근불가를구분하고C109원본근거/원본미실행·미확인출력차단을갱신할때",
+        "C109/C111/C112 Stage14실제settings/stream/Skeleton/model/LOD/clock·container/version동결·장면template/constraint/physics추가추출과probe/미완료·격리18/33/137·후기읽기/자동승인거부·환경단절·정확저장0/복구다음한작업을갱신할때"
       ],
       "reviewed_in": "T018"
     },
@@ -1030,7 +1032,9 @@
         "C109 Stage11의 실제입력복원·선택ABI모델alias/벡터성분검토와출력차단·환경연결해제/새증거영구저장·최종검사미완료/다음복구작업을갱신할때",
         "C110 사용자 확인 두 신규 상품의 정확한 회차/명단·검토 매핑과 실제 저장/발행·원격 검증 결과를 갱신할 때",
         "C109 Stage12의Stage11근거재생성/영구저장·원본reference producer/typed배치·독립검토/정확영수증과미해결caller binding/alias·다음한작업을갱신할때",
-        "C109 Stage13의두caller입력출처/원본bool분기·중간decoder쓰기경계·독립검토와출력차단/로컬검증·영구저장미완료·다음한작업을갱신할때"
+        "C109 Stage13의두caller입력출처/원본bool분기·중간decoder쓰기경계·독립검토와출력차단/로컬검증·영구저장미완료·다음한작업을갱신할때",
+        "C111의실제필요자료추출계속·C112연결해제복구에서완료/pending/미실행/재접근불가를구분하고C109원본근거/원본미실행·미확인출력차단을갱신할때",
+        "C109/C111/C112 Stage14실제settings/stream/Skeleton/model/LOD/clock·container/version동결·장면template/constraint/physics추가추출과probe/미완료·격리18/33/137·후기읽기/자동승인거부·환경단절·정확저장0/복구다음한작업을갱신할때"
       ],
       "reviewed_in": "T018"
     },
@@ -1122,7 +1126,9 @@
         "C109 Stage11의 실제입력복원·선택ABI모델alias/벡터성분검토와출력차단·환경연결해제/새증거영구저장·최종검사미완료/다음복구작업을갱신할때",
         "C110 사용자 확인 두 신규 상품의 정확한 회차/명단·검토 매핑과 실제 저장/발행·원격 검증 결과를 갱신할 때",
         "C109 Stage12의Stage11근거재생성/영구저장·원본reference producer/typed배치·독립검토/정확영수증과미해결caller binding/alias·다음한작업을갱신할때",
-        "C109 Stage13의두caller입력출처/원본bool분기·중간decoder쓰기경계·독립검토와출력차단/로컬검증·영구저장미완료·다음한작업을갱신할때"
+        "C109 Stage13의두caller입력출처/원본bool분기·중간decoder쓰기경계·독립검토와출력차단/로컬검증·영구저장미완료·다음한작업을갱신할때",
+        "C111의실제필요자료추출계속·C112연결해제복구에서완료/pending/미실행/재접근불가를구분하고C109원본근거/원본미실행·미확인출력차단을갱신할때",
+        "C109/C111/C112 Stage14실제settings/stream/Skeleton/model/LOD/clock·container/version동결·장면template/constraint/physics추가추출과probe/미완료·격리18/33/137·후기읽기/자동승인거부·환경단절·정확저장0/복구다음한작업을갱신할때"
       ],
       "reviewed_in": "T018"
     },
@@ -1178,7 +1184,9 @@
         "C109 원본 근거만으로 재구성·미확인 출력 차단/보정 금지·기존 진단 이력 보존과 caller/default/inline 근거·새 인계 영수증을 갱신할 때",
         "C109 Stage11의 실제입력복원·선택ABI모델alias/벡터성분검토와출력차단·환경연결해제/새증거영구저장·최종검사미완료/다음복구작업을갱신할때",
         "C109 Stage12의Stage11근거재생성/영구저장·원본reference producer/typed배치·독립검토/정확영수증과미해결caller binding/alias·다음한작업을갱신할때",
-        "C109 Stage13의두caller입력출처/원본bool분기·중간decoder쓰기경계·독립검토와출력차단/로컬검증·영구저장미완료·다음한작업을갱신할때"
+        "C109 Stage13의두caller입력출처/원본bool분기·중간decoder쓰기경계·독립검토와출력차단/로컬검증·영구저장미완료·다음한작업을갱신할때",
+        "C111의실제필요자료추출계속·C112연결해제복구에서완료/pending/미실행/재접근불가를구분하고C109원본근거/원본미실행·미확인출력차단을갱신할때",
+        "C109/C111/C112 Stage14실제settings/stream/Skeleton/model/LOD/clock·container/version동결·장면template/constraint/physics추가추출과probe/미완료·격리18/33/137·후기읽기/자동승인거부·환경단절·정확저장0/복구다음한작업을갱신할때"
       ],
       "reviewed_in": "T018"
     },
@@ -1233,7 +1241,9 @@
         "C109 Stage11의 실제입력복원·선택ABI모델alias/벡터성분검토와출력차단·환경연결해제/새증거영구저장·최종검사미완료/다음복구작업을갱신할때",
         "C110 사용자 확인 두 신규 상품의 정확한 회차/명단·검토 매핑과 실제 저장/발행·원격 검증 결과를 갱신할 때",
         "C109 Stage12의Stage11근거재생성/영구저장·원본reference producer/typed배치·독립검토/정확영수증과미해결caller binding/alias·다음한작업을갱신할때",
-        "C109 Stage13의두caller입력출처/원본bool분기·중간decoder쓰기경계·독립검토와출력차단/로컬검증·영구저장미완료·다음한작업을갱신할때"
+        "C109 Stage13의두caller입력출처/원본bool분기·중간decoder쓰기경계·독립검토와출력차단/로컬검증·영구저장미완료·다음한작업을갱신할때",
+        "C111의실제필요자료추출계속·C112연결해제복구에서완료/pending/미실행/재접근불가를구분하고C109원본근거/원본미실행·미확인출력차단을갱신할때",
+        "C109/C111/C112 Stage14실제settings/stream/Skeleton/model/LOD/clock·container/version동결·장면template/constraint/physics추가추출과probe/미완료·격리18/33/137·후기읽기/자동승인거부·환경단절·정확저장0/복구다음한작업을갱신할때"
       ],
       "reviewed_in": "T018"
     },
