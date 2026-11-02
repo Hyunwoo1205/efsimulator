@@ -38,7 +38,7 @@ C107으로 Work 유지·단계별 인계와 다음 분석을 진행한다. 최�
 
 C108/Stage9는실제mono10/idle04와face+kit+fixedhand+boots3061의4part기술후보(14,386v/20,792t)를Aoldglobaldelta/Bmode3+source99/Cmode3+target99로분리진단한다. bone/parent/name166·전체influence/rawsum255/7texture참조를유지하고body를kit에중복하지않았다. body/kit의untracked12twist refQ차이는2,099/2,887·4,102/8,368정점의양의직접weight에연결되고face의untracked차이는0이었다. 선정LBS계산잔차는palette4.263e-13/vertex5.329e-15m이며kit B/C6.700cm·hand2.196cm·faceA/C밀리미터차이는GT오차가아니다. paletteT91.6source units를90cm정점오류로쓰지않는다. 소품2instance→고유dummy12v4t2bones/1slot을확인했으나constant keys≠bind/world이며componentinitial/seqactorTRS·runtimeworld는미해결이다. 정상compactRef/sourceoverride의초기화branch·encodedmode3선택과6full영상/2비교60fps·65,686,476meshvertex-frame finite/viewport0을확인했다. C정책GLB4mesh/4skin·7PNG는Khronos0/0/0/0·독립reader blocking0이고 정확한8개 version0 영수증을 확인했다. 빈 폴더의169source/data·13inputs/5sources/moduleSHA 복원 gate도 통과했으나 전체 재렌더 재실행은0이다. inline coefficient의별도BSS/helper동일성은 미해결이며 다음 첫 검증은 해당 initializer/QTS입력식, 이어 actualflag/ref producer·12twist 후처리와 PlAwayworld/shader다. T018부분진행/P5미착수·nativeclock/후처리/체감자연스러움미확정·원본보존/제품경계를유지한다.
 
-C109/C111·Stage14에서 원본IPA/native·nativeiOS41파일를 복원하고 실제settings2/11codec참조·기존4clip 압축stream145,880B·물리key18,248·Skeleton2·모델22/bulk4/mip0raw4·대표7mesh/16LOD/정수배열54·clock8payload와container/version입력근거를 수집했다. 실제장면template에서mesh2·constraint1·physics1 raw를추가추출했고,2mesh/3LOD는구조probe까지만완료했다. C112연결해제복구중 원격HEAD는확인했으나 Windows환경unavailable로로컬재접근불가다. 새ZIP/영구저장·후기canonical/최종감사·최종로컬검사는미완료이며전체T018/runtime입력수집완료가아니다. gateBLOCKED/새pose·GLB·영상0/P5미착수다. C111필요자료계속수집·C112복구지시를반영하며원격인계와원본/새파일보존을구분한다.
+C112 복구를 Linux 클라우드에서 재개했다. 기존 native199,860,352B와 own parser의 고정 SHA, Stage12 ZIP2개/33members, 기존 복원16파일을 다시 대조했다. Stage8 private ZIP을 복원해26members와 원raw10개(장면4/animation4/Skeleton2)의 SHA·CRC를 확인했다. 저장소는 같은api-server-setup을 d4fa699179e713c64780799ae3f87501c78b3827까지 정상fast-forward했다. Windows의 미저장 Stage14 도구·새template2/constraint/physics와 전체IPA/UE컨테이너는 클라우드에 없어 재복원/재추출이 필요하다. 전체Stage14 재현·후기canonical/감사·최종ZIP/영구저장은 미완료이며 runtime입력미확정/출력BLOCKED·새pose/GLB/영상0·P5미착수다.
 
 이전 T048 완료: 바깥 선택 진입을 ‘선수팩 선택’ 하나로 통합하고 수량/이미지로 선택 문구를 제거했다. 창 안의 판매중/종료 탭과 검색/이미지·선택한 팩 그룹 기본/닫기·초점 복귀를 유지한다.539회귀·관리/타입/공식빌드·v17public 실제UI·원격382파일동일tree/구현CI2건성공을확인했다. 데이터/가격/세션/자동갱신은유지했고당시다음은파일미제공상태의T018이었다.
 
@@ -64,7 +64,7 @@ C109/C111·Stage14에서 원본IPA/native·nativeiOS41파일를 복원하고 실
 | --- | --- |
 | 현재 단계 | R6 — T017 2D 전달 후 T018 IPA 정적 분석 진행 중 |
 | 이전 작업 | T048 — 단일 선수팩 선택 버튼·창 안 판매상태 전환,539회귀/v17실제UI·원격/구현CI2건확인 |
-| 현재 작업 | T018 — 진행 중: C109/C111/C112·Stage14 settings/stream/Skeleton/model/16LOD/54배열·clock/container/version동결·template4raw추출/3LOD probe. 환경unavailable·후기canonical/최종감사/ZIP·Library미완료·runtime미확정/출력차단·P5미착수 |
+| 현재 작업 | T018 — 진행 중: Linux클라우드복구, native/Stage12입력 검증·Stage8원raw10복원. Windows미저장Stage14/새template·constraint·physics/전체IPA·UE컨테이너 재복원필요, 후기canonical/감사·최종저장미완료·출력차단/P5미착수 |
 | 다음 작업 | 없음 — T018 이후 범위는 별도 결정 |
 | 현재 조건 | T043은 T041의 등급/API 타입권위를 유지하고 선수 정렬을 전역 최신날짜→OVR/팩 안 OVR로 구분한다. 최초 연결팩 날짜·팩최신순·대표상위3·가격100/900·앱public/API-viewer private 경계를 보존한다. |
 

@@ -7,7 +7,7 @@
 ## 현재 작업과 매 작업 갱신
 
 - 이전 작업: T048 — 단일 ‘선수팩 선택’ 버튼으로 통합하고 판매중/종료 전환은 창 안에 유지했다.539회귀·관리/타입/공식빌드·v17 실제 단일버튼/탭/선택복귀/초점·원격 동일tree와 구현CI2건 성공을 확인했다.
-- 현재 작업: T018 — 진행 중. C109/C111·Stage14에서 원본IPA/native·nativeiOS41파일를 복원하고 실제settings2/11codec참조·기존4clip 압축stream145,880B·물리key18,248·Skeleton2·모델22/bulk4/mip0raw4·대표7mesh/16LOD/정수배열54·clock8payload와container/version입력근거를 수집했다. 실제장면template에서mesh2·constraint1·physics1 raw를추가추출했고,2mesh/3LOD는구조probe까지만완료했다. C112연결해제복구중 원격HEAD는확인했으나 Windows환경unavailable로로컬재접근불가다. 새ZIP/영구저장·후기canonical/최종감사·최종로컬검사는미완료이며전체T018/runtime입력수집완료가아니다. gateBLOCKED/새pose·GLB·영상0/P5미착수다. 다음 한 작업: 작업 환경 재연결 뒤 template mesh2의 원본 SHA와 구조 probe를 먼저 대조하고, 아직 복사하지 않은 reference byte 구간 합계6,720B와 실제3LOD의 RequiredBones/ActiveBoneIndices/BoneMap 정수배열을 새 canonical 입력으로 내보내 검증한다. 기존7mesh·16LOD 동결 자료는 수정하지 않는다.
+- 현재 작업: T018 — 진행 중. C112 복구를 Linux 클라우드에서 재개했다. 기존 native199,860,352B와 own parser의 고정 SHA, Stage12 ZIP2개/33members, 기존 복원16파일을 다시 대조했다. Stage8 private ZIP을 복원해26members와 원raw10개(장면4/animation4/Skeleton2)의 SHA·CRC를 확인했다. 저장소는 같은api-server-setup을 d4fa699179e713c64780799ae3f87501c78b3827까지 정상fast-forward했다. Windows의 미저장 Stage14 도구·새template2/constraint/physics와 전체IPA/UE컨테이너는 클라우드에 없어 재복원/재추출이 필요하다. 전체Stage14 재현·후기canonical/감사·최종ZIP/영구저장은 미완료이며 runtime입력미확정/출력BLOCKED·새pose/GLB/영상0·P5미착수다. 다음 한 작업: 복원한 Stage8 정적 도구와4개 LevelSequence 원raw를 검토해 binding/template 참조 파서를 재생성한다. 미저장 template mesh2/constraint/physics의 재추출에는 원본 IPA/UE 컨테이너의 추가 복원이 필요하다.
 - 다음 작업: 없음 — T018 이후 범위는 별도 결정한다.
 - 최근 유지보수: T049 — 완료. 사용자가 확인한11월2일 영문 공격수/PSG 두 상품의 연결을 별도 수동 검토로 반영했다. 전체19문자열ID·원본 필드/타입·두 출처 명단을 대조하고15매핑/검토·rules1.7.0 채택과 고정 수입을 완료했다. raw47,520/1,707·가공182/15·판매중10/종료5이며 원본prefix/종료5팩 불변을 검증했다. 원본 date2026-10-29를 제목의2 Nov로 바꾸지 않으며 저장v22·API/세사이트 전량/공개 익명·화면 및 구현 commit의 원격 내용/실제CI2건 성공을 확인했다. 로컬 전체회귀의 환경 의존성1건은 별도 보존한다. 제품 T018/C109·Stage11 미해결과 재시작 블록은 보존한다.
 - 현재 조건: T043이 T041의 선수 정렬을 화면 범위별로 구분한다. Epic5→Show Time8→Trend3→Highlight6 우선, 팩 안 선수는 등급 안 OVR순, 전체 선수는 등급 안 확인 날짜 최신순→OVR순이며 최초 연결팩 날짜를 사용한다. 팩은 등급 안 날짜 최신순이다. exact raw 타입·원본·가공/API 계약·가격100/900·팩 구성/카드 표시와 실제 앱 public·API/admin/viewer owner-private 경계를 보존한다.
@@ -15,13 +15,14 @@
 ### 압축 재시작 체크포인트 — C109/C111/C112 / Stage14 추출·연결 해제 복구
 
 - **읽는 순서:** AGENTS 전체 → 이 블록 → T018 C109 최신 Stage14절 → ROADMAP현재표·SIMULATOR_PLAN관련P/E/S1·FILE_SYNC관련5항목이다. Stage13/12/11·C108은 필요한 근거를 읽고 당시 파일/검사/저장이력은 보존한다.
+- **현재 클라우드:** Linux/Python3.12.14/Node24.22.1/Git2.51.1/Capstone5.0.6/cryptography50.0.2에서 접근·정적도구 동작을 확인했다. 원native/ownparser·Stage12입력과 Stage8 ZIP26members를 재검증·복원했다. 저장소는clean인기존체크아웃을 d4fa699179e713c64780799ae3f87501c78b3827로정상ff했다. Windows미저장Stage14·전체IPA/UE컨테이너는현재클라우드에없다. 바로아래기준/장애기록은이전Windows중단시점의이력이다.
 - **기준/실제 환경:** 착수 및 연결해제후 실제조회한 remote HEAD `e04c3d26c2891a453d2b1238ecc56de72c329535`/tree `d4ddc49cccd7ed802ab8141b1115b6b0f1f555b7`, 같은api-server-setup이다. 중단전마지막로컬확인은HEAD동일·AGENTS의C111의도적수정만이었으며현재로컬status는미확인이다. Windows실행환경이unavailable이고exec-server/Node transport가끊겨재접근할수없다. GitHub연결은정상이다. R6/이전T048/현재T018진행/외부다음없음·P1~P4/S1부분/P5미착수·C110/T049보존이다.
 - **동결된 실제 입력:** 원본IPA전체SHA/22,040ZIP CRC·native199,860,352B/cryptid0·nativeiOS41파일/14TOC, settings2/14exports/BoneCodecs11순서·4clip저장class연결, 압축4stream145,880B, Skeleton2/track map4, 모델22패키지/bulk4/mip0raw4, 대표7mesh의16LOD·22sections·정수배열54, clock8payload·storeheader786,432B 및원본container/version입력경로다. 작성자검증/독립검토범위를아래표에서구분한다.
 - **추가 실제 추출/미완료:** scene_component_bindings의마지막성공은raw10개저장(신규mesh2+constraint1+physics1,재확인LS4+skeleton2)·lookup23후보/typed import미일치0이다.4LS의Spawnables18/Possessables14/ObjectBindings32전방probe성공. template2mesh는166/2bone·2/1LOD구조probe만성공했으며reference6,720B복사·새정수배열canonical/manifest는아직없다. GUID통합·BindingReferences내부·physics localbody·constraint48record framing/consumer검증·material4정확경로lookup·후기감사는미완료다. 마지막확정필수rawpath미추출0을전체필수입력완료로승격하지않는다.
 - **해석/차단:** 실제물리key18,248=다중18,079+단일169. 예전18,394는absent단일8+도구scale singleton138포함배열수다. 대표mesh7과Skeleton의이름/부모는같아도index순서일치0. clock분모태그8개미기록과native초기값을effective runtime값으로대입하지않는다. 직렬화codec class/template와실제resident객체·후속교체를구분한다. runtime객체/LOD·compact map·flag/reference·alias/수명·version/CDO/CVar/clock·FPCR/후처리·착용선택/엔진chunk hash는미확정이며출력BLOCKED/새pose·GLB·영상·수치pose0이다.
 - **유효 검토/실패:** 완료격리18회/동일출력33파일/canonical·의존성137불변까지다. 후기LOD54배열/16LOD·clock8payload·native44함수4,799행의읽기검토는replay와구분한다. 추가격리polling은자동승인검토가미확인Visual Studio telemetry HTTPS연결/민감작업공간전송미승인사유로거부했다. 원인/payload미확인·재시도/대체runner우회/telemetry로그수집없다. 이후환경unavailable/transport단절은별도장애다. clock header독립검사와v2최종manifest·새template/component감사는미완료다.
 - **보존/저장 실제 상태:** 기존동결근거와보고서·인계/빌더초안은중단전Windows작업폴더에작성했으나현재존재/바이트를재확인할수없다. Stage14최종ZIP생성/CRC·빈폴더복원·Library저장완료는모두0이며새ID/version/ZIP SHA를부여하지않는다. 원격5관리문서의복구기록과원본비공개파일보존을혼동하지않는다. Stage13당시저장0·Stage12기존4v0·A/B/C는소급변경하지않는다.
-- **다음 한 작업:** 작업 환경 재연결 뒤 template mesh2의 원본 SHA와 구조 probe를 먼저 대조하고, 아직 복사하지 않은 reference byte 구간 합계6,720B와 실제3LOD의 RequiredBones/ActiveBoneIndices/BoneMap 정수배열을 새 canonical 입력으로 내보내 검증한다. 기존7mesh·16LOD 동결 자료는 수정하지 않는다. 원본 실행/에뮬레이션·99기본값/추가보정/clock추정·별도키값/키해시기록·제품/API/가격/DrawBatch/배포/자동화변경0을유지한다.
+- **다음 한 작업:** 복원한 Stage8 정적 도구와4개 LevelSequence 원raw를 검토해 binding/template 참조 파서를 재생성한다. 미저장 template mesh2/constraint/physics의 재추출에는 원본 IPA/UE 컨테이너의 추가 복원이 필요하다. C109의원본미실행·미확인출력차단과기존A/B/C보존을유지한다.
 - **검사/정상반영:** 중단전fresh baseline관리382파일/50작업통과,전체회귀334/526·192fail(cancel/skip/todo0). 다양한실패를한원인으로단정하지않는다. 연결해제후최종로컬관리/전체회귀·git diff검사는미실행이다. 원격ref/변경5파일전체내용/실제CI는이복구문서의정상반영후별도확인값으로구분하고미래자신의commit SHA를넣지않는다.
 
 
@@ -1612,6 +1613,25 @@ C111의 실제 필요한 자료 추출 계속 지시에 따라 C109의 원본 �
 | `docs/FILE_SYNC.json` | 수정 | 관련5항목C111/C112·Stage14갱신조건추가/reviewed_in T018,역할/priority/related_paths보존 |
 | Stage12/13전체·C110/T049·기존A/B/C | 검토 결과 변경 불필요 | 과거완료·실패·미저장/진단이력보존 |
 | 제품/API/추첨/가격/배포/자동화 | 검토 결과 변경 불필요 | 정적수집·복구인계이며서비스/소비계약변경없음 |
+
+
+#### Stage14 클라우드 복구 확인 (2026-11-03 KST)
+
+사용자의 Windows 외 클라우드에서 계속 가능한지에 대한 질문을 C112 복구의 실행환경 대안 점검으로 처리했다. 이전 Windows의 접근불가/미저장 기록을 삭제하거나 복구 완료로 소급 변경하지 않는다. **현재 Linux 클라우드에서 독립 정적 분석을 이어갈 수 있다.**
+
+- 실제 폴더: `/workspace/scratch/ac3b14d5e05e`. 기존 `repo`가 clean인 것을 확인한 뒤 같은 `api-server-setup`을 e6272e3dc9fdb4120a5288334d5f81f7dc373ca9에서 d4fa699179e713c64780799ae3f87501c78b3827로 정상 fast-forward했다. 브랜치 전환/reset/clean·사용자 변경 폐기는 없다.
+- `analysis/PESmobile` 199,860,352B/SHA256 `3eeaf4a7995c5e4511a7b5377e8a014608aa2e57f976852fa23035141779550a`, frozen own parser SHA256 `b94c9b736ab59d3a81c41a1d6c9d731aa10b0fb6da05f36077bbe8c041c8d37a`가 기존 기록과 일치했다. Stage12 safe/private2ZIP의 전체SHA/CRC·33members와 기존 복원 영수증의3archive/16추출파일도 일치했다.
+- Stage8 private ZIP1,765,046B/SHA256 `2f218111afc6fe6852d1f60293e1658698e40ff2a572210fcf5a0cc332aeaaed`를 기존 성공 identity에서 복원하고 전체CRC·26members의bytes/SHA를 확인했다. 원raw는4LevelSequence+4animation+2Skeleton이다. 기존 GLB 등은 옛 ZIP의 바이트 복사이며 새 재구성 출력이 아니다. 기존 저장 identity를 유지했으며 새Library저장으로 세지 않는다.
+- Stage8 정적 도구 ZIP190,971B/SHA256 `4423e638d6d8b8ffa832539b4a9f0fee3ee6550f631fe52f4d20c1eb3ec9d67e`도 원본 저장identity에서복원해CRC·92members의bytes/SHA를확인했다. 소스/근거를복원했으며그안의분석/진단프로그램을일괄실행하지않았다.
+- Linux/Python3.12.14/Node24.22.1/Git2.51.1, 정상 Capstone5.0.6과 cryptography50.0.2를 확인했다. Capstone은 합성4바이트의정적decode만점검했으며 원게임 명령 실행·에뮬레이션은 없다. 환경상태 전용도구와 `/etc/codex/network-policy.json`은 제공되지 않아 credential/network readiness를 추정하지 않았고, 실제 Git fetch와 승인된 파일전송의 성공만 구분해 확인했다.
+- 이 프로젝트 폴더와 표적검색한 `/workspace/scratch`에는 Stage13/14 원작업 ZIP/도구·추가template2/constraint/physics·전체IPA/UTOC/UCAS가 없었다. Stage14 전체가 자동 복구된 것이 아니다. 원본native/기존Stage12도구와 복원한Stage8입력으로 가능한 독립 작업은 계속하고, 미저장자료는 기존영구입력/원본에서 별도로 재생성해야 한다.
+- 새 최종 Stage14 ZIP·영구저장/후기canonical·v2최종감사는 여전히 미완료다. Windows 당시18/33/137의격리성공과추가격리자동승인거부는보존하며 클라우드를 그 거부작업의 대체 runner로 사용하지 않는다. 원본실행/에뮬레이션·별도키값/키해시·source99/target99/clock추정·새pose/GLB/영상·제품/API/가격/DrawBatch/사이트/자동화변경0이다.
+
+**다음 한 작업:** 복원한 Stage8 정적 도구와4개 LevelSequence 원raw를 검토해 binding/template 참조 파서를 재생성한다. 미저장 template mesh2/constraint/physics의 재추출에는 원본 IPA/UE 컨테이너의 추가 복원이 필요하다.
+
+**실제 클라우드 검사:** 관리검사382파일/50작업/변경4경로통과. 전체 `node --test`는526중525pass/1fail·cancel/skip/todo0이며실패는simulator-storage suite의 `ERR_MODULE_NOT_FOUND: fake-indexeddb`를관측했다. 제품소스변경이나전체Stage14검증성공으로표시하지않고의존성미설치를보존한다. Windows의334/526·192fail기록과별개다. 변경4문서의독립읽기검토는blockingfinding0이며원본분석/추가격리replay검사가아니다.
+
+**파일 검토:** WORKPLAN/ROADMAP/SIMULATOR_PLAN은 현재환경과 부분복구/미복구 범위를 갱신한다. FILE_SYNC는 관련4항목의 갱신조건과 reviewed_in T018을 맞추고 역할/우선순위/관련경로를 보존한다. AGENTS는 전체검토 후 C109/C111/C112의 기존경계로충분하여변경불필요다. 기존Stage12/13·WindowsStage14본문·C110/T049·A/B/C와제품소스는보존한다. 이번클라우드의실제관리/회귀·원격ref/내용/CI검증은아래검사기록과완료보고로구분하며Windows검사결과를클라우드재실행으로부르지않는다.
 
 ### 예상 영향 파일
 
