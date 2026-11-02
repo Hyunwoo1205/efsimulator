@@ -146,6 +146,30 @@
         "https://efhub.com/packs/j-league-selection-29-oct-26 DOM SHA256 b52d3d8114f2dfb2d93db9983a1de2ac9976c206b96bdb01a7524a70f0409f9d",
         "https://efhub.com/packs/j-league-selection-29-oct-26?page=2 DOM SHA256 be5bf178ddec4cd26cac8c57a3d0fbc80339d68cc16645b12e0cd3f1d71e25a4"
       ]
+    },
+    {
+      "saleId": "english-league-selection-attackers-2-nov-26::2026-11",
+      "mappingSha256": "c31d204590e8513227ca4d4ea54cf454daf3604a8fcfffc7dfc3f693957cf2ed",
+      "reviewId": "T049-user-confirmed-Nov2-product-identities",
+      "authority": "user_product_identity_confirmation_and_verified_browser_dom_roster",
+      "evidenceRefs": [
+        "data/research/catalog-sale-mappings.json",
+        "docs/WORKPLAN.md#t049--11월-2일-두-신규-상품-연결-확인과-데이터-반영",
+        "private catalog-runtime/reviewed-evidence/T049/source-observations.json SHA256 16d34caa858241e40a1611e2d66ed25905efa724b5ada32dbaae3b16b1fbd229",
+        "https://efhub.com/packs/english-league-selection-attackers-2-nov-26 DOM SHA256 09e6b27b133717558bb5859a843ffaf981b521503865ec9f03b1343a84a47f65"
+      ]
+    },
+    {
+      "saleId": "paris-saint-germain-selection-2-nov-26::2026-11",
+      "mappingSha256": "af95bc6ce145b5f02d9dbe98c6ed281faeabf89150a81b490ede24d4c944c121",
+      "reviewId": "T049-user-confirmed-Nov2-product-identities",
+      "authority": "user_product_identity_confirmation_and_verified_browser_dom_roster",
+      "evidenceRefs": [
+        "data/research/catalog-sale-mappings.json",
+        "docs/WORKPLAN.md#t049--11월-2일-두-신규-상품-연결-확인과-데이터-반영",
+        "private catalog-runtime/reviewed-evidence/T049/source-observations.json SHA256 16d34caa858241e40a1611e2d66ed25905efa724b5ada32dbaae3b16b1fbd229",
+        "https://efhub.com/packs/paris-saint-germain-selection-2-nov-26 DOM SHA256 b8aa9916f5eb4093deaa7fbcaa7f317538d8fa4dffff5645bcd4ef260b19b6ab"
+      ]
     }
   ]
 }

@@ -543,9 +543,10 @@
         "services/catalog-api/scripts/lifecycle/collect-cycle.mjs"
       ],
       "update_when": [
-        "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
+        "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경",
+        "C110 사용자 확인 두 신규 상품의 정확한 회차/명단·검토 매핑과 실제 저장/발행·원격 검증 결과를 갱신할 때"
       ],
-      "reviewed_in": "T039"
+      "reviewed_in": "T049"
     },
     {
       "path": "data/research/current-catalog-observations.json",
@@ -806,9 +807,10 @@
         "docs/AUTOMATION.md"
       ],
       "update_when": [
-        "자동 갱신 경로·완료 기준·검증·대상 또는 기록 schema 변경 시"
+        "자동 갱신 경로·완료 기준·검증·대상 또는 기록 schema 변경 시",
+        "C110 사용자 확인 두 신규 상품의 정확한 회차/명단·검토 매핑과 실제 저장/발행·원격 검증 결과를 갱신할 때"
       ],
-      "reviewed_in": "T017"
+      "reviewed_in": "T049"
     },
     {
       "path": "docs/API_SELECTION.md",
@@ -1025,9 +1027,10 @@
         "C107 Work 유지·단계별 인계/압축 재시작·입력 원본보존/별도복구·Stage8 실제 decode/선택retarget/scene검증과 정확한 저장 영수증을 갱신할 때",
         "C108 actualscene/대표4part A/B/C99정책·전체skin/reference·소품world 진단의선정범위/GT한계·압축인계/최종표시와 정확한 저장 영수증을 갱신할 때",
         "C109 원본 근거만으로 재구성·미확인 출력 차단/보정 금지·기존 진단 이력 보존과 caller/default/inline 근거·새 인계 영수증을 갱신할 때",
-        "C109 Stage11의 실제입력복원·선택ABI모델alias/벡터성분검토와출력차단·환경연결해제/새증거영구저장·최종검사미완료/다음복구작업을갱신할때"
+        "C109 Stage11의 실제입력복원·선택ABI모델alias/벡터성분검토와출력차단·환경연결해제/새증거영구저장·최종검사미완료/다음복구작업을갱신할때",
+        "C110 사용자 확인 두 신규 상품의 정확한 회차/명단·검토 매핑과 실제 저장/발행·원격 검증 결과를 갱신할 때"
       ],
-      "reviewed_in": "T018"
+      "reviewed_in": "T049"
     },
     {
       "path": "docs/FILE_SYNC_AUDIT.md",
@@ -1114,9 +1117,10 @@
         "C107 Work 유지·단계별 인계/압축 재시작·입력 원본보존/별도복구·Stage8 실제 decode/선택retarget/scene검증과 정확한 저장 영수증을 갱신할 때",
         "C108 actualscene/대표4part A/B/C99정책·전체skin/reference·소품world 진단의선정범위/GT한계·압축인계/최종표시와 정확한 저장 영수증을 갱신할 때",
         "C109 원본 근거만으로 재구성·미확인 출력 차단/보정 금지·기존 진단 이력 보존과 caller/default/inline 근거·새 인계 영수증을 갱신할 때",
-        "C109 Stage11의 실제입력복원·선택ABI모델alias/벡터성분검토와출력차단·환경연결해제/새증거영구저장·최종검사미완료/다음복구작업을갱신할때"
+        "C109 Stage11의 실제입력복원·선택ABI모델alias/벡터성분검토와출력차단·환경연결해제/새증거영구저장·최종검사미완료/다음복구작업을갱신할때",
+        "C110 사용자 확인 두 신규 상품의 정확한 회차/명단·검토 매핑과 실제 저장/발행·원격 검증 결과를 갱신할 때"
       ],
-      "reviewed_in": "T018"
+      "reviewed_in": "T049"
     },
     {
       "path": "docs/SIMULATOR_PLAN.md",
@@ -1220,9 +1224,10 @@
         "C107 Work 유지·단계별 인계/압축 재시작·입력 원본보존/별도복구·Stage8 실제 decode/선택retarget/scene검증과 정확한 저장 영수증을 갱신할 때",
         "C108 actualscene/대표4part A/B/C99정책·전체skin/reference·소품world 진단의선정범위/GT한계·압축인계/최종표시와 정확한 저장 영수증을 갱신할 때",
         "C109 원본 근거만으로 재구성·미확인 출력 차단/보정 금지·기존 진단 이력 보존과 caller/default/inline 근거·새 인계 영수증을 갱신할 때",
-        "C109 Stage11의 실제입력복원·선택ABI모델alias/벡터성분검토와출력차단·환경연결해제/새증거영구저장·최종검사미완료/다음복구작업을갱신할때"
+        "C109 Stage11의 실제입력복원·선택ABI모델alias/벡터성분검토와출력차단·환경연결해제/새증거영구저장·최종검사미완료/다음복구작업을갱신할때",
+        "C110 사용자 확인 두 신규 상품의 정확한 회차/명단·검토 매핑과 실제 저장/발행·원격 검증 결과를 갱신할 때"
       ],
-      "reviewed_in": "T018"
+      "reviewed_in": "T049"
     },
     {
       "path": "docs/reference/ARCHITECTURE_BEFORE_PROBABILITY_SCOPE.md",
@@ -3269,9 +3274,10 @@
         "services/catalog-api/scripts/lifecycle/rules.mjs"
       ],
       "update_when": [
-        "데이터 형식·가공 규칙·HTML 증거·매핑 검토·반복 실행 계약 변경"
+        "데이터 형식·가공 규칙·HTML 증거·매핑 검토·반복 실행 계약 변경",
+        "C110 사용자 확인 두 신규 상품의 정확한 회차/명단·검토 매핑과 실제 저장/발행·원격 검증 결과를 갱신할 때"
       ],
-      "reviewed_in": "T039"
+      "reviewed_in": "T049"
     },
     {
       "path": "services/catalog-api/policy/rules.lock.json",
@@ -3287,9 +3293,10 @@
         "services/catalog-api/policy/approved-mappings.json"
       ],
       "update_when": [
-        "데이터 형식·가공 규칙·HTML 증거·매핑 검토·반복 실행 계약 변경"
+        "데이터 형식·가공 규칙·HTML 증거·매핑 검토·반복 실행 계약 변경",
+        "C110 사용자 확인 두 신규 상품의 정확한 회차/명단·검토 매핑과 실제 저장/발행·원격 검증 결과를 갱신할 때"
       ],
-      "reviewed_in": "T017"
+      "reviewed_in": "T049"
     },
     {
       "path": "services/catalog-api/postcss.config.mjs",

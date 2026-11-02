@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "version": "catalog-rules-1.6.0",
-  "reviewId": "T042-user-confirmed-fixed-simulator-coin-prices",
+  "version": "catalog-rules-1.7.0",
+  "reviewId": "T049-user-confirmed-Nov2-product-identities",
   "files": [
     {
       "path": "lib/catalog-contract.mjs",
@@ -49,7 +49,7 @@
     },
     {
       "path": "policy/approved-mappings.json",
-      "sha256": "994615dffc4137c4aa0c70a530db5be4c01292673dd37e4aec6407b40b54883f"
+      "sha256": "58d0c1d1c6ff6a9787da32e522e4e578582f7b920fe91d96ead7bae5cb7a7ba1"
     }
   ]
 }

@@ -118,3 +118,10 @@ C109/Stage11에서는 Stage3/Stage10 입력3ZIP·16members와 native/정상CPK�
 | T021 두 raw 파일 내부 검사 | 완료. 빈 식별 필드·의심 항목과 페이지/관계 검증 한계를 보고하고 R2의 수입 준비·설계로 연결 |
 
 상세 계약은 [ARCHITECTURE](ARCHITECTURE.md)·[COLLECTION](COLLECTION.md)·[DATA_LIFECYCLE](DATA_LIFECYCLE.md), 공급과 발행 게이트는 [API_SELECTION](API_SELECTION.md)·[DEPLOYMENT](DEPLOYMENT.md)를 따른다. 실패/빈 결과로 전체를 종료·삭제하지 않으며 신규 권한/계정/외부 연락/유료 비용은 이번에 추가하지 않는다.
+
+
+## T049 — 11월 2일 신규 두 상품의 수동 연결 반영
+
+현재 제품 위치는 R6/이전T048/현재T018/다음없음과 C109 Stage11의 미해결·출력 차단/재시작 기준을 유지한다. 별도 유지보수 C110/T049에서는 사용자가 확인한 영문 공격수11명/공식150명 팩과 PSG8명/공식8명 팩의 두 상품 identity를 등록하고, 전체19문자열ID·원본 필드·숫자타입과 두 출처의 같은 명단을 실제 DOM으로 검증했다. 원본 date2026-10-29는 제목의2 Nov로 고치지 않는다.
+
+15매핑/승인과 rules1.7.0 잠금·명시 채택/고정 수입을 완료했다. raw47,520/1,707·가공182명/15팩·live10/archive5이며 원본prefix·기존archive 불변과 신규19원문/타입/가격·옵션을 독립 검증했다. API165/165통과, 전체 npm test525/526은 fake-indexeddb 미설치1건으로 전체 통과가 아니며 기존 package/lock/테스트를 수정하지 않았다. 데이터 묶음 v22의 정확 저장본 SHA256 `222028b97004be5cc6e0dae8fabd1dee43bd680119f22a7295d21b553c02bec7`·gzip/tar·312파일/425members 무결성을 확인했다. private API 전량readback/CAS와 세 사이트의 동일publication·전체4컬렉션/숫자타입/가격·옵션을2026-11-02T03:11:33.016Z에 대조했으며 public 앱 익명 읽기와 공개 /packs의신규2팩·182카드/live10archive5도 확인했다. 고정 요약을 생성했고 GitHub/실제CI는 진행 중이다. 모든 후속 단계가 확인되기 전 전체 갱신 완료로 표시하지 않는다. 사용자 확정100/900·단일/10회·기존 원본/종료자료와 제품/분석 작업 경계는 유지한다.

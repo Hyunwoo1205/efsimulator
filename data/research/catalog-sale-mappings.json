@@ -540,6 +540,117 @@
         "evidenceFile": "catalog-runtime/reviewed-evidence/T039/source-observations.json",
         "evidenceSha256": "39540a93c71871980a9234a06ab53a569df729062640e2753851af0e0d724571"
       }
+    },
+    {
+      "saleId": "english-league-selection-attackers-2-nov-26::2026-11",
+      "packSlug": "english-league-selection-attackers-2-nov-26",
+      "officialTitle": "Show Time: English League Attackers",
+      "newPlayersSection": "English League Selection Attackers 2 Nov '26",
+      "expectedEndsAt": "2026-11-09T01:59:59.000Z",
+      "expectedTotalPlayerCount": 150,
+      "expectedSpecialCount": 11,
+      "memberIds": [
+        "105896982188324",
+        "105896982196579",
+        "105896982211012",
+        "105896982220673",
+        "105896982232051",
+        "105896982234118",
+        "105896982240628",
+        "105896982250475",
+        "106801072816519",
+        "106801072820971",
+        "106801072844286"
+      ],
+      "matchEvidence": {
+        "status": "user_confirmed_product_identity_and_verified_browser_dom_membership",
+        "identityAuthority": "direct_user_confirmation",
+        "identityConfirmation": "저 두개 각각 맞아. 연결해서 반영해줘",
+        "identityScope": "Only the two official-product to EFHub-pack identities were user-confirmed; full string IDs, roster completeness and raw fields were independently verified from preserved DOM.",
+        "identityConfirmedOnKst": "2026-11-02",
+        "sourceKind": "browser_dom",
+        "httpStatus": null,
+        "sourceEvidenceFile": "catalog-runtime/reviewed-evidence/T049/source-observations.json",
+        "sourceEvidenceSha256": "16d34caa858241e40a1611e2d66ed25905efa724b5ada32dbaae3b16b1fbd229",
+        "official": {
+          "url": "https://efootball-web.konami.net/probability_kr.php",
+          "sha256": "b76930800b949253e7c99b6718fc8b4d44f6c97c8da1a023f7d4a9d6d5bd810e",
+          "observedAt": "2026-11-02T02:58:18.588Z",
+          "totalPlayerCount": 150,
+          "endsAt": "2026-11-09T01:59:59Z"
+        },
+        "newPlayers": {
+          "url": "https://efhub.com/new-players",
+          "sha256": "aa9089128683f92cd0fe3bda7bf6fa0ca3645429e1f89b2606e355bba148e571",
+          "observedAt": "2026-11-02T02:58:18.588Z",
+          "section": "English League Selection Attackers 2 Nov '26",
+          "completeCount": 11
+        },
+        "pack": {
+          "url": "https://efhub.com/packs/english-league-selection-attackers-2-nov-26",
+          "sha256": "09e6b27b133717558bb5859a843ffaf981b521503865ec9f03b1343a84a47f65",
+          "observedAt": "2026-11-02T02:58:18.588Z",
+          "name": "English League Selection Attackers 2 Nov '26",
+          "rawDate": "2026-10-29",
+          "originalPlayerCount": 11,
+          "verifiedCardIds": 11
+        },
+        "rawDatePolicy": "Preserve visible original 2026-10-29; do not replace it with the 2 Nov title label."
+      }
+    },
+    {
+      "saleId": "paris-saint-germain-selection-2-nov-26::2026-11",
+      "packSlug": "paris-saint-germain-selection-2-nov-26",
+      "officialTitle": "Club Selection: Paris Saint-Germain",
+      "newPlayersSection": "Paris Saint-Germain Selection 2 Nov '26",
+      "expectedEndsAt": "2026-11-09T01:59:59.000Z",
+      "expectedTotalPlayerCount": 8,
+      "expectedSpecialCount": 8,
+      "memberIds": [
+        "105877654777889",
+        "105877654841039",
+        "105877654843426",
+        "105877654846760",
+        "105877654849551",
+        "105877654867867",
+        "105877654892004",
+        "105877654910937"
+      ],
+      "matchEvidence": {
+        "status": "user_confirmed_product_identity_and_verified_browser_dom_membership",
+        "identityAuthority": "direct_user_confirmation",
+        "identityConfirmation": "저 두개 각각 맞아. 연결해서 반영해줘",
+        "identityScope": "Only the two official-product to EFHub-pack identities were user-confirmed; full string IDs, roster completeness and raw fields were independently verified from preserved DOM.",
+        "identityConfirmedOnKst": "2026-11-02",
+        "sourceKind": "browser_dom",
+        "httpStatus": null,
+        "sourceEvidenceFile": "catalog-runtime/reviewed-evidence/T049/source-observations.json",
+        "sourceEvidenceSha256": "16d34caa858241e40a1611e2d66ed25905efa724b5ada32dbaae3b16b1fbd229",
+        "official": {
+          "url": "https://efootball-web.konami.net/probability_kr.php",
+          "sha256": "b76930800b949253e7c99b6718fc8b4d44f6c97c8da1a023f7d4a9d6d5bd810e",
+          "observedAt": "2026-11-02T02:58:18.588Z",
+          "totalPlayerCount": 8,
+          "endsAt": "2026-11-09T01:59:59Z"
+        },
+        "newPlayers": {
+          "url": "https://efhub.com/new-players",
+          "sha256": "aa9089128683f92cd0fe3bda7bf6fa0ca3645429e1f89b2606e355bba148e571",
+          "observedAt": "2026-11-02T02:58:18.588Z",
+          "section": "Paris Saint-Germain Selection 2 Nov '26",
+          "completeCount": 8
+        },
+        "pack": {
+          "url": "https://efhub.com/packs/paris-saint-germain-selection-2-nov-26",
+          "sha256": "b8aa9916f5eb4093deaa7fbcaa7f317538d8fa4dffff5645bcd4ef260b19b6ab",
+          "observedAt": "2026-11-02T02:58:18.588Z",
+          "name": "Paris Saint-Germain Selection 2 Nov '26",
+          "rawDate": "2026-10-29",
+          "originalPlayerCount": 8,
+          "verifiedCardIds": 8
+        },
+        "rawDatePolicy": "Preserve visible original 2026-10-29; do not replace it with the 2 Nov title label."
+      }
     }
   ],
   "pendingOfficialTitles": [],
