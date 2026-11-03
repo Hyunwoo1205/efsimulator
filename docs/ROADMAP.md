@@ -38,7 +38,7 @@ C107으로 Work 유지·단계별 인계와 다음 분석을 진행한다. 최�
 
 C108/Stage9는실제mono10/idle04와face+kit+fixedhand+boots3061의4part기술후보(14,386v/20,792t)를Aoldglobaldelta/Bmode3+source99/Cmode3+target99로분리진단한다. bone/parent/name166·전체influence/rawsum255/7texture참조를유지하고body를kit에중복하지않았다. body/kit의untracked12twist refQ차이는2,099/2,887·4,102/8,368정점의양의직접weight에연결되고face의untracked차이는0이었다. 선정LBS계산잔차는palette4.263e-13/vertex5.329e-15m이며kit B/C6.700cm·hand2.196cm·faceA/C밀리미터차이는GT오차가아니다. paletteT91.6source units를90cm정점오류로쓰지않는다. 소품2instance→고유dummy12v4t2bones/1slot을확인했으나constant keys≠bind/world이며componentinitial/seqactorTRS·runtimeworld는미해결이다. 정상compactRef/sourceoverride의초기화branch·encodedmode3선택과6full영상/2비교60fps·65,686,476meshvertex-frame finite/viewport0을확인했다. C정책GLB4mesh/4skin·7PNG는Khronos0/0/0/0·독립reader blocking0이고 정확한8개 version0 영수증을 확인했다. 빈 폴더의169source/data·13inputs/5sources/moduleSHA 복원 gate도 통과했으나 전체 재렌더 재실행은0이다. inline coefficient의별도BSS/helper동일성은 미해결이며 다음 첫 검증은 해당 initializer/QTS입력식, 이어 actualflag/ref producer·12twist 후처리와 PlAwayworld/shader다. T018부분진행/P5미착수·nativeclock/후처리/체감자연스러움미확정·원본보존/제품경계를유지한다.
 
-C113에 따라 Linux에서 native 근거를 실제 재추출했다. 함수 구간382개·원본word31,338개·직접BL/B1단계1,019참조·관찰vtable구간44개·source checks100개를 동결하고 별도 읽기 검토를 완료했다. 새 private checkpoint1개를 실제v0 저장했다. Windows Stage14 전체 재현은 아니며, 원IPA/UE컨테이너와 settings/template 등 원raw 추가 복원·후기연결 검증은 미완료다. 원IPA는 Drive에 있고 개인계정 파일보기까지 확인했지만 앱256MB제한/413과 브라우저전송완료미확인으로 아직 클라우드전체바이트를 검증하지 못했다. gateBLOCKED·새pose/GLB/영상0·P5미착수다.
+Windows 재접속 후 원IPA/native·UE41파일과 기존19lane/329동결파일의 SHA를 재확인했고, 중단된 binding/constraint/template/material Parent·external context 입력 수집을 완료했다. Template2mesh/3LOD/10정수배열·constraint48/54/840태그·32GUID/90track/83section·world2/Blueprint1·material8원raw를 실제 확보·읽기검토했다. 기존대표7mesh와합쳐선택mesh9/LOD19/정수배열64이며선수9명이나actualLOD선택완료는아니다. 새통합private checkpoint13,419,727B/529members를실제v0저장했다. Actor FString·live mesh/constraint·solver동기화·runtime/clock/alias 등은미확정으로출력BLOCKED·새pose/GLB/영상0·T018/P1~P4/S1부분/P5미착수다.
 
 이전 T048 완료: 바깥 선택 진입을 ‘선수팩 선택’ 하나로 통합하고 수량/이미지로 선택 문구를 제거했다. 창 안의 판매중/종료 탭과 검색/이미지·선택한 팩 그룹 기본/닫기·초점 복귀를 유지한다.539회귀·관리/타입/공식빌드·v17public 실제UI·원격382파일동일tree/구현CI2건성공을확인했다. 데이터/가격/세션/자동갱신은유지했고당시다음은파일미제공상태의T018이었다.
 
@@ -64,7 +64,7 @@ C113에 따라 Linux에서 native 근거를 실제 재추출했다. 함수 구�
 | --- | --- |
 | 현재 단계 | R6 — T017 2D 전달 후 T018 IPA 정적 분석 진행 중 |
 | 이전 작업 | T048 — 단일 선수팩 선택 버튼·창 안 판매상태 전환,539회귀/v17실제UI·원격/구현CI2건확인 |
-| 현재 작업 | T018 — 진행 중: C113 Linux native382구간/31,338word·source100근거재추출/읽기검토·새checkpoint1개v0. 원IPA전송완료미확인·원raw/settings/template미복원·runtime미확정,전체WindowsStage14복구/후기검증미완료·출력차단/P5미착수 |
+| 현재 작업 | T018 — 진행 중: Windows원본/19lane329파일현재SHA확인·미완료5lane입력수집/새읽기검토,master13,419,727B/529members실제v0저장. actualFString/mesh/solver/flags/clock등미확정·출력차단/새pose0·P5미착수 |
 | 다음 작업 | 없음 — T018 이후 범위는 별도 결정 |
 | 현재 조건 | T043은 T041의 등급/API 타입권위를 유지하고 선수 정렬을 전역 최신날짜→OVR/팩 안 OVR로 구분한다. 최초 연결팩 날짜·팩최신순·대표상위3·가격100/900·앱public/API-viewer private 경계를 보존한다. |
 
