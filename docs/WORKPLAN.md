@@ -7,14 +7,15 @@
 ## 현재 작업과 매 작업 갱신
 
 - 이전 작업: T048 — 단일 ‘선수팩 선택’ 버튼으로 통합하고 판매중/종료 전환은 창 안에 유지했다.539회귀·관리/타입/공식빌드·v17 실제 단일버튼/탭/선택복귀/초점·원격 동일tree와 구현CI2건 성공을 확인했다.
-- 현재 작업: T018 — 진행 중. C112 복구를 Linux 클라우드에서 재개했다. 기존 native199,860,352B와 own parser의 고정 SHA, Stage12 ZIP2개/33members, 기존 복원16파일을 다시 대조했다. Stage8 private ZIP을 복원해26members와 원raw10개(장면4/animation4/Skeleton2)의 SHA·CRC를 확인했다. 저장소는 같은api-server-setup을 d4fa699179e713c64780799ae3f87501c78b3827까지 정상fast-forward했다. Windows의 미저장 Stage14 도구·새template2/constraint/physics와 전체IPA/UE컨테이너는 클라우드에 없어 재복원/재추출이 필요하다. 전체Stage14 재현·후기canonical/감사·최종ZIP/영구저장은 미완료이며 runtime입력미확정/출력BLOCKED·새pose/GLB/영상0·P5미착수다. 다음 한 작업: 복원한 Stage8 정적 도구와4개 LevelSequence 원raw를 검토해 binding/template 참조 파서를 재생성한다. 미저장 template mesh2/constraint/physics의 재추출에는 원본 IPA/UE 컨테이너의 추가 복원이 필요하다.
+- 현재 작업: T018 — 진행 중. C113에 따라 Linux에서 native 근거를 실제 재추출했다. 함수 구간382개·원본word31,338개·직접BL/B1단계1,019참조·관찰vtable구간44개·source checks100개를 동결하고 별도 읽기 검토를 완료했다. 새 private checkpoint1개를 실제v0 저장했다. Windows Stage14 전체 재현은 아니며, 원IPA/UE컨테이너와 settings/template 등 원raw 추가 복원·후기연결 검증은 미완료다. 원IPA는 Drive에 있고 개인계정 파일보기까지 확인했지만 앱256MB제한/413과 브라우저전송완료미확인으로 아직 클라우드전체바이트를 검증하지 못했다. gateBLOCKED·새pose/GLB/영상0·P5미착수다. 다음 한 작업: 원본 IPA/UE 컨테이너 또는 필요한 선택 raw 입력을 클라우드에 복원해 전체SHA/CRC를 대조한 뒤, settings·template mesh2/constraint/physics의 원raw를 재추출하고 binding/reference·3LOD 정수입력 연결을 계속한다. 이미 있는 native의 독립 정적 분석은 병행할 수 있다.
 - 다음 작업: 없음 — T018 이후 범위는 별도 결정한다.
 - 최근 유지보수: T049 — 완료. 사용자가 확인한11월2일 영문 공격수/PSG 두 상품의 연결을 별도 수동 검토로 반영했다. 전체19문자열ID·원본 필드/타입·두 출처 명단을 대조하고15매핑/검토·rules1.7.0 채택과 고정 수입을 완료했다. raw47,520/1,707·가공182/15·판매중10/종료5이며 원본prefix/종료5팩 불변을 검증했다. 원본 date2026-10-29를 제목의2 Nov로 바꾸지 않으며 저장v22·API/세사이트 전량/공개 익명·화면 및 구현 commit의 원격 내용/실제CI2건 성공을 확인했다. 로컬 전체회귀의 환경 의존성1건은 별도 보존한다. 제품 T018/C109·Stage11 미해결과 재시작 블록은 보존한다.
 - 현재 조건: T043이 T041의 선수 정렬을 화면 범위별로 구분한다. Epic5→Show Time8→Trend3→Highlight6 우선, 팩 안 선수는 등급 안 OVR순, 전체 선수는 등급 안 확인 날짜 최신순→OVR순이며 최초 연결팩 날짜를 사용한다. 팩은 등급 안 날짜 최신순이다. exact raw 타입·원본·가공/API 계약·가격100/900·팩 구성/카드 표시와 실제 앱 public·API/admin/viewer owner-private 경계를 보존한다.
 
-### 압축 재시작 체크포인트 — C109/C111/C112 / Stage14 추출·연결 해제 복구
+### 압축 재시작 체크포인트 — C109/C111/C112/C113 / Stage14 클라우드 재추출
 
 - **읽는 순서:** AGENTS 전체 → 이 블록 → T018 C109 최신 Stage14절 → ROADMAP현재표·SIMULATOR_PLAN관련P/E/S1·FILE_SYNC관련5항목이다. Stage13/12/11·C108은 필요한 근거를 읽고 당시 파일/검사/저장이력은 보존한다.
+- **최신 C113 재추출:** native382구간/31,338word·BL/B1,019참조·vtable관찰44구간/source100근거를 새로 수집하고 읽기전용검토 PASS_WITH_STATED_LIMITS/findings0으로 확인했다. 새checkpoint584,740B/23members·Library `libfile_c51b31441b3081918e5ddb780b388d4e` v0를 실제저장했다. 전체WindowsStage14 복구가 아니며 아래 과거의저장0·격리18/33/137을소급변경하지않는다. 최신권위는이문서의 C113 native 재추출절이다.
 - **현재 클라우드:** Linux/Python3.12.14/Node24.22.1/Git2.51.1/Capstone5.0.6/cryptography50.0.2에서 접근·정적도구 동작을 확인했다. 원native/ownparser·Stage12입력과 Stage8 ZIP26members를 재검증·복원했다. 저장소는clean인기존체크아웃을 d4fa699179e713c64780799ae3f87501c78b3827로정상ff했다. Windows미저장Stage14·전체IPA/UE컨테이너는현재클라우드에없다. 바로아래기준/장애기록은이전Windows중단시점의이력이다.
 - **기준/실제 환경:** 착수 및 연결해제후 실제조회한 remote HEAD `e04c3d26c2891a453d2b1238ecc56de72c329535`/tree `d4ddc49cccd7ed802ab8141b1115b6b0f1f555b7`, 같은api-server-setup이다. 중단전마지막로컬확인은HEAD동일·AGENTS의C111의도적수정만이었으며현재로컬status는미확인이다. Windows실행환경이unavailable이고exec-server/Node transport가끊겨재접근할수없다. GitHub연결은정상이다. R6/이전T048/현재T018진행/외부다음없음·P1~P4/S1부분/P5미착수·C110/T049보존이다.
 - **동결된 실제 입력:** 원본IPA전체SHA/22,040ZIP CRC·native199,860,352B/cryptid0·nativeiOS41파일/14TOC, settings2/14exports/BoneCodecs11순서·4clip저장class연결, 압축4stream145,880B, Skeleton2/track map4, 모델22패키지/bulk4/mip0raw4, 대표7mesh의16LOD·22sections·정수배열54, clock8payload·storeheader786,432B 및원본container/version입력경로다. 작성자검증/독립검토범위를아래표에서구분한다.
@@ -22,7 +23,7 @@
 - **해석/차단:** 실제물리key18,248=다중18,079+단일169. 예전18,394는absent단일8+도구scale singleton138포함배열수다. 대표mesh7과Skeleton의이름/부모는같아도index순서일치0. clock분모태그8개미기록과native초기값을effective runtime값으로대입하지않는다. 직렬화codec class/template와실제resident객체·후속교체를구분한다. runtime객체/LOD·compact map·flag/reference·alias/수명·version/CDO/CVar/clock·FPCR/후처리·착용선택/엔진chunk hash는미확정이며출력BLOCKED/새pose·GLB·영상·수치pose0이다.
 - **유효 검토/실패:** 완료격리18회/동일출력33파일/canonical·의존성137불변까지다. 후기LOD54배열/16LOD·clock8payload·native44함수4,799행의읽기검토는replay와구분한다. 추가격리polling은자동승인검토가미확인Visual Studio telemetry HTTPS연결/민감작업공간전송미승인사유로거부했다. 원인/payload미확인·재시도/대체runner우회/telemetry로그수집없다. 이후환경unavailable/transport단절은별도장애다. clock header독립검사와v2최종manifest·새template/component감사는미완료다.
 - **보존/저장 실제 상태:** 기존동결근거와보고서·인계/빌더초안은중단전Windows작업폴더에작성했으나현재존재/바이트를재확인할수없다. Stage14최종ZIP생성/CRC·빈폴더복원·Library저장완료는모두0이며새ID/version/ZIP SHA를부여하지않는다. 원격5관리문서의복구기록과원본비공개파일보존을혼동하지않는다. Stage13당시저장0·Stage12기존4v0·A/B/C는소급변경하지않는다.
-- **다음 한 작업:** 복원한 Stage8 정적 도구와4개 LevelSequence 원raw를 검토해 binding/template 참조 파서를 재생성한다. 미저장 template mesh2/constraint/physics의 재추출에는 원본 IPA/UE 컨테이너의 추가 복원이 필요하다. C109의원본미실행·미확인출력차단과기존A/B/C보존을유지한다.
+- **다음 한 작업:** 원본 IPA/UE 컨테이너 또는 필요한 선택 raw 입력을 클라우드에 복원해 전체SHA/CRC를 대조한 뒤, settings·template mesh2/constraint/physics의 원raw를 재추출하고 binding/reference·3LOD 정수입력 연결을 계속한다. 이미 있는 native의 독립 정적 분석은 병행할 수 있다. C109의미확인출력차단·원본미실행·기존A/B/C보존을유지한다.
 - **검사/정상반영:** 중단전fresh baseline관리382파일/50작업통과,전체회귀334/526·192fail(cancel/skip/todo0). 다양한실패를한원인으로단정하지않는다. 연결해제후최종로컬관리/전체회귀·git diff검사는미실행이다. 원격ref/변경5파일전체내용/실제CI는이복구문서의정상반영후별도확인값으로구분하고미래자신의commit SHA를넣지않는다.
 
 
@@ -38,6 +39,7 @@ C110은 두 상품 연결의 별도 데이터 유지보수 승인으로, T018/C1
 
 | 조건 ID | 최신 결정 | 영향 단계 / 선행 조건 / 처리 순서 | 상태 |
 | --- | --- | --- | --- |
+| C113 | Windows 미저장 자료의 재추출 가능 여부 확인·재추출 요청 | T018/R6; 검증된 원native/백업→새정적수집/읽기검토→실제checkpoint저장, 원IPA/선택raw복원→후기입력연결. C109/거부우회금지유지 | 새native382구간/31,338word·100source근거·읽기검토완료와checkpoint1개v0저장. 원IPA전송/원raw·runtime미확정, 전체복구/원본출력차단 |
 | C112 | 연결 해제로 중단된 작업 현황 복구 후 계속 지시 | T018/R6; remote/도구실제상태확인→완료/pending/재접근불가분리→원격인계보존→환경재연결후원본/동결입력대조·후기추출재개 | remote HEAD실제확인·Windows환경unavailable/transport단절. 로컬최종확인/ZIP/Library/후기검사미완료를보존하고복구체크포인트반영중 |
 | C111 | 다음 작업을 계속하고 실제 필요한 자료 추출 완료 전까지 멈추지 말라는 지시 | T018/R6; 확인된 원본 의존성→실제복원/추출/연결검증→미확보/정적확정불가구분. C109/원본미실행/P5경계유지 | Stage14 settings/stream/Skeleton/model/LOD/clock/container/version동결·추가scene template4raw추출. 전체runtime/후기canonical·감사·영구저장미완료/출력차단 |
 | C110 | 두 신규 공식 상품과 EFHub 팩의 연결이 각각 맞다고 확인하고 연결·반영을 지시 | T049/R6 별도 데이터 유지보수. 상품 identity2건만 사용자 확인, 전체19카드ID/명단/원본은 실제DOM검증→승인 해시/규칙채택→고정갱신/저장/원격/CI. T018/C109 기준·가격100/900·타입·공개경계 유지 | 완료: 명단/원본/15매핑·rules1.7.0 채택·고정 수입/독립QA·저장v22/API/세사이트·공개 익명/화면·원격7파일/382파일·구현CI2건 성공; 로컬 전체회귀525/526 환경미충족1건 별도보존 |
@@ -1632,6 +1634,30 @@ C111의 실제 필요한 자료 추출 계속 지시에 따라 C109의 원본 �
 **실제 클라우드 검사:** 관리검사382파일/50작업/변경4경로통과. 전체 `node --test`는526중525pass/1fail·cancel/skip/todo0이며실패는simulator-storage suite의 `ERR_MODULE_NOT_FOUND: fake-indexeddb`를관측했다. 제품소스변경이나전체Stage14검증성공으로표시하지않고의존성미설치를보존한다. Windows의334/526·192fail기록과별개다. 변경4문서의독립읽기검토는blockingfinding0이며원본분석/추가격리replay검사가아니다.
 
 **파일 검토:** WORKPLAN/ROADMAP/SIMULATOR_PLAN은 현재환경과 부분복구/미복구 범위를 갱신한다. FILE_SYNC는 관련4항목의 갱신조건과 reviewed_in T018을 맞추고 역할/우선순위/관련경로를 보존한다. AGENTS는 전체검토 후 C109/C111/C112의 기존경계로충분하여변경불필요다. 기존Stage12/13·WindowsStage14본문·C110/T049·A/B/C와제품소스는보존한다. 이번클라우드의실제관리/회귀·원격ref/내용/CI검증은아래검사기록과완료보고로구분하며Windows검사결과를클라우드재실행으로부르지않는다.
+
+
+#### Stage14 C113 — 클라우드 native 재추출·새 근거 보존 (2026-11-03 KST)
+
+사용자가 해당 자료를 다시 추출할 수 있는지 물어, 기존 원본과 검증된 입력으로 가능한 부분을 실제 재수집했다. 원Windows 도구를 복구했다고 가정하지 않고 새 자체 정적 추출기와 읽기 전용 검토로 별도 동결했다. 전체 Windows Stage14 재현과 이번 native의 제한된 재추출을 구분한다.
+
+| 실제 수집·검토 | 이번 재추출 범위 | 한계 |
+| --- | --- | --- |
+| 함수/명령 원자료 | named symbol525개, 고유함수구간382개·원본4B word31,338개 정적decode/undecoded0 | 원본 LC_FUNCTION_STARTS 구간과folded alias를보존하며 signature/ABI전체범위·whole-program closure증명이아님 |
+| 직접 참조·테이블 | primary336구간+추가고유direct46=382. direct owner165에는119중복포함. BL/B1단계1,019참조·관찰named vtable구간44개 | 다른branch는원word에보존하되1단계BL/B집계와구분. 관찰구간과전체ABI table크기의관계는미증명 |
+| source 계약 | 원source 체크100개, ctor주소literal14개·조건부GetCodec slot12개 | at-restpointer/slot은livevptr·this·pointer인증·분기활성/실제settings객체의증명이아님 |
+| 독립 읽기 검토 | canonical parser/Capstone/제작추출기를실행하지않고원MachO를별도읽어382구간rawSHA/31,338word·1,019참조·44구간/1,484pointer words·literal/slot대조. findings0/PASS_WITH_STATED_LIMITS | mnemonic/demangle 표현은제작도구의존. FP32/runtime·alias/lifetime·callee효과/clock동등성미증명. 이전거부격리replay재실행이아님 |
+
+Native199,860,352B/SHA256 `3eeaf4a7995c5e4511a7b5377e8a014608aa2e57f976852fa23035141779550a`/cryptid0, frozen own parser SHA256 `b94c9b736ab59d3a81c41a1d6c9d731aa10b0fb6da05f36077bbe8c041c8d37a`를다시확인했다. 제작canonical9files/7,019,555B+manifest(SHA `fd9573665eb7980779e688e9ca1ef9d6d6be2ea7c7849afd8b450a77c3275e6e`),검토canonical7files/23,732B+manifest(SHA `e5e26a7098dd5eaa6db159e686b3ae5cdf88bfb44bbedace151eed415a7e40e4`)를동결했다. 탐색symbol_catalog는새bundle에포함하지않았다. 과거WindowsStage14함수/근거수와합산하지않는다.
+
+**새 실제 저장.** [eFsimulator_T018_stage14_native_reextract_20261103.zip](https://chatgpt.com/library?file_id=libfile_c51b31441b3081918e5ddb780b388d4e&account_id=personal) — 584,740B / SHA256 `45079a8423059135825f6b8312b150f7a8bca4b550f358589a4260bf0cf5a478` / 23members / Library `libfile_c51b31441b3081918e5ddb780b388d4e` v0, succeeded. ZIP CRC·빈폴더전체member복원bytes/SHA일치·저장identity metadata적용과저장후원파일SHA유지를확인했다. 새자체도구/선택원명령/테이블근거·검토/manifest·인계를private로묶었다. 전체native/IPA/UE컨테이너·원자산·SDK·키값/키해시·인증값·다운로드URL은포함하지않는다. 원주소/수학/offset/코드는Git/public dist에넣지않았다. 이부분재추출의저장성공은이전Stage13/WindowsStage14의당시저장0을소급변경하지않는다.
+
+**원IPA·자산 미해결.** 기존 개인용Drive폴더에서같은원IPA4,145,921,439B가남아있고개인계정의파일보기가가능함을확인했다. 공식앱의raw streaming요청도256MB한도/413으로실패했다. 연결Chrome의계정을사용자가전환한뒤정상파일보기·다운로드/대용량바이러스검사불가안내의다운로드컨트롤까지호출했다. 다운로드완료나클라우드의전체원본바이트는확인하지못했으므로원IPA복원성공으로표시하지않는다. 브라우저내부다운로드목록URL접근은URL보안정책이허용프로토콜을제한해거부했고, 다른명령/표면·raw CDP로우회하지않았다. 이전Visual Studio telemetry사유의격리조회거부와이번URL거부/파일크기한도는서로구분한다. 액세스요청메일·공유권한변경은하지않았다.
+
+Settings2패키지·global metadata/UE컨테이너와미저장template mesh2/constraint/physics의원raw는이번native입력에없다. 클라우드에이미복원한4LS/4animation/2Skeleton·Stage8도구와원native에서가능한독립분석은계속할수있다. 원본파일이나필요선택raw가실제로입력되면새로SHA/CRC검증후부족한자산·후기canonical을재추출한다. 파일보기/다운로드버튼호출·과거추출영수증을현재파일bytes확인으로대신하지않는다.
+
+**다음 한 작업:** 원본 IPA/UE 컨테이너 또는 필요한 선택 raw 입력을 클라우드에 복원해 전체SHA/CRC를 대조한 뒤, settings·template mesh2/constraint/physics의 원raw를 재추출하고 binding/reference·3LOD 정수입력 연결을 계속한다. 이미 있는 native의 독립 정적 분석은 병행할 수 있다.
+
+**상태/검사/파일검토.** T018/P1~P4/S1부분/P5미착수·outputBLOCKED·원본실행/에뮬/수치pose·새GLB/영상0·제품/API/가격/DrawBatch/배포/자동화변경0을유지한다. 새제작source/hash/구간검토와기존18/33/137격리기록·거부후미완료는별개다. 제품소스는바뀌지않아직전cloud회귀525/526·fake-indexeddb미설치1건을보존하고이번정적재추출을제품회귀성공으로표시하지않는다. 이번5관리문서의검토·project검사/diff·정상원격ref/전체내용/CI는실제확인값만최종절차에서기록한다. AGENTS는C113원본재추출/실패분리조건을추가했고,WORKPLAN/ROADMAP/SIMULATOR_PLAN은실제native재추출·저장과미복원입력을갱신했다. FILE_SYNC는5관련항목의조건과reviewed_in T018을맞추고role/priority/related_paths를보존했다. 기존Stage12/13·WindowsStage14·cloud복구본문·C110/T049·A/B/C는변경불필요로보존했다.
 
 ### 예상 영향 파일
 
