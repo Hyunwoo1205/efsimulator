@@ -38,7 +38,7 @@ C107으로 Work 유지·단계별 인계와 다음 분석을 진행한다. 최�
 
 C108/Stage9는실제mono10/idle04와face+kit+fixedhand+boots3061의4part기술후보(14,386v/20,792t)를Aoldglobaldelta/Bmode3+source99/Cmode3+target99로분리진단한다. bone/parent/name166·전체influence/rawsum255/7texture참조를유지하고body를kit에중복하지않았다. body/kit의untracked12twist refQ차이는2,099/2,887·4,102/8,368정점의양의직접weight에연결되고face의untracked차이는0이었다. 선정LBS계산잔차는palette4.263e-13/vertex5.329e-15m이며kit B/C6.700cm·hand2.196cm·faceA/C밀리미터차이는GT오차가아니다. paletteT91.6source units를90cm정점오류로쓰지않는다. 소품2instance→고유dummy12v4t2bones/1slot을확인했으나constant keys≠bind/world이며componentinitial/seqactorTRS·runtimeworld는미해결이다. 정상compactRef/sourceoverride의초기화branch·encodedmode3선택과6full영상/2비교60fps·65,686,476meshvertex-frame finite/viewport0을확인했다. C정책GLB4mesh/4skin·7PNG는Khronos0/0/0/0·독립reader blocking0이고 정확한8개 version0 영수증을 확인했다. 빈 폴더의169source/data·13inputs/5sources/moduleSHA 복원 gate도 통과했으나 전체 재렌더 재실행은0이다. inline coefficient의별도BSS/helper동일성은 미해결이며 다음 첫 검증은 해당 initializer/QTS입력식, 이어 actualflag/ref producer·12twist 후처리와 PlAwayworld/shader다. T018부분진행/P5미착수·nativeclock/후처리/체감자연스러움미확정·원본보존/제품경계를유지한다.
 
-Stage16에서4scene의18Spawnables/14Possessables와mobile actor class/CDO/template→component→직렬화constraint를원참조로연결했다. 참조raw10개(기존동일4/신규고유6)와Transform166행·정수배열51/166/13의원입력을보존했다. native등록/constructor·두Initialize경로와spawn/binding source를이번선정고유49함수/4,389word로검토했고Stage15중복13개를제외한추가36함수/3,748word다. mesh원참조3종에서exact검색1개와casefold검색후선언identity가native와일치한1개를확보했고1개는미확보다. 새checkpoint17,375,105B/157members를실제v0저장·별도native백업제공빈폴더1,194파일복원검증했다. 실제actor/dispatch/분기·binding-data입력·generic직렬화→solver동기화/clock미확정·출력BLOCKED·T018부분/P5미착수다.
+Stage17에서 binding helper의 등록·인자·필드·원초기화 source18함수/2,278word와 원근거134개를 검증했다. 기존16package의 Blueprint script129개/91,144B·opcode53종·호출1,004개와 framing 오류 입력49건 거부 검사, 개봉 selector4호출·인덱스를 쓰는 원대안3개를 연결했다. 실제 분기·binding 입력은 미선택이며 새 원자산 raw0, 원본 실행·새 pose/GLB/영상0/BLOCKED다. 동결268canonical+4manifest=272논리파일/16,226,553B 중 nonempty264개를 각각 비공개 저장하고 원길이0 script8개는 고정 manifest의 정확한 빈파일 선언으로 보존했다. 별도 인계 파일을 저장했으며 새 통합ZIP의 최종 build·archive·복원은 미확정·새ZIP 저장0이다. 개별보존·문서검토 후 Windows 환경이 단절돼 현재 로컬 확인/Git 정렬은 미완료이며 다음 실행환경의 원격·보존입력 대조가 선행 조건이다.
 
 이전 T048 완료: 바깥 선택 진입을 ‘선수팩 선택’ 하나로 통합하고 수량/이미지로 선택 문구를 제거했다. 창 안의 판매중/종료 탭과 검색/이미지·선택한 팩 그룹 기본/닫기·초점 복귀를 유지한다.539회귀·관리/타입/공식빌드·v17public 실제UI·원격382파일동일tree/구현CI2건성공을확인했다. 데이터/가격/세션/자동갱신은유지했고당시다음은파일미제공상태의T018이었다.
 
@@ -64,7 +64,7 @@ Stage16에서4scene의18Spawnables/14Possessables와mobile actor class/CDO/templ
 | --- | --- |
 | 현재 단계 | R6 — T017 2D 전달 후 T018 IPA 정적 분석 진행 중 |
 | 이전 작업 | T048 — 단일 선수팩 선택 버튼·창 안 판매상태 전환,539회귀/v17실제UI·원격/구현CI2건확인 |
-| 현재 작업 | T018 — 진행 중: Stage16 4scene/class/CDO/constraint와native생성·초기화대안source연결,raw10(신규6)·독립읽기·새checkpoint v0/1,194파일복원. 실제binding입력/scene/dispatch·generic동기화·runtime/clock미확정·BLOCKED/P5미착수 |
+| 현재 작업 | T018 — 진행 중: Stage17 source 검토·268canonical+4manifest=272논리파일/16,226,553B 중 nonempty264개 저장+원빈script8고정선언·별도 인계 저장 성공. 실제 입력/branch·필요 원자산·새 통합ZIP/복원 미확정, 원본/pose 실행0/BLOCKED·P5미착수 · 후기 Windows 환경 단절/현재 unavailable·로컬확인/Git정렬미완료·새Linux0 |
 | 다음 작업 | 없음 — T018 이후 범위는 별도 결정 |
 | 현재 조건 | T043은 T041의 등급/API 타입권위를 유지하고 선수 정렬을 전역 최신날짜→OVR/팩 안 OVR로 구분한다. 최초 연결팩 날짜·팩최신순·대표상위3·가격100/900·앱public/API-viewer private 경계를 보존한다. |
 

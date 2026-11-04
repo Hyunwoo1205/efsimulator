@@ -7,21 +7,23 @@
 ## 현재 작업과 매 작업 갱신
 
 - 이전 작업: T048 — 단일 ‘선수팩 선택’ 버튼으로 통합하고 판매중/종료 전환은 창 안에 유지했다.539회귀·관리/타입/공식빌드·v17 실제 단일버튼/탭/선택복귀/초점·원격 동일tree와 구현CI2건 성공을 확인했다.
-- 현재 작업: T018 — 진행 중. Stage16에서4scene의18Spawnables/14Possessables와mobile actor class/CDO/template→component→직렬화constraint를원참조로연결했다. 참조raw10개(기존동일4/신규고유6)와Transform166행·정수배열51/166/13의원입력을보존했다. native등록/constructor·두Initialize경로와spawn/binding source를이번선정고유49함수/4,389word로검토했고Stage15중복13개를제외한추가36함수/3,748word다. mesh원참조3종에서exact검색1개와casefold검색후선언identity가native와일치한1개를확보했고1개는미확보다. 새checkpoint17,375,105B/157members를실제v0저장·별도native백업제공빈폴더1,194파일복원검증했다. 실제actor/dispatch/분기·binding-data입력·generic직렬화→solver동기화/clock미확정·출력BLOCKED·T018부분/P5미착수다. 다음 한 작업: BindAllDemoHumansFast의 호출 지점과 binding-data 입력 생산 경로를 추적해 현재 개봉 scene과의 연결 여부를 검증한다.
+- 현재 작업: T018 — 진행 중. Stage17에서 binding helper의 등록·인자·필드·원초기화 source18함수/2,278word와 원근거134개를 검증했다. 기존16package의 Blueprint script129개/91,144B·opcode53종·호출1,004개와 framing 오류 입력49건 거부 검사, 개봉 selector4호출·인덱스를 쓰는 원대안3개를 연결했다. 실제 분기·binding 입력은 미선택이며 새 원자산 raw0, 원본 실행·새 pose/GLB/영상0/BLOCKED다. 동결268canonical+4manifest=272논리파일/16,226,553B 중 nonempty264개를 각각 비공개 저장하고 원길이0 script8개는 고정 manifest의 정확한 빈파일 선언으로 보존했다. 별도 인계 파일을 저장했으며 새 통합ZIP의 최종 build·archive·복원은 미확정·새ZIP 저장0이다. 개별보존·문서 검토 뒤 Windows 연결이 해제돼 현재 로컬 확인/Git 정렬은 미완료다. 다음 한 작업: 현재 개봉 Blueprint의 원호출 인덱스 생산자와 native 획득 대상 목록의 writer를 정적으로 연결해 scene/actor 선택 입력 경로를 검증한다. 자동승인 거부된 수집의 재실행과 분리하고, 탐색 probe는 정식 수집·독립 검토 전 확정 근거로 승격하지 않는다.
 - 다음 작업: 없음 — T018 이후 범위는 별도 결정한다.
 - 최근 유지보수: T049 — 완료. 사용자가 확인한11월2일 영문 공격수/PSG 두 상품의 연결을 별도 수동 검토로 반영했다. 전체19문자열ID·원본 필드/타입·두 출처 명단을 대조하고15매핑/검토·rules1.7.0 채택과 고정 수입을 완료했다. raw47,520/1,707·가공182/15·판매중10/종료5이며 원본prefix/종료5팩 불변을 검증했다. 원본 date2026-10-29를 제목의2 Nov로 바꾸지 않으며 저장v22·API/세사이트 전량/공개 익명·화면 및 구현 commit의 원격 내용/실제CI2건 성공을 확인했다. 로컬 전체회귀의 환경 의존성1건은 별도 보존한다. 제품 T018/C109·Stage11 미해결과 재시작 블록은 보존한다.
 - 현재 조건: T043이 T041의 선수 정렬을 화면 범위별로 구분한다. Epic5→Show Time8→Trend3→Highlight6 우선, 팩 안 선수는 등급 안 OVR순, 전체 선수는 등급 안 확인 날짜 최신순→OVR순이며 최초 연결팩 날짜를 사용한다. 팩은 등급 안 날짜 최신순이다. exact raw 타입·원본·가공/API 계약·가격100/900·팩 구성/카드 표시와 실제 앱 public·API/admin/viewer owner-private 경계를 보존한다.
 
-### 압축 재시작 체크포인트 — C109/C111/C112/C113 / Stage16 scene·actor 초기화 source
+### 압축 재시작 체크포인트 — C109/C111/C112/C113 / Stage17 동결 파일 개별 보존
 
-- **읽는 순서:** AGENTS 전체 → 이 블록 → T018 최신「Stage16 scene actor·초기화 입력 연결」절 → SIMULATOR_PLAN P3/P4/E3/E4/E5/S1·ROADMAP·FILE_SYNC 관련항목. Stage15이전의완료/실패·단절기록과A/B/C는당시이력으로보존한다.
-- **착수·환경:** 같은api-server-setup 원격/로컬 HEAD7edd0b93094ec2069421dc3549220ae71dcd1b33/tree f9e40a4955cae2d5d493004a0e9d8ac805522ad0·clean에서착수했다. 중간transport disconnected/executor key changed→No usable execution environment is available이발생했으나새환경연결후Windows실제읽기·native SHA3eeaf4a7995c5e4511a7b5377e8a014608aa2e57f976852fa23035141779550a/Stage15 ZIP SHAdc11a24dab51f8b43e4ae66c7d651219765749936f4a442fbc68d5f3616617d8를재검증하고생산을재개했다. 단절중인계초안은브랜치에미반영이며현재검증으로대체했다. Linux형권한표시는활성Linux증거가아니었고새Linux실행은0이다.
-- **이번 실제 결과:** Stage16에서4scene의18Spawnables/14Possessables와mobile actor class/CDO/template→component→직렬화constraint를원참조로연결했다. 참조raw10개(기존동일4/신규고유6)와Transform166행·정수배열51/166/13의원입력을보존했다. native등록/constructor·두Initialize경로와spawn/binding source를이번선정고유49함수/4,389word로검토했고Stage15중복13개를제외한추가36함수/3,748word다. mesh원참조3종에서exact검색1개와casefold검색후선언identity가native와일치한1개를확보했고1개는미확보다. 새checkpoint17,375,105B/157members를실제v0저장·별도native백업제공빈폴더1,194파일복원검증했다. 실제actor/dispatch/분기·binding-data입력·generic직렬화→solver동기화/clock미확정·출력BLOCKED·T018부분/P5미착수다.
-- **핵심 분리:** Mobile noarg Initialize와상속FString,bool overload의원분기·인자는서로다르다. constructor설치vptr의선택slot과실제live dispatch를구분한다. 저장constraint는raw입력이며generic직렬화가solver슬롯을자동동기화한다는증명이아니다. 기존도구의class표시명/자체초안필드역할라벨은원등록/descriptor로교정했고원field의실제값·role·품질enum을가정하지않는다.
-- **실제 저장·복원:** [eFsimulator_T018_stage16_scene_actor_initialization_20261104.zip](https://chatgpt.com/library?file_id=libfile_1110f3c97d608191b64744acc4566fcf&account_id=personal) — 17,375,105B/SHA256 1f02b4ab27f3b5183a7e72788519676cbb8023066e863312606b483e9835f3f2,157members/신규4manifest sets/Stage16 canonical140,실제저장v0/succeeded. 이전Stage15 16,497,036B원ZIP과그안Stage14 master/기존7복구ZIP을원바이트로보존했다. 전체ZIP CRC·memberbytes/SHA·빈폴더복원,원native백업실제제공후1,194파일SHA가일치했다. 원native는별도 [private-input백업](https://chatgpt.com/library?file_id=libfile_804efc5cc584819191175c92f2ed8095&account_id=personal)으로복원한다. 전체IPA/41컨테이너/SDK·Capstonebinary/키값·키해시·인증값은미포함이며새원자산재추출에는별도원본이필요하다.
-- **새 독립 검토:** 제작118canonical/4,820,675B·고유의존120개중선택portable78개를기존/중첩ZIP실바이트까지확인했다. 감사22canonical/1,536,674B·finding0,manifest7421ed3df7e3860b07c5ed27f08b3a08031e81be2b7196ea400952e6ca3c8641. native원claim164/97의raw일치와선택bitfield160/93검토를구분하며전체ISA/ABI·간접호출/runtime증명은아니다. 생산자/Capstone/원본/oldrunner재실행0인별도읽기다.
-- **미해결·다음 한 작업:** BindAllDemoHumansFast의 호출 지점과 binding-data 입력 생산 경로를 추적해 현재 개봉 scene과의 연결 여부를 검증한다. 선택14package에서실제binding-data객체가미관측이며원bindinghelper를현재scene에서실행했다고단정하지않는다. 실제actor/initializer/분기·입력객체·vptr/alias/수명/후속변경·generic직렬화/solver동기화·미확보mesh/Light·inline/reference·flags/LOD/version/CDO/CVar/compact map·clock/FPCR·후처리/외형·엔진storedchunkhash알고리즘/범위미확정·검증0을유지한다.
-- **검사/경계:** 이번Windows전체Node526중334pass/192fail·cancel/skip/todo0·exit1이다. 권한/의존성/Windows ESM등관측실패를한원인으로단정하지않는다. 관리검사/diff·원격전체내용/ref·CI는최신절의실제확인값만보고한다. 원본실행/에뮬·수치pose/새pose·GLB·영상0/BLOCKED·P5미착수,제품/API/가격/DrawBatch/배포/자동화변경0이다.
+- **읽는 순서:** AGENTS 전체 → 이 블록 → T018 최신「Stage17 binding 입력 source·호출 경계와 동결 파일 보존」절 → SIMULATOR_PLAN P3/P4/E3/E4/E5/S1·ROADMAP·FILE_SYNC 관련 항목. Stage16 이전 이력·T049/C110·기존 A/B/C는 보존한다.
+- **착수·환경:** 같은 api-server-setup 원격/로컬 HEAD ba1e7551a82c6dbcbf23a9b2af993f261e1aea58, tree 0c7d6ed4540724c0181a956d8558490af0f526d4의 clean 상태를 확인하고 착수했다. 이번 실제 작업 환경은 Windows이며 새 Linux 실행0이다. 원native 전체 SHA·기존 동결 입력을 대조했고 원본 코드·명령은 실행하지 않았다.
+- **이번 실제 결과:** native18함수/2,278word·원근거134개, Blueprint16package/129script/91,144B·53opcode·1,004calls·framing 오류 입력49건 거부 검사을 수집·검토했다. 개봉 selector4호출과 인덱스를 쓰는 원대안3개는 source 연결이며 실제 branch 선택0이다. native는 이전 선정 범위와 중복2개를 제외한 추가16함수/2,079word, 누적 선정124함수/11,432word다. 이 수치는 제한된 정적 분석 범위이며 전체 게임 함수 전수가 아니다.
+- **독립 검토:** 제작237canonical/14,925,352B와 감사31canonical/1,227,613B를 동결했다. 의존85개 중 portable84개와 별도 원native1개를 구분했고 source finding0을 확인했다. 제작자/원본 코드 재실행과 실제 runtime 증명은 별개이며 실제 binding-data 입력·호출·class/query/map·분기·scene/actor 선택은 미확정이다.
+- **실제 별도 저장:** 268canonical+4manifest=272논리파일/16,226,553B 중 nonempty264개는 공식 저장 metadata succeeded다. 원프레이밍·고정 manifest가 선언한 길이0 script8개는 host upload가 file_zero_bytes/400으로 거부해 원이름·길이0·빈파일 SHA와 declared-empty 상태로 보존했다. 이8개는 실제 저장 ID/version이 없으며 새 default로 채운 입력이 아니다. 별도 [eFsimulator_T018_stage17_frozen_files_handoff_20261104.json](https://chatgpt.com/library?file_id=libfile_c2e85dc6e62c8191975b68283b336deb&account_id=personal)에 전체272행의 구분과 각 relativePath·실제 ID/version 또는 null·이름·상태·bytes·SHA를 보존했고 인계 파일도 실제 v0/succeeded다. 실제 원자산 신규 수집 raw0과 기존 원길이0 script8개를 구분한다. 이는 nonempty264개 저장+원빈파일8개 선언이며 새 통합ZIP 생성·최종 복원 성공이 아니다. 원native 별도 백업과 전체 IPA/컨테이너 등 원입력의 별도 필요 조건은 유지한다.
+- **사전 검사와 미확정:** stdlib 복원 계약25검사와 이전 layout1,194파일·별도 native 백업·member 대조만 통과했다. 해당 사전 검사에서 native 설치는 false다. 이번 최종 build exit·새 archive·새 전체 restore는 미확정이며 새 통합ZIP의 Library 저장0이다. 이번 개별 저장·인계 파일을 새ZIP/복원 영수증으로 대체하지 않는다.
+- **자동승인 거부:** 자산 survey 및 checkpoint build 세션의 상태조회가 예상하지 못한 VisualStudio HTTPS telemetry 위험으로 자동승인 거부됐다. 두 세션의 추가 polling·retry·대체 runner·로그 감시·telemetry 조사0을 유지한다. 새 원자산 raw0이며 전수 수집 완료를 주장하지 않는다. 요청 payload의 실제 유출을 확인한 것으로 기록하지 않는다.
+- **후기 실행환경 단절:** 단절 전 native·Blueprint 분석, 264개별파일/원빈script8개 선언·인계v0 저장과 관리382파일/50작업/4변경경로·diff·4문서 독립검토를 완료했다. 이후 Windows 실행환경 연결이 해제돼 현재 환경은 unavailable이며 새 Linux 실행은0이다. 현재 로컬 파일/HEAD·clean·최종 Git 정렬은 다시 확인하지 못했다. 거부된 asset/build 세션·잠재 산출물은 조회하지 않았고 새 통합ZIP/최종 복원도 미확정이다. 다음 실행환경을 확보하면 최신 원격 HEAD와 로컬 차분·Stage16/native/이번 개별보존물을 먼저 대조하고 사용자 변경을 보존하며 정상 동기화한다. 저장된 인계 파일은 단절 전 보존 시점의 기록이며 이후 가용성의 권위는 이 최신 WORKPLAN이다.
+- **검사/출력 경계:** Windows Node526중334pass/192fail·exit1을 관측했으며 하나의 원인이나 새 제품 회귀로 단정하지 않는다. 관리 검사382파일/50작업/4변경 경로와 diff 검사를 통과했다. 원격 전체 내용/ref·CI는 이후 실제 확인한 값만 보고한다. 원본 실행/에뮬·원명령 실행·수치 pose·새 pose/GLB/영상0/BLOCKED, T018/P1~P4/S1부분·P5미착수, 제품/API/가격/DrawBatch/배포/자동화 변경0이다.
+- **다음 한 작업:** 현재 개봉 Blueprint의 원호출 인덱스 생산자와 native 획득 대상 목록의 writer를 정적으로 연결해 scene/actor 선택 입력 경로를 검증한다. 자동승인 거부된 수집의 재실행과 분리하고, 탐색 probe는 정식 수집·독립 검토 전 확정 근거로 승격하지 않는다.
 
 매 작업 시작 시 Git 상태·이전 결과·이번/다음 작업·선행 조건을 확인한다. FILE_SYNC의 P0→P1→P2로 관련 파일을 검토하되 필요한 파일은 등급과 무관하게 함께 수정한다. 추가 요구는 ID·영향 단계·선행 조건·순서·상태를 기록한다. 파일별 수정/변경불필요/미해결과 근거, 경로 추가/삭제/이름 변경·참조를 같은 작업에서 갱신한다. 검증과 이전/현재/다음 포인터를 맞추며 구현/수집/발행 완료는 실제 근거가 있을 때만 표시한다.
 
@@ -35,11 +37,11 @@ C110은 두 상품 연결의 별도 데이터 유지보수 승인으로, T018/C1
 
 | 조건 ID | 최신 결정 | 영향 단계 / 선행 조건 / 처리 순서 | 상태 |
 | --- | --- | --- | --- |
-| C113 | Windows 미저장 자료의 재추출 가능 여부 확인·재추출 요청 | T018/R6; 검증된 원native/백업→새정적수집/읽기검토→실제checkpoint저장, 원IPA/선택raw복원→후기입력연결. C109/거부우회금지유지 | C113native382구간/31,338word·부분checkpointv0보존. Windows원자료재접근후template/binding/constraint/material/context실제수집·새통합checkpoint v0,전체T018/runtime미완료·출력차단 |
-| C112 | 연결 해제로 중단된 작업 현황 복구 후 계속 지시 | T018/R6; remote/도구실제상태확인→완료/pending/재접근불가분리→원격인계보존→환경재연결후원본/동결입력대조·후기추출재개 | 중간Windows단절/실행환경없음후실제재접근·native/Stage15SHA대조·Stage16생산/검토/저장완료. 단절초안branch미반영·실제Windows검사/새Linux0 |
-| C111 | 다음 작업을 계속하고 실제 필요한 자료 추출 완료 전까지 멈추지 말라는 지시 | T018/R6; 확인된 원본 의존성→실제복원/추출/연결검증→미확보/정적확정불가구분. C109/원본미실행/P5경계유지 | Stage16 raw10(기존4/신규6)·선정source49함수/독립읽기·새private저장/1,194파일복원. 미확보mesh/binding입력·전체runtime/T018미완료/출력차단 |
+| C113 | Windows 미저장 자료의 재추출 가능 여부 확인·재추출 요청 | T018/R6; 검증된 원native/백업→새정적수집/읽기검토→실제checkpoint저장, 원IPA/선택raw복원→후기입력연결. C109/거부우회금지유지 | 기존 원native/동결 입력으로 Stage17 source 검증·nonempty264개 저장/원빈script8개 선언·별도 인계 보존. Windows 실제 작업/newLinux0·새 통합ZIP/복원 미확정 |
+| C112 | 연결 해제로 중단된 작업 현황 복구 후 계속 지시 | T018/R6; remote/도구실제상태확인→완료/pending/재접근불가분리→원격인계보존→환경재연결후원본/동결입력대조·후기추출재개 | Stage17 분석·264개별파일/8빈script선언/인계저장·관리검사와 문서검토 후 Windows 재단절·현재 unavailable. 로컬재확인/Git정렬미완료·원격인계계속/newLinux0 |
+| C111 | 다음 작업을 계속하고 실제 필요한 자료 추출 완료 전까지 멈추지 말라는 지시 | T018/R6; 확인된 원본 의존성→실제복원/추출/연결검증→미확보/정적확정불가구분. C109/원본미실행/P5경계유지 | 동결272논리파일 중 nonempty264개 저장·원길이0 script8개 고정 manifest 선언·별도 인계 성공. 새 원자산raw0·필요 입력 전체 확보 미완료·다음 selector 입력 연결 계속 |
 | C110 | 두 신규 공식 상품과 EFHub 팩의 연결이 각각 맞다고 확인하고 연결·반영을 지시 | T049/R6 별도 데이터 유지보수. 상품 identity2건만 사용자 확인, 전체19카드ID/명단/원본은 실제DOM검증→승인 해시/규칙채택→고정갱신/저장/원격/CI. T018/C109 기준·가격100/900·타입·공개경계 유지 | 완료: 명단/원본/15매핑·rules1.7.0 채택·고정 수입/독립QA·저장v22/API/세사이트·공개 익명/화면·원격7파일/382파일·구현CI2건 성공; 로컬 전체회귀525/526 환경미충족1건 별도보존 |
-| C109 | 원본 코드를 디컴파일·추출해 재구성하고 별도 보정식/추가 가정을 쓰지 말라는 지시 | T018/R6; inline 자체계수→입력alias/벡터성분→reference/flag/후처리근거, 미확인출력차단 | Stage16원scene class/CDO/constraint와native등록/생성·초기화대안source연결·라벨교정. 실제dispatch/분기/generic직렬화동기화미확정·T018부분/P5미착수/BLOCKED |
+| C109 | 원본 코드를 디컴파일·추출해 재구성하고 별도 보정식/추가 가정을 쓰지 말라는 지시 | T018/R6; inline 자체계수→입력alias/벡터성분→reference/flag/후처리근거, 미확인출력차단 | Stage17 원등록·반사/입력 descriptor·원초기화와 기존 Blueprint selector/인덱스 쓰기 source 검토. 실제 입력/분기 미선택·출력BLOCKED·부분 진행 |
 | C108 | Work·단계인계를 유지하며 다음작업 진행 승인 | T018/R6; frozen scene2clip/대표mesh→A/B/C조건부skin·초기화근거→60fps/GLB/소품world QA→인계/정확영수증 | reference/LBS·초기화/encoded-loop·6영상/2비교·GLB독립QA/8저장 확인; inline별도BSS/실제runtime미해결·P5미착수 |
 | C107 | Work를 유지하고 단계별 인계 기록을 남기며 다음 작업 진행 | T018/R6; fresh기준/입력확인→lane별분석/QA→최신결과·미해결/다음한작업·정확영수증압축→검사/정상반영후재개 | Stage8 실제4clip/원키QA·선택mode3·scene18채널/부착/event/입력복구와4저장검증; native완성/P5확대 미완료 |
 | C106 | 앞서 설명한8개 요소가 추출/분석 계획에 포함됐는지 확인하고 포함하여 다음 작업 진행 요청 | T018/R6; 계획 audit→E1~E8/P1~P5/S1 명시→선택producer/graph/layer/장비/scene 참조→근거별 검증 | 계획audit/명시·실제선택/모션후처리/장비/scene참조와4저장 검증;8요구 부분/미완료/P5미착수 |
@@ -1745,6 +1747,37 @@ C109/C111의원본입력추적을이어갔다. 착수remote/local7edd0b93094ec20
 | docs/ROADMAP.md | 수정 | 현재T018/Stage16근거·보존과조건부한계/P5미착수 |
 | docs/FILE_SYNC.json | 수정 | 위4문서갱신조건추가/reviewed_in T018,기존역할·우선순위·related_paths보존 |
 | Stage15이전본문·A/B/C·C110/T049·제품/API/가격/DrawBatch/배포/자동화 | 검토 결과 변경 불필요 | 당시이력/원바이트·제품소비계약보존,원코드/주소/offset/수학/리터럴은privateZIP에만보존 |
+
+#### Stage17 binding 입력 source·호출 경계와 동결 파일 보존 (2026-11-04 KST)
+
+C109/C111의 원본 근거 추적을 이어가며 원격/로컬 기준 HEAD ba1e7551a82c6dbcbf23a9b2af993f261e1aea58, tree 0c7d6ed4540724c0181a956d8558490af0f526d4·clean과 AGENTS 전체/최신 WORKPLAN·관련 계획/파일 목록을 확인했다. 기존 Stage16·T049/C110·A/B/C를 보존하고 새 정적 분석 범위만 별도로 동결했다.
+
+| 실제 확인 범위 | 이번 결과 | 남은 한계 |
+| --- | --- | --- |
+| native binding source | 18함수/2,278word·원근거134개. 등록·반사 wrapper·인자·필드·원생성자 초기화를 연결하고 직접/저장 참조를 대조 | 등록 source는 실제 개봉 호출 증명이 아니다. 실제 binding 객체·class/query/map·actor·분기는 미선택 |
+| 기존 Blueprint/selector | 16package의 script129개/91,144B·53opcode·1,004calls와 framing 오류 입력49건 거부 검사를 검토. selector4호출·인덱스를 쓰는 원대안3개 연결 | 검사 범위의 미관측을 전체 미사용으로 확대하지 않는다. 실제 branch0이며 탐색 probe는 차기 정식 근거로 승격하지 않음 |
+| 원자산 수집 | 새 원자산 raw0. 자산 survey의 자동승인 거부를 별도 통제로 보존 | 새 전수 수집·필요 입력 전체 확보는 미확정. 거부 세션 재조회/재실행/대체 runner0 |
+| 독립 읽기 | 제작237canonical/14,925,352B·감사31canonical/1,227,613B, 의존85개=portable84+별도native1, source finding0 | 선택 source/byte/구조 검토이며 실제 runtime·간접호출 폐쇄·외형/clock/solver 동등성 증명이 아님 |
+| native 범위 누적 | 이전과 중복2개를 제외한 추가16함수/2,079word, 누적 선정124함수/11,432word | 전체 게임/프로젝트 함수 전수로 표시하지 않음 |
+
+**실제 동결 파일 보존.** 268canonical+4manifest=272논리파일/16,226,553B 중 nonempty264개를 공식 connector로 각각 비공개 저장하고 해당 metadata의 succeeded·실제 version·bytes·SHA를 확인했다. 원프레이밍·고정 manifest가 선언한 길이0 script8개는 host upload가 file_zero_bytes/400으로 거부했다. 이8개는 원이름·길이0·빈파일 SHA·declared-empty로 인계하며 Library ID/version은 null이다. 새 default나 임의 빈 입력을 추가한 것이 아니며 신규 원자산 raw0/전체 수집 미확정과 구분한다. 별도 [eFsimulator_T018_stage17_frozen_files_handoff_20261104.json](https://chatgpt.com/library?file_id=libfile_c2e85dc6e62c8191975b68283b336deb&account_id=personal)도 실제 v0/succeeded로 저장했고 전체272논리행의 relativePath·실제 ID/version 또는 null·fileName·상태·bytes·SHA를 연결한다. 실제 저장은 nonempty264개이며 새 통합ZIP·최종 복원 완료를 뜻하지 않는다. 새ZIP Library 저장0과 최종 build exit/archive/새 전체 restore 미확정, 기존 원native 별도 백업과 전체 IPA/컨테이너 등 원입력의 별도 필요 조건을 유지한다.
+
+**사전 검사·중단 경계.** stdlib 복원 계약25검사, 이전 layout1,194파일·별도 native 백업·member 대조만 통과했고 사전 native 설치는 false다. 자산 survey 및 checkpoint build 세션 상태조회가 예상하지 못한 VisualStudio HTTPS telemetry 위험으로 자동승인 거부됐다. 두 세션의 추가 polling/retry·대체 runner·로그 감시·telemetry 조사0을 유지하며, 실제 unknown payload 유출을 확정한 것으로 쓰지 않는다. 이번 개별 파일 저장은 검증된 동결 파일의 공식 보존이며 거부된 수집/build 재실행이나 새 archive 출력 접근을 포함하지 않는다.
+
+**검사·미해결.** 실제 Windows Node526중334pass/192fail·exit1, 새 Linux 실행0이다. 관리 검사382파일/50작업/4변경 경로와 diff 검사를 통과했다. 원격 ref/전체 내용·CI는 실제 확인한 단계만 최종 보고한다. 실제 scene의 호출 인자·binding-data·actor/class/query/map·branch·직렬화/solver 동기화·alias/수명/후속 변경·flags/LOD/version/CDO/CVar/compact map·clock/FPCR·후처리/외형·미확보 원자산과 엔진 chunk hash 범위/알고리즘은 미확정이다. source99/target99·helper 동일성·clock/fps 추정·임의 보정/추가 정규화로 채우지 않는다. 원본 IPA/native/Blueprint/동봉 Python/dylib/server/SDK 실행·에뮬과 원명령 실행0, 수치 pose·새 pose/GLB/영상0/BLOCKED, P5미착수·제품/API/가격/DrawBatch/배포/자동화 변경0을 유지한다.
+
+**다음 한 작업.** 현재 개봉 Blueprint의 원호출 인덱스 생산자와 native 획득 대상 목록의 writer를 정적으로 연결해 scene/actor 선택 입력 경로를 검증한다. 자동승인 거부된 수집의 재실행과 분리하고, 탐색 probe는 정식 수집·독립 검토 전 확정 근거로 승격하지 않는다.
+
+| 파일/범위 | 검토 결과 | 근거 |
+| --- | --- | --- |
+| AGENTS.md | 검토 결과 변경 불필요 | C109/C111/C112/C113의 원본 근거·원본 미실행·거부 우회 금지·출력 차단 유지 |
+| docs/WORKPLAN.md | 수정 | Stage17 실제 source·미확정 입력·자동승인 거부·동결 파일 개별 저장/인계와 다음 한 작업 |
+| docs/SIMULATOR_PLAN.md | 수정 | P3/P4/E3/E4/E5/S1의 source 진전·실제 입력/분기 미선택·출력 차단 |
+| docs/ROADMAP.md | 수정 | T018 부분 진행·개별 보존과 새 통합ZIP/복원 미확정 분리·P5미착수 |
+| docs/FILE_SYNC.json | 수정 | 위4문서 갱신 조건과 reviewed_in T018 연결 |
+| Stage16 이전·T049/C110·기존 A/B/C·제품/API/가격/DrawBatch/배포/자동화 | 검토 결과 변경 불필요 | 당시 이력·원바이트·제품 계약 보존, 원코드/주소/offset/자산 literal/키 공개0 |
+
+**후기 실행환경 단절·원격 인계.** 단절 전 native·Blueprint 분석, 264개별파일/원빈script8개 선언·인계v0 저장과 관리382파일/50작업/4변경경로·diff·4문서 독립검토를 완료했다. 이후 Windows 실행환경 연결이 해제돼 현재 환경은 unavailable이며 새 Linux 실행은0이다. 현재 로컬 파일/HEAD·clean·최종 Git 정렬은 다시 확인하지 못했다. 거부된 asset/build 세션·잠재 산출물은 조회하지 않았고 새 통합ZIP/최종 복원도 미확정이다. 다음 실행환경을 확보하면 최신 원격 HEAD와 로컬 차분·Stage16/native/이번 개별보존물을 먼저 대조하고 사용자 변경을 보존하며 정상 동기화한다. 저장된 인계 파일은 단절 전 보존 시점의 기록이며 이후 가용성의 권위는 이 최신 WORKPLAN이다. 단절 전 검증안9c6b11a29534e215453c831c5eb8e79086eecad3는 브랜치 미반영 초안이며 이 후기 상태를 추가한 최종 문서로 대체한다. 현재 단계의 원격 전체내용/ref/CI 결과는 실제 확인 후 최종 보고한다.
 
 ### 예상 영향 파일
 
