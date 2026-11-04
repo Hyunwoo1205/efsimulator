@@ -7,22 +7,20 @@
 ## 현재 작업과 매 작업 갱신
 
 - 이전 작업: T048 — 단일 ‘선수팩 선택’ 버튼으로 통합하고 판매중/종료 전환은 창 안에 유지했다.539회귀·관리/타입/공식빌드·v17 실제 단일버튼/탭/선택복귀/초점·원격 동일tree와 구현CI2건 성공을 확인했다.
-- 현재 작업: T018 — 진행 중. Windows 재접속 후 원IPA/native·UE41파일과 기존19lane/329동결파일의 SHA를 재확인했고, 중단된 binding/constraint/template/material Parent·external context 입력 수집을 완료했다. Template2mesh/3LOD/10정수배열·constraint48/54/840태그·32GUID/90track/83section·world2/Blueprint1·material8원raw를 실제 확보·읽기검토했다. 기존대표7mesh와합쳐선택mesh9/LOD19/정수배열64이며선수9명이나actualLOD선택완료는아니다. 새통합private checkpoint13,419,727B/529members를실제v0저장했다. Actor FString·live mesh/constraint·solver동기화·runtime/clock/alias 등은미확정으로출력BLOCKED·새pose/GLB/영상0·T018/P1~P4/S1부분/P5미착수다. 다음 한 작업: 원본 actor의 constraint FString 입력 생산·호출 경로를 추적해 선택된 data asset이 active solver에 전달되는 초기화/동기화 조건을 연결한다. runtime값이나분기는default/source99·target99·clock추정으로채우지않는다.
+- 현재 작업: T018 — 진행 중. Stage15에서 actor setter 직접호출3곳의원입력생산형(원문자열2종·zero저장소1종)과explicitsetter의조건부포인터전달을복구했다. 추가parallelcallback을포함한직접Solve4곳/소유함수2개를확인했다. 제작3lane82파일·고유원함수72/5,605word와독립검토18파일을동결했다. native에명시된Light raw는원41파일의지원디렉터리163,837행에서미발견/미확보다. 새checkpoint16,497,036B/117members를실제v0저장·원native백업제공빈폴더1,037파일복원검증했다. 실제scene actor/branch·generic직렬화→solver동기화/runtime/clock은미확정으로출력BLOCKED·T018부분/P5미착수다. 다음 한 작업: 개봉 scene의 actor 생성·초기화 경로를 연결해 constraint 입력과 solver 동기화 경로를 선택하는 원조건을 추적한다.
 - 다음 작업: 없음 — T018 이후 범위는 별도 결정한다.
 - 최근 유지보수: T049 — 완료. 사용자가 확인한11월2일 영문 공격수/PSG 두 상품의 연결을 별도 수동 검토로 반영했다. 전체19문자열ID·원본 필드/타입·두 출처 명단을 대조하고15매핑/검토·rules1.7.0 채택과 고정 수입을 완료했다. raw47,520/1,707·가공182/15·판매중10/종료5이며 원본prefix/종료5팩 불변을 검증했다. 원본 date2026-10-29를 제목의2 Nov로 바꾸지 않으며 저장v22·API/세사이트 전량/공개 익명·화면 및 구현 commit의 원격 내용/실제CI2건 성공을 확인했다. 로컬 전체회귀의 환경 의존성1건은 별도 보존한다. 제품 T018/C109·Stage11 미해결과 재시작 블록은 보존한다.
 - 현재 조건: T043이 T041의 선수 정렬을 화면 범위별로 구분한다. Epic5→Show Time8→Trend3→Highlight6 우선, 팩 안 선수는 등급 안 OVR순, 전체 선수는 등급 안 확인 날짜 최신순→OVR순이며 최초 연결팩 날짜를 사용한다. 팩은 등급 안 날짜 최신순이다. exact raw 타입·원본·가공/API 계약·가격100/900·팩 구성/카드 표시와 실제 앱 public·API/admin/viewer owner-private 경계를 보존한다.
 
-### 압축 재시작 체크포인트 — C109/C111/C112/C113 / Windows 원자료 복구·입력수집 마무리
+### 압축 재시작 체크포인트 — C109/C111/C112/C113 / Stage15 actor 입력·solver 경로
 
-- **읽는 순서:** AGENTS 전체 → 이 블록 → T018 최신「Stage14 Windows 원자료 복구·입력수집 마무리」절 → SIMULATOR_PLAN관련P/E/S1·ROADMAP현재표·FILE_SYNC관련항목. Stage12/13·Windows중단/클라우드C113와A/B/C는당시이력으로보존한다.
-- **현재 환경/기준:** Windows 작업환경에다시접근했다. 이전local HEAD e04c3d26c2891a453d2b1238ecc56de72c329535의유일변경C111문장이remote에완전포함됨을대조·개별backup후기존api-server-setup을 착수remote cc2f41f16a4a962cf07b1df1e92564f491213a33/tree de98a8eab889e2d37b234aaf5ab95149b1d04a17로정상ff·clean확인했다. reset/clean·사용자변경폐기없음. 현재stageR6/이전T048/현재T018/외부다음없음·P1~P4/S1부분/P5미착수·C110/T049보존이다.
-- **실제 재접근:** 원IPA4,145,921,439B 전체SHA b792f05ea95b8426375004c4742230cf5c1d8c55732f291d0d10aea56b2f197a와native199,860,352B SHA3eeaf4a7995c5e4511a7b5377e8a014608aa2e57f976852fa23035141779550a/UE41파일2,619,700,724B가이전과일치한다.19lane/21manifest의고유329파일도bytes/SHA일치. 이전폴더첨부요청은현재원자료가직접확인돼불필요하다.
-- **미완료 입력 마무리:** scene template2의reference6,720B·3LOD/4section/uint16배열10, constraint48Parameter/54Attribute/840tag/float270원bits, binding32GUID/90track/83section/Animation4·map15refs, explicitworld2/BPclass1·material4+Parent4원raw를확보했다. 확인된Parent chain은8nodes/4edges/UMaterialleaf4로누락/cycle0. 전체게임/모든runtime입력완료는아니다.
-- **새 검토:** 제작parser/Capstone/원본을실행하지않은별도읽기검토20파일/246,288B·입력470개대조,검토manifest54c1c8fb83d08f8637ad56b0a7a285b3a0396ff1d0641df123e62e7d15d15662. 원native1개를제외한469입력의bundle/복구ZIP조건을확인했다. 원clock header12,439rows/59,628imports도이번새읽기로검증했으며옛실패를소급PASS하지않는다. 옛18회/33동일출력/137불변격리기록과새읽기를구분한다. old거부polling/runner·telemetry조사/브라우저내부URL우회없다.
-- **실제 새 저장:** [eFsimulator_T018_stage14_recovered_inputs_20261104.zip](https://chatgpt.com/library?file_id=libfile_9f59bb596f188191bb2e1a6fc6a83c21&account_id=personal) — Library libfile_9f59bb596f188191bb2e1a6fc6a83c21 v0/succeeded,13,419,727B/SHA256 01eabaa6e27c0dd68b5a73342f44ddb25c66bbfdf8cf514f29f6dfab0badf577/529members/28manifest sets/고유canonical456. CRC·빈폴더member복원bytes/SHA·nested7ZIP385members배치검증·metadata적용통과. 기존복구ZIP8개는원바이트보존. 전체IPA/native/41컨테이너/SDK·키값/키해시는미포함이며새restore의optional명시입력이다. 과거Stage13/Windows중단시저장0과C113native584,740B/v0를소급변경하지않는다.
-- **차단/다음 한 작업:** 원본 actor의 constraint FString 입력 생산·호출 경로를 추적해 선택된 data asset이 active solver에 전달되는 초기화/동기화 조건을 연결한다. runtime값이나분기는default/source99·target99·clock추정으로채우지않는다. 상대component3개와orphan1·actualactor/vptr/flags/LOD/compact map·alias/수명/후속변경·version/CDO/CVar/clock/FPCR/후처리·shader/외형선택은미확정이다. 엔진stored chunkhash검증0/새pose·GLB·영상·수치pose0/BLOCKED다.
-- **검사/경계:** 새raw/원본source/구조변조/읽기검토와복원검증의범위는최신절을따른다. 이번Windows전체회귀는526중334pass/192fail·cancel/skip/todo0으로권한·의존성·Windows ESM등관측실패를보존하며한원인으로단정하지않는다. 직전cloud525/526/fake-indexeddb1과별개다. 최종관리/diff·원격전체내용/ref·CI는실제로확인한결과만최종보고한다. 원본IPA/native/Blueprint/bundledPython/dylib/server실행·에뮬/보정·가격/API/DrawBatch/배포/자동화변경0이다.
-
+- **읽는 순서:** AGENTS 전체 → 이 블록 → T018 최신「Stage15 actor 문자열·solver 소비 경로」절 → SIMULATOR_PLAN P3/P4/E3/E4/E5·ROADMAP·FILE_SYNC 관련항목. Stage14 Windows복구/클라우드·Stage12/13·A/B/C는 당시이력으로보존한다.
+- **착수 기준:** 같은 api-server-setup의 원격/로컬 HEAD ff883088ebbf3f04e83a4ad8dfb2dc9e8cde78e7/tree05ef8ad615340c8293f3bfef075740a69009831b·clean을확인했다. 이번 실행환경은 Windows이며 새Linux 실행/복원검증으로표시하지않는다.
+- **이번 실제 결과:** Stage15에서 actor setter 직접호출3곳의원입력생산형(원문자열2종·zero저장소1종)과explicitsetter의조건부포인터전달을복구했다. 추가parallelcallback을포함한직접Solve4곳/소유함수2개를확인했다. 제작3lane82파일·고유원함수72/5,605word와독립검토18파일을동결했다. native에명시된Light raw는원41파일의지원디렉터리163,837행에서미발견/미확보다. 새checkpoint16,497,036B/117members를실제v0저장·원native백업제공빈폴더1,037파일복원검증했다. 실제scene actor/branch·generic직렬화→solver동기화/runtime/clock은미확정으로출력BLOCKED·T018부분/P5미착수다.
+- **저장·복원:** [eFsimulator_T018_stage15_actor_solver_inputs_20261104.zip](https://chatgpt.com/library?file_id=libfile_bd96fd8602548191bb94d8bf19cfc8b3&account_id=personal) — 16,497,036B/SHA256 dc11a24dab51f8b43e4ae66c7d651219765749936f4a442fbc68d5f3616617d8, 117members, 실제저장v0/succeeded. 이전 Stage14 master 원ZIP을동봉했고선택canonical/복원코드·독립읽기검토를검증했다. 원native는기존별도private-input백업으로복원한다. 전체IPA/41원컨테이너·키값/키해시·SDK/Capstonebinary는미포함이다. 원문자열/명령/offset/전용코드는privateZIP에만있다.
+- **현재 미해결:** 실제개봉scene의actor subclass/initializer·callback·loadedobject/branch선택, genericserialized member→solver동기화·alias/수명/후속변경·실제mesh/LOD/flags/clock/FPCR·후처리/외형은미확정이다. 기존inline/reference·version/CDO/CVar/compact map과엔진stored chunkhash알고리즘/범위미확정·검증0도유지한다. 원문자열 참조와미확보asset을구분하고누락을다른asset/default로채우지않는다.
+- **다음 한 작업:** 개봉 scene의 actor 생성·초기화 경로를 연결해 constraint 입력과 solver 동기화 경로를 선택하는 원조건을 추적한다.
+- **검사/경계:** 이번 Windows 전체Node회귀526중334pass/192fail·cancel/skip/todo0·exit1이다. 권한/의존성/Windows ESM등관측실패를보존하고한원인으로일반화하지않는다. 관리검사/diff의실제결과는최신절을따른다. 원본실행/에뮬·새pose/GLB/영상/수치pose0/BLOCKED·P5미착수,제품/API/가격/DrawBatch/예약/배포변경0이다.
 
 매 작업 시작 시 Git 상태·이전 결과·이번/다음 작업·선행 조건을 확인한다. FILE_SYNC의 P0→P1→P2로 관련 파일을 검토하되 필요한 파일은 등급과 무관하게 함께 수정한다. 추가 요구는 ID·영향 단계·선행 조건·순서·상태를 기록한다. 파일별 수정/변경불필요/미해결과 근거, 경로 추가/삭제/이름 변경·참조를 같은 작업에서 갱신한다. 검증과 이전/현재/다음 포인터를 맞추며 구현/수집/발행 완료는 실제 근거가 있을 때만 표시한다.
 
@@ -38,9 +36,9 @@ C110은 두 상품 연결의 별도 데이터 유지보수 승인으로, T018/C1
 | --- | --- | --- | --- |
 | C113 | Windows 미저장 자료의 재추출 가능 여부 확인·재추출 요청 | T018/R6; 검증된 원native/백업→새정적수집/읽기검토→실제checkpoint저장, 원IPA/선택raw복원→후기입력연결. C109/거부우회금지유지 | C113native382구간/31,338word·부분checkpointv0보존. Windows원자료재접근후template/binding/constraint/material/context실제수집·새통합checkpoint v0,전체T018/runtime미완료·출력차단 |
 | C112 | 연결 해제로 중단된 작업 현황 복구 후 계속 지시 | T018/R6; remote/도구실제상태확인→완료/pending/재접근불가분리→원격인계보존→환경재연결후원본/동결입력대조·후기추출재개 | Windows재접근·IPA/native/41입력·19lane329파일SHA확인·미완료5lane수집/새읽기검토·통합checkpoint1개v0저장. 당시단절/미저장이력보존·runtime미확정/출력차단 |
-| C111 | 다음 작업을 계속하고 실제 필요한 자료 추출 완료 전까지 멈추지 말라는 지시 | T018/R6; 확인된 원본 의존성→실제복원/추출/연결검증→미확보/정적확정불가구분. C109/원본미실행/P5경계유지 | Stage14확정입력동결·Windows재접근/후기canonical·독립읽기검토·통합private저장v0완료(C112/C113최신기록). runtime미확정/출력BLOCKED |
+| C111 | 다음 작업을 계속하고 실제 필요한 자료 추출 완료 전까지 멈추지 말라는 지시 | T018/R6; 확인된 원본 의존성→실제복원/추출/연결검증→미확보/정적확정불가구분. C109/원본미실행/P5경계유지 | Stage14확정입력동결/통합보존·Stage15입력3생산형/solver소비·Light미확보검사범위/새보존. 전체runtime/T018미완료·출력BLOCKED |
 | C110 | 두 신규 공식 상품과 EFHub 팩의 연결이 각각 맞다고 확인하고 연결·반영을 지시 | T049/R6 별도 데이터 유지보수. 상품 identity2건만 사용자 확인, 전체19카드ID/명단/원본은 실제DOM검증→승인 해시/규칙채택→고정갱신/저장/원격/CI. T018/C109 기준·가격100/900·타입·공개경계 유지 | 완료: 명단/원본/15매핑·rules1.7.0 채택·고정 수입/독립QA·저장v22/API/세사이트·공개 익명/화면·원격7파일/382파일·구현CI2건 성공; 로컬 전체회귀525/526 환경미충족1건 별도보존 |
-| C109 | 원본 코드를 디컴파일·추출해 재구성하고 별도 보정식/추가 가정을 쓰지 말라는 지시 | T018/R6; inline 자체계수→입력alias/벡터성분→reference/flag/후처리근거, 미확인출력차단 | Stage14확정입력과후기scene/template/constraint/materialParent/context실수집·검토·통합private저장v0완료(C112/C113). 당시환경unavailable/저장미완료이력보존. runtime미확정/출력BLOCKED·P5미착수 |
+| C109 | 원본 코드를 디컴파일·추출해 재구성하고 별도 보정식/추가 가정을 쓰지 말라는 지시 | T018/R6; inline 자체계수→입력alias/벡터성분→reference/flag/후처리근거, 미확인출력차단 | Stage14입력/보존이후Stage15원문자열생산·초기화/조건부setter소비경로복구. 실제actor/branch·generic직렬화동기화미확정·T018부분/P5미착수/BLOCKED |
 | C108 | Work·단계인계를 유지하며 다음작업 진행 승인 | T018/R6; frozen scene2clip/대표mesh→A/B/C조건부skin·초기화근거→60fps/GLB/소품world QA→인계/정확영수증 | reference/LBS·초기화/encoded-loop·6영상/2비교·GLB독립QA/8저장 확인; inline별도BSS/실제runtime미해결·P5미착수 |
 | C107 | Work를 유지하고 단계별 인계 기록을 남기며 다음 작업 진행 | T018/R6; fresh기준/입력확인→lane별분석/QA→최신결과·미해결/다음한작업·정확영수증압축→검사/정상반영후재개 | Stage8 실제4clip/원키QA·선택mode3·scene18채널/부착/event/입력복구와4저장검증; native완성/P5확대 미완료 |
 | C106 | 앞서 설명한8개 요소가 추출/분석 계획에 포함됐는지 확인하고 포함하여 다음 작업 진행 요청 | T018/R6; 계획 audit→E1~E8/P1~P5/S1 명시→선택producer/graph/layer/장비/scene 참조→근거별 검증 | 계획audit/명시·실제선택/모션후처리/장비/scene참조와4저장 검증;8요구 부분/미완료/P5미착수 |
@@ -1688,6 +1686,32 @@ Windows환경재연결에따라C112복구/C113재추출을계속했다. 해당ra
 | docs/ROADMAP.md | 수정 | 현재T018/Windows복구/원자료수집·후기runtime미해결·외부다음없음 |
 | docs/FILE_SYNC.json | 수정 | 위4항목의복구/입력/보존조건추가·reviewed_in T018,role/priority/related_paths보존 |
 | 기존Stage12/13·Windows중단·C113cloudnative·C110/T049·A/B/C/제품·API/가격/DrawBatch/배포/자동화 | 검토 결과 변경 불필요 | 당시이력/미저장/진단·소비계약보존,새원본별코드/수학/offset는private ZIP에만보존 |
+
+#### Stage15 actor 문자열·solver 소비 경로 (2026-11-04 KST)
+
+C109/C111의 원본입력 추적을 이어갔다. 원격/로컬 ff883088ebbf3f04e83a4ad8dfb2dc9e8cde78e7·clean에서착수했고 AGENTS 전체·최신WORKPLAN/계획/목록을읽었다. Windows를다음작업에사용하지못할가능성에대비해저장백업을기준으로명시입력과상대경로복원을준비했다. 현재실행환경은Windows로새Linux실행성공을주장하지않는다. Stage14선택범위의당시수집완료와이번native에서추가로확인된참조를구분한다.
+
+| 실제 분석 대상 | 확인 결과 | 한계 |
+| --- | --- | --- |
+| actor 문자열 생산 | 원함수46/2,707word·sourcecheck82, 전체text의즉시B/BL검사에서직접caller3. 원문자열2종과zero저장소1종의생성·전달분기를복구 | 전체ABI/간접호출폐쇄·실제scene선택미증명. 빈입력으로loader실패/solver해제를단정하지않음 |
+| component→solver | 원함수30/3,059word·sourcecheck76·이전15body재대조. explicitsetter의같은포인터저장·전달과generator조건을확인. 직접Solve4곳/소유함수2개,추가parallelcallback1곳과등록/원gate를수집 | generic직렬화경로의두저장소동기화·실제callback/lifetime/alias미증명. 같은offset49후보를같은객체증거로쓰지않음. 함수/word는lane중복가능 |
+| 새로 드러난 Light 참조 | 원native의명시참조를근거로원41파일SHA·14TOC159,710행/159,708고유경로와13PAK4,127행을검사했다. 총163,837행에서exact/casefold경로0·Light raw0. 표준원raw34,346B/정확package·export·class·globalmetadata positive1을대조했다. | 원native참조존재와원asset확보를구분. 검사범위밖부재/다른버전/실제unused를추정하지않고standard로대체하지않음 |
+| 새 독립 읽기 | 18canonical/219,602B·finding0. actor/solver의원바이트·선택명령bitfield와3직접actor/4Solve·format6원chain의vptr16slot·inventory163,837행을독립대조했다. 중복4함수를제외한고유72함수/5,605word·제작82canonical/96고유의존입력과큰원본42개외portable54개를확인했다. | 제작producer/parser/Capstone/원본을실행하지않음. 원명령bitfield/주소·바이트대조는전체ISA/ABI/runtime증명아님 |
+
+**실제 보존·복원.** [eFsimulator_T018_stage15_actor_solver_inputs_20261104.zip](https://chatgpt.com/library?file_id=libfile_bd96fd8602548191bb94d8bf19cfc8b3&account_id=personal) — 16,497,036B/SHA256 dc11a24dab51f8b43e4ae66c7d651219765749936f4a442fbc68d5f3616617d8, 117members, 실제저장v0/succeeded. 새복원코드25검사·ZIP CRC·117member bytes/SHA·빈폴더member복원과7nestedZIP385members배치를확인했다. 별도원native백업을실제로제공해Stage14/13필요위치에설치한1,037개파일의bytes/SHA가일치했다. sourceNativeExplicitlyProvided=true이고원본/producer/oldrunner실행0이다. 실제검사는Windows이며새Linux복원실행0이다. 이전 Stage14 master13,419,727B/SHA01eabaa6e27c0dd68b5a73342f44ddb25c66bbfdf8cf514f29f6dfab0badf577와기존복구자료/진단을원바이트보존한다. 새수집근거·선택원바이트·전용코드/manifest/검토·인계/복원코드만private에담고 전체native/IPA/41컨테이너/SDK/Capstonebinary·키값/키해시·credential/불필요로그를담지않는다. 원native별도백업은존재확인했으며새restore의명시입력으로검증복원한다. 컨테이너index를처음부터재수집하는작업에는미포함41원파일이별도필요하다. 원본·producer·oldreview/거부runner는복원과정에서실행하지않는다.
+
+**검사와 경계.** 이번Windows전체Node회귀526중334pass/192fail·cancel/skip/todo0·exit1을그대로기록한다. 앞선Windows334/526및Linux525/526과각각구분하고실패전부를한원인이나새제품회귀로단정하지않는다. 관리검사project:check는382파일/50작업/변경4경로PASS,git diff --check도PASS다. 동일branch정상commit/ref·변경문서전체내용·CI는실제확인후최종보고하며미래자신의SHA/CI를미리쓰지않는다. 기존실패/거부는보존하고old40749polling·격리replay/대체runner/telemetry조사·브라우저내부URL우회는0이다. 원본IPA/native/Blueprint·bundledPython/dylib/server실행/에뮬0,원pose/수치pose·새GLB/영상0/BLOCKED·T018/P1~P4/S1부분/P5미착수다.
+
+**미해결·다음 한 작업.** 개봉 scene의 actor 생성·초기화 경로를 연결해 constraint 입력과 solver 동기화 경로를 선택하는 원조건을 추적한다. 실제runtime값/분기·generic직렬화와solver동기화·미확보asset/clock/FPCR·후처리·shader/외형은미확정으로유지한다. 원본명령으로확인된독립경로만재구성하며default/source99·target99·helper동일성·clock추정/임의보정으로채우지않는다.
+
+| 파일/범위 | 검토 결과 | 근거 |
+| --- | --- | --- |
+| AGENTS.md | 검토 결과 변경 불필요 | C109/C111/C112/C113가정적입력추적·실패분리/기존보존·비공개/출력차단을포괄 |
+| docs/WORKPLAN.md | 수정 | Stage15실제추적·수집한계·저장/검증·현재/미해결/다음한작업 |
+| docs/SIMULATOR_PLAN.md | 수정 | P3/P4/E3/E4/E5원입력생산·조건부소비근거와live미확정 |
+| docs/ROADMAP.md | 수정 | 현재T018/Stage15상태·인계와원본재구성차단 |
+| docs/FILE_SYNC.json | 수정 | 위4문서의Stage15갱신조건추가·reviewed_in T018,역할/우선순위/related_paths보존 |
+| 기존Stage14·Stage12/13·A/B/C·C110/T049·제품/API/가격/DrawBatch/배포/자동화 | 검토 결과 변경 불필요 | 기존이력/자료·제품소비계약보존,원별상세는privateZIP에만보존 |
 
 ### 예상 영향 파일
 
