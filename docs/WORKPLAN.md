@@ -9,7 +9,7 @@
 - 이전 작업: T048 — 단일 ‘선수팩 선택’ 버튼으로 통합하고 판매중/종료 전환은 창 안에 유지했다.539회귀·관리/타입/공식빌드·v17 실제 단일버튼/탭/선택복귀/초점·원격 동일tree와 구현CI2건 성공을 확인했다.
 - 현재 작업: T018 — 진행 중. Stage17에서 binding helper의 등록·인자·필드·원초기화 source18함수/2,278word와 원근거134개를 검증했다. 기존16package의 Blueprint script129개/91,144B·opcode53종·호출1,004개와 framing 오류 입력49건 거부 검사, 개봉 selector4호출·인덱스를 쓰는 원대안3개를 연결했다. 실제 분기·binding 입력은 미선택이며 새 원자산 raw0, 원본 실행·새 pose/GLB/영상0/BLOCKED다. 동결268canonical+4manifest=272논리파일/16,226,553B 중 nonempty264개를 각각 비공개 저장하고 원길이0 script8개는 고정 manifest의 정확한 빈파일 선언으로 보존했다. 별도 인계 파일을 저장했으며 새 통합ZIP의 최종 build·archive·복원은 미확정·새ZIP 저장0이다. 개별보존·문서 검토 뒤 Windows 연결이 해제돼 현재 로컬 확인/Git 정렬은 미완료다. 다음 한 작업: 현재 개봉 Blueprint의 원호출 인덱스 생산자와 native 획득 대상 목록의 writer를 정적으로 연결해 scene/actor 선택 입력 경로를 검증한다. 자동승인 거부된 수집의 재실행과 분리하고, 탐색 probe는 정식 수집·독립 검토 전 확정 근거로 승격하지 않는다.
 - 다음 작업: 없음 — T018 이후 범위는 별도 결정한다.
-- 최근 유지보수: T049 — 완료. 사용자가 확인한11월2일 영문 공격수/PSG 두 상품의 연결을 별도 수동 검토로 반영했다. 전체19문자열ID·원본 필드/타입·두 출처 명단을 대조하고15매핑/검토·rules1.7.0 채택과 고정 수입을 완료했다. raw47,520/1,707·가공182/15·판매중10/종료5이며 원본prefix/종료5팩 불변을 검증했다. 원본 date2026-10-29를 제목의2 Nov로 바꾸지 않으며 저장v22·API/세사이트 전량/공개 익명·화면 및 구현 commit의 원격 내용/실제CI2건 성공을 확인했다. 로컬 전체회귀의 환경 의존성1건은 별도 보존한다. 제품 T018/C109·Stage11 미해결과 재시작 블록은 보존한다.
+- 최근 유지보수: T050 — 부분 완료. 사용자가 확인한11월5일 세 상품 identity와 전체33문자열ID·원본 필드/숫자타입을 실제 DOM으로 별도 검증하고18매핑/승인·rules1.8.0을 채택했다. POTW/Spanish 두 팩22명은 고정 run-cycle로 반영해 raw47,542/1,709·가공204/17·판매중6/종료11이며 데이터묶음v24·private API·private viewer/public 실제앱의 전량 대조를 완료했다. European은 section11명(타입5×3·6×8)과 공식N150을 확인했지만 pack상세가8명만 노출되어 잠긴 collector의 `pack_detail_section_mismatch`로 raw/DB/API 반영을 보류하고 기존 정상자료를 보존했다. GitHub 고정영수증·원격ref·실제CI 확인은 진행 중이므로 T050 전체완료로 표시하지 않는다. 제품 T018/C109~C113·Stage17 미해결과 재시작 블록은 보존한다.
 - 현재 조건: T043이 T041의 선수 정렬을 화면 범위별로 구분한다. Epic5→Show Time8→Trend3→Highlight6 우선, 팩 안 선수는 등급 안 OVR순, 전체 선수는 등급 안 확인 날짜 최신순→OVR순이며 최초 연결팩 날짜를 사용한다. 팩은 등급 안 날짜 최신순이다. exact raw 타입·원본·가공/API 계약·가격100/900·팩 구성/카드 표시와 실제 앱 public·API/admin/viewer owner-private 경계를 보존한다.
 
 ### 압축 재시작 체크포인트 — C109/C111/C112/C113 / Stage17 동결 파일 개별 보존
@@ -35,8 +35,11 @@ C111은 실제 필요한 자료를 추출 완료할 때까지 계속하는 지�
 
 C110은 두 상품 연결의 별도 데이터 유지보수 승인으로, T018/C109의 원본 근거 재구성·미확인 출력 차단과 Stage11의 미완료/재시작 범위를 바꾸지 않는다.
 
+C114는 11월5일 세 공식 상품과 EFHub 팩의 identity 확인 및 반영 지시다. identity3건만 사용자 확인으로 기록하고 전체33카드ID·명단·원본·타입·N/S/종료는 실제 DOM으로 독립 검증한다. POTW/Spanish 반영 완료와 European의 잠긴 first-import source8/effective11 보류를 구분하며, T018/C109~C113의 원본 분석 범위는 바꾸지 않는다.
+
 | 조건 ID | 최신 결정 | 영향 단계 / 선행 조건 / 처리 순서 | 상태 |
 | --- | --- | --- | --- |
+| C114 | 11월5일 세 신규 공식 상품과 EFHub 팩의 대응을 각각 확인 | T050/R6 별도 데이터 유지보수. identity3건 사용자 확인→전체33ID/원본/타입·공식N/종료 DOM검증→18승인/rules1.8.0 채택→고정수입/저장/API/세사이트→GitHub/CI. 잠긴 collector 검사를 완화하거나 source8을11로 위조하지 않음 | 부분 완료: POTW/Spanish22명·2팩은 저장v24/API/세사이트 verified. European은11명/타입/identity 승인 완료이나 `pack_detail_section_mismatch`로 DB보류. GitHub pending |
 | C113 | Windows 미저장 자료의 재추출 가능 여부 확인·재추출 요청 | T018/R6; 검증된 원native/백업→새정적수집/읽기검토→실제checkpoint저장, 원IPA/선택raw복원→후기입력연결. C109/거부우회금지유지 | 기존 원native/동결 입력으로 Stage17 source 검증·nonempty264개 저장/원빈script8개 선언·별도 인계 보존. Windows 실제 작업/newLinux0·새 통합ZIP/복원 미확정 |
 | C112 | 연결 해제로 중단된 작업 현황 복구 후 계속 지시 | T018/R6; remote/도구실제상태확인→완료/pending/재접근불가분리→원격인계보존→환경재연결후원본/동결입력대조·후기추출재개 | Stage17 분석·264개별파일/8빈script선언/인계저장·관리검사와 문서검토 후 Windows 재단절·현재 unavailable. 로컬재확인/Git정렬미완료·원격인계계속/newLinux0 |
 | C111 | 다음 작업을 계속하고 실제 필요한 자료 추출 완료 전까지 멈추지 말라는 지시 | T018/R6; 확인된 원본 의존성→실제복원/추출/연결검증→미확보/정적확정불가구분. C109/원본미실행/P5경계유지 | 동결272논리파일 중 nonempty264개 저장·원길이0 script8개 고정 manifest 선언·별도 인계 성공. 새 원자산raw0·필요 입력 전체 확보 미완료·다음 selector 입력 연결 계속 |
@@ -3652,3 +3655,59 @@ API 전용165/165검사를 통과했다. 전체 npm test는525통과/총526이�
 | `services/catalog-api/scripts/lifecycle/publish-remote.mjs` | 검토 결과 변경 불필요 | private API 전량 readback/해시와 expected-current CAS 활성화 재사용 |
 | `services/catalog-api/scripts/lifecycle/verify-sites.mjs` | 검토 결과 변경 불필요 | API/private viewer/public app 익명 읽기의 전체4컬렉션·타입·고정가격 대조 재사용 |
 | `scripts/catalog-update-record.mjs` | 검토 결과 변경 불필요 | 원본/HTML/credential을 제외한 고정 화이트리스트 요약만 생성, 자기 포함 미래 SHA/CI 금지 유지 |
+
+
+## T050 — 11월 5일 세 신규 상품 연결 검토와 부분 반영
+
+- 단계: R6
+- 상태: 진행 중
+- 이전: T049
+- 다음: T018
+
+### 목표·선행 조건·순서
+
+사용자는 세 공식 상품과 EFHub 팩의 대응이 각각 맞음을 확인했다(C114). 이는 상품 identity3건의 직접 사용자 확인이며, 카드별 ID·명단 완전성·원본 필드·숫자 playerType·공식 전체인원/종료·DB 반영 완료를 사용자 확인만으로 추정하지 않는다. 실제 보존 DOM을 별도로 검증하고 잠긴 매핑/규칙·collector 검사를 그대로 적용한다. 이번은 별도 데이터 유지보수이며 T018/C109~C113의 원본 분석·미확인 출력 차단·재시작 범위를 변경하지 않는다.
+
+순서: 한국어→일본어→영어 신규목록 순차 관측과 공식/팩/선수상세 DOM 원형 보존 → identity3건 사용자 확인과 별도 전체33ID/원본/타입 검토 → mappingDigest/approval·rules1.8.0 잠금과 expected CURRENT 채택 → 고정 run-cycle → 검증 데이터묶음 같은 Library ID 저장/정확 새 버전 무결성 확인 → private API 분할 적재/전량 readback/CAS → private viewer/public 실제앱 전체4컬렉션 대조 → 고정 요약·정상 GitHub 반영/실제CI 확인이다. European의 source8/effective11 first-import 불일치는 파서·collector를 수정하거나 검사를 완화하지 않고 보류한다.
+
+### 출처·회차·명단 검토
+
+| 공식 상품 | EFHub 팩 | 특수 S / 공식 전체 N | 종료 UTC | 처리 |
+| --- | --- | --- | --- | --- |
+| Epic: Aggressive Markers | European Clubs Selection 5 Nov '26 | 11 / 150 | 2026-11-12T01:59:59Z | identity·11명/타입 승인 완료, DB 보류 |
+| POTW: Worldwide 5 Nov '26 | POTW 5 Nov '26 | 11 / 11 | 2026-11-12T01:59:59Z | 반영 완료 |
+| League Selection: Spanish Nov '26 | Spanish League Selection 5 Nov '26 | 11 / 11 | 2026-12-31T01:59:59Z | 반영 완료 |
+
+출처는 비공개 `catalog-runtime/reviewed-evidence/T050/source-observations.json`과 실제 HTML에 보존하며 인덱스 SHA256은 `37973e832e88a954af54e982eefc28cb3e66d8e8ea7352ed330e90bc184a2bad`다. 한국어·일본어·영어 신규목록, 공식 확률표, 신규3팩과 European에서 팩상세에 누락된 타입5 선수3명의 상세 DOM URL·관측시각·bytes/SHA를 실제 언어/URL 그대로 보존했다. browser DOM의 `status=null`을 HTTP200으로 바꾸지 않았고 원본 API·challenge 우회는 사용하지 않았다.
+
+European은 신규목록의 정확한11문자열ID와 타입5×3·타입6×8을 확인했다. 팩 상세는 타입6의8명만 노출하므로 source playerCount8을 보존하고 effective special11을 원본값으로 가장하지 않는다. 잠긴 collector는 기존 raw pack이 없는 첫 수입에서 팩상세8명과 section11명의 불일치를 `pack_detail_section_mismatch`로 거부했다. identity·11명 명단·원본/타입 검토와 mapping approval은 완료했지만 raw/processed/live/API에는 추가하지 않았으며, 이는 사용자 확인 부족이나 카드ID 미확인이 아니라 별도 collector 개발이 필요한 보류다.
+
+검토 레지스트리는 기존15개를 보존하고 세 mappingDigest를 추가해 총18개다. identity authority는 `direct_user_confirmation`, 명단·원본·타입·공식N/종료 authority는 실제 DOM 검증으로 구분한다. rules1.8.0 SHA256 `259552f1f2558763f384467fbe920cd2223c57a097c58349cc84d7635199b9ed`의 rules-check와18매핑 승인을 통과했으며, 파서/collector/가공/API 소스는 수정하지 않았다.
+
+### 실행·검증 상태와 남은 작업
+
+고정 run-cycle은 POTW와 Spanish의 raw선수22명/팩2개를 append했다. raw47,542선수/1,709팩, 가공204선수/17팩, live6/archive11이며 기존 raw선수47,520·팩1,707 prefix와 기존 processed182명/15팩·archive11을 보존했다. runtime은 `e4239c10108811c75ca45f509fa177e410b9b3514696bcd11cf1c02342255244`, publication은 `7a8dfad6708ec7ee82bebc76957dd05b66a7e833973b678ef5025d6e2070ae62`, source receipt SHA256은 `af37b6cc1633cf37ee522512506dd54259eb8c1edb7904d939f9a86a16a4b9a0`다.
+
+독립 검증은 신규22raw가 보존 DOM의22원본 객체와 일치하고 가공9필드의 정확한 숫자 playerType·live중첩·참조/합집합을 유지함을 확인했다. POTW는 타입3×11, Spanish는 타입6×11이다. 두 팩은 N=11이므로 단일 뽑기만 지원하며 새 가공에는 single100/ten900과 `direct_user_confirmation` 출처를 유지하되 raw 가격을 수정하거나 원출처 가격 조사로 표시하지 않는다. 독립 검증 SHA256은 `f61873acfdcdd11278ed2bc597f8c38b7f4428a9d22698c0a6481bacee6f837f`이고 API 전용165/165검사를 통과했다.
+
+데이터묶음 v24는69,950,532bytes, SHA256 `3307b5bcd1a4ed46dac4ebe19781c53a74533b7b9d23cf990c3b1eb13b9d5bc4`, inventory SHA256 `9acd38218dacba7843ec5e3ce5eae8609c0c2ad3d92e26aa4e4aefcb3a82c8f3`이며 gzip/tar완전성·372파일/504members 전량 일치를 확인했다. private API 전량 readback/해시와 expected-current CAS를 완료했고, API·private viewer·public 실제앱에서 같은 publication의 players204/packs17/live6/archive11 전체 내용과 숫자타입·옵션/가격을 대조했다. 공개 앱은 서비스 토큰 없이 익명 읽기를 검증했으며 사이트 영수증 SHA256은 `eec155ed5ae2832eb1de1ffad266eae03f0143e761ece09e770e7b82442cdd68`다.
+
+고정 요약 영수증 runId `10f77f75b3f925e05143514171c8f63f388d9d047f7c3157f6dd614c4bca37d2`는 이번 runtime/publication과 bundle/api/sites=`verified`, github=`pending`으로 생성했다. 같은 api-server-setup 브랜치의 검토/규칙/문서/고정요약 정상 commit·push, 원격 ref/내용과 해당 commit의 실제 CI 확인이 남아 있다. 자기 자신을 포함할 미래 SHA/CI를 영수증에 기록하지 않고 최종 GitHub 결과는 작은 모니터 `hosting.pipeline.github`에 보존한다. European은 별도 명시적 collector 개발·검토/테스트/규칙 채택 전까지 DB 보류를 유지하므로, GitHub가 성공해도 세 상품 전체 DB 반영 완료라고 표시하지 않는다.
+
+### 파일 최신화 검토
+
+| 파일 | 결과 | 근거 |
+| --- | --- | --- |
+| `data/research/catalog-sale-mappings.json` | 수정 | 사용자 확인3 identity와 독립 검증한33문자열ID·N/S·종료·실제DOM근거 추가; European source8/effective11과 보류 사유 보존 |
+| `services/catalog-api/policy/approved-mappings.json` | 수정 | 세 mappingDigest와 identity/DOM 검증 authority 추가; 총18review |
+| `services/catalog-api/policy/rules.lock.json` | 수정 | 파서/collector 소스는 그대로 두고 승인 레지스트리 변경을 rules1.8.0으로 잠금 |
+| `docs/WORKPLAN.md` | 수정 | C114/T050의 두 팩 완료·European 보류·GitHub pending과 근거/한계 기록 |
+| `docs/ROADMAP.md` | 수정 | 제품 currentT018 위치를 유지하며 별도 T050 부분 반영 상태 기록 |
+| `docs/FILE_SYNC.json` | 수정 | 변경7파일의 T050 영향·갱신 조건 연결 |
+| `data/updates/catalog-latest.json` | 수정 | 실제22명/2팩·runtime/publication·bundle/API/세사이트 verified와 github pending만 기록 |
+| `AGENTS.md` | 검토 결과 변경 불필요 | 기존 수동 검토·정상 push/CI·비공개 원문 금지 정책 재사용 |
+| `docs/AUTOMATION.md` | 검토 결과 변경 불필요 | 개별 상품 상태를 예약 공통문구에 복사하지 않고 T036 재개/완료 절차 유지 |
+| `docs/CATALOG_DATA_CONTRACT.md` | 검토 결과 변경 불필요 | 9필드/playerType·N/S/A·가격100/900·단일/10회 계약 유지 |
+| `config/catalog-automation.json` | 검토 결과 변경 불필요 | API/viewer owner-private·실제앱 public 역할과 origin 유지 |
+| `services/catalog-api/scripts/lifecycle/collect-cycle.mjs` | 검토 결과 변경 불필요 | European 불일치를 우회하지 않고 잠긴 first-import 검사를 그대로 적용 |
+| `scripts/catalog-update-record.mjs` | 검토 결과 변경 불필요 | 화이트리스트 고정영수증·github pending·미래SHA 금지 계약 유지 |

@@ -651,6 +651,203 @@
         },
         "rawDatePolicy": "Preserve visible original 2026-10-29; do not replace it with the 2 Nov title label."
       }
+    },
+    {
+      "saleId": "european-clubs-selection-5-nov-26::2026-11",
+      "packSlug": "european-clubs-selection-5-nov-26",
+      "officialTitle": "Epic: Aggressive Markers",
+      "newPlayersSection": "European Clubs Selection 5 Nov '26",
+      "expectedEndsAt": "2026-11-12T01:59:59.000Z",
+      "expectedTotalPlayerCount": 150,
+      "expectedSpecialCount": 11,
+      "memberIds": [
+        "88045755889792",
+        "88046292831707",
+        "88045755869252",
+        "105896713764382",
+        "105896713770910",
+        "105896713774202",
+        "105896713790915",
+        "105896713801020",
+        "105896713807926",
+        "105896713808753",
+        "105896713821146"
+      ],
+      "countCorrection": {
+        "status": "user_confirmed",
+        "reason": "User confirmed only the product identity. Preserved DOM independently verifies eleven section members: three type5 player-detail records plus eight type6 pack-detail records. Preserve source count8; hold effective special11 until the locked first-import collector can consume this reviewed layout without weakening validation.",
+        "effectiveCount": 11
+      },
+      "matchEvidence": {
+        "status": "user_confirmed_product_identity_and_verified_browser_dom_membership",
+        "identityAuthority": "direct_user_confirmation",
+        "identityConfirmation": "각각 European Clubs Selection 5 Nov ’26, POTW 5 Nov ’26, Spanish League Selection 5 Nov ’26 이야.",
+        "identityScope": "Only the three official-product to EFHub-pack identities were user-confirmed; full string IDs, roster completeness, playerType values, raw fields, source count8 and official totals/end times were independently verified from preserved DOM.",
+        "identityConfirmedOnKst": "2026-11-05",
+        "sourceKind": "browser_dom",
+        "httpStatus": null,
+        "sourceEvidenceFile": "catalog-runtime/reviewed-evidence/T050/source-observations.json",
+        "sourceEvidenceSha256": "37973e832e88a954af54e982eefc28cb3e66d8e8ea7352ed330e90bc184a2bad",
+        "official": {
+          "url": "https://efootball-web.konami.net/probability_kr.php",
+          "sha256": "8eb6934ead4bd392dd1c1bcaaaa4b674fe88f3a52d43aafe12ff80dbf9c5e774",
+          "observedAt": "2026-11-05T08:24:30.916Z",
+          "totalPlayerCount": 150,
+          "endsAt": "2026-11-12T01:59:59Z"
+        },
+        "newPlayers": {
+          "url": "https://efhub.com/new-players",
+          "sha256": "5c04b39203f003f2e7841adbeb6f1f4365cd9155fb1d18077986a0bb953e0e42",
+          "observedAt": "2026-11-05T08:24:30.886Z",
+          "section": "European Clubs Selection 5 Nov '26",
+          "completeCount": 11
+        },
+        "pack": {
+          "url": "https://efhub.com/packs/european-clubs-selection-5-nov-26",
+          "sha256": "23af6b0d39c5b2c5221ff1392ea0355eaa11ae4fa2683d9798ac33635852c898",
+          "observedAt": "2026-11-05T08:24:30.996Z",
+          "name": "European Clubs Selection 5 Nov '26",
+          "rawDate": "2026-11-05",
+          "originalPlayerCount": 8,
+          "verifiedCardIds": 8
+        },
+        "omittedPlayerDetails": [
+          {
+            "id": "88045755889792",
+            "url": "https://efhub.com/players/88045755889792",
+            "sha256": "0fde49c570a2802f2dad45fcfbed7c690d116eacd698d2f99b69c2901a05b05a",
+            "observedAt": "2026-11-05T08:27:36.594Z"
+          },
+          {
+            "id": "88046292831707",
+            "url": "https://efhub.com/players/88046292831707",
+            "sha256": "31a5b7d8ef657ae20a9239c09764b62f86585829f919d0f03fc07ce0755ba135",
+            "observedAt": "2026-11-05T08:27:36.694Z"
+          },
+          {
+            "id": "88045755869252",
+            "url": "https://efhub.com/players/88045755869252",
+            "sha256": "f23ffba0ff016681c20e27b22bb6f6c187450b93371bf05e6c5cceba7db153fb",
+            "observedAt": "2026-11-05T08:27:36.808Z"
+          }
+        ],
+        "rawDatePolicy": "Preserve visible original 2026-11-05.",
+        "lockedCollectorStatus": "Hold first import: the reviewed section has eleven members but the pack detail exposes only eight; the locked collector requires an existing raw pack before applying a source8/effective11 correction."
+      }
+    },
+    {
+      "saleId": "potw-5-nov-26::2026-11",
+      "packSlug": "potw-5-nov-26",
+      "officialTitle": "POTW: Worldwide 5 Nov '26",
+      "newPlayersSection": "POTW 5 Nov '26",
+      "expectedEndsAt": "2026-11-12T01:59:59.000Z",
+      "expectedTotalPlayerCount": 11,
+      "expectedSpecialCount": 11,
+      "memberIds": [
+        "52904870384358",
+        "52904870390175",
+        "52904870395176",
+        "52904870401051",
+        "52904870408141",
+        "52904870408433",
+        "52904870409986",
+        "52904870417884",
+        "52904870434359",
+        "52904870440802",
+        "52904870454853"
+      ],
+      "matchEvidence": {
+        "status": "user_confirmed_product_identity_and_verified_browser_dom_membership",
+        "identityAuthority": "direct_user_confirmation",
+        "identityConfirmation": "각각 European Clubs Selection 5 Nov ’26, POTW 5 Nov ’26, Spanish League Selection 5 Nov ’26 이야.",
+        "identityScope": "Only the three official-product to EFHub-pack identities were user-confirmed; full string IDs, roster completeness, playerType values, raw fields and official totals/end times were independently verified from preserved DOM.",
+        "identityConfirmedOnKst": "2026-11-05",
+        "sourceKind": "browser_dom",
+        "httpStatus": null,
+        "sourceEvidenceFile": "catalog-runtime/reviewed-evidence/T050/source-observations.json",
+        "sourceEvidenceSha256": "37973e832e88a954af54e982eefc28cb3e66d8e8ea7352ed330e90bc184a2bad",
+        "official": {
+          "url": "https://efootball-web.konami.net/probability_kr.php",
+          "sha256": "8eb6934ead4bd392dd1c1bcaaaa4b674fe88f3a52d43aafe12ff80dbf9c5e774",
+          "observedAt": "2026-11-05T08:24:30.916Z",
+          "totalPlayerCount": 11,
+          "endsAt": "2026-11-12T01:59:59Z"
+        },
+        "newPlayers": {
+          "url": "https://efhub.com/new-players",
+          "sha256": "5c04b39203f003f2e7841adbeb6f1f4365cd9155fb1d18077986a0bb953e0e42",
+          "observedAt": "2026-11-05T08:24:30.886Z",
+          "section": "POTW 5 Nov '26",
+          "completeCount": 11
+        },
+        "pack": {
+          "url": "https://efhub.com/packs/potw-5-nov-26",
+          "sha256": "5d544ea2da22ae595d5676d5a1f50986fd7b4e8efd8a01eabc51425fa5af92ab",
+          "observedAt": "2026-11-05T08:24:31.088Z",
+          "name": "POTW 5 Nov '26",
+          "rawDate": "2026-11-05",
+          "originalPlayerCount": 11,
+          "verifiedCardIds": 11
+        },
+        "rawDatePolicy": "Preserve visible original 2026-11-05."
+      }
+    },
+    {
+      "saleId": "spanish-league-selection-5-nov-26::2026-11",
+      "packSlug": "spanish-league-selection-5-nov-26",
+      "officialTitle": "League Selection: Spanish Nov '26",
+      "newPlayersSection": "Spanish League Selection 5 Nov '26",
+      "expectedEndsAt": "2026-12-31T01:59:59.000Z",
+      "expectedTotalPlayerCount": 11,
+      "expectedSpecialCount": 11,
+      "memberIds": [
+        "105874701983107",
+        "105874702045074",
+        "105874702045792",
+        "105874702047461",
+        "105874702050685",
+        "105874702069504",
+        "105874702070355",
+        "105874702075941",
+        "105874702083136",
+        "105874702107755",
+        "105874702117498"
+      ],
+      "matchEvidence": {
+        "status": "user_confirmed_product_identity_and_verified_browser_dom_membership",
+        "identityAuthority": "direct_user_confirmation",
+        "identityConfirmation": "각각 European Clubs Selection 5 Nov ’26, POTW 5 Nov ’26, Spanish League Selection 5 Nov ’26 이야.",
+        "identityScope": "Only the three official-product to EFHub-pack identities were user-confirmed; full string IDs, roster completeness, playerType values, raw fields and official totals/end times were independently verified from preserved DOM.",
+        "identityConfirmedOnKst": "2026-11-05",
+        "sourceKind": "browser_dom",
+        "httpStatus": null,
+        "sourceEvidenceFile": "catalog-runtime/reviewed-evidence/T050/source-observations.json",
+        "sourceEvidenceSha256": "37973e832e88a954af54e982eefc28cb3e66d8e8ea7352ed330e90bc184a2bad",
+        "official": {
+          "url": "https://efootball-web.konami.net/probability_kr.php",
+          "sha256": "8eb6934ead4bd392dd1c1bcaaaa4b674fe88f3a52d43aafe12ff80dbf9c5e774",
+          "observedAt": "2026-11-05T08:24:30.916Z",
+          "totalPlayerCount": 11,
+          "endsAt": "2026-12-31T01:59:59Z"
+        },
+        "newPlayers": {
+          "url": "https://efhub.com/new-players",
+          "sha256": "5c04b39203f003f2e7841adbeb6f1f4365cd9155fb1d18077986a0bb953e0e42",
+          "observedAt": "2026-11-05T08:24:30.886Z",
+          "section": "Spanish League Selection 5 Nov '26",
+          "completeCount": 11
+        },
+        "pack": {
+          "url": "https://efhub.com/packs/spanish-league-selection-5-nov-26",
+          "sha256": "b31c2a541da70e11b27e480b8504142e240a6f61e6972d4a473fcf7f3bb2e4a7",
+          "observedAt": "2026-11-05T08:24:31.157Z",
+          "name": "Spanish League Selection 5 Nov '26",
+          "rawDate": "2026-11-05",
+          "originalPlayerCount": 11,
+          "verifiedCardIds": 11
+        },
+        "rawDatePolicy": "Preserve visible original 2026-11-05."
+      }
     }
   ],
   "pendingOfficialTitles": [],

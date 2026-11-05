@@ -125,3 +125,10 @@ Stage17에서 binding helper의 등록·인자·필드·원초기화 source18함
 현재 제품 위치는 R6/이전T048/현재T018/다음없음과 C109 Stage11의 미해결·출력 차단/재시작 기준을 유지한다. 별도 유지보수 C110/T049에서는 사용자가 확인한 영문 공격수11명/공식150명 팩과 PSG8명/공식8명 팩의 두 상품 identity를 등록하고, 전체19문자열ID·원본 필드·숫자타입과 두 출처의 같은 명단을 실제 DOM으로 검증했다. 원본 date2026-10-29는 제목의2 Nov로 고치지 않는다.
 
 15매핑/승인과 rules1.7.0 잠금·명시 채택/고정 수입을 완료했다. raw47,520/1,707·가공182명/15팩·live10/archive5이며 원본prefix·기존archive 불변과 신규19원문/타입/가격·옵션을 독립 검증했다. API165/165통과, 전체 npm test525/526은 fake-indexeddb 미설치1건으로 전체 통과가 아니며 기존 package/lock/테스트를 수정하지 않았다. 데이터 묶음 v22의 정확 저장본 SHA256 `222028b97004be5cc6e0dae8fabd1dee43bd680119f22a7295d21b553c02bec7`·gzip/tar·312파일/425members 무결성을 확인했다. private API 전량readback/CAS와 세 사이트의 동일publication·전체4컬렉션/숫자타입/가격·옵션을2026-11-02T03:11:33.016Z에 대조했으며 public 앱 익명 읽기와 공개 /packs의신규2팩·182카드/live10archive5도 확인했다. 고정 요약과 검토/규칙7파일을 구현 commit `9e3c565af5c70469cb88b25c74e2fa62fe3296ee`에 정상 CAS 반영해 원격 ref/382파일·변경7blob 일치를 확인했다. 실제 Catalog API checks run41381987878와 Catalog update record checks run41381987884의 completed/success까지 확인하여 T049/C110을 완료로 전환했다. 로컬 전체525/526의 환경 의존성1건은 그대로 보존하며 전체 로컬 회귀 통과로 확대하지 않는다. 사용자 확정100/900·단일/10회·기존 원본/종료자료와 제품/분석 작업 경계는 유지한다.
+
+
+## T050 — 11월 5일 신규 세 상품의 연결 검토와 부분 반영
+
+현재 제품 위치 R6/이전T048/현재T018/다음없음과 C109~C113 Stage17의 미해결·출력 차단/재시작 기준을 유지한다. 별도 유지보수 C114/T050에서는 사용자가 확인한 European Clubs/POTW/Spanish 세 상품 identity를 등록하고 전체33문자열ID·원본 필드·숫자타입·공식N/종료를 실제 DOM으로 독립 검증했다.18매핑/승인과 rules1.8.0을 채택했으며 파서/collector 검사를 완화하지 않았다.
+
+POTW/Spanish의22명·2팩은 raw47,542/1,709·가공204명/17팩·live6/archive11로 반영하고 데이터묶음v24·private API·private viewer/public 실제앱 전량 검증을 완료했다. European은 section11명(타입5×3·6×8)과 N150을 확인했지만 팩상세가8명만 노출되어 잠긴 first-import collector가 `pack_detail_section_mismatch`로 거부했다. identity/명단/승인은 보존하되 raw/DB/API 반영은 별도 개발 전까지 보류한다. GitHub 고정요약·원격ref·실제CI 확인은 진행 중이며, 성공 후에도 European을 포함한 세 상품 전체 DB 반영 완료로 확대하지 않는다.

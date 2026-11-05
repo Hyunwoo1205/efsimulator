@@ -170,6 +170,45 @@
         "private catalog-runtime/reviewed-evidence/T049/source-observations.json SHA256 16d34caa858241e40a1611e2d66ed25905efa724b5ada32dbaae3b16b1fbd229",
         "https://efhub.com/packs/paris-saint-germain-selection-2-nov-26 DOM SHA256 b8aa9916f5eb4093deaa7fbcaa7f317538d8fa4dffff5645bcd4ef260b19b6ab"
       ]
+    },
+    {
+      "saleId": "european-clubs-selection-5-nov-26::2026-11",
+      "mappingSha256": "a4e46a81885d84d840ae5660f08f4943d8b73611ac9eb6c13d66a1f3b80192f1",
+      "reviewId": "T050-user-confirmed-Nov5-product-identities",
+      "authority": "user_product_identity_confirmation_and_verified_browser_dom_roster",
+      "evidenceRefs": [
+        "data/research/catalog-sale-mappings.json",
+        "docs/WORKPLAN.md#t050--11월-5일-세-신규-상품-연결-검토와-부분-반영",
+        "private catalog-runtime/reviewed-evidence/T050/source-observations.json SHA256 37973e832e88a954af54e982eefc28cb3e66d8e8ea7352ed330e90bc184a2bad",
+        "https://efhub.com/packs/european-clubs-selection-5-nov-26 DOM SHA256 23af6b0d39c5b2c5221ff1392ea0355eaa11ae4fa2683d9798ac33635852c898",
+        "https://efhub.com/players/88045755889792 DOM SHA256 0fde49c570a2802f2dad45fcfbed7c690d116eacd698d2f99b69c2901a05b05a",
+        "https://efhub.com/players/88046292831707 DOM SHA256 31a5b7d8ef657ae20a9239c09764b62f86585829f919d0f03fc07ce0755ba135",
+        "https://efhub.com/players/88045755869252 DOM SHA256 f23ffba0ff016681c20e27b22bb6f6c187450b93371bf05e6c5cceba7db153fb"
+      ]
+    },
+    {
+      "saleId": "potw-5-nov-26::2026-11",
+      "mappingSha256": "a4a5bec2ec497a5bc4c1e7687b0577fde981a66cbccc1e3745373ca9729c64bc",
+      "reviewId": "T050-user-confirmed-Nov5-product-identities",
+      "authority": "user_product_identity_confirmation_and_verified_browser_dom_roster",
+      "evidenceRefs": [
+        "data/research/catalog-sale-mappings.json",
+        "docs/WORKPLAN.md#t050--11월-5일-세-신규-상품-연결-검토와-부분-반영",
+        "private catalog-runtime/reviewed-evidence/T050/source-observations.json SHA256 37973e832e88a954af54e982eefc28cb3e66d8e8ea7352ed330e90bc184a2bad",
+        "https://efhub.com/packs/potw-5-nov-26 DOM SHA256 5d544ea2da22ae595d5676d5a1f50986fd7b4e8efd8a01eabc51425fa5af92ab"
+      ]
+    },
+    {
+      "saleId": "spanish-league-selection-5-nov-26::2026-11",
+      "mappingSha256": "e4892abef6dbfa060d7c0d82f1d2d1582f57350a4e87afab5d2df128eade68be",
+      "reviewId": "T050-user-confirmed-Nov5-product-identities",
+      "authority": "user_product_identity_confirmation_and_verified_browser_dom_roster",
+      "evidenceRefs": [
+        "data/research/catalog-sale-mappings.json",
+        "docs/WORKPLAN.md#t050--11월-5일-세-신규-상품-연결-검토와-부분-반영",
+        "private catalog-runtime/reviewed-evidence/T050/source-observations.json SHA256 37973e832e88a954af54e982eefc28cb3e66d8e8ea7352ed330e90bc184a2bad",
+        "https://efhub.com/packs/spanish-league-selection-5-nov-26 DOM SHA256 b31c2a541da70e11b27e480b8504142e240a6f61e6972d4a473fcf7f3bb2e4a7"
+      ]
     }
   ]
 }
