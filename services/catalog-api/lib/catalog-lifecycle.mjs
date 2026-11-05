@@ -78,8 +78,10 @@ function candidateProblem(candidate, observation, health, rawPlayers, rawPacks) 
   if (!integer(candidate.expectedSpecialCount) || candidate.expectedSpecialCount !== candidate.memberIds.length) return 'special_count_mismatch';
   if (candidate.expectedSpecialCount > candidate.totalPlayerCount) return 'special_count_exceeds_total';
   const reported = candidate.sourceReportedSpecialCount ?? pack.playerCount;
-  if (!integer(reported) || reported !== pack.playerCount) return 'source_reported_count_mismatch';
-  if (reported !== candidate.expectedSpecialCount && !(object(candidate.countCorrection) && ['user_confirmed', 'source_error_confirmed_by_user', 'verified_source_correction'].includes(candidate.countCorrection.status) && nonempty(candidate.countCorrection.reason))) return 'count_correction_unverified';
+  const reviewedCorrection = object(candidate.countCorrection) && ['user_confirmed', 'source_error_confirmed_by_user', 'verified_source_correction'].includes(candidate.countCorrection.status) && nonempty(candidate.countCorrection.reason);
+  if (!integer(reported)) return 'source_reported_count_mismatch';
+  if (reported !== pack.playerCount && !(reviewedCorrection && pack.playerCount === candidate.expectedSpecialCount)) return 'source_reported_count_mismatch';
+  if (reported !== candidate.expectedSpecialCount && !reviewedCorrection) return 'count_correction_unverified';
   for (const id of candidate.memberIds) {
     if (!rawPlayers.has(id)) return `raw_player_missing:${id}`;
     try { projectPlayer(rawPlayers.get(id)); } catch (error) { return `invalid_raw_player:${id}:${error.message}`; }
@@ -88,15 +90,16 @@ function candidateProblem(candidate, observation, health, rawPlayers, rawPacks) 
 }
 
 function processedPack(candidate, raw, observation) {
+  const sourceReportedPlayerCount = candidate.sourceReportedSpecialCount ?? raw.playerCount;
   return {
     saleId: candidate.saleId, name: raw.name, slug: raw.slug, date: raw.date,
     playerCount: candidate.expectedSpecialCount,
-    sourceReportedPlayerCount: raw.playerCount,
+    sourceReportedPlayerCount,
     totalPlayerCount: candidate.totalPlayerCount,
     standardPlayerCount: candidate.totalPlayerCount - candidate.expectedSpecialCount,
     endsAt: new Date(candidate.endsAt).toISOString(), officialTitle: candidate.officialTitle,
     members: [],
-    countCorrection: raw.playerCount === candidate.expectedSpecialCount ? null : JSON.parse(canonical(candidate.countCorrection)),
+    countCorrection: sourceReportedPlayerCount === candidate.expectedSpecialCount ? null : JSON.parse(canonical(candidate.countCorrection)),
     provenance: {
       ...JSON.parse(canonical(candidate.evidence)),
       official: {

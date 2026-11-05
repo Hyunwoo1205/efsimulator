@@ -132,3 +132,10 @@ Stage17에서 binding helper의 등록·인자·필드·원초기화 source18함
 현재 제품 위치 R6/이전T048/현재T018/다음없음과 C109~C113 Stage17의 미해결·출력 차단/재시작 기준을 유지한다. 별도 유지보수 C114/T050에서는 사용자가 확인한 European Clubs/POTW/Spanish 세 상품 identity를 등록하고 전체33문자열ID·원본 필드·숫자타입·공식N/종료를 실제 DOM으로 독립 검증했다.18매핑/승인과 rules1.8.0을 채택했으며 파서/collector 검사를 완화하지 않았다.
 
 POTW/Spanish의22명·2팩은 raw47,542/1,709·가공204명/17팩·live6/archive11로 반영하고 데이터묶음v24·private API·private viewer/public 실제앱 전량 검증을 완료했다. European은 section11명(타입5×3·6×8)과 N150을 확인했지만 팩상세가8명만 노출되어 잠긴 first-import collector가 `pack_detail_section_mismatch`로 거부했다. identity/명단/승인은 보존하되 raw/DB/API 반영은 별도 개발 전까지 보류한다. GitHub 고정요약·원격ref·실제CI 확인은 진행 중이며, 성공 후에도 European을 포함한 세 상품 전체 DB 반영 완료로 확대하지 않는다.
+
+
+## T051 — European 원본 11명 보정과 전체 반영
+
+사용자가 European Clubs Selection 5 Nov '26의 원본 명단도11명이고 팩 상세에서 Raphael Varane·Gennaro Gattuso·Albert Ferrer만 누락됐음을 직접 확인했다. collector는 검토된 신규목록 section11과 상세8의 정확한 부분집합, 승인된11ID, 공식N150이 모두 일치할 때만 first-import를 허용하며 다른 불일치에는 기존 거부를 유지한다. raw pack에는 원본11을 기록하고 상세 페이지 관측8은 가공의 `sourceReportedPlayerCount`와 보정 근거에 따로 보존한다.
+
+rules1.9.0 아래 고정 run-cycle로 raw47,553/1,710·가공215/18·live7/archive11을 만들고 멱등 재실행까지 포함한 데이터묶음v26을 같은 저장 ID에 충돌 보호로 반영했다. publication `3aac2de69fc91d3e6ef7b160cbac49bf0ed9a2df273154bea233bc0807ac10f0`은 private API 전량 readback/CAS와 private viewer/public 실제앱의 players/packs/live/archive 전량 대조를 통과했다. 세 선수는 원문 문자열ID와 playerType5를 그대로 전달하며 팩은 N150/S11·single100/ten900 정책을 유지한다. 제품 currentT018과 Stage17 미해결 범위는 변경하지 않는다.

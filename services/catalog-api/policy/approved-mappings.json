@@ -173,12 +173,13 @@
     },
     {
       "saleId": "european-clubs-selection-5-nov-26::2026-11",
-      "mappingSha256": "a4e46a81885d84d840ae5660f08f4943d8b73611ac9eb6c13d66a1f3b80192f1",
-      "reviewId": "T050-user-confirmed-Nov5-product-identities",
-      "authority": "user_product_identity_confirmation_and_verified_browser_dom_roster",
+      "mappingSha256": "ed8ca804c8f75f061d591fba2b94a3ea95a8c02334c3a9780d571e27e603c7dc",
+      "reviewId": "T051-user-confirmed-European-original-roster-correction",
+      "authority": "direct_user_original_roster_correction_and_verified_browser_dom_card_records",
       "evidenceRefs": [
         "data/research/catalog-sale-mappings.json",
-        "docs/WORKPLAN.md#t050--11월-5일-세-신규-상품-연결-검토와-부분-반영",
+        "docs/WORKPLAN.md#t051--european-clubs-selection-원본-11명-보정과-반영",
+        "direct_user_confirmation: 원본도 11명이야. 세 명이 누락된 거야.",
         "private catalog-runtime/reviewed-evidence/T050/source-observations.json SHA256 37973e832e88a954af54e982eefc28cb3e66d8e8ea7352ed330e90bc184a2bad",
         "https://efhub.com/packs/european-clubs-selection-5-nov-26 DOM SHA256 23af6b0d39c5b2c5221ff1392ea0355eaa11ae4fa2683d9798ac33635852c898",
         "https://efhub.com/players/88045755889792 DOM SHA256 0fde49c570a2802f2dad45fcfbed7c690d116eacd698d2f99b69c2901a05b05a",

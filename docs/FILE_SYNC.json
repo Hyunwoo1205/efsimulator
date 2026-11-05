@@ -548,9 +548,9 @@
       "update_when": [
         "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경",
         "C110 사용자 확인 두 신규 상품의 정확한 회차/명단·검토 매핑과 실제 저장/발행·원격 검증 결과를 갱신할 때",
-        "C114/T050 사용자 확인 세 신규 상품의 정확한 identity·33명 명단/타입, POTW/Spanish 2팩 저장/API/세사이트 반영, European source8/effective11 first-import 보류와 GitHub 재개 상태를 갱신할 때"
+        "C114/T050~T051 세 신규 상품의 identity·33명 명단/타입, European 원본11/상세누락3의 제한된 first-import 보정, 저장/API/세사이트/GitHub 상태를 갱신할 때"
       ],
-      "reviewed_in": "T050"
+      "reviewed_in": "T051"
     },
     {
       "path": "data/research/current-catalog-observations.json",
@@ -813,9 +813,9 @@
       "update_when": [
         "자동 갱신 경로·완료 기준·검증·대상 또는 기록 schema 변경 시",
         "C110 사용자 확인 두 신규 상품의 정확한 회차/명단·검토 매핑과 실제 저장/발행·원격 검증 결과를 갱신할 때",
-        "C114/T050 사용자 확인 세 신규 상품의 정확한 identity·33명 명단/타입, POTW/Spanish 2팩 저장/API/세사이트 반영, European source8/effective11 first-import 보류와 GitHub 재개 상태를 갱신할 때"
+        "C114/T050~T051 세 신규 상품의 identity·33명 명단/타입, European 원본11/상세누락3의 제한된 first-import 보정, 저장/API/세사이트/GitHub 상태를 갱신할 때"
       ],
-      "reviewed_in": "T050"
+      "reviewed_in": "T051"
     },
     {
       "path": "docs/API_SELECTION.md",
@@ -903,9 +903,10 @@
         "services/catalog-api/scripts/lifecycle/workspace.mjs"
       ],
       "update_when": [
-        "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
+        "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경",
+        "T051 검토된 section11/detail8 first-import 보정과 raw 원본 수/상세 관측 수 분리 계약을 변경할 때"
       ],
-      "reviewed_in": "T043"
+      "reviewed_in": "T051"
     },
     {
       "path": "docs/CHATGPT_WORK_HANDOFF.md",
@@ -1044,9 +1045,9 @@
         "C109/C111 Stage15 actor문자열생산3경로·solver직접소비/명시setter조건과generic직렬화미확정·Light미확보검사범위/새독립읽기·클라우드재개용private보존/다음scene actor선택경로를갱신할때",
         "C109/C111/C112 Stage16 scene actor class/CDO·직렬화constraint와native등록/생성·Initialize분기/원입력연결·필요raw수집/한계·중간단절/재접근검증·독립읽기/private보존·다음한작업을갱신할때",
         "C109/C111/C112 Stage17 원입력/정적호출·개별동결파일보존과 자산조사/통합ZIP빌드 자동승인거부·전수/최종복원미검증·후기환경단절/로컬Git정렬미확인·다음한작업을갱신할때",
-        "C114/T050 사용자 확인 세 신규 상품의 정확한 identity·33명 명단/타입, POTW/Spanish 2팩 저장/API/세사이트 반영, European source8/effective11 first-import 보류와 GitHub 재개 상태를 갱신할 때"
+        "C114/T050~T051 세 신규 상품의 identity·33명 명단/타입, European 원본11/상세누락3의 제한된 first-import 보정, 저장/API/세사이트/GitHub 상태를 갱신할 때"
       ],
-      "reviewed_in": "T050"
+      "reviewed_in": "T051"
     },
     {
       "path": "docs/FILE_SYNC_AUDIT.md",
@@ -1145,9 +1146,9 @@
         "C109/C111 Stage15 actor문자열생산3경로·solver직접소비/명시setter조건과generic직렬화미확정·Light미확보검사범위/새독립읽기·클라우드재개용private보존/다음scene actor선택경로를갱신할때",
         "C109/C111/C112 Stage16 scene actor class/CDO·직렬화constraint와native등록/생성·Initialize분기/원입력연결·필요raw수집/한계·중간단절/재접근검증·독립읽기/private보존·다음한작업을갱신할때",
         "C109/C111/C112 Stage17 원입력/정적호출·개별동결파일보존과 자산조사/통합ZIP빌드 자동승인거부·전수/최종복원미검증·후기환경단절/로컬Git정렬미확인·다음한작업을갱신할때",
-        "C114/T050 사용자 확인 세 신규 상품의 정확한 identity·33명 명단/타입, POTW/Spanish 2팩 저장/API/세사이트 반영, European source8/effective11 first-import 보류와 GitHub 재개 상태를 갱신할 때"
+        "C114/T050~T051 세 신규 상품의 identity·33명 명단/타입, European 원본11/상세누락3의 제한된 first-import 보정, 저장/API/세사이트/GitHub 상태를 갱신할 때"
       ],
-      "reviewed_in": "T050"
+      "reviewed_in": "T051"
     },
     {
       "path": "docs/SIMULATOR_PLAN.md",
@@ -3142,9 +3143,10 @@
         "services/catalog-api/scripts/lifecycle/workspace.mjs"
       ],
       "update_when": [
-        "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
+        "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경",
+        "T051 검토된 section11/detail8 first-import의 raw11/sourceReported8 가공 계약을 변경할 때"
       ],
-      "reviewed_in": "T042"
+      "reviewed_in": "T051"
     },
     {
       "path": "services/catalog-api/lib/connector-context.ts",
@@ -3324,9 +3326,9 @@
       "update_when": [
         "데이터 형식·가공 규칙·HTML 증거·매핑 검토·반복 실행 계약 변경",
         "C110 사용자 확인 두 신규 상품의 정확한 회차/명단·검토 매핑과 실제 저장/발행·원격 검증 결과를 갱신할 때",
-        "C114/T050 사용자 확인 세 신규 상품의 정확한 identity·33명 명단/타입, POTW/Spanish 2팩 저장/API/세사이트 반영, European source8/effective11 first-import 보류와 GitHub 재개 상태를 갱신할 때"
+        "C114/T050~T051 세 신규 상품의 identity·33명 명단/타입, European 원본11/상세누락3의 제한된 first-import 보정, 저장/API/세사이트/GitHub 상태를 갱신할 때"
       ],
-      "reviewed_in": "T050"
+      "reviewed_in": "T051"
     },
     {
       "path": "services/catalog-api/policy/rules.lock.json",
@@ -3344,9 +3346,9 @@
       "update_when": [
         "데이터 형식·가공 규칙·HTML 증거·매핑 검토·반복 실행 계약 변경",
         "C110 사용자 확인 두 신규 상품의 정확한 회차/명단·검토 매핑과 실제 저장/발행·원격 검증 결과를 갱신할 때",
-        "C114/T050 사용자 확인 세 신규 상품의 정확한 identity·33명 명단/타입, POTW/Spanish 2팩 저장/API/세사이트 반영, European source8/effective11 first-import 보류와 GitHub 재개 상태를 갱신할 때"
+        "C114/T050~T051 세 신규 상품의 identity·33명 명단/타입, European 원본11/상세누락3의 제한된 first-import 보정, 저장/API/세사이트/GitHub 상태를 갱신할 때"
       ],
-      "reviewed_in": "T050"
+      "reviewed_in": "T051"
     },
     {
       "path": "services/catalog-api/postcss.config.mjs",
@@ -3572,9 +3574,10 @@
         "services/catalog-api/scripts/lifecycle/collection-receipt.mjs"
       ],
       "update_when": [
-        "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
+        "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경",
+        "T051 검토된 section11/detail8 부분집합·승인명단·공식N 조건 또는 first-import 보정 범위를 변경할 때"
       ],
-      "reviewed_in": "T039"
+      "reviewed_in": "T051"
     },
     {
       "path": "services/catalog-api/scripts/lifecycle/collection-receipt.mjs",
@@ -3620,9 +3623,10 @@
         "services/catalog-api/scripts/lifecycle/workspace.mjs"
       ],
       "update_when": [
-        "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
+        "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경",
+        "T051 raw11/sourceReported8·countCorrection 검증 경계를 변경할 때"
       ],
-      "reviewed_in": "T041"
+      "reviewed_in": "T051"
     },
     {
       "path": "services/catalog-api/scripts/lifecycle/publish-remote.mjs",
@@ -4022,9 +4026,10 @@
         "services/catalog-api/policy/rules.lock.json"
       ],
       "update_when": [
-        "수동/자동 수집 모드·요청 상한·DOM 출처·receipt 검증/재실행 계약 변경"
+        "수동/자동 수집 모드·요청 상한·DOM 출처·receipt 검증/재실행 계약 변경",
+        "T051 검토된 section11/detail8 first-import 성공·비승인 불일치 거부 회귀를 변경할 때"
       ],
-      "reviewed_in": "T039"
+      "reviewed_in": "T051"
     },
     {
       "path": "services/catalog-api/tests/pack-detail-fallback.test.mjs",

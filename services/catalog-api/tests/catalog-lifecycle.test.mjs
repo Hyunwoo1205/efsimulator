@@ -71,6 +71,21 @@ test('raw special count errors need explicit correction and preserve source/effe
   assert.equal(f.rawPacks[0].playerCount, 8, 'source value must never be silently edited');
 });
 
+test('an explicit reviewed first import can store the corrected raw roster count while preserving the observed page count', () => {
+  const f = fixture();
+  f.rawPlayers = Array.from({ length: 11 }, (_, index) => card(`${index + 1}`));
+  f.rawPacks[0].playerCount = 11;
+  f.candidate.memberIds = f.rawPlayers.map(player => player.id);
+  f.candidate.expectedSpecialCount = 11;
+  f.candidate.sourceReportedSpecialCount = 8;
+  f.candidate.countCorrection = { status: 'user_confirmed', reason: 'User confirmed the original roster has 11 cards; the detail page omitted three.' };
+  const result = ingest(f);
+  assert.equal(result.pending.length, 0);
+  assert.equal(result.state.packs[0].playerCount, 11);
+  assert.equal(result.state.packs[0].sourceReportedPlayerCount, 8);
+  assert.equal(f.rawPacks[0].playerCount, 11);
+});
+
 test('cross-source and complete-special gates reject one-sided, missing-card and duplicate rosters atomically', () => {
   for (const [edit, reason] of [
     [f => { f.candidate.matchVerified = false; }, 'cross_source_match_unverified'],

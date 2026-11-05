@@ -187,6 +187,7 @@ export async function collectCycle({ mappings, rawPlayers, rawPacks, fetchHtml =
       let pack = retainedPack ?? observedPack;
       let detailPlayers = [];
       let membershipSource = efhub;
+      let correctedFirstImport = false;
       // The newest-release listing is not a historical catalogue. Only when
       // that complete listing has no section for an explicit reviewed mapping,
       // read the mapping's exact detail URL. A denial or ambiguous section must
@@ -205,8 +206,16 @@ export async function collectCycle({ mappings, rawPlayers, rawPacks, fetchHtml =
         const detail = await getPackDetail(url, { mapping });
         pack = detail.pack;
         detailPlayers = detail.players;
-        ensure(detail.membershipComplete && detail.playerIds.length === section.players.length
-          && detail.playerIds.every(id => section.players.some(player => player.id === id)), 'pack_detail_section_mismatch');
+        const sectionIds = section.players.map(player => player.id);
+        const exactMembership = detail.playerIds.length === sectionIds.length;
+        const reviewedCorrectedSubset = mapping.countCorrection !== undefined
+          && detail.playerIds.length === detail.pack.playerCount
+          && sectionIds.length === expectedSpecialCount(mapping, detail.pack)
+          && detail.playerIds.length < sectionIds.length;
+        ensure(detail.membershipComplete && new Set(detail.playerIds).size === detail.playerIds.length
+          && detail.playerIds.every(id => sectionIds.includes(id))
+          && (exactMembership || reviewedCorrectedSubset), 'pack_detail_section_mismatch');
+        correctedFirstImport = reviewedCorrectedSubset;
       }
       assertRawPack(pack);
       const members = [...section.players].sort((a, b) => compareText(a.id, b.id));
@@ -215,6 +224,11 @@ export async function collectCycle({ mappings, rawPlayers, rawPacks, fetchHtml =
       if (mapping.memberIds) ensure(Array.isArray(mapping.memberIds) && mapping.memberIds.length === memberIds.length && mapping.memberIds.every(id => memberIds.includes(id)), 'reviewed_membership_changed');
       const specialCount = expectedSpecialCount(mapping, pack);
       ensure(memberIds.length === specialCount && specialCount <= official.totalPlayerCount, 'incomplete_special_membership');
+      const reviewedReportedCount = mapping.countCorrection && Number.isSafeInteger(mapping.matchEvidence?.pack?.originalPlayerCount)
+        ? mapping.matchEvidence.pack.originalPlayerCount
+        : pack.playerCount;
+      const sourceReportedSpecialCount = reviewedReportedCount;
+      const rawPack = correctedFirstImport ? { ...pack, playerCount: specialCount } : pack;
 
       const newPlayers = [];
       for (const member of members) {
@@ -234,7 +248,7 @@ export async function collectCycle({ mappings, rawPlayers, rawPacks, fetchHtml =
         if (member.name) ensure(player.name === member.name, 'member_detail_name_mismatch');
         newPlayers.push(player);
       }
-      result.candidates.push({ saleId: mapping.saleId, officialTitle: official.title, packSlug: pack.slug, endsAt: official.endsAt, totalPlayerCount: official.totalPlayerCount, specialCount, expectedSpecialCount: specialCount, memberIds, rawPlayers: newPlayers, rawPack: pack, matchVerified: true, membershipComplete: true, countCorrection: mapping.countCorrection ?? null, evidence: { match: mapping.matchEvidence, official: { sourceUrl: result.officialObservation.sourceUrl, observedAt: result.officialObservation.observedAt, sha256: result.officialObservation.sha256 }, efhub: { sourceUrl: membershipSource.source_url, observedAt: membershipSource.observed_at, sha256: membershipSource.sha256, section: section.title }, memberIds } });
+      result.candidates.push({ saleId: mapping.saleId, officialTitle: official.title, packSlug: pack.slug, endsAt: official.endsAt, totalPlayerCount: official.totalPlayerCount, specialCount, expectedSpecialCount: specialCount, sourceReportedSpecialCount, memberIds, rawPlayers: newPlayers, rawPack, matchVerified: true, membershipComplete: true, countCorrection: mapping.countCorrection ?? null, evidence: { match: mapping.matchEvidence, official: { sourceUrl: result.officialObservation.sourceUrl, observedAt: result.officialObservation.observedAt, sha256: result.officialObservation.sha256 }, efhub: { sourceUrl: membershipSource.source_url, observedAt: membershipSource.observed_at, sha256: membershipSource.sha256, section: section.title }, memberIds } });
     } catch (error) {
       if (error.code === 'source_denied' || error.status === 403 || error.status === 429) deniedEfhub = true;
       result.pending.push({ saleId: mapping.saleId, packSlug: mapping.packSlug, reason: error.code ?? 'collection_candidate_invalid', message: error.message });

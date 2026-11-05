@@ -13,6 +13,7 @@ const NEW = 'https://efhub.com/new-players';
 const doc = body => `<html><head></head><body>${body}</body></html>`;
 const flight = value => `<script>self.__next_f.push(${JSON.stringify([1, `a:${JSON.stringify(value)}\n`])})</script>`;
 const player = { id: '001', name: 'Player 001', nameJa: '', nameZh: '', slug: 'player-001', nationality: '', nationalityCode: '', team: '', position: 'CF', overallRating: 85, imageUrl: 'https://efimg.com/001.png', playerType: 5 };
+const playerFor = id => ({ ...player, id, name: `Player ${id}`, slug: `player-${id}`, imageUrl: `https://efimg.com/${id}.png` });
 const pack = { name: 'Pack A', slug: 'pack-a', date: '2026-10-29', playerCount: 1 };
 const mapping = { saleId: 'sale-a', officialTitle: 'Official A', packSlug: 'pack-a', newPlayersSection: 'Section A', expectedEndsAt: '2026-11-05T01:59:59Z', expectedTotalPlayerCount: 150, expectedSpecialCount: 1, memberIds: ['001'], matchEvidence: { reviewed: 'Synthetic same-round fixture' } };
 const anchor = id => `<a href="/players/${id}"><p>Player ${id}</p></a>`;
@@ -20,14 +21,14 @@ const pages = (ids = ['001']) => ({
   [OFFICIAL]: doc('<dl class="probability"><dt>선수 영입 확률</dt><dd><div class="probability_data"><p class="data_title">Official A</p><p>종료 일시(UTC)：2026-11-05 01:59:59</p><p>처음 영입할 때의 선수 수：150</p><p>처음 영입할 때의 영입 확률：0.6667%</p></div><div>주의 사항</div></dd></dl>'),
   [NEW]: doc(`<h1>New Players</h1><section><h2>Section A</h2><div>${ids.map(anchor).join('')}</div></section>`),
   'https://efhub.com/packs/pack-a': doc(`<section><h1>Pack A</h1><p>29 October 2026·1 player</p><div class="grid">${anchor('001')}</div></section>${flight({ pack })}`),
-  'https://efhub.com/players/001': doc(`<h1>Player 001</h1>${flight({ player })}`),
+  ...Object.fromEntries(ids.map(id => [`https://efhub.com/players/${id}`, doc(`<h1>Player ${id}</h1>${flight({ player: playerFor(id) })}`)])),
 });
 const domSnapshot = (url, html) => ({ source_url: url, observed_at: NOW, status: null, source_kind: 'browser_dom', complete: true,
   bytes: Buffer.byteLength(html), sha256: createHash('sha256').update(html).digest('hex'), html });
-async function collect({ manualCollection = true, rulesIdentity = RULES, mutate = value => value, ids } = {}) {
+async function collect({ manualCollection = true, rulesIdentity = RULES, mutate = value => value, ids, mappingOverride = mapping, rawPlayers = [], rawPacks = [] } = {}) {
   const calls = []; const htmls = pages(ids);
-  const source = await collectCycle({ mappings: [mapping], mappingsDocument: { schemaVersion: 1, mappings: [mapping] },
-    rulesIdentity, rawPlayers: [], rawPacks: [], manualCollection, now: () => new Date(NOW), fetchHtml: async url => {
+  const source = await collectCycle({ mappings: [mappingOverride], mappingsDocument: { schemaVersion: 1, mappings: [mappingOverride] },
+    rulesIdentity, rawPlayers, rawPacks, manualCollection, now: () => new Date(NOW), fetchHtml: async url => {
       calls.push(url); assert.ok(Object.hasOwn(htmls, url), `Unexpected URL ${url}`);
       return mutate(domSnapshot(url, htmls[url]));
     } });
@@ -66,6 +67,22 @@ test('pack detail must cover the complete listing section rather than a matching
   const { source } = await collect({ ids: ['001', '002'] });
   assert.deepEqual(source.candidates, []);
   assert.ok(source.pending.some(item => item.reason === 'pack_detail_section_mismatch'));
+});
+
+test('a reviewed count correction can join an exact listing roster to a source-reported detail subset', async () => {
+  const reviewed = { ...mapping, expectedSpecialCount: 2, memberIds: ['001', '002'],
+    countCorrection: { status: 'user_confirmed', reason: 'Synthetic reviewed source-count correction', effectiveCount: 2 },
+    matchEvidence: { reviewed: 'Synthetic same-round fixture', pack: { originalPlayerCount: 1 } } };
+  const { source } = await collect({ ids: ['001', '002'], mappingOverride: reviewed });
+  assert.equal(source.candidates.length, 1, JSON.stringify(source.pending));
+  assert.deepEqual(source.candidates[0].memberIds, ['001', '002']);
+  assert.equal(source.candidates[0].rawPack.playerCount, 2);
+  assert.equal(source.candidates[0].sourceReportedSpecialCount, 1);
+  assert.deepEqual(source.candidates[0].rawPlayers.map(item => item.id), ['001', '002']);
+  const retained = await collect({ ids: ['001', '002'], mappingOverride: reviewed,
+    rawPlayers: ['001', '002'].map(playerFor), rawPacks: [{ ...pack, playerCount: 2 }] });
+  assert.equal(retained.source.candidates[0].rawPack.playerCount, 2);
+  assert.equal(retained.source.candidates[0].sourceReportedSpecialCount, 1, 'reviewed source observation must remain stable after corrected raw import');
 });
 
 test('manual DOM receipts replay the same content and cannot forge an HTTP success or automatic mode', async () => {

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "version": "catalog-rules-1.8.0",
-  "reviewId": "T050-user-confirmed-Nov5-product-identities",
+  "version": "catalog-rules-1.9.0",
+  "reviewId": "T051-user-confirmed-European-original-roster-correction",
   "files": [
     {
       "path": "lib/catalog-contract.mjs",
@@ -9,7 +9,7 @@
     },
     {
       "path": "lib/catalog-lifecycle.mjs",
-      "sha256": "435baf91003725a6fea3feb0debbff9ba99458c3fb4a3c5563bde3d615f0ada9"
+      "sha256": "6a6de095464b89367c521b38b80063f0e808a1798ee644c31d796c2c3976375c"
     },
     {
       "path": "lib/catalog-api.mjs",
@@ -21,7 +21,7 @@
     },
     {
       "path": "scripts/lifecycle/collect-cycle.mjs",
-      "sha256": "af4c4eab761a0358eb6ad90fa5800a5012691b69be2b8eed80df51e0d0eb03c1"
+      "sha256": "1c1a5122929a7f6e7ccab7d01e539c6fc89a6db604321f126c1b13db135718de"
     },
     {
       "path": "scripts/lifecycle/collection-receipt.mjs",
@@ -49,7 +49,7 @@
     },
     {
       "path": "policy/approved-mappings.json",
-      "sha256": "7c8edfe4450a8971a3e89b7bb5433277c1cd9b8f7910a42e5a52e9525d45076e"
+      "sha256": "5892266c0bc9637aaeefb2b3f23ef56edc7bbcc9843a41a7ca7b2fa26acec743"
     }
   ]
 }

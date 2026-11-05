@@ -9,7 +9,7 @@
 - 이전 작업: T048 — 단일 ‘선수팩 선택’ 버튼으로 통합하고 판매중/종료 전환은 창 안에 유지했다.539회귀·관리/타입/공식빌드·v17 실제 단일버튼/탭/선택복귀/초점·원격 동일tree와 구현CI2건 성공을 확인했다.
 - 현재 작업: T018 — 진행 중. Stage17에서 binding helper의 등록·인자·필드·원초기화 source18함수/2,278word와 원근거134개를 검증했다. 기존16package의 Blueprint script129개/91,144B·opcode53종·호출1,004개와 framing 오류 입력49건 거부 검사, 개봉 selector4호출·인덱스를 쓰는 원대안3개를 연결했다. 실제 분기·binding 입력은 미선택이며 새 원자산 raw0, 원본 실행·새 pose/GLB/영상0/BLOCKED다. 동결268canonical+4manifest=272논리파일/16,226,553B 중 nonempty264개를 각각 비공개 저장하고 원길이0 script8개는 고정 manifest의 정확한 빈파일 선언으로 보존했다. 별도 인계 파일을 저장했으며 새 통합ZIP의 최종 build·archive·복원은 미확정·새ZIP 저장0이다. 개별보존·문서 검토 뒤 Windows 연결이 해제돼 현재 로컬 확인/Git 정렬은 미완료다. 다음 한 작업: 현재 개봉 Blueprint의 원호출 인덱스 생산자와 native 획득 대상 목록의 writer를 정적으로 연결해 scene/actor 선택 입력 경로를 검증한다. 자동승인 거부된 수집의 재실행과 분리하고, 탐색 probe는 정식 수집·독립 검토 전 확정 근거로 승격하지 않는다.
 - 다음 작업: 없음 — T018 이후 범위는 별도 결정한다.
-- 최근 유지보수: T050 — 부분 완료. 사용자가 확인한11월5일 세 상품 identity와 전체33문자열ID·원본 필드/숫자타입을 실제 DOM으로 별도 검증하고18매핑/승인·rules1.8.0을 채택했다. POTW/Spanish 두 팩22명은 고정 run-cycle로 반영해 raw47,542/1,709·가공204/17·판매중6/종료11이며 데이터묶음v24·private API·private viewer/public 실제앱의 전량 대조를 완료했다. European은 section11명(타입5×3·6×8)과 공식N150을 확인했지만 pack상세가8명만 노출되어 잠긴 collector의 `pack_detail_section_mismatch`로 raw/DB/API 반영을 보류하고 기존 정상자료를 보존했다. GitHub 고정영수증·원격ref·실제CI 확인은 진행 중이므로 T050 전체완료로 표시하지 않는다. 제품 T018/C109~C113·Stage17 미해결과 재시작 블록은 보존한다.
+- 최근 유지보수: T051 — 사용자가 European Clubs Selection 5 Nov '26의 원본 명단도11명이며 팩 상세에서 Raphael Varane·Gennaro Gattuso·Albert Ferrer 세 명이 누락됐음을 직접 확인했다. 정확한 section11/상세8 부분집합·기존 승인 명단·공식N150이 모두 일치할 때만 적용되는 검토 보정으로 rules1.9.0을 채택하고 raw11·가공11을 반영했다. raw47,553/1,710·가공215/18·판매중7/종료11, 멱등 재실행까지 반영한 데이터묶음v26과 publication `3aac2de69fc91d3e6ef7b160cbac49bf0ed9a2df273154bea233bc0807ac10f0`의 private API·private viewer/public 실제앱 전량 대조를 완료했다. GitHub 고정영수증·원격ref·실제CI 확인은 최종 단계이며 제품 T018/C109~C113·Stage17 미해결과 재시작 블록은 보존한다.
 - 현재 조건: T043이 T041의 선수 정렬을 화면 범위별로 구분한다. Epic5→Show Time8→Trend3→Highlight6 우선, 팩 안 선수는 등급 안 OVR순, 전체 선수는 등급 안 확인 날짜 최신순→OVR순이며 최초 연결팩 날짜를 사용한다. 팩은 등급 안 날짜 최신순이다. exact raw 타입·원본·가공/API 계약·가격100/900·팩 구성/카드 표시와 실제 앱 public·API/admin/viewer owner-private 경계를 보존한다.
 
 ### 압축 재시작 체크포인트 — C109/C111/C112/C113 / Stage17 동결 파일 개별 보존
@@ -35,11 +35,11 @@ C111은 실제 필요한 자료를 추출 완료할 때까지 계속하는 지�
 
 C110은 두 상품 연결의 별도 데이터 유지보수 승인으로, T018/C109의 원본 근거 재구성·미확인 출력 차단과 Stage11의 미완료/재시작 범위를 바꾸지 않는다.
 
-C114는 11월5일 세 공식 상품과 EFHub 팩의 identity 확인 및 반영 지시다. identity3건만 사용자 확인으로 기록하고 전체33카드ID·명단·원본·타입·N/S/종료는 실제 DOM으로 독립 검증한다. POTW/Spanish 반영 완료와 European의 잠긴 first-import source8/effective11 보류를 구분하며, T018/C109~C113의 원본 분석 범위는 바꾸지 않는다.
+C114는 11월5일 세 공식 상품과 EFHub 팩의 identity 확인 및 반영 지시다. identity3건만 사용자 확인으로 기록하고 전체33카드ID·명단·원본·타입·N/S/종료는 실제 DOM으로 독립 검증한다. T051의 추가 사용자 확인은 European 원본 명단11명과 상세 페이지 누락3명을 확정하며, section11/상세8 부분집합·승인명단·공식N150의 정확 일치에 한정한 first-import 보정으로 반영한다. T018/C109~C113의 원본 분석 범위는 바꾸지 않는다.
 
 | 조건 ID | 최신 결정 | 영향 단계 / 선행 조건 / 처리 순서 | 상태 |
 | --- | --- | --- | --- |
-| C114 | 11월5일 세 신규 공식 상품과 EFHub 팩의 대응을 각각 확인 | T050/R6 별도 데이터 유지보수. identity3건 사용자 확인→전체33ID/원본/타입·공식N/종료 DOM검증→18승인/rules1.8.0 채택→고정수입/저장/API/세사이트→GitHub/CI. 잠긴 collector 검사를 완화하거나 source8을11로 위조하지 않음 | 부분 완료: POTW/Spanish22명·2팩은 저장v24/API/세사이트 verified. European은11명/타입/identity 승인 완료이나 `pack_detail_section_mismatch`로 DB보류. GitHub pending |
+| C114 | 11월5일 세 신규 공식 상품과 EFHub 팩의 대응을 각각 확인 | T050~T051/R6 별도 데이터 유지보수. identity3건·European 원본11/상세누락3 사용자 확인→전체33ID/원본/타입·공식N/종료 DOM검증→18승인/rules1.9.0 채택→고정수입/저장/API/세사이트→GitHub/CI. 정확 section11/상세8 부분집합·승인명단·N150 외에는 보정하지 않음 | 데이터 반영 완료: 세 팩33명, 저장v25/API/세사이트 verified. GitHub 고정영수증/ref/CI 최종 확인 중 |
 | C113 | Windows 미저장 자료의 재추출 가능 여부 확인·재추출 요청 | T018/R6; 검증된 원native/백업→새정적수집/읽기검토→실제checkpoint저장, 원IPA/선택raw복원→후기입력연결. C109/거부우회금지유지 | 기존 원native/동결 입력으로 Stage17 source 검증·nonempty264개 저장/원빈script8개 선언·별도 인계 보존. Windows 실제 작업/newLinux0·새 통합ZIP/복원 미확정 |
 | C112 | 연결 해제로 중단된 작업 현황 복구 후 계속 지시 | T018/R6; remote/도구실제상태확인→완료/pending/재접근불가분리→원격인계보존→환경재연결후원본/동결입력대조·후기추출재개 | Stage17 분석·264개별파일/8빈script선언/인계저장·관리검사와 문서검토 후 Windows 재단절·현재 unavailable. 로컬재확인/Git정렬미완료·원격인계계속/newLinux0 |
 | C111 | 다음 작업을 계속하고 실제 필요한 자료 추출 완료 전까지 멈추지 말라는 지시 | T018/R6; 확인된 원본 의존성→실제복원/추출/연결검증→미확보/정적확정불가구분. C109/원본미실행/P5경계유지 | 동결272논리파일 중 nonempty264개 저장·원길이0 script8개 고정 manifest 선언·별도 인계 성공. 새 원자산raw0·필요 입력 전체 확보 미완료·다음 selector 입력 연결 계속 |
@@ -3711,3 +3711,46 @@ European은 신규목록의 정확한11문자열ID와 타입5×3·타입6×8을 
 | `config/catalog-automation.json` | 검토 결과 변경 불필요 | API/viewer owner-private·실제앱 public 역할과 origin 유지 |
 | `services/catalog-api/scripts/lifecycle/collect-cycle.mjs` | 검토 결과 변경 불필요 | European 불일치를 우회하지 않고 잠긴 first-import 검사를 그대로 적용 |
 | `scripts/catalog-update-record.mjs` | 검토 결과 변경 불필요 | 화이트리스트 고정영수증·github pending·미래SHA 금지 계약 유지 |
+
+
+## T051 — European 원본 11명 보정과 전체 반영
+
+- 단계: R6
+- 상태: 진행 중
+- 이전: T050
+- 다음: T018
+
+### 사용자 확인과 제한된 계약 변경
+
+사용자는 European Clubs Selection 5 Nov '26의 원본도11명이고 Raphael Varane(`88045755869252`)·Gennaro Gattuso(`88045755889792`)·Albert Ferrer(`88046292831707`) 세 명이 팩 상세에서 누락됐음을 직접 확인했다. 이는 상품 identity와 원본 명단 수/누락 위치에 대한 확인이다. 세 선수의 문자열ID·원본 필드·playerType5, 나머지8명의 playerType6, section11·상세8 정확 부분집합과 공식N150은 실제 보존 DOM·기존 승인 명단으로 별도 대조했다.
+
+collector는 이 검토된 회차에서만 section11·detail8·approved11·N150이 모두 정확히 일치할 때 first-import를 허용한다. raw pack `playerCount`는 원본11로 저장하고 상세의 관측8은 processed `sourceReportedPlayerCount`와 `countCorrection`에 보존한다. 이후 재실행도 승인 매핑의 보존 관측8을 다시 사용해 가공 바이트가 바뀌지 않는다. 일반적인 상세/목록 불일치, 다른 인원, 미승인 명단에는 기존 거부를 유지한다. rules1.9.0 SHA256 `0b31ff44668b1ee433adc5eeb6a6449041815f59986620a92acb19d402bd17ce`와18승인을 채택했고 전체 API 테스트167/167 및 대상23/23을 통과했다.
+
+### 데이터·저장·발행 검증
+
+고정 run-cycle 결과는 raw47,553선수/1,710팩, 가공215선수/18팩, live7/archive11이다. runtime은 `ea7fa1d43c59b065531a6623b101be32dc8f6bc64d185f1d6cf0131d25cc1f72`, publication은 `3aac2de69fc91d3e6ef7b160cbac49bf0ed9a2df273154bea233bc0807ac10f0`, source receipt SHA256은 `a111777d64cf931c2a8286b3a0131f49a9b0064e1bb51a9e2117580d7e33ceae`다. 규칙 채택 후 같은 자료 재실행은 data changed=false와 동일 publication을 확인했다. European은 raw/가공 모두11명, N150/standard139이며 새 가공의 single100·ten900과 `direct_user_confirmation` 출처를 유지하고 raw 가격은 수정하지 않았다.
+
+데이터묶음v26은79,990,769bytes, SHA256 `db1b1e8a8b2f823cb65ce1247638e80485fd4a412dc939d0c1aad65953a6b64c`, inventory SHA256 `e1d3e690ee89487bd932c0c02e7d5eb61f2f889f0ebaa971f73908aea7ab35e4`이며 gzip/tar/source members 전량 일치를 저장 후 readback으로 확인했다. private API는 같은 publication이라 쓰기 없이 전량 재검증했고 API·private viewer·public 실제앱의 players215/packs18/live7/archive11 전체 내용과 버전을 다시 대조했다. 공개 앱은 토큰 없이 익명 GET과 가시 화면에서 European11명·누락됐던3명을 확인했다. 최신 사이트 영수증 SHA256은 `82e167364b530c8d71e577363accf5fbbd0763514b726f64507a7619e4ea1bf4`다.
+
+고정 요약 영수증 runId `cf20e29397df134b8ef033cec429b709cbe59fa07a959811ac5dced083563297`는 bundle/api/sites=`verified`, github=`pending`을 유지한다. 정상 commit/push·원격 내용/ref·실제CI가 확인된 뒤 최종 SHA와 CI는 작은 모니터에만 기록하며 영수증에 미래 SHA를 쓰지 않는다.
+
+### 파일 최신화 검토
+
+| 파일 | 결과 | 근거 |
+| --- | --- | --- |
+| `services/catalog-api/scripts/lifecycle/collect-cycle.mjs` | 수정 | 검토된 section11/detail8 부분집합 first-import와 원본11 raw pack 생성 |
+| `services/catalog-api/lib/catalog-lifecycle.mjs` | 수정 | 승인된 보정에서 raw11·상세관측8을 분리하고 processed 근거 보존 |
+| `services/catalog-api/tests/manual-collection-support.test.mjs` | 수정 | 정확한 European 보정 성공과 다른 불일치 거부 회귀 |
+| `services/catalog-api/tests/catalog-lifecycle.test.mjs` | 수정 | raw11/sourceReported8 가공 계약 회귀 |
+| `data/research/catalog-sale-mappings.json` | 수정 | 사용자 원본11/상세누락3 확인과 보정 근거 |
+| `services/catalog-api/policy/approved-mappings.json` | 수정 | 새 mappingDigest와 T051 사용자 확인 review ID |
+| `services/catalog-api/policy/rules.lock.json` | 수정 | 변경된 collector/lifecycle/tests/approval 해시를 rules1.9.0으로 잠금 |
+| `docs/CATALOG_DATA_CONTRACT.md` | 수정 | 제한된 first-import 보정과 raw/관측값 분리 계약 명시 |
+| `docs/WORKPLAN.md` | 수정 | T051 실행·검증·미완료 GitHub 단계 기록 |
+| `docs/ROADMAP.md` | 수정 | 제품 T018을 유지한 별도 유지보수 T051 반영 |
+| `docs/FILE_SYNC.json` | 수정 | 변경 파일의 T051 검토 시점·갱신 조건 연결 |
+| `data/updates/catalog-latest.json` | 수정 | +11명/+1팩과 bundle/API/sites verified·github pending 화이트리스트 요약 |
+| `AGENTS.md` | 검토 결과 변경 불필요 | 기존 사용자 변경 보존·규칙/문서/검증·정상 push/CI 절차 유지 |
+| `docs/AUTOMATION.md` | 검토 결과 변경 불필요 | 개별 상품 상태를 공통 예약 지침에 복사하지 않고 T036 재개 절차 유지 |
+| `config/catalog-automation.json` | 검토 결과 변경 불필요 | API/viewer owner-private·앱 public 역할과 origin 재사용 |
+| `services/catalog-api/scripts/lifecycle/publication.mjs` | 검토 결과 변경 불필요 | 가공 상태가 동일하므로 기존 결정적 publication `3aac2de...`를 재사용하고 원격 쓰기 없이 전량 검증 |

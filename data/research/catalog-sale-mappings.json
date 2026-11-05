@@ -675,15 +675,18 @@
       ],
       "countCorrection": {
         "status": "user_confirmed",
-        "reason": "User confirmed only the product identity. Preserved DOM independently verifies eleven section members: three type5 player-detail records plus eight type6 pack-detail records. Preserve source count8; hold effective special11 until the locked first-import collector can consume this reviewed layout without weakening validation.",
+        "reason": "User directly confirmed that the original pack roster has eleven players and that Rafael/Raphael Varane, Gennaro Gattuso and Albert Ferrer are the three omitted detail-page entries. Preserved DOM independently verifies the exact eleven string IDs: three type5 player-detail records plus eight type6 pack-detail records. Store raw roster count11 while preserving the observed detail-page count8 as separate correction provenance.",
         "effectiveCount": 11
       },
       "matchEvidence": {
-        "status": "user_confirmed_product_identity_and_verified_browser_dom_membership",
+        "status": "user_confirmed_product_identity_and_original_roster_correction_with_verified_browser_dom_membership",
         "identityAuthority": "direct_user_confirmation",
         "identityConfirmation": "각각 European Clubs Selection 5 Nov ’26, POTW 5 Nov ’26, Spanish League Selection 5 Nov ’26 이야.",
-        "identityScope": "Only the three official-product to EFHub-pack identities were user-confirmed; full string IDs, roster completeness, playerType values, raw fields, source count8 and official totals/end times were independently verified from preserved DOM.",
+        "identityScope": "The three official-product to EFHub-pack identities and the European original roster count11/detail-page omission of three named players were user-confirmed. Full string IDs, roster completeness, playerType values, other raw fields, observed detail-page count8 and official totals/end times were independently verified from preserved DOM.",
         "identityConfirmedOnKst": "2026-11-05",
+        "rosterCorrectionAuthority": "direct_user_confirmation",
+        "rosterCorrectionConfirmation": "원본도 11명이야. 세 명이 누락된 거야.",
+        "rosterCorrectionScope": "European Clubs Selection 5 Nov '26 original roster is eleven; Rafael/Raphael Varane, Gennaro Gattuso and Albert Ferrer are the three omitted detail-page entries.",
         "sourceKind": "browser_dom",
         "httpStatus": null,
         "sourceEvidenceFile": "catalog-runtime/reviewed-evidence/T050/source-observations.json",
@@ -732,7 +735,7 @@
           }
         ],
         "rawDatePolicy": "Preserve visible original 2026-11-05.",
-        "lockedCollectorStatus": "Hold first import: the reviewed section has eleven members but the pack detail exposes only eight; the locked collector requires an existing raw pack before applying a source8/effective11 correction."
+        "lockedCollectorStatus": "Explicit development authorized: first import may join the reviewed exact eleven-member section to the eight-member detail subset, store raw roster count11, and retain observed detail-page count8 as correction provenance."
       }
     },
     {
