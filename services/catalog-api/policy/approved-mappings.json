@@ -210,6 +210,18 @@
         "private catalog-runtime/reviewed-evidence/T050/source-observations.json SHA256 37973e832e88a954af54e982eefc28cb3e66d8e8ea7352ed330e90bc184a2bad",
         "https://efhub.com/packs/spanish-league-selection-5-nov-26 DOM SHA256 b31c2a541da70e11b27e480b8504142e240a6f61e6972d4a473fcf7f3bb2e4a7"
       ]
+    },
+    {
+      "saleId": "english-league-selection-midfielders-9-nov-26::2026-11",
+      "mappingSha256": "99d602e2e9c5f9fb73eae1851fbb84473ecea0820bb6ccec6caa96076aa64e72",
+      "reviewId": "T052-user-approved-Nov9-midfielders-correction",
+      "authority": "user_approved_exact_sale_mapping_and_original_roster_correction_with_verified_browser_dom_membership",
+      "evidenceRefs": [
+        "data/research/catalog-sale-mappings.json",
+        "docs/WORKPLAN.md#t052--11월-9일-미드필더-팩-검토와-반영",
+        "private catalog-runtime/reviewed-evidence/T052/source-observations.json SHA256 0f9ac785f67dfdfe7ebe9a13cb8e4d77236f776c174bc6a343011fd757df9bb3",
+        "https://www.konami.com/efootball/en-us/topic/promotion/agent/1422/"
+      ]
     }
   ]
 }

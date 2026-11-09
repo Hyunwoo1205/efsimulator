@@ -9,7 +9,8 @@
 - 이전 작업: T048 — 단일 ‘선수팩 선택’ 버튼으로 통합하고 판매중/종료 전환은 창 안에 유지했다.539회귀·관리/타입/공식빌드·v17 실제 단일버튼/탭/선택복귀/초점·원격 동일tree와 구현CI2건 성공을 확인했다.
 - 현재 작업: T018 — 진행 중. Stage17에서 binding helper의 등록·인자·필드·원초기화 source18함수/2,278word와 원근거134개를 검증했다. 기존16package의 Blueprint script129개/91,144B·opcode53종·호출1,004개와 framing 오류 입력49건 거부 검사, 개봉 selector4호출·인덱스를 쓰는 원대안3개를 연결했다. 실제 분기·binding 입력은 미선택이며 새 원자산 raw0, 원본 실행·새 pose/GLB/영상0/BLOCKED다. 동결268canonical+4manifest=272논리파일/16,226,553B 중 nonempty264개를 각각 비공개 저장하고 원길이0 script8개는 고정 manifest의 정확한 빈파일 선언으로 보존했다. 별도 인계 파일을 저장했으며 새 통합ZIP의 최종 build·archive·복원은 미확정·새ZIP 저장0이다. 개별보존·문서 검토 뒤 Windows 연결이 해제돼 현재 로컬 확인/Git 정렬은 미완료다. 다음 한 작업: 현재 개봉 Blueprint의 원호출 인덱스 생산자와 native 획득 대상 목록의 writer를 정적으로 연결해 scene/actor 선택 입력 경로를 검증한다. 자동승인 거부된 수집의 재실행과 분리하고, 탐색 probe는 정식 수집·독립 검토 전 확정 근거로 승격하지 않는다.
 - 다음 작업: 없음 — T018 이후 범위는 별도 결정한다.
-- 최근 유지보수: T051 — 사용자가 European Clubs Selection 5 Nov '26의 원본 명단도11명이며 팩 상세에서 Raphael Varane·Gennaro Gattuso·Albert Ferrer 세 명이 누락됐음을 직접 확인했다. 정확한 section11/상세8 부분집합·기존 승인 명단·공식N150이 모두 일치할 때만 적용되는 검토 보정으로 rules1.9.0을 채택하고 raw11·가공11을 반영했다. raw47,553/1,710·가공215/18·판매중7/종료11, 멱등 재실행까지 반영한 데이터묶음v26과 publication `3aac2de69fc91d3e6ef7b160cbac49bf0ed9a2df273154bea233bc0807ac10f0`의 private API·private viewer/public 실제앱 전량 대조를 완료했다. GitHub 고정영수증·원격ref·실제CI 확인은 최종 단계이며 제품 T018/C109~C113·Stage17 미해결과 재시작 블록은 보존한다.
+- 이전 유지보수: T051 — 사용자가 European Clubs Selection 5 Nov '26의 원본 명단도11명이며 팩 상세에서 Raphael Varane·Gennaro Gattuso·Albert Ferrer 세 명이 누락됐음을 직접 확인했다. 정확한 section11/상세8 부분집합·기존 승인 명단·공식N150이 모두 일치할 때만 적용되는 검토 보정으로 rules1.9.0을 채택하고 raw11·가공11을 반영했다. raw47,553/1,710·가공215/18·판매중7/종료11, 멱등 재실행까지 반영한 데이터묶음v26과 publication `3aac2de69fc91d3e6ef7b160cbac49bf0ed9a2df273154bea233bc0807ac10f0`의 private API·private viewer/public 실제앱 전량 대조를 완료했다. GitHub 고정영수증·원격ref·실제CI 확인은 최종 단계이며 제품 T018/C109~C113·Stage17 미해결과 재시작 블록은 보존한다.
+- 최근 유지보수: T052 — 11월 9일 공식 미드필더 회차의 사용자 승인 매핑과 특수 카드 11장 보정을 진행 중이다. 공식 N150·종료 UTC와 신규 목록 11장·상세 8장 부분집합, 전체 원본 카드 ID와 타입을 확인했다. 저장·발행·GitHub 검증 상태는 T052에 기록한다.
 - 현재 조건: T043이 T041의 선수 정렬을 화면 범위별로 구분한다. Epic5→Show Time8→Trend3→Highlight6 우선, 팩 안 선수는 등급 안 OVR순, 전체 선수는 등급 안 확인 날짜 최신순→OVR순이며 최초 연결팩 날짜를 사용한다. 팩은 등급 안 날짜 최신순이다. exact raw 타입·원본·가공/API 계약·가격100/900·팩 구성/카드 표시와 실제 앱 public·API/admin/viewer owner-private 경계를 보존한다.
 
 ### 압축 재시작 체크포인트 — C109/C111/C112/C113 / Stage17 동결 파일 개별 보존
@@ -3754,3 +3755,36 @@ collector는 이 검토된 회차에서만 section11·detail8·approved11·N150�
 | `docs/AUTOMATION.md` | 검토 결과 변경 불필요 | 개별 상품 상태를 공통 예약 지침에 복사하지 않고 T036 재개 절차 유지 |
 | `config/catalog-automation.json` | 검토 결과 변경 불필요 | API/viewer owner-private·앱 public 역할과 origin 재사용 |
 | `services/catalog-api/scripts/lifecycle/publication.mjs` | 검토 결과 변경 불필요 | 가공 상태가 동일하므로 기존 결정적 publication `3aac2de...`를 재사용하고 원격 쓰기 없이 전량 검증 |
+
+
+## T052 — 11월 9일 잉글랜드 미드필더 팩 검토 및 반영
+
+- 단계: R6
+- 상태: 진행 중
+- 이전: T051
+- 다음: T018
+
+### 승인 범위와 원본 검증
+
+사용자는 2026-11-09 KST에 공식 `Epic: English League Midfielders`와 EFHub `English League Selection Midfielders 9 Nov '26`의 정확한 회차 매핑과 특수 카드 11장 보정을 승인했다. 공식 확률표의 전체 150명과 종료 시각 `2026-11-16T01:59:59.000Z`, 공식 출시 공지의 에픽 3장·하이라이트 8장·기타 139명, EFHub 신규 목록과 카드 상세의 전체 문자열 ID·원본 `playerType` 5×3·6×8을 독립적으로 대조했다.
+
+EFHub 팩 상세의 8장 ID는 신규 목록 11장의 정확한 부분집합이다. 상세에서 빠진 세 장은 Frank Lampard, Paul Scholes, Steven Gerrard의 해당 회차 카드다. EFHub 원본 팩 날짜 2026-11-05와 코나미 공식 출시일 2026-11-09를 구분한다. 승인된 기존 first-import 경로로 raw 팩 인원은 11장, 가공 팩의 `sourceReportedPlayerCount`는 관측값 8장으로 보존하는 것이 이 회차의 반영 기준이다.
+
+### 단계별 검증 계획
+
+보존 원문의 URL·관측 UTC·SHA256을 비공개 증거에 연결하고 승인 매핑 한 건을 추가한다. `catalog-rules-1.9.1`에는 승인 레지스트리의 새 해시만 반영한다. 규칙 검사와 회귀 검증 뒤 예상 `CURRENT`를 지정해 규칙을 채택한다. 고정 run-cycle의 원문 영수증 재실행과 멱등성을 확인하고, 완성된 묶음의 동일 ID 저장 및 정확한 새 버전 무결성 확인 뒤 원격 API와 세 사이트를 전량 대조한다. GitHub 고정 요약·원격 ref·실제 CI 확인까지 완료되어야 작업을 완료로 전환한다. 실행 결과는 각 단계의 실제 검증 뒤 기록한다.
+
+### 파일 최신화 검토
+
+| 파일 | 결과 | 근거 |
+| --- | --- | --- |
+| `data/research/catalog-sale-mappings.json` | 수정 | 승인된 11월 9일 회차와 특수 카드 11장, 원본 관측 8장, 출처 근거 등록 |
+| `services/catalog-api/policy/approved-mappings.json` | 수정 | 사용자 승인 범위와 원문 검토를 정확한 회차 매핑 해시에 연결 |
+| `services/catalog-api/policy/rules.lock.json` | 수정 | 승인 레지스트리 해시를 규칙 1.9.1로 잠금 |
+| `docs/WORKPLAN.md` | 수정 | T052의 승인 범위·실제 원본 확인과 검증 단계 기록 |
+| `docs/ROADMAP.md` | 수정 | 제품 T018과 독립된 팩 유지보수 상태 기록 |
+| `docs/FILE_SYNC.json` | 수정 | 영향 경로의 검토 작업과 갱신 조건 연결 |
+| `data/updates/catalog-latest.json` | 미해결 | 데이터 저장과 세 사이트 검증을 확인한 뒤 고정 경로에 요약 생성 |
+| `services/catalog-api/scripts/lifecycle/collect-cycle.mjs` | 검토 결과 변경 불필요 | 기존 승인 부분집합 검사와 원본 재실행 사용 |
+| `docs/AUTOMATION.md` | 검토 결과 변경 불필요 | 회차별 승인과 진행 상태는 별도 작업 기록으로 관리 |
+| `docs/CATALOG_DATA_CONTRACT.md` | 검토 결과 변경 불필요 | 카드 9필드, N/S/A, 사용자 확정 가격과 승인 보정의 기존 계약 적용 |

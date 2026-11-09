@@ -851,6 +851,149 @@
         },
         "rawDatePolicy": "Preserve visible original 2026-11-05."
       }
+    },
+    {
+      "saleId": "english-league-selection-midfielders-9-nov-26::2026-11",
+      "packSlug": "english-league-selection-midfielders-9-nov-26",
+      "officialTitle": "Epic: English League Midfielders",
+      "newPlayersSection": "English League Selection Midfielders 9 Nov '26",
+      "expectedEndsAt": "2026-11-16T01:59:59.000Z",
+      "expectedTotalPlayerCount": 150,
+      "expectedSpecialCount": 11,
+      "memberIds": [
+        "88046292831708",
+        "88046292831666",
+        "88046292831668",
+        "105897250582270",
+        "105897250644219",
+        "105897250667110",
+        "105897250672866",
+        "105897250680589",
+        "105897250681406",
+        "105897250703161",
+        "105897250704927"
+      ],
+      "countCorrection": {
+        "status": "user_confirmed",
+        "reason": "User approved the exact 9 November sale mapping and eleven-card correction. The complete new-players section and all eleven exact player-detail records verify three type-5 Epic and eight type-6 Highlight cards. The pack detail is an exact eight-card Highlight subset. Preserve the observed eight separately from the effective eleven.",
+        "effectiveCount": 11
+      },
+      "matchEvidence": {
+        "status": "user_approved_exact_sale_mapping_and_roster_correction_verified_from_browser_dom",
+        "authority": "direct_user_confirmation",
+        "confirmation": "그렇게 진행해줘",
+        "confirmationScope": "This exact sale mapping and eleven-card correction; source IDs, types, total and UTC end verified independently.",
+        "confirmedOnKst": "2026-11-09",
+        "sourceKind": "browser_dom",
+        "httpStatus": null,
+        "sourceEvidenceFile": "catalog-runtime/reviewed-evidence/T052/source-observations.json",
+        "sourceEvidenceSha256": "0f9ac785f67dfdfe7ebe9a13cb8e4d77236f776c174bc6a343011fd757df9bb3",
+        "official": {
+          "url": "https://efootball-web.konami.net/probability_kr.php",
+          "sha256": "10971d3ea8d9c460fc37eabe405eeac8d33f49de0cf997975acf6dfa6bec2134",
+          "observedAt": "2026-11-09T08:46:27.732Z",
+          "totalPlayerCount": 150,
+          "endsAt": "2026-11-16T01:59:59Z",
+          "announcementUrl": "https://www.konami.com/efootball/en-us/topic/promotion/agent/1422/",
+          "releaseDate": "2026-11-09"
+        },
+        "newPlayers": {
+          "url": "https://efhub.com/new-players",
+          "sha256": "d306595aead0fadfd9262906202260427c46fb34bf2f430e7f272f433dd87e02",
+          "observedAt": "2026-11-09T08:46:27.651Z",
+          "section": "English League Selection Midfielders 9 Nov '26",
+          "completeCount": 11
+        },
+        "pack": {
+          "url": "https://efhub.com/packs/english-league-selection-midfielders-9-nov-26",
+          "sha256": "d276da3b1e3260c21d5c2096d6a7f3145a2c7bb6acab1648a3886304e354a890",
+          "observedAt": "2026-11-09T08:46:27.705Z",
+          "name": "English League Selection Midfielders 9 Nov '26",
+          "rawDate": "2026-11-05",
+          "originalPlayerCount": 8,
+          "verifiedCardIds": 8
+        },
+        "playerDetails": [
+          {
+            "id": "88046292831708",
+            "playerType": 5,
+            "url": "https://efhub.com/players/88046292831708",
+            "sha256": "22b3dbeb3f877d595034f8e517588b553e772a31895b4eae891d375fd97f6fe6",
+            "observedAt": "2026-11-09T08:46:55.465Z"
+          },
+          {
+            "id": "88046292831666",
+            "playerType": 5,
+            "url": "https://efhub.com/players/88046292831666",
+            "sha256": "f881c14b27182e91f1a907943b36ff082a4cf5f9bb5ba933ad1ac07e84ae06bf",
+            "observedAt": "2026-11-09T08:46:55.760Z"
+          },
+          {
+            "id": "88046292831668",
+            "playerType": 5,
+            "url": "https://efhub.com/players/88046292831668",
+            "sha256": "3d2462bcb21e6ca62203a7e1306392c7ebb76b9b9f857a70988ac3dbd475ba72",
+            "observedAt": "2026-11-09T08:46:56.001Z"
+          },
+          {
+            "id": "105897250582270",
+            "playerType": 6,
+            "url": "https://efhub.com/players/105897250582270",
+            "sha256": "b813492fd72ee6b2ec88bd7c9e90d1d970adcbc4946b27ea10ff52e2c2b5a473",
+            "observedAt": "2026-11-09T08:46:56.690Z"
+          },
+          {
+            "id": "105897250644219",
+            "playerType": 6,
+            "url": "https://efhub.com/players/105897250644219",
+            "sha256": "9c267e442e82bdff151768e442e85f8bde2257c8c5d598d353414821399edd3a",
+            "observedAt": "2026-11-09T08:46:56.888Z"
+          },
+          {
+            "id": "105897250667110",
+            "playerType": 6,
+            "url": "https://efhub.com/players/105897250667110",
+            "sha256": "a3b68e9285f0f72aa3cb34a7d7a9ebc072fd76a97f7cd36155cd89489173eb7d",
+            "observedAt": "2026-11-09T08:46:57.107Z"
+          },
+          {
+            "id": "105897250672866",
+            "playerType": 6,
+            "url": "https://efhub.com/players/105897250672866",
+            "sha256": "29f577b5758f868954f657372f8f3e8e38b42dce5130e7bdcaa4cbbc72a912d2",
+            "observedAt": "2026-11-09T08:46:57.356Z"
+          },
+          {
+            "id": "105897250680589",
+            "playerType": 6,
+            "url": "https://efhub.com/players/105897250680589",
+            "sha256": "9277cac8f4d5c01d6135cb8417e0fe41a862be2317dd615bbe6764982ce0f664",
+            "observedAt": "2026-11-09T08:46:57.597Z"
+          },
+          {
+            "id": "105897250681406",
+            "playerType": 6,
+            "url": "https://efhub.com/players/105897250681406",
+            "sha256": "5a8e0e5983a03dd6a74f744cb1a7d6879f122132a165551153de32118701ed10",
+            "observedAt": "2026-11-09T08:46:57.874Z"
+          },
+          {
+            "id": "105897250703161",
+            "playerType": 6,
+            "url": "https://efhub.com/players/105897250703161",
+            "sha256": "e5f2a5abc33e33cc48ae51ecabe186a4eff7c435104dbd1d6ad3a010e957b60d",
+            "observedAt": "2026-11-09T08:46:58.095Z"
+          },
+          {
+            "id": "105897250704927",
+            "playerType": 6,
+            "url": "https://efhub.com/players/105897250704927",
+            "sha256": "396a337a0ec74abdf69ca8d0a6013b7f365bf384e423f8207a4e9eddb2daee73",
+            "observedAt": "2026-11-09T08:46:58.302Z"
+          }
+        ],
+        "rawDatePolicy": "Preserve EFHub's 2026-11-05 metadata separately from the 2026-11-09 official launch."
+      }
     }
   ],
   "pendingOfficialTitles": [],

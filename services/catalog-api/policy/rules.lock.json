@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "version": "catalog-rules-1.9.0",
-  "reviewId": "T051-user-confirmed-European-original-roster-correction",
+  "version": "catalog-rules-1.9.1",
+  "reviewId": "T052-user-approved-Nov9-midfielders-correction",
   "files": [
     {
       "path": "lib/catalog-contract.mjs",
@@ -49,7 +49,7 @@
     },
     {
       "path": "policy/approved-mappings.json",
-      "sha256": "5892266c0bc9637aaeefb2b3f23ef56edc7bbcc9843a41a7ca7b2fa26acec743"
+      "sha256": "06d4ffee98ced12c155e5d4dafb9676afdfd72a5d4d1eea9b066c66f600c9d6e"
     }
   ]
 }

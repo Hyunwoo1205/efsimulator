@@ -139,3 +139,8 @@ POTW/Spanish의22명·2팩은 raw47,542/1,709·가공204명/17팩·live6/archive
 사용자가 European Clubs Selection 5 Nov '26의 원본 명단도11명이고 팩 상세에서 Raphael Varane·Gennaro Gattuso·Albert Ferrer만 누락됐음을 직접 확인했다. collector는 검토된 신규목록 section11과 상세8의 정확한 부분집합, 승인된11ID, 공식N150이 모두 일치할 때만 first-import를 허용하며 다른 불일치에는 기존 거부를 유지한다. raw pack에는 원본11을 기록하고 상세 페이지 관측8은 가공의 `sourceReportedPlayerCount`와 보정 근거에 따로 보존한다.
 
 rules1.9.0 아래 고정 run-cycle로 raw47,553/1,710·가공215/18·live7/archive11을 만들고 멱등 재실행까지 포함한 데이터묶음v26을 같은 저장 ID에 충돌 보호로 반영했다. publication `3aac2de69fc91d3e6ef7b160cbac49bf0ed9a2df273154bea233bc0807ac10f0`은 private API 전량 readback/CAS와 private viewer/public 실제앱의 players/packs/live/archive 전량 대조를 통과했다. 세 선수는 원문 문자열ID와 playerType5를 그대로 전달하며 팩은 N150/S11·single100/ten900 정책을 유지한다. 제품 currentT018과 Stage17 미해결 범위는 변경하지 않는다.
+
+
+## T052 — 11월 9일 잉글랜드 미드필더 팩 검토 및 반영
+
+별도 유지보수 T052는 11월 9일 공식 잉글랜드 미드필더 회차의 사용자 승인 매핑과 특수 카드 11장 보정이다. 코나미 공지와 확률표에서 에픽 3장·하이라이트 8장·전체 150명 및 종료 UTC를, EFHub에서 정확한 11장 ID·타입과 상세의 8장 부분집합을 확인했다. 규칙 1.9.1의 승인 레지스트리 잠금부터 고정 수입, 저장, 세 사이트 및 GitHub 검증을 순서대로 진행한다. 제품 상태는 R6/이전 T048/현재 T018/다음 없음이다.
