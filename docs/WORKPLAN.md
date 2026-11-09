@@ -3770,9 +3770,11 @@ collector는 이 검토된 회차에서만 section11·detail8·approved11·N150�
 
 EFHub 팩 상세의 8장 ID는 신규 목록 11장의 정확한 부분집합이다. 상세에서 빠진 세 장은 Frank Lampard, Paul Scholes, Steven Gerrard의 해당 회차 카드다. EFHub 원본 팩 날짜 2026-11-05와 코나미 공식 출시일 2026-11-09를 구분한다. 승인된 기존 first-import 경로로 raw 팩 인원은 11장, 가공 팩의 `sourceReportedPlayerCount`는 관측값 8장으로 보존하는 것이 이 회차의 반영 기준이다.
 
-### 단계별 검증 계획
+### 단계별 검증 결과
 
-보존 원문의 URL·관측 UTC·SHA256을 비공개 증거에 연결하고 승인 매핑 한 건을 추가한다. `catalog-rules-1.9.1`에는 승인 레지스트리의 새 해시만 반영한다. 규칙 검사와 회귀 검증 뒤 예상 `CURRENT`를 지정해 규칙을 채택한다. 고정 run-cycle의 원문 영수증 재실행과 멱등성을 확인하고, 완성된 묶음의 동일 ID 저장 및 정확한 새 버전 무결성 확인 뒤 원격 API와 세 사이트를 전량 대조한다. GitHub 고정 요약·원격 ref·실제 CI 확인까지 완료되어야 작업을 완료로 전환한다. 실행 결과는 각 단계의 실제 검증 뒤 기록한다.
+보존 원문의 URL·관측 UTC·SHA256을 비공개 증거에 연결하고 승인 매핑 한 건을 추가했다. `catalog-rules-1.9.1`의 승인 레지스트리 해시와 예상 `CURRENT`를 확인한 뒤 규칙을 채택했다. 데이터 검사 167건, 승인 매핑 관련 회귀 검사 23건, 저장소 검사 541건과 고정 run-cycle의 원문 영수증 재실행 및 멱등성 검사를 통과했다.
+
+raw 11명·1팩과 가공 11명·1팩을 추가했다. 새 데이터 묶음 v28을 동일 ID에 버전 보호로 저장하고 정확한 v28의 SHA256·gzip·tar·`CURRENT`를 대조했다. 발행 `6967bc1cb3959bf60f05f36492068551dd297511d7c467fbf0674a4d68128be0`은 원격 CAS 활성화 뒤 API·검토 viewer·공개 앱의 선수 226명, 팩 19개, live 6개, archive 13개 전량 대조를 통과했다. 고정 요약에 저장·API·사이트 검증 결과를 남겼다. 원격 GitHub ref와 해당 커밋의 실제 CI 확인 결과는 모니터 `hosting.pipeline.github`에 기록한다.
 
 ### 파일 최신화 검토
 
@@ -3784,7 +3786,7 @@ EFHub 팩 상세의 8장 ID는 신규 목록 11장의 정확한 부분집합이�
 | `docs/WORKPLAN.md` | 수정 | T052의 승인 범위·실제 원본 확인과 검증 단계 기록 |
 | `docs/ROADMAP.md` | 수정 | 제품 T018과 독립된 팩 유지보수 상태 기록 |
 | `docs/FILE_SYNC.json` | 수정 | 영향 경로의 검토 작업과 갱신 조건 연결 |
-| `data/updates/catalog-latest.json` | 미해결 | 데이터 저장과 세 사이트 검증을 확인한 뒤 고정 경로에 요약 생성 |
+| `data/updates/catalog-latest.json` | 수정 | raw·가공 11명/1팩 추가와 bundle/API/sites 검증을 화이트리스트 요약에 기록 |
 | `services/catalog-api/scripts/lifecycle/collect-cycle.mjs` | 검토 결과 변경 불필요 | 기존 승인 부분집합 검사와 원본 재실행 사용 |
 | `docs/AUTOMATION.md` | 검토 결과 변경 불필요 | 회차별 승인과 진행 상태는 별도 작업 기록으로 관리 |
 | `docs/CATALOG_DATA_CONTRACT.md` | 검토 결과 변경 불필요 | 카드 9필드, N/S/A, 사용자 확정 가격과 승인 보정의 기존 계약 적용 |
