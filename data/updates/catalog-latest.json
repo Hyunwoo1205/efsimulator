@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "operation": "data_update",
-  "observedAt": "2026-11-09T09:06:03.862Z",
-  "sourceCommit": "db95b475a8bff019af7efa3c86c6e2c364dde070",
-  "runtimeVersion": "60615ff5452fb66818f637184005ee97a93ba068235194b2f6610c3b51a463e8",
-  "publicationVersion": "6967bc1cb3959bf60f05f36492068551dd297511d7c467fbf0674a4d68128be0",
+  "observedAt": "2026-11-12T02:47:26.301Z",
+  "sourceCommit": "388bf431f3b4c70d4d0884230151f5ca0ebf5685",
+  "runtimeVersion": "bceedd07a42c681933ecf925f0178b752f799e2c2379363915531f8019251f53",
+  "publicationVersion": "6167068bde737dd25efc3a4989cad22e1fec9ba7220f9949114a4e20a26f8779",
   "rulesIdentity": {
     "version": "catalog-rules-1.9.1",
     "sha256": "633ed02605ec75ae19622bbb8faf1349afb39b9f80b3ea6232e32d91eae98997"
@@ -14,26 +14,20 @@
     "rawPacks": 1711,
     "players": 226,
     "packs": 19,
-    "live": 6,
-    "archive": 13
+    "live": 4,
+    "archive": 15
   },
   "changes": {
-    "rawPlayersAdded": 11,
-    "rawPacksAdded": 1,
-    "playersAdded": 11,
+    "rawPlayersAdded": 0,
+    "rawPacksAdded": 0,
+    "playersAdded": 0,
     "playersUpdated": 0,
-    "packsAdded": 1,
+    "packsAdded": 0,
     "packsUpdated": 0,
-    "archivedPacks": 0,
+    "archivedPacks": 2,
     "targetFiles": [
-      "live.json",
-      "logs/api_updates.jsonl",
-      "logs/packs_raw_updates.jsonl",
-      "logs/players_raw_updates.jsonl",
-      "processed/packs.json",
-      "processed/players.json",
-      "raw/packs_raw.json",
-      "raw/players_raw.json"
+      "archive.json",
+      "live.json"
     ]
   },
   "phases": {
@@ -43,11 +37,11 @@
     "github": "pending"
   },
   "evidence": {
-    "bundleSha256": "6f59a8a6c86feb72592d6d5311c8a4f05a645c1f2ae64fd41541a8396ae37a31",
-    "sourceReceiptSha256": "34a22b183d03c053ecfc7a07fa4cd3cc8756363309e351f473b50f2b64119603",
-    "sitesReceiptSha256": "90d5be8e853a3413b008725d3774f9a0c5f7344dee021ea5e20e741b4d02b4f3",
+    "bundleSha256": "bb697e119f9ed662c781eb38d605fab991428e210235068f840f383d246cbac7",
+    "sourceReceiptSha256": "2882670ca3205ed05bd2c5f7a11bcb3f1ea6db9aaeafa523e98df9caf8b846bb",
+    "sitesReceiptSha256": "13f1c9b79ebb173a9ae9b464709e2b06b532cd3d08e3252d034cb4f6aaf9bbb3",
     "officialHtmlSha256": "10971d3ea8d9c460fc37eabe405eeac8d33f49de0cf997975acf6dfa6bec2134",
     "efhubHtmlSha256": "d306595aead0fadfd9262906202260427c46fb34bf2f430e7f272f433dd87e02"
   },
-  "runId": "69607c655e97e50848908e6a6d5a746cf8051e80eae7e76ae42cc0f86857950b"
+  "runId": "af0627989b1b5cea2c5d26de99b43756ddd0277c40bb5da82e92ee71a4be891c"
 }
