@@ -1,33 +1,39 @@
 {
   "schemaVersion": 1,
   "operation": "data_update",
-  "observedAt": "2026-11-12T02:47:26.301Z",
-  "sourceCommit": "388bf431f3b4c70d4d0884230151f5ca0ebf5685",
-  "runtimeVersion": "bceedd07a42c681933ecf925f0178b752f799e2c2379363915531f8019251f53",
-  "publicationVersion": "6167068bde737dd25efc3a4989cad22e1fec9ba7220f9949114a4e20a26f8779",
+  "observedAt": "2026-11-12T13:06:25.579Z",
+  "sourceCommit": "aac72f0b3e58e4dc613c1698c17fb0e3661a40da",
+  "runtimeVersion": "2b1c7a61c1845efdb2a2e4b33f43a11109e548c8f71da491ac91da306788e02c",
+  "publicationVersion": "9659c68b134d4e5004b34cb04e3fd2331b63a8d567a6093dba6843a482d19ceb",
   "rulesIdentity": {
-    "version": "catalog-rules-1.9.1",
-    "sha256": "633ed02605ec75ae19622bbb8faf1349afb39b9f80b3ea6232e32d91eae98997"
+    "version": "catalog-rules-1.9.2",
+    "sha256": "611cad1371dc23868e95d5c76301234fb2e9861203a66addb282318fcd2d10cc"
   },
   "counts": {
-    "rawPlayers": 47564,
-    "rawPacks": 1711,
-    "players": 226,
-    "packs": 19,
-    "live": 4,
+    "rawPlayers": 47597,
+    "rawPacks": 1714,
+    "players": 259,
+    "packs": 22,
+    "live": 7,
     "archive": 15
   },
   "changes": {
-    "rawPlayersAdded": 0,
-    "rawPacksAdded": 0,
-    "playersAdded": 0,
+    "rawPlayersAdded": 33,
+    "rawPacksAdded": 3,
+    "playersAdded": 33,
     "playersUpdated": 0,
-    "packsAdded": 0,
+    "packsAdded": 3,
     "packsUpdated": 0,
-    "archivedPacks": 2,
+    "archivedPacks": 0,
     "targetFiles": [
-      "archive.json",
-      "live.json"
+      "live.json",
+      "logs/api_updates.jsonl",
+      "logs/packs_raw_updates.jsonl",
+      "logs/players_raw_updates.jsonl",
+      "processed/packs.json",
+      "processed/players.json",
+      "raw/packs_raw.json",
+      "raw/players_raw.json"
     ]
   },
   "phases": {
@@ -37,11 +43,11 @@
     "github": "pending"
   },
   "evidence": {
-    "bundleSha256": "bb697e119f9ed662c781eb38d605fab991428e210235068f840f383d246cbac7",
-    "sourceReceiptSha256": "2882670ca3205ed05bd2c5f7a11bcb3f1ea6db9aaeafa523e98df9caf8b846bb",
-    "sitesReceiptSha256": "13f1c9b79ebb173a9ae9b464709e2b06b532cd3d08e3252d034cb4f6aaf9bbb3",
-    "officialHtmlSha256": "10971d3ea8d9c460fc37eabe405eeac8d33f49de0cf997975acf6dfa6bec2134",
-    "efhubHtmlSha256": "d306595aead0fadfd9262906202260427c46fb34bf2f430e7f272f433dd87e02"
+    "bundleSha256": "552ea49bed0a6892453166f822a50068e255bb8954d0301f735c0c772c423597",
+    "sourceReceiptSha256": "b6e7829d5808a52cccf39a73d02fcdad1456ad76ec33e63def3f2881dabc9f55",
+    "sitesReceiptSha256": "95349f0a997d9bf26caddd734e91593b0e374e1c369dc6e02f195570f5b9a7a1",
+    "officialHtmlSha256": "ab24c11956b5bc9d7ddf272f953dfe38fc575b2e0574ffb7442a83ea2ed9129d",
+    "efhubHtmlSha256": "11ab798464b47bebc6551133ee539688d212012292085ff8f65cb3092e9c2576"
   },
-  "runId": "af0627989b1b5cea2c5d26de99b43756ddd0277c40bb5da82e92ee71a4be891c"
+  "runId": "ea90bd9074b62d7d528fbdef465e0dc9994447e596401fc22bcc0c6f00156b80"
 }

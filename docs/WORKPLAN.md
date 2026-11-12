@@ -3790,3 +3790,43 @@ raw 11명·1팩과 가공 11명·1팩을 추가했다. 새 데이터 묶음 v28�
 | `services/catalog-api/scripts/lifecycle/collect-cycle.mjs` | 검토 결과 변경 불필요 | 기존 승인 부분집합 검사와 원본 재실행 사용 |
 | `docs/AUTOMATION.md` | 검토 결과 변경 불필요 | 회차별 승인과 진행 상태는 별도 작업 기록으로 관리 |
 | `docs/CATALOG_DATA_CONTRACT.md` | 검토 결과 변경 불필요 | 카드 9필드, N/S/A, 사용자 확정 가격과 승인 보정의 기존 계약 적용 |
+
+## T053 — 11월 12일 신규 상품 연결과 검증
+
+- 단계: R6
+- 상태: 진행 중
+- 이전: T052
+- 다음: 저장본 무결성 확인 → 원격 API 발행과 세 사이트 대조 → GitHub 영수증·원격 ref·실제 CI 확인
+
+### 승인 범위와 원본 대조
+
+사용자는 2026-11-12 KST에 제시된 후보 가운데 Júnior를 제외한 다섯 상품의 대응을 확인하고 연결을 요청했다. 공식 전체인원 및 판매 종료 UTC는 확률표로 대조했다. 전체 문자열 카드 ID·원본 숫자 `playerType`·명단 대조를 통과한 세 회차의 승인 매핑을 등록했다.
+
+| 공식 상품 | EFHub 회차 | 공식 전체 / 특수 | 상태 |
+| --- | --- | --- | --- |
+| POTW: Worldwide 12 Nov '26 | POTW 12 Nov '26 | 11 / 11 | 전체 명단 대조, 승인 매핑 등록 |
+| POTW: European Club Championship | POTW European Club Championship 12 Nov '26 | 11 / 11 | 전체 명단 대조, 새 회차로 승인 매핑 등록 |
+| Show Time: Trendyol Süper Lig Monthly MVPs | Trendyol Süper Lig Monthly MVPs Oct '26 | 100 / 11 | 전체 명단 대조, 승인 매핑 등록 |
+| Epic: J.LEAGUE | J1 LEAGUE Selection 12 Nov '26 | 100 / 검증 보류 | 신규 목록 15장과 팩 상세 12장이 달라 승인 매핑 보류 |
+| Big Time & Epic: Arsenal FC | Arsenal Bigtime | 250 / 검증 보류 | 정확한 팩 상세와 전체 명단을 검증할 수 없어 승인 매핑 보류 |
+| Epic: Júnior |  | 50 /  | 사용자 요청에 따라 제외 |
+
+승인한 세 회차의 공식 종료는 `2026-11-19T01:59:59Z`다. European은 같은 공식 제목의 이전 회차와 구별되는 EFHub 팩과 새 종료 시각으로 연결했다.
+
+### 실행 및 검증 상태
+
+승인한 세 매핑의 해시를 레지스트리에 등록하고 예상 `CURRENT`에 `catalog-rules-1.9.2`를 로컬 채택했다. 잠긴 run-cycle과 원문 영수증 재실행으로 가공 선수 33명과 팩 3개를 추가했다. 로컬 결과는 선수 259명, 팩 22개, live 7개, archive 15개다. API 테스트 167건을 통과했다. 데이터 묶음 v30을 동일 ID에 버전 보호로 저장하고 정확한 새 버전의 SHA256·gzip·tar·CURRENT를 대조했다. 발행 `9659c68b134d4e5004b34cb04e3fd2331b63a8d567a6093dba6843a482d19ceb`의 원격 CAS 활성화 후 API·검토 viewer·공개 앱의 전체 내용과 버전을 확인했다. GitHub 원격 ref·실제 CI 결과는 모니터 `hosting.pipeline.github`에 기록한다.
+
+### 파일 최신화 검토
+
+| 파일 | 결과 | 근거 |
+| --- | --- | --- |
+| `data/research/catalog-sale-mappings.json` | 수정 | 검증한 세 회차의 공식 전체인원·종료·문자열 카드 명단과 출처 |
+| `services/catalog-api/policy/approved-mappings.json` | 수정 | 사용자 확인 및 명단 검증과 세 매핑 해시 연결 |
+| `services/catalog-api/policy/rules.lock.json` | 수정 | 변경된 승인 레지스트리 해시를 규칙 1.9.2로 잠금 |
+| `docs/WORKPLAN.md` | 수정 | 승인 범위·보류 근거와 검증 상태 기록 |
+| `docs/ROADMAP.md` | 수정 | 별도 유지보수 T053 진행 상태 기록 |
+| `docs/FILE_SYNC.json` | 수정 | 변경 경로의 T053 검토 시점·갱신 조건 연결 |
+| `data/updates/catalog-latest.json` | 수정 | 실제 3팩·33명 추가와 묶음·API·세 사이트 검증을 고정 영수증에 기록 |
+| `services/catalog-api/scripts/lifecycle/collect-cycle.mjs` | 검토 결과 변경 불필요 | 잠긴 명단 대조와 원문 재실행 적용 |
+| `docs/AUTOMATION.md` | 검토 결과 변경 불필요 | 회차별 승인과 진행 상태는 작업 기록에 보존 |

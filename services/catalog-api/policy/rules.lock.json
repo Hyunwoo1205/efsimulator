@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "version": "catalog-rules-1.9.1",
-  "reviewId": "T052-user-approved-Nov9-midfielders-correction",
+  "version": "catalog-rules-1.9.2",
+  "reviewId": "T053-user-approved-Nov12-product-identities",
   "files": [
     {
       "path": "lib/catalog-contract.mjs",
@@ -49,7 +49,7 @@
     },
     {
       "path": "policy/approved-mappings.json",
-      "sha256": "06d4ffee98ced12c155e5d4dafb9676afdfd72a5d4d1eea9b066c66f600c9d6e"
+      "sha256": "de1db20d4fe805cfc362292b52f302a97b6c6f8c4fcadebce3aae3bf018f0556"
     }
   ]
 }

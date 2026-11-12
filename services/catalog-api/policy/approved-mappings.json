@@ -222,6 +222,39 @@
         "private catalog-runtime/reviewed-evidence/T052/source-observations.json SHA256 0f9ac785f67dfdfe7ebe9a13cb8e4d77236f776c174bc6a343011fd757df9bb3",
         "https://www.konami.com/efootball/en-us/topic/promotion/agent/1422/"
       ]
+    },
+    {
+      "saleId": "trendyol-s-per-lig-monthly-mvps-oct-26::2026-11",
+      "mappingSha256": "ef43c45c7b509a78828cc77db5bb9e4b7c86cd156c65f74360249c9439e517a6",
+      "reviewId": "T053-user-approved-Nov12-product-identities",
+      "authority": "user_confirmed_product_identity_with_independently_verified_browser_dom_membership",
+      "evidenceRefs": [
+        "data/research/catalog-sale-mappings.json",
+        "private catalog-runtime/reviewed-evidence/T053/source-observations.json SHA256 d0523c04f646a35e5a1cefec6ac68e336231522dd3114ad7f703c250bd58776a",
+        "https://efhub.com/packs/trendyol-s-per-lig-monthly-mvps-oct-26 DOM SHA256 d49dea0a86ca5780f22f94f46e0794c9e84ea77bd15db286e89dc71eb649693f"
+      ]
+    },
+    {
+      "saleId": "potw-12-nov-26::2026-11",
+      "mappingSha256": "3a4634cdabafde5504d510d5db40439becf8634aee999021b0c5e045faf8d633",
+      "reviewId": "T053-user-approved-Nov12-product-identities",
+      "authority": "user_confirmed_product_identity_with_independently_verified_browser_dom_membership",
+      "evidenceRefs": [
+        "data/research/catalog-sale-mappings.json",
+        "private catalog-runtime/reviewed-evidence/T053/source-observations.json SHA256 d0523c04f646a35e5a1cefec6ac68e336231522dd3114ad7f703c250bd58776a",
+        "https://efhub.com/packs/potw-12-nov-26 DOM SHA256 5550e9c4e50e15023687dc401c58047333cd706947931257e8f928a84dc37fa4"
+      ]
+    },
+    {
+      "saleId": "potw-european-club-championship-12-nov-26::2026-11",
+      "mappingSha256": "ffff1a0a2f23fd7c623fa15211641d383ac9dd389536393a6f50c3bba76b968d",
+      "reviewId": "T053-user-approved-Nov12-product-identities",
+      "authority": "user_confirmed_product_identity_with_independently_verified_browser_dom_membership",
+      "evidenceRefs": [
+        "data/research/catalog-sale-mappings.json",
+        "private catalog-runtime/reviewed-evidence/T053/source-observations.json SHA256 d0523c04f646a35e5a1cefec6ac68e336231522dd3114ad7f703c250bd58776a",
+        "https://efhub.com/packs/potw-european-club-championship-12-nov-26 DOM SHA256 09655f1def900840aa6f8ab923c41172ba9cf22294abb914cd0e7469b8ff0e28"
+      ]
     }
   ]
 }

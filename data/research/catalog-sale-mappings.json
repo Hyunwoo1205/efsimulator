@@ -994,6 +994,174 @@
         ],
         "rawDatePolicy": "Preserve EFHub's 2026-11-05 metadata separately from the 2026-11-09 official launch."
       }
+    },
+    {
+      "saleId": "trendyol-s-per-lig-monthly-mvps-oct-26::2026-11",
+      "packSlug": "trendyol-s-per-lig-monthly-mvps-oct-26",
+      "officialTitle": "Show Time: Trendyol Süper Lig Monthly MVPs",
+      "newPlayersSection": "Trendyol Süper Lig Monthly MVPs Oct '26",
+      "expectedEndsAt": "2026-11-19T01:59:59Z",
+      "expectedTotalPlayerCount": 100,
+      "expectedSpecialCount": 11,
+      "memberIds": [
+        "105886513161472",
+        "105886513221468",
+        "105886513229179",
+        "105886513229373",
+        "105886513243006",
+        "105886513244589",
+        "105886513272304",
+        "106792751262070",
+        "106792751313790",
+        "106792751349294",
+        "106792751370757"
+      ],
+      "matchEvidence": {
+        "status": "user_confirmed_product_identity_and_verified_browser_dom_membership",
+        "identityAuthority": "direct_user_confirmation",
+        "identityConfirmation": "Junior 제외 나머지 전부 연결해줘",
+        "identityScope": "Product identities only for the five previously presented pairs. Epic: Júnior excluded. No source count correction approved.",
+        "identityConfirmedOnKst": "2026-11-12",
+        "sourceKind": "browser_dom",
+        "httpStatus": null,
+        "sourceEvidenceFile": "catalog-runtime/reviewed-evidence/T053/source-observations.json",
+        "sourceEvidenceSha256": "d0523c04f646a35e5a1cefec6ac68e336231522dd3114ad7f703c250bd58776a",
+        "official": {
+          "url": "https://efootball-web.konami.net/probability_kr.php",
+          "sha256": "ab24c11956b5bc9d7ddf272f953dfe38fc575b2e0574ffb7442a83ea2ed9129d",
+          "observedAt": "2026-11-12T13:01:42.297Z",
+          "totalPlayerCount": 100,
+          "endsAt": "2026-11-19T01:59:59Z"
+        },
+        "newPlayers": {
+          "url": "https://efhub.com/new-players",
+          "sha256": "11ab798464b47bebc6551133ee539688d212012292085ff8f65cb3092e9c2576",
+          "observedAt": "2026-11-12T13:02:12.219Z",
+          "section": "Trendyol Süper Lig Monthly MVPs Oct '26",
+          "completeCount": 11
+        },
+        "pack": {
+          "url": "https://efhub.com/packs/trendyol-s-per-lig-monthly-mvps-oct-26",
+          "sha256": "d49dea0a86ca5780f22f94f46e0794c9e84ea77bd15db286e89dc71eb649693f",
+          "observedAt": "2026-11-12T13:03:05.244Z",
+          "name": "Trendyol Süper Lig Monthly MVPs Oct '26",
+          "rawDate": "2026-11-12",
+          "originalPlayerCount": 11,
+          "verifiedCardIds": 11
+        }
+      }
+    },
+    {
+      "saleId": "potw-12-nov-26::2026-11",
+      "packSlug": "potw-12-nov-26",
+      "officialTitle": "POTW: Worldwide 12 Nov '26",
+      "newPlayersSection": "POTW 12 Nov '26",
+      "expectedEndsAt": "2026-11-19T01:59:59Z",
+      "expectedTotalPlayerCount": 11,
+      "expectedSpecialCount": 11,
+      "memberIds": [
+        "52905138780146",
+        "52905138834451",
+        "52905138835825",
+        "52905138844289",
+        "52905138856738",
+        "52905138857432",
+        "52905138861212",
+        "52905138877217",
+        "52905138878220",
+        "52905138878500",
+        "52905138881732"
+      ],
+      "matchEvidence": {
+        "status": "user_confirmed_product_identity_and_verified_browser_dom_membership",
+        "identityAuthority": "direct_user_confirmation",
+        "identityConfirmation": "Junior 제외 나머지 전부 연결해줘",
+        "identityScope": "Product identities only for the five previously presented pairs. Epic: Júnior excluded. No source count correction approved.",
+        "identityConfirmedOnKst": "2026-11-12",
+        "sourceKind": "browser_dom",
+        "httpStatus": null,
+        "sourceEvidenceFile": "catalog-runtime/reviewed-evidence/T053/source-observations.json",
+        "sourceEvidenceSha256": "d0523c04f646a35e5a1cefec6ac68e336231522dd3114ad7f703c250bd58776a",
+        "official": {
+          "url": "https://efootball-web.konami.net/probability_kr.php",
+          "sha256": "ab24c11956b5bc9d7ddf272f953dfe38fc575b2e0574ffb7442a83ea2ed9129d",
+          "observedAt": "2026-11-12T13:01:42.297Z",
+          "totalPlayerCount": 11,
+          "endsAt": "2026-11-19T01:59:59Z"
+        },
+        "newPlayers": {
+          "url": "https://efhub.com/new-players",
+          "sha256": "11ab798464b47bebc6551133ee539688d212012292085ff8f65cb3092e9c2576",
+          "observedAt": "2026-11-12T13:02:12.219Z",
+          "section": "POTW 12 Nov '26",
+          "completeCount": 11
+        },
+        "pack": {
+          "url": "https://efhub.com/packs/potw-12-nov-26",
+          "sha256": "5550e9c4e50e15023687dc401c58047333cd706947931257e8f928a84dc37fa4",
+          "observedAt": "2026-11-12T13:02:45.081Z",
+          "name": "POTW 12 Nov '26",
+          "rawDate": "2026-11-12",
+          "originalPlayerCount": 11,
+          "verifiedCardIds": 11
+        }
+      }
+    },
+    {
+      "saleId": "potw-european-club-championship-12-nov-26::2026-11",
+      "packSlug": "potw-european-club-championship-12-nov-26",
+      "officialTitle": "POTW: European Club Championship",
+      "newPlayersSection": "POTW European Club Championship 12 Nov '26",
+      "expectedEndsAt": "2026-11-19T01:59:59Z",
+      "expectedTotalPlayerCount": 11,
+      "expectedSpecialCount": 11,
+      "memberIds": [
+        "52913191888591",
+        "52913191890996",
+        "52913191894263",
+        "52913191898061",
+        "52913191899883",
+        "52913191901440",
+        "52913191907177",
+        "52913191907270",
+        "52913191908633",
+        "52913191925349",
+        "52913191927361"
+      ],
+      "matchEvidence": {
+        "status": "user_confirmed_product_identity_and_verified_browser_dom_membership",
+        "identityAuthority": "direct_user_confirmation",
+        "identityConfirmation": "Junior 제외 나머지 전부 연결해줘",
+        "identityScope": "Product identities only for the five previously presented pairs. Epic: Júnior excluded. No source count correction approved.",
+        "identityConfirmedOnKst": "2026-11-12",
+        "sourceKind": "browser_dom",
+        "httpStatus": null,
+        "sourceEvidenceFile": "catalog-runtime/reviewed-evidence/T053/source-observations.json",
+        "sourceEvidenceSha256": "d0523c04f646a35e5a1cefec6ac68e336231522dd3114ad7f703c250bd58776a",
+        "official": {
+          "url": "https://efootball-web.konami.net/probability_kr.php",
+          "sha256": "ab24c11956b5bc9d7ddf272f953dfe38fc575b2e0574ffb7442a83ea2ed9129d",
+          "observedAt": "2026-11-12T13:01:42.297Z",
+          "totalPlayerCount": 11,
+          "endsAt": "2026-11-19T01:59:59Z"
+        },
+        "newPlayers": {
+          "url": "https://efhub.com/new-players",
+          "sha256": "11ab798464b47bebc6551133ee539688d212012292085ff8f65cb3092e9c2576",
+          "observedAt": "2026-11-12T13:02:12.219Z",
+          "section": "POTW European Club Championship 12 Nov '26",
+          "completeCount": 11
+        },
+        "pack": {
+          "url": "https://efhub.com/packs/potw-european-club-championship-12-nov-26",
+          "sha256": "09655f1def900840aa6f8ab923c41172ba9cf22294abb914cd0e7469b8ff0e28",
+          "observedAt": "2026-11-12T13:03:02.863Z",
+          "name": "POTW European Club Championship 12 Nov '26",
+          "rawDate": "2026-11-12",
+          "originalPlayerCount": 11,
+          "verifiedCardIds": 11
+        }
+      }
     }
   ],
   "pendingOfficialTitles": [],
