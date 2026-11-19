@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "operation": "data_update",
-  "observedAt": "2026-11-16T02:48:10.173Z",
-  "sourceCommit": "945de515aeba02d592fb071804d88a4e1d195294",
-  "runtimeVersion": "55eb20bbebdbb7f0aa2982b8ec2065f953c39de69ea29071668d19edc7685f0a",
-  "publicationVersion": "b4b832ff4dc223e1d1b032cd86ae3434942d32fe37045cb52512dd5ca5aef66d",
+  "observedAt": "2026-11-19T02:47:34.235Z",
+  "sourceCommit": "b181db6cb7d254b5d28fdc0cbecf00ae44e5a9fb",
+  "runtimeVersion": "9e7d637e4774a25559970d3553ba8a311891e6af48242a858975bfa7538ecdff",
+  "publicationVersion": "c23f8524277d412bc53e8e8b1a5a99ec69638f02d9539367432563e2691b0aa3",
   "rulesIdentity": {
     "version": "catalog-rules-1.9.2",
     "sha256": "611cad1371dc23868e95d5c76301234fb2e9861203a66addb282318fcd2d10cc"
@@ -14,8 +14,8 @@
     "rawPacks": 1714,
     "players": 259,
     "packs": 22,
-    "live": 6,
-    "archive": 16
+    "live": 2,
+    "archive": 20
   },
   "changes": {
     "rawPlayersAdded": 0,
@@ -24,7 +24,7 @@
     "playersUpdated": 0,
     "packsAdded": 0,
     "packsUpdated": 0,
-    "archivedPacks": 1,
+    "archivedPacks": 4,
     "targetFiles": [
       "archive.json",
       "live.json",
@@ -38,11 +38,11 @@
     "github": "pending"
   },
   "evidence": {
-    "bundleSha256": "7cbef59c40dc76c38374b6e0bb27fe3e7248cd6ff838504b8e38b7716db217a7",
-    "sourceReceiptSha256": "d2698bf56cc69edf84350c924e2e46df0a7aed00ebfcfe56e122c11c7dace6e8",
-    "sitesReceiptSha256": "d6c38b54ebe1dbaa63d72b980efb408f79f7258dcebe22c8de8e5bb9add5661d",
-    "officialHtmlSha256": "930fbcd73c9e971e24fa84bcc01c070ffce1deb6ed012716c7400da2e8bdef71",
-    "efhubHtmlSha256": "eb76d7297659f6c1fb1aab40b4258cae898286eac39d998a971cfca2ada73b46"
+    "bundleSha256": "1d8fb5bed508bc44d23636eb500514444460ef17917960c991a04d522255d645",
+    "sourceReceiptSha256": "4fac3c14a5adf960df9f50ebbd5cd6f34c8a1f14f9ef0dd585b5f617571a4752",
+    "sitesReceiptSha256": "57bff0016109d61aefcfac1e7402d580077d6ecc01a0ad4aa00d3e90f0f5d8bb",
+    "officialHtmlSha256": null,
+    "efhubHtmlSha256": null
   },
-  "runId": "d89b69a98258fb6a2f687f4afa36c916955c0729735b2544aaa4793ae5792b4c"
+  "runId": "956645f590f4a8ec77e5b3423913ef1b35ed00b2027e5beb1f1a3e193574b266"
 }
