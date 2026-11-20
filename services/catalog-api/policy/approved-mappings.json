@@ -255,6 +255,46 @@
         "private catalog-runtime/reviewed-evidence/T053/source-observations.json SHA256 d0523c04f646a35e5a1cefec6ac68e336231522dd3114ad7f703c250bd58776a",
         "https://efhub.com/packs/potw-european-club-championship-12-nov-26 DOM SHA256 09655f1def900840aa6f8ab923c41172ba9cf22294abb914cd0e7469b8ff0e28"
       ]
+    },
+    {
+      "saleId": "cr-flamengo-selection-12-nov-26::2026-11",
+      "mappingSha256": "d1a3380b8c566194b83f2c0a36af5e3e727e5c8b052c08cff0298d36e9579c17",
+      "reviewId": "T054-user-approved-pending-mappings",
+      "authority": "user_authorized_mapping_with_complete_source_review",
+      "evidenceRefs": [
+        "data/research/catalog-sale-mappings.json",
+        "private catalog-runtime/reviewed-evidence/T054/source-observations.json SHA256 7de69640ad94403b3b4e64024567f8b385a8777245ed3ae417afe49167a0759a"
+      ]
+    },
+    {
+      "saleId": "madrid-chamartin-b-selection-16-nov-26::2026-11",
+      "mappingSha256": "3d3ce5a29b6843ae6327f9fb4636465b37cc7562f123d81be72aadf7ef709d14",
+      "reviewId": "T054-user-approved-pending-mappings",
+      "authority": "user_authorized_mapping_with_complete_source_review",
+      "evidenceRefs": [
+        "data/research/catalog-sale-mappings.json",
+        "private catalog-runtime/reviewed-evidence/T054/source-observations.json SHA256 7de69640ad94403b3b4e64024567f8b385a8777245ed3ae417afe49167a0759a"
+      ]
+    },
+    {
+      "saleId": "speedsters-19-nov-26::2026-11",
+      "mappingSha256": "742a50ec1ce0e572deda4c6cedffb3b23a08888bbb844a7da36a682b4342f407",
+      "reviewId": "T054-user-approved-pending-mappings",
+      "authority": "user_authorized_mapping_with_complete_source_review",
+      "evidenceRefs": [
+        "data/research/catalog-sale-mappings.json",
+        "private catalog-runtime/reviewed-evidence/T054/source-observations.json SHA256 7de69640ad94403b3b4e64024567f8b385a8777245ed3ae417afe49167a0759a"
+      ]
+    },
+    {
+      "saleId": "potw-national-teams-19-nov-26::2026-11",
+      "mappingSha256": "2ac60ded63665ed407d436d8ea44316fd77c94f3ecdd4d1be9cd5d6afd3cdc4f",
+      "reviewId": "T054-user-approved-pending-mappings",
+      "authority": "user_authorized_mapping_with_complete_source_review",
+      "evidenceRefs": [
+        "data/research/catalog-sale-mappings.json",
+        "private catalog-runtime/reviewed-evidence/T054/source-observations.json SHA256 7de69640ad94403b3b4e64024567f8b385a8777245ed3ae417afe49167a0759a"
+      ]
     }
   ]
 }

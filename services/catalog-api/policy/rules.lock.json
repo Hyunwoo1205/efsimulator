@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "version": "catalog-rules-1.9.2",
+  "version": "catalog-rules-1.9.3",
   "reviewId": "T053-user-approved-Nov12-product-identities",
   "files": [
     {
@@ -49,7 +49,7 @@
     },
     {
       "path": "policy/approved-mappings.json",
-      "sha256": "de1db20d4fe805cfc362292b52f302a97b6c6f8c4fcadebce3aae3bf018f0556"
+      "sha256": "ac2274f8e44bbb8d93ec1b15d2001cc33a8c3cb227edcc3ca32f7c82252049dc"
     }
   ]
 }

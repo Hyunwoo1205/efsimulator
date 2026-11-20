@@ -1162,6 +1162,228 @@
           "verifiedCardIds": 11
         }
       }
+    },
+    {
+      "saleId": "cr-flamengo-selection-12-nov-26::2026-11",
+      "packSlug": "cr-flamengo-selection-12-nov-26",
+      "officialTitle": "Epic: Júnior",
+      "newPlayersSection": "CR Flamengo Selection 12 Nov '26",
+      "expectedEndsAt": "2026-11-26T01:59:59Z",
+      "expectedTotalPlayerCount": 50,
+      "expectedSpecialCount": 4,
+      "memberIds": [
+        "105905572133603",
+        "105905572138577",
+        "105905572179893",
+        "88046561317015"
+      ],
+      "matchEvidence": {
+        "status": "user_approved_mapping_with_verified_browser_dom_membership",
+        "identityAuthority": "direct_user_confirmation",
+        "identityConfirmedOnKst": "2026-11-20",
+        "sourceKind": "browser_dom",
+        "httpStatus": null,
+        "sourceEvidenceFile": "catalog-runtime/reviewed-evidence/T054/source-observations.json",
+        "sourceEvidenceSha256": "7de69640ad94403b3b4e64024567f8b385a8777245ed3ae417afe49167a0759a",
+        "official": {
+          "url": "https://efootball-web.konami.net/probability_kr.php",
+          "observedAt": "2026-11-20T09:50:41.454Z",
+          "sha256": "d16408317cd3dc69dc64a4a8c887ed8cb9544fd3c73bcd54a7dda6eced96fda6",
+          "bytes": 10087,
+          "totalPlayerCount": 50,
+          "endsAt": "2026-11-26T01:59:59Z"
+        },
+        "newPlayers": {
+          "url": "https://efhub.com/new-players",
+          "observedAt": "2026-11-20T09:51:37.340Z",
+          "sha256": "44ea1cb13cff994fc3bbef06d3cf8a7cde2a64f3b2b59d22831b09b4937480f0",
+          "bytes": 522478,
+          "section": "CR Flamengo Selection 12 Nov '26",
+          "completeCount": 4
+        },
+        "pack": {
+          "url": "https://efhub.com/packs/cr-flamengo-selection-12-nov-26",
+          "observedAt": "2026-11-20T09:50:58.086Z",
+          "sha256": "7176a42ef9e868d62ed25dac5c9cbaf3ccf49596795638d398b431a411f30227",
+          "bytes": 160197,
+          "name": "CR Flamengo Selection 12 Nov '26",
+          "rawDate": "2026-11-12",
+          "originalPlayerCount": 4,
+          "verifiedCardIds": 4
+        },
+        "announcement": "https://www.konami.com/efootball/ja/topic/promotion/agent/1488/"
+      }
+    },
+    {
+      "saleId": "madrid-chamartin-b-selection-16-nov-26::2026-11",
+      "packSlug": "madrid-chamartin-b-selection-16-nov-26",
+      "officialTitle": "Show Time: Madrid Chamartin B",
+      "newPlayersSection": "Madrid Chamartin B Selection 16 Nov '26",
+      "expectedEndsAt": "2026-11-23T01:59:59Z",
+      "expectedTotalPlayerCount": 150,
+      "expectedSpecialCount": 11,
+      "memberIds": [
+        "105927046968690",
+        "105927046971270",
+        "105927046971679",
+        "105927046976486",
+        "105927046984782",
+        "105927047011690",
+        "105927047016290",
+        "105927047038121",
+        "106815299938080",
+        "106815299949073",
+        "106815299956712"
+      ],
+      "matchEvidence": {
+        "status": "user_approved_mapping_with_verified_browser_dom_membership",
+        "identityAuthority": "direct_user_confirmation",
+        "identityConfirmedOnKst": "2026-11-20",
+        "sourceKind": "browser_dom",
+        "httpStatus": null,
+        "sourceEvidenceFile": "catalog-runtime/reviewed-evidence/T054/source-observations.json",
+        "sourceEvidenceSha256": "7de69640ad94403b3b4e64024567f8b385a8777245ed3ae417afe49167a0759a",
+        "official": {
+          "url": "https://efootball-web.konami.net/probability_kr.php",
+          "observedAt": "2026-11-20T09:50:41.454Z",
+          "sha256": "d16408317cd3dc69dc64a4a8c887ed8cb9544fd3c73bcd54a7dda6eced96fda6",
+          "bytes": 10087,
+          "totalPlayerCount": 150,
+          "endsAt": "2026-11-23T01:59:59Z"
+        },
+        "newPlayers": {
+          "url": "https://efhub.com/new-players",
+          "observedAt": "2026-11-20T09:51:37.340Z",
+          "sha256": "44ea1cb13cff994fc3bbef06d3cf8a7cde2a64f3b2b59d22831b09b4937480f0",
+          "bytes": 522478,
+          "section": "Madrid Chamartin B Selection 16 Nov '26",
+          "completeCount": 11
+        },
+        "pack": {
+          "url": "https://efhub.com/packs/madrid-chamartin-b-selection-16-nov-26",
+          "observedAt": "2026-11-20T09:51:42.642Z",
+          "sha256": "e8bde8fae6a7c81e4d34f51b6de5cda8276decc3ab4c982db78a644ab50b4ad7",
+          "bytes": 211021,
+          "name": "Madrid Chamartin B Selection 16 Nov '26",
+          "rawDate": "2026-11-16",
+          "originalPlayerCount": 11,
+          "verifiedCardIds": 11
+        }
+      }
+    },
+    {
+      "saleId": "speedsters-19-nov-26::2026-11",
+      "packSlug": "speedsters-19-nov-26",
+      "officialTitle": "Show Time: Speedsters",
+      "newPlayersSection": "Speedsters 19 Nov '26",
+      "expectedEndsAt": "2026-11-26T01:59:59Z",
+      "expectedTotalPlayerCount": 150,
+      "expectedSpecialCount": 11,
+      "memberIds": [
+        "105898055887880",
+        "105898055940262",
+        "105898055949448",
+        "105898055952506",
+        "105898055953116",
+        "105898055954772",
+        "105898055966117",
+        "105898055969650",
+        "106801341253943",
+        "106801341254828",
+        "106801341269652"
+      ],
+      "matchEvidence": {
+        "status": "user_approved_mapping_with_verified_browser_dom_membership",
+        "identityAuthority": "direct_user_confirmation",
+        "identityConfirmedOnKst": "2026-11-20",
+        "sourceKind": "browser_dom",
+        "httpStatus": null,
+        "sourceEvidenceFile": "catalog-runtime/reviewed-evidence/T054/source-observations.json",
+        "sourceEvidenceSha256": "7de69640ad94403b3b4e64024567f8b385a8777245ed3ae417afe49167a0759a",
+        "official": {
+          "url": "https://efootball-web.konami.net/probability_kr.php",
+          "observedAt": "2026-11-20T09:50:41.454Z",
+          "sha256": "d16408317cd3dc69dc64a4a8c887ed8cb9544fd3c73bcd54a7dda6eced96fda6",
+          "bytes": 10087,
+          "totalPlayerCount": 150,
+          "endsAt": "2026-11-26T01:59:59Z"
+        },
+        "newPlayers": {
+          "url": "https://efhub.com/new-players",
+          "observedAt": "2026-11-20T09:51:37.340Z",
+          "sha256": "44ea1cb13cff994fc3bbef06d3cf8a7cde2a64f3b2b59d22831b09b4937480f0",
+          "bytes": 522478,
+          "section": "Speedsters 19 Nov '26",
+          "completeCount": 11
+        },
+        "pack": {
+          "url": "https://efhub.com/packs/speedsters-19-nov-26",
+          "observedAt": "2026-11-20T09:50:57.594Z",
+          "sha256": "976d2a280117a2c1748e06e524c0a0cfecf3a6a001126e033a7ab991e7685591",
+          "bytes": 188227,
+          "name": "Speedsters 19 Nov '26",
+          "rawDate": "2026-11-19",
+          "originalPlayerCount": 11,
+          "verifiedCardIds": 11
+        }
+      }
+    },
+    {
+      "saleId": "potw-national-teams-19-nov-26::2026-11",
+      "packSlug": "potw-national-teams-19-nov-26",
+      "officialTitle": "POTW: National 19 Nov '26",
+      "newPlayersSection": "POTW National Teams 19 Nov '26",
+      "expectedEndsAt": "2026-11-26T01:59:59Z",
+      "expectedTotalPlayerCount": 11,
+      "expectedSpecialCount": 11,
+      "memberIds": [
+        "52905407209251",
+        "52905407261133",
+        "52905407266172",
+        "52905407270402",
+        "52905407282447",
+        "52905407287059",
+        "52905407293349",
+        "52905407294775",
+        "52905407300229",
+        "52905407313105",
+        "52905407322794"
+      ],
+      "matchEvidence": {
+        "status": "user_approved_mapping_with_verified_browser_dom_membership",
+        "identityAuthority": "direct_user_confirmation",
+        "identityConfirmedOnKst": "2026-11-20",
+        "sourceKind": "browser_dom",
+        "httpStatus": null,
+        "sourceEvidenceFile": "catalog-runtime/reviewed-evidence/T054/source-observations.json",
+        "sourceEvidenceSha256": "7de69640ad94403b3b4e64024567f8b385a8777245ed3ae417afe49167a0759a",
+        "official": {
+          "url": "https://efootball-web.konami.net/probability_kr.php",
+          "observedAt": "2026-11-20T09:50:41.454Z",
+          "sha256": "d16408317cd3dc69dc64a4a8c887ed8cb9544fd3c73bcd54a7dda6eced96fda6",
+          "bytes": 10087,
+          "totalPlayerCount": 11,
+          "endsAt": "2026-11-26T01:59:59Z"
+        },
+        "newPlayers": {
+          "url": "https://efhub.com/new-players",
+          "observedAt": "2026-11-20T09:51:37.340Z",
+          "sha256": "44ea1cb13cff994fc3bbef06d3cf8a7cde2a64f3b2b59d22831b09b4937480f0",
+          "bytes": 522478,
+          "section": "POTW National Teams 19 Nov '26",
+          "completeCount": 11
+        },
+        "pack": {
+          "url": "https://efhub.com/packs/potw-national-teams-19-nov-26",
+          "observedAt": "2026-11-20T09:50:57.819Z",
+          "sha256": "8d9f773352d726a4de93d4838785a917bd92cb1dab9c9f4497a6c552f8fa7b13",
+          "bytes": 188628,
+          "name": "POTW National Teams 19 Nov '26",
+          "rawDate": "2026-11-19",
+          "originalPlayerCount": 11,
+          "verifiedCardIds": 11
+        }
+      }
     }
   ],
   "pendingOfficialTitles": [],

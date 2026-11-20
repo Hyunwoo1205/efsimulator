@@ -3830,3 +3830,38 @@ raw 11명·1팩과 가공 11명·1팩을 추가했다. 새 데이터 묶음 v28�
 | `data/updates/catalog-latest.json` | 수정 | 실제 3팩·33명 추가와 묶음·API·세 사이트 검증을 고정 영수증에 기록 |
 | `services/catalog-api/scripts/lifecycle/collect-cycle.mjs` | 검토 결과 변경 불필요 | 잠긴 명단 대조와 원문 재실행 적용 |
 | `docs/AUTOMATION.md` | 검토 결과 변경 불필요 | 회차별 승인과 진행 상태는 작업 기록에 보존 |
+
+## T054 — 대기 회차 승인 검토와 반영
+
+- 단계: R6
+- 상태: 진행 중
+- 이전: T053
+- 다음: T018
+
+11월 20일 사용자가 검토 대기 전체의 매핑 진행을 승인했다. 당시 한 번의 작업에서 제외됐던 Júnior를 포함해 모니터에 남은 6건을 확인했다. 유지보수 작업으로 처리하며 제품 작업의 포인터를 보존한다.
+
+| 공식 상품 | 확인한 EFHub 섹션 | 공식 전체 / 특수 | 결과 |
+| --- | --- | --- | --- |
+| Epic: Júnior | CR Flamengo Selection 12 Nov '26 | 50 / 4 | 신규 목록·상세 카드 ID와 타입 일치 |
+| Show Time: Madrid Chamartin B | Madrid Chamartin B Selection 16 Nov '26 | 150 / 11 | 신규 목록·상세 카드 ID와 타입 일치 |
+| Show Time: Speedsters | Speedsters 19 Nov '26 | 150 / 11 | 신규 목록·상세 카드 ID와 타입 일치 |
+| POTW: National 19 Nov '26 | POTW National Teams 19 Nov '26 | 11 / 11 | 신규 목록·상세 카드 ID와 타입 일치 |
+| Big Time & Epic: Arsenal FC | Arsenal Bigtime | 250 / 보정 확인 대기 | European Clubs Selection 12 Nov '26의 상세 20장이 목록 26장의 정확한 부분집합. 상세에 없는 6장은 개별 원문으로 ID와 타입을 확인 |
+| Epic: J.LEAGUE | J1 LEAGUE Selection 12 Nov '26 | 100 / 보정 확인 대기 | 11월 19일 01:59:59 UTC 종료. 공식 공지는 Epic 3장·Highlight 12장을 확인하며 보존 상세에는 12장이 남음 |
+
+네 회차의 승인 해시를 등록하고 예상 CURRENT를 대조해 규칙 1.9.3을 채택했다. 잠긴 수집·원문 재실행·가공 경로를 통해 raw와 가공에 37장·4팩을 추가했다. 로컬 가공 결과는 선수 296명, 팩 26개, 판매 중 6개, 종료 20개다. 저장·발행·전체 사이트 대조와 GitHub 검증 결과는 요약 영수증과 모니터에 기록한다.
+
+### 파일 최신화 검토
+
+| 파일 | 결과 | 근거 |
+| --- | --- | --- |
+| `data/research/catalog-sale-mappings.json` | 수정 | 공식 회차 네 건의 종료·전체 인원·전체 문자열 ID와 출처 |
+| `services/catalog-api/policy/approved-mappings.json` | 수정 | 승인 범위 및 원문 검토를 정확한 매핑 해시에 연결 |
+| `services/catalog-api/policy/rules.lock.json` | 수정 | 승인 레지스트리 해시를 규칙 1.9.3으로 잠금 |
+| `docs/WORKPLAN.md` | 수정 | 검토 여섯 건의 결과 및 보정 대기 근거 |
+| `docs/ROADMAP.md` | 수정 | 제품 포인터와 별도로 T054 유지보수 기록 |
+| `docs/FILE_SYNC.json` | 수정 | 승인·잠금·영수증 관련 경로의 검토 기록 |
+| `data/updates/catalog-latest.json` | 수정 | 실제 변경·검증 요약 기록 |
+| `services/catalog-api/scripts/lifecycle/collect-cycle.mjs` | 검토 결과 변경 불필요 | 기존 상세 명단 및 원문 재실행 검증 적용 |
+| `docs/CATALOG_DATA_CONTRACT.md` | 검토 결과 변경 불필요 | 기존 9필드·타입·가격·보정·판매 상태 계약 적용 |
+| `docs/AUTOMATION.md` | 검토 결과 변경 불필요 | 개별 검토를 작업/상태 기록에서 관리 |
