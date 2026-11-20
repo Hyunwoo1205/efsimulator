@@ -553,7 +553,7 @@
         "T053 11월 12일 승인 회차의 정확한 출처·문자열 카드 ID·공식 전체인원과 종료를 갱신할 때",
         "T054 대기 회차의 승인 매핑·검증·실제 발행 범위를 갱신할 때"
       ],
-      "reviewed_in": "T054"
+      "reviewed_in": "T055"
     },
     {
       "path": "data/research/current-catalog-observations.json",
@@ -820,7 +820,7 @@
         "T052 11월 9일 미드필더 회차의 검증된 버전·실제 변경 수·저장 및 발행 단계 영수증을 갱신할 때",
         "T054 대기 회차의 승인 매핑·검증·실제 발행 범위를 갱신할 때"
       ],
-      "reviewed_in": "T054"
+      "reviewed_in": "T055"
     },
     {
       "path": "docs/API_SELECTION.md",
@@ -911,7 +911,7 @@
         "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경",
         "T051 검토된 section11/detail8 first-import 보정과 raw 원본 수/상세 관측 수 분리 계약을 변경할 때"
       ],
-      "reviewed_in": "T051"
+      "reviewed_in": "T055"
     },
     {
       "path": "docs/CHATGPT_WORK_HANDOFF.md",
@@ -1055,7 +1055,7 @@
         "T053의 매핑·규칙·작업 문서 변경과 실제 검증 단계를 연결할 때",
         "T054 대기 회차의 승인 매핑·검증·실제 발행 범위를 갱신할 때"
       ],
-      "reviewed_in": "T054"
+      "reviewed_in": "T055"
     },
     {
       "path": "docs/FILE_SYNC_AUDIT.md",
@@ -1159,7 +1159,7 @@
         "T053의 독립 유지보수와 저장·발행·CI 상태를 갱신할 때",
         "T054 대기 회차의 승인 매핑·검증·실제 발행 범위를 갱신할 때"
       ],
-      "reviewed_in": "T054"
+      "reviewed_in": "T055"
     },
     {
       "path": "docs/SIMULATOR_PLAN.md",
@@ -1290,7 +1290,7 @@
         "T053의 승인 범위·명단 검증·보류 근거와 실제 반영 단계를 갱신할 때",
         "T054 대기 회차의 승인 매핑·검증·실제 발행 범위를 갱신할 때"
       ],
-      "reviewed_in": "T054"
+      "reviewed_in": "T055"
     },
     {
       "path": "docs/reference/ARCHITECTURE_BEFORE_PROBABILITY_SCOPE.md",
@@ -3160,7 +3160,7 @@
         "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경",
         "T051 검토된 section11/detail8 first-import의 raw11/sourceReported8 가공 계약을 변경할 때"
       ],
-      "reviewed_in": "T051"
+      "reviewed_in": "T055"
     },
     {
       "path": "services/catalog-api/lib/connector-context.ts",
@@ -3345,7 +3345,7 @@
         "T053의 사용자 대응 확인과 독립 명단 검증을 승인 매핑 해시에 연결할 때",
         "T054 대기 회차의 승인 매핑·검증·실제 발행 범위를 갱신할 때"
       ],
-      "reviewed_in": "T054"
+      "reviewed_in": "T055"
     },
     {
       "path": "services/catalog-api/policy/rules.lock.json",
@@ -3368,7 +3368,7 @@
         "T053 승인 레지스트리 해시·잠금 버전과 예상 CURRENT 채택을 갱신할 때",
         "T054 대기 회차의 승인 매핑·검증·실제 발행 범위를 갱신할 때"
       ],
-      "reviewed_in": "T054"
+      "reviewed_in": "T055"
     },
     {
       "path": "services/catalog-api/postcss.config.mjs",
@@ -3597,7 +3597,7 @@
         "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경",
         "T051 검토된 section11/detail8 부분집합·승인명단·공식N 조건 또는 first-import 보정 범위를 변경할 때"
       ],
-      "reviewed_in": "T051"
+      "reviewed_in": "T055"
     },
     {
       "path": "services/catalog-api/scripts/lifecycle/collection-receipt.mjs",
@@ -3613,7 +3613,7 @@
       "update_when": [
         "데이터 형식·가공 규칙·HTML 증거·매핑 검토·반복 실행 계약 변경"
       ],
-      "reviewed_in": "T039"
+      "reviewed_in": "T055"
     },
     {
       "path": "services/catalog-api/scripts/lifecycle/html-sources.mjs",
@@ -3706,7 +3706,7 @@
       "update_when": [
         "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
       ],
-      "reviewed_in": "T039"
+      "reviewed_in": "T055"
     },
     {
       "path": "services/catalog-api/scripts/lifecycle/verify-sites.mjs",
@@ -3735,7 +3735,7 @@
       "update_when": [
         "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
       ],
-      "reviewed_in": "T042"
+      "reviewed_in": "T055"
     },
     {
       "path": "services/catalog-api/scripts/npm-install.mjs",
@@ -3915,7 +3915,7 @@
       "update_when": [
         "HTML 수집·raw 형식·공식 상품 매핑·가공/live/archive·로그·발행 계약 변경"
       ],
-      "reviewed_in": "T041"
+      "reviewed_in": "T055"
     },
     {
       "path": "services/catalog-api/tests/client.test.mjs",
@@ -3960,7 +3960,7 @@
       "update_when": [
         "데이터 형식·가공 규칙·HTML 증거·매핑 검토·반복 실행 계약 변경"
       ],
-      "reviewed_in": "T027"
+      "reviewed_in": "T055"
     },
     {
       "path": "services/catalog-api/tests/draw-options.test.mjs",

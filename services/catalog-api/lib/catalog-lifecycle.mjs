@@ -62,6 +62,22 @@ function matchingOfficial(candidate, observation) {
   return observation.rows.filter(row => row.title === candidate.officialTitle && row.totalPlayerCount === candidate.totalPlayerCount && Date.parse(row.endsAt) === Date.parse(candidate.endsAt));
 }
 
+function candidateOfficial(candidate, officialObservation, historicalOfficial, clock, maxAgeMs) {
+  const ended = timestamp(candidate?.endsAt) && Date.parse(candidate.endsAt) <= clock;
+  const historical = ended && candidate?.evidence?.historicalArchive === true;
+  if (!historical) return { observation: officialObservation, health: officialHealth(officialObservation, clock, maxAgeMs), historical: false, ended };
+  const observation = nonempty(candidate?.saleId) && own(historicalOfficial, candidate.saleId) ? historicalOfficial[candidate.saleId] : null;
+  const base = officialHealth(observation, Date.parse(observation?.observedAt), 0);
+  if (!base.usable) return { observation, health: { usable: false, reason: `historical_${base.reason}` }, historical: true, ended };
+  if (Date.parse(observation.observedAt) > clock + 60_000 || Date.parse(observation.observedAt) >= Date.parse(candidate.endsAt)) {
+    return { observation, health: { usable: false, reason: 'historical_official_observation_outside_sale' }, historical: true, ended };
+  }
+  if (observation.rows.length !== 1 || matchingOfficial(candidate, observation).length !== 1) {
+    return { observation, health: { usable: false, reason: 'historical_official_product_not_matched' }, historical: true, ended };
+  }
+  return { observation, health: { usable: true, reason: null }, historical: true, ended };
+}
+
 function candidateProblem(candidate, observation, health, rawPlayers, rawPacks) {
   if (!health.usable) return health.reason;
   if (!object(candidate) || !nonempty(candidate.saleId) || !nonempty(candidate.packSlug)) return 'invalid_candidate_identity';
@@ -103,7 +119,7 @@ function processedPack(candidate, raw, observation) {
     provenance: {
       ...JSON.parse(canonical(candidate.evidence)),
       official: {
-        url: observation.url ?? 'https://efootball-web.konami.net/probability_kr.php',
+        url: observation.url ?? observation.sourceUrl ?? 'https://efootball-web.konami.net/probability_kr.php',
         observedAt: observation.observedAt, sha256: observation.sha256 ?? null,
         title: candidate.officialTitle, totalPlayerCount: candidate.totalPlayerCount,
         endsAt: new Date(candidate.endsAt).toISOString(),
@@ -216,10 +232,11 @@ export function enrichPlayerTypes(state, rawPlayers, now) {
  * Only source-verified candidates may grow the cumulative processed catalogue.
  * Expiry uses an already verified UTC deadline even while either source fails.
  */
-export function reconcileCatalog({ state = createLifecycleState(), rawPlayers, rawPacks, candidates = [], officialObservation = null, now = new Date().toISOString(), maxAgeMs = 2 * 60 * 60 * 1000 } = {}) {
+export function reconcileCatalog({ state = createLifecycleState(), rawPlayers, rawPacks, candidates = [], officialObservation = null, historicalOfficial = {}, now = new Date().toISOString(), maxAgeMs = 2 * 60 * 60 * 1000 } = {}) {
   validateLifecycleState(state);
   if (!timestamp(now) || !integer(maxAgeMs)) fail('Invalid reconciliation clock/freshness');
   if (!Array.isArray(candidates)) fail('candidates must be an array');
+  if (!object(historicalOfficial)) fail('historicalOfficial must be a plain mapping object');
   const playerRaw = indexUnique(rawPlayers, 'id', 'raw players');
   // Preserve raw malformed/dummy packs outside the serving catalogue. They are
   // retained in raw input and never silently assigned fabricated identifiers.
@@ -236,11 +253,10 @@ export function reconcileCatalog({ state = createLifecycleState(), rawPlayers, r
   const accepted = [];
   const conflicts = candidateConflicts(candidates);
   for (const candidate of orderedCandidates(candidates)) {
-    const reason = conflicts.get(candidate) ?? candidateProblem(candidate, officialObservation, health, playerRaw, packRaw);
+    const source = candidateOfficial(candidate, officialObservation, historicalOfficial, clock, maxAgeMs);
+    let reason = conflicts.get(candidate) ?? candidateProblem(candidate, source.observation, source.health, playerRaw, packRaw);
+    if (!reason && source.ended && !source.historical && !packMap.has(candidate.saleId)) reason = 'new_product_already_ended';
     if (reason) { pending.push({ saleId: candidate?.saleId ?? null, packSlug: candidate?.packSlug ?? null, reason }); continue; }
-    if (Date.parse(candidate.endsAt) <= clock && !packMap.has(candidate.saleId)) {
-      pending.push({ saleId: candidate.saleId, packSlug: candidate.packSlug, reason: 'new_product_already_ended' }); continue;
-    }
     const previous = packMap.get(candidate.saleId);
     if (previous && previous.slug !== candidate.packSlug) {
       pending.push({ saleId: candidate.saleId, packSlug: candidate.packSlug, reason: 'sale_identity_conflict' }); continue;
@@ -248,7 +264,7 @@ export function reconcileCatalog({ state = createLifecycleState(), rawPlayers, r
     if (previous && previous.members.some(member => !candidate.memberIds.includes(member.id))) {
       pending.push({ saleId: candidate.saleId, packSlug: candidate.packSlug, reason: 'cumulative_membership_removal_requires_review' }); continue;
     }
-    const pack = processedPack(candidate, packRaw.get(candidate.packSlug), officialObservation);
+    const pack = processedPack(candidate, packRaw.get(candidate.packSlug), source.observation);
     for (const id of [...candidate.memberIds].sort(compareText)) {
       const player = projectPlayer(playerRaw.get(id));
       playerMap.set(id, player);
@@ -337,19 +353,21 @@ function orderedCandidates(candidates) {
 }
 
 /** Plan append-only raw growth; existing raw entries and order are preserved. */
-export function planRawAppend({ rawPlayers, rawPacks, candidates = [], officialObservation, now = new Date().toISOString(), maxAgeMs = 2 * 60 * 60 * 1000 }) {
+export function planRawAppend({ rawPlayers, rawPacks, candidates = [], officialObservation, historicalOfficial = {}, now = new Date().toISOString(), maxAgeMs = 2 * 60 * 60 * 1000 }) {
   if (!Array.isArray(candidates) || !timestamp(now) || !integer(maxAgeMs)) fail('Invalid raw append inputs');
+  if (!object(historicalOfficial)) fail('historicalOfficial must be a plain mapping object');
   const players = copy(rawPlayers); const packs = copy(rawPacks);
   const playerMap = indexUnique(players, 'id', 'raw players');
   const packMap = indexUnique(packs.filter(pack => nonempty(pack?.slug) && pack.slug !== 'dummy'), 'slug', 'raw packs');
-  const health = officialHealth(officialObservation, Date.parse(now), maxAgeMs);
+  const clock = Date.parse(now);
   const pending = []; const addedPlayers = []; const addedPacks = [];
   const conflicts = candidateConflicts(candidates);
   for (const candidate of orderedCandidates(candidates)) {
     const identityProblem = conflicts.get(candidate);
     if (identityProblem) { pending.push({ packSlug: candidate?.packSlug ?? null, reason: identityProblem }); continue; }
-    if (!health.usable || candidate?.matchVerified !== true || matchingOfficial(candidate, officialObservation).length !== 1) {
-      pending.push({ packSlug: candidate?.packSlug ?? null, reason: health.reason ?? 'cross_source_match_unverified' }); continue;
+    const source = candidateOfficial(candidate, officialObservation, historicalOfficial, clock, maxAgeMs);
+    if (!source.health.usable || candidate?.matchVerified !== true || matchingOfficial(candidate, source.observation).length !== 1) {
+      pending.push({ packSlug: candidate?.packSlug ?? null, reason: source.health.reason ?? 'cross_source_match_unverified' }); continue;
     }
     const suppliedPlayers = candidate.rawPlayers ?? [];
     if (!Array.isArray(suppliedPlayers) || !object(candidate.rawPack) || candidate.rawPack.slug !== candidate.packSlug) {
@@ -369,7 +387,9 @@ export function planRawAppend({ rawPlayers, rawPacks, candidates = [], officialO
     try { assertRawPack(candidate.rawPack); } catch (error) { problem ??= error.message; }
     if (testPacks.has(candidate.packSlug) && !same(testPacks.get(candidate.packSlug), candidate.rawPack)) problem = 'raw_pack_conflict';
     testPacks.set(candidate.packSlug, candidate.rawPack);
-    problem ??= candidateProblem(candidate, officialObservation, health, testPlayers, testPacks);
+    problem ??= candidateProblem(candidate, source.observation, source.health, testPlayers, testPacks);
+    const growsRaw = !problem && (suppliedPlayers.some(player => !playerMap.has(player.id)) || !packMap.has(candidate.packSlug));
+    if (!problem && source.ended && !source.historical && growsRaw) problem = 'new_product_already_ended';
     if (problem) { pending.push({ packSlug: candidate.packSlug, reason: problem }); continue; }
     for (const player of suppliedPlayers) if (!playerMap.has(player.id)) { const record = JSON.parse(canonical(player)); playerMap.set(player.id, record); addedPlayers.push(record); }
     if (!packMap.has(candidate.packSlug)) { const pack = JSON.parse(canonical(candidate.rawPack)); packMap.set(pack.slug, pack); addedPacks.push(pack); }

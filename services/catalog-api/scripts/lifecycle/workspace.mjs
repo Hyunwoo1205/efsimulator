@@ -245,11 +245,12 @@ async function appendCheck(root, check) {
 }
 
 /** One locked read -> append -> reconcile -> validated immutable generation. */
-export async function applyCycle({ root, officialObservation, candidates, pending = [], sources = null, receipt = null, now = new Date().toISOString(), expectedVersion = null }) {
+export async function applyCycle({ root, officialObservation, historicalOfficial, candidates, pending = [], sources = null, receipt = null, now = new Date().toISOString(), expectedVersion = null }) {
   root = resolve(root);
   if (!validTime(now)) fail('Invalid cycle time');
   now = new Date(now).toISOString();
   if (candidates !== undefined && !Array.isArray(candidates) || !Array.isArray(pending)) fail('Candidates/pending must be arrays');
+  if (historicalOfficial !== undefined && !object(historicalOfficial)) fail('historicalOfficial must be a plain mapping object');
   return await withLock(root, async () => {
     let loaded;
     try {
@@ -261,23 +262,27 @@ export async function applyCycle({ root, officialObservation, candidates, pendin
         const verified = await replayCollectionReceipt({ receipt, rawPlayers: loaded.rawPlayers, rawPacks: loaded.rawPacks, now, approval: policy.approval, rulesIdentity: policy.rulesIdentity });
         if (candidates !== undefined && canonical(candidates) !== canonical(verified.candidates)) fail('Caller candidates differ from replayed HTML');
         if (officialObservation !== undefined && canonical(officialObservation) !== canonical(verified.officialObservation)) fail('Caller official observation differs from replayed HTML');
+        const verifiedHistorical = verified.historicalOfficial ?? {};
+        if (!object(verifiedHistorical)) fail('Replayed historicalOfficial must be a plain mapping object');
+        if (historicalOfficial !== undefined && canonical(historicalOfficial) !== canonical(verifiedHistorical)) fail('Caller historical official observations differ from replayed HTML');
         candidates = verified.candidates; officialObservation = verified.officialObservation;
+        historicalOfficial = verifiedHistorical;
         pending = verified.pending; sources = verified.sources;
         const receiptBytes = Buffer.from(canonical(receipt) + '\n'); receiptSha256 = hash(receiptBytes);
         const receiptPath = join(root, 'receipts', `${receiptSha256}.json`);
         if (await has(receiptPath)) {
           if (!(await readFile(receiptPath)).equals(receiptBytes)) fail('Preserved receipt content differs');
         } else await syncedWrite(receiptPath, receiptBytes);
-      } else if ((candidates?.length ?? 0) > 0 || officialObservation?.status === 'ok') {
+      } else if ((candidates?.length ?? 0) > 0 || officialObservation?.status === 'ok' || Object.keys(historicalOfficial ?? {}).length > 0) {
         fail('Verified HTML receipt is required; caller verification flags are not evidence');
       }
-      candidates ??= []; officialObservation ??= null;
+      candidates ??= []; officialObservation ??= null; historicalOfficial ??= {};
       const knownPacks = new Map(loaded.rawPacks.filter(pack => pack.slug).map(pack => [pack.slug, pack]));
       const enriched = candidates.map(candidate => ({ ...candidate, rawPack: candidate.rawPack ?? knownPacks.get(candidate.packSlug), rawPlayers: candidate.rawPlayers ?? [] }));
-      const rawPlan = planRawAppend({ rawPlayers: loaded.rawPlayers, rawPacks: loaded.rawPacks, candidates: enriched, officialObservation, now });
+      const rawPlan = planRawAppend({ rawPlayers: loaded.rawPlayers, rawPacks: loaded.rawPacks, candidates: enriched, officialObservation, historicalOfficial, now });
       const rejected = new Set(rawPlan.pending.map(item => item.packSlug));
       const approved = enriched.filter(candidate => !rejected.has(candidate.packSlug));
-      const result = reconcileCatalog({ state: loaded.state, rawPlayers: rawPlan.rawPlayers, rawPacks: rawPlan.rawPacks, candidates: approved, officialObservation, now });
+      const result = reconcileCatalog({ state: loaded.state, rawPlayers: rawPlan.rawPlayers, rawPacks: rawPlan.rawPacks, candidates: approved, officialObservation, historicalOfficial, now });
       const allPending = [...pending, ...rawPlan.pending, ...result.pending];
       const changed = rawPlan.addedPlayers.length > 0 || rawPlan.addedPacks.length > 0 || result.changes.length > 0;
       let current = loaded.current;

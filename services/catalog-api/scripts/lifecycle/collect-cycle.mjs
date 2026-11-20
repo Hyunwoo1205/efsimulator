@@ -8,6 +8,9 @@ const OFFICIAL = 'https://efootball-web.konami.net/probability_kr.php';
 const NEW_PLAYERS = 'https://efhub.com/new-players';
 const object = value => value !== null && typeof value === 'object' && !Array.isArray(value);
 const text = value => typeof value === 'string' && value.trim().length > 0;
+const exact = (value, keys) => object(value) && Object.keys(value).sort().join(',') === [...keys].sort().join(',');
+const iso = value => typeof value === 'string' && Number.isFinite(Date.parse(value)) && new Date(value).toISOString() === value;
+const hex = value => typeof value === 'string' && /^[a-f0-9]{64}$/.test(value);
 const ensure = (condition, reason) => { if (!condition) throw Object.assign(new Error(reason), { code: reason }); };
 const sourceMeta = source => {
   const { html: _html, ...metadata } = source;
@@ -27,11 +30,104 @@ function expectedSpecialCount(mapping, pack) {
   return count;
 }
 
+function historicalSnapshot(value, expectedUrl) {
+  ensure(exact(value, ['source_url', 'observed_at', 'status', 'source_kind', 'complete', 'bytes', 'sha256', 'html']), 'invalid_historical_snapshot_shape');
+  validateHtmlSourceUrl(value.source_url);
+  ensure(value.source_url === expectedUrl && value.source_kind === 'browser_dom' && value.status === null
+    && value.complete === true && iso(value.observed_at), 'invalid_historical_snapshot_metadata');
+  const bytes = Buffer.byteLength(value.html ?? '');
+  const sha256 = createHash('sha256').update(value.html ?? '').digest('hex');
+  ensure(typeof value.html === 'string' && bytes > 0 && bytes <= 8 * 1024 * 1024
+    && value.bytes === bytes && hex(value.sha256) && value.sha256 === sha256, 'historical_snapshot_bytes_or_hash_differ');
+  return structuredClone(value);
+}
+
+function prepareHistoricalArchive({ historicalArchive, mappings, startedAt }) {
+  if (historicalArchive === null || historicalArchive === undefined) return null;
+  ensure(exact(historicalArchive, ['saleId', 'official', 'listing', 'pack', 'playerDetails'])
+    && text(historicalArchive.saleId) && Array.isArray(historicalArchive.playerDetails), 'invalid_historical_archive_envelope');
+  const matches = mappings.filter(mapping => mapping.saleId === historicalArchive.saleId);
+  ensure(matches.length === 1, 'historical_archive_sale_not_exactly_mapped');
+  const mapping = matches[0];
+  ensure(object(mapping.countCorrection), 'historical_archive_requires_count_correction');
+  const binding = mapping.matchEvidence?.historicalArchive;
+  ensure(exact(binding, ['officialSha256', 'listingSha256', 'packSha256', 'playerDetailSha256'])
+    && hex(binding.officialSha256) && hex(binding.listingSha256) && hex(binding.packSha256)
+    && object(binding.playerDetailSha256), 'invalid_historical_archive_binding');
+
+  const expectedPackUrl = `https://efhub.com/packs/${mapping.packSlug}`;
+  const officialSnapshot = historicalSnapshot(historicalArchive.official, OFFICIAL);
+  const listingSnapshot = historicalSnapshot(historicalArchive.listing, NEW_PLAYERS);
+  const packSnapshot = historicalSnapshot(historicalArchive.pack, expectedPackUrl);
+  ensure(officialSnapshot.sha256 === binding.officialSha256 && listingSnapshot.sha256 === binding.listingSha256
+    && packSnapshot.sha256 === binding.packSha256, 'historical_archive_binding_hash_differs');
+  ensure(officialSnapshot.observed_at === mapping.matchEvidence?.official?.observedAt
+    && listingSnapshot.observed_at === mapping.matchEvidence?.newPlayers?.observedAt
+    && packSnapshot.observed_at === mapping.matchEvidence?.pack?.observedAt,
+  'historical_archive_binding_timestamp_differs');
+
+  const detailSnapshots = new Map();
+  for (const value of historicalArchive.playerDetails) {
+    ensure(object(value) && typeof value.source_url === 'string', 'invalid_historical_player_snapshot');
+    const match = /^https:\/\/efhub\.com\/players\/(\d+)$/.exec(value.source_url);
+    ensure(match && !detailSnapshots.has(match[1]), 'invalid_or_duplicate_historical_player_url');
+    const snapshot = historicalSnapshot(value, `https://efhub.com/players/${match[1]}`);
+    ensure(binding.playerDetailSha256[match[1]] === snapshot.sha256, 'historical_player_binding_hash_differs');
+    detailSnapshots.set(match[1], snapshot);
+  }
+  ensure(Object.keys(binding.playerDetailSha256).sort(compareText).every((id, index) => id === [...detailSnapshots.keys()].sort(compareText)[index])
+    && Object.keys(binding.playerDetailSha256).length === detailSnapshots.size, 'historical_player_binding_set_differs');
+
+  const officialParsed = parseOfficialHtml(officialSnapshot.html, { sourceUrl: OFFICIAL, observedAt: officialSnapshot.observed_at });
+  const officialMatches = officialParsed.records.filter(row => row.title === mapping.officialTitle);
+  ensure(officialMatches.length === 1, 'historical_official_sale_missing_or_ambiguous');
+  const official = officialMatches[0];
+  const expectedEnd = mapping.expectedEndsAt ?? mapping.endsAt;
+  const expectedTotal = mapping.expectedTotalPlayerCount ?? mapping.totalPlayerCount;
+  ensure(text(expectedEnd) && Number.isSafeInteger(expectedTotal)
+    && Date.parse(expectedEnd) === Date.parse(official.endsAt) && expectedTotal === official.totalPlayerCount,
+  'historical_official_round_guard_mismatch');
+  ensure(Date.parse(official.endsAt) <= Date.parse(startedAt), 'historical_archive_sale_is_not_ended');
+
+  const listing = parseNewPlayersHtml(listingSnapshot.html, { sourceUrl: NEW_PLAYERS, observedAt: listingSnapshot.observed_at });
+  const sections = listing.sections.filter(section => section.title === mapping.newPlayersSection);
+  ensure(sections.length === 1 && sections[0].complete === true, 'historical_listing_section_missing_or_ambiguous');
+  const section = sections[0];
+  ensure(!section.packSlug || section.packSlug === mapping.packSlug, 'historical_listing_pack_mismatch');
+  const detail = parsePackMembershipHtml(packSnapshot.html, { sourceUrl: expectedPackUrl,
+    observedAt: packSnapshot.observed_at, expectedSlug: mapping.packSlug, allowPagination: false });
+  ensure(detail.membershipComplete && !detail.pagination, 'historical_pack_membership_incomplete');
+
+  const historicalTimes = [officialSnapshot, listingSnapshot, packSnapshot, ...detailSnapshots.values()]
+    .map(snapshot => Date.parse(snapshot.observed_at));
+  ensure(Math.max(...historicalTimes) - Math.min(...historicalTimes) <= 2 * 60 * 60 * 1000,
+    'historical_archive_observations_not_within_two_hours');
+  ensure(historicalTimes.every(time => time < Date.parse(official.endsAt)), 'historical_archive_observation_after_sale');
+
+  const sectionIds = section.players.map(player => player.id);
+  const specialCount = expectedSpecialCount(mapping, detail.pack);
+  ensure(detail.playerIds.length === detail.pack.playerCount && sectionIds.length === specialCount
+    && detail.playerIds.length < sectionIds.length && detail.playerIds.every(id => sectionIds.includes(id)),
+  'historical_pack_detail_section_mismatch');
+  const missingIds = new Set(sectionIds.filter(id => !detail.playerIds.includes(id)));
+  ensure([...detailSnapshots.keys()].every(id => missingIds.has(id)), 'historical_player_is_not_missing_section_member');
+  const historicalPlayers = new Map();
+  for (const [id, snapshot] of detailSnapshots) {
+    historicalPlayers.set(id, parsePlayerHtml(snapshot.html, { sourceUrl: snapshot.source_url,
+      observedAt: snapshot.observed_at, expectedId: id }).player);
+  }
+
+  return { mapping, official, officialSnapshot, listingSnapshot, packSnapshot, listing, section, detail,
+    historicalPlayers, specialCount, historicalOfficial: { status: 'ok', complete: true,
+      observedAt: officialParsed.observed_at, sourceUrl: officialParsed.source_url, url: officialParsed.source_url,
+      sha256: officialParsed.sha256, rows: [official] } };
+}
+
 /**
  * Check one bounded source cycle and produce append candidates, never write a DB.
  * mappings are explicit reviewed joins; names or heading slugs are never guessed.
  */
-export async function collectCycle({ mappings, rawPlayers, rawPacks, fetchHtml = fetchHtmlSnapshot, now = () => new Date(), maxRequests = 30, manualCollection = false, mappingsDocument = null, rulesIdentity = null } = {}) {
+export async function collectCycle({ mappings, rawPlayers, rawPacks, fetchHtml = fetchHtmlSnapshot, now = () => new Date(), maxRequests = 30, manualCollection = false, mappingsDocument = null, rulesIdentity = null, historicalArchive = null } = {}) {
   ensure(Array.isArray(mappings) && Array.isArray(rawPlayers) && Array.isArray(rawPacks), 'invalid_collection_inputs');
   ensure(typeof manualCollection === 'boolean', 'invalid_collection_mode');
   ensure(Number.isSafeInteger(maxRequests) && maxRequests >= 2 && maxRequests <= 30, 'invalid_request_budget');
@@ -39,15 +135,19 @@ export async function collectCycle({ mappings, rawPlayers, rawPacks, fetchHtml =
   rulesIdentity ??= await activeRules();
   // Map and roster iteration order must never affect request budgets or append order.
   mappings = structuredClone(mappings).sort((a, b) => compareText(a.saleId ?? '', b.saleId ?? ''));
+  ensure(historicalArchive === null || historicalArchive === undefined || manualCollection, 'historical_archive_requires_manual_collection');
+  const historical = prepareHistoricalArchive({ historicalArchive, mappings, startedAt });
   const requestsEvidence = [];
   const finish = () => {
     result.requestCount = requests;
     result.candidates.sort((a, b) => compareText(a.saleId, b.saleId));
     result.pending.sort((a, b) => compareText(canonical(a), canonical(b)));
-    result.receipt = makeCollectionReceipt({ checkedAt: startedAt, rulesIdentity, mappingsDocument: mappingsDocument ?? { schemaVersion: 1, mappings }, rawPlayers, rawPacks, maxRequests, manualCollection, requests: requestsEvidence, resultSha256: receiptResultHash(result) });
+    result.receipt = makeCollectionReceipt({ checkedAt: startedAt, rulesIdentity, mappingsDocument: mappingsDocument ?? { schemaVersion: 1, mappings }, rawPlayers, rawPacks, maxRequests, manualCollection, requests: requestsEvidence, historicalArchive, resultSha256: receiptResultHash(result) });
     return result;
   };
-  const result = { checkedAt: startedAt, officialObservation: { status: 'error', complete: false, observedAt: startedAt, rows: [] }, candidates: [], pending: [], sources: [] };
+  const result = { checkedAt: startedAt, officialObservation: { status: 'error', complete: false, observedAt: startedAt, rows: [] },
+    ...(historical ? { historicalOfficial: { [historical.mapping.saleId]: historical.historicalOfficial } } : {}),
+    candidates: [], pending: [], sources: [] };
   const existingPlayers = new Map(rawPlayers.map(player => [player.id, player]));
   const existingPacks = new Map(rawPacks.filter(pack => text(pack.slug)).map(pack => [pack.slug, pack]));
   const fetched = new Map();
@@ -169,30 +269,42 @@ export async function collectCycle({ mappings, rawPlayers, rawPacks, fetchHtml =
       ensure(text(mapping.saleId) && text(mapping.officialTitle) && text(mapping.packSlug) && text(mapping.newPlayersSection), 'incomplete_explicit_mapping');
       ensure(/^[a-z\d-]+$/.test(mapping.packSlug), 'invalid_explicit_pack_slug');
       ensure(mapping.matchEvidence && (text(mapping.matchEvidence) || (object(mapping.matchEvidence) && Object.keys(mapping.matchEvidence).length > 0)), 'missing_match_evidence');
-      const matches = result.officialObservation.rows.filter(row => row.title === mapping.officialTitle);
+      const historicalSale = historical?.mapping.saleId === mapping.saleId ? historical : null;
+      const matches = historicalSale ? [historicalSale.official]
+        : result.officialObservation.rows.filter(row => row.title === mapping.officialTitle);
       ensure(matches.length === 1, matches.length ? 'ambiguous_official_round' : 'official_product_not_listed');
       const official = matches[0];
-      ensure(Date.parse(official.endsAt) > Date.parse(startedAt), 'official_product_expired');
+      if (!historicalSale) ensure(Date.parse(official.endsAt) > Date.parse(startedAt), 'official_product_expired');
       const expectedEnd = mapping.expectedEndsAt ?? mapping.endsAt;
       const expectedTotal = mapping.expectedTotalPlayerCount ?? mapping.totalPlayerCount;
       ensure(text(expectedEnd) && Number.isSafeInteger(expectedTotal), 'missing_official_round_guards');
       ensure(Date.parse(expectedEnd) === Date.parse(official.endsAt) && expectedTotal === official.totalPlayerCount, 'official_round_guard_mismatch');
-      const sections = efhub.sections.filter(section => section.title === mapping.newPlayersSection);
+      const listing = historicalSale?.listing ?? efhub;
+      const sections = listing.sections.filter(section => section.title === mapping.newPlayersSection);
       ensure(sections.length <= 1 && (sections.length === 0 || sections[0].complete === true), 'efhub_section_missing_or_ambiguous');
       let section = sections[0];
       if (section) ensure(!section.packSlug || section.packSlug === mapping.packSlug, 'efhub_section_pack_mismatch');
       const retainedPack = existingPacks.get(mapping.packSlug);
-      const observedPack = efhub.rawPacks.find(pack => pack.slug === mapping.packSlug);
+      const observedPack = listing.rawPacks.find(pack => pack.slug === mapping.packSlug);
       if (retainedPack && observedPack) ensure(canonical(retainedPack) === canonical(observedPack), 'raw_pack_conflict');
       let pack = retainedPack ?? observedPack;
       let detailPlayers = [];
-      let membershipSource = efhub;
+      let membershipSource = listing;
       let correctedFirstImport = false;
+      if (historicalSale) {
+        const correctedPack = { ...historicalSale.detail.pack, playerCount: historicalSale.specialCount };
+        if (retainedPack) ensure(canonical(retainedPack) === canonical(correctedPack), 'historical_archive_raw_pack_conflict');
+        pack = historicalSale.detail.pack;
+        detailPlayers = historicalSale.detail.players;
+        membershipSource = { source_url: historicalSale.packSnapshot.source_url,
+          observed_at: historicalSale.packSnapshot.observed_at, sha256: historicalSale.packSnapshot.sha256 };
+        correctedFirstImport = true;
+      }
       // The newest-release listing is not a historical catalogue. Only when
       // that complete listing has no section for an explicit reviewed mapping,
       // read the mapping's exact detail URL. A denial or ambiguous section must
       // never be bypassed by trying a different page.
-      if (!section) {
+      if (!historicalSale && !section) {
         const url = `https://efhub.com/packs/${mapping.packSlug}`;
         const detail = await getPackDetail(url, { mapping, retainedPack: pack,
           expectedMemberCount: pack ? expectedSpecialCount(mapping, pack) : undefined });
@@ -201,7 +313,7 @@ export async function collectCycle({ mappings, rawPlayers, rawPacks, fetchHtml =
         detailPlayers = detail.players;
         section = { title: pack.name, packSlug: pack.slug, packUrl: url, players: detail.members, complete: detail.membershipComplete };
         membershipSource = detail;
-      } else if (!pack) {
+      } else if (!historicalSale && !pack) {
         const url = section.packUrl ?? `https://efhub.com/packs/${mapping.packSlug}`;
         const detail = await getPackDetail(url, { mapping });
         pack = detail.pack;
@@ -235,11 +347,13 @@ export async function collectCycle({ mappings, rawPlayers, rawPacks, fetchHtml =
         if (existingPlayers.has(member.id)) {
           const previous = existingPlayers.get(member.id);
           if (member.name) ensure(previous.name === member.name, 'existing_member_name_conflict');
-          const observed = efhub.rawPlayers.find(player => player.id === member.id) ?? detailPlayers.find(player => player.id === member.id);
+          const observed = listing.rawPlayers.find(player => player.id === member.id) ?? detailPlayers.find(player => player.id === member.id)
+            ?? historicalSale?.historicalPlayers.get(member.id);
           if (observed) ensure(canonical(previous) === canonical(observed), 'existing_raw_player_conflict');
           continue;
         }
-        let player = efhub.rawPlayers.find(player => player.id === member.id) ?? detailPlayers.find(player => player.id === member.id);
+        let player = listing.rawPlayers.find(player => player.id === member.id) ?? detailPlayers.find(player => player.id === member.id)
+          ?? historicalSale?.historicalPlayers.get(member.id);
         if (!player) {
           const snapshot = await get(member.detailUrl);
           player = parsePlayerHtml(snapshot.html, { sourceUrl: member.detailUrl, observedAt: snapshot.observed_at ?? startedAt, expectedId: member.id }).player;
@@ -248,7 +362,11 @@ export async function collectCycle({ mappings, rawPlayers, rawPacks, fetchHtml =
         if (member.name) ensure(player.name === member.name, 'member_detail_name_mismatch');
         newPlayers.push(player);
       }
-      result.candidates.push({ saleId: mapping.saleId, officialTitle: official.title, packSlug: pack.slug, endsAt: official.endsAt, totalPlayerCount: official.totalPlayerCount, specialCount, expectedSpecialCount: specialCount, sourceReportedSpecialCount, memberIds, rawPlayers: newPlayers, rawPack, matchVerified: true, membershipComplete: true, countCorrection: mapping.countCorrection ?? null, evidence: { match: mapping.matchEvidence, official: { sourceUrl: result.officialObservation.sourceUrl, observedAt: result.officialObservation.observedAt, sha256: result.officialObservation.sha256 }, efhub: { sourceUrl: membershipSource.source_url, observedAt: membershipSource.observed_at, sha256: membershipSource.sha256, section: section.title }, memberIds } });
+      const officialEvidence = historicalSale?.historicalOfficial ?? result.officialObservation;
+      result.candidates.push({ saleId: mapping.saleId, officialTitle: official.title, packSlug: pack.slug, endsAt: official.endsAt, totalPlayerCount: official.totalPlayerCount, specialCount, expectedSpecialCount: specialCount, sourceReportedSpecialCount, memberIds, rawPlayers: newPlayers, rawPack, matchVerified: true, membershipComplete: true, countCorrection: mapping.countCorrection ?? null, evidence: { match: mapping.matchEvidence,
+        ...(historicalSale ? { historicalArchive: true } : {}),
+        official: { sourceUrl: officialEvidence.sourceUrl, observedAt: officialEvidence.observedAt, sha256: officialEvidence.sha256 },
+        efhub: { sourceUrl: membershipSource.source_url, observedAt: membershipSource.observed_at, sha256: membershipSource.sha256, section: section.title }, memberIds } });
     } catch (error) {
       if (error.code === 'source_denied' || error.status === 403 || error.status === 429) deniedEfhub = true;
       result.pending.push({ saleId: mapping.saleId, packSlug: mapping.packSlug, reason: error.code ?? 'collection_candidate_invalid', message: error.message });

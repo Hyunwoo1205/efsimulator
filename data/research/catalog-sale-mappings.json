@@ -1384,6 +1384,155 @@
           "verifiedCardIds": 11
         }
       }
+    },
+    {
+      "saleId": "european-clubs-selection-12-nov-26::2026-11",
+      "packSlug": "european-clubs-selection-12-nov-26",
+      "officialTitle": "Big Time & Epic: Arsenal FC",
+      "newPlayersSection": "Arsenal Bigtime",
+      "expectedEndsAt": "2026-12-03T01:59:59Z",
+      "expectedTotalPlayerCount": 250,
+      "expectedSpecialCount": 26,
+      "memberIds": [
+        "105897518995171",
+        "105897518996480",
+        "105897518998968",
+        "105897519001670",
+        "105897519001688",
+        "105897519003706",
+        "105897519015047",
+        "105897519017437",
+        "105897519057054",
+        "105897519057609",
+        "105897519061254",
+        "105897519061264",
+        "105897519064260",
+        "105897519068613",
+        "105897519071112",
+        "105897519074461",
+        "105897519074484",
+        "105897519082708",
+        "105897519089160",
+        "105897519104250",
+        "88046292697896",
+        "88046292760702",
+        "88046292831676",
+        "88046292831706",
+        "88046292831716",
+        "89139361874801"
+      ],
+      "countCorrection": {
+        "status": "user_confirmed",
+        "effectiveCount": 26,
+        "reason": "User approved adding the six verified special cards omitted from the EFHub detail. Its exact 20-card subset belongs to the complete 26-card listing."
+      },
+      "matchEvidence": {
+        "status": "user_approved_sale_mapping_and_verified_exact_count_correction",
+        "authority": "direct_user_confirmation",
+        "confirmedOnKst": "2026-11-20",
+        "sourceKind": "browser_dom",
+        "sourceEvidenceFile": "catalog-runtime/reviewed-evidence/T055/source-observations.json",
+        "sourceEvidenceSha256": "0528132823b942e141e9358abee5cadee6fc50d06f593e3bb2e980e764667816",
+        "official": {
+          "url": "https://efootball-web.konami.net/probability_kr.php",
+          "observedAt": "2026-11-20T09:50:41.454Z",
+          "bytes": 10087,
+          "sha256": "d16408317cd3dc69dc64a4a8c887ed8cb9544fd3c73bcd54a7dda6eced96fda6",
+          "totalPlayerCount": 250,
+          "endsAt": "2026-12-03T01:59:59Z",
+          "announcementUrl": "https://www.konami.com/efootball/ja/topic/promotion/agent/1423/"
+        },
+        "newPlayers": {
+          "url": "https://efhub.com/new-players",
+          "observedAt": "2026-11-20T09:51:37.340Z",
+          "bytes": 522478,
+          "sha256": "44ea1cb13cff994fc3bbef06d3cf8a7cde2a64f3b2b59d22831b09b4937480f0",
+          "section": "Arsenal Bigtime",
+          "completeCount": 26
+        },
+        "pack": {
+          "url": "https://efhub.com/packs/european-clubs-selection-12-nov-26",
+          "observedAt": "2026-11-20T09:50:58.371Z",
+          "bytes": 192881,
+          "sha256": "eb13a014c1010ce209fce99e933ebfe97381bbc904c4931cdb42240d530d2e49",
+          "name": "European Clubs Selection 12 Nov '26",
+          "rawDate": "2026-11-12",
+          "originalPlayerCount": 20
+        }
+      }
+    },
+    {
+      "saleId": "j1-league-selection-12-nov-26::2026-11",
+      "packSlug": "j1-league-selection-12-nov-26",
+      "officialTitle": "Epic: J.LEAGUE",
+      "newPlayersSection": "J1 LEAGUE Selection 12 Nov '26",
+      "expectedEndsAt": "2026-11-19T01:59:59Z",
+      "expectedTotalPlayerCount": 100,
+      "expectedSpecialCount": 15,
+      "memberIds": [
+        "105885439482765",
+        "105885439482829",
+        "105885439482896",
+        "105885439482951",
+        "105885439483349",
+        "105885439485188",
+        "105885439493141",
+        "105885439496640",
+        "105885439498295",
+        "105885439524568",
+        "105885439524587",
+        "105885439529859",
+        "88045487405981",
+        "88045487429746",
+        "88045487429751"
+      ],
+      "countCorrection": {
+        "status": "user_confirmed",
+        "effectiveCount": 15,
+        "reason": "User approved the 15-card correction for this ended sale. The sale-period detail is an exact 12-card subset of the complete 15-card listing. All three omitted type-5 cards are verified by exact detail ID."
+      },
+      "matchEvidence": {
+        "status": "user_approved_sale_mapping_and_verified_exact_count_correction",
+        "authority": "direct_user_confirmation",
+        "confirmedOnKst": "2026-11-20",
+        "sourceKind": "browser_dom",
+        "sourceEvidenceFile": "catalog-runtime/reviewed-evidence/T055/source-observations.json",
+        "sourceEvidenceSha256": "0528132823b942e141e9358abee5cadee6fc50d06f593e3bb2e980e764667816",
+        "official": {
+          "url": "https://efootball-web.konami.net/probability_kr.php",
+          "observedAt": "2026-11-12T13:01:42.297Z",
+          "bytes": 10784,
+          "sha256": "ab24c11956b5bc9d7ddf272f953dfe38fc575b2e0574ffb7442a83ea2ed9129d",
+          "totalPlayerCount": 100,
+          "endsAt": "2026-11-19T01:59:59Z",
+          "announcementUrl": "https://www.konami.com/efootball/zh-cn/topic/promotion/agent/1424/"
+        },
+        "newPlayers": {
+          "url": "https://efhub.com/new-players",
+          "observedAt": "2026-11-12T13:02:12.219Z",
+          "bytes": 577459,
+          "sha256": "11ab798464b47bebc6551133ee539688d212012292085ff8f65cb3092e9c2576",
+          "section": "J1 LEAGUE Selection 12 Nov '26",
+          "completeCount": 15
+        },
+        "pack": {
+          "url": "https://efhub.com/packs/j1-league-selection-12-nov-26",
+          "observedAt": "2026-11-12T13:03:03.482Z",
+          "bytes": 203647,
+          "sha256": "bdf4cb1bc9bd7220a19606bd4370407558ac38fa56b63b6c455a17bca31ecb64",
+          "name": "J1 LEAGUE Selection 12 Nov '26",
+          "rawDate": "2026-11-12",
+          "originalPlayerCount": 12
+        },
+        "historicalArchive": {
+          "officialSha256": "ab24c11956b5bc9d7ddf272f953dfe38fc575b2e0574ffb7442a83ea2ed9129d",
+          "listingSha256": "11ab798464b47bebc6551133ee539688d212012292085ff8f65cb3092e9c2576",
+          "packSha256": "bdf4cb1bc9bd7220a19606bd4370407558ac38fa56b63b6c455a17bca31ecb64",
+          "playerDetailSha256": {
+            "88045487429746": "7398992f063fd405bbb937ea87bd66d5901e0343a54554c4ba75cced433287b4"
+          }
+        }
+      }
     }
   ],
   "pendingOfficialTitles": [],

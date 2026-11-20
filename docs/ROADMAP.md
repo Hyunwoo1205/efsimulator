@@ -152,3 +152,7 @@ rules1.9.0 아래 고정 run-cycle로 raw47,553/1,710·가공215/18·live7/archi
 ## T054 — 대기 회차 승인 검토와 반영
 
 11월 20일 사용자가 대기 회차 전체의 매핑 진행을 승인했다. Júnior, Madrid Chamartin B, Speedsters, POTW National 네 회차의 공식 전체 인원·종료 UTC와 EFHub 신규 목록 및 팩 상세의 정확한 특수 카드 37장을 전량 대조해 규칙 1.9.3 승인 대상으로 등록했다. Arsenal은 신규 목록 26장과 상세 20장 보정 확인을, 종료된 J.LEAGUE는 15장·12장 보정 확인 및 별도 아카이브 수입 절차를 기다린다. [작업 기록](WORKPLAN.md#t054--대기-회차-승인-검토와-반영).
+
+## T055 — Arsenal과 J.LEAGUE 특수 카드 보정
+
+사용자 확인을 받은 특수 카드 명단은 Arsenal 26장과 J.LEAGUE 15장이다. Arsenal은 판매 중 목록, J.LEAGUE는 수동 검증을 거친 종료 목록에 반영한다. 반영과 원격 검증 상태는 모니터에서 확인한다. [작업 기록](WORKPLAN.md#t055--arsenal과-jleague-특수-카드-보정).

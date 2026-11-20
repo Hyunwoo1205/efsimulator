@@ -295,6 +295,26 @@
         "data/research/catalog-sale-mappings.json",
         "private catalog-runtime/reviewed-evidence/T054/source-observations.json SHA256 7de69640ad94403b3b4e64024567f8b385a8777245ed3ae417afe49167a0759a"
       ]
+    },
+    {
+      "saleId": "european-clubs-selection-12-nov-26::2026-11",
+      "mappingSha256": "a1eb4be7df768b1d8143b757fd86fe73d9daf8268cc053715ef05c6d3a2e8587",
+      "reviewId": "T055-user-approved-count-corrections",
+      "authority": "direct_user_confirmation_with_verified_source_roster",
+      "evidenceRefs": [
+        "data/research/catalog-sale-mappings.json",
+        "private catalog-runtime/reviewed-evidence/T055/source-observations.json SHA256 0528132823b942e141e9358abee5cadee6fc50d06f593e3bb2e980e764667816"
+      ]
+    },
+    {
+      "saleId": "j1-league-selection-12-nov-26::2026-11",
+      "mappingSha256": "24a87339254f7b25384094b0b1494112fd22cedc0c5103ea3e530baab66d8b6e",
+      "reviewId": "T055-user-approved-count-corrections",
+      "authority": "direct_user_confirmation_with_verified_source_roster",
+      "evidenceRefs": [
+        "data/research/catalog-sale-mappings.json",
+        "private catalog-runtime/reviewed-evidence/T055/source-observations.json SHA256 0528132823b942e141e9358abee5cadee6fc50d06f593e3bb2e980e764667816"
+      ]
     }
   ]
 }

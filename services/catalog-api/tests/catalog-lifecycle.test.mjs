@@ -117,6 +117,104 @@ test('expired products move intact to archive even when the latest observation f
   assert.deepEqual(ended.transitions, [{ saleId: f.candidate.saleId, action: 'archived', reason: 'ended' }]);
   const exactEnd = ingest({ ...f, state: initial.state, candidates: [], officialObservation: null, now: END });
   assert.equal(exactEnd.state.archive.length, 1);
+  const observedAfterEnd = { ...f.officialObservation, observedAt: '2026-11-02T02:00:00.000Z' };
+  const existingReplay = ingest({ ...f, state: initial.state, officialObservation: observedAfterEnd, now: observedAfterEnd.observedAt });
+  assert.equal(existingReplay.pending.length, 0, 'an already-processed ordinary candidate keeps its historical direct-call behavior');
+  assert.equal(existingReplay.state.archive[0].archiveReason, 'ended');
+  const rawReplay = planRawAppend({ ...f, officialObservation: observedAfterEnd, now: observedAfterEnd.observedAt,
+    candidates: [{ ...f.candidate, rawPlayers: [], rawPack: f.rawPacks[0] }] });
+  assert.equal(rawReplay.pending.length, 0);
+  assert.equal(rawReplay.addedPlayers.length, 0); assert.equal(rawReplay.addedPacks.length, 0);
+});
+
+test('an ended first import requires its exact per-sale historical official receipt and is archived without affecting current packs', () => {
+  const historical = fixture();
+  const afterEnd = '2026-11-03T01:00:00.000Z';
+  historical.candidate.evidence.historicalArchive = true;
+  historical.candidate.rawPlayers = historical.rawPlayers;
+  historical.candidate.rawPack = historical.rawPacks[0];
+  const historicalObservation = {
+    ...historical.officialObservation,
+    url: 'https://efootball-web.konami.net/probability_kr.php',
+    observedAt: '2026-10-27T01:00:00.000Z',
+    sha256: 'historical-official-hash',
+  };
+
+  const activePlayer = card('777777777777777');
+  const activeRawPack = pack('active-pack', 1);
+  const activeCandidate = {
+    ...historical.candidate,
+    saleId: 'active-sale', packSlug: activeRawPack.slug, officialTitle: 'Current active product',
+    endsAt: '2026-12-03T01:59:59.000Z', memberIds: [activePlayer.id], expectedSpecialCount: 1,
+    evidence: { current: true }, rawPlayers: [activePlayer], rawPack: activeRawPack,
+  };
+  const currentOfficial = {
+    status: 'ok', complete: true, observedAt: afterEnd, sha256: 'current-official-hash',
+    rows: [{ title: activeCandidate.officialTitle, totalPlayerCount: activeCandidate.totalPlayerCount, endsAt: activeCandidate.endsAt }],
+  };
+  const current = reconcileCatalog({
+    rawPlayers: [activePlayer], rawPacks: [activeRawPack], candidates: [activeCandidate],
+    officialObservation: currentOfficial, now: afterEnd,
+  });
+
+  const withoutReceipt = planRawAppend({
+    rawPlayers: [], rawPacks: [], candidates: [historical.candidate],
+    officialObservation: { ...historicalObservation, observedAt: afterEnd }, now: afterEnd,
+  });
+  assert.equal(withoutReceipt.addedPlayers.length, 0);
+  assert.equal(withoutReceipt.pending[0].reason, 'historical_official_observation_incomplete');
+
+  const historicalOfficial = { [historical.candidate.saleId]: historicalObservation };
+  const planned = planRawAppend({
+    rawPlayers: [], rawPacks: [], candidates: [historical.candidate],
+    officialObservation: currentOfficial, historicalOfficial, now: afterEnd,
+  });
+  assert.equal(planned.pending.length, 0);
+  assert.equal(planned.addedPlayers.length, 2);
+  assert.equal(planned.addedPacks.length, 1);
+
+  const result = reconcileCatalog({
+    state: current.state,
+    rawPlayers: [activePlayer, ...historical.rawPlayers], rawPacks: [activeRawPack, ...historical.rawPacks],
+    candidates: [historical.candidate], officialObservation: currentOfficial, historicalOfficial, now: afterEnd,
+  });
+  assert.deepEqual(result.state.active.map(value => value.saleId), [activeCandidate.saleId]);
+  assert.deepEqual(result.state.archive.map(value => value.saleId), [historical.candidate.saleId]);
+  assert.equal(result.state.archive[0].archiveReason, 'ended');
+  assert.equal(result.state.archive[0].provenance.official.observedAt, historicalObservation.observedAt);
+  assert.equal(result.state.archive[0].provenance.official.sha256, historicalObservation.sha256);
+  assert.deepEqual(result.state.active[0], current.state.active[0], 'historical evidence must not drive current removal or reactivation');
+
+  const tooLate = { [historical.candidate.saleId]: { ...historicalObservation, observedAt: historical.candidate.endsAt } };
+  const rejected = reconcileCatalog({
+    rawPlayers: historical.rawPlayers, rawPacks: historical.rawPacks, candidates: [historical.candidate],
+    officialObservation: currentOfficial, historicalOfficial: tooLate, now: afterEnd,
+  });
+  assert.equal(rejected.pending[0].reason, 'historical_official_observation_outside_sale');
+  assert.equal(rejected.state.packs.length, 0);
+});
+
+test('historical official input never relaxes ordinary current-source freshness or the explicit archive marker', () => {
+  const f = fixture();
+  const afterEnd = '2026-11-03T01:00:00.000Z';
+  f.candidate.rawPlayers = f.rawPlayers; f.candidate.rawPack = f.rawPacks[0];
+  const historicalOfficial = { [f.candidate.saleId]: f.officialObservation };
+  const unmarked = planRawAppend({
+    rawPlayers: [], rawPacks: [], candidates: [f.candidate],
+    officialObservation: { ...f.officialObservation, observedAt: afterEnd }, historicalOfficial, now: afterEnd,
+  });
+  assert.equal(unmarked.pending[0].reason, 'new_product_already_ended');
+
+  f.candidate.endsAt = '2026-12-03T01:59:59.000Z';
+  f.officialObservation.rows[0].endsAt = f.candidate.endsAt;
+  f.candidate.evidence.historicalArchive = true;
+  const staleCurrent = planRawAppend({
+    rawPlayers: [], rawPacks: [], candidates: [f.candidate],
+    officialObservation: f.officialObservation, historicalOfficial, now: afterEnd,
+  });
+  assert.equal(staleCurrent.pending[0].reason, 'official_observation_stale');
+  assert.equal(staleCurrent.addedPlayers.length, 0);
+  assert.throws(() => reconcileCatalog({ ...f, historicalOfficial: [] }), /plain mapping/);
 });
 
 test('stale, empty, partial, ambiguous or failed official responses cannot clear a future live product', () => {

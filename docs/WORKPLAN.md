@@ -3865,3 +3865,37 @@ raw 11명·1팩과 가공 11명·1팩을 추가했다. 새 데이터 묶음 v28�
 | `services/catalog-api/scripts/lifecycle/collect-cycle.mjs` | 검토 결과 변경 불필요 | 기존 상세 명단 및 원문 재실행 검증 적용 |
 | `docs/CATALOG_DATA_CONTRACT.md` | 검토 결과 변경 불필요 | 기존 9필드·타입·가격·보정·판매 상태 계약 적용 |
 | `docs/AUTOMATION.md` | 검토 결과 변경 불필요 | 개별 검토를 작업/상태 기록에서 관리 |
+
+## T055 — Arsenal과 J.LEAGUE 특수 카드 보정
+
+- 단계: R6
+- 상태: 진행 중
+- 이전: T054
+- 다음: T018
+
+11월 20일 사용자가 두 보정을 승인했다. Arsenal은 20장 상세와 26장 전체 목록의 정확한 부분집합 관계를 확인했다. 누락 6장의 개별 원문을 대조했으며, 앙리의 원본 타입은 7, 나머지 5장은 타입 5다. 공식 전체 250명과 종료 UTC는 확률표 원문에서 확인했다.
+
+J.LEAGUE는 판매 당시 공식 확률표의 전체 100명과 종료 UTC, EFHub 전체 15장과 상세 12장의 정확한 부분집합을 재검증했다. 누락된 타입 5 세 장은 각각 개별 원문을 대조했다. 한 장의 판매 당시 관측과 두 장의 11월 20일 관측 시각을 구분했다. 새 수동 경로는 승인된 한 회차의 판매 당시 공식·목록·상세 해시 및 날짜를 검증하고, 현재 공식 표와 다른 회차의 상태 판정을 분리한다. J.LEAGUE는 종료 목록에 직접 생성된다.
+
+확인 기준은 전체 ID·타입·원본 수량·보정 수량, 원문 재실행·같은 입력의 멱등성, 기존 세대와 두 분할의 무결성이다. 완료 상태는 묶음·API·세 소비 사이트·GitHub CI 확인과 함께 모니터에 기록한다.
+
+### 파일 최신화 검토
+
+| 파일 | 결과 | 근거 |
+| --- | --- | --- |
+| `data/research/catalog-sale-mappings.json` | 수정 | 두 정확한 회차와 특수 카드 명단·수량·원문 근거 |
+| `services/catalog-api/policy/approved-mappings.json` | 수정 | 두 매핑의 승인 범위와 내용 해시 |
+| `services/catalog-api/policy/rules.lock.json` | 수정 | 수동 종료 검증 경로와 승인 레지스트리의 잠금 |
+| `services/catalog-api/scripts/lifecycle/collect-cycle.mjs` | 수정 | 한 회차의 과거 공식·EFHub 원문으로 수집 |
+| `services/catalog-api/scripts/lifecycle/collection-receipt.mjs` | 수정 | 전용 수동 영수증에서 원문과 승인 매핑 재실행 |
+| `services/catalog-api/scripts/lifecycle/run-cycle.mjs` | 수정 | 잠긴 진입점으로 증거 수집과 검증된 종료 자료 전달 |
+| `services/catalog-api/scripts/lifecycle/workspace.mjs` | 수정 | 재실행과 동일한 종료 회차 관측만 적용 |
+| `services/catalog-api/lib/catalog-lifecycle.mjs` | 수정 | 종료된 회차를 archive에 추가하고 현재 공식 목록을 독립 처리 |
+| `services/catalog-api/tests/catalog-lifecycle.test.mjs` | 수정 | 과거 회차 추가와 현재 live의 분리 검증 |
+| `services/catalog-api/tests/collection-receipt.test.mjs` | 수정 | 판매 당시 원문과 현재 수집의 분리 및 검증 실패 사례 |
+| `docs/CATALOG_DATA_CONTRACT.md` | 수정 | 종료 회차의 수동 반영과 원문 보존 계약 |
+| `docs/WORKPLAN.md` | 수정 | 승인·근거·검증 범위 |
+| `docs/ROADMAP.md` | 수정 | 별도 유지보수 T055 상태 |
+| `docs/FILE_SYNC.json` | 수정 | 변경 파일 검토 태그 |
+| `data/updates/catalog-latest.json` | 수정 | 실제 데이터 반영 후 고정 요약 영수증을 별도 갱신 |
+| `docs/AUTOMATION.md` | 검토 결과 변경 불필요 | 명시 수동 경로는 시간별 실행에 연결하지 않음 |

@@ -81,18 +81,20 @@ export async function preparePublication({ state, out, dbPath, now = new Date().
   } finally { db?.close(); }
 }
 
-export async function runCycle({ root, mappingsPath, publicationOut = join(root, 'publications'), dbPath, fetchHtml, reviewedCachePath, manualCollection = false, maxRequests = 30, now = new Date().toISOString() }) {
+export async function runCycle({ root, mappingsPath, publicationOut = join(root, 'publications'), dbPath, fetchHtml, reviewedCachePath, manualCollection = false, historicalArchive = null, maxRequests = 30, now = new Date().toISOString() }) {
   const before = await loadWorkspace(root);
   const mappingFile = JSON.parse(await readFile(mappingsPath, 'utf8'));
   if (!before.policy?.approval || !before.policy?.rulesIdentity) throw new Error('Workspace has no pinned rules/mapping policy; explicitly adopt the reviewed policy before a cycle');
   assertApprovedMappings(mappingFile, before.policy.approval);
+  if (historicalArchive && (!manualCollection || reviewedCachePath)) throw new Error('Historical archive input requires manual collection and cannot be combined with reviewed cache input');
   const mappings = mappingFile.mappings;
   const source = reviewedCachePath
     ? await collectReviewedCache({ ...JSON.parse(await readFile(reviewedCachePath, 'utf8')), mappingsDocument: mappingFile,
       rulesIdentity: before.policy.rulesIdentity, approval: before.policy.approval, rawPlayers: before.rawPlayers, rawPacks: before.rawPacks, checkedAt: now })
-    : await collectCycle({ mappings, mappingsDocument: mappingFile, rulesIdentity: before.policy.rulesIdentity, rawPlayers: before.rawPlayers, rawPacks: before.rawPacks, fetchHtml, manualCollection, maxRequests, now: () => new Date(now) });
+    : await collectCycle({ mappings, mappingsDocument: mappingFile, rulesIdentity: before.policy.rulesIdentity, rawPlayers: before.rawPlayers, rawPacks: before.rawPacks, fetchHtml, manualCollection, historicalArchive, maxRequests, now: () => new Date(now) });
   const applied = await applyCycle({ root, candidates: source.candidates, officialObservation: source.officialObservation,
-    pending: source.pending, sources: source.sources, receipt: source.receipt, now, expectedVersion: before.current.version });
+    historicalOfficial: source.historicalOfficial, pending: source.pending, sources: source.sources,
+    receipt: source.receipt, now, expectedVersion: before.current.version });
   const publication = await preparePublication({ state: applied.state, out: publicationOut, dbPath, now });
   return { checkedAt: now, changed: applied.changed, pending: applied.pending, sources: source.sources,
     requestCount: source.requestCount, publication, runtimeVersion: applied.current.version };

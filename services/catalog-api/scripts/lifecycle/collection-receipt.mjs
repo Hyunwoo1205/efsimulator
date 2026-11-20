@@ -17,9 +17,12 @@ export function receiptResultHash(result) {
   const { receipt: _receipt, ...value } = result;
   return digest(canonical(value));
 }
-export function makeCollectionReceipt({ checkedAt, rulesIdentity, mappingsDocument, rawPlayers, rawPacks, maxRequests, manualCollection = false, requests, resultSha256 }) {
-  return structuredClone({ schemaVersion: manualCollection ? 3 : 1, ...(manualCollection ? { mode: 'manual' } : {}), checkedAt, rulesIdentity, mappingsDocument,
-    baselineSha256: baselineFingerprint(rawPlayers, rawPacks), maxRequests, requests, resultSha256 });
+export function makeCollectionReceipt({ checkedAt, rulesIdentity, mappingsDocument, rawPlayers, rawPacks, maxRequests, manualCollection = false, requests, historicalArchive = null, resultSha256 }) {
+  const historical = historicalArchive !== null && historicalArchive !== undefined;
+  return structuredClone({ schemaVersion: historical ? 4 : manualCollection ? 3 : 1,
+    ...(manualCollection ? { mode: 'manual' } : {}), checkedAt, rulesIdentity, mappingsDocument,
+    baselineSha256: baselineFingerprint(rawPlayers, rawPacks), maxRequests, requests,
+    ...(historical ? { historicalArchive } : {}), resultSha256 });
 }
 
 /**
@@ -32,9 +35,12 @@ export async function replayCollectionReceipt({ receipt, rawPlayers, rawPacks, n
     const { replayReviewedCacheReceipt } = await import('./reviewed-cache.mjs');
     return replayReviewedCacheReceipt({ receipt, rawPlayers, rawPacks, now, approval, rulesIdentity: expectedRules });
   }
-  const manualCollection = receipt?.schemaVersion === 3 && receipt.mode === 'manual';
-  assert(exact(receipt, ['schemaVersion', 'checkedAt', 'rulesIdentity', 'mappingsDocument', 'baselineSha256', 'maxRequests', 'requests', 'resultSha256', ...(manualCollection ? ['mode'] : [])])
+  const historical = receipt?.schemaVersion === 4;
+  const manualCollection = (receipt?.schemaVersion === 3 || historical) && receipt.mode === 'manual';
+  assert(exact(receipt, ['schemaVersion', 'checkedAt', 'rulesIdentity', 'mappingsDocument', 'baselineSha256', 'maxRequests', 'requests', 'resultSha256',
+    ...(manualCollection ? ['mode'] : []), ...(historical ? ['historicalArchive'] : [])])
     && (receipt.schemaVersion === 1 || manualCollection), 'unsupported schema');
+  assert(!historical || object(receipt.historicalArchive), 'historical archive envelope is absent');
   assert(iso(receipt.checkedAt) && typeof now === 'string' && Number.isFinite(Date.parse(now)) && new Date(now).toISOString() === receipt.checkedAt, 'execution clock differs');
   const rules = await activeRules();
   assert(canonical(receipt.rulesIdentity) === canonical(rules), 'rules identity differs');
@@ -73,7 +79,8 @@ export async function replayCollectionReceipt({ receipt, rawPlayers, rawPacks, n
   };
   const { collectCycle } = await import('./collect-cycle.mjs');
   const replay = await collectCycle({ mappings: receipt.mappingsDocument.mappings, mappingsDocument: receipt.mappingsDocument,
-    rawPlayers, rawPacks, now: () => new Date(receipt.checkedAt), maxRequests: receipt.maxRequests, manualCollection, rulesIdentity: rules, fetchHtml });
+    rawPlayers, rawPacks, now: () => new Date(receipt.checkedAt), maxRequests: receipt.maxRequests, manualCollection,
+    historicalArchive: historical ? receipt.historicalArchive : null, rulesIdentity: rules, fetchHtml });
   assert(cursor === receipt.requests.length, 'unused source evidence');
   assert(receiptResultHash(replay) === receipt.resultSha256, 'recomputed result differs');
   return replay;
